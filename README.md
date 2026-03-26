@@ -25,6 +25,8 @@ v2/                          # Current version
     examples.json            # 4 verified sample instances
     README.md                # Human-readable schema reference
     test_schema.py           # 48 tests covering schema correctness
+  visualizer/                # Web app for browsing and exploring the archive
+    PRD.md                   # Product requirements document
 ```
 
 ---
@@ -58,6 +60,8 @@ The v1 pipeline (`v1/analysis_methods.py`) parses raw WhatsApp chat exports (`.t
 ## v2 Pipeline
 
 v2 is under active development. The schema (`v2/schema/`) is complete and locked. The next step is a structured extraction pipeline that outputs validated `KVizzingQuestion` JSON objects conforming to the schema.
+
+The visualizer spec is defined in [`v2/visualizer/PRD.md`](v2/visualizer/PRD.md) — a question feed, detail view, stats/leaderboards, session explorer, and highlights reel, deployable as a static site.
 
 ---
 
