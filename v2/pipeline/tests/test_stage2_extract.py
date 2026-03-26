@@ -11,7 +11,7 @@ FIXTURES = Path(__file__).parent / "fixtures"
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from stages.stage1_parse import run as parse
-from stages.stage2_extract import prefilter, extract, run, detect_session_scores
+from stages.stage2_extract import prefilter, run, detect_session_scores
 
 BASE_CONFIG = {
     "source_timezone": "America/Chicago",
@@ -100,9 +100,9 @@ class TestPrefilter:
 
 
 class TestExtract:
-    def test_llm_called_once_per_candidate(self):
+    def test_llm_called_once_per_day(self):
+        """New architecture: one LLM call for all messages in a day."""
         msgs = _parse("chat_us_locale.txt")
-        candidates = prefilter(msgs, BASE_CONFIG)
         mock_pair = {
             "question_timestamp": "2025-09-23T19:25:40Z",
             "question_text": "Name this economic principle?",
@@ -124,17 +124,17 @@ class TestExtract:
             "extraction_confidence": "high",
         }
         client = _mock_llm([mock_pair])
-        result = extract(msgs, candidates, BASE_CONFIG, client)
-        assert client.messages.create.call_count == len(candidates)
-        assert len(result) == len(candidates)
+        result = run(msgs, BASE_CONFIG, llm_client=client)
+        # Exactly one LLM call regardless of candidate count
+        assert client.messages.create.call_count == 1
+        assert len(result) == 1
 
-    def test_llm_error_returns_empty_for_window(self):
+    def test_llm_error_returns_empty(self):
         msgs = _parse("chat_us_locale.txt")
-        candidates = prefilter(msgs, BASE_CONFIG)
         client = MagicMock()
         client.messages.create.side_effect = Exception("API error")
-        result = extract(msgs, candidates, BASE_CONFIG, client)
-        assert result == []
+        with pytest.raises(Exception, match="API error"):
+            run(msgs, BASE_CONFIG, llm_client=client)
 
     def test_run_without_llm_returns_candidate_messages(self):
         """In test mode (no llm_client), run() returns candidate messages."""
@@ -152,7 +152,6 @@ class TestExtract:
 
     def test_llm_rate_limit_retries(self):
         msgs = _parse("chat_us_locale.txt")
-        candidates = prefilter(msgs, BASE_CONFIG)[:1]
         client = MagicMock()
         # Fail twice with 429, succeed on third
         client.messages.create.side_effect = [
@@ -161,7 +160,7 @@ class TestExtract:
             MagicMock(content=[MagicMock(text="[]")]),
         ]
         config = {**BASE_CONFIG, "stage4": {**BASE_CONFIG["stage4"], "llm_retry_base_delay_seconds": 0}}
-        result = extract(msgs, candidates, config, client)
+        result = run(msgs, config, llm_client=client)
         assert client.messages.create.call_count == 3
         assert result == []
 
