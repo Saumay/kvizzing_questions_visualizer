@@ -7,7 +7,7 @@
   },
 
   "stage1": {
-    "locale_formats": ["%m/%d/%y, %I:%M:%S %p", "%d/%m/%Y, %H:%M:%S"]
+    "locale_formats": ["%m/%d/%y, %H:%M:%S", "%m/%d/%y, %I:%M:%S %p", "%d/%m/%Y, %H:%M:%S"]
   },
 
   "stage2": {
