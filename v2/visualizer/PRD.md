@@ -15,6 +15,7 @@ The core navigation model is **calendar-first**: a persistent calendar sidebar g
 3. Provide a **per-question view** that replays the full discussion thread in context
 4. Surface **stats and patterns** — who asks the most, what topics come up, which questions were hardest
 5. Celebrate **highlights** — funniest questions, crowd favourites, fastest solves
+6. **Gamify exploration** — random question button as the seed for a lightweight quiz-like experience
 
 ---
 
@@ -142,23 +143,28 @@ A filtered/sorted list of questions. Not the primary entry point, but useful for
 - Highlight badges if present
 
 **Search bar (top of feed):**
-- **Keyword search** — full-text via Pagefind (indexes all question text at build time)
-- **Semantic search** — natural language query (e.g. "Indian history questions") embedded in-browser via `transformers.js`, matched against a pre-built HNSW vector index. Toggle between keyword and semantic mode.
+Keyword search backed by `data/search_index.json` (pre-built from SQLite FTS5). Searches across question text, answer text, and tags.
 
-**Filter bar:**
-- Topic (multi-select)
-- Tags (multi-select, drawn from `data/tags.json`)
-- Asker (dropdown)
-- Difficulty
-- Question type
-- Has media (toggle)
-- Date range picker
-- Session (dropdown — or "Ad-hoc only" toggle)
-- Extraction confidence (default: hide `low`)
+**Filter bar — full set:**
 
-**Sort options:** Newest, Oldest, Most reactions, Hardest, Fastest solve
+| Filter | Field | Notes |
+|---|---|---|
+| **Asker** | `question.asker` | Dropdown of all askers. "Questions by Pratik." |
+| **Solver** | `answer.solver` + `answer.parts[].solver` | Dropdown of all solvers. Matches single-solver answers and any part of multi-part answers. Collaborative questions (no single solver) appear when "Collaborative" is selected. |
+| **Topic** | `question.topic` | Multi-select. Only shown if topic enrichment has run. |
+| **Tags** | `question.tags` | Multi-select, drawn from `data/tags.json`. |
+| **Difficulty** | `stats.difficulty` | Easy / Medium / Hard |
+| **Question type** | `question.type` | Factual / Connect / Identify / Fill in blank / Multi-part |
+| **Has media** | `question.has_media` | Toggle — show only image/video questions |
+| **Collaborative** | `answer.is_collaborative` | Toggle — show only questions solved as a group |
+| **Unanswered** | `answer.text == null` | Toggle — show questions that were never solved |
+| **Date range** | `date` | Date picker. Pre-sets: This month, Last 3 months, All time. |
+| **Session** | `session.id` | Dropdown of all sessions, plus "Ad-hoc only" toggle |
+| **Extraction confidence** | `extraction_confidence` | Default: hide `low`. Opt-in toggle to reveal uncertain extractions. |
 
-**URL format:** `/feed` (with query params for active filters, e.g. `/feed?topic=history&difficulty=hard`)
+Active filters are reflected in the URL as query params (e.g. `/feed?topic=history&solver=Saumay`) so filtered views can be shared.
+
+**Sort options:** Newest, Oldest, Most reactions, Hardest (most wrong attempts), Fastest solve, Most participants
 
 ---
 
@@ -233,6 +239,42 @@ A curated feed of questions with `highlights` populated, sorted by `total_reacti
 | **Private by default** | `<meta name="robots" content="noindex">`. Shared only with members via URL. |
 | **No login required** | Access by URL only. Frictionless. |
 | **Deep linking** | Every session and question has a stable shareable URL. |
+
+---
+
+## Random Question & Gamification
+
+### v2: Random Question Button
+
+A **"Surprise me"** button available on the home screen and the Question Feed. Picks a random question from the current filter context and navigates to its Question Detail view.
+
+**Behaviour:**
+- On the home screen (no active filters): picks from the full archive
+- Inside the feed with active filters: picks only from the filtered result set — e.g. "Surprise me with a hard history question"
+- The button is visually prominent — not buried in the filter bar
+
+**Question Detail in "surprise" mode:**
+- Answer is **hidden by default** when arriving via the Random Question button
+- A "Reveal answer" button shows the answer + discussion thread
+- A "Next random" button picks another question from the same filter context without going back to the feed
+
+This creates a lightweight quiz-like experience: set your filters, hit "Surprise me", try to recall the answer, then reveal.
+
+---
+
+### Future: Gamification Extensions
+
+The random question mechanic is the foundation for future game modes. Planned for post-v2:
+
+| Feature | Description |
+|---|---|
+| **Quiz mode** | Timer shown while answer is hidden. Score tracked locally (fast / slow / gave up). Session summary at the end. |
+| **Daily challenge** | One featured question per day, same for all members. Shareable result card ("I got today's KVizzing question in 15 seconds!"). |
+| **Streak tracking** | Browser localStorage tracks how many days in a row a member has visited and attempted a question. |
+| **Share to WhatsApp** | Deep link that opens the question in the app with a pre-filled message ("Can you get this one? [link]"). |
+| **"Try the archive"** | Pick a random question from a specific session — replay a past quiz solo. |
+
+These require no backend — all state (streaks, scores) lives in `localStorage`. The only exception is the daily challenge featured question, which is determined by a pre-built `data/daily.json` generated by the pipeline.
 
 ---
 
