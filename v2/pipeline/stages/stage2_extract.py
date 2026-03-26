@@ -255,7 +255,11 @@ def extract(
 
     for idx in candidate_indices:
         window = _build_window(idx, messages, window_size)
-        pairs = _call_llm(window, config, llm_client)
+        try:
+            pairs = _call_llm(window, config, llm_client)
+        except Exception:
+            log.warning("Stage2: skipping candidate at index %d due to LLM error.", idx)
+            continue
         all_candidates.extend(pairs)
 
     return all_candidates

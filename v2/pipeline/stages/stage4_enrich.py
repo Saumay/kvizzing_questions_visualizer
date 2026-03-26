@@ -137,7 +137,13 @@ def enrich(
     # Process in batches
     for batch_start in range(0, len(to_enrich), batch_size):
         batch = to_enrich[batch_start : batch_start + batch_size]
-        results = _call_llm(batch, config, llm_client)
+        try:
+            results = _call_llm(batch, config, llm_client)
+        except Exception:
+            log.warning("Stage4: enrichment batch failed — storing questions without topics.")
+            for q in batch:
+                enriched_map[q.id] = q
+            continue
 
         # Index results by id
         results_by_id = {r["id"]: r for r in results if isinstance(r, dict) and "id" in r}

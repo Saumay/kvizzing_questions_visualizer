@@ -10,7 +10,7 @@ Run from v2/pipeline/:
   python3 pipeline.py enrich-media     --media-dir PATH/TO/WhatsApp/Media
 
 All file paths in pipeline_config.json are resolved relative to v2/ (the parent
-of this script's directory). Logs are written to v2/data/pipeline.log.
+of this script's directory). Logs are written to pipeline/logs/YYYY-MM-DD.log.
 """
 
 from __future__ import annotations
