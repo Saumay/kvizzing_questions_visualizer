@@ -47,7 +47,7 @@ UTC = ZoneInfo("UTC")
 def _make_id(timestamp_utc_str: str, collision_counter: Counter) -> str:
     """
     Generate a stable timestamp-based ID: YYYY-MM-DD-HHMMSS.
-    If two questions share the same second, append a digit suffix: YYYYMMDDHHMMSS2.
+    If two questions share the same second, append a digit suffix: YYYY-MM-DD-HHMMSS2.
     """
     dt = datetime.fromisoformat(timestamp_utc_str.rstrip("Z")).replace(tzinfo=UTC)
     base = dt.strftime("%Y-%m-%d-%H%M%S")

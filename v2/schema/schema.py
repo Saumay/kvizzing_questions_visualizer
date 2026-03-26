@@ -295,8 +295,10 @@ class KVizzingQuestion(BaseModel):
 
     id: str = Field(
         pattern=r"^\d{4}-\d{2}-\d{2}-\d+$",
-        description="Unique identifier. Format: YYYY-MM-DD-NNN (e.g. '2025-09-23-001')",
-        examples=["2025-09-23-001"],
+        description="Unique identifier. Format: YYYY-MM-DD-HHMMSS (e.g. '2025-09-23-192540'). "
+                    "If two questions share the same second, a digit suffix is appended: "
+                    "'2025-09-23-1925402', '2025-09-23-1925403'.",
+        examples=["2025-09-23-192540"],
     )
     date: Date = Field(description="Date the question was posted (YYYY-MM-DD)")
     question: Question
