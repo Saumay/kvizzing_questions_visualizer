@@ -1,0 +1,567 @@
+{
+  "$defs": {
+    "Answer": {
+      "properties": {
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The correct answer text. Null if answer was never confirmed or revealed.",
+          "title": "Text"
+        },
+        "solver": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Username of the first person to give the correct answer. Null if asker revealed without anyone getting it.",
+          "title": "Solver"
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Timestamp of the winning answer message. For collaborative/answer_reveal cases this is the confirmation message timestamp. Null if unanswered.",
+          "title": "Timestamp"
+        },
+        "confirmed": {
+          "description": "Whether the asker explicitly confirmed the answer",
+          "title": "Confirmed",
+          "type": "boolean"
+        },
+        "confirmation_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The exact message the asker used to confirm (e.g. 'correct', 'Bingo', 'Yes!')",
+          "title": "Confirmation Text"
+        },
+        "is_collaborative": {
+          "description": "True when multiple participants together produced the full answer",
+          "title": "Is Collaborative",
+          "type": "boolean"
+        },
+        "parts": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/AnswerPart"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "For multi-part questions (X/Y/Z style). Null for single-answer questions.",
+          "title": "Parts"
+        }
+      },
+      "required": [
+        "confirmed",
+        "is_collaborative"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "AnswerPart": {
+      "properties": {
+        "label": {
+          "description": "Part identifier (e.g. 'X', 'Y', 'Z', or '1', '2', '3')",
+          "title": "Label",
+          "type": "string"
+        },
+        "text": {
+          "description": "The answer for this part",
+          "title": "Text",
+          "type": "string"
+        },
+        "solver": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who solved this specific part",
+          "title": "Solver"
+        }
+      },
+      "required": [
+        "label",
+        "text"
+      ],
+      "title": "AnswerPart",
+      "type": "object"
+    },
+    "Difficulty": {
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "title": "Difficulty",
+      "type": "string"
+    },
+    "DiscussionEntry": {
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/$defs/DiscussionRole"
+        },
+        "is_correct": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "True if this attempt was the winning answer. Null for non-attempt roles.",
+          "title": "Is Correct"
+        }
+      },
+      "required": [
+        "timestamp",
+        "username",
+        "text",
+        "role"
+      ],
+      "title": "DiscussionEntry",
+      "type": "object"
+    },
+    "DiscussionRole": {
+      "enum": [
+        "attempt",
+        "hint",
+        "confirmation",
+        "chat",
+        "answer_reveal"
+      ],
+      "title": "DiscussionRole",
+      "type": "string"
+    },
+    "ExtractionConfidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "ExtractionConfidence",
+      "type": "string"
+    },
+    "Highlights": {
+      "properties": {
+        "reaction_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "description": "Total count per emoji across all thread messages. Keys are emoji characters, values are counts. Open-ended map.",
+          "title": "Reaction Counts",
+          "type": "object"
+        },
+        "total_reactions": {
+          "description": "Sum of all reaction_counts values. Useful for sorting by engagement.",
+          "minimum": 0,
+          "title": "Total Reactions",
+          "type": "integer"
+        },
+        "categories": {
+          "description": "Derived category labels from a configurable emoji→category mapping (e.g. '😂'→'funny', '❤️'→'crowd_favourite'). New categories are added by updating the pipeline config, not this schema.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Categories",
+          "type": "array"
+        }
+      },
+      "required": [
+        "reaction_counts",
+        "total_reactions",
+        "categories"
+      ],
+      "title": "Highlights",
+      "type": "object"
+    },
+    "Question": {
+      "properties": {
+        "timestamp": {
+          "description": "ISO 8601 timestamp of the question message",
+          "format": "date-time",
+          "title": "Timestamp",
+          "type": "string"
+        },
+        "text": {
+          "description": "Full question text, cleaned of WhatsApp artifacts",
+          "title": "Text",
+          "type": "string"
+        },
+        "asker": {
+          "description": "Username of the question poser (normalised, without leading ~)",
+          "title": "Asker",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/QuestionType",
+          "description": "Question format type — describes the thinking required, independent of medium. Use has_media=True for image/video questions; they can be any type."
+        },
+        "has_media": {
+          "description": "True if the question message included an image/video (detected via 'image omitted' / 'video omitted')",
+          "title": "Has Media",
+          "type": "boolean"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TopicCategory"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Topic category. Null if not yet classified. Best assigned via LLM."
+        },
+        "tags": {
+          "description": "Free-form tags for fine-grained categorisation (e.g. ['India', 'architecture', 'colonial'])",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        }
+      },
+      "required": [
+        "timestamp",
+        "text",
+        "asker",
+        "type",
+        "has_media"
+      ],
+      "title": "Question",
+      "type": "object"
+    },
+    "QuestionType": {
+      "enum": [
+        "factual",
+        "connect",
+        "identify",
+        "fill_in_blank",
+        "multi_part",
+        "unknown"
+      ],
+      "title": "QuestionType",
+      "type": "string"
+    },
+    "Reaction": {
+      "properties": {
+        "message_timestamp": {
+          "description": "Timestamp of the reacted-to message. FK into question.timestamp (question itself) or discussion[].timestamp.",
+          "format": "date-time",
+          "title": "Message Timestamp",
+          "type": "string"
+        },
+        "username": {
+          "description": "Who reacted",
+          "title": "Username",
+          "type": "string"
+        },
+        "emoji": {
+          "description": "The reaction emoji (e.g. '✅', '👍', '❤️', '😂')",
+          "title": "Emoji",
+          "type": "string"
+        },
+        "reaction_timestamp": {
+          "description": "When the reaction was placed",
+          "format": "date-time",
+          "title": "Reaction Timestamp",
+          "type": "string"
+        }
+      },
+      "required": [
+        "message_timestamp",
+        "username",
+        "emoji",
+        "reaction_timestamp"
+      ],
+      "title": "Reaction",
+      "type": "object"
+    },
+    "Session": {
+      "properties": {
+        "id": {
+          "description": "Session identifier (e.g. date + quizmaster slug: '2026-03-16-pratik')",
+          "title": "Id",
+          "type": "string"
+        },
+        "quizmaster": {
+          "description": "Username of the session host",
+          "title": "Quizmaster",
+          "type": "string"
+        },
+        "question_number": {
+          "description": "Position of this question within the session (1-based)",
+          "minimum": 1,
+          "title": "Question Number",
+          "type": "integer"
+        },
+        "theme": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Session theme if announced (e.g. 'Hollywood Movies', 'Bollywood')",
+          "title": "Theme"
+        }
+      },
+      "required": [
+        "id",
+        "quizmaster",
+        "question_number"
+      ],
+      "title": "Session",
+      "type": "object"
+    },
+    "Source": {
+      "properties": {
+        "file": {
+          "description": "Source daily chat file (e.g. 'chat_2025-09-23.txt')",
+          "title": "File",
+          "type": "string"
+        },
+        "pair_index": {
+          "description": "Pair number within the source file (1-based)",
+          "minimum": 1,
+          "title": "Pair Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "file",
+        "pair_index"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "Stats": {
+      "properties": {
+        "wrong_attempts": {
+          "description": "Number of incorrect attempts before the correct answer",
+          "minimum": 0,
+          "title": "Wrong Attempts",
+          "type": "integer"
+        },
+        "hints_given": {
+          "description": "Number of hints/nudges the asker gave",
+          "minimum": 0,
+          "title": "Hints Given",
+          "type": "integer"
+        },
+        "time_to_answer_seconds": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Seconds from question timestamp to first correct answer. Null if unanswered.",
+          "title": "Time To Answer Seconds"
+        },
+        "unique_participants": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Number of distinct users who attempted an answer",
+          "title": "Unique Participants"
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Difficulty"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Heuristic: easy=0 wrong attempts; medium=1–3; hard=4+. Or LLM-assigned."
+        }
+      },
+      "required": [
+        "wrong_attempts",
+        "hints_given"
+      ],
+      "title": "Stats",
+      "type": "object"
+    },
+    "TopicCategory": {
+      "enum": [
+        "history",
+        "science",
+        "literature",
+        "technology",
+        "sports",
+        "geography",
+        "entertainment",
+        "food_drink",
+        "art_culture",
+        "business",
+        "general"
+      ],
+      "title": "TopicCategory",
+      "type": "string"
+    }
+  },
+  "description": "A single extracted Q&A pair from the KVizzing WhatsApp group.",
+  "properties": {
+    "id": {
+      "description": "Unique identifier. Format: YYYY-MM-DD-NNN (e.g. '2025-09-23-001')",
+      "examples": [
+        "2025-09-23-001"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}-\\d+$",
+      "title": "Id",
+      "type": "string"
+    },
+    "date": {
+      "description": "Date the question was posted (YYYY-MM-DD)",
+      "format": "date",
+      "title": "Date",
+      "type": "string"
+    },
+    "question": {
+      "$ref": "#/$defs/Question"
+    },
+    "answer": {
+      "$ref": "#/$defs/Answer"
+    },
+    "discussion": {
+      "description": "Ordered list of all relevant messages in the Q&A thread",
+      "items": {
+        "$ref": "#/$defs/DiscussionEntry"
+      },
+      "title": "Discussion",
+      "type": "array"
+    },
+    "stats": {
+      "$ref": "#/$defs/Stats"
+    },
+    "extraction_confidence": {
+      "$ref": "#/$defs/ExtractionConfidence",
+      "description": "Confidence that this is a genuine Q&A pair with a known answer"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "session": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Session"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Null for ad-hoc questions; populated for QM-hosted quiz sessions"
+    },
+    "reactions": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Reaction"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional enrichment from WhatsApp SQLite DB (iOS: ChatStorage.sqlite; Android: msgstore.db). Null when unavailable.",
+      "title": "Reactions"
+    },
+    "highlights": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Highlights"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional enrichment derived from reactions[]. Null when reactions unavailable."
+    }
+  },
+  "required": [
+    "id",
+    "date",
+    "question",
+    "answer",
+    "discussion",
+    "stats",
+    "extraction_confidence",
+    "source"
+  ],
+  "title": "KVizzingQuestion",
+  "type": "object"
+}
