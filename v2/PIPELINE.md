@@ -206,18 +206,10 @@ A positional index (`YYYY-MM-DD-001`) changes if the extraction for that day pro
 |---|---|---|---|
 | Topic classification | LLM (Claude) | `question.topic` | Topic filter |
 | Tag generation | LLM (Claude) | `question.tags` | Tag filter |
-| Embeddings | OpenAI `text-embedding-3-small` | `embeddings` table in DB | Semantic search (deferred) |
 
-**Embedding model consistency:**
-The model name is stored alongside each embedding vector in the `embeddings` table. The pipeline checks on startup that the configured model matches what is already in the DB and refuses to run if they differ — mixing vectors from different models produces meaningless similarity scores.
-
-```sql
-CREATE TABLE embeddings (
-    question_id TEXT PRIMARY KEY,
-    model       TEXT NOT NULL,
-    vector      BLOB NOT NULL   -- serialised float32 array
-);
-```
+**Notes:**
+- Only questions not already enriched in the store are sent to the LLM — incremental runs are cheap.
+- Topic and tag quality depends on prompt design. Both are stored as nullable fields; missing values simply mean those filters won't surface the question.
 
 **Emoji→category config:**
 The `highlights` computation (part of reactions enrichment) uses a mapping file at `v2/pipeline/config/emoji_categories.json`. Example:
@@ -226,10 +218,25 @@ The `highlights` computation (part of reactions enrichment) uses a mapping file 
 ```
 New categories are added here without touching the schema.
 
-**Notes:**
-- Only questions not already enriched in the store are sent to the LLM — incremental runs are cheap.
-- Embedding the full backfill (~1,500 questions) at `text-embedding-3-small` rates costs < $0.01.
-- Semantic search is not surfaced in the UI yet (see Open Questions). Embeddings are generated now so the HNSW index can be built later without re-processing.
+---
+
+### Future: Semantic Search
+
+Semantic search is **out of scope for v2** but the pipeline is designed so it can be added as a Stage 4 enrichment pass without changing any other stage:
+
+1. Add an `embeddings` table to `questions.db`:
+```sql
+CREATE TABLE embeddings (
+    question_id TEXT PRIMARY KEY,
+    model       TEXT NOT NULL,   -- store model name to prevent mixing vectors
+    vector      BLOB NOT NULL    -- serialised float32 array
+);
+```
+2. In Stage 4, call an embedding model (e.g. OpenAI `text-embedding-3-small`) for each unenriched question and store the vector
+3. In Stage 6, build a static HNSW index file from the stored vectors
+4. In the UI, embed the user's search query in-browser via `transformers.js` and query the HNSW index
+
+The SQLite schema for `questions` is unchanged. No other stage is affected.
 
 ---
 
@@ -257,7 +264,7 @@ Run this whenever a device backup is available. Safe to re-run — reactions are
 
 **SQLite schema:**
 
-The full question JSON is stored as a blob for simplicity, alongside indexed scalar columns for fast filtering. This avoids a complex normalised schema while keeping common queries efficient.
+The full question JSON is stored as a blob for simplicity, alongside indexed scalar columns for fast filtering, and an FTS5 virtual table for full-text search. This avoids a complex normalised schema while keeping common queries and keyword search efficient.
 
 ```sql
 CREATE TABLE questions (
@@ -277,7 +284,21 @@ CREATE INDEX idx_questions_asker      ON questions(asker);
 CREATE INDEX idx_questions_session    ON questions(session_id);
 CREATE INDEX idx_questions_topic      ON questions(topic);
 CREATE INDEX idx_questions_difficulty ON questions(difficulty);
+
+-- FTS5 virtual table for full-text keyword search across question text and answer text
+CREATE VIRTUAL TABLE questions_fts USING fts5(
+    id UNINDEXED,
+    question_text,
+    answer_text,
+    tags,
+    content='questions',
+    content_rowid='rowid'
+);
 ```
+
+FTS5 is SQLite's built-in full-text search — no extensions, no extra dependencies. It handles tokenisation, ranking, and prefix matching out of the box. At export time (Stage 6), the FTS index is queried to build the keyword search asset for the UI.
+
+The `embeddings` table is intentionally absent from v2 — see "Future: Semantic Search" in Stage 4 for the extension path.
 
 **What it does:**
 - Wraps each day's batch in a **single SQLite transaction** — either all questions for the day are stored or none are (no partial state)
@@ -298,7 +319,7 @@ CREATE INDEX idx_questions_difficulty ON questions(difficulty);
 - Generates `data/sessions.json` — index of all sessions with metadata (loaded first by calendar sidebar)
 - Generates `data/stats.json` — pre-aggregated leaderboards, topic counts, difficulty over time
 - Generates `data/tags.json` — tag → [question_id, ...] index for instant tag filtering
-- Builds `data/search.hnsw` — HNSW vector index from stored embeddings *(only if embeddings present)*
+- Generates `data/search_index.json` — keyword search index built from FTS5 queries, consumed by the UI
 - Updates `pipeline_state.json` → sets `last_exported_date`
 
 **Why pre-aggregate:**
@@ -308,11 +329,11 @@ The UI is a static site with no backend. Computing leaderboards or tag indices c
 
 | Search type | How | Asset |
 |---|---|---|
-| Keyword / full-text | Pagefind indexes rendered HTML at build time | Pagefind index (auto) |
-| Filter by asker | Client-side filter on `questions.json` | `questions.json` |
+| Keyword / full-text | FTS5 query at export time → `search_index.json` | `data/search_index.json` |
+| Filter by asker | Client-side filter | `questions.json` |
 | Filter by tag | Tag → ID lookup | `data/tags.json` |
-| Filter by topic / difficulty / type | Indexed columns in export | `questions.json` |
-| Semantic search *(deferred)* | In-browser HNSW nearest-neighbour | `data/search.hnsw` |
+| Filter by topic / difficulty / type | Client-side filter | `questions.json` |
+| Semantic search | **Future** — HNSW index from embeddings | See Stage 4 future section |
 
 **Output:**
 ```
@@ -325,7 +346,7 @@ data/
   sessions.json               ← calendar sidebar loads this first
   stats.json                  ← pre-computed leaderboards + charts
   tags.json                   ← tag → [question_id, ...] index
-  search.hnsw                 ← vector index for semantic search (optional)
+  search_index.json           ← keyword search index from FTS5
   questions.db                ← pipeline internal store (gitignored)
   pipeline_state.json         ← tracks last stored + exported dates
 ```
@@ -336,11 +357,26 @@ data/
 
 **Input:** `data/` files + visualizer source (`v2/visualizer/`)
 
+**Stack: SvelteKit + Tailwind CSS**
+
+SvelteKit is chosen over Next.js for this project because:
+- Lighter JS bundle → faster on mobile (the primary device)
+- Built-in transitions and animations — ideal for the discussion thread replay
+- Static adapter is first-class; Next.js static export is an afterthought
+- Less boilerplate for a purely read-only, data-driven UI
+
+UI quality is driven by the design system, not the framework. Stack:
+- **SvelteKit** (static adapter) — routing, pages, components
+- **Tailwind CSS** — utility-first styling, consistent design tokens
+- **shadcn-svelte** — accessible, unstyled component primitives (dialogs, popovers, dropdowns)
+- **FullCalendar** (Svelte adapter) — the calendar sidebar
+- **LayerChart** — lightweight Svelte-native charts for the stats page
+- **Custom CSS animations** — discussion thread message reveal, card transitions
+
 **What it does:**
-- Copies `data/` into the frontend's `static/` (or `public/`) directory so JSON files are served as static assets
-- Runs Pagefind to build the full-text search index over rendered HTML
-- Runs the frontend build (SvelteKit / Next.js static export) → `dist/`
-- Deploys to GitHub Pages or Netlify
+- Copies `data/` into `static/` so JSON files are served as static assets alongside the app
+- Runs the SvelteKit build with the static adapter → `dist/`
+- Deploys to Netlify (preferred over GitHub Pages: instant cache invalidation, branch previews, better custom domain support)
 
 **Trigger:**
 
@@ -407,7 +443,7 @@ v2/pipeline/config/
 
 pipeline_state.json             ← last_stored_date + last_exported_date
 
-data/questions.db               ← SQLite: questions + embeddings (gitignored)
+data/questions.db               ← SQLite: questions + FTS5 index (gitignored)
 data/errors/                    ← failed validations for manual review (gitignored)
 
 data/questions.json             ← Stage 6 export (committed to git)
@@ -415,7 +451,7 @@ data/questions_by_date/         ← Stage 6 export (committed to git)
 data/sessions.json              ← Stage 6 export (committed to git)
 data/stats.json                 ← Stage 6 export (committed to git)
 data/tags.json                  ← Stage 6 export (committed to git)
-data/search.hnsw                ← Stage 6 export, semantic search (optional)
+data/search_index.json          ← Stage 6 export, FTS5-backed keyword search
 
 dist/                           ← Stage 7 output (deployable static site)
 ```
@@ -444,8 +480,10 @@ dist/                           ← Stage 7 output (deployable static site)
 | # | Question | Decision |
 |---|---|---|
 | 1 | LLM for extraction | **Claude API** — better handling of informal Indian English, emojis, non-obvious confirmations |
-| 2 | Embedding model | **OpenAI `text-embedding-3-small`** — cheap, hosted, no local ML setup. Backfill of ~1,500 questions costs < $0.01 |
-| 3 | Semantic search in UI | **Deferred** — 20MB WASM download is too heavy for mobile users. Embeddings generated now; HNSW index and UI added later |
-| 4 | Error review | **Simple CLI** (`pipeline.py review`) — approve/reject/skip per candidate |
-| 5 | Reactions enrichment | **Fully decoupled** — separate `enrich-reactions` command, not part of the daily pipeline |
-| 6 | questions.db in git | **Not committed** — binary diffs bloat repo history. `questions.json` (the export) is committed instead and is sufficient to run the UI |
+| 2 | Full-text search | **SQLite FTS5** — built-in, zero dependencies. Export to `search_index.json` for the UI. |
+| 3 | Semantic search | **Out of scope for v2.** Extension path documented in Stage 4. No other stages change when added later. |
+| 4 | Reactions enrichment | **v2, optional** — separate `enrich-reactions` command. UI shows empty state gracefully without it. Enables the Highlights page when run. |
+| 5 | Frontend framework | **SvelteKit + Tailwind CSS + shadcn-svelte** — lightest bundle, best static adapter, built-in transitions for thread replay |
+| 6 | Hosting | **Netlify** — instant cache invalidation, branch previews, better than GitHub Pages for a polished UX |
+| 7 | Error review | **Simple CLI** (`pipeline.py review`) — approve/reject/skip per candidate |
+| 8 | questions.db in git | **Not committed** — binary diffs bloat repo history. `questions.json` (the export) is committed instead and is sufficient to run the UI |

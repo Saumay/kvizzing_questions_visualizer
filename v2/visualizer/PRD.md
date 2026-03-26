@@ -209,16 +209,30 @@ A curated feed of questions with `highlights` populated, sorted by `total_reacti
 
 ---
 
+## Tech Stack
+
+| Layer | Choice | Reason |
+|---|---|---|
+| Framework | **SvelteKit** (static adapter) | Lightest bundle for mobile, first-class static export, built-in transitions for thread replay |
+| Styling | **Tailwind CSS** | Utility-first, consistent design tokens, easy responsive layouts |
+| Components | **shadcn-svelte** | Accessible, unstyled primitives — full control over appearance |
+| Calendar | **FullCalendar** (Svelte adapter) | Battle-tested, handles month/week views, event rendering |
+| Charts | **LayerChart** | Svelte-native, lightweight, covers bar/donut/line for stats page |
+| Hosting | **Netlify** | Instant cache invalidation, branch previews, better than GitHub Pages |
+
+---
+
 ## Non-Functional Requirements
 
 | Requirement | Detail |
 |---|---|
-| **Static / no backend** | All data loaded from pre-built JSON files. No server required. Deployable to GitHub Pages or Netlify. |
-| **Fast initial load** | Lazy-load `questions.json`. Use per-day JSON files (`data/questions_by_date/`) for calendar and date-range queries to avoid loading the full archive upfront. |
-| **Mobile-first** | Members primarily use phones. Calendar collapses gracefully; cards and thread views must be readable on small screens. |
-| **Private by default** | No public indexing (`<meta name="robots" content="noindex">`). The group is private; the site is shared only with members via URL. |
-| **No login required** | Access by URL only. Keep it frictionless. |
-| **Deep linking** | Every session and question has a stable URL that can be shared in WhatsApp. |
+| **Static / no backend** | All data loaded from pre-built JSON files. No server required. |
+| **Fast initial load** | `sessions.json` loaded first (small, powers calendar). `questions.json` lazy-loaded. Per-day files used for date-range queries. |
+| **Mobile-first** | Members primarily use phones. Calendar collapses to horizontal strip; cards and thread views optimised for small screens. |
+| **Extremely good UI** | Smooth transitions on card expand, thread message reveal animation, micro-interactions on filter changes. Not a data dump — feels like a product. |
+| **Private by default** | `<meta name="robots" content="noindex">`. Shared only with members via URL. |
+| **No login required** | Access by URL only. Frictionless. |
+| **Deep linking** | Every session and question has a stable shareable URL. |
 
 ---
 
@@ -236,7 +250,5 @@ A curated feed of questions with `highlights` populated, sorted by `total_reacti
 
 1. **Media**: `has_media: true` questions reference images/videos not present in `.txt` exports. Show a placeholder, or hide media questions from the feed by default with an opt-in toggle?
 2. **Low-confidence questions**: Hide `extraction_confidence: "low"` by default with an opt-in toggle to reveal them?
-3. **Hosting**: GitHub Pages (free, simple) vs Netlify vs self-hosted?
-4. **Framework**: SvelteKit or Next.js static export are both good fits given the calendar + routing requirements. Vanilla JS is feasible but the calendar component would need a library either way.
-5. **Calendar library**: [`cal-heatmap`](https://cal-heatmap.com) for the activity heatmap view, plus a standard month-grid calendar (e.g. `fullcalendar.io` or a lightweight custom component)?
-6. **Quizmaster colours**: Assign a consistent colour per quizmaster for session events on the calendar — derive from name hash, or let it be configurable?
+3. **Quizmaster colours**: Assign a consistent colour per quizmaster for session events on the calendar — derive from name hash, or let it be configurable?
+4. **Highlights page without reactions**: Show an empty state with instructions to run `enrich-reactions`, or hide the page entirely until reactions data is present?
