@@ -30,6 +30,15 @@ from typing import Optional
 
 log = logging.getLogger("kvizzing")
 
+
+def _parse_json(text: str) -> list:
+    """Parse JSON from LLM output, stripping markdown fences if present."""
+    text = text.strip()
+    # Strip ```json ... ``` or ``` ... ``` fences
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    return json.loads(text.strip())
+
 # ── Phase 2a — Heuristic pre-filter ───────────────────────────────────────────
 
 # Patterns that strongly suggest a question message
@@ -210,13 +219,13 @@ def _call_llm(
                 messages=[{"role": "user", "content": user_prompt}],
             )
             text = response.content[0].text.strip()
-            return json.loads(text)
+            return _parse_json(text)
         except json.JSONDecodeError as e:
             log.warning("Stage2 LLM returned invalid JSON (attempt %d): %s", attempt + 1, e)
             return []
         except Exception as e:
             err_str = str(e)
-            if "429" in err_str or "rate_limit" in err_str.lower():
+            if "429" in err_str or "rate_limit" in err_str.lower() or "resource_exhausted" in err_str.lower():
                 if attempt < max_retries - 1:
                     delay = base_delay * (2**attempt)
                     log.warning("Stage2 rate-limited — retrying in %.1fs (attempt %d/%d)…", delay, attempt + 1, max_retries)
@@ -314,7 +323,7 @@ def detect_session_scores(
                 system=_SESSION_SCORE_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],
             )
-            result = json.loads(response.content[0].text.strip())
+            result = _parse_json(response.content[0].text)
             if result.get("found"):
                 return result.get("scores")
             return None
@@ -323,7 +332,7 @@ def detect_session_scores(
             return None
         except Exception as e:
             err_str = str(e)
-            if "429" in err_str or "rate_limit" in err_str.lower():
+            if "429" in err_str or "rate_limit" in err_str.lower() or "resource_exhausted" in err_str.lower():
                 if attempt < max_retries - 1:
                     delay = base_delay * (2**attempt)
                     log.warning("Stage2 session-score rate-limited — retrying in %.1fs…", delay)

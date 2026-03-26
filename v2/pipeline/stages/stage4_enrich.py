@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
+import re
 import sys
 import time
 from typing import Optional
@@ -23,6 +24,14 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "schema"))
 from schema import KVizzingQuestion, TopicCategory
 
 log = logging.getLogger("kvizzing")
+
+
+def _parse_json(text: str) -> list:
+    """Parse JSON from LLM output, stripping markdown fences if present."""
+    text = text.strip()
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    return json.loads(text.strip())
 
 
 _ENRICH_SYSTEM_PROMPT = """\
@@ -78,14 +87,13 @@ def _call_llm(
                 system=_ENRICH_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],
             )
-            text = response.content[0].text.strip()
-            return json.loads(text)
+            return _parse_json(response.content[0].text)
         except json.JSONDecodeError as e:
             log.warning("Stage4 LLM returned invalid JSON: %s", e)
             return []
         except Exception as e:
             err_str = str(e)
-            if "429" in err_str or "rate_limit" in err_str.lower():
+            if "429" in err_str or "rate_limit" in err_str.lower() or "resource_exhausted" in err_str.lower():
                 if attempt < max_retries - 1:
                     delay = base_delay * (2 ** attempt)
                     log.warning("Stage4 rate-limited — retrying in %.1fs (attempt %d/%d)…", delay, attempt + 1, max_retries)
