@@ -94,28 +94,13 @@ def _load_state(state_path: Path) -> dict:
 
 
 def _llm_client():
-    """Return an LLM client (Anthropic → Groq → Gemini), or None."""
-    import os
-    if os.environ.get("ANTHROPIC_API_KEY"):
-        try:
-            import anthropic
-            return anthropic.Anthropic()
-        except ImportError:
-            pass
-    if os.environ.get("GROQ_API_KEY"):
-        try:
-            from llm_adapter import GroqClient
-            return GroqClient()
-        except (ImportError, RuntimeError) as e:
-            log.warning("Groq client failed: %s", e)
-    if os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"):
-        try:
-            from llm_adapter import GeminiClient
-            return GeminiClient()
-        except (ImportError, RuntimeError) as e:
-            log.warning("Gemini client failed: %s", e)
-    log.warning("No LLM client available — set GROQ_API_KEY, GEMINI_API_KEY, or ANTHROPIC_API_KEY.")
-    return None
+    """Return a Groq LLM client, or None if GROQ_API_KEY is not set."""
+    try:
+        from llm_adapter import GroqClient
+        return GroqClient()
+    except (ImportError, RuntimeError) as e:
+        log.warning("No LLM client available: %s", e)
+        return None
 
 
 # ── Shared pipeline run ───────────────────────────────────────────────────────
