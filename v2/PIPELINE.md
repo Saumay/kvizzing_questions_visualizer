@@ -4,55 +4,109 @@ End-to-end architecture from raw WhatsApp chat export to the live visualizer.
 
 ---
 
+## Run Modes
+
+The pipeline always receives the **full `_chat.txt`** as input — WhatsApp exports the entire history each time. Two run modes are supported:
+
+| Mode | When | What gets processed |
+|---|---|---|
+| **Backfill** | First run, or re-processing history | All dates in `_chat.txt` not already in the store |
+| **Incremental** | Daily after backfill is done | Only the last day's messages |
+
+Both modes use the same code path. The difference is purely in the **date window** passed to the parse stage:
+- Backfill: `since = None` (process everything not yet in the store)
+- Incremental: `since = yesterday` (process only the most recent day)
+
+State is tracked in a single `pipeline_state.json` file that records the last successfully processed date. On each run, the pipeline reads this file to decide what to process, and updates it on success.
+
+```json
+// pipeline_state.json
+{
+  "last_processed_date": "2026-03-25",
+  "total_questions": 847
+}
+```
+
+---
+
 ## Overview
 
 ```
-Raw chat export (.txt)
+data/raw/_chat.txt  (always the full export)
         │
         ▼
+┌───────────────────────────────────┐
+│  0. Date Filter                   │
+│  Backfill: all dates not in store │
+│  Incremental: last day only       │
+└───────────────┬───────────────────┘
+                │  slice of messages
+                ▼
 ┌───────────────┐
-│  1. Parse     │  Split messages into structured objects
+│  1. Parse     │  Messages → structured objects
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  2. Extract   │  Identify Q&A threads using LLM
+│  2. Extract   │  Q&A threads via LLM
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  3. Structure │  Map to KVizzingQuestion schema + validate
+│  3. Structure │  Map to schema, validate, deduplicate
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  4. Enrich    │  Add topic, difficulty, reactions (optional)
+│  4. Enrich    │  Topic/tags via LLM, reactions from SQLite (optional)
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  5. Build     │  Assemble data/ files for the UI
+│  5. Store     │  Upsert into questions.db (SQLite)
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  6. Deploy    │  Static site → GitHub Pages / Netlify
+│  6. Export    │  SQLite → JSON files for the UI
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│  7. Deploy    │  Build static site + push to GitHub Pages / Netlify
 └───────────────┘
 ```
 
 ---
 
+## Stage 0 — Date Filter
+
+**Input:** `data/raw/_chat.txt` + `pipeline_state.json`
+
+**What it does:**
+- Reads `last_processed_date` from `pipeline_state.json`
+- Scans `_chat.txt` for all dates present
+- **Backfill mode** (`last_processed_date` is null): returns all dates
+- **Incremental mode**: returns only dates after `last_processed_date` — in practice, just yesterday/today
+- Passes the relevant message slice to Stage 1
+
+**Notes:**
+- Because the full chat is always the input, this stage never misses data — even if a day was skipped, the next run will catch up.
+- If `pipeline_state.json` doesn't exist, the pipeline assumes a fresh backfill.
+
+---
+
 ## Stage 1 — Parse
 
-**Input:** `data/raw/_chat.txt` (WhatsApp `.txt` export)
+**Input:** Filtered message slice from Stage 0
 
 **What it does:**
 - Parses the WhatsApp message format: `[M/D/YY, HH:MM:SS] Username: Message`
 - Handles multi-line messages (continuation lines have no timestamp prefix)
 - Detects media placeholders (`<image omitted>`, `<video omitted>`)
-- Splits output into one file per day
+- Normalises usernames (strips leading `~`, trims whitespace)
 
-**Output:** `data/parsed/YYYY-MM-DD.json` — array of message objects per day
+**Output:** Per-day arrays of structured message objects
 
 ```json
 {
@@ -64,130 +118,156 @@ Raw chat export (.txt)
 ```
 
 **Notes:**
-- Pure parsing — no intelligence, no LLM. Fast and deterministic.
-- Username normalisation happens here (strip leading `~`, trim whitespace).
-- This stage is already largely implemented in `v1/analysis_methods.py`.
+- Pure parsing — no LLM, no intelligence. Fast and deterministic.
+- Already largely implemented in `v1/analysis_methods.py`.
 
 ---
 
 ## Stage 2 — Extract
 
-**Input:** `data/parsed/YYYY-MM-DD.json`
+**Input:** Parsed messages per day
 
 **What it does:**
-- Identifies Q&A threads — a question message, its replies, and a confirmation or reveal
-- Detects session markers (e.g. "###Quiz Start", score tracking messages, quizmaster patterns)
+- Identifies Q&A threads — a question, its replies, and a confirmation or reveal
+- Detects session markers (e.g. "###Quiz Start", score tracking, quizmaster patterns)
 - Groups messages into candidate Q&A pairs
-- Assigns a preliminary `extraction_confidence` based on signal strength:
-  - `high`: explicit confirmation message found
-  - `medium`: strong contextual signal (e.g. "correct", "bingo" nearby)
-  - `low`: no confirmation found
-
-**Output:** `data/extracted/YYYY-MM-DD_candidates.json` — raw candidate pairs, not yet schema-validated
+- Assigns preliminary `extraction_confidence`:
+  - `high` — explicit confirmation message found
+  - `medium` — strong contextual signal ("correct", "bingo" nearby)
+  - `low` — no confirmation found
 
 **LLM role:**
-The extraction step is the hardest part of the pipeline. Heuristics alone will miss edge cases. An LLM call (e.g. Claude) is used to:
-- Determine if a message is a question being posed to the group
-- Identify the confirmation message for an answer
-- Classify the role of each message in the thread (`attempt`, `hint`, `confirmation`, etc.)
+The hardest stage. Heuristics alone miss too many edge cases. An LLM (Claude API recommended) is used to:
+- Determine if a message is a question posed to the group
+- Identify the confirmation or reveal message
+- Classify each thread message's role (`attempt`, `hint`, `confirmation`, `chat`, `answer_reveal`)
 - Extract session metadata (quizmaster, theme, question number)
 
-Suggested prompt strategy: feed the LLM a window of messages (e.g. 30–50 around a suspected question) and ask it to output a structured candidate pair.
+Prompt strategy: feed a sliding window of ~40 messages around a suspected question and ask for a structured candidate pair as JSON output.
+
+**Output:** Raw candidate pairs (not yet schema-validated)
 
 **Notes:**
-- This stage produces *candidates* — not all will be valid Q&A pairs.
-- `extraction_confidence: "low"` candidates are kept but filtered out of the UI by default.
+- Produces *candidates* — not all will pass schema validation in Stage 3.
+- `extraction_confidence: "low"` candidates are kept, stored, but hidden from the UI by default.
 
 ---
 
 ## Stage 3 — Structure
 
-**Input:** `data/extracted/YYYY-MM-DD_candidates.json`
+**Input:** Raw candidates from Stage 2
 
 **What it does:**
 - Maps each candidate to the `KVizzingQuestion` Pydantic model
 - Computes derived fields:
   - `stats.wrong_attempts` — count of `attempt` entries with `is_correct: false`
   - `stats.hints_given` — count of `hint` entries
-  - `stats.time_to_answer_seconds` — delta between `question.timestamp` and `answer.timestamp`
-  - `stats.unique_participants` — distinct usernames in `attempt` entries
-  - `stats.difficulty` — derived from `wrong_attempts` (0 → easy, 1–3 → medium, 4+ → hard)
-- Validates each object against the schema; logs and skips invalid ones
-- Assigns a unique `id` in `YYYY-MM-DD-NNN` format
+  - `stats.time_to_answer_seconds` — delta between question and answer timestamps
+  - `stats.unique_participants` — distinct usernames among attempts
+  - `stats.difficulty` — derived from `wrong_attempts` (0→easy, 1–3→medium, 4+→hard)
+- Assigns `id` in `YYYY-MM-DD-NNN` format (NNN = 1-based index within the day)
+- Validates against the Pydantic schema — invalid candidates are logged and skipped
 
-**Output:** `data/structured/YYYY-MM-DD.json` — validated `KVizzingQuestion` arrays
+**Output:** Validated `KVizzingQuestion` objects ready for storage
 
 **Notes:**
-- Pydantic validation acts as a quality gate. Anything that doesn't conform to the schema is logged to `data/errors/YYYY-MM-DD_errors.json` for manual review.
-- `session` is populated here if the extraction stage detected session markers.
+- Pydantic is the quality gate. Anything that doesn't conform is logged to `data/errors/` for manual review.
+- `session` is populated here if Stage 2 detected session markers.
 
 ---
 
 ## Stage 4 — Enrich *(optional)*
 
-**Input:** `data/structured/YYYY-MM-DD.json` + optionally WhatsApp SQLite DB
+**Input:** Validated questions from Stage 3 + optionally WhatsApp SQLite DB
 
 **What it does:**
 
-| Enrichment | Source | Output field |
+| Enrichment | Source | Field |
 |---|---|---|
-| Topic classification | LLM (classify question text) | `question.topic` |
+| Topic classification | LLM | `question.topic` |
 | Tag generation | LLM | `question.tags` |
-| Reactions | WhatsApp SQLite DB (`ChatStorage.sqlite` / `msgstore.db`) | `reactions[]` |
-| Highlights | Derived from reactions + emoji→category config | `highlights` |
-
-**Output:** `data/enriched/YYYY-MM-DD.json` — same structure as structured, with optional fields populated
+| Reactions | WhatsApp SQLite DB | `reactions[]` |
+| Highlights | Derived from reactions + config | `highlights` |
 
 **Notes:**
-- This stage is fully optional. The visualizer works without it — topic/tag filters are simply empty, and the highlights reel is hidden.
-- Reactions require access to the device SQLite DB, which not everyone will have. The pipeline gracefully skips this if the DB is not provided.
-- Topic/tag LLM calls can be batched cheaply since question texts are short.
+- Fully optional. The pipeline and UI work without it.
+- Reactions require the WhatsApp SQLite DB from device backup (iOS: `ChatStorage.sqlite`; Android: `msgstore.db`). The pipeline skips this gracefully if not provided.
+- LLM topic/tag calls are cheap — question texts are short and can be batched.
+- Only new questions (not already enriched in the store) are sent to the LLM.
 
 ---
 
-## Stage 5 — Build Data
+## Stage 5 — Store
 
-**Input:** All files from `data/structured/` (or `data/enriched/` if enrichment ran)
+**Input:** Enriched (or structured) `KVizzingQuestion` objects
 
 **What it does:**
-- Merges all daily files into `data/questions.json` (sorted by `question.timestamp`)
-- Splits into `data/questions_by_date/YYYY-MM-DD.json` for efficient date-range queries
-- Generates `data/sessions.json` — index of all sessions with metadata and question counts
-- Generates `data/stats.json` — pre-computed aggregate stats (leaderboards, topic counts, etc.) so the UI doesn't need to compute them client-side
+- Upserts each question into `data/questions.db` (SQLite) keyed on `id`
+- A unique constraint on `id` means re-running the pipeline is always safe — existing questions are updated, new ones are inserted, nothing is duplicated
+- Updates `pipeline_state.json` with the new `last_processed_date` and total question count
+
+**Why SQLite over flat JSON:**
+
+| | Flat JSON | SQLite |
+|---|---|---|
+| Deduplication | Manual, error-prone | Unique constraint on `id` |
+| Incremental append | Requires reading + rewriting full file | Single `INSERT OR REPLACE` |
+| Querying (e.g. by date, topic) | Load entire file client-side | Native SQL |
+| Human-readable | Yes | No (but DB Browser for SQLite is free) |
+| Git-committable | Yes | Yes (binary diff, but committable) |
+| Export to JSON | Is JSON | One query |
+
+At the expected scale (~1,000–2,000 questions over several years), both would work. SQLite is chosen because **safe incremental updates are guaranteed by the schema**, not by careful file management.
+
+**Output:** `data/questions.db` — the single source of truth for all processed questions
+
+---
+
+## Stage 6 — Export
+
+**Input:** `data/questions.db`
+
+**What it does:**
+- Exports the full archive to `data/questions.json` (sorted by `question.timestamp`)
+- Generates `data/questions_by_date/YYYY-MM-DD.json` — per-day slices for calendar queries
+- Generates `data/sessions.json` — index of all sessions (loaded first by the calendar sidebar)
+- Generates `data/stats.json` — pre-aggregated leaderboards, topic counts, difficulty over time
+
+**Why pre-aggregate stats:** The UI is a static site with no backend. Computing leaderboards client-side over 1,500 questions on every page load is wasteful. `stats.json` is computed once at export time.
 
 **Output:**
 ```
 data/
-  questions.json                  ← full archive
+  questions.json              ← full archive for the UI
   questions_by_date/
     2025-09-23.json
     2026-03-16.json
     ...
-  sessions.json                   ← session index
-  stats.json                      ← pre-aggregated stats
+  sessions.json               ← calendar sidebar loads this first
+  stats.json                  ← pre-computed leaderboards + charts
+  questions.db                ← pipeline's internal store (not served to UI)
+  pipeline_state.json         ← tracks last processed date
 ```
-
-**Notes:**
-- Pre-aggregating stats at build time keeps the UI fast — no client-side reduce over thousands of questions on load.
-- `sessions.json` is what the calendar sidebar loads first to render session events without fetching the full archive.
 
 ---
 
-## Stage 6 — Deploy
+## Stage 7 — Deploy
 
 **Input:** `data/` files + visualizer source (`v2/visualizer/`)
 
 **What it does:**
 - Runs the frontend build (SvelteKit / Next.js static export)
-- Outputs a fully static site (`dist/` or `out/`)
+- Outputs a fully static site to `dist/`
 - Deploys to GitHub Pages or Netlify
 
-**Recommended trigger:** a simple shell script or `Makefile` target that runs all pipeline stages in order, then builds and deploys.
+**Trigger options:**
 
-```
-make pipeline   # stages 1–5
-make build      # stage 6 (build UI)
-make deploy     # push to GitHub Pages / Netlify
+```bash
+# Full backfill + deploy (first time)
+make backfill && make build && make deploy
+
+# Daily incremental run
+make incremental && make build && make deploy
 ```
 
 ---
@@ -195,28 +275,19 @@ make deploy     # push to GitHub Pages / Netlify
 ## Data Flow Summary
 
 ```
-data/raw/                    ← you drop the chat export here
-  _chat.txt
+data/raw/_chat.txt              ← drop the full WhatsApp export here (every run)
 
-data/parsed/                 ← Stage 1 output
-  YYYY-MM-DD.json
+pipeline_state.json             ← tracks last processed date
 
-data/extracted/              ← Stage 2 output
-  YYYY-MM-DD_candidates.json
+data/questions.db               ← SQLite store (Stages 1–5 write here)
+data/errors/                    ← failed validations for manual review
 
-data/structured/             ← Stage 3 output (schema-validated)
-  YYYY-MM-DD.json
+data/questions.json             ← Stage 6 export (UI-ready)
+data/questions_by_date/         ← Stage 6 export
+data/sessions.json              ← Stage 6 export
+data/stats.json                 ← Stage 6 export
 
-data/enriched/               ← Stage 4 output (optional)
-  YYYY-MM-DD.json
-
-data/                        ← Stage 5 output (UI-ready)
-  questions.json
-  questions_by_date/
-  sessions.json
-  stats.json
-
-dist/ (or out/)              ← Stage 6 output (deployable static site)
+dist/                           ← Stage 7 output (deployable static site)
 ```
 
 ---
@@ -225,17 +296,20 @@ dist/ (or out/)              ← Stage 6 output (deployable static site)
 
 | Stage | Status |
 |---|---|
-| 1. Parse | Largely done in `v1/analysis_methods.py` — needs porting to v2 |
+| 0. Date Filter | Not started |
+| 1. Parse | Largely done in `v1/analysis_methods.py` — needs porting |
 | 2. Extract | Partially done in v1 — needs LLM integration and session detection |
-| 3. Structure | Schema is complete (`v2/schema/`). Mapping logic to be written. |
+| 3. Structure | Schema complete (`v2/schema/`). Mapping logic to be written. |
 | 4. Enrich | Not started |
-| 5. Build Data | Not started |
-| 6. Deploy | Not started |
+| 5. Store | Not started |
+| 6. Export | Not started |
+| 7. Deploy | Not started |
 
 ---
 
 ## Open Questions
 
-1. **LLM for extraction**: Claude API vs local Llama (v1 used Llama)? Claude will be more accurate but has a cost per run. For a group chat archive that's processed once (or infrequently), Claude API is likely the right call.
-2. **Incremental runs**: Should the pipeline support incremental updates (only process new days) or always run from scratch? Incremental is more efficient but adds complexity.
-3. **Error review UI**: Should there be a lightweight way to review and correct `extraction_confidence: "low"` candidates, or is manual JSON editing acceptable for now?
+1. **LLM for extraction**: Claude API vs local Llama (v1 used Llama)? Claude will be more accurate; cost is low given infrequent runs.
+2. **Error review**: A lightweight CLI or UI to review `extraction_confidence: "low"` candidates and promote/discard them manually? Or is editing `questions.db` directly acceptable?
+3. **Reactions timing**: The WhatsApp SQLite DB is not always available. Should reactions be a separate optional enrichment run, decoupled from the daily pipeline?
+4. **questions.db in git**: Commit it to track history, or keep it local-only and rely on re-running the pipeline to regenerate? Committing means the data travels with the code; not committing keeps the repo lean.
