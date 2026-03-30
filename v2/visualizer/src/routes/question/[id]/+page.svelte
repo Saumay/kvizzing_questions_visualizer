@@ -3,7 +3,7 @@
   import { goto } from '$app/navigation';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import { formatDateTz, formatTime } from '$lib/utils/time';
-  import { topicCls, topicLabel } from '$lib/utils/topicColors';
+  import { topicCls, topicClsSecondary, topicLabel } from '$lib/utils/topicColors';
   import { filterHints } from '$lib/utils/hints';
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import AnswerSubmission from '$lib/components/AnswerSubmission.svelte';
@@ -50,7 +50,7 @@
       onclick={() => { const q = store.random(); if (q) goto(`/question/${q.id}`); }}
       class="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-primary-500 dark:bg-primary-600 text-white hover:bg-primary-600 dark:hover:bg-primary-700 rounded-lg transition-colors cursor-pointer flex-shrink-0"
     >
-      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+      <svg class="w-4 h-4 flex-shrink-0 animate-spin" style="animation-duration:1s" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
       <span class="hidden sm:inline">Random question</span>
     </button>
   </div>
@@ -74,11 +74,16 @@
           #{question.session.question_number} {question.session.quiz_type === 'connect' ? `${question.session.quizmaster}'s Connect Quiz` : (question.session.theme ?? 'Session')}
         </a>
       {/if}
-      {#each q.topics ?? [] as topic}
-        <a href="/?topic={topic}" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {topicCls(topic)} hover:opacity-80 transition-opacity">
-          {topicLabel(topic)}
+      {#if q.topics?.[0]}
+        <a href="/?topic={q.topics[0]}" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium transition-colors {topicCls(q.topics[0])}">
+          {topicLabel(q.topics[0])}
         </a>
-      {/each}
+      {/if}
+      {#if q.topics?.[1]}
+        <a href="/?topic={q.topics[1]}" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium transition-colors {topicClsSecondary(q.topics[1])}">
+          {topicLabel(q.topics[1])}
+        </a>
+      {/if}
     </div>
   </div>
 

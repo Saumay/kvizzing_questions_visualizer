@@ -48,13 +48,13 @@
     .sort((a, b) => b.questions_solved - a.questions_solved)
     .slice(0, 10);
 
-  // Pie chart — primary category (topics[0]) per question
+  // Pie chart — primary category (topics[0]) per question; uncategorised → "general"
   const primaryCounts = new Map<string, number>();
   for (const q of questions) {
-    const primary = q.question.topics?.[0];
-    if (primary) primaryCounts.set(primary, (primaryCounts.get(primary) ?? 0) + 1);
+    const primary = q.question.topics?.[0] ?? 'general';
+    primaryCounts.set(primary, (primaryCounts.get(primary) ?? 0) + 1);
   }
-  const pieTotal = [...primaryCounts.values()].reduce((s, n) => s + n, 0);
+  const pieTotal = questions.length;
   const pieRows = [...primaryCounts.entries()].sort((a, b) => b[1] - a[1]);
 
   // SVG donut helpers
@@ -195,32 +195,6 @@
 </svelte:head>
 
 <div class="space-y-6">
-  <!-- Header -->
-  <div>
-    <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Highlights</h1>
-    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The group's story</p>
-  </div>
-
-  <!-- Quick stats row -->
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-    <a href="/" class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm text-center hover:border-primary-300 hover:shadow-md transition-all">
-      <p class="text-2xl font-bold text-primary-500 dark:text-primary-400">{questions.length}</p>
-      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Total questions</p>
-    </a>
-    <a href="/sessions" class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm text-center hover:border-blue-300 hover:shadow-md transition-all">
-      <p class="text-2xl font-bold text-blue-500">{store.getSessions().length}</p>
-      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Quiz sessions</p>
-    </a>
-    <a href="/?asker=" class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm text-center hover:border-green-300 hover:shadow-md transition-all">
-      <p class="text-2xl font-bold text-green-500">{store.getAskers().length}</p>
-      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Askers</p>
-    </a>
-    <a href="/?solver=" class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm text-center hover:border-purple-300 hover:shadow-md transition-all">
-      <p class="text-2xl font-bold text-purple-500">{store.getSolvers().length}</p>
-      <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Solvers</p>
-    </a>
-  </div>
-
   <!-- Tabs -->
   <div class="flex gap-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-xl w-fit">
     {#each tabs as tab}

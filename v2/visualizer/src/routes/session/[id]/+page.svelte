@@ -202,7 +202,7 @@
           <!-- Answer area -->
           <div class="border-t border-gray-100 dark:border-gray-700">
             {#if isRevealed}
-              <div class="px-4 py-3 bg-green-50 dark:bg-green-900/30 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <div class="px-3 py-2.5 bg-green-50 dark:bg-green-900/30 flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span class="text-xs font-medium text-green-600 dark:text-green-400 uppercase tracking-wide flex-shrink-0">Answer</span>
                 <span class="text-sm font-semibold text-green-800 dark:text-green-200 flex-1 min-w-0">{question.answer?.text ?? '—'}</span>
                 <div class="flex items-center gap-2 flex-shrink-0 ml-auto">
