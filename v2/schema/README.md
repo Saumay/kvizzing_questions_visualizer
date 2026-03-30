@@ -490,6 +490,19 @@
           "default": null,
           "description": "Session theme if announced (e.g. 'Hollywood Movies', 'Bollywood')",
           "title": "Theme"
+        },
+        "quiz_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Quiz format: 'connect' for connect quizzes (multiple questions share a hidden connecting theme), null for regular quizzes",
+          "title": "Quiz Type"
         }
       },
       "required": [
@@ -596,6 +609,8 @@
         "art_culture",
         "business",
         "etymology",
+        "mythology",
+        "geology",
         "general"
       ],
       "title": "TopicCategory",

@@ -145,6 +145,7 @@ For each Q&A pair, output a JSON object with this exact schema:
   "is_session_question": true/false,
   "session_quizmaster": "username or null",
   "session_theme": "theme string or null",
+  "session_quiz_type": "connect" or null,
   "session_question_number": integer or null,
   "answer_text": "the correct answer, or null if never revealed",
   "answer_solver": "username who first got it right, or null",
@@ -171,6 +172,7 @@ Rules:
 - extraction_confidence "high": asker gave explicit text confirmation (e.g. "Correct!", "Bingo", "Yes!")
 - extraction_confidence "medium": strong contextual signal but not explicit confirmation
 - extraction_confidence "low": no confirmation found; include anyway
+- session_quiz_type: set to "connect" if this is a connect quiz — where a series of questions share a hidden connecting theme that participants are trying to guess (quizmaster may say "guess the connect", "find the connection", or reveal the connect at the end). Set to null for regular quizzes.
 - scores_after: only scores announced AFTER this question's confirmation AND BEFORE the next question starts
 - discussion: include all messages from question post to answer confirmation/reveal
 - For multi-part questions (X/Y/Z style), populate answer_parts; set answer_is_collaborative if

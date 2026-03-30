@@ -161,6 +161,7 @@ def build_sessions(
             "id": session_id,
             "quizmaster": overrides.get("quizmaster", s.get("quizmaster")),
             "theme": overrides.get("theme", s.get("theme")),
+            "quiz_type": overrides.get("quiz_type", s.get("quiz_type")),
             "date": questions[0].get("date"),
             "question_count": len(questions),
             "avg_time_to_answer_seconds": (

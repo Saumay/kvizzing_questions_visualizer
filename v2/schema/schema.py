@@ -44,6 +44,8 @@ class TopicCategory(str, Enum):
     art_culture   = "art_culture"
     business      = "business"
     etymology     = "etymology"
+    mythology     = "mythology"
+    geology       = "geology"
     general       = "general"
 
 
@@ -235,6 +237,10 @@ class Session(BaseModel):
     theme: Optional[str] = Field(
         default=None,
         description="Session theme if announced (e.g. 'Hollywood Movies', 'Bollywood')"
+    )
+    quiz_type: Optional[str] = Field(
+        default=None,
+        description="Quiz format: 'connect' for connect quizzes (multiple questions share a hidden connecting theme), null for regular quizzes"
     )
 
 

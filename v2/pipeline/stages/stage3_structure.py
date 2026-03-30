@@ -254,6 +254,7 @@ def structure(
                 quizmaster=raw["session_quizmaster"],
                 question_number=raw.get("session_question_number") or 1,
                 theme=raw.get("session_theme"),
+                quiz_type=raw.get("session_quiz_type"),
             )
 
         source = Source(file=source_file, pair_index=pair_index)
