@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import { goto } from '$app/navigation';
+  import { getContext, onMount } from 'svelte';
   import { page } from '$app/stores';
   import Fuse from 'fuse.js';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import type { Question, QuestionFilters, SortOption } from '$lib/types';
   import QuestionCard from '$lib/components/QuestionCard.svelte';
-  import { formatDateTz } from '$lib/utils/time';
-  import { TOPICS } from '$lib/utils/topicColors';
+  import SearchInput from '$lib/components/SearchInput.svelte';
+  import FiltersToggleButton from '$lib/components/FiltersToggleButton.svelte';
+  import TagFilter from '$lib/components/TagFilter.svelte';
+  import TopicFilter from '$lib/components/TopicFilter.svelte';
+  import ActiveFilterChips from '$lib/components/ActiveFilterChips.svelte';
 
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
-  const stats = store.getTotalStats();
 
   let searchQuery = $state('');
   let filterAsker = $state('');
@@ -23,9 +24,6 @@
   let filterTags = $state(new Set<string>());
   let filterTopics = $state(new Set<string>());
 
-  // Tag combobox state
-  let tagInput = $state('');
-  let tagInputFocused = $state(false);
 
   $effect(() => {
     const p = $page.url.searchParams;
@@ -49,27 +47,17 @@
     filterTopics = new Set(raw.split(',').filter(Boolean));
   });
 
-  function toggleTopic(id: string) {
-    const next = new Set(filterTopics);
-    if (next.has(id)) next.delete(id); else next.add(id);
-    filterTopics = next;
-  }
-
-  function addTag(tag: string) {
-    const next = new Set(filterTags);
-    next.add(tag);
-    filterTags = next;
-    tagInput = '';
-  }
-
-  function removeTag(tag: string) {
-    const next = new Set(filterTags);
-    next.delete(tag);
-    filterTags = next;
-  }
-
   let showMoreFilters = $state(false);
+  let mobileFiltersOpen = $state(false);
   let sortBy = $state<SortOption>('newest');
+
+  const activeFilterCount = $derived(
+    [filterAsker, filterSolver, filterSessionId].filter(Boolean).length +
+    (filterHasMedia !== undefined ? 1 : 0) +
+    ((filterDateFrom || filterDateTo) ? 1 : 0) +
+    filterTags.size + filterTopics.size +
+    (sortBy !== 'newest' ? 1 : 0)
+  );
 
   const askers = store.getAskers();
   const solvers = store.getSolvers();
@@ -85,13 +73,6 @@
     }
   }
   const allTags = [...tagFreq.entries()].sort((a, b) => b[1] - a[1]).map(([t]) => t);
-
-  // Live tag suggestions
-  const tagSuggestions = $derived(
-    tagInput.trim().length > 0
-      ? allTags.filter(t => t.toLowerCase().includes(tagInput.toLowerCase()) && !filterTags.has(t)).slice(0, 8)
-      : allTags.filter(t => !filterTags.has(t)).slice(0, 8)
-  );
 
   const fuse = new Fuse(allQuestions, {
     keys: [
@@ -136,11 +117,6 @@
     return results;
   });
 
-  function surpriseMe() {
-    const q = store.random();
-    if (q) goto(`/question/${q.id}`);
-  }
-
   function clearFilters() {
     searchQuery = '';
     filterAsker = '';
@@ -151,7 +127,6 @@
     filterSessionId = '';
     filterTags = new Set();
     filterTopics = new Set();
-    tagInput = '';
   }
 
   const hasActiveFilters = $derived(
@@ -160,69 +135,46 @@
     filterSessionId || filterTags.size > 0 || filterTopics.size > 0
   );
 
-  const sinceDate = $derived(stats.earliestTimestamp ? formatDateTz(stats.earliestTimestamp, tzCtx?.value ?? 'Europe/London') : '');
-  const selectCls = "flex-none w-32 text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 text-gray-600";
+  const MOBILE_PAGE_SIZE = 8;
+  let isMobile = $state(false);
+  let mobileLimit = $state(MOBILE_PAGE_SIZE);
+
+  onMount(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    isMobile = mq.matches;
+    mq.addEventListener('change', e => { isMobile = e.matches; });
+  });
+
+  // Reset mobile limit when filters change
+  $effect(() => {
+    // touch all filter deps
+    searchQuery; filterAsker; filterSolver; filterDateFrom; filterDateTo;
+    filterHasMedia; filterSessionId; filterTags; filterTopics;
+    mobileLimit = MOBILE_PAGE_SIZE;
+  });
+
+  let questionsAtBottom = $state(false);
+  function onQuestionsScroll(e: Event) {
+    const el = e.currentTarget as HTMLElement;
+    questionsAtBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 8;
+  }
+
+  const selectCls = "flex-1 basis-[calc(50%-4px)] lg:flex-none lg:w-32 text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 text-gray-600";
   const filterBtnCls = "flex-none text-sm border rounded-lg px-3 py-1.5 leading-5 transition-colors inline-flex items-center gap-1.5 justify-center whitespace-nowrap";
 </script>
 
 <div class="space-y-6">
-  <!-- Hero -->
-  <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-6 text-white shadow-lg relative">
-    {#if sinceDate}
-      <div class="absolute top-4 right-4 flex items-center gap-1.5 text-xs text-primary-100">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-90"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
-        </span>
-        since {sinceDate}
-      </div>
-    {/if}
-    <h1 class="text-2xl font-bold mb-1">All Questions</h1>
-    <p class="text-primary-100 text-sm mb-4">Every question the group ever asked. Right here.</p>
-    <div class="flex items-center justify-between gap-3">
-      <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-        <span class="font-semibold">{stats.total} total questions</span>
-        <span class="text-primary-200 hidden sm:inline">·</span>
-        <a href="/sessions" class="font-semibold hover:text-primary-100 transition-colors cursor-pointer">{stats.sessions} quiz sessions</a>
-      </div>
-      <button
-        onclick={surpriseMe}
-        class="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-primary-50 text-primary-600 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white font-semibold text-sm rounded-lg transition-colors shadow-sm cursor-pointer"
-      >
-        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-        <span class="hidden sm:inline">Random question</span>
-      </button>
-    </div>
-  </div>
-
   <!-- Search + Filters -->
   <div class="space-y-3">
-    <!-- Search bar -->
-    <div class="relative">
-      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-      <input
-        bind:value={searchQuery}
-        type="text"
-        placeholder="Search questions and answers…"
-        class="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 dark:border-gray-600 rounded-xl focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 dark:focus:ring-primary-900 bg-white dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400 shadow-sm transition-all"
-      />
-      {#if searchQuery}
-        <button
-          onclick={() => searchQuery = ''}
-          aria-label="Clear search"
-          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      {/if}
+    <!-- Search bar + mobile filters toggle -->
+    <div class="flex gap-2">
+      <SearchInput bind:value={searchQuery} placeholder="Search questions and answers…" />
+      <FiltersToggleButton bind:open={mobileFiltersOpen} count={activeFilterCount} />
     </div>
 
-    <!-- Primary filters -->
-    <div class="flex gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <!-- Primary filters (always visible on desktop, hidden on mobile until Filters tapped) -->
+    <div class="{isMobile && !mobileFiltersOpen ? 'hidden' : ''}">
+    <div class="grid grid-cols-2 gap-2 lg:flex lg:flex-nowrap lg:overflow-x-auto lg:pb-0.5 lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden">
       <select bind:value={filterAsker} class={selectCls}>
         <option value="">All askers</option>
         {#each askers as asker}
@@ -251,20 +203,20 @@
         {/each}
       </select>
 
-      <div class="flex-none inline-flex rounded-lg border border-stone-200/90 dark:border-zinc-600 overflow-hidden text-sm">
+      <div class="col-span-2 lg:col-auto lg:w-auto lg:flex-none inline-flex rounded-lg border border-gray-200 dark:border-gray-600 overflow-hidden text-sm">
         {#each ([undefined, true, false] as const) as val, i}
           <button
             onclick={() => filterHasMedia = val}
-            class="px-2.5 py-1.5 leading-5 whitespace-nowrap transition-colors
-              {filterHasMedia === val ? 'bg-primary-500 text-white' : 'bg-ui-card text-gray-600 dark:text-gray-200 hover:bg-stone-100 dark:hover:bg-zinc-800'}
-              {i > 0 ? 'border-l border-stone-200/90 dark:border-zinc-600' : ''}"
+            class="flex-1 lg:flex-none px-2.5 py-1.5 leading-5 whitespace-nowrap transition-colors
+              {filterHasMedia === val ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}
+              {i > 0 ? 'border-l border-gray-200 dark:border-gray-600' : ''}"
           >{val === undefined ? 'All' : val ? 'Media' : 'No Media'}</button>
         {/each}
       </div>
 
       <button
         onclick={() => showMoreFilters = !showMoreFilters}
-        class="{filterBtnCls} {showMoreFilters ? 'bg-primary-500 border-primary-500 text-white' : 'border-stone-200/90 dark:border-zinc-600 bg-ui-card text-gray-600 dark:text-gray-200 hover:bg-stone-100 dark:hover:bg-zinc-800'}"
+        class="col-span-2 lg:col-auto w-full lg:w-auto {filterBtnCls} {showMoreFilters ? 'bg-primary-500 border-primary-500 text-white' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -275,90 +227,16 @@
 
     <!-- Tag + Topic filters -->
     <div class="flex flex-wrap items-center gap-2">
-      <!-- Tag combobox -->
-      <div class="relative">
-        <input
-          bind:value={tagInput}
-          onfocus={() => tagInputFocused = true}
-          onblur={() => setTimeout(() => tagInputFocused = false, 150)}
-          type="text"
-          placeholder="Filter by tag…"
-          class="text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 w-36 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 placeholder:text-gray-600 dark:placeholder:text-gray-400 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
-        />
-        {#if tagInputFocused && tagSuggestions.length > 0}
-          <div class="absolute z-20 top-full mt-1 left-0 w-48 bg-ui-card border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg overflow-hidden">
-            {#each tagSuggestions as tag}
-              <!-- svelte-ignore a11y_click_events_have_key_events -->
-              <!-- svelte-ignore a11y_no_static_element_interactions -->
-              <div
-                onmousedown={(e) => { e.preventDefault(); addTag(tag); }}
-                class="px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer flex items-center justify-between"
-              >
-                <span>{tag}</span>
-                <span class="text-xs text-gray-400">{tagFreq.get(tag)}</span>
-              </div>
-            {/each}
-          </div>
-        {/if}
-      </div>
-
-      <!-- Active tag chips -->
-      {#each [...filterTags] as tag}
-        <span class="inline-flex items-center gap-1 pl-3 pr-1.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 ring-2 ring-gray-300 dark:ring-gray-500">
-          #{tag}
-          <button
-            onclick={() => removeTag(tag)}
-            class="ml-0.5 rounded-full p-0.5 opacity-80 hover:opacity-100 transition-opacity"
-            aria-label="Remove {tag} filter"
-          >
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </span>
-      {/each}
-
-      <!-- Topic filter -->
-      <select
-        value=""
-        onchange={(e) => { const v = (e.target as HTMLSelectElement).value; if (v) toggleTopic(v); (e.target as HTMLSelectElement).value = ''; }}
-        class="text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 text-gray-600"
-      >
-        <option value="">Filter by topic…</option>
-        {#each TOPICS as t}
-          {#if !filterTopics.has(t.id)}
-            <option value={t.id}>{t.label}</option>
-          {/if}
-        {/each}
-      </select>
-
-      {#each TOPICS.filter(t => filterTopics.has(t.id)) as t}
-        <span class="inline-flex items-center gap-1 pl-3 pr-1.5 py-1 rounded-full text-xs font-medium ring-2 {t.cls} {t.ring}">
-          {t.label}
-          <button
-            onclick={() => toggleTopic(t.id)}
-            class="ml-0.5 rounded-full p-0.5 opacity-80 hover:opacity-100 transition-opacity"
-            aria-label="Remove {t.label} filter"
-          >
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </span>
-      {/each}
-
-      {#if hasActiveFilters}
-        <button
-          onclick={clearFilters}
-          class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 px-2 py-1 transition-colors"
-        >
-          Clear all
-        </button>
+      {#if !isMobile || mobileFiltersOpen}
+        <TagFilter bind:tags={filterTags} {allTags} {tagFreq} />
+        <TopicFilter bind:topics={filterTopics} />
       {/if}
+      <ActiveFilterChips bind:tags={filterTags} bind:topics={filterTopics} hasFilters={!!hasActiveFilters} onClear={clearFilters} />
+    </div>
     </div>
 
     <!-- Date range filter -->
-    {#if showMoreFilters}
+    {#if showMoreFilters && (!isMobile || mobileFiltersOpen)}
       <div class="flex flex-wrap gap-2 p-3 bg-ui-inset rounded-xl border border-stone-200/80 dark:border-zinc-700/80">
         <div class="flex items-center gap-2">
           <label for="filter-date-from" class="text-xs text-gray-500 dark:text-gray-400 font-medium">From</label>
@@ -392,11 +270,11 @@
 
   <!-- Question cards -->
   <div class="relative">
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent z-10"></div>
-  <div class="max-h-[80vh] overflow-y-auto space-y-4 pr-1 scrollbar-hide">
-    {#each filteredQuestions as question (question.id)}
-      <QuestionCard {question} hideSession={!!filterSessionId} />
-    {:else}
+  {#if !questionsAtBottom}
+    <div class="hidden lg:block pointer-events-none absolute inset-x-0 bottom-0 h-50 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent z-10 transition-opacity duration-300"></div>
+  {/if}
+  <div class="lg:max-h-[92vh] lg:overflow-y-auto space-y-4 pr-1 scrollbar-hide" onscroll={onQuestionsScroll}>
+    {#if filteredQuestions.length === 0}
       <div class="text-center py-16 text-gray-400">
         <div class="text-4xl mb-3">🔍</div>
         <p class="font-medium">No questions match your filters</p>
@@ -404,7 +282,19 @@
           Clear filters
         </button>
       </div>
-    {/each}
+    {:else}
+      {#each (isMobile ? filteredQuestions.slice(0, mobileLimit) : filteredQuestions) as question (question.id)}
+        <QuestionCard {question} hideSession={!!filterSessionId} />
+      {/each}
+      {#if isMobile && mobileLimit < filteredQuestions.length}
+        <button
+          onclick={() => mobileLimit += MOBILE_PAGE_SIZE}
+          class="w-full py-3 text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        >
+          Show more ({filteredQuestions.length - mobileLimit} remaining)
+        </button>
+      {/if}
+    {/if}
   </div>
   </div>
 </div>
