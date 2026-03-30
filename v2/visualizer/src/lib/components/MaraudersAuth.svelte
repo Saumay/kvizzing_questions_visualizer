@@ -399,4 +399,26 @@
     60%       { transform: translateX(-4px); }
     80%       { transform: translateX(4px); }
   }
+
+  @media (max-width: 640px) {
+    .auth-wrap {
+      padding: 1rem 0.75rem;
+    }
+    .title-text {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+    .map-base {
+      width: 200px;
+      height: 390px;
+    }
+    .map-side {
+      height: 390px;
+      width: 99px;
+    }
+    .instructions input {
+      width: 260px;
+      font-size: 15px;
+    }
+  }
 </style>

@@ -5,7 +5,7 @@
   import { formatDateTz, formatTime } from '$lib/utils/time';
   const tzCtx = getContext<{ value: string } | undefined>('timezone');
   import MemberAvatar from './MemberAvatar.svelte';
-  import { topicCls, topicLabel } from '$lib/utils/topicColors';
+  import { topicCls, topicClsSecondary, topicLabel } from '$lib/utils/topicColors';
   import { filterHints } from '$lib/utils/hints';
   import { isCorrect, isAlmost } from '$lib/utils/fuzzy';
 
@@ -69,23 +69,31 @@
           <span class="text-xs text-gray-400 dark:text-gray-500 ml-1.5">{formatDateTz(question.question.timestamp ?? question.date, tzCtx?.value ?? 'Europe/London')}</span>
         </div>
       </div>
-      <div class="flex items-center gap-1.5 flex-shrink-0 flex-wrap justify-end">
+      <div class="flex items-center gap-1.5 flex-wrap justify-end min-w-0">
         {#if question.session && !hideSession}
           <a
             href="/session/{question.session.id}"
-            class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-700 hover:bg-primary-200 dark:bg-primary-900/40 dark:text-primary-300 dark:hover:bg-primary-900/40 transition-colors"
+            class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-700 hover:bg-primary-200 dark:bg-primary-900/40 dark:text-primary-300 dark:hover:bg-primary-900/40 transition-colors max-w-[160px] truncate"
           >
             #{question.session.question_number} {question.session.quiz_type === 'connect' ? `${question.session.quizmaster}'s Connect Quiz` : (question.session.theme ?? 'Session')}
           </a>
         {/if}
-        {#each q.topics ?? [] as topic}
+        {#if q.topics?.[0]}
           <button
-            onclick={(e) => { e.stopPropagation(); goto(`/?topic=${topic}`); }}
-            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors {topicCls(topic)}"
+            onclick={(e) => { e.stopPropagation(); goto(`/?topic=${q.topics[0]}`); }}
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors {topicCls(q.topics[0])}"
           >
-            {topicLabel(topic)}
+            {topicLabel(q.topics[0])}
           </button>
-        {/each}
+        {/if}
+        {#if q.topics?.[1]}
+          <button
+            onclick={(e) => { e.stopPropagation(); goto(`/?topic=${q.topics[1]}`); }}
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors {topicClsSecondary(q.topics[1])}"
+          >
+            {topicLabel(q.topics[1])}
+          </button>
+        {/if}
         {#if q.has_media}
           <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
             📎 media

@@ -171,8 +171,7 @@
   </div>
 {/if}
 
-<div class="relative bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
-  <div class="absolute inset-0 bg-cover bg-center opacity-[0.07] dark:opacity-[0.05]"></div>
+<div class="relative bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
   <div class="relative">
   <!-- Header -->
   <div class="px-4 pt-4 pb-2 flex items-center justify-center">
@@ -264,14 +263,14 @@
 
   <!-- Legend -->
   <div class="px-3 pb-3 flex items-center gap-3 justify-center">
-    <div class="flex items-center gap-1.5">
+    <a href="/" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
       <span class="inline-block w-5 h-3.5 rounded {CALENDAR_PILL.questions.bg}"></span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Questions</span>
-    </div>
-    <div class="flex items-center gap-1.5">
+    </a>
+    <a href="/sessions" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
       <span class="inline-block w-5 h-3.5 rounded {CALENDAR_PILL.sessions.bg}"></span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Quiz sessions</span>
-    </div>
+    </a>
   </div>
   </div>
 
