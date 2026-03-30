@@ -1,9 +1,10 @@
 """
 Stage 4 — Enrich
 
-Assigns topic and tags to each KVizzingQuestion via LLM.
+Assigns primary + secondary topic and tags to each KVizzingQuestion via LLM.
 
-Questions that already have topic(s) are skipped (idempotent).
+Questions that already have 2+ topics are skipped (idempotent).
+Questions with 0 or 1 topic are (re-)enriched so both categories are populated.
 Questions are sent to the LLM in batches for efficiency.
 
 Input:  list of KVizzingQuestion objects from Stage 3
@@ -38,9 +39,14 @@ _ENRICH_SYSTEM_PROMPT = """\
 You are classifying quiz questions from a WhatsApp trivia group.
 
 For each question you receive, assign:
-1. topic — one of: history, science, literature, technology, sports, geography,
-   entertainment, food_drink, art_culture, business, general
-2. tags — 2–5 lowercase subject/category tags for fine-grained categorisation
+1. primary_topic — the single best-fitting topic from:
+   history, science, literature, technology, sports, geography,
+   entertainment, food_drink, art_culture, business, etymology, mythology, geology, general
+2. secondary_topic — a second topic from the same list if the question genuinely
+   spans two domains (e.g. a science question set in a historical context).
+   Use null if no meaningful second category applies. Do NOT force one — most
+   questions need only a primary topic.
+3. tags — 2–5 lowercase subject/category tags for fine-grained categorisation
    (e.g. ["india", "colonial history", "economics"])
 
 Tag rules — CRITICAL:
@@ -54,21 +60,24 @@ Tag rules — CRITICAL:
 
 You will receive a JSON array of questions. Return a JSON array of the same length,
 in the same order, where each element is:
-{"id": "<question id>", "topic": "<topic>", "tags": ["tag1", "tag2"]}
+{"id": "<question id>", "primary_topic": "<topic>", "secondary_topic": "<topic> or null", "tags": ["tag1", "tag2"]}
 
 Return ONLY a valid JSON array. No explanation, no markdown fences.
 """
 
 
 def _build_batch_prompt(questions: list[KVizzingQuestion]) -> str:
-    items = [
-        {
+    items = []
+    for q in questions:
+        item: dict = {
             "id": q.id,
             "question": q.question.text,
             "answer": q.answer.text,
         }
-        for q in questions
-    ]
+        # If primary topic already assigned (re-enrichment for secondary), include it
+        if q.question.topics:
+            item["primary_topic_already_assigned"] = q.question.topics[0].value
+        items.append(item)
     return json.dumps(items, ensure_ascii=False)
 
 
@@ -117,18 +126,28 @@ def _apply_enrichment(
     question: KVizzingQuestion,
     enrichment: dict,
 ) -> KVizzingQuestion:
-    """Return a copy of question with primary topic (topics[0]) and tags applied."""
-    topic_str = enrichment.get("topic", "")
+    """Return a copy of question with primary + optional secondary topic and tags applied."""
+    primary_str = enrichment.get("primary_topic", "") or enrichment.get("topic", "")
+    secondary_str = enrichment.get("secondary_topic") or ""
     tags = enrichment.get("tags", [])
 
     try:
-        topic = TopicCategory(topic_str)
+        primary = TopicCategory(primary_str)
     except ValueError:
-        topic = TopicCategory.general
+        primary = TopicCategory.general
+
+    topics: list[TopicCategory] = [primary]
+    if secondary_str:
+        try:
+            secondary = TopicCategory(secondary_str)
+            if secondary != primary:
+                topics.append(secondary)
+        except ValueError:
+            pass
 
     # Pydantic v2: model_copy(update=...) for nested field replacement
     updated_question = question.question.model_copy(
-        update={"topics": [topic], "tags": tags}
+        update={"topics": topics, "tags": tags}
     )
     return question.model_copy(update={"question": updated_question})
 
@@ -139,14 +158,15 @@ def enrich(
     llm_client,
 ) -> list[KVizzingQuestion]:
     """
-    Enrich a list of questions with topics and tags via LLM.
-    Already-enriched questions (non-empty ``question.topics``) are skipped.
+    Enrich a list of questions with primary + secondary topics and tags via LLM.
+    Questions with 2+ topics already are skipped; questions with 0 or 1 topic are (re-)enriched.
     """
     batch_size: int = config["stage4"]["llm_batch_size"]
 
-    # Separate questions that need enrichment from those already done
-    to_enrich = [q for q in questions if not q.question.topics]
-    already_done = {q.id: q for q in questions if q.question.topics}
+    # Separate questions that need enrichment from those already done.
+    # Questions with fewer than 2 topics need (re-)enrichment to get a secondary topic.
+    to_enrich = [q for q in questions if len(q.question.topics) < 2]
+    already_done = {q.id: q for q in questions if len(q.question.topics) >= 2}
 
     # Build an id→result map for the enriched ones
     enriched_map: dict[str, KVizzingQuestion] = dict(already_done)
