@@ -51,7 +51,7 @@
   const { tagFreq, allTags } = $derived(tagFrequency(sessionQuestions));
 
   const activeFilterCount = $derived(
-    [filterAsker, filterSolver].filter(Boolean).length +
+    [isConnect ? '' : filterAsker, filterSolver].filter(Boolean).length +
     (filterHasMedia !== undefined ? 1 : 0) +
     (sortBy !== 'newest' ? 1 : 0) +
     filterTags.size + filterTopics.size
@@ -220,12 +220,14 @@
     <div class="space-y-2">
       <!-- Row 1: main filters -->
       <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-        <select bind:value={filterAsker} class={selectCls}>
-          <option value="">All askers</option>
-          {#each askers as asker}
-            <option value={asker}>{asker}</option>
-          {/each}
-        </select>
+        {#if !isConnect}
+          <select bind:value={filterAsker} class={selectCls}>
+            <option value="">All askers</option>
+            {#each askers as asker}
+              <option value={asker}>{asker}</option>
+            {/each}
+          </select>
+        {/if}
         <select bind:value={filterSolver} class={selectCls}>
           <option value="">All solvers</option>
           {#each solvers as solver}
