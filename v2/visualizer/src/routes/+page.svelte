@@ -10,6 +10,8 @@
   import TagFilter from '$lib/components/TagFilter.svelte';
   import TopicFilter from '$lib/components/TopicFilter.svelte';
   import ActiveFilterChips from '$lib/components/ActiveFilterChips.svelte';
+  import EmptyState from '$lib/components/EmptyState.svelte';
+  import { tagFrequency } from '$lib/utils/tags';
 
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
@@ -23,7 +25,6 @@
   let filterSessionId = $state('');
   let filterTags = $state(new Set<string>());
   let filterTopics = $state(new Set<string>());
-
 
   $effect(() => {
     const p = $page.url.searchParams;
@@ -65,15 +66,7 @@
   const allSessions = store.getSessions();
 
   const allQuestions = store.getQuestions();
-
-  // Tags sorted by frequency
-  const tagFreq = new Map<string, number>();
-  for (const q of allQuestions) {
-    for (const tag of q.question.tags ?? []) {
-      tagFreq.set(tag, (tagFreq.get(tag) ?? 0) + 1);
-    }
-  }
-  const allTags = [...tagFreq.entries()].sort((a, b) => b[1] - a[1]).map(([t]) => t);
+  const { tagFreq, allTags } = tagFrequency(allQuestions);
 
   const fuse = new Fuse(allQuestions, {
     keys: [
@@ -286,13 +279,7 @@
   {/if}
   <div class="lg:max-h-[92vh] lg:overflow-y-auto space-y-4 pr-1 scrollbar-hide" onscroll={onQuestionsScroll}>
     {#if filteredQuestions.length === 0}
-      <div class="text-center py-16 text-gray-400">
-        <div class="text-4xl mb-3">🔍</div>
-        <p class="font-medium">No questions match your filters</p>
-        <button onclick={clearFilters} class="mt-2 text-sm text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300">
-          Clear filters
-        </button>
-      </div>
+      <EmptyState message="No questions match your filters" onClear={clearFilters} />
     {:else}
       {#each (isMobile ? filteredQuestions.slice(0, mobileLimit) : filteredQuestions) as question (question.id)}
         <QuestionCard {question} hideSession={!!filterSessionId} {revealAll} />
