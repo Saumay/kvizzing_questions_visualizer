@@ -3,23 +3,22 @@
   import { getContext } from 'svelte';
   import { goto } from '$app/navigation';
   import { formatDateTz, formatTime } from '$lib/utils/time';
-  const tzCtx = getContext<{ value: string } | undefined>('timezone');
   import MemberAvatar from './MemberAvatar.svelte';
   import { topicCls, topicClsSecondary, topicLabel } from '$lib/utils/topicColors';
   import { filterHints } from '$lib/utils/hints';
   import { isCorrect, isAlmost } from '$lib/utils/fuzzy';
 
+  const tzCtx = getContext<{ value: string } | undefined>('timezone');
+
   let {
     question,
     showAnswer = false,
     revealAll = false,
-    compact = false,
     hideSession = false,
   }: {
     question: Question;
     showAnswer?: boolean;
     revealAll?: boolean;
-    compact?: boolean;
     hideSession?: boolean;
   } = $props();
 
@@ -44,13 +43,6 @@
   const a = $derived(question.answer);
   const stats = $derived(question.stats);
   const hints = $derived(filterHints(question.discussion?.filter(d => d.role === 'hint').map(d => d.text) ?? []));
-
-  function navigateToQuestion(e: MouseEvent) {
-    // Don't navigate if clicking on a child link or button
-    const target = e.target as HTMLElement;
-    if (target.closest('a') !== e.currentTarget || target.closest('button')) return;
-    goto(`/question/${question.id}`);
-  }
 </script>
 
 <article class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200 overflow-hidden group">
@@ -108,7 +100,7 @@
 
     <!-- Question text -->
     <a href="/question/{question.id}" class="block">
-      <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed group-hover:text-gray-900 dark:group-hover:text-gray-100 {compact ? 'line-clamp-3' : ''}">
+      <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed group-hover:text-gray-900 dark:group-hover:text-gray-100">
         {q.text}
       </p>
     </a>
