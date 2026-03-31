@@ -140,10 +140,7 @@
   </p>
 
   {#if sessions.length === 0}
-    <div class="text-center py-20 text-gray-400">
-      <div class="text-4xl mb-3">📅</div>
-      <p class="font-medium">No sessions yet</p>
-    </div>
+    <EmptyState emoji="📅" message="No sessions yet" />
   {:else if filtered.length === 0}
     <EmptyState message="No sessions match your filters" onClear={clearFilters} />
   {:else}

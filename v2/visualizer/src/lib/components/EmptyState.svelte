@@ -10,7 +10,7 @@
   } = $props();
 </script>
 
-<div class="text-center py-16 text-gray-400">
+<div class="text-center py-16 text-gray-500 dark:text-gray-400">
   <div class="text-4xl mb-3">{emoji}</div>
   <p class="font-medium">{message}</p>
   {#if onClear}
