@@ -126,94 +126,263 @@ def prefilter(messages: list[dict], config: dict) -> list[int]:
 # ── Phase 2b — LLM extraction (one call per day) ─────────────────────────────
 
 _EXTRACTION_SYSTEM_PROMPT = """\
-You are an expert at extracting structured Q&A pairs from WhatsApp quiz group chat logs.
+You are extracting Q&A pairs from the KVizzing WhatsApp trivia group.
 
-You will receive a full day's worth of WhatsApp messages (already parsed, UTC timestamps).
-Your task is to extract ALL genuine Q&A pairs present.
+You will receive a DATE and a full day's worth of messages (UTC timestamps). Extract all genuine \
+trivia Q&A pairs where question_timestamp starts with that DATE. Messages timestamped the \
+following day are lookahead context only — do not extract them as new questions.
 
-A genuine Q&A pair must:
-- Have a clearly posed question intended for the group
-- Have at least one response from other members (attempts, hints, or a reveal)
+---
 
-For each Q&A pair, output a JSON object with this exact schema:
+## INPUT FORMAT
+
+Each line: [ISO8601-UTC-timestamp] username: message text
+
+Multi-line messages are joined with ` ↵ ` (space-arrow-space).
+
+Media markers appear inline: `image omitted`, `GIF omitted`, `video omitted`, `audio omitted`, \
+`document omitted`
+
+`<This message was edited>` may appear at the end of messages — ignore it.
+
+---
+
+## WHAT TO EXTRACT
+
+Include: direct trivia questions, session questions (numbered sequences), questions never \
+answered or revealed by asker.
+
+Exclude: general chat/memes, questions with zero replies, duplicate posts, questions whose \
+timestamp does NOT start with the given DATE.
+
+---
+
+## OUTPUT SCHEMA
+
+Return a JSON array. Each element is a flat object with EXACTLY these fields:
+
 {
-  "question_timestamp": "ISO8601 UTC string",
-  "question_text": "full question text",
-  "question_asker": "username",
-  "topics": ["primary category first, then secondary — from: history, science, literature, technology, sports, geography, entertainment, food_drink, art_culture, business, etymology, general"],
-  "has_media": true/false,
-  "is_session_question": true/false,
+  "question_timestamp": "ISO8601Z string — copy verbatim from input",
+  "question_text": "full text after cleaning; if has_media, append [image: brief description inferred from discussion, or 'unknown']",
+  "question_asker": "username exactly as in chat",
+  "topics": ["primary category first — from: history, science, literature, technology, sports, geography, entertainment, food_drink, art_culture, business, etymology, general"],
+  "has_media": true if question message had image/GIF/video/audio/document omitted,
+  "is_session_question": true if part of a numbered quizmaster session,
   "session_quizmaster": "username or null",
-  "session_theme": "theme string or null",
+  "session_theme": "announced theme string or null",
   "session_quiz_type": "connect" or null,
-  "session_question_number": integer or null,
-  "answer_text": "the correct answer, or null if never revealed",
-  "answer_solver": "username who first got it right, or null",
-  "answer_timestamp": "ISO8601 UTC timestamp of winning answer, or null",
+  "session_question_number": integer (quizmaster's label) or null,
+  "answer_text": "clean enriched answer string, or null if never revealed",
+  "answer_solver": "username of first correct solver, or null",
+  "answer_timestamp": "timestamp of answer_solver's is_correct=true attempt, or null",
   "answer_confirmed": true/false,
-  "confirmation_text": "exact confirmation message or null",
-  "answer_is_collaborative": true/false,
+  "confirmation_text": "exact asker confirmation text, or null",
+  "answer_is_collaborative": true if different people solved different parts,
   "answer_parts": null or [{"label": "X", "text": "answer", "solver": "username or null"}],
-  "discussion": [
-    {
-      "timestamp": "ISO8601 UTC",
-      "username": "string",
-      "text": "string",
-      "role": "attempt|hint|confirmation|chat|answer_reveal",
-      "is_correct": true/false/null
-    }
-  ],
+  "discussion": [ {
+    "timestamp": "ISO8601Z",
+    "username": "string",
+    "text": "string",
+    "role": "attempt|hint|confirmation|chat|answer_reveal",
+    "is_correct": true/false/null
+  } ],
   "scores_after": null or [{"username": "string", "score": integer}],
   "extraction_confidence": "high|medium|low"
 }
 
-Rules:
-- topics: list all applicable categories with the most relevant (primary) category first; use ["general"] only if none of the specific categories fit
-- extraction_confidence "high": asker gave explicit text confirmation (e.g. "Correct!", "Bingo", "Yes!")
-- extraction_confidence "medium": strong contextual signal but not explicit confirmation
-- extraction_confidence "low": no confirmation found; include anyway
-- session_quiz_type: set to "connect" if this is a connect quiz — where a series of questions share a hidden connecting theme that participants are trying to guess (quizmaster may say "guess the connect", "find the connection", or reveal the connect at the end). Set to null for regular quizzes.
-- scores_after: only scores announced AFTER this question's confirmation AND BEFORE the next question starts
-- discussion: include all messages from question post to answer confirmation/reveal
-- For multi-part questions (X/Y/Z style), populate answer_parts; set answer_is_collaborative if
-  different people solved different parts
+---
 
-Output format rules — CRITICAL:
-- Return ONLY a valid JSON array. No explanation, no markdown fences, no code blocks.
-- If no genuine Q&A pairs are found, return an empty array: []
-- All string values MUST be valid JSON strings: escape any double quotes inside strings as \", escape backslashes as \\, escape newlines as \n.
-- Do NOT include raw double quotes (") inside string values — always escape them.
-- Do NOT truncate or wrap long strings across multiple lines in the JSON output.
+## FIELD-BY-FIELD RULES
+
+### topics
+List the most relevant category first. Use ["general"] only if no specific category fits.
+Valid categories: history, science, literature, technology, sports, geography, entertainment, food_drink, art_culture, business, etymology, general.
+
+### question_text
+After cleaning, append [image: brief description inferred from discussion] if has_media=true. \
+If nothing can be inferred, write [image: unknown].
+
+### is_session_question / session detection
+A session has: (1) quizmaster announcement, (2) explicitly numbered questions, (3) quizmaster \
+confirming each answer. Mark is_session_question=true for all questions in such a session.
+
+### session_quiz_type
+Set to "connect" if this is a connect quiz — a series of questions sharing a hidden connecting \
+theme that participants try to guess (quizmaster may say "guess the connect", "find the \
+connection", or reveal the connect at the end). Set to null for regular quizzes.
+
+### answer_text
+Enrich the solver's winning attempt with context from the asker's confirmation or reveal. \
+Do not copy verbatim if sloppy or hedged. If never answered and never revealed, set null.
+
+### answer_confirmed
+true ONLY if the asker sent an explicit text confirmation. Explicit confirms include:
+  "correct", "yes", "bingo", "right", "yep", "yess", "yup", "exactly", "indeed", "spot on", \
+"perfect", "well done", "✅", "👍", "💯", or any message containing "!"
+
+Do NOT set true if:
+- The asker only reacted with an emoji reaction (not a text message)
+- The asker elaborated but never said "correct" or equivalent
+- Someone other than the asker confirmed
+- The asker expressed amazement without confirming ("wow", "amazing", "awesome crack")
+
+### confirmation_text
+Exact text of asker's confirmation message. null if answer_confirmed=false.
+
+### answer_timestamp
+The timestamp of answer_solver's is_correct=true entry in discussion. NOT the asker's \
+confirmation timestamp. null if answer_solver is null.
+
+### answer_parts
+Use for any multi-part question (X/Y/Z, identify A and B, etc.), regardless of how many \
+people solved it. If answer_parts is present, answer_text must NOT be null.
+If answer_parts entries have more than one distinct solver, answer_is_collaborative must be true.
+
+### discussion roles
+- attempt: participant's answer try — is_correct must be true or false (NEVER null)
+- hint: asker provides a clue (even if it starts with "nope, but...")
+- confirmation: asker's direct yes/no with no new information
+- chat: banter, reactions, off-topic
+- answer_reveal: asker reveals the answer after a confirm or when no one got it
+- All non-attempt roles: is_correct must be null (NEVER true or false)
+
+Discussion entries must be in chronological order. No entry may have a timestamp earlier than \
+question_timestamp. answer_solver must appear as a username in the discussion array.
+
+### is_correct logic
+- true: this attempt directly led to the asker's explicit confirmation
+- false: wrong, or close but NOT the confirmed answer
+- If asker says "almost", "close", "nearly" → that attempt is false
+- If no explicit confirmation but asker revealed same answer → that attempt may be true
+
+### scores_after
+null unless quizmaster explicitly lists per-player running totals right after this question. \
+Point-value labels ("10 points!", "20 points!") are difficulty labels, NOT scores → null.
+
+### extraction_confidence
+- "high": answer_confirmed=true (asker gave explicit text confirmation)
+- "medium": no explicit confirmation, but strong contextual signal (reveal, continued without dispute)
+- "low": no confirmation, weak or ambiguous signal
+NOTE: extraction_confidence="high" if and only if answer_confirmed=true.
+
+### Text cleaning (applies to ALL text fields)
+- Replace ` ↵ ` with a space
+- Remove <This message was edited> and any invisible characters preceding it
+- Do NOT include media marker text ("image omitted" etc.) in any text field
+
+---
+
+## SELF-CHECK BEFORE OUTPUT
+
+1. Does answer_text actually answer question_text?
+2. Is answer_solver the FIRST person to give the confirmed-correct answer?
+3. Does answer_timestamp match the timestamp of answer_solver's is_correct=true entry?
+4. Does every attempt entry have is_correct: true or false (never null)?
+5. Does every non-attempt entry have is_correct: null?
+6. Is answer_confirmed=true only when the ASKER gave explicit text confirmation?
+7. Is extraction_confidence="high" if and only if answer_confirmed=true?
+8. Are there any ↵ artifacts, media markers, or edit artifacts in text fields?
+9. Are discussion entries in chronological order with no entry before question_timestamp?
+10. Does answer_solver appear in the discussion array?
+11. If answer_parts is present, is answer_text non-null?
+12. If answer_parts has multiple distinct solvers, is answer_is_collaborative=true?
+
+---
+
+Return ONLY a valid JSON array. No markdown fences, no explanation, no preamble.
+If no Q&A pairs found for this date, return: []
+"""
+
+_FIX_SYSTEM_PROMPT = """\
+You are an expert Q&A extractor correcting your own past mistakes.
+You were given a task to extract Q&A from WhatsApp, but an automated audit found errors in your JSON.
+Please carefully read the provided JSON array and the list of audit errors below it.
+Correct the specific fields mentioned in the errors while keeping everything else perfectly intact.
+Do NOT delete valid Q&A pairs just to bypass the errors.
+
+Return ONLY a perfectly conforming JSON array.
 """
 
 
-def _call_llm(messages: list[dict], config: dict, llm_client) -> list[dict]:
-    """
-    Send all messages for a day to the LLM in one call.
-    Retries on rate limit using the delay suggested by the API.
-    """
-    model: str = config["stage4"]["llm_model"]
-    max_retries: int = config["stage4"]["llm_max_retries"]
-    base_delay: float = config["stage4"]["llm_retry_base_delay_seconds"]
-
-    messages_text = "\n".join(
+def _format_messages(messages: list[dict]) -> str:
+    return "\n".join(
         f"[{m['timestamp']}] {m['username']}: {m['text']}"
-        + (" <media>" if m.get("has_media") else "")
+        + (" image omitted" if m.get("has_media") else "")
         for m in messages
     )
-    user_prompt = f"Extract all Q&A pairs from these messages:\n\n{messages_text}"
 
+
+def _llm_call_once(messages_text: str, date_str: str, model: str, llm_client) -> str:
+    user_prompt = (
+        f"DATE: {date_str}\n\n"
+        f"Extract all Q&A pairs where question_timestamp starts with {date_str}.\n\n"
+        f"=== MESSAGES ===\n{messages_text}"
+    )
+    response = llm_client.messages.create(
+        model=model,
+        max_tokens=8192,
+        system=_EXTRACTION_SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+    return response.content[0].text
+
+
+def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_client) -> list[dict]:
+    """Split messages into two overlapping halves, extract each, merge by question_timestamp."""
+    mid = len(messages) // 2
+    overlap = 50  # messages of lookahead context for first chunk
+    chunk1 = _format_messages(messages[:mid + overlap])
+    chunk2 = _format_messages(messages[mid:])
+    log.info("Stage2 chunking into 2 halves (%d / %d messages)…", mid + overlap, len(messages) - mid)
+    raw1 = _llm_call_once(chunk1, date_str, model, llm_client)
+    time.sleep(1.0)
+    raw2 = _llm_call_once(chunk2, date_str, model, llm_client)
+    pairs1 = _parse_json(raw1) if raw1.strip() else []
+    pairs2 = _parse_json(raw2) if raw2.strip() else []
+    seen: dict[str, dict] = {}
+    for p in pairs1 + pairs2:
+        key = p.get("question_timestamp", "")
+        if key not in seen or len(p.get("discussion", [])) > len(seen[key].get("discussion", [])):
+            seen[key] = p
+    return list(seen.values())
+
+
+def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> list[dict]:
+    """
+    Send all messages for a day to the LLM in one call.
+    Retries on rate limit; falls back to chunked extraction on persistent JSON errors.
+    """
+    stage2_cfg = config.get("stage2", {})
+    stage4_cfg = config.get("stage4", {})
+    model: str = stage2_cfg.get("llm_model") or stage4_cfg.get("llm_model", "")
+    max_retries: int = stage2_cfg.get("llm_max_retries") or stage4_cfg.get("llm_max_retries", 3)
+    base_delay: float = stage2_cfg.get("llm_retry_base_delay_seconds") or stage4_cfg.get("llm_retry_base_delay_seconds", 2)
+
+    messages_text = _format_messages(messages)
+
+    initial_candidates = None
     for attempt in range(max_retries):
         try:
-            response = llm_client.messages.create(
-                model=model,
-                max_tokens=8192,
-                system=_EXTRACTION_SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": user_prompt}],
-            )
-            return _parse_json(response.content[0].text)
+            raw_text = _llm_call_once(messages_text, date_str, model, llm_client)
+            initial_candidates = _parse_json(raw_text)
+            break
         except json.JSONDecodeError as e:
-            log.warning("Stage2 LLM returned invalid JSON (attempt %d): %s", attempt + 1, e)
+            log.warning(
+                "Stage2 LLM returned invalid JSON (attempt %d/%d): %s\nRaw response (first 500 chars): %s",
+                attempt + 1, max_retries, e, raw_text[:500] if 'raw_text' in dir() else "<no response>",
+            )
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                log.warning("Stage2 retrying in %.1fs…", delay)
+                time.sleep(delay)
+                continue
+            # All retries exhausted — try chunked extraction if the day is large
+            if len(messages) > 100:
+                log.warning("Stage2 falling back to chunked extraction (%d messages)…", len(messages))
+                try:
+                    return _call_llm_chunked(messages, date_str, model, llm_client)
+                except Exception as chunk_err:
+                    log.error("Stage2 chunked extraction also failed: %s", chunk_err)
             return []
         except Exception as e:
             err_str = str(e)
@@ -225,7 +394,54 @@ def _call_llm(messages: list[dict], config: dict, llm_client) -> list[dict]:
                     continue
             log.error("Stage2 LLM call failed: %s", e, exc_info=True)
             raise
-    return []
+            
+    if not initial_candidates:
+        return []
+
+    # ── Self-Healing Audit Loop ──
+    from audit_extraction import audit_data
+    candidates = initial_candidates
+    self_heal_retries = 3
+    
+    for heal_attempt in range(1, self_heal_retries + 1):
+        issues = audit_data(candidates)
+        if not issues:
+            if heal_attempt > 1:
+                log.info("Stage2 self-healing succeeded! Clean data achieved.")
+            return candidates
+            
+        log.warning("Stage2 found %d audit issues on heal attempt %d/%d:", len(issues), heal_attempt, self_heal_retries)
+        for issue in issues:
+            log.warning("  %s", issue)
+            
+        if heal_attempt == self_heal_retries:
+            break  # Don't spend the last attempt looping, just fall through to raise the error
+            
+        fix_prompt = (
+            "Here is the JSON you previously generated:\n```json\n" + json.dumps(candidates, indent=2, ensure_ascii=False) +
+            "\n```\n\nThe automated audit system flagged the following issues:\n" + "\n".join(f"- {i}" for i in issues) +
+            "\n\nPlease rewrite and return the ENTIRE JSON array, specifically fixing these issues while preserving all other properties."
+        )
+        
+        try:
+            log.info("Stage2 dispatching self-healing LLM call...")
+            fix_resp = llm_client.messages.create(
+                model=model,
+                max_tokens=8192,
+                system=_FIX_SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": fix_prompt}]
+            )
+            candidates = _parse_json(fix_resp.content[0].text)
+        except Exception as e:
+            log.error("Stage2 self-healing LLM call failed or returned unparseable JSON: %s", e)
+
+    # Final enforcement after retries
+    final_issues = audit_data(candidates)
+    if final_issues:
+        error_msg = f"Stage2 failed to resolve {len(final_issues)} audit issues after {self_heal_retries} self-healing attempts:\n" + "\n".join(f"  {i}" for i in final_issues)
+        raise RuntimeError(error_msg)
+        
+    return candidates
 
 
 # ── Phase 2c — Session score detection ───────────────────────────────────────
@@ -259,9 +475,11 @@ def detect_session_scores(
     if not session_messages:
         return None
 
-    model: str = config["stage4"]["llm_model"]
-    max_retries: int = config["stage4"]["llm_max_retries"]
-    base_delay: float = config["stage4"]["llm_retry_base_delay_seconds"]
+    stage2_cfg = config.get("stage2", {})
+    stage4_cfg = config.get("stage4", {})
+    model: str = stage2_cfg.get("llm_model") or stage4_cfg.get("llm_model", "")
+    max_retries: int = stage2_cfg.get("llm_max_retries") or stage4_cfg.get("llm_max_retries", 3)
+    base_delay: float = stage2_cfg.get("llm_retry_base_delay_seconds") or stage4_cfg.get("llm_retry_base_delay_seconds", 2)
 
     messages_text = "\n".join(
         f"[{m['timestamp']}] {m['username']}: {m['text']}"
@@ -303,6 +521,7 @@ def run(
     messages: list[dict],
     config: dict,
     llm_client=None,
+    date_str: str = "",
 ) -> list[dict]:
     """
     Full Stage 2: prefilter gate → one LLM call for the full day → raw candidates.
@@ -320,4 +539,4 @@ def run(
 
     log.debug("  Stage2: %d heuristic candidates → sending %d messages to LLM",
               len(candidate_indices), len(messages))
-    return _call_llm(messages, config, llm_client)
+    return _call_llm(messages, date_str, config, llm_client)

@@ -9,6 +9,9 @@ Run from v2/pipeline/:
   python3 pipeline.py generate-images   # generate background images for new sessions
   python3 pipeline.py enrich-reactions --db PATH/TO/ChatStorage.sqlite
   python3 pipeline.py enrich-media     --media-dir PATH/TO/WhatsApp/Media
+  python3 pipeline.py reenrich         [--dry-run]  # re-run LLM enrichment on questions with < 2 topics
+  python3 pipeline.py normalize-tags   [--dry-run]  # strip format tags, fix near-duplicates in DB
+  python3 pipeline.py assign-topics    [--dry-run]  # assign topics via rules (no LLM)
 
 All file paths in pipeline_config.json are resolved relative to v2/ (the parent
 of this script's directory). Logs are written to pipeline/logs/YYYY-MM-DD.log.
@@ -49,8 +52,10 @@ from stages.stage3_structure import run as stage3
 from stages.stage4_enrich import run as stage4
 from stages.stage5_store import run as stage5
 from stages.stage6_export import run as stage6
+from stages.stage4_enrich import enrich as _stage4_enrich, _normalize_tags
+from stages.stage5_store import load_all as _load_all, upsert as _upsert
+from utils.topic_rules import assign_topics as _assign_topics
 from generate_session_images import main as _generate_images_main
-from preserve_topics import main as _preserve_topics
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -142,10 +147,21 @@ def _run_pipeline(mode: str) -> None:
                 window = by_date.get(date_str, []) + by_date.get(next_day, [])
                 # Stage 2 — Extract
                 log.debug("  [%s] Stage 2: extracting from %d messages…", date_str, len(window))
-                candidates = stage2(window, config, llm_client=client)
+                candidates = stage2(window, config, llm_client=client, date_str=date_str)
                 if not candidates:
                     log.info("  [%s] 0 candidates.", date_str)
                     continue
+                    
+                # Save successfully audited extraction back to disk
+                try:
+                    extraction_file.parent.mkdir(parents=True, exist_ok=True)
+                    extraction_file.write_text(
+                        _json.dumps(candidates, indent=2, ensure_ascii=False),
+                        encoding="utf-8"
+                    )
+                    log.debug("  [%s] Saved %d candidates to %s", date_str, len(candidates), extraction_file.name)
+                except Exception as e:
+                    log.warning("  [%s] Could not save extraction to file: %s", date_str, e)
 
             # Stage 3 — Structure
             questions = stage3(candidates, config, errors_dir=errors_dir)
@@ -197,10 +213,6 @@ def _run_pipeline(mode: str) -> None:
         counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=state_path)
         _log_counts(counts)
 
-        # Preserve manually-curated topics (converts singular topic → topics[])
-        log.info("[Post-export] Preserving topic overrides…")
-        _preserve_topics()
-
     except Exception:
         log.exception("Pipeline crashed.")
         raise
@@ -230,14 +242,157 @@ def _run_export() -> None:
         log.info("[Stage 6] Exporting JSON files…")
         counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=state_path)
         _log_counts(counts)
-        log.info("[Post-export] Preserving topic overrides…")
-        _preserve_topics()
         log.info("Export complete.")
     except Exception:
         log.exception("Export crashed.")
         raise
     finally:
         db.close()
+
+
+# ── Post-hoc subcommands ──────────────────────────────────────────────────────
+
+def _post_hoc_paths():
+    data_dir = V2_DIR / "data"
+    return {
+        "db_path": data_dir / "questions.db",
+        "output_dir": V2_DIR / "visualizer" / "static" / "data",
+        "members_config": _PIPELINE_DIR / "config" / "members.json",
+        "session_overrides_config": _PIPELINE_DIR / "config" / "session_overrides.json",
+        "state_path": data_dir / "pipeline_state.json",
+    }
+
+
+def _run_reenrich(dry_run: bool) -> None:
+    """Re-enrich questions that have fewer than 2 topics via LLM (Stage 4)."""
+    config = load_config(_PIPELINE_DIR / "config")
+    paths = _post_hoc_paths()
+    db_path = paths["db_path"]
+    if not db_path.exists():
+        log.error("questions.db not found at %s — run backfill first.", db_path)
+        sys.exit(1)
+
+    conn = sqlite3.connect(str(db_path))
+    try:
+        log.info("Loading all questions from DB…")
+        all_questions = _load_all(conn)
+        log.info("  Total: %d questions", len(all_questions))
+        needs = [q for q in all_questions if len(q.question.topics) < 2]
+        log.info("  Need (re-)enrichment (< 2 topics): %d", len(needs))
+
+        if dry_run:
+            log.info("Dry run — exiting without changes.")
+            return
+
+        client = get_client()
+        if client is None:
+            log.error("No LLM client available. Set USE_OLLAMA=1, GROQ_API_KEY, or ANTHROPIC_API_KEY.")
+            sys.exit(1)
+
+        log.info("Running Stage 4 enrichment…")
+        enriched = _stage4_enrich(needs, config, client)
+        gained = sum(1 for q in enriched if len(q.question.topics) >= 2)
+        log.info("  %d questions now have 2 topics", gained)
+        log.info("  %d still have < 2 topics", len(enriched) - gained)
+
+        log.info("Writing enriched questions to DB…")
+        _upsert(enriched, conn)
+        log.info("Re-exporting JSON files…")
+        counts = stage6(conn, paths["output_dir"], members_config_path=paths["members_config"],
+                        session_overrides_path=paths["session_overrides_config"], state_path=paths["state_path"])
+        _log_counts(counts)
+    finally:
+        conn.close()
+    log.info("reenrich complete.")
+
+
+def _run_normalize_tags(dry_run: bool) -> None:
+    """Normalize tags in the DB: strip format tags, rename near-duplicates."""
+    paths = _post_hoc_paths()
+    db_path = paths["db_path"]
+    if not db_path.exists():
+        log.error("questions.db not found at %s — run backfill first.", db_path)
+        sys.exit(1)
+
+    conn = sqlite3.connect(str(db_path))
+    try:
+        log.info("Loading all questions from DB…")
+        all_questions = _load_all(conn)
+        log.info("  Total: %d questions", len(all_questions))
+
+        changed = []
+        for q in all_questions:
+            old_tags = q.question.tags or []
+            new_tags = _normalize_tags(old_tags)
+            if new_tags != old_tags:
+                changed.append(q.model_copy(update={
+                    "question": q.question.model_copy(update={"tags": new_tags})
+                }))
+        log.info("  %d questions have tags to normalize", len(changed))
+
+        if dry_run:
+            log.info("Dry run — sample changes:")
+            for q in changed[:10]:
+                log.info("  [%s] %s → %s", q.id, (q.question.tags or []), _normalize_tags(q.question.tags or []))
+            return
+
+        if changed:
+            log.info("Writing normalized tags to DB…")
+            _upsert(changed, conn)
+            log.info("Re-exporting JSON files…")
+            counts = stage6(conn, paths["output_dir"], members_config_path=paths["members_config"],
+                            session_overrides_path=paths["session_overrides_config"], state_path=paths["state_path"])
+            _log_counts(counts)
+        else:
+            log.info("Nothing to normalize.")
+    finally:
+        conn.close()
+    log.info("normalize-tags complete.")
+
+
+def _run_assign_topics(dry_run: bool) -> None:
+    """Assign primary + secondary topics via rule-based matching (no LLM)."""
+    paths = _post_hoc_paths()
+    db_path = paths["db_path"]
+    if not db_path.exists():
+        log.error("questions.db not found at %s — run backfill first.", db_path)
+        sys.exit(1)
+
+    conn = sqlite3.connect(str(db_path))
+    try:
+        log.info("Loading all questions from DB…")
+        all_questions = _load_all(conn)
+        log.info("  Total: %d questions", len(all_questions))
+
+        enriched = [_assign_topics(q) for q in all_questions]
+
+        no_topic   = sum(1 for q in enriched if not q.question.topics)
+        one_topic  = sum(1 for q in enriched if len(q.question.topics) == 1)
+        two_topics = sum(1 for q in enriched if len(q.question.topics) >= 2)
+        log.info("  No topic:          %d", no_topic)
+        log.info("  Primary only:      %d", one_topic)
+        log.info("  Primary+secondary: %d", two_topics)
+
+        if dry_run:
+            log.info("Dry run — sample assignments:")
+            for q in enriched[:15]:
+                t = q.question.topics
+                log.info("  [%s] %s | %s",
+                    " + ".join(x.value for x in t) if t else "NONE",
+                    (q.question.text or "")[:60],
+                    q.question.tags,
+                )
+            return
+
+        log.info("Writing to DB…")
+        _upsert(enriched, conn)
+        log.info("Re-exporting JSON files…")
+        counts = stage6(conn, paths["output_dir"], members_config_path=paths["members_config"],
+                        session_overrides_path=paths["session_overrides_config"], state_path=paths["state_path"])
+        _log_counts(counts)
+    finally:
+        conn.close()
+    log.info("assign-topics complete.")
 
 
 # ── Enrichment stubs ──────────────────────────────────────────────────────────
@@ -278,6 +433,15 @@ def main() -> None:
     p_media = sub.add_parser("enrich-media", help="Match media files from WhatsApp backup")
     p_media.add_argument("--media-dir", required=True, metavar="PATH", help="Path to WhatsApp Media directory")
 
+    p_reenrich = sub.add_parser("reenrich", help="Re-enrich questions with < 2 topics via LLM (Stage 4)")
+    p_reenrich.add_argument("--dry-run", action="store_true", help="Show counts without writing anything")
+
+    p_norm = sub.add_parser("normalize-tags", help="Strip format tags and rename near-duplicates in the DB")
+    p_norm.add_argument("--dry-run", action="store_true", help="Show changes without writing anything")
+
+    p_topics = sub.add_parser("assign-topics", help="Assign primary + secondary topics via rules (no LLM)")
+    p_topics.add_argument("--dry-run", action="store_true", help="Show assignments without writing anything")
+
     args = parser.parse_args()
 
     if args.command in ("backfill", "incremental"):
@@ -290,6 +454,12 @@ def main() -> None:
         _run_enrich_reactions(args.db)
     elif args.command == "enrich-media":
         _run_enrich_media(args.media_dir)
+    elif args.command == "reenrich":
+        _run_reenrich(args.dry_run)
+    elif args.command == "normalize-tags":
+        _run_normalize_tags(args.dry_run)
+    elif args.command == "assign-topics":
+        _run_assign_topics(args.dry_run)
 
 
 if __name__ == "__main__":
