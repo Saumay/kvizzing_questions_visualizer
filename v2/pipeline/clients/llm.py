@@ -1,6 +1,12 @@
 """
-LLM client — Groq adapter that exposes the same .messages.create() interface
-as the Anthropic client so all pipeline stages work unchanged.
+LLM client — unified adapter exposing a .messages.create() interface
+compatible with all pipeline stages.
+
+Provider priority (first available wins):
+  USE_OLLAMA=1        → OllamaClient  (local, default model: qwen3.5:latest)
+  GEMINI_API_KEY      → GeminiClient  (gemini-2.0-flash, free tier, recommended)
+  GROQ_API_KEY        → GroqClient    (llama-3.3-70b-versatile, free tier)
+  ANTHROPIC_API_KEY   → AnthropicClient (claude-haiku-4-5)
 """
 
 from __future__ import annotations
