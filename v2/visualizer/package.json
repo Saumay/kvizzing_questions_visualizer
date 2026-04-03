@@ -14,11 +14,11 @@
 		"test:watch": "vitest"
 	},
 	"devDependencies": {
-		"@types/node": "^22.13.10",
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/kit": "^2.50.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@tailwindcss/vite": "^4.2.2",
+		"@types/node": "^22.13.10",
 		"svelte": "^5.54.0",
 		"svelte-check": "^4.4.2",
 		"tailwindcss": "^4.2.2",
@@ -27,6 +27,7 @@
 		"vitest": "^4.1.2"
 	},
 	"dependencies": {
+		"@supabase/supabase-js": "^2.101.1",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"date-fns": "^4.1.0",
 		"date-fns-tz": "^3.2.0",
