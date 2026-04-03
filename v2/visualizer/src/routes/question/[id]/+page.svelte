@@ -8,6 +8,8 @@
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import AnswerSubmission from '$lib/components/AnswerSubmission.svelte';
   import DiscussionThread from '$lib/components/DiscussionThread.svelte';
+  import MediaGallery from '$lib/components/MediaGallery.svelte';
+  import { displayText } from '$lib/utils/text';
 
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
@@ -21,6 +23,15 @@
 
   let discussionVisible = $state(false);
   let revealed = $state(false);
+
+  const questionMedia = $derived((q.media ?? []).filter((m: { url: string | null }) => m.url));
+  const answerMedia = $derived(
+    (question.discussion ?? [])
+      .filter((d: { role: string; media?: { url: string | null }[] | null }) =>
+        d.role === 'answer_reveal' && d.media?.some(m => m.url))
+      .flatMap((d: { media?: { url: string | null }[] | null }) => d.media ?? [])
+      .filter((m: { url: string | null }) => m.url)
+  );
 
   function onAnswerReveal() {
     revealed = true;
@@ -88,15 +99,17 @@
   </div>
 
   <!-- Question card -->
-  <div class="bg-ui-card rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
-    <p class="text-gray-900 dark:text-gray-100 text-base leading-relaxed font-medium">{q.text}</p>
-    {#if q.has_media}
-      <p class="mt-2 text-sm text-purple-500 flex items-center gap-1">
-        <span>📎</span> This question has media attached
+  <div class="bg-ui-card rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 space-y-3">
+    <p class="text-gray-900 dark:text-gray-100 text-base leading-relaxed font-medium">{displayText(q.text, questionMedia.length > 0)}</p>
+    {#if questionMedia.length > 0}
+      <MediaGallery attachments={questionMedia} />
+    {:else if q.has_media}
+      <p class="text-sm text-purple-500 dark:text-purple-400 flex items-center gap-1.5">
+        <span>📎</span> Media not yet hosted
       </p>
     {/if}
     {#if q.tags && q.tags.length > 0}
-      <div class="flex gap-2 mt-3 flex-wrap">
+      <div class="flex gap-2 flex-wrap">
         {#each q.tags as tag}
           <a href="/?tag={encodeURIComponent(tag)}" class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">{tag}</a>
         {/each}
@@ -158,6 +171,14 @@
       {#if a.confirmation_text}
         <span class="text-xs text-green-600 dark:text-green-400 ml-auto italic">"{a.confirmation_text}"</span>
       {/if}
+    </div>
+  {/if}
+
+  <!-- Answer reveal media -->
+  {#if revealed && answerMedia.length > 0}
+    <div class="bg-ui-card rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-4">
+      <p class="text-xs font-medium text-green-600 dark:text-green-400 uppercase tracking-wide mb-3">Answer reveal</p>
+      <MediaGallery attachments={answerMedia} />
     </div>
   {/if}
 
