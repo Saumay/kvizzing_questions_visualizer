@@ -17,6 +17,7 @@
   import EmptyState from '$lib/components/EmptyState.svelte';
   import ConnectBadge from '$lib/components/ConnectBadge.svelte';
   import { tagFrequency } from '$lib/utils/tags';
+  import QuestionCard from '$lib/components/QuestionCard.svelte';
 
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
@@ -29,11 +30,11 @@
   const isConnect = $derived(session.quiz_type === 'connect');
 
   let revealAll = $state(false);
-  let revealedIds = $state(new Set<string>());
-  let hiddenIds = $state(new Set<string>());
-  let inputs = $state(new Map<string, string>());
-  let results = $state(new Map<string, 'correct' | 'almost' | 'wrong'>());
-  let hintsShown = $state(new Map<string, number>());
+  let qStates = $state<Record<string, { revealed: boolean; input: string; result: 'correct' | 'almost' | 'wrong' | null; hintsShown: number }>>(
+    Object.fromEntries(
+      store.getQuestions().map((q: Question) => [q.id, { revealed: revealAll, input: '', result: null as 'correct' | 'almost' | 'wrong' | null, hintsShown: 0 }])
+    )
+  );
 
   // Search & filters
   let search = $state('');
@@ -63,7 +64,7 @@
       if (q && !question.question.text.toLowerCase().includes(q)) return false;
       if (filterAsker && question.question.asker !== filterAsker) return false;
       if (filterSolver && question.answer?.solver !== filterSolver) return false;
-      if (filterHasMedia !== undefined && !!(question.question.image_url || question.question.audio_url) !== filterHasMedia) return false;
+      if (filterHasMedia !== undefined && !!question.question.has_media !== filterHasMedia) return false;
       if (filterTopics.size > 0 && !question.question.topics?.some((t: string) => filterTopics.has(t))) return false;
       if (filterTags.size > 0 && ![...filterTags].every(t => question.question.tags?.includes(t))) return false;
       return true;
@@ -101,39 +102,7 @@
     else connectResult = 'wrong';
   }
 
-  function toggleReveal(id: string) {
-    const next = new Set(revealedIds);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    revealedIds = next;
-  }
 
-  function hideQuestion(id: string) {
-    if (revealAll) {
-      hiddenIds = new Set(hiddenIds).add(id);
-    } else {
-      const next = new Set(revealedIds);
-      next.delete(id);
-      revealedIds = next;
-    }
-    const nextResults = new Map(results);
-    nextResults.delete(id);
-    results = nextResults;
-    inputs = new Map(inputs).set(id, '');
-  }
-
-  function submitGuess(id: string, correctAnswer: string) {
-    const input = (inputs.get(id) ?? '').trim();
-    if (!input) return;
-    let result: 'correct' | 'almost' | 'wrong';
-    if (isCorrect(input, correctAnswer)) result = 'correct';
-    else if (isAlmost(input, correctAnswer)) result = 'almost';
-    else result = 'wrong';
-    results = new Map(results).set(id, result);
-    if (result === 'correct') {
-      revealedIds = new Set(revealedIds).add(id);
-    }
-  }
 </script>
 
 <svelte:head>
@@ -209,7 +178,12 @@
       <SearchInput bind:value={search} placeholder="Search questions…" />
       <FiltersToggleButton bind:open={filtersOpen} count={activeFilterCount} />
       <button
-        onclick={() => { revealAll = !revealAll; revealedIds = new Set(); hiddenIds = new Set(); }}
+        onclick={() => { 
+          revealAll = !revealAll;
+          sessionQuestions.forEach((q: Question) => {
+            qStates[q.id].revealed = revealAll;
+          });
+        }}
         class="flex-none px-4 py-2 text-sm font-medium rounded-xl border transition-colors {revealAll ? 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600' : 'bg-primary-500 text-white border-primary-500 hover:bg-primary-600 dark:bg-primary-600 dark:border-primary-600'}"
       >
         {revealAll ? 'Hide all' : 'Reveal all'}
@@ -274,147 +248,15 @@
   {:else}
     <div class="grid gap-4">
       {#each filteredQuestions as question, i (question.id)}
-        {@const isRevealed = (revealAll && !hiddenIds.has(question.id)) || revealedIds.has(question.id)}
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <div
-          class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition-all cursor-pointer"
-          onclick={(e) => { if (!(e.target as HTMLElement).closest('a,button,input')) goto(`/question/${question.id}`); }}
-        >
-          <!-- Question number badge + link -->
-          <div class="p-4">
-            <div class="flex items-start gap-3">
-              <!-- Number badge -->
-              <div class="w-7 h-7 rounded-lg bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                {i + 1}
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <div class="flex items-center gap-2">
-                    <MemberAvatar username={question.question.asker} size="xs" />
-                    <span class="text-xs font-medium text-gray-700 dark:text-gray-300">{question.question.asker}</span>
-                  </div>
-                  {#if question.question.topics?.[0]}
-                    <a href="/?topic={question.question.topics[0]}" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {topicCls(question.question.topics[0])} hover:opacity-80 transition-opacity flex-shrink-0">
-                      {topicLabel(question.question.topics[0])}
-                    </a>
-                  {/if}
-                </div>
-                <a href="/question/{question.id}" class="text-sm text-gray-800 dark:text-gray-200 hover:text-primary-600 transition-colors leading-relaxed line-clamp-4 block">
-                  {question.question.text}
-                </a>
-
-                <!-- Stats + tags row -->
-                <div class="flex items-center justify-between gap-3 mt-2">
-                  <div class="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500 min-w-0">
-                    {#if question.stats?.time_to_answer_seconds}
-                      <span class="flex items-center gap-1 flex-shrink-0">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {formatTime(question.stats.time_to_answer_seconds)}
-                      </span>
-                    {/if}
-                    {#if question.stats?.wrong_attempts > 0}
-                      <span class="flex items-center gap-1 flex-shrink-0">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        {question.stats.wrong_attempts} wrong
-                      </span>
-                    {/if}
-                    {#if question.discussion?.length > 0}
-                      <span class="flex items-center gap-1 flex-shrink-0">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                        {question.discussion.length} messages
-                      </span>
-                    {/if}
-                  </div>
-                  {#if isRevealed && question.question.tags?.length > 0}
-                    <div class="flex gap-1 flex-wrap justify-end">
-                      {#each question.question.tags as tag}
-                        <a href="/?tag={encodeURIComponent(tag)}" onclick={(e) => e.stopPropagation()} class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors whitespace-nowrap">{tag}</a>
-                      {/each}
-                    </div>
-                  {/if}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Answer area -->
-          <div class="border-t border-gray-100 dark:border-gray-700">
-            {#if isRevealed}
-              <div class="px-3 py-2.5 min-h-[48px] bg-green-50 dark:bg-green-900/30 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span class="text-xs font-medium text-green-600 dark:text-green-400 uppercase tracking-wide flex-shrink-0">Answer</span>
-                <span class="text-sm font-semibold text-green-800 dark:text-green-200 flex-1 min-w-0">{question.answer?.text ?? '—'}</span>
-                <div class="flex items-center gap-2 flex-shrink-0 ml-auto">
-                  {#if question.answer?.solver}
-                    <div class="flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400">
-                      <MemberAvatar username={question.answer.solver} size="xs" />
-                      <span class="hidden sm:inline">{question.answer.solver}</span>
-                    </div>
-                  {/if}
-                  <button
-                    onclick={() => hideQuestion(question.id)}
-                    class="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                  >Hide</button>
-                </div>
-              </div>
-            {:else}
-              {@const result = results.get(question.id)}
-              {@const hints = filterHints(question.discussion?.filter((d: {role: string}) => d.role === 'hint').map((d: {text: string}) => d.text) ?? [])}
-              {@const shown = hintsShown.get(question.id) ?? 0}
-              {#if shown > 0}
-                <div class="px-4 py-2 bg-amber-50 dark:bg-amber-900/30 border-b border-amber-100 dark:border-amber-800 space-y-1">
-                  {#each hints.slice(0, shown) as hint}
-                    <p class="text-xs text-amber-700 dark:text-amber-300 flex items-start gap-1.5">
-                      <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                      {hint}
-                    </p>
-                  {/each}
-                </div>
-              {/if}
-              <div class="px-3 py-2.5 flex items-center gap-2">
-                <input
-                  type="text"
-                  placeholder="Your answer…"
-                  value={inputs.get(question.id) ?? ''}
-                  oninput={(e) => { inputs = new Map(inputs).set(question.id, (e.target as HTMLInputElement).value); }}
-                  onkeydown={(e) => { if (e.key === 'Enter') submitGuess(question.id, question.answer?.text ?? ''); }}
-                  class="flex-1 min-w-0 px-2.5 py-2 text-xs border rounded-lg focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 transition-all
-                    {result === 'correct' ? 'border-green-300 bg-green-50 dark:bg-green-900/30' : result === 'almost' ? 'border-amber-300 bg-amber-50 dark:bg-amber-900/30' : result === 'wrong' ? 'border-red-300 bg-red-50' : 'border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400'}"
-                  autocomplete="off" spellcheck="false"
-                  title={result === 'almost' ? 'Close! Try again.' : result === 'wrong' ? 'Not quite. Try again or reveal.' : ''}
-                />
-                <button
-                  onclick={() => submitGuess(question.id, question.answer?.text ?? '')}
-                  class="px-3 py-2 text-xs font-medium bg-primary-500 text-white rounded-lg hover:bg-primary-600 dark:bg-primary-600 transition-colors flex-shrink-0"
-                >Submit</button>
-                <div class="flex items-center gap-2 flex-shrink-0">
-                  <button
-                    onclick={() => hintsShown = new Map(hintsShown).set(question.id, Math.min(shown + 1, hints.length))}
-                    disabled={hints.length === 0 || shown >= hints.length}
-                    title={hints.length === 0 ? 'No hints available' : shown >= hints.length ? 'No more hints' : `Hint ${shown + 1} of ${hints.length}`}
-                    class="p-1.5 rounded-lg transition-colors {hints.length === 0 || shown >= hints.length ? 'text-gray-300 cursor-default' : 'text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20'}"
-                  >
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </button>
-                  <button
-                    onclick={() => toggleReveal(question.id)}
-                    class="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 font-medium transition-colors"
-                  >Reveal</button>
-                </div>
-              </div>
-            {/if}
-          </div>
-        </div>
+        <QuestionCard 
+          {question}
+          questionNumber={i + 1}
+          hideSession={true}
+          bind:revealed={qStates[question.id].revealed}
+          bind:input={qStates[question.id].input}
+          bind:result={qStates[question.id].result}
+          bind:hintsShown={qStates[question.id].hintsShown}
+        />
       {/each}
     </div>
   {/if}

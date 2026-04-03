@@ -52,6 +52,11 @@
   let mobileFiltersOpen = $state(false);
   let sortBy = $state<SortOption>('newest');
   let revealAll = $state(false);
+  let feedStates = $state<Record<string, { revealed: boolean; input: string; result: 'correct' | 'almost' | 'wrong' | null; hintsShown: number }>>(
+    Object.fromEntries(
+      store.getQuestions().map((q: Question) => [q.id, { revealed: false, input: '', result: null as 'correct' | 'almost' | 'wrong' | null, hintsShown: 0 }])
+    )
+  );
 
   const activeFilterCount = $derived(
     [filterAsker, filterSolver, filterSessionId].filter(Boolean).length +
@@ -167,7 +172,12 @@
       <SearchInput bind:value={searchQuery} placeholder="Search questions and answers…" />
       <FiltersToggleButton bind:open={mobileFiltersOpen} count={activeFilterCount} />
       <button
-        onclick={() => revealAll = !revealAll}
+        onclick={() => {
+          revealAll = !revealAll;
+          filteredQuestions.forEach(q => {
+            feedStates[q.id].revealed = revealAll;
+          });
+        }}
         class="flex-none px-4 py-2 text-sm font-medium rounded-xl border transition-colors {revealAll ? 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600' : 'bg-primary-500 text-white border-primary-500 hover:bg-primary-600 dark:bg-primary-600 dark:border-primary-600'}"
       >
         {revealAll ? 'Hide all' : 'Reveal all'}
@@ -282,7 +292,14 @@
       <EmptyState message="No questions match your filters" onClear={clearFilters} />
     {:else}
       {#each (isMobile ? filteredQuestions.slice(0, mobileLimit) : filteredQuestions) as question (question.id)}
-        <QuestionCard {question} hideSession={!!filterSessionId} {revealAll} />
+        <QuestionCard 
+          {question} 
+          hideSession={!!filterSessionId} 
+          bind:revealed={feedStates[question.id].revealed}
+          bind:input={feedStates[question.id].input}
+          bind:result={feedStates[question.id].result}
+          bind:hintsShown={feedStates[question.id].hintsShown}
+        />
       {/each}
       {#if isMobile && mobileLimit < filteredQuestions.length}
         <button

@@ -2,11 +2,13 @@
   let {
     tags = $bindable(new Set<string>()),
     allTags = [] as string[],
-    tagFreq = new Map<string, number>()
+    tagFreq = new Map<string, number>(),
+    class: cls = ''
   }: {
     tags?: Set<string>;
     allTags?: string[];
     tagFreq?: Map<string, number>;
+    class?: string;
   } = $props();
 
   let tagInput = $state('');
@@ -26,14 +28,14 @@
   }
 </script>
 
-<div class="relative">
+<div class="relative {cls}">
   <input
     bind:value={tagInput}
     onfocus={() => tagInputFocused = true}
     onblur={() => setTimeout(() => tagInputFocused = false, 150)}
     type="text"
-    placeholder="Filter by tag…"
-    class="text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 w-36 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 placeholder:text-gray-600 dark:placeholder:text-gray-400 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
+    placeholder="Tags…"
+    class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 placeholder:text-gray-600 dark:placeholder:text-gray-400 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
   />
   {#if tagInputFocused && tagSuggestions.length > 0}
     <div class="absolute z-20 top-full mt-1 left-0 w-48 bg-ui-card border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg overflow-hidden">

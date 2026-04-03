@@ -4,7 +4,7 @@
 
 <button
   onclick={() => open = !open}
-  class="lg:hidden relative flex-none inline-flex items-center gap-1.5 px-3 py-2.5 text-sm font-medium rounded-xl border transition-colors
+  class="relative flex-none inline-flex items-center gap-1.5 px-3 py-2.5 text-sm font-medium rounded-xl border transition-colors
     {open || count > 0
       ? 'bg-primary-500 border-primary-500 text-white'
       : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-200'}"

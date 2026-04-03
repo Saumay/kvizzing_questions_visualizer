@@ -1,10 +1,18 @@
+export interface MediaAttachment {
+  type: 'image' | 'video' | 'audio' | 'document';
+  url: string | null;
+  filename: string | null;
+  caption: string | null;
+}
+
 export interface DiscussionEntry {
   timestamp: string;
   username: string;
   text: string;
   role: 'attempt' | 'hint' | 'confirmation' | 'answer_reveal' | 'chat';
   is_correct: boolean | null;
-  media: string | null;
+  has_media: boolean;
+  media: MediaAttachment[] | null;
 }
 
 export interface QuestionData {
@@ -13,7 +21,7 @@ export interface QuestionData {
   asker: string;
   type: string;
   has_media: boolean;
-  media: string | null;
+  media: MediaAttachment[] | null;
   topics: string[];
   tags: string[];
 }
