@@ -265,12 +265,15 @@ def structure(
             # Take the first component before any space or dot for a clean slug
             # e.g. "pratik.s.chandarana" → "pratik", "Pavan Pamidimarri" → "pavan"
             qm_slug = re.split(r"[\s.]", quizmaster.lower())[0]
+            # Allow extraction data to override session ID (for multi-day sessions)
+            session_id = raw.get("session_id_override") or f"{session_date}-{qm_slug}"
             session = Session(
-                id=f"{session_date}-{qm_slug}",
+                id=session_id,
                 quizmaster=quizmaster,
                 question_number=raw.get("session_question_number") or 1,
                 theme=raw.get("session_theme"),
                 quiz_type=raw.get("session_quiz_type"),
+                connect_answer=raw.get("session_connect_answer"),
                 announcement=raw.get("session_announcement"),
             )
 

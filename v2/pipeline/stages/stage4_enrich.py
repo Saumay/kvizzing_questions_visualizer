@@ -200,14 +200,20 @@ def _call_llm(
                 continue
             return []
         except Exception as e:
-            err_str = str(e)
-            if "429" in err_str or "503" in err_str or "rate_limit" in err_str.lower() or "resource_exhausted" in err_str.lower() or "unavailable" in err_str.lower():
-                if attempt < max_retries - 1:
-                    delay = base_delay * (2 ** attempt)
-                    log.warning("Stage4 rate-limited — retrying in %.1fs (attempt %d/%d)…", delay, attempt + 1, max_retries)
-                    time.sleep(delay)
-                    continue
+            err_lower = str(e).lower()
+            is_transient = any(kw in err_lower for kw in [
+                "429", "503", "rate_limit", "resource_exhausted", "unavailable",
+                "timeout", "timed out", "connection error", "connection reset",
+                "remoteprotocol", "remotedisconnected",
+            ])
+            if is_transient and attempt < max_retries - 1:
+                delay = max(base_delay * (2 ** attempt), 30)
+                log.warning("Stage4 transient error — retrying in %.1fs (attempt %d/%d)…", delay, attempt + 1, max_retries)
+                time.sleep(delay)
+                continue
             log.error("Stage4 LLM call failed: %s", e, exc_info=True)
+            if is_transient:
+                return []  # Don't crash pipeline on transient errors
             raise
     return []
 
@@ -261,8 +267,8 @@ def enrich(
         to_enrich = list(questions)
         already_done: dict[str, KVizzingQuestion] = {}
     else:
-        to_enrich = [q for q in questions if len(q.question.topics) < 3]
-        already_done = {q.id: q for q in questions if len(q.question.topics) >= 3}
+        to_enrich = [q for q in questions if len(q.question.topics) < 2]
+        already_done = {q.id: q for q in questions if len(q.question.topics) >= 2}
 
     # Build an id→result map for the enriched ones
     enriched_map: dict[str, KVizzingQuestion] = dict(already_done)

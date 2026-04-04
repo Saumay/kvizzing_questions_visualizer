@@ -50,7 +50,7 @@ FALLBACK_PROMPT = (
     "warm orange tones, geometric patterns, wide banner"
 )
 
-NEGATIVE_PROMPT = "text, watermark, logo, signature, blurry, low quality"
+NEGATIVE_PROMPT = "text, words, letters, numbers, typography, watermark, logo, signature, blurry, low quality, writing, caption, label, title, font, alphabet, NSFW"
 
 
 HEADERS = {"apikey": ANON_KEY, "Content-Type": "application/json"}
@@ -73,7 +73,7 @@ def generate(prompt: str, seed: int) -> bytes | None:
     payload = {
         "prompt": f"{prompt} ### {NEGATIVE_PROMPT}",
         "params": {
-            "width": 512,
+            "width": 768,
             "height": 256,
             "steps": 25,
             "sampler_name": "k_euler_a",
@@ -132,14 +132,27 @@ def main() -> None:
 
     for i, session in enumerate(sessions):
         sid = session["id"]
-        theme = session.get("theme") or f"{session['quizmaster']}'s Quiz"
         dest = OUTPUT_DIR / f"{sid}.jpg"
 
         if dest.exists():
             print(f"[{sid}] Already exists — skipping.")
             continue
 
-        prompt = THEME_PROMPTS.get(theme, FALLBACK_PROMPT)
+        # Connect quizzes use the generic connect background, not generated images
+        if session.get("quiz_type") == "connect":
+            print(f"[{sid}] Connect quiz — uses connect-quiz-bg.png, skipping.")
+            continue
+
+        theme = session.get("theme") or f"{session['quizmaster']}'s Quiz"
+        # Sanitize theme for NSFW-sensitive AI image generators
+        safe_theme = theme.replace("Indian", "South Asian").replace("Bollywood", "cinema").replace("Hindu", "cultural").replace("Muslim", "cultural").replace("nude", "").replace("naked", "")
+        prompt = THEME_PROMPTS.get(theme)
+        if not prompt:
+            prompt = (
+                f"beautiful artistic illustration inspired by the theme '{safe_theme}', "
+                f"aesthetic wide banner, soft painterly style, rich colors, "
+                f"elegant composition, no text or words"
+            )
         print(f"[{sid}] Theme: {theme!r}")
         print(f"  Prompt: {prompt[:80]}...")
 

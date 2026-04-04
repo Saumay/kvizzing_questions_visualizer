@@ -511,6 +511,19 @@
           "description": "Quiz format: 'connect' for connect quizzes (multiple questions share a hidden connecting theme), null for regular quizzes",
           "title": "Quiz Type"
         },
+        "connect_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The hidden connecting theme/answer for connect quizzes (e.g. 'All answers contain a color'). Null for non-connect quizzes.",
+          "title": "Connect Answer"
+        },
         "announcement": {
           "anyOf": [
             {

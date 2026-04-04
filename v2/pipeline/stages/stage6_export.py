@@ -156,13 +156,15 @@ def build_sessions(
                 if entry.get("role") == "attempt" and entry.get("username"):
                     participants.add(entry["username"])
 
-        # Find announcement from Q1
+        # Find announcement from Q1, and connect_answer from any question
         announcement = None
+        connect_answer = None
         for q in questions:
             sess = q.get("session", {})
             if sess.get("question_number") == 1 and sess.get("announcement"):
                 announcement = sess["announcement"]
-                break
+            if sess.get("connect_answer") and not connect_answer:
+                connect_answer = sess["connect_answer"]
 
         overrides = (session_overrides or {}).get(session_id, {})
         sessions.append({
@@ -170,6 +172,7 @@ def build_sessions(
             "quizmaster": overrides.get("quizmaster", s.get("quizmaster")),
             "theme": overrides.get("theme", s.get("theme")),
             "quiz_type": overrides.get("quiz_type", s.get("quiz_type")),
+            "connect_answer": overrides.get("connect_answer", connect_answer),
             "announcement": overrides.get("announcement", announcement),
             "date": questions[0].get("date"),
             "question_count": len(questions),
@@ -183,6 +186,8 @@ def build_sessions(
             "scores": final_scores.get(session_id) or None,
         })
 
+    # Filter out sessions with fewer than 5 questions
+    sessions = [s for s in sessions if s["question_count"] >= 5]
     sessions.sort(key=lambda s: s["date"] or "")
     return sessions
 
@@ -228,15 +233,18 @@ def build_stats(questions: list[dict]) -> dict:
 
 # ── tags.json ─────────────────────────────────────────────────────────────────
 
-def build_tags(questions: list[dict]) -> dict[str, list[str]]:
-    """Build tag → [question_id, ...] index."""
+def build_tags(questions: list[dict]) -> list[dict]:
+    """Build sorted tag frequency list: [{tag, count, question_ids}]."""
     index: dict[str, list[str]] = defaultdict(list)
     for q in questions:
         qid = q["id"]
         tags = (q.get("question") or {}).get("tags") or []
         for tag in tags:
             index[tag].append(qid)
-    return dict(index)
+    return sorted(
+        [{"tag": tag, "count": len(ids), "question_ids": ids} for tag, ids in index.items()],
+        key=lambda t: -t["count"],
+    )
 
 
 # ── members.json ──────────────────────────────────────────────────────────────

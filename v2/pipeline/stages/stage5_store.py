@@ -127,10 +127,10 @@ def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
     re-inserting. INSERT OR REPLACE assigns a new rowid to the replaced row, so
     the old FTS entry must be removed explicitly.
 
-    Preserves existing media data: if the incoming question has media=None but
-    the DB row already has matched media (with filenames/URLs), the existing
-    media is carried forward so that re-extraction doesn't destroy prior
-    media matching and CDN upload work.
+    Preserves enrichment data from the existing DB row when the incoming
+    question has less data — prevents re-extraction from destroying prior
+    enrichment work (media matching, CDN uploads, topic assignment, tags,
+    difficulty, reactions, etc.).
     """
     existing = conn.execute(
         "SELECT rowid, payload FROM questions WHERE id = ?", (q.id,)
@@ -139,20 +139,47 @@ def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
     if existing:
         conn.execute("DELETE FROM questions_fts WHERE rowid = ?", (existing[0],))
 
-        # Preserve media data from the existing row when incoming has none
         old = json.loads(existing[1])
-        old_q_media = (old.get("question") or {}).get("media")
+        old_question = old.get("question") or {}
         old_disc = old.get("discussion")
+        q_updates: dict = {}
 
-        # Preserve question-level media
-        if q.question.media is None and old_q_media:
+        # --- Preserve question-level fields ---
+        question_updates: dict = {}
+
+        # Media: keep existing if incoming has none
+        if q.question.media is None and old_question.get("media"):
             from schema import MediaAttachment
-            restored = [MediaAttachment.model_validate(m) for m in old_q_media]
-            q = q.model_copy(update={
-                "question": q.question.model_copy(update={"media": restored})
-            })
+            question_updates["media"] = [MediaAttachment.model_validate(m) for m in old_question["media"]]
 
-        # Preserve discussion-level media
+        # Topics: keep existing if they have more
+        old_topics = old_question.get("topics") or []
+        if len(old_topics) > len(q.question.topics or []):
+            from schema import TopicCategory
+            question_updates["topics"] = [TopicCategory(t) for t in old_topics]
+
+        # Tags: keep existing if incoming has none/fewer
+        old_tags = old_question.get("tags") or []
+        if len(old_tags) > len(q.question.tags or []):
+            question_updates["tags"] = old_tags
+
+        if question_updates:
+            q_updates["question"] = q.question.model_copy(update=question_updates)
+
+        # --- Preserve stats-level fields ---
+        old_stats = old.get("stats") or {}
+        if old_stats.get("difficulty") and (not q.stats or not q.stats.difficulty):
+            from schema import DifficultyLevel
+            if q.stats:
+                q_updates["stats"] = q.stats.model_copy(update={"difficulty": DifficultyLevel(old_stats["difficulty"])})
+
+        # --- Preserve reactions ---
+        old_reactions = old.get("reactions")
+        if old_reactions and not q.reactions:
+            from schema import Reactions
+            q_updates["reactions"] = Reactions.model_validate(old_reactions)
+
+        # --- Preserve discussion-level media ---
         if q.discussion and old_disc:
             new_disc = list(q.discussion)
             changed = False
@@ -161,11 +188,15 @@ def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
                     old_entry_media = (old_disc[i] if isinstance(old_disc[i], dict) else {}).get("media")
                     if old_entry_media:
                         from schema import MediaAttachment
-                        restored = [MediaAttachment.model_validate(m) for m in old_entry_media]
-                        new_disc[i] = entry.model_copy(update={"media": restored})
+                        new_disc[i] = entry.model_copy(update={
+                            "media": [MediaAttachment.model_validate(m) for m in old_entry_media]
+                        })
                         changed = True
             if changed:
-                q = q.model_copy(update={"discussion": new_disc})
+                q_updates["discussion"] = new_disc
+
+        if q_updates:
+            q = q.model_copy(update=q_updates)
 
     # INSERT OR REPLACE assigns a new rowid — fetch it after the write.
     conn.execute(_INSERT_SQL, _to_row(q))

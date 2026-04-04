@@ -301,7 +301,7 @@ def audit_data(data: list) -> list[str]:
                 
         # 28. Orphaned session fields
         if not q.get("is_session_question"):
-            for f in ["session_quizmaster", "session_theme", "session_quiz_type", "session_question_number", "session_announcement"]:
+            for f in ["session_quizmaster", "session_theme", "session_quiz_type", "session_connect_answer", "session_question_number", "session_announcement"]:
                 if q.get(f):
                     issues.append(f"ORPHAN_SESSION_VAR  {label}: '{f}' is populated but is_session_question is false")
 

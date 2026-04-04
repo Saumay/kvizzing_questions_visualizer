@@ -244,6 +244,10 @@ class Session(BaseModel):
         default=None,
         description="Quiz format: 'connect' for connect quizzes (multiple questions share a hidden connecting theme), null for regular quizzes"
     )
+    connect_answer: Optional[str] = Field(
+        default=None,
+        description="The hidden connecting theme/answer for connect quizzes (e.g. 'All answers contain a color'). Null for non-connect quizzes."
+    )
     announcement: Optional[str] = Field(
         default=None,
         description="Quizmaster's introductory message announcing the session (only on Q1)"

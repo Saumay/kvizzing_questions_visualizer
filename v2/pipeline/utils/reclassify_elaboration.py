@@ -142,13 +142,25 @@ def reclassify_without_llm(candidates: list[tuple[int, int, dict, dict]]) -> lis
         asker = q.get("question_asker", "")
         username = e.get("username", "")
 
-        # Asker elaborating on their own question/answer is very likely elaboration
-        if username == asker and len(text) > 30:
+        # Skip meta-quiz discussion (talking about the quiz itself, not the answer)
+        meta_quiz = re.search(
+            r"i (?:have|got|made) (?:a |some )?(?:questions?|deck|quizzes?)|"
+            r"(?:friend |this )group|challenging for|difficulty|"
+            r"will (?:post|ask|start|host)|posting questions|"
+            r"good (?:question|qn)|nice (?:question|qn)|great (?:question|qn)|"
+            r"awesome (?:question|qn)|what a question",
+            text, re.IGNORECASE,
+        )
+        if meta_quiz:
+            continue
+
+        # Asker elaborating: must also match info patterns or reference the answer
+        if username == asker and len(text) > 30 and info_patterns.search(text):
             to_reclassify.append((qi, di))
             continue
 
-        # Pattern-based detection
-        if info_patterns.search(text):
+        # Pattern-based detection for anyone
+        if info_patterns.search(text) and len(text) > 40:
             to_reclassify.append((qi, di))
 
     return to_reclassify
