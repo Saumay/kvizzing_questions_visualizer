@@ -1,0 +1,9 @@
+[build]
+  base = "v2/visualizer"
+  command = "npm run build"
+  publish = "v2/visualizer/build"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
