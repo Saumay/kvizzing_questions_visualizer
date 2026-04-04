@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
   import { goto } from '$app/navigation';
   import type { QuestionStore } from '$lib/stores/questionStore';
-  import { formatDateTz, formatTime } from '$lib/utils/time';
+  import { formatDateTz, formatDateTimeTz, formatTime } from '$lib/utils/time';
   import { topicCls, topicClsSecondary, topicLabel } from '$lib/utils/topicColors';
   import { filterHints } from '$lib/utils/hints';
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
@@ -76,7 +76,7 @@
       <MemberAvatar username={q.asker} size="sm" />
       <div>
         <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">{q.asker}</p>
-        <p class="text-xs text-gray-400 dark:text-gray-500">{formatDateTz(question.question.timestamp ?? question.date, tzCtx?.value ?? 'Europe/London')}</p>
+        <p class="text-xs text-gray-400 dark:text-gray-500">{question.question.timestamp ? formatDateTimeTz(question.question.timestamp, tzCtx?.value ?? 'Europe/London') : formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</p>
       </div>
     </div>
 
@@ -129,26 +129,6 @@
     />
   {/if}
 
-  <!-- Answer parts breakdown -->
-  {#if revealed && a?.parts && a.parts.length > 1}
-    <div class="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl px-4 py-3">
-      <p class="text-xs font-medium text-green-600 dark:text-green-400 uppercase tracking-wide mb-2">Answer Parts</p>
-      <div class="space-y-1.5">
-        {#each a.parts as part}
-          <div class="flex items-center gap-2 text-sm">
-            <span class="font-semibold text-green-800 dark:text-green-200">{part.label}:</span>
-            <span class="text-green-700 dark:text-green-300">{part.text}</span>
-            {#if part.solver}
-              <span class="flex items-center gap-1 text-xs text-green-500 dark:text-green-400 ml-auto">
-                <MemberAvatar username={part.solver} size="xs" />
-                {part.solver}
-              </span>
-            {/if}
-          </div>
-        {/each}
-      </div>
-    </div>
-  {/if}
 
   <!-- Answer reveal media -->
   {#if revealed && answerMedia.length > 0}
@@ -182,27 +162,55 @@
       <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300">Discussion Metrics</h2>
 
       {#if stats}
+        {@const disc: any[] = question.discussion ?? []}
+        {@const wrongAttempts: any[] = disc.filter((d: any) => d.role === 'attempt' && d.is_correct === false)}
+        {@const hintEntries: any[] = disc.filter((d: any) => d.role === 'hint')}
+        {@const participants = [...new Set(disc.filter((d: any) => d.role === 'attempt').map((d: any) => d.username))] as string[]}
+        {@const wrongTooltip = wrongAttempts.length > 0 ? wrongAttempts.map((d: any) => `${d.username}: "${d.text?.slice(0, 50)}"`).join('\n') : ''}
+        {@const hintTooltip = hintEntries.length > 0 ? hintEntries.map((d: any) => `"${d.text?.slice(0, 60)}"`).join('\n') : ''}
+        {@const participantTooltip = participants.length > 0 ? participants.join(', ') : ''}
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {#if stats.time_to_answer_seconds}
-            <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm">
+            <div class="group/tip relative bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm cursor-default">
               <p class="text-lg font-bold text-gray-900 dark:text-gray-100">{formatTime(stats.time_to_answer_seconds)}</p>
               <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Solve time</p>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
+                Time from question to first correct answer
+              </div>
             </div>
           {/if}
-          <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm">
+          <div class="group/tip relative bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm cursor-default">
             <p class="text-lg font-bold text-gray-900 dark:text-gray-100">{stats.wrong_attempts}</p>
             <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Wrong attempts</p>
+            {#if wrongAttempts.length > 0}
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-auto z-20 min-w-[180px] max-w-[280px] text-left max-h-[200px] overflow-y-auto scrollbar-hide">
+                {#each wrongAttempts as wa}
+                  <p class="truncate py-0.5"><span class="font-medium">{wa.username}:</span> {wa.text?.slice(0, 50)}</p>
+                {/each}
+              </div>
+            {/if}
           </div>
           {#if stats.hints_given > 0}
-            <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm">
+            <div class="group/tip relative bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm cursor-default">
               <p class="text-lg font-bold text-gray-900 dark:text-gray-100">{stats.hints_given}</p>
               <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Hints given</p>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none z-20 min-w-[160px] max-w-[260px] text-left">
+                {#each hintEntries.slice(0, 4) as h}
+                  <p class="truncate">{h.text?.slice(0, 50)}</p>
+                {/each}
+                {#if hintEntries.length > 4}
+                  <p class="text-gray-400 mt-0.5">+{hintEntries.length - 4} more</p>
+                {/if}
+              </div>
             </div>
           {/if}
           {#if stats.unique_participants > 0}
-            <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm">
+            <div class="group/tip relative bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-3 text-center shadow-sm cursor-default">
               <p class="text-lg font-bold text-gray-900 dark:text-gray-100">{stats.unique_participants}</p>
               <p class="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Participants</p>
+              <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover/tip:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
+                {participantTooltip}
+              </div>
             </div>
           {/if}
         </div>
@@ -220,7 +228,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
           <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Complete Discussion</span>
-          <span class="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">{question.discussion.length}</span>
+          <span class="text-xs text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 px-2 py-0.5 rounded-full">{question.discussion.length}</span>
         </div>
         <svg class="w-4 h-4 text-gray-400 transition-transform {discussionVisible ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
