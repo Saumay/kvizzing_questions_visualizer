@@ -191,6 +191,7 @@ Return a JSON array. Each element is a flat object with EXACTLY these fields:
   "session_quizmaster": "username or null",
   "session_theme": "announced theme string or null",
   "session_quiz_type": "connect" or null,
+  "session_connect_answer": "the hidden connecting theme for connect quizzes, or null",
   "session_announcement": "the quizmaster's introductory message announcing/describing the session, or null",
   "session_question_number": integer (quizmaster's label) or null,
   "answer_text": "clean enriched answer string, or null if never revealed",
@@ -251,6 +252,11 @@ Set to null for subsequent questions and non-session questions.
 Set to "connect" if this is a connect quiz — a series of questions sharing a hidden connecting \
 theme that participants try to guess (quizmaster may say "guess the connect", "find the \
 connection", or reveal the connect at the end). Set to null for regular quizzes.
+
+### session_connect_answer
+The hidden connecting theme/answer for connect quizzes. Extract from the quizmaster's reveal \
+message (e.g. "The connect was: all answers contain a color"). Set on ALL questions in the \
+session (not just Q1). Set to null for non-connect quizzes or if the connect was never revealed.
 
 ### answer_text
 Enrich the solver's winning attempt with context from the asker's confirmation or reveal. \
@@ -541,6 +547,12 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
     max_retries: int = stage2_cfg.get("llm_max_retries") or stage4_cfg.get("llm_max_retries", 3)
     base_delay: float = stage2_cfg.get("llm_retry_base_delay_seconds") or stage4_cfg.get("llm_retry_base_delay_seconds", 2)
 
+    # For large days, skip straight to chunked extraction — single-call output
+    # will almost certainly exceed max_tokens and produce truncated JSON.
+    if len(messages) > 2000:
+        log.info("Stage2 [%s] %d messages — using chunked extraction directly.", date_str, len(messages))
+        return _call_llm_chunked(messages, date_str, model, llm_client)
+
     messages_text = _format_messages(messages)
 
     initial_candidates = None
@@ -572,14 +584,20 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
                     log.error("Stage2 chunked extraction also failed: %s", chunk_err)
             return []
         except Exception as e:
-            err_str = str(e)
-            if "429" in err_str or "503" in err_str or "rate_limit" in err_str.lower() or "resource_exhausted" in err_str.lower() or "unavailable" in err_str.lower():
-                if attempt < max_retries - 1:
-                    delay = _parse_retry_delay(err_str) or base_delay * (2 ** attempt)
-                    log.warning("Stage2 rate-limited — retrying in %.1fs (attempt %d/%d)…", delay, attempt + 1, max_retries)
-                    time.sleep(delay)
-                    continue
+            err_str = str(e).lower()
+            is_transient = any(kw in err_str for kw in [
+                "429", "503", "rate_limit", "resource_exhausted", "unavailable",
+                "timeout", "timed out", "connection error", "connection reset",
+                "remoteprotocol", "remotedisconnected",
+            ])
+            if is_transient and attempt < max_retries - 1:
+                delay = _parse_retry_delay(str(e)) or max(base_delay * (2 ** attempt), 30)
+                log.warning("Stage2 transient error — retrying in %.1fs (attempt %d/%d): %s", delay, attempt + 1, max_retries, e)
+                time.sleep(delay)
+                continue
             log.error("Stage2 LLM call failed: %s", e, exc_info=True)
+            if is_transient:
+                raise RuntimeError(f"Stage2 failed after {max_retries} retries: {e}")
             raise
 
     if not initial_candidates and not tried_chunked:
@@ -676,7 +694,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
 
         # Fix ORPHAN_SESSION_VAR — clear session fields on non-session questions
         if not entry.get("is_session_question"):
-            for f in ("session_quizmaster", "session_theme", "session_quiz_type", "session_question_number", "session_announcement"):
+            for f in ("session_quizmaster", "session_theme", "session_quiz_type", "session_connect_answer", "session_question_number", "session_announcement"):
                 if entry.get(f):
                     entry[f] = None
 
@@ -736,7 +754,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
 
         # Fix INVALID_TOPIC — remap invalid topics to "general"
         if entry.get("topics"):
-            entry["topics"] = [t if t.lower() in _VALID_TOPICS else "general" for t in entry["topics"]]
+            entry["topics"] = [t if t.lower() in _ALL_TOPICS else "general" for t in entry["topics"]]
 
     # ── Targeted LLM micro-calls for ambiguous confirmations ──
     from utils.audit_extraction import audit_data
@@ -927,7 +945,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
                     entry["extraction_confidence"] = "medium"
             # Orphan session fields
             if not entry.get("is_session_question"):
-                for f in ("session_quizmaster", "session_theme", "session_quiz_type", "session_question_number", "session_announcement"):
+                for f in ("session_quizmaster", "session_theme", "session_quiz_type", "session_connect_answer", "session_question_number", "session_announcement"):
                     if entry.get(f):
                         entry[f] = None
             # Solver / timestamp from discussion
@@ -978,7 +996,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
                 entry["discussion"] = sorted(disc, key=lambda e: e.get("timestamp", ""))
             # Remap invalid topics to "general"
             if entry.get("topics"):
-                entry["topics"] = [t if t.lower() in _VALID_TOPICS else "general" for t in entry["topics"]]
+                entry["topics"] = [t if t.lower() in _ALL_TOPICS else "general" for t in entry["topics"]]
 
     candidates = initial_candidates
     self_heal_retries = 3

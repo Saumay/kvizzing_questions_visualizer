@@ -59,7 +59,7 @@ _load_env()
 
 # ── Bootstrap logging before any other local imports ─────────────────────────
 
-from utils.logging import setup as _setup_logging
+from utils.log_setup import setup as _setup_logging
 
 log = _setup_logging(_PIPELINE_DIR / "logs")
 
@@ -80,8 +80,9 @@ from stages.stage5_store import load_all as _load_all, upsert as _upsert
 from utils.topic_rules import assign_topics as _assign_topics
 from utils.generate_session_images import main as _generate_images_main
 from utils.export_rejected import export_rejected as _export_rejected
-from utils.detect_sessions import detect_sessions as _detect_sessions, apply_sessions as _apply_sessions
 from utils.reclassify_elaboration import run_on_file as _reclassify_elaboration
+from utils.detect_sessions import detect_sessions as _detect_sessions, apply_sessions as _apply_sessions
+from utils.detect_connect_quizzes import main as _detect_connect_main
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -107,10 +108,6 @@ def _write_rejected_candidates(
     from stages.stage2_extract import prefilter
 
     rejected_dir.mkdir(parents=True, exist_ok=True)
-    # Clean old files
-    for old in rejected_dir.iterdir():
-        if old.suffix in (".txt", ".json"):
-            old.unlink()
 
     total_rejected = 0
     total_threads = 0
@@ -261,7 +258,8 @@ def _run_pipeline(mode: str) -> None:
 
     client = get_client()
     if client is None:
-        log.warning("No LLM client — running without extraction.")
+        log.error("No LLM client available. Set GEMINI_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY, or USE_OLLAMA=1.")
+        sys.exit(1)
 
     log.info("=" * 60)
     log.info("Pipeline run  mode=%s", mode)
@@ -324,7 +322,7 @@ def _run_pipeline(mode: str) -> None:
                 log.debug("  [%s] Stage 2: extracting from %d messages…", date_str, len(window))
                 try:
                     candidates = stage2(window, config, llm_client=client, date_str=date_str)
-                except RuntimeError as e:
+                except Exception as e:
                     log.error("  [%s] Stage 2 failed — skipping date: %s", date_str, e)
                     skipped_dates.append(date_str)
                     continue
@@ -343,13 +341,13 @@ def _run_pipeline(mode: str) -> None:
                 except Exception as e:
                     log.warning("  [%s] Could not save extraction to file: %s", date_str, e)
 
-                # Save LLM-rejected candidates to attribution_gaps/
+                # Save LLM-rejected candidates to attribution_gaps/rejected_candidates/
                 from stages.stage2_extract import get_rejected
                 rejected = get_rejected(date_str)
                 if rejected:
-                    gaps_dir = data_dir / "attribution_gaps"
+                    gaps_dir = data_dir / "attribution_gaps" / "rejected_candidates"
                     gaps_dir.mkdir(parents=True, exist_ok=True)
-                    rejected_file = gaps_dir / f"{date_str}_rejected.json"
+                    rejected_file = gaps_dir / f"{date_str}.json"
                     rejected_file.write_text(
                         _json.dumps(rejected, indent=2, ensure_ascii=False), encoding="utf-8"
                     )
@@ -400,6 +398,33 @@ def _run_pipeline(mode: str) -> None:
             total_stored += count
             log.info("  [%s] %d questions stored  (running total: %d)", date_str, count, total_stored)
 
+            # Per-date media matching
+            media_dir = V2_DIR / "data" / "raw"
+            if media_dir.is_dir():
+                try:
+                    from utils.media_match import match_media
+                    date_qs_with_media = [q for q in questions if q.question.has_media and q.question.media is None]
+                    if date_qs_with_media:
+                        enriched = match_media(date_qs_with_media, media_dir, config)
+                        matched = [q for q in enriched if q.question.media is not None]
+                        if matched:
+                            _upsert(matched, db)
+                            log.debug("  [%s] Matched %d media files.", date_str, len(matched))
+                except Exception as e:
+                    log.debug("  [%s] Media match skipped: %s", date_str, e)
+
+            # Per-date export
+            try:
+                counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=state_path)
+            except Exception as e:
+                log.warning("  [%s] Export failed: %s", date_str, e)
+
+            # Per-date session image generation
+            try:
+                _generate_images_main()
+            except Exception as e:
+                log.debug("  [%s] Image generation skipped: %s", date_str, e)
+
         log.info("")
         log.info("[Stage 5] Done — %s questions stored.", f"{total_stored:,}")
 
@@ -410,43 +435,12 @@ def _run_pipeline(mode: str) -> None:
             )
             log.warning("Re-run with a different LLM or manually fix extraction_output files for these dates.")
 
-        # Reclassify elaboration entries in extraction files
-        log.info("[Reclassify] Detecting elaboration entries…")
-        reclass_total = 0
-        for date_str in target_dates:
-            ext_file = extraction_output_dir / f"{date_str}.json"
-            if ext_file.exists():
-                count = _reclassify_elaboration(ext_file, llm_client=client, model=config.get("stage2", {}).get("llm_model", ""))
-                if count:
-                    reclass_total += count
-        if reclass_total:
-            log.info("  Reclassified %d chat→elaboration entries. Re-importing…", reclass_total)
-            # Re-run stage 3-5 for affected dates since extraction files changed
-            for date_str in target_dates:
-                ext_file = extraction_output_dir / f"{date_str}.json"
-                if not ext_file.exists():
-                    continue
-                import json as _json2
-                try:
-                    cands = _json2.loads(ext_file.read_text(encoding="utf-8"))
-                except Exception:
-                    continue
-                if not cands:
-                    continue
-                qs = stage3(cands, config, errors_dir=errors_dir)
-                qs = [q for q in qs if str(q.date) == date_str]
-                if qs:
-                    qs = stage4(qs, config, llm_client=client)
-                    stage5(qs, db, state_path=state_path)
-        else:
-            log.info("  No elaboration entries found.")
-
-        # Stage 6 — Export
-        log.info("[Stage 6] Exporting JSON files…")
+        # Final export (captures any remaining changes)
+        log.info("[Stage 6] Final export…")
         counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=state_path)
         _log_counts(counts)
 
-        # Rejected candidates (heuristic-based)
+        # Rejected candidates
         log.info("[Rejected] Writing rejected candidate files…")
         rejected_dir = data_dir / "attribution_gaps" / "rejected_candidates"
         _write_rejected_candidates(by_date, extraction_output_dir, rejected_dir, config)
@@ -454,33 +448,6 @@ def _run_pipeline(mode: str) -> None:
         if rejected_dir.exists():
             count = _export_rejected(rejected_dir, rejected_json)
             log.info("  Exported %d rejected entries to %s", count, rejected_json.name)
-
-        # Enrich media — match WhatsApp media files to questions
-        media_dir = V2_DIR / "data" / "raw"
-        if media_dir.is_dir():
-            try:
-                from utils.media_match import match_media
-                log.info("[Media] Matching media files…")
-                all_questions = _load_all(db)
-                has_media = [q for q in all_questions if q.question.has_media]
-                already_set = sum(1 for q in has_media if q.question.media is not None)
-                unmatched = len(has_media) - already_set
-                if unmatched > 0:
-                    enriched = match_media(has_media, media_dir, config)
-                    newly_matched = [q for q in enriched if q.question.media is not None and
-                                     next((oq for oq in has_media if oq.id == q.id), None) and
-                                     next((oq for oq in has_media if oq.id == q.id)).question.media is None]
-                    if newly_matched:
-                        _upsert(newly_matched, db)
-                        log.info("  Matched %d questions with media files.", len(newly_matched))
-                        # Re-export after media enrichment
-                        counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=state_path)
-                    else:
-                        log.info("  No new media matches (%d already matched).", already_set)
-                else:
-                    log.info("  All %d media questions already matched.", already_set)
-            except Exception as e:
-                log.warning("Media enrichment failed (non-fatal): %s", e)
 
         # Log unmatched media — questions with has_media=true but no matched files
         try:
@@ -606,8 +573,8 @@ def _run_reenrich(dry_run: bool, all_questions_flag: bool = False) -> None:
             needs = all_questions
             log.info("  Re-enriching ALL %d questions (--all flag).", len(needs))
         else:
-            needs = [q for q in all_questions if len(q.question.topics) < 3]
-            log.info("  Need (re-)enrichment (< 3 topics): %d", len(needs))
+            needs = [q for q in all_questions if len(q.question.topics) < 2]
+            log.info("  Need (re-)enrichment (< 2 topics): %d", len(needs))
 
         if dry_run:
             log.info("Dry run — exiting without changes.")
@@ -1003,27 +970,47 @@ def _run_backfill_discussion(dry_run: bool = False) -> None:
 
     results = backfill(questions_by_date, messages_by_date, dry_run=dry_run)
 
-    if not results:
+    total_backfilled = sum(results.values()) if results else 0
+    if total_backfilled:
+        log.info("Found %d missing discussion entries across %d dates.", total_backfilled, len(results))
+    else:
         log.info("No missing discussion entries found.")
-        return
 
-    total = sum(results.values())
-    log.info("Found %d missing discussion entries across %d dates.", total, len(results))
+    # Reclassify existing discussion roles with improved heuristics
+    from utils.backfill_discussion import reclassify
+    log.info("Reclassifying discussion roles…")
+    reclass_results = reclassify(questions_by_date, dry_run=dry_run)
+    total_reclassified = sum(reclass_results.values()) if reclass_results else 0
+    if total_reclassified:
+        log.info("Reclassified %d discussion entries across %d dates.", total_reclassified, len(reclass_results))
+    else:
+        log.info("No discussion entries needed reclassification.")
+
+    # Merge affected dates
+    affected_dates = set(results.keys()) | set(reclass_results.keys())
+    if not affected_dates:
+        return
 
     if dry_run:
         log.info("[dry-run] No files modified.")
         return
 
     # Write back to extraction_output files
-    for date_str, entries in questions_by_date.items():
-        if date_str not in results:
+    for date_str in affected_dates:
+        entries = questions_by_date.get(date_str)
+        if not entries:
             continue
         out_path = extraction_dir / f"{date_str}.json"
         out_path.write_text(
             _json.dumps(entries, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-        log.info("  [%s] Updated extraction file (+%d discussion entries)", date_str, results[date_str])
+        parts = []
+        if date_str in results:
+            parts.append(f"+{results[date_str]} new")
+        if date_str in reclass_results:
+            parts.append(f"{reclass_results[date_str]} reclassified")
+        log.info("  [%s] Updated extraction file (%s)", date_str, ", ".join(parts))
 
     # Re-run store + export to push changes to DB and JSON
     db_path = data_dir / "questions.db"
@@ -1052,6 +1039,95 @@ def _run_backfill_discussion(dry_run: bool = False) -> None:
     finally:
         conn.close()
     log.info("backfill-discussion complete.")
+
+
+def _run_classify_discussion(dry_run: bool = False, date_filter: str | None = None, skip: int = 0) -> None:
+    """Use LLM to classify discussion entry roles."""
+    import json as _json
+    from utils.classify_discussion import classify_discussion
+
+    data_dir = V2_DIR / "data"
+    extraction_dir = data_dir / "extraction_output"
+
+    client = get_client()
+    if not client:
+        log.error("No LLM client available. Set GEMINI_API_KEY, GROQ_API_KEY, or USE_OLLAMA=1.")
+        sys.exit(1)
+
+    # Load extraction output files
+    questions_by_date: dict[str, list[dict]] = {}
+    for f in sorted(extraction_dir.iterdir()):
+        if f.suffix != ".json":
+            continue
+        if date_filter and f.stem != date_filter:
+            continue
+        try:
+            questions_by_date[f.stem] = _json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    if skip > 0:
+        all_dates = sorted(questions_by_date.keys())
+        skipped = all_dates[:skip]
+        for d in skipped:
+            del questions_by_date[d]
+        log.info("Skipped first %d dates (up to %s).", len(skipped), skipped[-1] if skipped else "—")
+
+    log.info("Loaded extraction files for %d dates.", len(questions_by_date))
+    log.info("Classifying discussion roles with LLM…")
+
+    results = classify_discussion(questions_by_date, client, dry_run=dry_run)
+
+    total = sum(results.values()) if results else 0
+    if total:
+        log.info("Reclassified %d discussion entries across %d dates.", total, len(results))
+    else:
+        log.info("No discussion entries needed reclassification.")
+        return
+
+    if dry_run:
+        log.info("[dry-run] No files modified.")
+        return
+
+    # Write back to extraction_output files
+    for date_str in results:
+        entries = questions_by_date.get(date_str)
+        if not entries:
+            continue
+        out_path = extraction_dir / f"{date_str}.json"
+        out_path.write_text(
+            _json.dumps(entries, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    # Re-import affected dates to DB + re-export
+    config = load_config(_PIPELINE_DIR / "config")
+    db_path = data_dir / "questions.db"
+    state_path = data_dir / "pipeline_state.json"
+    output_dir = V2_DIR / "visualizer" / "static" / "data"
+    members_config = _PIPELINE_DIR / "config" / "members.json"
+    session_overrides_config = _PIPELINE_DIR / "config" / "session_overrides.json"
+
+    conn = sqlite3.connect(str(db_path))
+    try:
+        log.info("Re-structuring and storing updated questions…")
+        for date_str in results:
+            raw = questions_by_date[date_str]
+            questions = stage3(raw, config)
+            questions = stage4(questions, config)
+            stage5(questions, conn, state_path=state_path)
+
+        log.info("Re-exporting JSON…")
+        counts = stage6(
+            conn, output_dir,
+            members_config_path=members_config,
+            session_overrides_path=session_overrides_config,
+            state_path=state_path,
+        )
+        _log_counts(counts)
+    finally:
+        conn.close()
+    log.info("classify-discussion complete.")
 
 
 def _run_reimport(dates: list[str]) -> None:
@@ -1152,7 +1228,7 @@ def _run_reimport(dates: list[str]) -> None:
 
             # Fix ORPHAN_SESSION_VAR
             if not q.get("is_session_question"):
-                for sf in ("session_quizmaster", "session_theme", "session_quiz_type", "session_question_number", "session_announcement"):
+                for sf in ("session_quizmaster", "session_theme", "session_quiz_type", "session_connect_answer", "session_question_number", "session_announcement"):
                     if q.get(sf):
                         q[sf] = None
                         fixes += 1
@@ -1251,29 +1327,6 @@ def _run_reimport(dates: list[str]) -> None:
 
     if total_fixes:
         log.info("Auto-fix pass: %d total fixes across all files.", total_fixes)
-
-    # ── Post-hoc session detection ──
-    total_sessions = 0
-    for date_str in dates:
-        extraction_file = extraction_output_dir / f"{date_str}.json"
-        if not extraction_file.exists():
-            continue
-        try:
-            data = _json.loads(extraction_file.read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        if not data:
-            continue
-        sessions = _detect_sessions(data, min_questions=5, max_gap_minutes=30.0)
-        if sessions:
-            count = _apply_sessions(data, sessions, date_str)
-            extraction_file.write_text(_json.dumps(data, indent=2, ensure_ascii=False))
-            for s in sessions:
-                log.info("  [%s] Detected session: %s — %d Qs (theme: %s)",
-                         date_str, s["quizmaster"], len(s["indices"]), s["theme"] or "unknown")
-            total_sessions += len(sessions)
-    if total_sessions:
-        log.info("Session detection: %d new session(s) found.", total_sessions)
 
     # ── Reclassify elaboration entries ──
     reclass_total = 0
@@ -1539,7 +1592,7 @@ def main() -> None:
 
     p_reenrich = sub.add_parser("reenrich", help="Re-enrich questions via LLM (Stage 4)")
     p_reenrich.add_argument("--dry-run", action="store_true", help="Show counts without writing anything")
-    p_reenrich.add_argument("--all", action="store_true", help="Recategorize ALL questions (not just those with < 3 topics)")
+    p_reenrich.add_argument("--all", action="store_true", help="Recategorize ALL questions (not just those with < 2 topics)")
 
     p_norm = sub.add_parser("normalize-tags", help="Strip format tags and rename near-duplicates in the DB")
     p_norm.add_argument("--dry-run", action="store_true", help="Show changes without writing anything")
@@ -1556,8 +1609,16 @@ def main() -> None:
     p_detect.add_argument("--min-questions", type=int, default=4, help="Minimum questions for a session (default: 4)")
     p_detect.add_argument("--max-gap", type=float, default=30.0, help="Max minutes between consecutive Qs (default: 30)")
 
+    p_detect_connect = sub.add_parser("detect-connect", help="Detect connect quizzes among sessions using LLM")
+    p_detect_connect.add_argument("--apply", action="store_true", help="Write to session_overrides.json")
+
     p_reimport = sub.add_parser("reimport", help="Re-import extraction_output files into DB (stages 3-6, no LLM)")
     p_reimport.add_argument("dates", nargs="*", metavar="YYYY-MM-DD", help="Dates to reimport (default: all)")
+
+    p_classify_disc = sub.add_parser("classify-discussion", help="Use LLM to classify discussion entry roles (attempt/hint/chat/elaboration/etc)")
+    p_classify_disc.add_argument("--dry-run", action="store_true", help="Show changes without writing anything")
+    p_classify_disc.add_argument("--date", type=str, metavar="YYYY-MM-DD", help="Only classify a specific date")
+    p_classify_disc.add_argument("--skip", type=int, default=0, metavar="N", help="Skip the first N dates (already processed)")
 
     sub.add_parser("check-coverage", help="Check for missed dates or suspiciously low extraction counts")
     sub.add_parser("audit-quality", help="Find potentially non-question extractions and low-quality entries")
@@ -1599,6 +1660,14 @@ def main() -> None:
         _run_reimport(args.dates)
     elif args.command == "check-coverage":
         _run_check_coverage()
+    elif args.command == "detect-connect":
+        sys.argv = [sys.argv[0]] + (['--apply'] if args.apply else [])
+        _detect_connect_main()
+        if args.apply:
+            log.info("Re-exporting after connect quiz detection…")
+            _run_export()
+    elif args.command == "classify-discussion":
+        _run_classify_discussion(dry_run=args.dry_run, date_filter=args.date, skip=args.skip)
     elif args.command == "audit-quality":
         from utils.audit_quality import main as _audit_quality_main
         _audit_quality_main()
