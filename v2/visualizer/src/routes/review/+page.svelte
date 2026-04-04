@@ -348,9 +348,9 @@
 
 <div class="space-y-5">
   <!-- Hero tile -->
-  <div class="bg-gradient-to-br from-primary-300 to-primary-900 rounded-2xl pt-3 sm:pt-6 px-6 pb-5 sm:pb-6 text-white shadow-lg relative">
+  <div class="bg-gradient-to-br from-primary-300 to-primary-900 rounded-2xl p-4 sm:p-6 text-white shadow-lg relative">
     <div class="flex items-center justify-between mb-1">
-      <h1 class="text-2xl font-bold">Review Candidate Questions</h1>
+      <h1 class="text-xl sm:text-2xl font-bold">Review Candidate Questions</h1>
       {#if reviewer}
         <span class="text-xs text-primary-100 flex items-center gap-1">
           <MemberAvatar username={reviewer} size="xs" />
@@ -654,7 +654,7 @@
                     <span class="text-xs font-medium {msg.is_candidate ? 'text-primary-700 dark:text-primary-300' : linkedQ ? 'text-green-700 dark:text-green-300' : 'text-gray-700 dark:text-gray-300'}">{msg.username}</span>
                     <span class="text-[10px] text-gray-400 dark:text-gray-500">{ctxDt.date} {ctxDt.time}</span>
                     {#if linkedQ}
-                      <a href="/question/{linkedQ.id}" class="text-[10px] font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">Extracted Question &rarr;</a>
+                      <a href="/question/{linkedQ.id}" target="_blank" rel="noopener noreferrer" class="text-[10px] font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">Extracted Question &rarr;</a>
                     {/if}
                   </div>
                   <p class="text-xs {msg.is_candidate ? 'text-primary-800 dark:text-primary-200 font-medium' : linkedQ ? 'text-green-800 dark:text-green-200' : 'text-gray-600 dark:text-gray-400'} leading-relaxed whitespace-pre-wrap">{msg.text}</p>
