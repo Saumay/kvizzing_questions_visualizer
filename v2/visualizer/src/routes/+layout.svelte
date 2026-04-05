@@ -151,7 +151,8 @@
   const sidebarQuestions = store.getQuestions();
   const sidebarSessionTs = store.getSessionEarliestTimestamps();
   const totalStats = store.getTotalStats();
-  const sessionQuestionCount = sidebarSessions.reduce((sum, s) => sum + s.question_count, 0);
+  const exportedSessionIds = new Set(sidebarSessions.map(s => s.id));
+  const sessionQuestionCount = sidebarQuestions.filter(q => q.session && exportedSessionIds.has(q.session.id)).length;
   const askerCount = store.getAskers().length;
   const solverCount = store.getSolvers().length;
   const sinceDate = $derived(totalStats.earliestTimestamp ? formatDateTz(totalStats.earliestTimestamp, tz.value) : '');
