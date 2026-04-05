@@ -81,6 +81,53 @@
     } catch {}
   }
 
+  // ── Liked question IDs + global like counts ──
+  let likedIds = $state({ value: new Set<string>() });
+  let likeCounts = $state({ value: new Map<string, number>() });
+  setContext('likedIds', likedIds);
+  setContext('likeCounts', likeCounts);
+
+  async function loadLikes(user: string) {
+    try {
+      const { supabase: sb } = await import('$lib/supabase');
+      // Load user's own likes
+      if (user) {
+        const { data } = await sb.from('question_likes').select('question_id').eq('username', user);
+        if (data) likedIds.value = new Set(data.map(r => r.question_id));
+      }
+      // Load global like counts
+      const { data: counts } = await sb.from('question_likes').select('question_id');
+      if (counts) {
+        const map = new Map<string, number>();
+        for (const r of counts) {
+          map.set(r.question_id, (map.get(r.question_id) ?? 0) + 1);
+        }
+        likeCounts.value = map;
+      }
+    } catch {}
+  }
+
+  // ── Saved question IDs (private to user) ──
+  let savedIds = $state({ value: new Set<string>() });
+  setContext('savedIds', savedIds);
+
+  // ── Saved session IDs (private to user) ──
+  let savedSessionIds = $state({ value: new Set<string>() });
+  setContext('savedSessionIds', savedSessionIds);
+
+  async function loadSavedIds(user: string) {
+    if (!user) return;
+    try {
+      const { supabase: sb } = await import('$lib/supabase');
+      const [qRes, sRes] = await Promise.all([
+        sb.from('question_saves').select('question_id').eq('username', user),
+        sb.from('session_saves').select('session_id').eq('username', user),
+      ]);
+      if (qRes.data) savedIds.value = new Set(qRes.data.map(r => r.question_id));
+      if (sRes.data) savedSessionIds.value = new Set(sRes.data.map(r => r.session_id));
+    } catch {}
+  }
+
   async function setUsername() {
     const name = usernameInput.trim();
     if (!name) return;
@@ -88,6 +135,8 @@
     localStorage.setItem('kvizzing-reviewer-name', name);
     showUsernamePrompt = false;
     loadFlaggedIds(name);
+    loadLikes(name);
+    loadSavedIds(name);
     // Upsert to Supabase users table
     try {
       const { supabase: sb } = await import('$lib/supabase');
@@ -195,6 +244,8 @@
     }
     currentReviewer = saved;
     if (saved) loadFlaggedIds(saved);
+    loadLikes(saved);
+    if (saved) loadSavedIds(saved);
     refreshLeaderboard();
     // Update last_seen_at on every visit
     if (saved) {
@@ -217,7 +268,8 @@
     return `${d}${suffix} ${MONTHS_SHORT[m - 1]} ${y}`;
   }
 
-  let authenticated = $state<boolean | null>(null);
+  let authChecked = $state(false);
+  let authenticated = $state(false);
   const dm = $state({ value: false });
   let showTzPicker = $state(false);
 
@@ -251,6 +303,7 @@
 
   onMount(() => {
     authenticated = localStorage.getItem('kvizzing_auth_v2') === 'true';
+    authChecked = true;
     dm.value = localStorage.getItem('kvizzing_dark') === 'true';
     if (dm.value) document.documentElement.classList.add('dark');
     const saved = localStorage.getItem('kvizzing_theme') ?? 'sky';
@@ -429,8 +482,23 @@
   <title>KVizzing</title>
 </svelte:head>
 
-{#if authenticated === null}
-  <!-- waiting for localStorage check — render nothing to avoid flash -->
+{#if !authChecked}
+  <!-- Loading splash while checking localStorage -->
+  <div class="h-screen flex flex-col items-center justify-center bg-ui-parchment gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-14 h-14 rounded-2xl bg-primary-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+        KV
+      </div>
+      <span class="font-bold text-gray-900 dark:text-white text-2xl tracking-tight">KVizzing</span>
+    </div>
+    <div class="flex items-center gap-2 text-gray-500">
+      <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+      <span class="text-sm">Loading...</span>
+    </div>
+  </div>
 {:else if !authenticated}
   <MaraudersAuth {onAuthenticated} />
 {:else}
@@ -597,6 +665,34 @@
                   </svg>
                   Change name
                 </button>
+                <!-- Saved questions -->
+                <a
+                  href="/?saved=1"
+                  onclick={() => showUserMenu = false}
+                  class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  Saved questions
+                  {#if savedIds.value.size > 0}
+                    <span class="ml-auto text-xs text-primary-500 font-medium">{savedIds.value.size}</span>
+                  {/if}
+                </a>
+                <!-- Saved sessions -->
+                <a
+                  href="/sessions?saved=1"
+                  onclick={() => showUserMenu = false}
+                  class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                  Saved sessions
+                  {#if savedSessionIds.value.size > 0}
+                    <span class="ml-auto text-xs text-primary-500 font-medium">{savedSessionIds.value.size}</span>
+                  {/if}
+                </a>
                 <!-- Divider -->
                 <div class="border-t border-gray-100 dark:border-gray-700 my-1"></div>
                 <!-- Logout -->
@@ -640,10 +736,20 @@
               </svg>
             {/if}
           </button>
+          <!-- Profile -->
+          <button
+            onclick={() => { showUserMenu = !showUserMenu; mobileMenuOpen = false; }}
+            class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Profile menu"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </button>
           <!-- Hamburger -->
           <button
             class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
-            onclick={() => mobileMenuOpen = !mobileMenuOpen}
+            onclick={() => { mobileMenuOpen = !mobileMenuOpen; showUserMenu = false; }}
             aria-label="Toggle menu"
           >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -691,40 +797,74 @@
           </svg>
           Give feedback
         </a>
-        <!-- User section -->
-        <div class="border-t border-stone-200/80 dark:border-zinc-700/80 mt-1 pt-1">
-          <div class="px-3 py-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-gray-200">
-            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            {username.value || 'No name set'}
-          </div>
-          <button
-            onclick={() => { mobileMenuOpen = false; showUsernamePrompt = true; usernameInput = username.value; }}
-            class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-            Change name
-          </button>
+      </div>
+    {/if}
+
+    <!-- Mobile profile dropdown -->
+    {#if showUserMenu}
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <div class="sm:hidden fixed inset-0 z-40" role="presentation" onclick={() => showUserMenu = false}></div>
+      <div class="sm:hidden border-t border-stone-200/80 dark:border-zinc-700/80 bg-white/[0.99] dark:bg-zinc-900/95 px-4 py-2 relative z-50">
+        <div class="px-3 py-2 flex items-center gap-2 text-sm font-medium text-gray-800 dark:text-gray-200">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          {username.value || 'No name set'}
         </div>
-        <div class="px-3 py-2 flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Timezone -->
+        <button
+          onclick={() => { showUserMenu = false; showTzPicker = true; tzSearch = ''; }}
+          class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <select
-            bind:value={tz.value}
-            onchange={(e) => localStorage.setItem('kvizzing_tz', (e.target as HTMLSelectElement).value)}
-            class="bg-transparent text-sm font-medium text-gray-600 dark:text-gray-300 focus:outline-none cursor-pointer flex-1"
-          >
-            {#each TIMEZONES as zone}
-              <option value={zone.id}>{zone.label} ({tzAbbr(zone.id)})</option>
-            {/each}
-          </select>
-        </div>
+          <span class="flex-1 text-left">{TIMEZONES.find(z => z.id === tz.value)?.label ?? tzAbbr(tz.value)}</span>
+          <span class="text-xs text-gray-400 font-mono">{tzAbbr(tz.value)}</span>
+        </button>
+        <!-- Change name -->
         <button
-          onclick={() => { mobileMenuOpen = false; logout(); }}
+          onclick={() => { showUserMenu = false; showUsernamePrompt = true; usernameInput = username.value; }}
+          class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          Change name
+        </button>
+        <!-- Saved questions -->
+        <a
+          href="/?saved=1"
+          onclick={() => showUserMenu = false}
+          class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+          </svg>
+          Saved questions
+          {#if savedIds.value.size > 0}
+            <span class="ml-auto text-xs text-primary-500 font-medium">{savedIds.value.size}</span>
+          {/if}
+        </a>
+        <!-- Saved sessions -->
+        <a
+          href="/sessions?saved=1"
+          onclick={() => showUserMenu = false}
+          class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          Saved sessions
+          {#if savedSessionIds.value.size > 0}
+            <span class="ml-auto text-xs text-primary-500 font-medium">{savedSessionIds.value.size}</span>
+          {/if}
+        </a>
+        <!-- Divider -->
+        <div class="border-t border-gray-100 dark:border-gray-700 my-1"></div>
+        <!-- Logout -->
+        <button
+          onclick={() => { showUserMenu = false; logout(); }}
           class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -755,7 +895,7 @@
                 </div>
               {/if}
               <h1 class="text-xl sm:text-2xl font-bold mb-1">All Questions</h1>
-              <p class="text-primary-100 text-sm mb-4">Every question the group ever asked. Right here.</p>
+              <p class="text-primary-100 text-sm mb-5 sm:mb-8">Every question the group ever asked. Right here.</p>
               <div class="flex items-center justify-between gap-3">
                 <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
                   <span class="font-semibold">{totalStats.total} total questions</span>
@@ -784,7 +924,7 @@
                 </div>
               {/if}
               <h1 class="text-xl sm:text-2xl font-bold mb-1">Quiz Sessions</h1>
-              <p class="text-primary-100 text-sm mb-4">Curated quiz sessions hosted by group members</p>
+              <p class="text-primary-100 text-sm mb-5 sm:mb-8">Curated quiz sessions hosted by group members</p>
               <div class="flex items-center justify-between gap-3">
                 <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
                   <span class="font-semibold">{totalStats.sessions} quiz sessions</span>
@@ -1012,7 +1152,7 @@
   >
     <div class="bg-ui-card rounded-2xl shadow-xl p-6 w-full max-w-sm mx-4 space-y-4" onclick={(e) => e.stopPropagation()}>
       <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">{username.value ? 'Change your name' : 'Welcome to KVizzing!'}</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400">{username.value ? 'Update how your name appears on reviews and flags.' : 'Enter your name to get started. This is how your reviews and flags will be attributed.'}</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400">{username.value ? 'Update how your name appears for reviews and flagged questions.' : 'Enter your name to get started. This is how your reviews and flags will be attributed.'}</p>
       <input
         type="text"
         placeholder="Your name"
