@@ -1,86 +1,163 @@
-# KVizzing Questions Visualizer
+# KVizzing
 
-A pipeline for extracting, structuring, and visualising quiz questions from the KVizzing WhatsApp group.
+A full-stack platform for extracting, enriching, and visualising trivia questions from the KVizzing WhatsApp group.
 
 ---
 
 ## What is KVizzing?
 
-KVizzing is a WhatsApp group where members regularly post trivia questions across topics like history, science, literature, technology, sports, and entertainment. Questions range from quick factual recalls to multi-part identify questions and connect-the-dots puzzles. This project extracts those Q&A threads from raw chat exports and turns them into structured, queryable data.
+KVizzing is a WhatsApp group where members regularly post trivia questions across topics like history, science, literature, technology, sports, cinema, and entertainment. Questions range from quick factual recalls to multi-part identify questions and connect-the-dots puzzles. Members also host curated quiz sessions with themes, scores, and leaderboards.
+
+This project extracts those Q&A threads from raw chat exports and turns them into a structured, searchable archive with a polished web visualizer.
 
 ---
 
 ## Repository Structure
 
 ```
-v1/                          # Initial extraction pipeline
-  analysis_methods.py        # Chat parsing, filtering, and Q&A extraction
-  llm_call_llama_v2.py       # LLM-assisted extraction using Llama
-  Explainer.docx             # Overview of the v1 approach
+v1/                              # Legacy extraction pipeline (regex + Llama)
 
-v2/                          # Current version
-  PIPELINE.md                # End-to-end pipeline architecture (parse → extract → structure → enrich → deploy)
-  schema/                    # Single source of truth for the data model
-    schema.py                # Pydantic models — run to regenerate everything
-    schema.json              # Auto-generated JSON Schema (never edit by hand)
-    examples.json            # 4 verified sample instances
-    README.md                # Human-readable schema reference
-    test_schema.py           # 48 tests covering schema correctness
-  visualizer/                # Web app for browsing and exploring the archive
-    PRD.md                   # Product requirements document
+v2/
+  schema/                        # Pydantic data model (single source of truth)
+    schema.py                    # KVizzingQuestion model + all enums
+    schema.json                  # Auto-generated JSON Schema
+    test_schema.py               # Schema validation tests
+
+  pipeline/                      # Python extraction & enrichment pipeline
+    pipeline.py                  # Main orchestrator (backfill, reimport, export, etc.)
+    stages/
+      stage0_filter.py           # Date filtering & backfill detection
+      stage1_parse.py            # WhatsApp chat parsing
+      stage2_extract.py          # LLM-based Q&A extraction (Gemini)
+      stage3_structure.py        # Raw → Pydantic mapping, ID generation, stats
+      stage4_enrich.py           # Topic categorisation via LLM
+      stage5_store.py            # SQLite upsert with enrichment preservation
+      stage6_export.py           # JSON export for visualizer
+    utils/
+      audit_extraction.py        # 14-type auto-fix + self-healing LLM micro-calls
+      audit_quality.py           # Post-export quality audit
+      media_match.py             # WhatsApp media → question timestamp matching
+      r2_upload.py               # Cloudflare R2 media upload
+      generate_session_images.py # AI session background images (Stable Horde)
+      detect_sessions.py         # Post-hoc session detection
+      detect_connect_quizzes.py  # LLM-based connect quiz classification
+      export_rejected.py         # Rejected candidate export for review
+    config/
+      pipeline_config.json       # Pipeline parameters
+      topics.json                # 23 topic categories
+      members.json               # Member display names & colors
+
+  visualizer/                    # SvelteKit web app
+    src/
+      routes/
+        +page.svelte             # Question feed with filters, search, timeline
+        sessions/+page.svelte    # Quiz sessions gallery with cards
+        session/[id]/+page.svelte # Session detail with answer submission
+        question/[id]/+page.svelte # Individual question detail
+        highlights/+page.svelte  # Stats, leaderboards, topic distribution
+        review/+page.svelte      # Community review of rejected candidates
+      lib/
+        components/              # Reusable Svelte 5 components
+        stores/                  # QuestionStore with filtering & search
+        config/ui.ts             # Session image opacity, background URLs
+    static/
+      data/                      # Exported JSON (questions, sessions, stats, tags, members)
+      images/sessions/           # AI-generated session background images
 ```
 
 ---
 
 ## Data Model
 
-Each extracted Q&A pair is a `KVizzingQuestion` object. Key fields:
+Each extracted Q&A pair is a `KVizzingQuestion` object:
 
 | Field | Description |
 |---|---|
-| `id` | Unique identifier — `YYYY-MM-DD-NNN` |
-| `question` | Text, asker, type, topic, tags, media flag |
+| `id` | Stable timestamp-based ID (`YYYY-MM-DD-HHMMSS`) |
+| `question` | Text, asker, type, topics, tags, media attachments |
 | `answer` | Text, solver, confirmation, collaborative flag, multi-part breakdown |
-| `discussion` | Full ordered message thread |
+| `discussion` | Full ordered message thread (attempts, hints, reveals, elaborations) |
 | `stats` | Wrong attempts, hints, time to answer, difficulty |
-| `session` | Populated for quizmaster-hosted sessions; null for ad-hoc questions |
-| `reactions` | Optional enrichment from WhatsApp SQLite DB |
-| `highlights` | Derived emoji category labels (funny, crowd_favourite, etc.) |
-| `extraction_confidence` | `high` / `medium` / `low` — how certain the extraction is |
+| `session` | Quizmaster, theme, quiz type, connect answer (null for ad-hoc) |
+| `scores_after` | Running scores after each session question |
+| `extraction_confidence` | `high` / `medium` / `low` |
 
-See [`v2/schema/README.md`](v2/schema/README.md) for the full schema, design decisions, and sample instances.
-
----
-
-## v1 Pipeline
-
-The v1 pipeline (`v1/analysis_methods.py`) parses raw WhatsApp chat exports (`.txt`), filters by date/user, splits into daily files, and extracts Q&A pairs using regex heuristics and an LLM call via Llama. Output is plain text per day.
+See [`v2/schema/schema.py`](v2/schema/schema.py) for the full model.
 
 ---
 
-## v2 Pipeline
+## Pipeline
 
-v2 is under active development. The schema (`v2/schema/`) is complete and locked. The next step is a structured extraction pipeline that outputs validated `KVizzingQuestion` JSON objects conforming to the schema.
+The pipeline processes WhatsApp chat exports through 7 stages:
 
-The visualizer spec is defined in [`v2/visualizer/PRD.md`](v2/visualizer/PRD.md) — a question feed, detail view, stats/leaderboards, session explorer, and highlights reel, deployable as a static site.
+1. **Filter** — Select dates to process, detect backfill gaps
+2. **Parse** — Extract structured messages from raw chat text
+3. **Extract** — LLM-based Q&A pair extraction with smart chunking and self-healing audit
+4. **Structure** — Map to Pydantic models, generate IDs, compute stats
+5. **Enrich** — LLM topic categorisation (23 topics)
+6. **Store** — SQLite upsert with enrichment preservation
+7. **Export** — JSON files for the visualizer
 
----
-
-## Workflow
-
-### Updating the schema
+Additional pipeline capabilities:
+- **Media matching** — Timestamp-based WhatsApp media → question matching
+- **R2 upload** — Cloudflare R2 CDN for media files
+- **Session images** — AI-generated backgrounds via Stable Horde
+- **Quality audit** — Detects non-questions, low quality, and rejected/extracted overlaps
+- **Connect quiz detection** — LLM classifier for themed connect sessions
 
 ```bash
-cd v2/schema
-# Edit schema.py or examples.json, then:
-python3 schema.py        # regenerates schema.json and injects into README.md
-python3 -m pytest test_schema.py -v   # run 48 schema tests
+cd v2/pipeline
+
+# Full backfill (extract → store → media → export per date)
+GEMINI_API_KEY=xxx python3 pipeline.py backfill
+
+# Re-export from DB
+python3 pipeline.py export
+
+# Topic re-enrichment
+GEMINI_API_KEY=xxx python3 pipeline.py reenrich --all
+
+# Quality audit
+python3 pipeline.py audit-quality
 ```
 
-The pre-commit hook runs `schema.py` automatically whenever `schema.py` or `examples.json` is staged.
+---
+
+## Visualizer
+
+A SvelteKit static site with:
+
+- **Question feed** — Date-grouped timeline, full-text search, topic/tag/media filters
+- **Quiz sessions** — Card gallery with AI backgrounds, question count filters
+- **Session detail** — Interactive answer submission (multi-part, connect guess)
+- **Question detail** — Full discussion thread, media gallery, like/save/flag
+- **Highlights** — Topic distribution, member leaderboards, activity stats
+- **Review** — Community voting on rejected extraction candidates
+- **Marauder's Map auth** — Themed password gate
+
+```bash
+cd v2/visualizer
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # Static build for Netlify
+```
+
+---
+
+## Tech Stack
+
+| Component | Technology |
+|---|---|
+| Extraction | Python, Gemini API |
+| Data model | Pydantic, SQLite with FTS5 |
+| Media CDN | Cloudflare R2 |
+| Visualizer | SvelteKit 5, Tailwind CSS 4 |
+| Backend | Supabase (votes, saves, likes) |
+| Image gen | Stable Horde (free tier) |
+| Deploy | Netlify (static adapter) |
 
 ---
 
 ## Privacy
 
-Raw WhatsApp chat exports and derived data files are excluded from this repository via `.gitignore`. Only pipeline code and schema definitions are tracked.
+Raw WhatsApp chat exports, the SQLite database, and derived data files containing personal information are excluded from this repository via `.gitignore`. Only pipeline code, schema definitions, and pre-exported static JSON are tracked.
