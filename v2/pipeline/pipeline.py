@@ -1420,7 +1420,16 @@ def _run_export_rejected() -> None:
         sys.exit(1)
 
     log.info("[export-rejected] Parsing .txt files from %s…", rejected_dir)
-    count = _export_rejected(rejected_dir, output_path)
+    # Load extracted question timestamps to exclude already-extracted candidates
+    extracted_ts: set[str] = set()
+    db_path = V2_DIR / "data" / "questions.db"
+    if db_path.exists():
+        import sqlite3
+        conn = sqlite3.connect(str(db_path))
+        rows = conn.execute("SELECT json_extract(payload, '$.question.timestamp') FROM questions").fetchall()
+        extracted_ts = {r[0] for r in rows if r[0]}
+        conn.close()
+    count = _export_rejected(rejected_dir, output_path, extracted_timestamps=extracted_ts)
     log.info("[export-rejected] Wrote %d entries to %s", count, output_path)
 
 

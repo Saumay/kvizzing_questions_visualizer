@@ -110,7 +110,37 @@ def audit_quality(questions: list[dict]) -> dict:
     }
 
 
-def print_report(results: dict) -> None:
+def audit_rejected_overlap(
+    questions: list[dict],
+    rejected_path: Path,
+) -> list[dict]:
+    """Find rejected candidates whose timestamp matches an extracted question."""
+    if not rejected_path.exists():
+        return []
+    try:
+        threads = json.loads(rejected_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return []
+
+    q_timestamps = {
+        q.get("question", {}).get("timestamp")
+        for q in questions
+        if q.get("question", {}).get("timestamp")
+    }
+
+    overlaps = []
+    for t in threads:
+        for c in t.get("candidates", []):
+            if c.get("timestamp") in q_timestamps:
+                overlaps.append({
+                    "thread_id": t.get("id", "?"),
+                    "timestamp": c["timestamp"],
+                    "text": c.get("text", "")[:100],
+                })
+    return overlaps
+
+
+def print_report(results: dict, overlaps: list[dict] | None = None) -> None:
     """Print a human-readable quality report."""
     nq = results["non_questions"]
     rv = results["review"]
@@ -136,13 +166,24 @@ def print_report(results: dict) -> None:
             print(f"  {item['id']}: \"{item['text']}\"")
             print(f"    → {item['reason']}")
 
-    total = len(nq) + len(rv) + len(lq)
-    print(f"\nTotal: {len(nq)} non-questions, {len(rv)} to review, {len(lq)} low quality")
+    if overlaps:
+        print(f"\n✗ REJECTED CANDIDATES ALREADY EXTRACTED ({len(overlaps)}):")
+        for item in overlaps:
+            print(f"  {item['thread_id']}: {item['timestamp']}")
+            print(f"    → \"{item['text']}\"")
+        print("  Fix: run 'python3 pipeline.py export-rejected' to clean up")
+    elif overlaps is not None:
+        print("\n✓ No rejected/extracted overlap.")
+
+    total = len(nq) + len(rv) + len(lq) + (len(overlaps) if overlaps else 0)
+    print(f"\nTotal: {len(nq)} non-questions, {len(rv)} to review, {len(lq)} low quality"
+          + (f", {len(overlaps)} rejected overlaps" if overlaps else ""))
 
 
 def main() -> None:
     v2_dir = Path(__file__).resolve().parent.parent.parent
     questions_path = v2_dir / "visualizer" / "static" / "data" / "questions.json"
+    rejected_path = v2_dir / "visualizer" / "static" / "data" / "rejected_candidates.json"
 
     if not questions_path.exists():
         print(f"questions.json not found at {questions_path}")
@@ -151,7 +192,8 @@ def main() -> None:
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
     print(f"Auditing {len(questions)} questions…")
     results = audit_quality(questions)
-    print_report(results)
+    overlaps = audit_rejected_overlap(questions, rejected_path)
+    print_report(results, overlaps)
 
 
 if __name__ == "__main__":

@@ -26,18 +26,14 @@
   type Status = 'valid' | 'not_valid' | 'maybe';
   type Vote = { thread_id: string; reviewer: string; status: Status; reason: string; comment: string };
 
-  const threads: Thread[] = data.threads;
-  const questionsByTs: Map<string, { id: string; text: string }> = data.questionsByTs;
+  const threads: Thread[] = $derived(data.threads);
+  const questionsByTs: Map<string, { id: string; text: string }> = $derived(data.questionsByTs);
 
   // ── Reviewer identity (from site-wide context) ─────────────────────────────
   const usernameCtx = getContext<{ value: string }>('username');
   let reviewer = $derived(usernameCtx?.value || '');
 
-  onMount(() => {
-    if (reviewer) loadVotes();
-  });
-
-  // Re-load votes when username changes (e.g. user sets name after page load)
+  // Load votes on mount and when username changes (e.g. user sets name after page load)
   $effect(() => {
     if (reviewer) loadVotes();
   });
@@ -105,23 +101,27 @@
 
     const vote = { thread_id: id, reviewer, status, reason, comment: '' };
 
+    reasonOpenFor = null;
+    customReasonText = '';
+
     // Trigger vanish animation if thread will leave the current filter
     const willDisappear = filterStatus === 'unreviewed' ||
       (filterStatus !== 'all' && filterStatus !== status);
     if (willDisappear) {
       vanishingIds = new Set([...vanishingIds, id]);
       await new Promise(r => setTimeout(r, 400));
-      vanishingIds = new Set([...vanishingIds].filter(v => v !== id));
     }
 
-    // Optimistic update — save previous state for rollback
+    // Optimistic update — save previous state for rollback (after animation so thread stays in DOM)
     const prevVotes = [...allVotes];
     const idx = allVotes.findIndex(v => v.thread_id === id && v.reviewer === reviewer);
     if (idx >= 0) allVotes[idx] = { ...allVotes[idx], ...vote };
     else allVotes = [...allVotes, vote as Vote];
 
-    reasonOpenFor = null;
-    customReasonText = '';
+    // Clear vanishing flag after vote update removes thread from filtered list
+    if (willDisappear) {
+      vanishingIds = new Set([...vanishingIds].filter(v => v !== id));
+    }
 
     // Upsert to Supabase
     const { error } = await supabase.from('votes').upsert(vote, { onConflict: 'thread_id,reviewer' });
@@ -144,14 +144,18 @@
       // On a status filter — un-voting a matching status removes it
       (filterStatus !== 'all' && filterStatus !== 'unreviewed' &&
         existing?.status === filterStatus);
+
     if (willDisappear) {
       vanishingIds = new Set([...vanishingIds, threadId]);
       await new Promise(r => setTimeout(r, 400));
-      vanishingIds = new Set([...vanishingIds].filter(v => v !== threadId));
     }
 
     const prevVotes = [...allVotes];
     allVotes = allVotes.filter(v => !(v.thread_id === threadId && v.reviewer === reviewer));
+
+    if (willDisappear) {
+      vanishingIds = new Set([...vanishingIds].filter(v => v !== threadId));
+    }
 
     const { error } = await supabase.from('votes').delete().eq('thread_id', threadId).eq('reviewer', reviewer);
     if (error) {
@@ -181,6 +185,7 @@
     ],
     not_valid: [
       'Guess/answer attempt',
+      'Is it an answer attempt to a question',
       'Casual conversation',
       'Quiz logistics/coordination',
       'Rhetorical question',
@@ -189,7 +194,7 @@
   };
 
   // ── Filters ────────────────────────────────────────────────────────────────
-  const allDates = [...new Set(threads.map(t => t.date))].sort();
+  const allDates = $derived([...new Set(threads.map(t => t.date))].sort());
   let sortBy = $state<'least' | 'most' | 'newest' | 'oldest'>('least');
 
   function toggleVoteSort() {
@@ -229,8 +234,13 @@
         if (filterDateTo && t.date > filterDateTo) return false;
         // Reviewer filter: show only threads this reviewer voted on
         if (filterReviewer) {
-          const hasVote = allVotes.some(v => v.thread_id === t.id && v.reviewer === filterReviewer);
-          if (!hasVote) return false;
+          const rv = allVotes.find(v => v.thread_id === t.id && v.reviewer === filterReviewer);
+          if (!rv) return false;
+          // Status filter applies to the filtered reviewer's vote, not the current user's
+          if (filterStatus === 'valid' && rv.status !== 'valid') return false;
+          if (filterStatus === 'maybe' && rv.status !== 'maybe') return false;
+          if (filterStatus === 'not_valid' && rv.status !== 'not_valid') return false;
+          return true;
         }
         const mv = myVotes.get(t.id);
         if (filterStatus === 'unreviewed' && mv) return false;
@@ -290,7 +300,11 @@
   }
 
   // React to URL param changes (calendar links, leaderboard clicks)
+  let _lastReviewUrl = '';
   $effect(() => {
+    const url = $page.url.href;
+    if (url === _lastReviewUrl) return;
+    _lastReviewUrl = url;
     const p = $page.url.searchParams.get('date');
     if (p && allDates.includes(p)) selectedDate = p;
     const r = $page.url.searchParams.get('reviewer');
@@ -313,7 +327,7 @@
   });
 
   // ── Stats ──────────────────────────────────────────────────────────────────
-  const total = threads.length;
+  const total = $derived(threads.length);
   const reviewed = $derived(myVotes.size);
   const valid = $derived([...myVotes.values()].filter(v => v.status === 'valid').length);
   const maybe = $derived([...myVotes.values()].filter(v => v.status === 'maybe').length);
@@ -543,7 +557,7 @@
       {@const myVote = myVotes.get(thread.id)}
       {@const status = myVote?.status}
       {@const tally = voteTally(thread.id)}
-      <div class="bg-ui-card rounded-xl border overflow-hidden transition-all duration-300 {vanishingIds.has(thread.id) ? 'opacity-0 scale-95 -translate-x-4' : ''} {status === 'valid' ? 'border-green-300 dark:border-green-700 bg-green-50/30 dark:bg-green-900/10' : status === 'maybe' ? 'border-yellow-300 dark:border-yellow-700 bg-yellow-50/30 dark:bg-yellow-900/10' : status === 'not_valid' ? 'border-red-200 dark:border-red-800 opacity-50' : 'border-gray-200 dark:border-gray-700'}">
+      <div class="bg-ui-card rounded-xl border overflow-hidden transition-all duration-300 {vanishingIds.has(thread.id) ? 'opacity-0 scale-95 -translate-x-4' : ''} {status === 'valid' ? 'border-green-300 dark:border-green-700 bg-green-50/30 dark:bg-green-900/10 opacity-50' : status === 'maybe' ? 'border-yellow-300 dark:border-yellow-700 bg-yellow-50/30 dark:bg-yellow-900/10 opacity-50' : status === 'not_valid' ? 'border-red-200 dark:border-red-800 opacity-50' : 'border-gray-200 dark:border-gray-700'}">
         <div class="p-4">
           {#each thread.candidates as cand, ci}
             {@const dt = fmtDateTime(cand.timestamp)}
@@ -693,14 +707,12 @@
   </div>
 
   {#if renderLimit < filtered.length}
-    <div class="flex justify-center py-4">
-      <button
-        onclick={() => renderLimit += isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE}
-        class="px-5 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium transition-colors shadow-sm"
-      >
-        Load more ({filtered.length - renderLimit} remaining)
-      </button>
-    </div>
+    <button
+      onclick={() => renderLimit += isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE}
+      class="w-full py-3 text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+    >
+      Show more ({filtered.length - renderLimit} remaining)
+    </button>
   {/if}
 
   {#if filtered.length === 0}

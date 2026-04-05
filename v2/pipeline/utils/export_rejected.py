@@ -14,8 +14,16 @@ from pathlib import Path
 log = logging.getLogger("kvizzing")
 
 
-def export_rejected(rejected_dir: Path, output_path: Path) -> int:
-    """Combine all per-date JSON files into one array. Returns total thread count."""
+def export_rejected(
+    rejected_dir: Path,
+    output_path: Path,
+    extracted_timestamps: set[str] | None = None,
+) -> int:
+    """Combine all per-date JSON files into one array. Returns total thread count.
+
+    If extracted_timestamps is provided, threads where any candidate's timestamp
+    matches an extracted question are excluded (already in the main archive).
+    """
     all_entries: list[dict] = []
     if not rejected_dir.exists():
         raise FileNotFoundError(f"Rejected candidates directory not found: {rejected_dir}")
@@ -27,6 +35,17 @@ def export_rejected(rejected_dir: Path, output_path: Path) -> int:
                 all_entries.extend(data)
         except (json.JSONDecodeError, OSError) as e:
             log.warning("Failed to read %s: %s", json_file.name, e)
+
+    # Filter out threads whose candidates were already extracted as questions
+    if extracted_timestamps:
+        before = len(all_entries)
+        all_entries = [
+            t for t in all_entries
+            if not any(c.get("timestamp") in extracted_timestamps for c in t.get("candidates", []))
+        ]
+        removed = before - len(all_entries)
+        if removed:
+            log.info("Excluded %d thread(s) already extracted as questions", removed)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
