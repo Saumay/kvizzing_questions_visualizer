@@ -196,6 +196,7 @@
   const reviewDateStats = $derived(() => {
     const map = new Map<string, { total: number; reviewed: number; valid: number; maybe: number; notValid: number }>();
     for (const t of reviewThreads) {
+      if (!t.date) continue;
       if (!map.has(t.date)) map.set(t.date, { total: 0, reviewed: 0, valid: 0, maybe: 0, notValid: 0 });
       const s = map.get(t.date)!;
       s.total++;
