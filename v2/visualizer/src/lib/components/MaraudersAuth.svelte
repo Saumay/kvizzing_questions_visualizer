@@ -98,7 +98,7 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="auth-wrap bg-ui-parchment" class:fading onmousedown={startMusic} ontouchstart={startMusic}>
+<div class="auth-wrap" class:fading onmousedown={startMusic} ontouchstart={startMusic}>
   <div class="title-text">
     <p>I solemnly swear that I am up to no good.</p>
   </div>
@@ -185,6 +185,15 @@
     overflow: hidden;
     gap: 1rem;
     transition: opacity 2.5s ease;
+    /* Force light parchment regardless of dark mode */
+    background-color: #f7f6f4;
+    background-image:
+      linear-gradient(rgba(247, 246, 244, 0.68), rgba(247, 246, 244, 0.68)),
+      url("/images/paper-light.png");
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    box-shadow: inset 0 0 160px rgba(255, 255, 255, 0.35);
   }
   .auth-wrap.fading {
     opacity: 0;

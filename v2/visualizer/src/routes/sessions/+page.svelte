@@ -221,33 +221,30 @@
     <!-- Collapsible filters -->
     {#if filtersOpen}
       <div class="space-y-2">
-        <!-- Row 1: quizmaster + connect/regular -->
-        <div class="flex items-center gap-2">
+        <!-- Desktop: all filters on one row -->
+        <div class="hidden sm:flex sm:flex-wrap sm:items-center sm:gap-2">
           <SearchableSelect
             bind:value={filterQuizmaster}
             options={quizmasters.map(qm => ({ value: qm, label: qm }))}
             placeholder="All quizmasters"
-            class="flex-1 sm:flex-none sm:w-[140px]"
+            class="w-[140px]"
           />
           <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
-            {#each [['all', 'All'], ['connect', 'Connect'], ['regular', 'Regular']] as [val, label]}
+            {#each [['connect', 'Connect'], ['regular', 'Regular']] as [val, label]}
               <button
-                onclick={() => filterConnect = val as typeof filterConnect}
+                onclick={() => filterConnect = filterConnect === val ? 'all' : val as typeof filterConnect}
                 class="px-3 py-1.5 transition-colors {filterConnect === val ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
               >{label}</button>
             {/each}
           </div>
-        </div>
-        <!-- Row 2: question count + saved -->
-        <div class="flex items-center gap-2">
-          <div class="flex-1 inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden sm:flex-none">
-            {#each [0, 5, 10, 20] as n}
+          <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+            {#each [5, 10, 20] as n}
               <button
                 onclick={() => minQuestions = minQuestions === n ? 0 : n}
-                class="flex-1 sm:flex-none px-2.5 py-1.5 transition-colors
+                class="px-2.5 py-1.5 transition-colors
                   {minQuestions === n ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}
-                  {n > 0 ? 'border-l border-gray-200 dark:border-gray-600' : ''}"
-              >{n === 0 ? 'All' : `${n}+ Qs`}</button>
+                  {n > 5 ? 'border-l border-gray-200 dark:border-gray-600' : ''}"
+              >{n}+ Qs</button>
             {/each}
           </div>
           <button
@@ -260,10 +257,54 @@
             Saved
           </button>
         </div>
-        <!-- Row 3: tags, topics -->
-        <div class="flex items-center gap-2">
-          <TagFilter bind:tags={filterTags} {allTags} {tagFreq} class="flex-1 sm:flex-none sm:w-[140px]" />
-          <TopicFilter bind:topics={filterTopics} class="flex-1 sm:flex-none sm:w-[140px]" />
+        <!-- Mobile: separate rows -->
+        <div class="sm:hidden space-y-2">
+          <div class="flex items-center gap-2">
+            <SearchableSelect
+              bind:value={filterQuizmaster}
+              options={quizmasters.map(qm => ({ value: qm, label: qm }))}
+              placeholder="All quizmasters"
+              class="flex-1"
+            />
+            <div class="flex-1 inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+              {#each [['connect', 'Connect'], ['regular', 'Regular']] as [val, label]}
+                <button
+                  onclick={() => filterConnect = filterConnect === val ? 'all' : val as typeof filterConnect}
+                  class="flex-1 px-3 py-1.5 transition-colors {filterConnect === val ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
+                >{label}</button>
+              {/each}
+            </div>
+          </div>
+          <div class="flex items-stretch gap-2">
+            <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+              {#each [5, 10, 20] as n}
+                <button
+                  onclick={() => minQuestions = minQuestions === n ? 0 : n}
+                  class="px-3 py-1.5 whitespace-nowrap transition-colors
+                    {minQuestions === n ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}
+                    {n > 5 ? 'border-l border-gray-200 dark:border-gray-600' : ''}"
+                >{n}+ Qs</button>
+              {/each}
+            </div>
+            <button
+              onclick={() => { filterSaved = !filterSaved; if (!filterSaved && $page.url.searchParams.has('saved')) { const u = new URL(window.location.href); u.searchParams.delete('saved'); history.replaceState({}, '', u); } }}
+              class="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg border text-sm px-2.5 py-1.5 whitespace-nowrap transition-colors {filterSaved ? 'bg-primary-500 text-white border-primary-500' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
+            >
+              <svg class="w-3.5 h-3.5" fill={filterSaved ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+              </svg>
+              Saved
+            </button>
+          </div>
+          <div class="flex items-center gap-2">
+            <TagFilter bind:tags={filterTags} {allTags} {tagFreq} class="flex-1" />
+            <TopicFilter bind:topics={filterTopics} class="flex-1" />
+          </div>
+        </div>
+        <!-- Desktop: tags, topics -->
+        <div class="hidden sm:flex sm:items-center sm:gap-2">
+          <TagFilter bind:tags={filterTags} {allTags} {tagFreq} class="w-[140px]" />
+          <TopicFilter bind:topics={filterTopics} class="w-[140px]" />
         </div>
       </div>
     {/if}
@@ -382,10 +423,10 @@
             <div class="flex-shrink-0 flex items-center gap-1">
               <button
                 onclick={(e) => toggleSessionSave(e, session.id)}
-                class="p-1 rounded-lg transition-colors {savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-gray-300 dark:text-gray-600 hover:text-primary-400 dark:hover:text-primary-500'}"
+                class="p-1 rounded-lg transition-colors {savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-primary-300 dark:text-primary-600 hover:text-primary-400 dark:hover:text-primary-500'}"
                 title={savedSessionIds?.value?.has(session.id) ? 'Unsave session' : 'Save session'}
               >
-                <svg class="w-4 h-4" fill={savedSessionIds?.value?.has(session.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5" fill={savedSessionIds?.value?.has(session.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                 </svg>
               </button>

@@ -255,16 +255,6 @@
         {/if}
       </div>
       <div class="flex items-center gap-1 flex-shrink-0">
-        <!-- Like -->
-        <button
-          onclick={toggleLike}
-          class="flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium transition-colors {liked ? 'text-red-500 dark:text-red-400' : 'text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400'}"
-        >
-          <svg class="w-4 h-4" fill={liked ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-          {#if likeCount > 0}<span>{likeCount}</span>{/if}
-        </button>
         <!-- Save -->
         <button
           onclick={toggleSave}
@@ -352,6 +342,15 @@
         </div>
       {/if}
       <div class="px-3 py-3 min-h-[52px] flex items-center gap-2">
+        <button
+          onclick={toggleLike}
+          class="flex items-center gap-1 rounded-lg text-xs font-medium transition-colors flex-shrink-0 {liked ? 'text-red-500 dark:text-red-400' : 'text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400'}"
+        >
+          <svg class="w-4 h-4" fill={liked ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          {#if likeCount > 0}<span>{likeCount}</span>{/if}
+        </button>
         {#if a?.parts && a.parts.length > 1}
           <a
             href="/question/{question.id}"

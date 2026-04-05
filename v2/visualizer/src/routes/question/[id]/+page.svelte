@@ -10,10 +10,16 @@
   import DiscussionThread from '$lib/components/DiscussionThread.svelte';
   import MediaGallery from '$lib/components/MediaGallery.svelte';
   import { displayText } from '$lib/utils/text';
+  import { supabase } from '$lib/supabase';
 
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
+  const usernameCtx = getContext<{ value: string } | undefined>('username');
+  const likedIds = getContext<{ value: Set<string> } | undefined>('likedIds');
+  const likeCounts = getContext<{ value: Map<string, number> } | undefined>('likeCounts');
+  const savedIds = getContext<{ value: Set<string> } | undefined>('savedIds');
+  const flaggedIds = getContext<{ value: Set<string> } | undefined>('flaggedIds');
 
   const question = $derived(data.question);
   const q = $derived(question.question);
@@ -23,6 +29,79 @@
 
   let discussionVisible = $state(false);
   let revealed = $state(false);
+
+  // Like / Save / Flag state
+  let liked = $state(false);
+  let likeCount = $state(0);
+  let saved = $state(false);
+  $effect(() => { liked = likedIds?.value?.has(question.id) ?? false; });
+  $effect(() => { likeCount = likeCounts?.value?.get(question.id) ?? 0; });
+  $effect(() => { saved = savedIds?.value?.has(question.id) ?? false; });
+
+  async function toggleLike() {
+    const user = usernameCtx?.value || '';
+    if (!user) return;
+    if (liked) {
+      liked = false;
+      likeCount = Math.max(0, likeCount - 1);
+      if (likedIds) { const next = new Set(likedIds.value); next.delete(question.id); likedIds.value = next; }
+      if (likeCounts) { const next = new Map(likeCounts.value); next.set(question.id, Math.max(0, (next.get(question.id) ?? 1) - 1)); likeCounts.value = next; }
+      await supabase.from('question_likes').delete().eq('question_id', question.id).eq('username', user);
+    } else {
+      liked = true;
+      likeCount = likeCount + 1;
+      if (likedIds) likedIds.value = new Set([...likedIds.value, question.id]);
+      if (likeCounts) { const next = new Map(likeCounts.value); next.set(question.id, (next.get(question.id) ?? 0) + 1); likeCounts.value = next; }
+      await supabase.from('question_likes').upsert({ question_id: question.id, username: user }, { onConflict: 'question_id,username' });
+    }
+  }
+
+  async function toggleSave() {
+    const user = usernameCtx?.value || '';
+    if (!user || !savedIds) return;
+    if (saved) {
+      saved = false;
+      const next = new Set(savedIds.value); next.delete(question.id); savedIds.value = next;
+      await supabase.from('question_saves').delete().eq('question_id', question.id).eq('username', user);
+    } else {
+      saved = true;
+      savedIds.value = new Set([...savedIds.value, question.id]);
+      await supabase.from('question_saves').upsert({ question_id: question.id, username: user }, { onConflict: 'question_id,username' });
+    }
+  }
+
+  let flagged = $state(false);
+  let showFlagModal = $state(false);
+  let flagReason = $state('');
+  $effect(() => { flagged = flaggedIds?.value?.has(question.id) ?? false; });
+
+  function toggleFlag() {
+    if (flagged) { unflag(); return; }
+    showFlagModal = true;
+    flagReason = '';
+  }
+
+  async function submitFlag(reason: string) {
+    const user = usernameCtx?.value || '';
+    if (!user) { showFlagModal = false; return; }
+    showFlagModal = false;
+    flagged = true;
+    if (flaggedIds) flaggedIds.value = new Set([...flaggedIds.value, question.id]);
+    await supabase.from('question_flags').upsert(
+      { question_id: question.id, reporter: user, reason },
+      { onConflict: 'question_id,reporter' }
+    );
+  }
+
+  async function unflag() {
+    const user = usernameCtx?.value || '';
+    if (!user) return;
+    flagged = false;
+    if (flaggedIds) {
+      const next = new Set(flaggedIds.value); next.delete(question.id); flaggedIds.value = next;
+    }
+    await supabase.from('question_flags').delete().eq('question_id', question.id).eq('reporter', user);
+  }
 
   const questionMedia = $derived((q.media ?? []).filter((m: { url: string | null }) => m.url));
   const answerMedia = $derived(
@@ -114,6 +193,39 @@
         {/each}
       </div>
     {/if}
+
+    <!-- Like / Save / Flag actions -->
+    <div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+      <button
+        onclick={toggleLike}
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {liked ? 'text-red-500 dark:text-red-400' : 'text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400'}"
+      >
+        <svg class="w-4 h-4" fill={liked ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        {liked ? 'Liked' : 'Like'}{#if likeCount > 0}<span class="text-xs opacity-70">({likeCount})</span>{/if}
+      </button>
+      <div class="flex items-center gap-1">
+        <button
+          onclick={toggleSave}
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {saved ? 'text-primary-500 dark:text-primary-400' : 'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400'}"
+        >
+          <svg class="w-4 h-4" fill={saved ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+          </svg>
+          {saved ? 'Saved' : 'Save'}
+        </button>
+        <button
+          onclick={toggleFlag}
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {flagged ? 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20' : 'text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400'}"
+        >
+          <svg class="w-4 h-4" fill={flagged ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z" />
+          </svg>
+          {flagged ? 'Flagged' : 'Flag'}
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Answer submission -->
@@ -279,3 +391,25 @@
     {/if}
   </div>
 </div>
+
+<!-- Flag modal -->
+{#if showFlagModal}
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onclick={() => showFlagModal = false}>
+    <div class="bg-ui-card rounded-2xl shadow-xl p-6 w-full max-w-sm mx-4 space-y-4" onclick={(e) => e.stopPropagation()}>
+      <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Flag this question</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Why should this question be flagged?</p>
+      <textarea
+        bind:value={flagReason}
+        placeholder="Reason (optional)"
+        class="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 resize-none"
+        rows="3"
+      ></textarea>
+      <div class="flex justify-end gap-2">
+        <button onclick={() => showFlagModal = false} class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">Cancel</button>
+        <button onclick={() => submitFlag(flagReason)} class="px-4 py-2 text-sm font-medium bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">Flag</button>
+      </div>
+    </div>
+  </div>
+{/if}
