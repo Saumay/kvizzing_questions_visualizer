@@ -10,8 +10,9 @@ export async function load({ fetch }) {
       questionsByTs.set(q.question.timestamp, { id: q.id, text: q.question.text });
     }
   }
-  // Filter out threads where any candidate was already extracted as a question
+  // Filter out malformed entries and threads where any candidate was already extracted
   const filteredThreads = threads.filter((t: any) =>
+    t.candidates?.length > 0 &&
     !t.candidates.some((c: any) => questionsByTs.has(c.timestamp))
   );
   return { threads: filteredThreads, questionsByTs };
