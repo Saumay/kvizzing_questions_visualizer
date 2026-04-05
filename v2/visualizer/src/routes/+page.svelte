@@ -86,6 +86,7 @@
   const askers = store.getAskers();
   const solvers = store.getSolvers();
   const allSessions = store.getSessions();
+  const exportedSessionIds = new Set(allSessions.map(s => s.id));
   const allQuestions = store.getQuestions();
 
   // Build feed states eagerly, then let $state wrap the populated object
@@ -145,7 +146,7 @@
     if (filterSessionId === '__none__') {
       results = results.filter(q => !q.session);
     } else if (filterSessionId === '__session__') {
-      results = results.filter(q => q.session);
+      results = results.filter(q => q.session && exportedSessionIds.has(q.session.id));
     } else if (filterSessionId) {
       results = results.filter(q => q.session?.id === filterSessionId);
     }

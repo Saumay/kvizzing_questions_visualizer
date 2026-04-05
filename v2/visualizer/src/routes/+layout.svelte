@@ -929,7 +929,7 @@
                 <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
                   <span class="font-semibold">{totalStats.sessions} quiz sessions</span>
                   <span class="text-primary-200 hidden sm:inline">·</span>
-                  <a href="/" class="font-semibold hover:text-primary-100 transition-colors">{sessionQuestionCount} questions</a>
+                  <a href="/?session=__session__" class="font-semibold hover:text-primary-100 transition-colors">{sessionQuestionCount} questions</a>
                 </div>
                 <button
                   onclick={randomQuiz}
