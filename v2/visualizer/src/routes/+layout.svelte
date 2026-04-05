@@ -1136,6 +1136,9 @@
             Contribute on GitHub
           </a>
         </div>
+        <p class="mt-1.5 text-xs text-primary-100">
+          Built with <span class="text-primary-300">&#9829;</span> by <a href="https://github.com/Saumay" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Saumay</a>
+        </p>
       </div>
     </footer>
   </div>
