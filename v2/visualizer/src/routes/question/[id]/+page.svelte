@@ -150,16 +150,16 @@
   </div>
 
   <!-- Context bar -->
-  <div class="flex items-center justify-between gap-3 flex-wrap">
-    <div class="flex items-center gap-2">
+  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
+    <div class="flex items-center gap-2 min-w-0">
       <MemberAvatar username={q.asker} size="sm" />
-      <div>
+      <div class="min-w-0">
         <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">{q.asker}</p>
         <p class="text-xs text-gray-400 dark:text-gray-500">{question.question.timestamp ? formatDateTimeTz(question.question.timestamp, tzCtx?.value ?? 'Europe/London') : formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</p>
       </div>
     </div>
 
-    <div class="flex items-center gap-2 flex-wrap justify-end">
+    <div class="flex items-center gap-2 flex-wrap min-w-0 sm:justify-end sm:flex-shrink-0">
       {#if question.session}
         <a
           href="/session/{question.session.id}"
@@ -363,11 +363,11 @@
   <!-- Prev / Next navigation -->
   <div class="flex justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
     {#if adj.next}
-      <a href="/question/{adj.next.id}" class="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group max-w-[45%]">
+      <a href="/question/{adj.next.id}" class="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group max-w-[45%] min-w-0">
         <svg class="w-4 h-4 flex-shrink-0 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        <div>
+        <div class="min-w-0">
           <p class="text-xs text-gray-400 dark:text-gray-500">Previous</p>
           <p class="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 line-clamp-2">{adj.next.question.text.slice(0, 60)}…</p>
         </div>
@@ -377,8 +377,8 @@
     {/if}
 
     {#if adj.prev}
-      <a href="/question/{adj.prev.id}" class="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group text-right max-w-[45%]">
-        <div>
+      <a href="/question/{adj.prev.id}" class="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group text-right max-w-[45%] min-w-0">
+        <div class="min-w-0">
           <p class="text-xs text-gray-400 dark:text-gray-500">Next</p>
           <p class="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 line-clamp-2">{adj.prev.question.text.slice(0, 60)}…</p>
         </div>
