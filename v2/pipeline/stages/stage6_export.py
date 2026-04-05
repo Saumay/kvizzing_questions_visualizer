@@ -103,6 +103,8 @@ def build_questions(
             for q in session_qs:
                 q["session"].update(session_overrides[session_id])
 
+    MAX_DISCUSSION = 40
+
     for q in payloads:
         qid = q["id"]
         session = q.get("session")
@@ -110,6 +112,11 @@ def build_questions(
             q["scores_after"] = scores_by_qid.get(qid) or None
         else:
             q["scores_after"] = None
+
+        # Cap discussion to avoid bloating the JSON for the visualizer
+        disc = q.get("discussion")
+        if disc and len(disc) > MAX_DISCUSSION:
+            q["discussion"] = disc[:MAX_DISCUSSION]
 
     return payloads
 
