@@ -263,12 +263,13 @@ def structure(
                     if role in ("hint", "confirmation", "answer_reveal"):
                         quizmaster = entry.get("username", "")
                         break
-            if not quizmaster:
+            if not quizmaster or not quizmaster.strip():
                 log.warning("Stage3: is_session_question=true but no quizmaster found for %s — using 'unknown'", q_ts)
                 quizmaster = "unknown"
-            # Take the first component before any space or dot for a clean slug
-            # e.g. "pratik.s.chandarana" → "pratik", "Pavan Pamidimarri" → "pavan"
-            qm_slug = re.split(r"[\s.]", quizmaster.lower())[0]
+            # Take the first non-empty component before any space or dot for a
+            # clean slug: "pratik.s.chandarana" → "pratik", "Pavan P" → "pavan".
+            # next(filter(None, ...)) skips empty strings from leading separators.
+            qm_slug = next(filter(None, re.split(r"[\s.]", quizmaster.lower())), "unknown")
             # Allow extraction data to override session ID (for multi-day sessions)
             session_id = raw.get("session_id_override") or f"{session_date}-{qm_slug}"
             session = Session(

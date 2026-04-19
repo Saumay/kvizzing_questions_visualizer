@@ -16,6 +16,7 @@ Output: questions.db updated in place; pipeline_state.json updated
 from __future__ import annotations
 
 import json
+import logging
 import pathlib
 import sqlite3
 from collections import defaultdict
@@ -25,6 +26,8 @@ from typing import Optional
 import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "schema"))
 from schema import KVizzingQuestion
+
+log = logging.getLogger("kvizzing")
 
 
 # ── Schema DDL ────────────────────────────────────────────────────────────────
@@ -120,6 +123,76 @@ _FTS_INSERT_SQL = (
 )
 
 
+def _apply_preservation(q: KVizzingQuestion, old: dict) -> KVizzingQuestion:
+    """
+    Merge enrichment-heavy fields from the old stored payload into the new
+    question when the new one is weaker. Raises on schema-shape mismatches so
+    the caller can decide whether to skip preservation or abort.
+    """
+    from schema import Answer, Difficulty, MediaAttachment, Reaction, TopicCategory
+
+    old_question = old.get("question") or {}
+    old_disc = old.get("discussion")
+    q_updates: dict = {}
+
+    question_updates: dict = {}
+
+    # Media: keep existing if incoming has none
+    if q.question.media is None and old_question.get("media"):
+        question_updates["media"] = [MediaAttachment.model_validate(m) for m in old_question["media"]]
+
+    # Topics: keep existing if they have more
+    old_topics = old_question.get("topics") or []
+    if len(old_topics) > len(q.question.topics or []):
+        question_updates["topics"] = [TopicCategory(t) for t in old_topics]
+
+    # Tags: keep existing if incoming has none/fewer
+    old_tags = old_question.get("tags") or []
+    if len(old_tags) > len(q.question.tags or []):
+        question_updates["tags"] = old_tags
+
+    if question_updates:
+        q_updates["question"] = q.question.model_copy(update=question_updates)
+
+    # Answer: preserve wholesale when re-extraction produced a weaker one.
+    # Answers are a coherent unit (text + solver + timestamp + confirmation
+    # reference the same moment in chat); mixing fields from two runs can
+    # produce incoherent records, so we keep or replace atomically.
+    old_answer = old.get("answer")
+    if old_answer and old_answer.get("text") and not q.answer.text:
+        q_updates["answer"] = Answer.model_validate(old_answer)
+
+    # Stats: preserve difficulty when new payload lacks it
+    old_stats = old.get("stats") or {}
+    if old_stats.get("difficulty") and not q.stats.difficulty:
+        q_updates["stats"] = q.stats.model_copy(update={"difficulty": Difficulty(old_stats["difficulty"])})
+
+    # Reactions: preserve the full list when new payload has none.
+    # Schema field is `list[Reaction]`, so validate element-wise.
+    old_reactions = old.get("reactions")
+    if old_reactions and not q.reactions:
+        q_updates["reactions"] = [Reaction.model_validate(r) for r in old_reactions]
+
+    # Per-discussion-entry media: keep old where new is null
+    if q.discussion and old_disc:
+        new_disc = list(q.discussion)
+        changed = False
+        for i, entry in enumerate(new_disc):
+            if entry.media is None and i < len(old_disc):
+                old_entry_media = (old_disc[i] if isinstance(old_disc[i], dict) else {}).get("media")
+                if old_entry_media:
+                    new_disc[i] = entry.model_copy(update={
+                        "media": [MediaAttachment.model_validate(m) for m in old_entry_media]
+                    })
+                    changed = True
+        if changed:
+            q_updates["discussion"] = new_disc
+
+    if q_updates:
+        return q.model_copy(update=q_updates)
+    return q
+
+
 def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
     """
     Sync the FTS5 index for one question.
@@ -139,74 +212,15 @@ def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
     if existing:
         conn.execute("DELETE FROM questions_fts WHERE rowid = ?", (existing[0],))
 
-        old = json.loads(existing[1])
-        old_question = old.get("question") or {}
-        old_disc = old.get("discussion")
-        q_updates: dict = {}
-
-        # --- Preserve question-level fields ---
-        question_updates: dict = {}
-
-        # Media: keep existing if incoming has none
-        if q.question.media is None and old_question.get("media"):
-            from schema import MediaAttachment
-            question_updates["media"] = [MediaAttachment.model_validate(m) for m in old_question["media"]]
-
-        # Topics: keep existing if they have more
-        old_topics = old_question.get("topics") or []
-        if len(old_topics) > len(q.question.topics or []):
-            from schema import TopicCategory
-            question_updates["topics"] = [TopicCategory(t) for t in old_topics]
-
-        # Tags: keep existing if incoming has none/fewer
-        old_tags = old_question.get("tags") or []
-        if len(old_tags) > len(q.question.tags or []):
-            question_updates["tags"] = old_tags
-
-        if question_updates:
-            q_updates["question"] = q.question.model_copy(update=question_updates)
-
-        # --- Preserve answer wholesale when re-extraction produced a weaker one.
-        # Answers are a coherent unit (text + solver + timestamp + confirmation
-        # reference the same moment in chat), so mixing fields from two runs can
-        # produce incoherent records. If the new extraction lacks an answer.text
-        # but the old row has one, keep the entire old answer object.
-        old_answer = old.get("answer")
-        if old_answer and old_answer.get("text") and (not q.answer or not q.answer.text):
-            from schema import Answer
-            q_updates["answer"] = Answer.model_validate(old_answer)
-
-        # --- Preserve stats-level fields ---
-        old_stats = old.get("stats") or {}
-        if old_stats.get("difficulty") and (not q.stats or not q.stats.difficulty):
-            from schema import Difficulty
-            if q.stats:
-                q_updates["stats"] = q.stats.model_copy(update={"difficulty": Difficulty(old_stats["difficulty"])})
-
-        # --- Preserve reactions ---
-        old_reactions = old.get("reactions")
-        if old_reactions and not q.reactions:
-            from schema import Reactions
-            q_updates["reactions"] = Reactions.model_validate(old_reactions)
-
-        # --- Preserve discussion-level media ---
-        if q.discussion and old_disc:
-            new_disc = list(q.discussion)
-            changed = False
-            for i, entry in enumerate(new_disc):
-                if entry.media is None and i < len(old_disc):
-                    old_entry_media = (old_disc[i] if isinstance(old_disc[i], dict) else {}).get("media")
-                    if old_entry_media:
-                        from schema import MediaAttachment
-                        new_disc[i] = entry.model_copy(update={
-                            "media": [MediaAttachment.model_validate(m) for m in old_entry_media]
-                        })
-                        changed = True
-            if changed:
-                q_updates["discussion"] = new_disc
-
-        if q_updates:
-            q = q.model_copy(update=q_updates)
+        # Preservation is best-effort: if the stored payload uses a schema
+        # shape the current code can't validate (topic removed, enum value
+        # changed, required field added later), we log and skip preservation
+        # rather than killing the whole date's transaction.
+        try:
+            q = _apply_preservation(q, json.loads(existing[1]))
+        except Exception as e:
+            log.warning("Stage5: preservation skipped for %s (%s: %s) — using new payload as-is",
+                        q.id, type(e).__name__, e)
 
     # INSERT OR REPLACE assigns a new rowid — fetch it after the write.
     conn.execute(_INSERT_SQL, _to_row(q))
