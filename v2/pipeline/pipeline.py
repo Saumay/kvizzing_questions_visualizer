@@ -111,9 +111,14 @@ def _write_rejected_candidates(
 
     total_rejected = 0
     total_threads = 0
-    _MIN_TEXT_LEN = 40
-    _REPLY_WINDOW_S = 600
-    _THREAD_GAP_S = 180
+    rc_cfg = config.get("rejected_candidates", {})
+    _MIN_TEXT_LEN = rc_cfg.get("min_text_length", 40)
+    _REPLY_WINDOW_S = rc_cfg.get("reply_window_seconds", 600)
+    _THREAD_GAP_S = rc_cfg.get("thread_gap_seconds", 180)
+    _CTX_BEFORE = rc_cfg.get("context_messages_before", 8)
+    _CTX_AFTER = rc_cfg.get("context_messages_after", 13)
+    _CAND_TEXT_MAX = rc_cfg.get("candidate_text_max_chars", 300)
+    _CTX_TEXT_MAX = rc_cfg.get("context_text_max_chars", 200)
 
     for date_str in sorted(by_date.keys()):
         ext_file = extraction_dir / f"{date_str}.json"
@@ -192,8 +197,8 @@ def _write_rejected_candidates(
         for ti, thread in enumerate(threads, 1):
             first_idx = thread[0][0]
             last_idx = thread[-1][0]
-            ctx_start = max(0, first_idx - 8)
-            ctx_end = min(len(day_messages), last_idx + 13)
+            ctx_start = max(0, first_idx - _CTX_BEFORE)
+            ctx_end = min(len(day_messages), last_idx + _CTX_AFTER)
             candidate_idxs = {idx for idx, _ in thread}
 
             candidates_json = []
@@ -207,7 +212,7 @@ def _write_rejected_candidates(
                 candidates_json.append({
                     "timestamp": msg["timestamp"],
                     "username": msg["username"],
-                    "text": msg["text"][:300],
+                    "text": msg["text"][:_CAND_TEXT_MAX],
                     "reason_flagged": reason,
                 })
 
@@ -217,7 +222,7 @@ def _write_rejected_candidates(
                 context_json.append({
                     "timestamp": m["timestamp"],
                     "username": m["username"],
-                    "text": m["text"][:200],
+                    "text": m["text"][:_CTX_TEXT_MAX],
                     "is_candidate": ci in candidate_idxs,
                 })
 
@@ -353,8 +358,9 @@ def _run_pipeline(mode: str) -> None:
                     )
                     log.debug("  [%s] Saved %d rejected candidates to attribution_gaps/", date_str, len(rejected))
 
-                # Gemini free tier: 5 RPM for pro → wait 13s between LLM calls
-                time.sleep(13)
+                # Inter-date rate limit (tuned for Gemini 2.5 Pro free tier: 5 RPM → 13s).
+                rate_limit_sleep = config.get("stage2", {}).get("llm_rate_limit_sleep_seconds", 13)
+                time.sleep(rate_limit_sleep)
 
             # Stage 3 — Structure
             questions = stage3(candidates, config, errors_dir=errors_dir)

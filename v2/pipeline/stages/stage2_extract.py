@@ -393,7 +393,7 @@ def _format_messages(messages: list[dict]) -> str:
     )
 
 
-def _llm_call_once(messages_text: str, date_str: str, model: str, llm_client) -> str:
+def _llm_call_once(messages_text: str, date_str: str, model: str, llm_client, max_tokens: int) -> str:
     user_prompt = (
         f"DATE: {date_str}\n\n"
         f"Extract all Q&A pairs where question_timestamp starts with {date_str}.\n\n"
@@ -401,7 +401,7 @@ def _llm_call_once(messages_text: str, date_str: str, model: str, llm_client) ->
     )
     response = llm_client.messages.create(
         model=model,
-        max_tokens=65536,
+        max_tokens=max_tokens,
         system=_EXTRACTION_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_prompt}],
     )
@@ -467,10 +467,13 @@ def _merge_extractions(existing: dict, new: dict) -> dict:
     return merged
 
 
-def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_client) -> list[dict]:
+def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_client, config: dict) -> list[dict]:
     """Split messages into overlapping chunks at quiet gaps, extract each, merge by timestamp."""
-    overlap = 50  # bidirectional overlap so boundary Q&A threads are seen by both chunks
-    target_chunk_size = 600
+    stage2_cfg = config.get("stage2", {})
+    overlap: int = stage2_cfg.get("chunk_overlap_messages", 50)
+    target_chunk_size: int = stage2_cfg.get("chunk_target_size", 600)
+    max_tokens: int = stage2_cfg.get("llm_max_tokens", 65536)
+    rate_limit_sleep: float = stage2_cfg.get("llm_rate_limit_sleep_seconds", 13)
 
     # Determine split points
     n_chunks = max(2, (len(messages) + target_chunk_size - 1) // target_chunk_size)
@@ -500,7 +503,7 @@ def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_clien
         chunk_text = _format_messages(messages[start:end])
         log.debug("  Chunk %d/%d: messages %d–%d (%d msgs)", ci + 1, n_chunks, start, end - 1, end - start)
         try:
-            raw = _llm_call_once(chunk_text, date_str, model, llm_client)
+            raw = _llm_call_once(chunk_text, date_str, model, llm_client, max_tokens)
             parsed = _parse_json(raw) if raw.strip() else []
             pairs = _extract_rejected(parsed, date_str) if isinstance(parsed, dict) else (parsed if isinstance(parsed, list) else [])
             for p in pairs:
@@ -512,7 +515,7 @@ def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_clien
         except Exception as e:
             log.warning("  Chunk %d/%d failed: %s — continuing with remaining chunks", ci + 1, n_chunks, e)
         if ci < n_chunks - 1:
-            time.sleep(13)  # Gemini free tier: 5 RPM
+            time.sleep(rate_limit_sleep)  # Inter-chunk rate limit
 
     return list(seen.values())
 
@@ -546,12 +549,14 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
     model: str = stage2_cfg.get("llm_model") or stage4_cfg.get("llm_model", "")
     max_retries: int = stage2_cfg.get("llm_max_retries") or stage4_cfg.get("llm_max_retries", 3)
     base_delay: float = stage2_cfg.get("llm_retry_base_delay_seconds") or stage4_cfg.get("llm_retry_base_delay_seconds", 2)
+    max_tokens: int = stage2_cfg.get("llm_max_tokens", 65536)
+    chunk_threshold: int = stage2_cfg.get("chunk_threshold_messages", 2000)
 
     # For large days, skip straight to chunked extraction — single-call output
     # will almost certainly exceed max_tokens and produce truncated JSON.
-    if len(messages) > 2000:
+    if len(messages) > chunk_threshold:
         log.info("Stage2 [%s] %d messages — using chunked extraction directly.", date_str, len(messages))
-        return _call_llm_chunked(messages, date_str, model, llm_client)
+        return _call_llm_chunked(messages, date_str, model, llm_client, config)
 
     messages_text = _format_messages(messages)
 
@@ -559,7 +564,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
     tried_chunked = False
     for attempt in range(max_retries):
         try:
-            raw_text = _llm_call_once(messages_text, date_str, model, llm_client)
+            raw_text = _llm_call_once(messages_text, date_str, model, llm_client, max_tokens)
             parsed = _parse_json(raw_text)
             initial_candidates = _extract_rejected(parsed, date_str)
             break
@@ -578,7 +583,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
                 log.warning("Stage2 falling back to chunked extraction (%d messages)…", len(messages))
                 tried_chunked = True
                 try:
-                    initial_candidates = _call_llm_chunked(messages, date_str, model, llm_client)
+                    initial_candidates = _call_llm_chunked(messages, date_str, model, llm_client, config)
                     break
                 except Exception as chunk_err:
                     log.error("Stage2 chunked extraction also failed: %s", chunk_err)
@@ -606,7 +611,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
         if len(messages) > 100:
             log.warning("Stage2 LLM returned 0 candidates for %d messages — retrying chunked…", len(messages))
             try:
-                initial_candidates = _call_llm_chunked(messages, date_str, model, llm_client)
+                initial_candidates = _call_llm_chunked(messages, date_str, model, llm_client, config)
             except Exception as e:
                 log.error("Stage2 chunked retry also returned nothing: %s", e)
     if not initial_candidates:
@@ -868,7 +873,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
 
             # Rate limit between micro-calls
             if ci < len(implicit_issues) - 1:
-                time.sleep(13)
+                time.sleep(stage2_cfg.get("llm_rate_limit_sleep_seconds", 13))
 
         if resolved:
             log.info("Stage2 resolved %d/%d CONFIRM_IMPLICIT issues via targeted LLM calls.",
@@ -1025,7 +1030,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
             log.info("Stage2 dispatching self-healing LLM call...")
             fix_resp = llm_client.messages.create(
                 model=model,
-                max_tokens=65536,
+                max_tokens=stage2_cfg.get("llm_max_tokens", 65536),
                 system=_FIX_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": fix_prompt}]
             )

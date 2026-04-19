@@ -22,6 +22,7 @@ _pipeline_dir = str(Path(__file__).parent.parent)
 if _pipeline_dir not in sys.path:
     sys.path.append(_pipeline_dir)
 from clients.llm import get_client
+from utils.config import load_config
 
 
 def main():
@@ -33,6 +34,8 @@ def main():
     v2_dir = Path(__file__).parent.parent.parent
     sessions = json.loads((v2_dir / "visualizer/static/data/sessions.json").read_text())
     questions = json.loads((v2_dir / "visualizer/static/data/questions.json").read_text())
+    config = load_config(Path(__file__).parent.parent / "config")
+    rate_limit_sleep = config.get("stage2", {}).get("llm_rate_limit_sleep_seconds", 13)
 
     client = get_client()
     if not client:
@@ -90,7 +93,7 @@ def main():
         except Exception as e:
             print(f"  error:   {s['id']}: {e}")
 
-        time.sleep(13)  # Gemini rate limit
+        time.sleep(rate_limit_sleep)
 
     print(f"\n{len(connect_found)} connect quiz(zes) found.")
 

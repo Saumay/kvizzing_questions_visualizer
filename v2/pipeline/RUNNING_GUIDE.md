@@ -315,6 +315,32 @@ Steps 7-12 are non-fatal — if any fails, the pipeline continues.
 | `utils/config.py → load_topic_aliases()` | Topic alias map (LLM typo corrections like "film" → "cinema") |
 | `.env` | R2 credentials (gitignored) |
 
+### Tunable thresholds in `pipeline_config.json`
+
+All previously hardcoded thresholds now live in config:
+
+**`stage2` — extraction**
+| Key | Default | Notes |
+|---|---|---|
+| `llm_max_tokens` | 65536 | Output cap for extraction and self-heal calls |
+| `llm_rate_limit_sleep_seconds` | 13 | Sleep between LLM calls (Gemini Pro free tier = 5 RPM → 13 s). Drop to ~1 s on paid tier. Also used by `detect_connect_quizzes` and the per-date loop. |
+| `chunk_threshold_messages` | 2000 | Above this, skip single-call extraction and go straight to chunking |
+| `chunk_target_size` | 600 | Messages per chunk |
+| `chunk_overlap_messages` | 50 | Bidirectional overlap so boundary Q&As are seen by both chunks |
+| `heuristic_reply_window_minutes` | 15 | Reply lookback used by prefilter |
+| `heuristic_min_replies` | 2 | Min replies to flag as Q candidate |
+
+**`rejected_candidates` — attribution-gap export**
+| Key | Default | Notes |
+|---|---|---|
+| `min_text_length` | 40 | Drop too-short candidate messages |
+| `reply_window_seconds` | 600 | Exclude messages that reply to extracted questions within this window |
+| `thread_gap_seconds` | 180 | Messages more than this apart form a new thread |
+| `context_messages_before` | 8 | Messages of context shown before a rejected thread |
+| `context_messages_after` | 13 | Messages of context shown after |
+| `candidate_text_max_chars` | 300 | Truncation for candidate text in JSON output |
+| `context_text_max_chars` | 200 | Truncation for context messages |
+
 ### Adding a new topic category
 
 1. Add entry to `config/topics.json`:

@@ -13,10 +13,24 @@
   "stage2": {
     "heuristic_reply_window_minutes": 15,
     "heuristic_min_replies": 2,
-    "llm_request_delay_seconds": 2.5,
     "llm_model": "qwen3.5:latest",
+    "llm_max_tokens": 65536,
     "llm_max_retries": 10,
-    "llm_retry_base_delay_seconds": 2
+    "llm_retry_base_delay_seconds": 2,
+    "llm_rate_limit_sleep_seconds": 13,
+    "chunk_threshold_messages": 2000,
+    "chunk_target_size": 600,
+    "chunk_overlap_messages": 50
+  },
+
+  "rejected_candidates": {
+    "min_text_length": 40,
+    "reply_window_seconds": 600,
+    "thread_gap_seconds": 180,
+    "context_messages_before": 8,
+    "context_messages_after": 13,
+    "candidate_text_max_chars": 300,
+    "context_text_max_chars": 200
   },
 
   "stage3": {
