@@ -105,7 +105,6 @@ export interface QuestionFilters {
   tz?: string;
   asker?: string;
   solver?: string;
-  difficulty?: 'easy' | 'medium' | 'hard' | '';
   topic?: string;
   has_media?: boolean;
   session_id?: string;

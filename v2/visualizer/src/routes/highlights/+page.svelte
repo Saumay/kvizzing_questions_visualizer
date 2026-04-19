@@ -171,7 +171,7 @@
     .sort((a, b) => (a.stats?.time_to_answer_seconds ?? Infinity) - (b.stats?.time_to_answer_seconds ?? Infinity))
     .slice(0, 5);
 
-  // Hardest (most wrong attempts + hardest difficulty)
+  // Trickiest (most wrong attempts)
   const trickiest = [...questions]
     .filter(q => q.stats?.wrong_attempts != null)
     .sort((a, b) => (b.stats?.wrong_attempts ?? 0) - (a.stats?.wrong_attempts ?? 0))

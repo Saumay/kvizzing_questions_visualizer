@@ -57,9 +57,6 @@ export class QuestionStore {
           q.answer?.solver?.toLowerCase().includes(filters.solver!.toLowerCase())
         );
       }
-      if (filters.difficulty) {
-        results = results.filter(q => q.stats?.difficulty === filters.difficulty);
-      }
       if (filters.topic) {
         results = results.filter(q => q.question.topics?.includes(filters.topic!));
       }
