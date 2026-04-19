@@ -111,28 +111,29 @@ def db():
 
 @pytest.fixture
 def db_with_questions(db):
-    """DB pre-loaded with 2 ad-hoc + 2 session questions."""
+    """DB pre-loaded with 2 ad-hoc + 5 session questions.
+    build_sessions filters out sessions with < 5 questions, so we need 5
+    to exercise the session export path."""
     q1 = _make_question(timestamp_offset=0)
     q2 = _make_question(timestamp_offset=200)
-    sq1 = _make_session_question(
-        timestamp_offset=400,
-        question_number=1,
-        scores_after=[{"username": "Akshay", "score": 1}],
-    )
-    sq2 = _make_session_question(
-        timestamp_offset=600,
-        question_number=2,
-        scores_after=[{"username": "Akshay", "score": 2}],
-    )
-    store_run([q1, q2, sq1, sq2], db)
-    return db, [q1, q2, sq1, sq2]
+    session_questions = [
+        _make_session_question(
+            timestamp_offset=400 + 200 * i,
+            question_number=i + 1,
+            scores_after=[{"username": "Akshay", "score": i + 1}],
+        )
+        for i in range(5)
+    ]
+    all_questions = [q1, q2, *session_questions]
+    store_run(all_questions, db)
+    return db, all_questions
 
 
 class TestBuildQuestions:
     def test_returns_all_questions(self, db_with_questions):
         db, questions = db_with_questions
         result = build_questions(db)
-        assert len(result) == 4
+        assert len(result) == 7
 
     def test_sorted_by_timestamp(self, db_with_questions):
         db, _ = db_with_questions
@@ -179,7 +180,7 @@ class TestBuildSessions:
     def test_question_count_correct(self, db_with_questions):
         db, _ = db_with_questions
         sessions = build_sessions(db)
-        assert sessions[0]["question_count"] == 2
+        assert sessions[0]["question_count"] == 5
 
     def test_quizmaster_populated(self, db_with_questions):
         db, _ = db_with_questions
@@ -239,7 +240,7 @@ class TestBuildStats:
 
     def test_topic_distribution(self):
         q = json.loads(_make_question().model_dump_json())
-        q["question"]["topic"] = "history"
+        q["question"]["topics"] = ["history"]
         stats = build_stats([q])
         assert stats["topic_distribution"]["history"] == 1
 
@@ -269,8 +270,9 @@ class TestBuildTags:
         q = json.loads(_make_question().model_dump_json())
         q["question"]["tags"] = ["economics", "uk"]
         tags = build_tags([q])
-        assert "economics" in tags
-        assert q["id"] in tags["economics"]
+        economics = next((t for t in tags if t["tag"] == "economics"), None)
+        assert economics is not None
+        assert q["id"] in economics["question_ids"]
 
     def test_multiple_questions_same_tag(self):
         q1 = json.loads(_make_question().model_dump_json())
@@ -278,16 +280,16 @@ class TestBuildTags:
         q1["question"]["tags"] = ["history"]
         q2["question"]["tags"] = ["history"]
         tags = build_tags([q1, q2])
-        assert len(tags["history"]) == 2
+        history = next(t for t in tags if t["tag"] == "history")
+        assert history["count"] == 2
 
     def test_no_tags_returns_empty(self):
         q = json.loads(_make_question().model_dump_json())
         q["question"]["tags"] = []
-        tags = build_tags([q])
-        assert tags == {}
+        assert build_tags([q]) == []
 
     def test_empty_input(self):
-        assert build_tags([]) == {}
+        assert build_tags([]) == []
 
 
 class TestBuildMembers:
@@ -358,7 +360,7 @@ class TestRun:
             run(db, output_dir)
             data = json.loads((output_dir / "questions.json").read_text())
             assert isinstance(data, list)
-            assert len(data) == 4
+            assert len(data) == 7
 
     def test_state_file_updated(self, db_with_questions):
         db, _ = db_with_questions
@@ -373,7 +375,7 @@ class TestRun:
         db, _ = db_with_questions
         with tempfile.TemporaryDirectory() as tmpdir:
             counts = run(db, Path(tmpdir))
-            assert counts["questions"] == 4
+            assert counts["questions"] == 7
             assert counts["sessions"] == 1
 
     def test_members_config_used(self, db_with_questions):

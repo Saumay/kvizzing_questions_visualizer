@@ -144,11 +144,16 @@ class TestEnrich:
         assert results[0].question.tags == ["economics", "uk"]
 
     def test_already_enriched_skipped(self):
-        q = _make_question(topic=TopicCategory.science)
+        # enrich() skips questions that already have >= 2 topics.
+        q = _make_question()
+        updated_q = q.question.model_copy(update={
+            "topics": [TopicCategory.science, TopicCategory.history]
+        })
+        q = q.model_copy(update={"question": updated_q})
         llm = _mock_llm([])
         results = enrich([q], BASE_CONFIG, llm)
-        # LLM not called — topic unchanged
-        assert results[0].question.topics == [TopicCategory.science]
+        # LLM not called — topics unchanged
+        assert results[0].question.topics == [TopicCategory.science, TopicCategory.history]
         llm.messages.create.assert_not_called()
 
     def test_order_preserved(self):

@@ -119,7 +119,22 @@ class TestExtract:
             "confirmation_text": "Bingo!",
             "answer_is_collaborative": False,
             "answer_parts": None,
-            "discussion": [],
+            "discussion": [
+                {
+                    "timestamp": "2025-09-23T19:27:10Z",
+                    "username": "Aditi Bapat",
+                    "text": "Free trade",
+                    "role": "attempt",
+                    "is_correct": True,
+                },
+                {
+                    "timestamp": "2025-09-23T19:27:30Z",
+                    "username": "Pavan Pamidimarri",
+                    "text": "Bingo!",
+                    "role": "confirmation",
+                    "is_correct": None,
+                },
+            ],
             "scores_after": None,
             "extraction_confidence": "high",
         }
