@@ -430,7 +430,7 @@ def assign_topics(q: KVizzingQuestion) -> KVizzingQuestion:
                 pass
         return q.model_copy(update={"question": q.question.model_copy(update={"topics": new_topics})})
 
-    if len(q.question.topics) >= 3:
+    if len(q.question.topics) >= 2:
         return q
 
     if q.question.topics:

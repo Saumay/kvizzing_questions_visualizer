@@ -39,7 +39,7 @@ def main():
 
     client = get_client()
     if not client:
-        print("No LLM client. Set GEMINI_API_KEY, GROQ_API_KEY, or USE_OLLAMA=1.")
+        print("No LLM client. Set GEMINI_API_KEY.")
         sys.exit(1)
 
     # Use the client's default model (e.g. gemini-2.5-pro for GeminiClient)

@@ -9,7 +9,7 @@ WhatsApp _chat.txt
   │
   ├─ Stage 0 — Filter         Date selection, backfill gap detection
   ├─ Stage 1 — Parse           Raw text → structured messages
-  ├─ Stage 2 — Extract         LLM-based Q&A extraction (Gemini/Groq/Anthropic/Ollama)
+  ├─ Stage 2 — Extract         LLM-based Q&A extraction (Gemini)
   ├─ Stage 3 — Structure       Raw dicts → Pydantic models, ID generation, stats
   ├─ Stage 4 — Enrich          LLM topic categorisation (23 categories)
   ├─ Stage 5 — Store           SQLite upsert with enrichment preservation
@@ -78,7 +78,7 @@ See [RUNNING_GUIDE.md](RUNNING_GUIDE.md) for detailed usage, workflows, and conf
 ```
 pipeline.py                  # Main orchestrator
 stages/                      # Pipeline stages 0-6
-clients/llm.py               # LLM provider abstraction (Gemini, Groq, Anthropic, Ollama)
+clients/llm.py               # LLM provider (Gemini)
 utils/
   audit_extraction.py        # Auto-fix engine (14 fix types)
   audit_quality.py           # Post-export quality checks
@@ -99,11 +99,8 @@ config/
 .env                         # R2 + LLM credentials (gitignored)
 ```
 
-## LLM Providers
+## LLM Provider
 
-| Priority | Provider | Enable with | Notes |
-|---|---|---|---|
-| 1 | Ollama | `USE_OLLAMA=1` | Local, free, smaller context |
-| 2 | Gemini | `GEMINI_API_KEY` | Free tier, 1M context, recommended for backfill |
-| 3 | Groq | `GROQ_API_KEY` | Free tier, fast |
-| 4 | Anthropic | `ANTHROPIC_API_KEY` | Paid, reliable |
+| Provider | Enable with | Notes |
+|---|---|---|
+| Gemini | `GEMINI_API_KEY` | Free tier, 1M context (gemini-2.5-pro) |

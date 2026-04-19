@@ -263,7 +263,7 @@ def _run_pipeline(mode: str) -> None:
 
     client = get_client()
     if client is None:
-        log.error("No LLM client available. Set GEMINI_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY, or USE_OLLAMA=1.")
+        log.error("No LLM client available. Set GEMINI_API_KEY.")
         sys.exit(1)
 
     log.info("=" * 60)
@@ -598,7 +598,7 @@ def _run_reenrich(dry_run: bool, all_questions_flag: bool = False) -> None:
 
         client = get_client()
         if client is None:
-            log.error("No LLM client available. Set USE_OLLAMA=1, GROQ_API_KEY, or ANTHROPIC_API_KEY.")
+            log.error("No LLM client available. Set GEMINI_API_KEY.")
             sys.exit(1)
 
         log.info("Running Stage 4 enrichment%s…", " (fresh recategorization)" if all_questions_flag else "")
@@ -960,6 +960,11 @@ def _run_backfill_discussion(dry_run: bool = False) -> None:
     data_dir = V2_DIR / "data"
     extraction_dir = data_dir / "extraction_output"
 
+    client = get_client()
+    if client is None:
+        log.error("No LLM client available. Set GEMINI_API_KEY.")
+        sys.exit(1)
+
     # Parse chat
     log.info("Parsing chat file…")
     chat_path = Path(config["chat_file"])
@@ -1041,7 +1046,7 @@ def _run_backfill_discussion(dry_run: bool = False) -> None:
         for date_str in results:
             raw = questions_by_date[date_str]
             questions = stage3(raw, config)
-            questions = stage4(questions, config)
+            questions = stage4(questions, config, llm_client=client)
             stage5(questions, conn, state_path=state_path)
 
         log.info("Re-exporting JSON…")
@@ -1067,7 +1072,7 @@ def _run_classify_discussion(dry_run: bool = False, date_filter: str | None = No
 
     client = get_client()
     if not client:
-        log.error("No LLM client available. Set GEMINI_API_KEY, GROQ_API_KEY, or USE_OLLAMA=1.")
+        log.error("No LLM client available. Set GEMINI_API_KEY.")
         sys.exit(1)
 
     # Load extraction output files
@@ -1130,7 +1135,7 @@ def _run_classify_discussion(dry_run: bool = False, date_filter: str | None = No
         for date_str in results:
             raw = questions_by_date[date_str]
             questions = stage3(raw, config)
-            questions = stage4(questions, config)
+            questions = stage4(questions, config, llm_client=client)
             stage5(questions, conn, state_path=state_path)
 
         log.info("Re-exporting JSON…")
@@ -1147,13 +1152,19 @@ def _run_classify_discussion(dry_run: bool = False, date_filter: str | None = No
 
 
 def _run_reimport(dates: list[str]) -> None:
-    """Re-import extraction_output files into the DB (audit + auto-fix + stages 3-6, no LLM)."""
+    """Re-import extraction_output files into the DB (audit + auto-fix + stages 3-6).
+    Stage 4 runs with an LLM client so questions with <2 topics get enriched."""
     import json as _json
     from utils.audit_extraction import audit_data, _is_explicit_confirm
 
     config = load_config(_PIPELINE_DIR / "config")
     config = dict(config)
     config["chat_file"] = str(V2_DIR / config["chat_file"])
+
+    client = get_client()
+    if client is None:
+        log.error("No LLM client available. Set GEMINI_API_KEY.")
+        sys.exit(1)
 
     data_dir = V2_DIR / "data"
     output_dir = V2_DIR / "visualizer" / "static" / "data"
@@ -1387,8 +1398,8 @@ def _run_reimport(dates: list[str]) -> None:
                 log.debug("  [%s] 0 valid questions after structuring.", date_str)
                 continue
 
-            # Stage 4 — Enrich (uses topic/tag rules, no LLM needed)
-            questions = stage4(questions, config)
+            # Stage 4 — Enrich (LLM-based topic + tag assignment)
+            questions = stage4(questions, config, llm_client=client)
 
             # Stage 5 — Store (upsert — updates existing, inserts new)
             count = stage5(questions, db, state_path=state_path)

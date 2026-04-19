@@ -13,7 +13,7 @@
   "stage2": {
     "heuristic_reply_window_minutes": 15,
     "heuristic_min_replies": 2,
-    "llm_model": "qwen3.5:latest",
+    "llm_model": "gemini-2.5-pro",
     "llm_max_tokens": 65536,
     "llm_max_retries": 10,
     "llm_retry_base_delay_seconds": 2,
@@ -41,7 +41,7 @@
   },
 
   "stage4": {
-    "llm_model": "qwen3.5:latest",
+    "llm_model": "gemini-2.5-pro",
     "llm_batch_size": 6,
     "llm_max_retries": 3,
     "llm_retry_base_delay_seconds": 2

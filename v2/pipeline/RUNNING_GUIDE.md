@@ -93,7 +93,7 @@ python3 pipeline.py assign-topics
 python3 pipeline.py reenrich --dry-run   # shows how many qualify
 python3 pipeline.py reenrich
 ```
-Requires `GEMINI_API_KEY`, `GROQ_API_KEY`, `ANTHROPIC_API_KEY`, or `USE_OLLAMA=1`.
+Requires `GEMINI_API_KEY`.
 
 ### Strip format tags / rename near-duplicate tags
 ```bash
@@ -216,7 +216,7 @@ python3 pipeline.py reenrich --dry-run   # preview
 python3 pipeline.py reenrich             # default: questions with < 3 topics
 python3 pipeline.py reenrich --all       # ALL questions (for recategorization)
 ```
-Requires `GEMINI_API_KEY`, `GROQ_API_KEY`, `ANTHROPIC_API_KEY`, or `USE_OLLAMA=1`.
+Requires `GEMINI_API_KEY`.
 
 ### Rule-based topic assignment (no LLM)
 ```bash
@@ -244,41 +244,15 @@ python3 pipeline.py backfill
 
 ---
 
-## LLM provider selection
+## LLM provider
 
-The pipeline auto-selects a provider based on available credentials:
-
-| Priority | Provider | How to enable | Best for |
-|---|---|---|---|
-| 1 | Ollama (local) | `USE_OLLAMA=1` | Day-to-day incremental (small context, free, private) |
-| 2 | Gemini | `GEMINI_API_KEY` | Backfill (free tier, 1M token context, 15 RPM) |
-| 3 | Groq | `GROQ_API_KEY` | Backfill (free tier, fast, lower token limits) |
-| 4 | Anthropic | `ANTHROPIC_API_KEY` | Any (paid, reliable) |
-
-### Backfill (recommended: Gemini)
-
-Gemini's free tier has a 1M token context window — handles the largest quiz days without chunking. Get a key at [aistudio.google.com](https://aistudio.google.com).
+The pipeline uses Gemini via its OpenAI-compatible endpoint (model: `gemini-2.5-pro`). Get a key at [aistudio.google.com](https://aistudio.google.com).
 
 ```bash
 GEMINI_API_KEY=your_key python3 pipeline.py backfill
 ```
 
-### Backfill (alternative: Groq)
-
-```bash
-GROQ_API_KEY=your_key python3 pipeline.py backfill
-```
-
-### Day-to-day incremental (Ollama, local)
-
-```bash
-USE_OLLAMA=1 python3 pipeline.py incremental
-```
-
-Override Ollama model or context window:
-```bash
-USE_OLLAMA=1 OLLAMA_MODEL=qwen3.5:latest OLLAMA_NUM_CTX=32768 python3 pipeline.py incremental
-```
+Gemini's free tier has a 1M token context window — handles the largest quiz days without chunking.
 
 ---
 

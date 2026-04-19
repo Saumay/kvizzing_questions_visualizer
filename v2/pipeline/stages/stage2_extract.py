@@ -10,7 +10,7 @@ Two-phase Q&A extraction:
   Phase 2b — LLM extraction
     Send ALL messages for the day in one LLM call and extract every Q&A pair.
     One call per date (not per candidate window) keeps total calls to ~177 for
-    a full backfill — well within Groq's 1,000 req/day free tier.
+    a full backfill — well within Gemini's free-tier rate limits.
 
 Input:  list of message dicts from Stage 1 (one day's window)
 Output: list of raw candidate dicts (not yet Pydantic-validated)
@@ -39,27 +39,35 @@ log = logging.getLogger("kvizzing")
 
 # ── JSON helpers ──────────────────────────────────────────────────────────────
 
-def _parse_json(text: str) -> list:
+def _parse_json(text: str) -> list | dict:
     """Parse JSON from LLM output, stripping markdown fences if present.
-    Handles both plain arrays and {extracted, rejected} objects.
+    Handles both plain arrays and {extracted, rejected} objects — the dict form
+    is returned as-is so callers that care about rejected/extracted separation
+    can branch on it. Callers that only want the extracted array should use
+    `_coerce_candidates()`.
     Falls back to a best-effort repair for unescaped quotes inside strings."""
     text = text.strip()
     text = re.sub(r"^```(?:json)?\s*", "", text)
     text = re.sub(r"\s*```$", "", text)
     text = text.strip()
     try:
-        parsed = json.loads(text)
-        # Handle new format: {"extracted": [...], "rejected": [...]}
-        if isinstance(parsed, dict) and "extracted" in parsed:
-            return parsed
-        return parsed
+        return json.loads(text)
     except json.JSONDecodeError:
-        # Best-effort repair: replace smart/curly quotes and try again
         repaired = text.replace("\u201c", '\\"').replace("\u201d", '\\"')
-        try:
-            return json.loads(repaired)
-        except json.JSONDecodeError:
-            raise
+        return json.loads(repaired)
+
+
+def _coerce_candidates(parsed) -> list:
+    """Normalize _parse_json output to the list of candidate entries.
+    Accepts either a plain list or the {"extracted": [...], "rejected": [...]}
+    dict form."""
+    if isinstance(parsed, list):
+        return parsed
+    if isinstance(parsed, dict):
+        extracted = parsed.get("extracted")
+        if isinstance(extracted, list):
+            return extracted
+    return []
 
 
 def _parse_retry_delay(err_str: str) -> float | None:
@@ -1034,7 +1042,7 @@ def _call_llm(messages: list[dict], date_str: str, config: dict, llm_client) -> 
                 system=_FIX_SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": fix_prompt}]
             )
-            candidates = _parse_json(fix_resp.content[0].text)
+            candidates = _coerce_candidates(_parse_json(fix_resp.content[0].text))
             _apply_auto_fixes(candidates)  # re-apply after LLM rewrite
         except Exception as e:
             log.error("Stage2 self-healing LLM call failed or returned unparseable JSON: %s", e)

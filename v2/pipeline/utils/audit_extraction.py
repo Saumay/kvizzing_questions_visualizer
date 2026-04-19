@@ -59,7 +59,6 @@ _CONFIRM_RE = re.compile(
     r"|\bis\s+the\s+answer\b"
     # Hindi
     r"|\bho\s+gaya\b"
-    r"|\bis\s+the\s+answer\b"
     # emoji
     r"|[✅👍💯]"
     # exclamation (any message with !)

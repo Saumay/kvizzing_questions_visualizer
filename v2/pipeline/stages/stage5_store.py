@@ -166,12 +166,22 @@ def _upsert_fts(q: KVizzingQuestion, conn: sqlite3.Connection) -> None:
         if question_updates:
             q_updates["question"] = q.question.model_copy(update=question_updates)
 
+        # --- Preserve answer wholesale when re-extraction produced a weaker one.
+        # Answers are a coherent unit (text + solver + timestamp + confirmation
+        # reference the same moment in chat), so mixing fields from two runs can
+        # produce incoherent records. If the new extraction lacks an answer.text
+        # but the old row has one, keep the entire old answer object.
+        old_answer = old.get("answer")
+        if old_answer and old_answer.get("text") and (not q.answer or not q.answer.text):
+            from schema import Answer
+            q_updates["answer"] = Answer.model_validate(old_answer)
+
         # --- Preserve stats-level fields ---
         old_stats = old.get("stats") or {}
         if old_stats.get("difficulty") and (not q.stats or not q.stats.difficulty):
-            from schema import DifficultyLevel
+            from schema import Difficulty
             if q.stats:
-                q_updates["stats"] = q.stats.model_copy(update={"difficulty": DifficultyLevel(old_stats["difficulty"])})
+                q_updates["stats"] = q.stats.model_copy(update={"difficulty": Difficulty(old_stats["difficulty"])})
 
         # --- Preserve reactions ---
         old_reactions = old.get("reactions")
