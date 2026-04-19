@@ -1108,6 +1108,9 @@ def detect_session_scores(
                 messages=[{"role": "user", "content": user_prompt}],
             )
             result = _parse_json(response.content[0].text)
+            if not isinstance(result, dict):
+                log.warning("Stage2 session-score LLM returned non-object JSON: %r", type(result).__name__)
+                return None
             if result.get("found"):
                 return result.get("scores")
             return None
