@@ -185,7 +185,7 @@
     ],
     not_valid: [
       'Guess/answer attempt',
-      'Is it an answer attempt to a question',
+      'Discussion after a question',
       'Casual conversation',
       'Quiz logistics/coordination',
       'Rhetorical question',
