@@ -312,8 +312,6 @@ All previously hardcoded thresholds now live in config:
 | `thread_gap_seconds` | 180 | Messages more than this apart form a new thread |
 | `context_messages_before` | 8 | Messages of context shown before a rejected thread |
 | `context_messages_after` | 13 | Messages of context shown after |
-| `candidate_text_max_chars` | 300 | Truncation for candidate text in JSON output |
-| `context_text_max_chars` | 200 | Truncation for context messages |
 
 ### Adding a new topic category
 

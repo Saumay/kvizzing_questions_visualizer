@@ -117,8 +117,6 @@ def _write_rejected_candidates(
     _THREAD_GAP_S = rc_cfg.get("thread_gap_seconds", 180)
     _CTX_BEFORE = rc_cfg.get("context_messages_before", 8)
     _CTX_AFTER = rc_cfg.get("context_messages_after", 13)
-    _CAND_TEXT_MAX = rc_cfg.get("candidate_text_max_chars", 300)
-    _CTX_TEXT_MAX = rc_cfg.get("context_text_max_chars", 200)
 
     for date_str in sorted(by_date.keys()):
         ext_file = extraction_dir / f"{date_str}.json"
@@ -212,7 +210,7 @@ def _write_rejected_candidates(
                 candidates_json.append({
                     "timestamp": msg["timestamp"],
                     "username": msg["username"],
-                    "text": msg["text"][:_CAND_TEXT_MAX],
+                    "text": msg["text"],
                     "reason_flagged": reason,
                 })
 
@@ -222,7 +220,7 @@ def _write_rejected_candidates(
                 context_json.append({
                     "timestamp": m["timestamp"],
                     "username": m["username"],
-                    "text": m["text"][:_CTX_TEXT_MAX],
+                    "text": m["text"],
                     "is_candidate": ci in candidate_idxs,
                 })
 
@@ -477,7 +475,7 @@ def _run_pipeline(mode: str) -> None:
                         "date": str(q.date),
                         "timestamp": str(q.question.timestamp),
                         "asker": q.question.asker,
-                        "text": q.question.text[:200],
+                        "text": q.question.text,
                     })
             gaps_dir = data_dir / "attribution_gaps"
             gaps_dir.mkdir(parents=True, exist_ok=True)

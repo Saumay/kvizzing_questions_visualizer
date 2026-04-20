@@ -76,7 +76,7 @@ def audit_quality(questions: list[dict]) -> dict:
             if re.search(pattern, text_lower):
                 non_questions.append({
                     "id": qid,
-                    "text": text[:150],
+                    "text": text,
                     "pattern": pattern,
                     "reason": reason,
                 })
@@ -87,7 +87,7 @@ def audit_quality(questions: list[dict]) -> dict:
             if re.search(pattern, text_lower):
                 review.append({
                     "id": qid,
-                    "text": text[:150],
+                    "text": text,
                     "pattern": pattern,
                     "reason": reason,
                 })
@@ -98,7 +98,7 @@ def audit_quality(questions: list[dict]) -> dict:
             if check_fn(q):
                 low_quality.append({
                     "id": qid,
-                    "text": text[:150],
+                    "text": text,
                     "check": check_name,
                     "reason": reason,
                 })
