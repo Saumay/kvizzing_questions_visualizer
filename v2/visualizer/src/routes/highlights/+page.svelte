@@ -213,13 +213,7 @@
   ];
 
   let lightbox = $state<string | null>(null);
-  let currentMemeIdx = $state(Math.floor(Math.random() * memes.length));
-
-  function shuffleMeme() {
-    let next;
-    do { next = Math.floor(Math.random() * memes.length); } while (next === currentMemeIdx && memes.length > 1);
-    currentMemeIdx = next;
-  }
+  let currentMemeIdx = $state(0);
 
   type Tab = 'leaderboard' | 'topics' | 'memes';
   let activeTab = $state<Tab>('topics');
@@ -577,7 +571,7 @@
       <div class="flex items-center justify-center gap-2 w-full max-w-lg">
         <button
           onclick={() => currentMemeIdx = (currentMemeIdx - 1 + memes.length) % memes.length}
-          class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+          class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-primary-200 dark:border-primary-700 bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
           aria-label="Previous"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -586,18 +580,8 @@
         <span class="text-sm text-gray-400 dark:text-gray-500 w-16 text-center flex-shrink-0">{currentMemeIdx + 1} / {memes.length}</span>
 
         <button
-          onclick={shuffleMeme}
-          class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold text-sm rounded-xl transition-colors shadow-sm"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          Shuffle
-        </button>
-
-        <button
           onclick={() => currentMemeIdx = (currentMemeIdx + 1) % memes.length}
-          class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+          class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-primary-200 dark:border-primary-700 bg-white dark:bg-gray-700 text-primary-600 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
           aria-label="Next"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
