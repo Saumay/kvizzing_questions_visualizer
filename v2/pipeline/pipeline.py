@@ -92,6 +92,14 @@ def _log_counts(counts: dict) -> None:
         log.info("  %s: %s", key, f"{val:,}")
 
 
+def _extracted_timestamps(conn: sqlite3.Connection) -> set[str]:
+    """Pull the set of currently-stored question timestamps so rejected-candidate
+    exports can filter out any message that was later extracted."""
+    return {r[0] for r in conn.execute(
+        "SELECT json_extract(payload, '$.question.timestamp') FROM questions"
+    ).fetchall() if r[0]}
+
+
 def _write_rejected_candidates(
     by_date: dict[str, list[dict]],
     extraction_dir: Path,
@@ -429,7 +437,7 @@ def _run_pipeline(mode: str) -> None:
                 _write_rejected_candidates({date_str: by_date.get(date_str, [])}, extraction_output_dir, rejected_dir, config)
                 rejected_json = output_dir / "rejected_candidates.json"
                 if rejected_dir.exists():
-                    _export_rejected(rejected_dir, rejected_json)
+                    _export_rejected(rejected_dir, rejected_json, extracted_timestamps=_extracted_timestamps(db))
             except Exception as e:
                 log.debug("  [%s] Rejected candidates skipped: %s", date_str, e)
 
@@ -460,7 +468,7 @@ def _run_pipeline(mode: str) -> None:
         _write_rejected_candidates(by_date, extraction_output_dir, rejected_dir, config)
         rejected_json = output_dir / "rejected_candidates.json"
         if rejected_dir.exists():
-            count = _export_rejected(rejected_dir, rejected_json)
+            count = _export_rejected(rejected_dir, rejected_json, extracted_timestamps=_extracted_timestamps(db))
             log.info("  Exported %d rejected entries to %s", count, rejected_json.name)
 
         # Log unmatched media — questions with has_media=true but no matched files
@@ -1439,11 +1447,8 @@ def _run_export_rejected() -> None:
     extracted_ts: set[str] = set()
     db_path = V2_DIR / "data" / "questions.db"
     if db_path.exists():
-        import sqlite3
-        conn = sqlite3.connect(str(db_path))
-        rows = conn.execute("SELECT json_extract(payload, '$.question.timestamp') FROM questions").fetchall()
-        extracted_ts = {r[0] for r in rows if r[0]}
-        conn.close()
+        with sqlite3.connect(str(db_path)) as conn:
+            extracted_ts = _extracted_timestamps(conn)
     count = _export_rejected(rejected_dir, output_path, extracted_timestamps=extracted_ts)
     log.info("[export-rejected] Wrote %d entries to %s", count, output_path)
 
