@@ -611,15 +611,15 @@
             <div class="flex items-center gap-1.5">
               <button
                 onclick={() => startVote(thread.id, 'valid')}
-                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'valid' ? 'bg-green-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-green-100 hover:text-green-700 dark:hover:bg-green-900/30 dark:hover:text-green-400'}"
+                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'valid' ? 'bg-green-500 text-white' : 'bg-green-50 text-green-700 hover:bg-green-100 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/40'}"
               >Missed Q</button>
               <button
                 onclick={() => startVote(thread.id, 'maybe')}
-                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'maybe' ? 'bg-yellow-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-yellow-100 hover:text-yellow-700 dark:hover:bg-yellow-900/30 dark:hover:text-yellow-400'}"
+                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'maybe' ? 'bg-yellow-500 text-white' : 'bg-yellow-50 text-yellow-700 hover:bg-yellow-100 dark:bg-yellow-900/20 dark:text-yellow-400 dark:hover:bg-yellow-900/40'}"
               >Maybe</button>
               <button
                 onclick={() => startVote(thread.id, 'not_valid')}
-                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'not_valid' ? 'bg-red-500 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-red-100 hover:text-red-700 dark:hover:bg-red-900/30 dark:hover:text-red-400'}"
+                class="px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap {status === 'not_valid' ? 'bg-red-500 text-white' : 'bg-red-50 text-red-700 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40'}"
               >Not a Q</button>
             </div>
           </div>
