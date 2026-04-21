@@ -188,6 +188,7 @@
       'Discussion after a question',
       'Casual conversation',
       'Quiz logistics/coordination',
+      'Session announcement',
       'Rhetorical question',
       'Meme/joke',
     ],
