@@ -27,8 +27,8 @@
     "min_text_length": 40,
     "reply_window_seconds": 600,
     "thread_gap_seconds": 180,
-    "context_messages_before": 8,
-    "context_messages_after": 13
+    "context_messages_before": 40,
+    "context_messages_after": 40
   },
 
   "stage3": {

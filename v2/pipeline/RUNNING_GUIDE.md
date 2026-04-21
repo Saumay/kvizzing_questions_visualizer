@@ -310,8 +310,8 @@ All previously hardcoded thresholds now live in config:
 | `min_text_length` | 40 | Drop too-short candidate messages |
 | `reply_window_seconds` | 600 | Exclude messages that reply to extracted questions within this window |
 | `thread_gap_seconds` | 180 | Messages more than this apart form a new thread |
-| `context_messages_before` | 8 | Messages of context shown before a rejected thread |
-| `context_messages_after` | 13 | Messages of context shown after |
+| `context_messages_before` | 40 | Messages of context shown before a rejected thread |
+| `context_messages_after` | 40 | Messages of context shown after |
 
 ### Adding a new topic category
 
