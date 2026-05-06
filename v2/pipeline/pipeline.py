@@ -437,7 +437,7 @@ def _run_pipeline(mode: str) -> None:
                 _write_rejected_candidates({date_str: by_date.get(date_str, [])}, extraction_output_dir, rejected_dir, config)
                 rejected_json = output_dir / "rejected_candidates.json"
                 if rejected_dir.exists():
-                    _export_rejected(rejected_dir, rejected_json, extracted_timestamps=_extracted_timestamps(db))
+                    _export_rejected(rejected_dir, rejected_json)
             except Exception as e:
                 log.debug("  [%s] Rejected candidates skipped: %s", date_str, e)
 
@@ -468,7 +468,7 @@ def _run_pipeline(mode: str) -> None:
         _write_rejected_candidates(by_date, extraction_output_dir, rejected_dir, config)
         rejected_json = output_dir / "rejected_candidates.json"
         if rejected_dir.exists():
-            count = _export_rejected(rejected_dir, rejected_json, extracted_timestamps=_extracted_timestamps(db))
+            count = _export_rejected(rejected_dir, rejected_json)
             log.info("  Exported %d rejected entries to %s", count, rejected_json.name)
 
         # Log unmatched media — questions with has_media=true but no matched files
@@ -1443,13 +1443,9 @@ def _run_export_rejected() -> None:
         sys.exit(1)
 
     log.info("[export-rejected] Parsing .txt files from %s…", rejected_dir)
-    # Load extracted question timestamps to exclude already-extracted candidates
-    extracted_ts: set[str] = set()
-    db_path = V2_DIR / "data" / "questions.db"
-    if db_path.exists():
-        with sqlite3.connect(str(db_path)) as conn:
-            extracted_ts = _extracted_timestamps(conn)
-    count = _export_rejected(rejected_dir, output_path, extracted_timestamps=extracted_ts)
+    # Keep already-extracted threads in the output — the review UI marks them
+    # with a ✓ Extracted badge so the audit trail stays intact.
+    count = _export_rejected(rejected_dir, output_path)
     log.info("[export-rejected] Wrote %d entries to %s", count, output_path)
 
 
