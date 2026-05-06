@@ -25,12 +25,10 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import re
 import sqlite3
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 log = logging.getLogger("kvizzing")
 
@@ -46,36 +44,37 @@ CONFIG_DIR = PIPELINE_DIR / "config"
 # Hard upper limit on the bulk run for this exercise (set per scope decision).
 SCOPE_END_DATE = "2026-02-19"
 
-DATE_LINE = re.compile(r"^\[(\d{1,2})/(\d{1,2})/(\d{2}), (\d{1,2}):(\d{2}):(\d{2})\] ([^:]+?): (.*)", re.DOTALL)
-
-
-# ── Chat parsing ────────────────────────────────────────────────────────────
+# ── Chat parsing ─────────────────────────────────────────────────────────────
 
 def parse_chat_messages(chat_text: str) -> list[dict]:
-    """Quick parser: each message → {timestamp (UTC ISO), username, text}.
-    Multi-line continuations joined with ' ↵ ' (matching stage1 convention)."""
-    msgs: list[dict] = []
-    current: Optional[dict] = None
-    for raw in chat_text.splitlines():
-        m = DATE_LINE.match(raw)
-        if m:
-            if current:
-                msgs.append(current)
-            mo, d, yy = int(m.group(1)), int(m.group(2)), int(m.group(3))
-            hh, mm, ss = int(m.group(4)), int(m.group(5)), int(m.group(6))
-            user = m.group(7).lstrip("~ ").strip()
-            text = m.group(8)
-            # Source timezone is America/Chicago per pipeline_config.json — but for the
-            # bundle we just want a stable iso string; treat as naive and convert to Z.
-            iso = f"20{yy:02d}-{mo:02d}-{d:02d}T{hh:02d}:{mm:02d}:{ss:02d}Z"
-            current = {"timestamp": iso, "username": user, "text": text, "date": f"20{yy:02d}-{mo:02d}-{d:02d}"}
+    """Delegate to stage1 for correct timezone handling and alias normalisation.
+    Returns messages with `timestamp` (UTC ISO Z), `username`, `text`, `date`
+    (UTC date derived from the timestamp), `has_media`."""
+    sys.path.insert(0, str(PIPELINE_DIR))
+    from utils.config import load_config, load_aliases
+    from stages.stage1_parse import run as stage1_run
+
+    config = dict(load_config(CONFIG_DIR))
+    aliases = load_aliases(CONFIG_DIR)
+    lines = chat_text.splitlines()
+    raw_msgs = stage1_run(lines, config, aliases)
+    out: list[dict] = []
+    for m in raw_msgs:
+        ts = m.get("timestamp")
+        if hasattr(ts, "strftime"):
+            iso = ts.strftime("%Y-%m-%dT%H:%M:%SZ")
+            date = ts.strftime("%Y-%m-%d")
         else:
-            # continuation of previous message
-            if current is not None:
-                current["text"] += " ↵ " + raw
-    if current:
-        msgs.append(current)
-    return msgs
+            iso = str(ts)
+            date = iso[:10]
+        out.append({
+            "timestamp": iso,
+            "username": m.get("username", ""),
+            "text": m.get("text", ""),
+            "date": date,
+            "has_media": m.get("has_media", False),
+        })
+    return out
 
 
 # ── State ─────────────────────────────────────────────────────────────────
