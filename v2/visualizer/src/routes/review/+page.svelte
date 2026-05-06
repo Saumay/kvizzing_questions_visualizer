@@ -230,14 +230,19 @@
         if (selectedDate && t.date !== selectedDate) return false;
         if (filterDateFrom && t.date < filterDateFrom) return false;
         if (filterDateTo && t.date > filterDateTo) return false;
-        // Reviewer filter: show only threads this reviewer voted on
+        // Reviewer filter: show only threads this reviewer voted on.
+        // For the current user, also include extracted threads (resolved
+        // implicitly) so the filtered Missed Q view matches the badge tally.
         if (filterReviewer) {
           const rv = allVotes.find(v => v.thread_id === t.id && v.reviewer === filterReviewer);
-          if (!rv) return false;
-          // Status filter applies to the filtered reviewer's vote, not the current user's
-          if (filterStatus === 'valid' && rv.status !== 'valid') return false;
-          if (filterStatus === 'maybe' && rv.status !== 'maybe') return false;
-          if (filterStatus === 'not_valid' && rv.status !== 'not_valid') return false;
+          const isSelf = filterReviewer === reviewer;
+          if (!rv && !(isSelf && t.extracted)) return false;
+          // Status filter applies to the filtered reviewer's vote, or to the
+          // implicit "valid" status of extracted threads when viewing self.
+          const effectiveStatus: Status | undefined = rv?.status ?? (isSelf && t.extracted ? 'valid' : undefined);
+          if (filterStatus === 'valid' && effectiveStatus !== 'valid') return false;
+          if (filterStatus === 'maybe' && effectiveStatus !== 'maybe') return false;
+          if (filterStatus === 'not_valid' && effectiveStatus !== 'not_valid') return false;
           return true;
         }
         const mv = myVotes.get(t.id);
