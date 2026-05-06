@@ -722,6 +722,11 @@
               You: "{myVote.reason}"
             </div>
           {/if}
+          {#if aiSug && reasonOpenFor?.id !== thread.id}
+            <div class="mt-2 text-xs italic {aiSug.status === 'valid' ? 'text-green-700 dark:text-green-400' : aiSug.status === 'maybe' ? 'text-yellow-700 dark:text-yellow-400' : 'text-red-600 dark:text-red-400'}">
+              ✨ AI ({Math.round(aiSug.confidence * 100)}%): "{aiSug.reason}"
+            </div>
+          {/if}
           {#if tally.votes.filter(v => v.reviewer !== reviewer && v.reason).length > 0 && expandedIds.has(thread.id)}
             <div class="mt-2 space-y-1">
               {#each tally.votes.filter(v => v.reviewer !== reviewer && v.reason) as v}
