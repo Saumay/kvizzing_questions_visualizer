@@ -40,6 +40,8 @@ v2/
       audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions
       audit_likely_missed_questions.py  # Detect rejected standalone Qs with Q-prefixes / long setups
       review_suggest.py          # Curator-vote pull + AI-assisted suggestions for unreviewed rejected threads
+      extract_loop.py            # File-based async orchestrator for AI-as-LLM bulk extraction
+      promote_rejected.py        # One-shot rescue of curator-confirmed Missed Q from rejected_candidates
       media_match.py             # WhatsApp media → question timestamp matching
       r2_upload.py               # Cloudflare R2 media upload
       r2_usage.py                # R2 free-tier usage check

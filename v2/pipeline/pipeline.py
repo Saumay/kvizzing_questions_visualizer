@@ -1675,6 +1675,16 @@ def main() -> None:
     p_rev_fin.add_argument("--classifications", required=True, help="Path to AI-produced classifications JSON")
     p_rev_fin.add_argument("--min-confidence", type=float, default=0.6)
 
+    p_extract = sub.add_parser("extract-loop", help="File-based async orchestrator for AI-as-LLM bulk extraction. Finalizes any pending output.json, emits next input.json")
+    p_extract.add_argument("--batch-size", type=int, default=2)
+    p_extract.add_argument("--finalize-only", action="store_true")
+    p_extract.add_argument("--emit-only", action="store_true")
+    p_extract.add_argument("--status", action="store_true")
+
+    p_promote = sub.add_parser("promote-rejected", help="Promote a curator-confirmed Missed Q from rejected_candidates into the archive (one-shot LLM extraction + reimport)")
+    p_promote.add_argument("--thread-id", required=True, help="rejected_candidates thread_id, e.g. 2025-11-03-t3")
+    p_promote.add_argument("--reason", default="Genuine trivia question", help="Curator's reason for promoting")
+
     args = parser.parse_args()
 
     if args.command in ("backfill", "incremental"):
@@ -1755,6 +1765,20 @@ def main() -> None:
                     "--classifications", args.classifications,
                     "--min-confidence", str(args.min_confidence)]
         _review_main()
+    elif args.command == "extract-loop":
+        from utils.extract_loop import main as _extract_main
+        sys.argv = [sys.argv[0], "--batch-size", str(args.batch_size)]
+        if args.finalize_only:
+            sys.argv.append("--finalize-only")
+        if args.emit_only:
+            sys.argv.append("--emit-only")
+        if args.status:
+            sys.argv.append("--status")
+        _extract_main()
+    elif args.command == "promote-rejected":
+        from utils.promote_rejected import main as _promote_main
+        sys.argv = [sys.argv[0], "--thread-id", args.thread_id, "--reason", args.reason]
+        _promote_main()
 
 
 if __name__ == "__main__":

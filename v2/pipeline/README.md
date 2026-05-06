@@ -82,9 +82,11 @@ clients/llm.py               # LLM provider (Gemini)
 utils/
   audit_extraction.py        # Schema/consistency auditor for extraction_output files
   audit_quality.py           # Post-export quality checks
-  audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions
-  audit_likely_missed_questions.py  # Detect rejected standalone Qs with Q-prefixes / long setups
+  audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions (filters extracted)
+  audit_likely_missed_questions.py  # Detect rejected standalone Qs with Q-prefixes / long setups (filters extracted)
   review_suggest.py          # Pull curator votes; bundle unreviewed threads for AI classification; finalize suggestions
+  extract_loop.py            # File-based async orchestrator for AI-as-LLM bulk extraction
+  promote_rejected.py        # Rescue a curator-confirmed Missed Q via single-Q AI extraction
   media_match.py             # Timestamp-based media matching with perceptual dedup
   r2_upload.py               # Cloudflare R2 upload
   generate_session_images.py # Stable Horde image generation
