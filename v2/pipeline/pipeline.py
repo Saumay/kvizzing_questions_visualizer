@@ -1663,6 +1663,14 @@ def main() -> None:
     p_missed.add_argument("--window-minutes", type=float, default=30.0)
     p_missed.add_argument("--min-length", type=int, default=80)
 
+    p_rev_prep = sub.add_parser("review-prepare", help="Pull curator votes from Supabase and emit an input bundle for AI-assisted review classification")
+    p_rev_prep.add_argument("--date", help="Restrict to one date (YYYY-MM-DD)")
+    p_rev_prep.add_argument("--output", help="Bundle output path (default: v2/data/review_input.json)")
+
+    p_rev_fin = sub.add_parser("review-finalize", help="Merge AI classifications into auto_review_suggestions.json + copy to static/data")
+    p_rev_fin.add_argument("--classifications", required=True, help="Path to AI-produced classifications JSON")
+    p_rev_fin.add_argument("--min-confidence", type=float, default=0.6)
+
     args = parser.parse_args()
 
     if args.command in ("backfill", "incremental"):
@@ -1722,6 +1730,20 @@ def main() -> None:
             "--min-length", str(args.min_length),
         ]
         _audit_missed_main()
+    elif args.command == "review-prepare":
+        from utils.review_suggest import main as _review_main
+        sys.argv = [sys.argv[0], "prepare"]
+        if args.date:
+            sys.argv += ["--date", args.date]
+        if args.output:
+            sys.argv += ["--output", args.output]
+        _review_main()
+    elif args.command == "review-finalize":
+        from utils.review_suggest import main as _review_main
+        sys.argv = [sys.argv[0], "finalize",
+                    "--classifications", args.classifications,
+                    "--min-confidence", str(args.min_confidence)]
+        _review_main()
 
 
 if __name__ == "__main__":

@@ -28,6 +28,10 @@
 
   const threads: Thread[] = $derived(data.threads);
   const questionsByTs: Map<string, { id: string; text: string }> = $derived(data.questionsByTs);
+  type Suggestion = { thread_id: string; status: Status; reason: string; confidence: number; source: string };
+  const aiSuggestions: Map<string, Suggestion> = $derived(
+    (data.suggestions ?? new Map()) as Map<string, Suggestion>
+  );
 
   // ── Reviewer identity (from site-wide context) ─────────────────────────────
   const usernameCtx = getContext<{ value: string }>('username');
@@ -110,7 +114,10 @@
       return;
     }
     reasonOpenFor = { id, status };
-    customReasonText = '';
+    // If an AI suggestion matches the chosen status, seed the reason field
+    // so the curator can confirm in one click or edit before sending.
+    const sug = aiSuggestions.get(id);
+    customReasonText = (sug && sug.status === status) ? sug.reason : '';
   }
 
   async function confirmVote(reason: string) {
@@ -236,7 +243,7 @@
   const urlDate = $page.url.searchParams.get('date');
   const urlReviewer = $page.url.searchParams.get('reviewer');
   let selectedDate = $state<string>(urlDate && allDates.includes(urlDate) ? urlDate : '');
-  let filterStatus = $state<'all' | 'unreviewed' | 'valid' | 'maybe' | 'not_valid'>(urlReviewer ? 'all' : 'unreviewed');
+  let filterStatus = $state<'all' | 'unreviewed' | 'valid' | 'maybe' | 'not_valid' | 'ai_suggested'>(urlReviewer ? 'all' : 'unreviewed');
   let filterReviewer = $state<string>(urlReviewer ?? '');
   let filterDateFrom = $state('');
   let filterDateTo = $state('');
@@ -263,6 +270,7 @@
         if (filterStatus === 'valid' && mv?.status !== 'valid') return false;
         if (filterStatus === 'maybe' && mv?.status !== 'maybe') return false;
         if (filterStatus === 'not_valid' && mv?.status !== 'not_valid') return false;
+        if (filterStatus === 'ai_suggested' && (mv || !aiSuggestions.has(t.id))) return false;
         return true;
       })
       .sort((a, b) => {
@@ -522,6 +530,12 @@
           <span class="w-2 h-2 rounded-full {filterStatus === 'not_valid' ? 'bg-white' : 'bg-red-400'}"></span>
           Not a Q <span class="font-bold">{notValid}</span>
         </button>
+        {#if aiSuggestions.size > 0}
+          <button onclick={() => { filterStatus = filterStatus === 'ai_suggested' ? 'all' : 'ai_suggested'; filterReviewer = ''; }} class="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all {filterStatus === 'ai_suggested' ? 'bg-purple-500 text-white shadow-sm' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'}" title="Threads with AI-suggested status (no curator vote yet)">
+            <span>✨</span>
+            AI <span class="font-bold">{aiSuggestions.size}</span>
+          </button>
+        {/if}
       </div>
     </div>
   {/if}
@@ -577,6 +591,7 @@
       {@const myVote = myVotes.get(thread.id)}
       {@const status = myVote?.status}
       {@const tally = voteTally(thread.id)}
+      {@const aiSug = !myVote ? aiSuggestions.get(thread.id) : undefined}
       <div class="bg-ui-card rounded-xl border overflow-hidden transition-all duration-300 {vanishingIds.has(thread.id) ? 'opacity-0 scale-95 -translate-x-4' : ''} {status === 'valid' ? 'border-green-300 dark:border-green-700 bg-green-50/30 dark:bg-green-900/10 opacity-50' : status === 'maybe' ? 'border-yellow-300 dark:border-yellow-700 bg-yellow-50/30 dark:bg-yellow-900/10 opacity-50' : status === 'not_valid' ? 'border-red-200 dark:border-red-800 opacity-50' : 'border-gray-200 dark:border-gray-700'}">
         <div class="p-4">
           {#each thread.candidates as cand, ci}
@@ -593,6 +608,13 @@
                     </span>
                     {#if cand.extracted_id}
                       <a href="/question/{cand.extracted_id}" class="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/60" title="Already extracted — click to view">✓ Extracted</a>
+                    {/if}
+                    {#if ci === 0 && aiSug}
+                      {@const aiColor = aiSug.status === 'valid' ? 'bg-green-50 text-green-700 border-green-300 dark:bg-green-900/20 dark:text-green-300 dark:border-green-700' : aiSug.status === 'maybe' ? 'bg-yellow-50 text-yellow-700 border-yellow-300 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-700' : 'bg-red-50 text-red-700 border-red-300 dark:bg-red-900/20 dark:text-red-300 dark:border-red-700'}
+                      {@const aiLabel = aiSug.status === 'valid' ? 'Missed Q' : aiSug.status === 'maybe' ? 'Maybe' : 'Not a Q'}
+                      <span class="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium border border-dashed {aiColor}" title="AI suggestion (no curator vote yet): {aiSug.reason} · {Math.round(aiSug.confidence * 100)}% confidence">
+                        ✨ AI: {aiLabel} ({Math.round(aiSug.confidence * 100)}%)
+                      </span>
                     {/if}
                   </div>
                   {#if ci === 0}

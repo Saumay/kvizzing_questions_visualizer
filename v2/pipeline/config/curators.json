@@ -1,0 +1,4 @@
+{
+  "_comment": "Reviewers whose votes are treated as ground truth for the AI review-suggest pipeline. Add usernames here as new trusted curators emerge.",
+  "curators": ["Saumay", "Smy"]
+}
