@@ -131,20 +131,50 @@
   async function setUsername() {
     const name = usernameInput.trim();
     if (!name) return;
+    const oldName = username.value;
     username.value = name;
+    currentReviewer = name;
     localStorage.setItem('kvizzing-reviewer-name', name);
     showUsernamePrompt = false;
-    loadFlaggedIds(name);
-    loadLikes(name);
-    loadSavedIds(name);
-    // Upsert to Supabase users table
+    // Upsert to Supabase users table + migrate prior identity if rename
     try {
       const { supabase: sb } = await import('$lib/supabase');
       await sb.from('users').upsert(
         { username: name, last_seen_at: new Date().toISOString() },
         { onConflict: 'username' }
       );
+      if (oldName && oldName !== name) {
+        await migrateIdentity(sb, oldName, name);
+        // Tell other components (review page, leaderboard) to refresh.
+        window.dispatchEvent(new Event('kvizzing-identity-renamed'));
+        window.dispatchEvent(new Event('kvizzing-vote-changed'));
+      }
     } catch {}
+    // Reload caches under new name (after migration so they pick up moved rows)
+    loadFlaggedIds(name);
+    loadLikes(name);
+    loadSavedIds(name);
+  }
+
+  // Move all rows owned by oldName to newName across vote/flag/like/save tables.
+  // Uses select → upsert (ignoreDuplicates) → delete so existing rows under newName win.
+  async function migrateIdentity(sb: any, oldName: string, newName: string) {
+    const tables: { table: string; col: string; conflict: string }[] = [
+      { table: 'votes',          col: 'reviewer', conflict: 'thread_id,reviewer' },
+      { table: 'question_flags', col: 'reporter', conflict: 'question_id,reporter' },
+      { table: 'question_likes', col: 'username', conflict: 'question_id,username' },
+      { table: 'question_saves', col: 'username', conflict: 'question_id,username' },
+      { table: 'session_saves',  col: 'username', conflict: 'session_id,username' },
+    ];
+    for (const { table, col, conflict } of tables) {
+      const { data: oldRows, error: selErr } = await sb.from(table).select('*').eq(col, oldName);
+      if (selErr || !oldRows?.length) continue;
+      const renamed = oldRows.map((r: any) => ({ ...r, [col]: newName }));
+      await sb.from(table).upsert(renamed, { onConflict: conflict, ignoreDuplicates: true });
+      await sb.from(table).delete().eq(col, oldName);
+    }
+    // Drop the abandoned users row (best-effort).
+    await sb.from('users').delete().eq('username', oldName);
   }
 
   const sidebarSessions = store.getSessions();

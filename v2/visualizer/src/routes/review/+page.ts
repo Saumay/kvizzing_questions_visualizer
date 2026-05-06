@@ -10,10 +10,18 @@ export async function load({ fetch }) {
       questionsByTs.set(q.question.timestamp, { id: q.id, text: q.question.text });
     }
   }
-  // Filter out malformed entries and threads where any candidate was already extracted
-  const filteredThreads = threads.filter((t: any) =>
-    t.candidates?.length > 0 &&
-    !t.candidates.some((c: any) => questionsByTs.has(c.timestamp))
-  );
+  // Keep all non-empty threads. Tag candidates and the thread when their
+  // timestamp now exists in the extracted DB — UI shows them as resolved
+  // instead of hiding the row.
+  const filteredThreads = threads
+    .filter((t: any) => t.candidates?.length > 0)
+    .map((t: any) => {
+      const cands = t.candidates.map((c: any) => {
+        const q = questionsByTs.get(c.timestamp);
+        return q ? { ...c, extracted_id: q.id } : c;
+      });
+      const extracted = cands.some((c: any) => c.extracted_id);
+      return { ...t, candidates: cands, extracted };
+    });
   return { threads: filteredThreads, questionsByTs };
 }

@@ -20,9 +20,9 @@
 
   let { data } = $props();
 
-  type Candidate = { timestamp: string; username: string; text: string; reason_flagged: string };
+  type Candidate = { timestamp: string; username: string; text: string; reason_flagged: string; extracted_id?: string };
   type ContextMsg = { timestamp: string; username: string; text: string; is_candidate: boolean };
-  type Thread = { id: string; date: string; candidates: Candidate[]; context: ContextMsg[] };
+  type Thread = { id: string; date: string; candidates: Candidate[]; context: ContextMsg[]; extracted?: boolean };
   type Status = 'valid' | 'not_valid' | 'maybe';
   type Vote = { thread_id: string; reviewer: string; status: Status; reason: string; comment: string };
 
@@ -241,10 +241,11 @@
           return true;
         }
         const mv = myVotes.get(t.id);
-        if (filterStatus === 'unreviewed' && mv) return false;
-        if (filterStatus === 'valid' && mv?.status !== 'valid') return false;
-        if (filterStatus === 'maybe' && mv?.status !== 'maybe') return false;
-        if (filterStatus === 'not_valid' && mv?.status !== 'not_valid') return false;
+        // Extracted threads count as implicitly resolved (valid).
+        if (filterStatus === 'unreviewed' && (mv || t.extracted)) return false;
+        if (filterStatus === 'valid' && !(mv?.status === 'valid' || t.extracted)) return false;
+        if (filterStatus === 'maybe' && (t.extracted || mv?.status !== 'maybe')) return false;
+        if (filterStatus === 'not_valid' && (t.extracted || mv?.status !== 'not_valid')) return false;
         return true;
       })
       .sort((a, b) => {
@@ -297,7 +298,7 @@
   function dateReviewStats(d: string) {
     const dateThreads = threads.filter(t => t.date === d);
     const total = dateThreads.length;
-    const reviewed = dateThreads.filter(t => myVotes.has(t.id)).length;
+    const reviewed = dateThreads.filter(t => myVotes.has(t.id) || t.extracted).length;
     return { total, reviewed, done: reviewed === total };
   }
 
@@ -330,10 +331,16 @@
 
   // ── Stats ──────────────────────────────────────────────────────────────────
   const total = $derived(threads.length);
-  const reviewed = $derived(myVotes.size);
-  const valid = $derived([...myVotes.values()].filter(v => v.status === 'valid').length);
-  const maybe = $derived([...myVotes.values()].filter(v => v.status === 'maybe').length);
-  const notValid = $derived([...myVotes.values()].filter(v => v.status === 'not_valid').length);
+  const extractedThreadIds = $derived(new Set(threads.filter(t => t.extracted).map(t => t.id)));
+  const extractedCount = $derived(extractedThreadIds.size);
+  // Reviewed = my votes + threads already extracted (resolved without explicit vote).
+  // myVotes on an extracted thread doesn't double-count.
+  const reviewed = $derived(extractedCount + [...myVotes.keys()].filter(id => !extractedThreadIds.has(id)).length);
+  const valid = $derived(
+    extractedCount + [...myVotes.entries()].filter(([id, v]) => v.status === 'valid' && !extractedThreadIds.has(id)).length
+  );
+  const maybe = $derived([...myVotes.entries()].filter(([id, v]) => v.status === 'maybe' && !extractedThreadIds.has(id)).length);
+  const notValid = $derived([...myVotes.entries()].filter(([id, v]) => v.status === 'not_valid' && !extractedThreadIds.has(id)).length);
   const pctValid = $derived(total > 0 ? valid / total * 100 : 0);
   const pctMaybe = $derived(total > 0 ? maybe / total * 100 : 0);
   const pctNot = $derived(total > 0 ? notValid / total * 100 : 0);
@@ -573,17 +580,36 @@
                     <span class="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium {reasonColors[cand.reason_flagged] ?? 'bg-gray-100 text-gray-600'}">
                       {reasonLabels[cand.reason_flagged] ?? cand.reason_flagged}
                     </span>
+                    {#if cand.extracted_id}
+                      <a href="/question/{cand.extracted_id}" class="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/60" title="Already extracted — click to view">✓ Extracted</a>
+                    {/if}
                   </div>
                   {#if ci === 0}
                     <span class="relative flex-shrink-0">
                       {#if tally.total > 0}
                         <button
                           onclick={() => { const id = `votes-${thread.id}`; const el = document.getElementById(id); if (el) el.classList.toggle('hidden'); }}
-                          class="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-[10px] font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer transition-colors"
-                        >{tally.total} vote{tally.total !== 1 ? 's' : ''}</button>
-                        <div id="votes-{thread.id}" class="hidden absolute right-0 top-6 z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg p-2 min-w-[120px]">
+                          class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-[10px] font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer transition-colors"
+                          title="Click for reviewer breakdown"
+                        >
+                          {#if tally.valid > 0}
+                            <span class="flex items-center gap-0.5" title="Missed Q"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>{tally.valid}</span>
+                          {/if}
+                          {#if tally.maybe > 0}
+                            <span class="flex items-center gap-0.5" title="Maybe"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>{tally.maybe}</span>
+                          {/if}
+                          {#if tally.not_valid > 0}
+                            <span class="flex items-center gap-0.5" title="Not a Q"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>{tally.not_valid}</span>
+                          {/if}
+                          <span class="text-gray-400 dark:text-gray-500">· {tally.total}</span>
+                        </button>
+                        <div id="votes-{thread.id}" class="hidden absolute right-0 top-6 z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg p-2 min-w-[160px]">
                           {#each tally.votes as v}
-                            <div class="py-0.5 text-[11px] font-medium text-gray-700 dark:text-gray-300">{v.reviewer}</div>
+                            <a href="/review?reviewer={encodeURIComponent(v.reviewer)}" class="flex items-center gap-1.5 py-0.5 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+                              <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 {v.status === 'valid' ? 'bg-green-500' : v.status === 'maybe' ? 'bg-yellow-400' : 'bg-red-500'}" title={v.status === 'valid' ? 'Missed Q' : v.status === 'maybe' ? 'Maybe' : 'Not a Q'}></span>
+                              <span class="truncate">{v.reviewer}</span>
+                              <span class="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">{v.status === 'valid' ? 'Missed Q' : v.status === 'maybe' ? 'Maybe' : 'Not a Q'}</span>
+                            </a>
                           {/each}
                         </div>
                       {:else}
