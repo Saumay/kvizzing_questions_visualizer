@@ -188,9 +188,15 @@ encyclopaedic/biographical/historical paragraph and ends with a question mark �
 always a trivia question, regardless of preceding chat. Example shape: "X is a/the [noun] \
 that [history/details]. ... [more sentences]. What is/where/who/why ...?" Do NOT skip \
 these because the surrounding window looks casual.
-- **Image-only Qs**: a short message accompanied by an `image omitted` / `GIF omitted` \
-marker AND a `?` or imperative cue ("ID this", "name this", "guess the…", "connect:", \
-"FITB"). Extract; discussion will reveal what the image showed.
+- **Image-trigger Qs (no `?` required)**: any message containing `image omitted` / \
+`GIF omitted` / `video omitted` plus an imperative or short cue (`ID this`, `Name this`, \
+`Guess the`, `connect:`, `FITB`, `Identify`, `Funda?`, `Funda`, single-word `this:`, \
+`Whose...`, or just an arrow / colon followed by a media marker). The `?` is OFTEN absent \
+because the image carries the question. Extract; discussion reveals what the image showed.
+- **Connect-quiz prefixes**: a message starting with `Connect:`, `connect:`, `What's the \
+connection`, `Find the connect`, or listing a series of items (3+ comma-separated proper \
+nouns) followed by a query indicator IS a connect quiz. Set `session_quiz_type=connect`. \
+The reveal goes in `session_connect_answer`.
 - **Standalone trivia from a non-active asker**: even one such question by a user who \
 hasn't been quizmastering recently is still a question. Don't require a session.
 
@@ -280,6 +286,13 @@ Mark is_session_question=true for ALL questions in such a session. Set session_q
 the person asking the questions. Set session_theme if a theme is apparent (announced or inferred \
 from the pattern). Set session_question_number based on the order within the session.
 
+**Cross-asker session continuation:** if person A is running a themed session (T) and \
+person B asks 1+ trivia questions on the SAME theme T within ~10 minutes of A's last \
+question, those B-questions ARE part of the session. Set their `is_session_question=true`, \
+keep `session_quizmaster=A` (the original QM), and `session_theme=T`. Use a continuation \
+suffix on `session_theme` if the original QM's pace clearly shifts (e.g. \
+"Indian Railways (continuation)"). Common case: a participant runs with the QM's theme.
+
 ### session_announcement
 The quizmaster's introductory message before/at the start of the session. This is the message \
 where they announce the quiz, describe the theme, set rules, or introduce the format. \
@@ -322,20 +335,41 @@ The timestamp of answer_solver's is_correct=true entry in discussion. NOT the as
 confirmation timestamp. null if answer_solver is null.
 
 ### answer_parts
-Use for any multi-part question (X/Y/Z, identify A and B, etc.), regardless of how many \
-people solved it. If answer_parts is present, answer_text must NOT be null.
-If answer_parts entries have more than one distinct solver, answer_is_collaborative must be true.
+Use for any multi-part question — **always populate when the question explicitly asks \
+for ≥2 distinct things**. Triggers include:
+  - "X, Y, Z" placeholders in question_text
+  - "Identify A and B"
+  - "Name the 4 cities"
+  - "FITB" with multiple blanks
+  - "What is X and what does Y mean?"
+  - "ID the connect AND the year"
+Each part is a separate entry: `{label, text, solver}`. label = the placeholder/role (X, \
+Y, Q1, "city", "year"). text = the canonical answer for that part. solver = whoever first \
+got that specific part right (may differ across parts → collaborative).
+If answer_parts is present, answer_text must NOT be null (use a concise summary like \
+"X = Foo, Y = Bar"). If answer_parts entries have >1 distinct solver, \
+answer_is_collaborative=true.
+**Common miss:** when the asker asks "Name X and Y" but only one solver gets both, the \
+LLM often skips answer_parts. Don't — always populate when the Q text has multiple \
+explicit asks.
 
 ### discussion roles
 - attempt: participant's answer try — is_correct must be true or false (NEVER null)
-- hint: asker provides a clue (even if it starts with "nope, but...")
+- hint: asker provides a clue **BEFORE** the correct answer is given (or while still \
+guiding guesses). Anchored to timestamps strictly EARLIER than the first `is_correct=true` \
+attempt. Examples: "good track", "no, but you're close", "think coastal".
 - confirmation: asker's direct yes/no with no new information
 - chat: banter, reactions, off-topic
 - answer_reveal: asker reveals the answer after a confirm or when no one got it
 - elaboration: additional context, trivia, or explanation about the answer/question posted \
-AFTER the answer is confirmed or revealed — by the asker OR any participant. Examples: \
-"Fun fact: this was also...", "The full story is...", "This is because...", historical context, \
-related trivia, corrections, or interesting follow-up information.
+**AFTER** the correct answer is confirmed or revealed — anchored to timestamps strictly \
+LATER than the first `is_correct=true` attempt (or, if no correct attempt, after the \
+asker's `answer_reveal`). Author can be the asker OR any participant. Examples: \
+"Fun fact: this was also...", "The full story is...", historical context, related trivia, \
+corrections.
+- **Hint vs elaboration:** the dividing line is the timestamp of the correct answer / \
+asker's reveal. Same-author informational message before that line = hint; after = \
+elaboration. If unsure, prefer `chat` over guessing wrong.
 - All non-attempt roles: is_correct must be null (NEVER true or false)
 
 ### has_media (discussion entries)

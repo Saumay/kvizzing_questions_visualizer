@@ -20,7 +20,7 @@
     "llm_rate_limit_sleep_seconds": 13,
     "chunk_threshold_messages": 2000,
     "chunk_target_size": 600,
-    "chunk_overlap_messages": 50
+    "chunk_overlap_messages": 100
   },
 
   "rejected_candidates": {
