@@ -1661,6 +1661,11 @@ def main() -> None:
 
     sub.add_parser("check-coverage", help="Check for missed dates or suspiciously low extraction counts")
     sub.add_parser("audit-quality", help="Find potentially non-question extractions and low-quality entries")
+    p_missed = sub.add_parser("audit-missed-sessions", help="Scan rejected_candidates for clusters of question-mark messages by the same user — likely missed sessions")
+    p_missed.add_argument("--date", help="Only check this date (YYYY-MM-DD)")
+    p_missed.add_argument("--min-questions", type=int, default=3)
+    p_missed.add_argument("--window-minutes", type=float, default=30.0)
+    p_missed.add_argument("--min-length", type=int, default=80)
 
     args = parser.parse_args()
 
@@ -1710,6 +1715,17 @@ def main() -> None:
     elif args.command == "audit-quality":
         from utils.audit_quality import main as _audit_quality_main
         _audit_quality_main()
+    elif args.command == "audit-missed-sessions":
+        from utils.audit_missed_sessions import main as _audit_missed_main
+        sys.argv = [sys.argv[0]]
+        if args.date:
+            sys.argv += ["--date", args.date]
+        sys.argv += [
+            "--min-questions", str(args.min_questions),
+            "--window-minutes", str(args.window_minutes),
+            "--min-length", str(args.min_length),
+        ]
+        _audit_missed_main()
 
 
 if __name__ == "__main__":

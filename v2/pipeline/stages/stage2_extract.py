@@ -245,6 +245,13 @@ A session is a series of related questions asked by ONE person (the quizmaster).
 - **Informal**: one person asks 4+ questions in a row within a few hours, often with a theme \
 (e.g. "badly explained plots", "identify" questions, "guess the song", emoji puzzles, etc.) \
 even without explicit numbering or announcements.
+- **Preamble-led**: a user posts a META-QUESTION asking for permission/interest like \
+"I have a few questions about X. Are people interested?", "Can I ask some Qs on Y?", \
+"these are my tribute to Z" — followed within ~30 minutes by 2+ actual trivia questions \
+on that topic from the same user. The META-QUESTION is NOT itself an extracted question; \
+it is the session_announcement. The actual trivia questions that follow ARE the session \
+questions and MUST be extracted (is_session_question=true). Do not skip them just because \
+the preamble looked rhetorical.
 
 Mark is_session_question=true for ALL questions in such a session. Set session_quizmaster to \
 the person asking the questions. Set session_theme if a theme is apparent (announced or inferred \
