@@ -36,6 +36,11 @@ v2/data/auto_review_suggestions.json
 v2/pipeline/logs/
 v2/pipeline/.env
 
+# bulk-run backups + extract orchestrator state
+backups/
+v2/data/extract_batches/
+v2/data/ai_classifications/
+
 # v2 visualizer
 v2/visualizer/node_modules/
 v2/visualizer/.svelte-kit/

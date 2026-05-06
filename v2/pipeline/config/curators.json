@@ -1,4 +1,4 @@
 {
-  "_comment": "Reviewers whose votes are treated as ground truth for the AI review-suggest pipeline. Add usernames here as new trusted curators emerge.",
+  "_comment": "Reviewers whose votes are treated as ground truth for the AI review-suggest pipeline. Saumay and Smy are aliases for the same person; both kept for historical-vote attribution.",
   "curators": ["Saumay", "Smy"]
 }
