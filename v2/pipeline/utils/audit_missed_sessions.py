@@ -15,11 +15,33 @@ from __future__ import annotations
 
 import argparse
 import json
+import sqlite3
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-REJECTED_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "attribution_gaps" / "rejected_candidates"
+V2_DIR = Path(__file__).resolve().parent.parent.parent
+REJECTED_DIR = V2_DIR / "data" / "attribution_gaps" / "rejected_candidates"
+DB_PATH = V2_DIR / "data" / "questions.db"
+
+
+def _extracted_timestamps() -> set[str]:
+    if not DB_PATH.exists():
+        return set()
+    out: set[str] = set()
+    try:
+        with sqlite3.connect(str(DB_PATH)) as conn:
+            for (payload,) in conn.execute("SELECT payload FROM questions"):
+                try:
+                    p = json.loads(payload)
+                    ts = p.get("question", {}).get("timestamp")
+                    if ts:
+                        out.add(ts)
+                except Exception:
+                    continue
+    except Exception:
+        pass
+    return out
 
 
 def _parse_ts(s: str) -> datetime:
@@ -31,13 +53,20 @@ def find_clusters(
     min_questions: int = 3,
     window_minutes: float = 30.0,
     min_text_length: int = 80,
+    skip_extracted_ts: set[str] | None = None,
 ) -> list[dict]:
     """
     Flatten all candidates across threads, group by username, find dense clusters.
     Returns: [{username, count, first_ts, last_ts, samples: [{ts, text_preview}]}]
+
+    If skip_extracted_ts is provided, threads with ANY already-extracted candidate
+    are dropped — they're resolved.
     """
+    skip_extracted_ts = skip_extracted_ts or set()
     by_user: dict[str, list[tuple[datetime, str, str]]] = {}
     for thr in threads:
+        if any(c.get("timestamp") in skip_extracted_ts for c in thr.get("candidates", [])):
+            continue
         for c in thr.get("candidates", []):
             text = (c.get("text") or "").strip()
             if not text.endswith("?"):
@@ -94,12 +123,18 @@ def main() -> int:
     ap.add_argument("--window-minutes", type=float, default=30.0)
     ap.add_argument("--min-length", type=int, default=80)
     ap.add_argument("--rejected-dir", default=str(REJECTED_DIR))
+    ap.add_argument("--include-resolved", action="store_true",
+                    help="Don't filter out threads whose candidates are already extracted.")
     args = ap.parse_args()
 
     rejected_dir = Path(args.rejected_dir)
     if not rejected_dir.exists():
         print(f"Rejected dir not found: {rejected_dir}", file=sys.stderr)
         return 1
+
+    skip_ts = set() if args.include_resolved else _extracted_timestamps()
+    if skip_ts:
+        print(f"(filtering out {len(skip_ts)} already-extracted timestamps; pass --include-resolved to disable)")
 
     files = sorted(rejected_dir.glob(f"{args.date}.json" if args.date else "*.json"))
     if not files:
@@ -113,6 +148,7 @@ def main() -> int:
             min_questions=args.min_questions,
             window_minutes=args.window_minutes,
             min_text_length=args.min_length,
+            skip_extracted_ts=skip_ts,
         )
         if not clusters:
             continue

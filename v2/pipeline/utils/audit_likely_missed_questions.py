@@ -24,10 +24,33 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sqlite3
 import sys
 from pathlib import Path
 
-REJECTED_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "attribution_gaps" / "rejected_candidates"
+V2_DIR = Path(__file__).resolve().parent.parent.parent
+REJECTED_DIR = V2_DIR / "data" / "attribution_gaps" / "rejected_candidates"
+DB_PATH = V2_DIR / "data" / "questions.db"
+
+
+def extracted_timestamps() -> set[str]:
+    """Return set of question_timestamps already extracted into the archive."""
+    if not DB_PATH.exists():
+        return set()
+    out: set[str] = set()
+    try:
+        with sqlite3.connect(str(DB_PATH)) as conn:
+            for (payload,) in conn.execute("SELECT payload FROM questions"):
+                try:
+                    p = json.loads(payload)
+                    ts = p.get("question", {}).get("timestamp")
+                    if ts:
+                        out.add(ts)
+                except Exception:
+                    continue
+    except Exception:
+        pass
+    return out
 
 # Strong start-of-message prefixes that almost always indicate a trivia Q.
 PREFIX_PATTERN = re.compile(
@@ -55,10 +78,20 @@ def has_q_prefix(text: str) -> bool:
     return bool(PREFIX_PATTERN.match(text.strip()))
 
 
-def audit_threads(threads: list[dict], min_len: int = 200) -> list[dict]:
-    """Return list of {thread_id, date, candidate, reason}."""
+def audit_threads(threads: list[dict], min_len: int = 200,
+                  skip_extracted_ts: set[str] | None = None) -> list[dict]:
+    """Return list of {thread_id, date, candidate, reason}.
+
+    If skip_extracted_ts is provided, candidates whose timestamp is in that set
+    are dropped — they're already in the archive, no longer "missed".
+    """
+    skip_extracted_ts = skip_extracted_ts or set()
     out: list[dict] = []
     for t in threads:
+        # If ANY candidate in the thread is already extracted, treat the whole
+        # thread as resolved (matches export_rejected and /review UI logic).
+        if any(c.get("timestamp") in skip_extracted_ts for c in t.get("candidates", [])):
+            continue
         for c in t.get("candidates", []):
             text = c.get("text") or ""
             if not text.strip():
@@ -86,12 +119,18 @@ def main() -> int:
     ap.add_argument("--date", help="Only check this date (YYYY-MM-DD).")
     ap.add_argument("--min-length", type=int, default=200, help="Min text length for long-setup detection.")
     ap.add_argument("--rejected-dir", default=str(REJECTED_DIR))
+    ap.add_argument("--include-resolved", action="store_true",
+                    help="Don't filter out threads whose candidates are already extracted.")
     args = ap.parse_args()
 
     rejected_dir = Path(args.rejected_dir)
     if not rejected_dir.exists():
         print(f"Rejected dir not found: {rejected_dir}", file=sys.stderr)
         return 1
+
+    skip_ts = set() if args.include_resolved else extracted_timestamps()
+    if skip_ts:
+        print(f"(filtering out {len(skip_ts)} already-extracted timestamps; pass --include-resolved to disable)")
 
     files = sorted(rejected_dir.glob(f"{args.date}.json" if args.date else "*.json"))
     if not files:
@@ -104,7 +143,7 @@ def main() -> int:
             threads = json.loads(f.read_text(encoding="utf-8"))
         except Exception:
             continue
-        flags = audit_threads(threads, min_len=args.min_length)
+        flags = audit_threads(threads, min_len=args.min_length, skip_extracted_ts=skip_ts)
         if not flags:
             continue
         for fl in flags:
