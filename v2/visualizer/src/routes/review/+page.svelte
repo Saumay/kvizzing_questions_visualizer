@@ -24,7 +24,7 @@
   type ContextMsg = { timestamp: string; username: string; text: string; is_candidate: boolean };
   type Thread = { id: string; date: string; candidates: Candidate[]; context: ContextMsg[]; extracted?: boolean };
   type Status = 'valid' | 'not_valid' | 'maybe';
-  type Vote = { thread_id: string; reviewer: string; status: Status; reason: string; comment: string };
+  type Vote = { thread_id: string; reviewer: string; status: Status; reason: string; comment: string; synthetic?: boolean };
 
   const threads: Thread[] = $derived(data.threads);
   const questionsByTs: Map<string, { id: string; text: string }> = $derived(data.questionsByTs);
@@ -57,14 +57,30 @@
     loading = false;
   }
 
-  // My votes (derived from allVotes)
+  // Synthetic self-vote for threads already extracted into the archive.
+  // The user (or the extraction pipeline acting on their behalf) has resolved
+  // these by promoting them to questions; surface that as if they had voted
+  // Missed Q themselves so colors/badges/tallies stay consistent.
+  const SYNTHETIC_REASON = 'Auto-resolved — already extracted';
+  const syntheticSelfVotes = $derived.by<Vote[]>(() => {
+    if (!reviewer) return [];
+    const realSelfThreadIds = new Set(
+      allVotes.filter(v => v.reviewer === reviewer).map(v => v.thread_id)
+    );
+    return threads
+      .filter(t => t.extracted && !realSelfThreadIds.has(t.id))
+      .map(t => ({ thread_id: t.id, reviewer, status: 'valid' as Status, reason: SYNTHETIC_REASON, comment: '', synthetic: true }));
+  });
+  const effectiveVotes = $derived<Vote[]>(syntheticSelfVotes.length ? [...allVotes, ...syntheticSelfVotes] : allVotes);
+
+  // My votes (derived from effectiveVotes — real or synthetic)
   const myVotes = $derived(
-    new Map(allVotes.filter(v => v.reviewer === reviewer).map(v => [v.thread_id, v]))
+    new Map(effectiveVotes.filter(v => v.reviewer === reviewer).map(v => [v.thread_id, v]))
   );
 
-  // Vote tallies per thread
+  // Vote tallies per thread (include synthetic self-vote so counts match the UI)
   function voteTally(threadId: string) {
-    const tv = allVotes.filter(v => v.thread_id === threadId);
+    const tv = effectiveVotes.filter(v => v.thread_id === threadId);
     return {
       valid: tv.filter(v => v.status === 'valid').length,
       maybe: tv.filter(v => v.status === 'maybe').length,
@@ -81,7 +97,9 @@
   function startVote(id: string, status: Status) {
     if (!reviewer) return;
     const existing = myVotes.get(id);
-    if (existing?.status === status) {
+    // Toggle-off only applies to a real saved vote — never delete a synthetic
+    // self-vote (extracted thread); allow the user to cast/customise instead.
+    if (existing?.status === status && !existing.synthetic) {
       deleteVote(id);
       reasonOpenFor = null;
       return;
@@ -230,27 +248,21 @@
         if (selectedDate && t.date !== selectedDate) return false;
         if (filterDateFrom && t.date < filterDateFrom) return false;
         if (filterDateTo && t.date > filterDateTo) return false;
-        // Reviewer filter: show only threads this reviewer voted on.
-        // For the current user, also include extracted threads (resolved
-        // implicitly) so the filtered Missed Q view matches the badge tally.
+        // Reviewer filter: show only threads this reviewer voted on. For the
+        // current user this includes synthetic self-votes on extracted threads.
         if (filterReviewer) {
-          const rv = allVotes.find(v => v.thread_id === t.id && v.reviewer === filterReviewer);
-          const isSelf = filterReviewer === reviewer;
-          if (!rv && !(isSelf && t.extracted)) return false;
-          // Status filter applies to the filtered reviewer's vote, or to the
-          // implicit "valid" status of extracted threads when viewing self.
-          const effectiveStatus: Status | undefined = rv?.status ?? (isSelf && t.extracted ? 'valid' : undefined);
-          if (filterStatus === 'valid' && effectiveStatus !== 'valid') return false;
-          if (filterStatus === 'maybe' && effectiveStatus !== 'maybe') return false;
-          if (filterStatus === 'not_valid' && effectiveStatus !== 'not_valid') return false;
+          const rv = effectiveVotes.find(v => v.thread_id === t.id && v.reviewer === filterReviewer);
+          if (!rv) return false;
+          if (filterStatus === 'valid' && rv.status !== 'valid') return false;
+          if (filterStatus === 'maybe' && rv.status !== 'maybe') return false;
+          if (filterStatus === 'not_valid' && rv.status !== 'not_valid') return false;
           return true;
         }
         const mv = myVotes.get(t.id);
-        // Extracted threads count as implicitly resolved (valid).
-        if (filterStatus === 'unreviewed' && (mv || t.extracted)) return false;
-        if (filterStatus === 'valid' && !(mv?.status === 'valid' || t.extracted)) return false;
-        if (filterStatus === 'maybe' && (t.extracted || mv?.status !== 'maybe')) return false;
-        if (filterStatus === 'not_valid' && (t.extracted || mv?.status !== 'not_valid')) return false;
+        if (filterStatus === 'unreviewed' && mv) return false;
+        if (filterStatus === 'valid' && mv?.status !== 'valid') return false;
+        if (filterStatus === 'maybe' && mv?.status !== 'maybe') return false;
+        if (filterStatus === 'not_valid' && mv?.status !== 'not_valid') return false;
         return true;
       })
       .sort((a, b) => {
@@ -303,7 +315,7 @@
   function dateReviewStats(d: string) {
     const dateThreads = threads.filter(t => t.date === d);
     const total = dateThreads.length;
-    const reviewed = dateThreads.filter(t => myVotes.has(t.id) || t.extracted).length;
+    const reviewed = dateThreads.filter(t => myVotes.has(t.id)).length;
     return { total, reviewed, done: reviewed === total };
   }
 
@@ -336,16 +348,10 @@
 
   // ── Stats ──────────────────────────────────────────────────────────────────
   const total = $derived(threads.length);
-  const extractedThreadIds = $derived(new Set(threads.filter(t => t.extracted).map(t => t.id)));
-  const extractedCount = $derived(extractedThreadIds.size);
-  // Reviewed = my votes + threads already extracted (resolved without explicit vote).
-  // myVotes on an extracted thread doesn't double-count.
-  const reviewed = $derived(extractedCount + [...myVotes.keys()].filter(id => !extractedThreadIds.has(id)).length);
-  const valid = $derived(
-    extractedCount + [...myVotes.entries()].filter(([id, v]) => v.status === 'valid' && !extractedThreadIds.has(id)).length
-  );
-  const maybe = $derived([...myVotes.entries()].filter(([id, v]) => v.status === 'maybe' && !extractedThreadIds.has(id)).length);
-  const notValid = $derived([...myVotes.entries()].filter(([id, v]) => v.status === 'not_valid' && !extractedThreadIds.has(id)).length);
+  const reviewed = $derived(myVotes.size);
+  const valid = $derived([...myVotes.values()].filter(v => v.status === 'valid').length);
+  const maybe = $derived([...myVotes.values()].filter(v => v.status === 'maybe').length);
+  const notValid = $derived([...myVotes.values()].filter(v => v.status === 'not_valid').length);
   const pctValid = $derived(total > 0 ? valid / total * 100 : 0);
   const pctMaybe = $derived(total > 0 ? maybe / total * 100 : 0);
   const pctNot = $derived(total > 0 ? notValid / total * 100 : 0);
