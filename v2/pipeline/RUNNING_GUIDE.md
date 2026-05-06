@@ -19,6 +19,7 @@
 | `export-rejected` | Export rejected candidates from .txt files to JSON |
 | `check-coverage` | Check for missed dates or suspiciously low extraction counts |
 | `audit-missed-sessions [--date YYYY-MM-DD] [--min-questions N] [--window-minutes M] [--min-length L]` | Scan rejected_candidates for clusters of `?`-ending messages by the same user — flags sessions the LLM may have missed. Defaults: 3 Qs, 30 min window, 80 char minimum. Exits 1 if any clusters found |
+| `audit-likely-missed-qs [--date YYYY-MM-DD] [--min-length L]` | Scan rejected_candidates for STANDALONE `?`-ending messages with strong Q-prefixes (`Q.`, `FUQ:`, `Fun question`, `7/10:`, etc.) or long substantive setups (≥200 chars by default). Complements `audit-missed-sessions` (which only catches clusters). Exits 1 if any flagged |
 | `review-prepare [--date YYYY-MM-DD]` | Pull curator votes from Supabase, build curator labels, and emit `data/review_input.json` — an input bundle for an AI reviewer (e.g. Claude in-session) to classify unreviewed rejected threads. Curator config: `config/curators.json` |
 | `review-finalize --classifications PATH [--min-confidence 0.6]` | Merge an AI-produced classifications JSON into `data/auto_review_suggestions.json` and copy to `static/data/` so the /review UI surfaces ✨ AI-suggested status badges |
 | `generate-images` | Generate background images for new sessions |

@@ -38,6 +38,7 @@ v2/
       audit_extraction.py        # Schema/consistency auditor (run after extraction)
       audit_quality.py           # Post-export quality audit
       audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions
+      audit_likely_missed_questions.py  # Detect rejected standalone Qs with Q-prefixes / long setups
       review_suggest.py          # Curator-vote pull + AI-assisted suggestions for unreviewed rejected threads
       media_match.py             # WhatsApp media → question timestamp matching
       r2_upload.py               # Cloudflare R2 media upload

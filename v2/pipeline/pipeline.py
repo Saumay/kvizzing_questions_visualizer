@@ -1663,6 +1663,10 @@ def main() -> None:
     p_missed.add_argument("--window-minutes", type=float, default=30.0)
     p_missed.add_argument("--min-length", type=int, default=80)
 
+    p_missed_q = sub.add_parser("audit-likely-missed-qs", help="Scan rejected_candidates for STANDALONE question-mark messages with Q-prefixes or long substantive setups — likely missed individual questions")
+    p_missed_q.add_argument("--date", help="Only check this date (YYYY-MM-DD)")
+    p_missed_q.add_argument("--min-length", type=int, default=200)
+
     p_rev_prep = sub.add_parser("review-prepare", help="Pull curator votes from Supabase and emit an input bundle for AI-assisted review classification")
     p_rev_prep.add_argument("--date", help="Restrict to one date (YYYY-MM-DD)")
     p_rev_prep.add_argument("--output", help="Bundle output path (default: v2/data/review_input.json)")
@@ -1730,6 +1734,13 @@ def main() -> None:
             "--min-length", str(args.min_length),
         ]
         _audit_missed_main()
+    elif args.command == "audit-likely-missed-qs":
+        from utils.audit_likely_missed_questions import main as _audit_likely_main
+        sys.argv = [sys.argv[0]]
+        if args.date:
+            sys.argv += ["--date", args.date]
+        sys.argv += ["--min-length", str(args.min_length)]
+        _audit_likely_main()
     elif args.command == "review-prepare":
         from utils.review_suggest import main as _review_main
         sys.argv = [sys.argv[0], "prepare"]

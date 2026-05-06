@@ -174,7 +174,28 @@ Media markers appear inline: `image omitted`, `GIF omitted`, `video omitted`, `a
 Include: direct trivia questions, session questions (numbered sequences), questions never \
 answered or revealed by asker.
 
-Exclude:
+### STRONG extraction signals (extract unless clearly disqualified)
+
+These patterns almost always indicate a trivia question — extract them even if surrounded \
+by casual chat, even if part of a small thread, even if there are only 1–2 replies:
+
+- **Question prefixes** at the START of the message: `Q.`, `Q1.`, `Q1:`, `Q:`, `Q `, \
+`Question:`, `Flash Q`, `FUQ`, `FUQ:`, `Fun question`, `Fun Q`, `Bonus Q`, \
+`Trivia:`, `Q (...)`, numbered patterns like `7/10:`, `1/5.`, `(Q3)`. \
+Treat any message beginning with one of these as a question candidate by default.
+- **Substantive factual setup + final `?`**: a message ≥200 characters that reads like an \
+encyclopaedic/biographical/historical paragraph and ends with a question mark — almost \
+always a trivia question, regardless of preceding chat. Example shape: "X is a/the [noun] \
+that [history/details]. ... [more sentences]. What is/where/who/why ...?" Do NOT skip \
+these because the surrounding window looks casual.
+- **Image-only Qs**: a short message accompanied by an `image omitted` / `GIF omitted` \
+marker AND a `?` or imperative cue ("ID this", "name this", "guess the…", "connect:", \
+"FITB"). Extract; discussion will reveal what the image showed.
+- **Standalone trivia from a non-active asker**: even one such question by a user who \
+hasn't been quizmastering recently is still a question. Don't require a session.
+
+### Exclude
+
 - General chat, memes, jokes shared for fun (not as a question to be answered)
 - Messages that explicitly say they are NOT a question (e.g. "just sharing this", "reminded me of", \
 "not a question but", "putting this as a question just to share")
@@ -182,6 +203,8 @@ Exclude:
 - Duplicate posts
 - Questions whose timestamp does NOT start with the given DATE
 - Rhetorical questions, opinions phrased as questions, meta-discussion about the group
+- Clarifying / follow-up questions WITHIN an existing question thread (those belong in `discussion`)
+- Guess attempts phrased as questions (e.g. "Is it Krishna Cottage?")
 
 ---
 
