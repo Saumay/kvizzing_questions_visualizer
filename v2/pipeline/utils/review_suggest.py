@@ -340,6 +340,7 @@ def cmd_finalize(args: argparse.Namespace) -> int:
 
     out_local = DATA_DIR / "auto_review_suggestions.json"
     out_static = STATIC_DATA / "auto_review_suggestions.json"
+    archive_dir = DATA_DIR / "ai_classifications"
     payload = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "min_confidence": args.min_confidence,
@@ -348,9 +349,14 @@ def cmd_finalize(args: argparse.Namespace) -> int:
     }
     out_local.parent.mkdir(parents=True, exist_ok=True)
     out_static.parent.mkdir(parents=True, exist_ok=True)
+    archive_dir.mkdir(parents=True, exist_ok=True)
     out_local.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     out_static.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    # Archive a timestamped copy of the raw classifications input (audit trail).
+    archive_path = archive_dir / f"classifications-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.json"
+    archive_path.write_text(classifications_path.read_text(encoding="utf-8"), encoding="utf-8")
     log.info("Wrote %d suggestions to %s and %s", len(suggestions), out_local, out_static)
+    log.info("Archived raw classifications to %s", archive_path)
     return 0
 
 
