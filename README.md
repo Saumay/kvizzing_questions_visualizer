@@ -21,35 +21,48 @@ v2/
   schema/                        # Pydantic data model (single source of truth)
     schema.py                    # KVizzingQuestion model + all enums
     schema.json                  # Auto-generated JSON Schema
+    examples.json                # Reference example payloads
     test_schema.py               # Schema validation tests
 
   pipeline/                      # Python extraction & enrichment pipeline
-    pipeline.py                  # Main orchestrator (backfill, reimport, export, etc.)
+    pipeline.py                  # Main orchestrator (backfill, incremental, reimport, export, etc.)
     stages/
       stage0_filter.py           # Date filtering & backfill detection
       stage1_parse.py            # WhatsApp chat parsing
-      stage2_extract.py          # LLM-based Q&A extraction (Gemini)
+      stage2_extract.py          # LLM-based Q&A extraction (Gemini) + programmatic auto-fix + self-healing LLM micro-calls
       stage3_structure.py        # Raw → Pydantic mapping, ID generation, stats
       stage4_enrich.py           # Topic categorisation via LLM
       stage5_store.py            # SQLite upsert with enrichment preservation
       stage6_export.py           # JSON export for visualizer
     utils/
-      audit_extraction.py        # 14-type auto-fix + self-healing LLM micro-calls
+      audit_extraction.py        # Schema/consistency auditor (run after extraction)
       audit_quality.py           # Post-export quality audit
+      audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions
       media_match.py             # WhatsApp media → question timestamp matching
       r2_upload.py               # Cloudflare R2 media upload
+      r2_usage.py                # R2 free-tier usage check
       generate_session_images.py # AI session background images (Stable Horde)
       detect_sessions.py         # Post-hoc session detection
       detect_connect_quizzes.py  # LLM-based connect quiz classification
+      classify_discussion.py     # LLM classifier for discussion entry roles
+      backfill_discussion.py     # Add missing chat messages to discussion arrays
+      reclassify_elaboration.py  # Reclassify elaboration entries
+      topic_rules.py             # Rule-based topic assignment (no LLM)
       export_rejected.py         # Rejected candidate export for review
+      config.py                  # Pipeline config loader
+      log_setup.py               # Logging setup
     config/
       pipeline_config.json       # Pipeline parameters
       topics.json                # 23 topic categories
       members.json               # Member display names & colors
+      session_overrides.json     # Manual session metadata overrides
+      username_aliases.json      # Username normalisation map
 
   visualizer/                    # SvelteKit web app
     src/
       routes/
+        +layout.svelte           # Root layout (auth gate, nav)
+        +layout.ts               # Layout load (data hydration)
         +page.svelte             # Question feed with filters, search, timeline
         sessions/+page.svelte    # Quiz sessions gallery with cards
         session/[id]/+page.svelte # Session detail with answer submission
@@ -59,7 +72,12 @@ v2/
       lib/
         components/              # Reusable Svelte 5 components
         stores/                  # QuestionStore with filtering & search
+        utils/                   # fuzzy, tags, text, time, memberColors, topicColors, hints
         config/ui.ts             # Session image opacity, background URLs
+        assets/                  # Static UI assets
+        supabase.ts              # Supabase client (votes, saves, likes)
+        types.ts                 # Shared TS types
+        index.ts                 # Barrel exports
     static/
       data/                      # Exported JSON (questions, sessions, stats, tags, members)
       images/sessions/           # AI-generated session background images
@@ -111,6 +129,9 @@ cd v2/pipeline
 # Full backfill (extract → store → media → export per date)
 GEMINI_API_KEY=xxx python3 pipeline.py backfill
 
+# Day-to-day update — process only dates after MAX(date) in DB
+GEMINI_API_KEY=xxx python3 pipeline.py incremental
+
 # Re-export from DB
 python3 pipeline.py export
 
@@ -120,6 +141,8 @@ GEMINI_API_KEY=xxx python3 pipeline.py reenrich --all
 # Quality audit
 python3 pipeline.py audit-quality
 ```
+
+Full subcommand reference (reimport, detect-sessions, detect-connect, normalize-tags, assign-topics, check-coverage, cleanup-r2, enrich-reactions, etc.) in [`v2/pipeline/RUNNING_GUIDE.md`](v2/pipeline/RUNNING_GUIDE.md).
 
 ---
 
@@ -166,7 +189,7 @@ cd v2/pipeline
 pip install pydantic google-genai boto3 requests imagehash Pillow
 ```
 
-Place your WhatsApp chat export at the path specified in `config/pipeline_config.json` (default: `data/raw/_chat.txt`). Media files from the export go in the same `data/raw/` directory.
+Place your WhatsApp chat export at the path specified in `config/pipeline_config.json` (default: `v2/pipeline/data/raw/_chat.txt`). Media files from the export go in the same `v2/pipeline/data/raw/` directory.
 
 ### 3. Run extraction
 
@@ -191,10 +214,10 @@ npm run dev    # http://localhost:5173
 cd ../pipeline
 
 # Match WhatsApp media files to questions
-python3 pipeline.py enrich-media --media-dir ../data/raw/
+python3 pipeline.py enrich-media --media-dir data/raw/
 
 # Upload to Cloudflare R2 (set credentials in .env first)
-python3 pipeline.py upload-media --media-dir ../data/raw/
+python3 pipeline.py upload-media --media-dir data/raw/
 
 # Generate AI session background images (free, no API key needed)
 python3 pipeline.py generate-images

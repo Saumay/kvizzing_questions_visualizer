@@ -80,8 +80,9 @@ pipeline.py                  # Main orchestrator
 stages/                      # Pipeline stages 0-6
 clients/llm.py               # LLM provider (Gemini)
 utils/
-  audit_extraction.py        # Auto-fix engine (14 fix types)
+  audit_extraction.py        # Schema/consistency auditor for extraction_output files
   audit_quality.py           # Post-export quality checks
+  audit_missed_sessions.py   # Detect rejected `?`-message clusters → likely missed sessions
   media_match.py             # Timestamp-based media matching with perceptual dedup
   r2_upload.py               # Cloudflare R2 upload
   generate_session_images.py # Stable Horde image generation

@@ -18,6 +18,7 @@
 | `check-r2` | Check R2 free-tier usage; warns at 80% of each limit |
 | `export-rejected` | Export rejected candidates from .txt files to JSON |
 | `check-coverage` | Check for missed dates or suspiciously low extraction counts |
+| `audit-missed-sessions [--date YYYY-MM-DD] [--min-questions N] [--window-minutes M] [--min-length L]` | Scan rejected_candidates for clusters of `?`-ending messages by the same user — flags sessions the LLM may have missed. Defaults: 3 Qs, 30 min window, 80 char minimum. Exits 1 if any clusters found |
 | `generate-images` | Generate background images for new sessions |
 
 All commands are run from `v2/pipeline/`:
