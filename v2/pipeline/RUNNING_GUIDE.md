@@ -1,5 +1,11 @@
 # KVizzing Pipeline — Running Guide
 
+For a multi-month bulk extraction (rare, high-stakes), follow these runbooks
+in order instead of running subcommands ad-hoc:
+
+- [`RUNBOOK_PRE_EXTRACTION.md`](RUNBOOK_PRE_EXTRACTION.md) — pre-flight, validation, dry runs
+- [`RUNBOOK_POST_EXTRACTION.md`](RUNBOOK_POST_EXTRACTION.md) — bulk run, QA, recovery, ship
+
 ## Subcommands
 
 | Command | What it does |
