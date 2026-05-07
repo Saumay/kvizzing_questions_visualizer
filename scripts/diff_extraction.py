@@ -155,10 +155,11 @@ def main() -> int:
         if args.json:
             Path(args.json).write_text(json.dumps(report, indent=2, ensure_ascii=False))
 
-    # Non-zero exit if regressions detected
-    if not args.dir:
-        return 1 if report["summary"]["dropped"] > 0 else 0
-    return 0
+    # Non-zero exit if any regression (dropped Q) detected.
+    if args.dir:
+        any_dropped = any(r["summary"]["dropped"] > 0 for r in report.values())
+        return 1 if any_dropped else 0
+    return 1 if report["summary"]["dropped"] > 0 else 0
 
 
 if __name__ == "__main__":

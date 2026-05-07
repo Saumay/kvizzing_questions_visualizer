@@ -337,10 +337,11 @@ confirmation timestamp. null if answer_solver is null.
 ### answer_parts
 Use for any multi-part question — **always populate when the question explicitly asks \
 for ≥2 distinct things**. Triggers include:
-  - "X, Y, Z" placeholders in question_text
-  - "Identify A and B"
-  - "Name the 4 cities"
-  - "FITB" with multiple blanks
+  - "X, Y, Z" placeholders in question_text (3 separate things)
+  - "Identify A and B" (2 things)
+  - "Name the 4 cities" (4 things)
+  - FITB with **two or more blanks** (e.g. "_____ from _____" → 2 parts). \
+A FITB with a single blank is one-part — use answer_text only, NOT answer_parts.
   - "What is X and what does Y mean?"
   - "ID the connect AND the year"
 Each part is a separate entry: `{label, text, solver}`. label = the placeholder/role (X, \
