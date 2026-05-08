@@ -1161,7 +1161,7 @@ def _run_reimport(dates: list[str]) -> None:
     """Re-import extraction_output files into the DB (audit + auto-fix + stages 3-6).
     Stage 4 runs with an LLM client so questions with <2 topics get enriched."""
     import json as _json
-    from utils.audit_extraction import audit_data, _is_explicit_confirm
+    from utils.audit_extraction import audit_data
 
     config = load_config(_PIPELINE_DIR / "config")
     config = dict(config)
@@ -1181,14 +1181,6 @@ def _run_reimport(dates: list[str]) -> None:
     session_overrides_config = _PIPELINE_DIR / "config" / "session_overrides.json"
     extraction_output_dir = data_dir / "extraction_output"
 
-    FORMAT_TAGS = {
-        "identify", "anagram", "wordplay", "connect", "clickbait",
-        "real life", "naming", "weird", "pun", "battle",
-        "fill in the blank", "multi-part", "factual",
-    }
-    MEDIA_MARKERS = {"image omitted", "gif omitted", "video omitted",
-                     "audio omitted", "document omitted"}
-
     if not db_path.exists():
         log.error("questions.db not found at %s — run backfill first.", db_path)
         sys.exit(1)
@@ -1202,6 +1194,7 @@ def _run_reimport(dates: list[str]) -> None:
     log.info("=" * 60)
 
     # ── Auto-fix pass on all files before importing ──
+    from utils.auto_fix import apply_auto_fixes
     total_fixes = 0
     for date_str in dates:
         extraction_file = extraction_output_dir / f"{date_str}.json"
@@ -1214,145 +1207,7 @@ def _run_reimport(dates: list[str]) -> None:
         if not data:
             continue
 
-        from utils.config import load_topics as _load_topics, load_topic_aliases as _load_aliases
-        _VALID_TOPIC_IDS, _ = _load_topics(_PIPELINE_DIR / "config")
-        _TOPIC_ALIASES = _load_aliases(_PIPELINE_DIR / "config")
-
-        fixes = 0
-        for q in data:
-            disc = q.get("discussion", [])
-
-            # Fix INVALID_TOPIC
-            if "topics" in q and isinstance(q["topics"], list):
-                new_topics = [_TOPIC_ALIASES.get(t.lower(), t) for t in q["topics"]]
-                if new_topics != q["topics"]:
-                    q["topics"] = new_topics
-                    fixes += 1
-
-            # Fix FORMAT_TAG
-            tags = q.get("tags") or []
-            clean_tags = [t for t in tags if t.lower() not in FORMAT_TAGS]
-            if len(clean_tags) != len(tags):
-                q["tags"] = clean_tags
-                fixes += 1
-
-            # Fix TAG_VARIANT
-            if q.get("tags"):
-                new_tags = ["badly explained" if t.lower() == "badly explained plots" else t for t in q["tags"]]
-                if new_tags != q["tags"]:
-                    q["tags"] = new_tags
-                    fixes += 1
-
-            # Fix ARTIFACT — strip ↵ and edit markers
-            for field in ("question_text", "answer_text", "confirmation_text"):
-                val = q.get(field) or ""
-                if val:
-                    cleaned = val.replace(" ↵ ", " ").replace("↵", "").replace("<This message was edited>", "").strip()
-                    if cleaned != val:
-                        q[field] = cleaned if cleaned else None
-                        fixes += 1
-            for e in disc:
-                val = e.get("text") or ""
-                if val:
-                    cleaned = val.replace(" ↵ ", " ").replace("↵", "").replace("<This message was edited>", "").strip()
-                    if cleaned != val:
-                        e["text"] = cleaned
-                        fixes += 1
-
-            # Fix ORPHAN_SESSION_VAR
-            if not q.get("is_session_question"):
-                for sf in ("session_quizmaster", "session_theme", "session_quiz_type", "session_connect_answer", "session_question_number", "session_announcement"):
-                    if q.get(sf):
-                        q[sf] = None
-                        fixes += 1
-
-            # Fix COLLAB_MISMATCH
-            parts = q.get("answer_parts") or []
-            if parts and not q.get("answer_is_collaborative"):
-                solvers = {p["solver"] for p in parts if p.get("solver")}
-                if len(solvers) > 1:
-                    q["answer_is_collaborative"] = True
-                    fixes += 1
-
-            # Fix confidence/confirmed consistency
-            if q.get("answer_confirmed"):
-                if q.get("extraction_confidence") != "high":
-                    q["extraction_confidence"] = "high"
-                    fixes += 1
-            else:
-                if q.get("extraction_confidence") == "high":
-                    q["extraction_confidence"] = "medium"
-                    fixes += 1
-
-            # Fix SOLVER_MISMATCH / TIMESTAMP_MISMATCH
-            solver = q.get("answer_solver")
-            if solver and not q.get("answer_is_collaborative") and disc:
-                first_correct = next((e for e in disc if e.get("is_correct") is True), None)
-                if first_correct:
-                    if first_correct["username"] != solver:
-                        q["answer_solver"] = first_correct["username"]
-                        fixes += 1
-                    if first_correct.get("timestamp") != q.get("answer_timestamp"):
-                        q["answer_timestamp"] = first_correct["timestamp"]
-                        fixes += 1
-
-            # Fix WRONG_CONFIRMER — non-asker confirmation
-            asker = q.get("question_asker")
-            if asker:
-                for e in disc:
-                    if e.get("role") == "confirmation" and e.get("username") != asker:
-                        e["role"] = "chat"
-                        e["is_correct"] = None
-                        fixes += 1
-
-            # Fix MEDIA_MARKER in confirmation_text
-            ct = q.get("confirmation_text") or ""
-            if ct:
-                ct_clean = ct
-                for marker in MEDIA_MARKERS:
-                    ct_clean = ct_clean.replace(marker, "").replace(marker.title(), "")
-                ct_clean = ct_clean.strip()
-                if ct_clean != ct:
-                    q["confirmation_text"] = ct_clean if ct_clean else None
-                    fixes += 1
-
-            # Fix has_media on wrong discussion roles
-            for e in disc:
-                if e.get("has_media") and e.get("role") not in ("hint", "answer_reveal", "elaboration"):
-                    e["has_media"] = False
-                    fixes += 1
-
-            # Fix CONFIRM_NO_ROLE
-            if q.get("answer_confirmed") and not any(e.get("role") == "confirmation" for e in disc):
-                conf_text = (q.get("confirmation_text") or "").strip()
-                asker = q.get("question_asker")
-                matched = False
-                for e in disc:
-                    if (e.get("role") == "chat" and e.get("username") == asker
-                            and (not conf_text or e.get("text", "").strip() == conf_text)):
-                        e["role"] = "confirmation"
-                        e["is_correct"] = None
-                        matched = True
-                        fixes += 1
-                        break
-                if not matched:
-                    q["answer_confirmed"] = False
-                    q["confirmation_text"] = None
-                    q["extraction_confidence"] = "medium"
-                    fixes += 1
-
-            # Fix CONFIRM_IMPLICIT — reject false confirmations
-            if q.get("answer_confirmed") and q.get("confirmation_text"):
-                if not _is_explicit_confirm(q["confirmation_text"]):
-                    q["answer_confirmed"] = False
-                    q["confirmation_text"] = None
-                    q["extraction_confidence"] = "medium"
-                    for e in disc:
-                        if e.get("role") == "confirmation":
-                            e["role"] = "chat"
-                            e["is_correct"] = None
-                    fixes += 1
-
+        fixes = apply_auto_fixes(data, config_dir=_PIPELINE_DIR / "config")
         if fixes:
             extraction_file.write_text(_json.dumps(data, indent=2, ensure_ascii=False))
             log.info("  [%s] Auto-fixed %d issue(s) in extraction file.", date_str, fixes)

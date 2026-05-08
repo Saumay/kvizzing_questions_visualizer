@@ -275,9 +275,11 @@ def finalize_batch(batch_dir: Path) -> None:
 
 
 def _run_stages_for_dates(dates: list[str]) -> None:
-    """Run stages 3-6 for the given dates without invoking the LLM client."""
+    """Run auto-fix + stages 3-6 for the given dates without invoking the LLM."""
     sys.path.insert(0, str(PIPELINE_DIR))
     from utils.config import load_config
+    from utils.auto_fix import apply_auto_fixes
+    from utils.audit_extraction import audit_data
     from stages.stage3_structure import run as stage3
     from stages.stage4_enrich import run as stage4
     from stages.stage5_store import run as stage5
@@ -291,11 +293,33 @@ def _run_stages_for_dates(dates: list[str]) -> None:
     sess_overrides = CONFIG_DIR / "session_overrides.json"
     output_dir = V2_DIR / "visualizer" / "static" / "data"
 
+    # Clean stale FTS rows from any prior wipes — DELETE FROM questions doesn't
+    # cascade to the questions_fts virtual table, and stage5's FTS insert will
+    # hit a UNIQUE constraint if a stale row still references the same `id`.
+    with sqlite3.connect(str(DB_PATH)) as db:
+        stale = db.execute(
+            "DELETE FROM questions_fts WHERE rowid NOT IN (SELECT rowid FROM questions)"
+        ).rowcount
+        if stale:
+            log.info("Cleaned %d stale FTS row(s) before stage5", stale)
+        db.commit()
+
     for date in dates:
         path = EXTRACTION_DIR / f"{date}.json"
         if not path.exists():
             continue
         candidates = json.loads(path.read_text(encoding="utf-8"))
+        # Auto-fix first — same normalisation that stage 2 applies post-LLM.
+        fixes = apply_auto_fixes(candidates, config_dir=CONFIG_DIR)
+        if fixes:
+            log.info("  [%s] Auto-fixed %d issue(s) before stages 3-6", date, fixes)
+            path.write_text(json.dumps(candidates, indent=2, ensure_ascii=False), encoding="utf-8")
+        # Audit — log any issues remaining (informational only)
+        remaining = audit_data(candidates)
+        if remaining:
+            log.warning("  [%s] %d audit issue(s) remain after auto-fix:", date, len(remaining))
+            for issue in remaining[:10]:
+                log.warning("    %s", issue)
         questions = stage3(candidates, config, errors_dir=errors_dir)
         questions = [q for q in questions if str(q.date) == date]
         if not questions:
