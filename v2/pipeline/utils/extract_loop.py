@@ -304,6 +304,28 @@ def _run_stages_for_dates(dates: list[str]) -> None:
             log.info("Cleaned %d stale FTS row(s) before stage5", stale)
         db.commit()
 
+    # Parse chat once for rejected_candidates writing.
+    by_date: dict[str, list[dict]] = {}
+    if CHAT_FILE.exists():
+        msgs = parse_chat_messages(CHAT_FILE.read_text(encoding="utf-8", errors="replace"))
+        for m in msgs:
+            d = m["date"]
+            if d in dates:
+                by_date.setdefault(d, []).append(m)
+
+    rejected_dir = DATA_DIR / "attribution_gaps" / "rejected_candidates"
+    rejected_json = output_dir / "rejected_candidates.json"
+
+    # Lazy imports for optional steps (skipped on error).
+    try:
+        from pipeline import _write_rejected_candidates
+    except ImportError:
+        _write_rejected_candidates = None
+    try:
+        from utils.export_rejected import export_rejected as _export_rejected
+    except ImportError:
+        _export_rejected = None
+
     for date in dates:
         path = EXTRACTION_DIR / f"{date}.json"
         if not path.exists():
@@ -324,13 +346,77 @@ def _run_stages_for_dates(dates: list[str]) -> None:
         questions = [q for q in questions if str(q.date) == date]
         if not questions:
             continue
-        questions = stage4(questions, config, llm_client=None)  # skip LLM enrichment; topics already set
+        questions = stage4(questions, config, llm_client=None)  # skip LLM enrichment; AI already provided topics
         with sqlite3.connect(str(DB_PATH)) as db:
             stage5(questions, db, state_path=state_path)
-    # Re-export once after all dates
+
+        # Per-date rejected candidates (matches backfill behavior)
+        if _write_rejected_candidates and date in by_date:
+            try:
+                _write_rejected_candidates({date: by_date[date]}, EXTRACTION_DIR, rejected_dir, config)
+            except Exception as e:
+                log.warning("  [%s] rejected_candidates write skipped: %s", date, e)
+
+    # Re-export DB once after all dates
     with sqlite3.connect(str(DB_PATH)) as db:
         stage6(db, output_dir, members_config_path=members_cfg,
                session_overrides_path=sess_overrides, state_path=state_path)
+
+    # Refresh combined rejected_candidates.json for the visualizer
+    if _export_rejected and rejected_dir.exists():
+        try:
+            _export_rejected(rejected_dir, rejected_json)
+            log.info("Refreshed %s", rejected_json.name)
+        except Exception as e:
+            log.warning("export_rejected skipped: %s", e)
+
+    # Per-date media match (matches backfill behavior)
+    media_dir = V2_DIR / "data" / "raw"
+    if media_dir.is_dir():
+        try:
+            from utils.media_match import match_media
+            from stages.stage5_store import upsert as _upsert
+            for date in dates:
+                with sqlite3.connect(str(DB_PATH)) as db:
+                    rows = db.execute(
+                        "SELECT payload FROM questions WHERE date=? AND has_media=1", (date,)
+                    ).fetchall()
+                if not rows:
+                    continue
+                # Re-load Q objects through stage 3 so media matching can write back
+                ext_path = EXTRACTION_DIR / f"{date}.json"
+                if not ext_path.exists():
+                    continue
+                cands = json.loads(ext_path.read_text(encoding="utf-8"))
+                qs = stage3(cands, config, errors_dir=errors_dir)
+                qs_media = [q for q in qs if q.question.has_media and q.question.media is None]
+                if not qs_media:
+                    continue
+                enriched = match_media(qs_media, media_dir, config)
+                matched = [q for q in enriched if q.question.media is not None]
+                if matched:
+                    with sqlite3.connect(str(DB_PATH)) as db:
+                        _upsert(matched, db)
+                    log.info("  [%s] Matched %d media files", date, len(matched))
+            # Re-export so static/data picks up media URLs
+            with sqlite3.connect(str(DB_PATH)) as db:
+                stage6(db, output_dir, members_config_path=members_cfg,
+                       session_overrides_path=sess_overrides, state_path=state_path)
+        except Exception as e:
+            log.warning("enrich-media skipped: %s", e)
+
+    # Session images (idempotent — only generates for new sessions)
+    try:
+        from utils.generate_session_images import main as _gen_images_main
+        old_argv = sys.argv
+        sys.argv = [sys.argv[0]]
+        _gen_images_main()
+        sys.argv = old_argv
+        log.info("Session images pass complete")
+    except SystemExit:
+        pass
+    except Exception as e:
+        log.warning("generate-images skipped: %s", e)
 
 
 # ── CLI ─────────────────────────────────────────────────────────────────────
