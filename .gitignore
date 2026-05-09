@@ -40,6 +40,7 @@ v2/pipeline/.env
 backups/
 v2/data/extract_batches/
 v2/data/ai_classifications/
+v2/data/llm_queue/
 
 # v2 visualizer
 v2/visualizer/node_modules/
