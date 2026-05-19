@@ -439,6 +439,46 @@
           "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)"
         }
       ]
+    },
+    "2025-11-11": {
+      "method": "me-as-llm-fork",
+      "model": "claude-opus-4-7",
+      "count": 56,
+      "last_extracted_at": "2026-05-19T16:23:09Z",
+      "notes": null,
+      "history": []
+    },
+    "2025-11-12": {
+      "method": "me-as-llm-fork",
+      "model": "claude-opus-4-7",
+      "count": 102,
+      "last_extracted_at": "2026-05-19T16:23:09Z",
+      "notes": null,
+      "history": []
+    },
+    "2025-11-13": {
+      "method": "me-as-llm-fork",
+      "model": "claude-opus-4-7",
+      "count": 51,
+      "last_extracted_at": "2026-05-19T16:23:09Z",
+      "notes": null,
+      "history": []
+    },
+    "2025-11-14": {
+      "method": "me-as-llm-fork",
+      "model": "claude-opus-4-7",
+      "count": 55,
+      "last_extracted_at": "2026-05-19T16:23:09Z",
+      "notes": null,
+      "history": []
+    },
+    "2025-11-15": {
+      "method": "me-as-llm-fork",
+      "model": "claude-opus-4-7",
+      "count": 26,
+      "last_extracted_at": "2026-05-19T16:23:09Z",
+      "notes": null,
+      "history": []
     }
   }
 }
