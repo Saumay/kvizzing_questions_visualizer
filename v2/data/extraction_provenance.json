@@ -377,36 +377,68 @@
       ]
     },
     "2025-11-07": {
-      "method": "me-as-llm-inline",
+      "method": "me-as-llm-fork",
       "model": "claude-opus-4-7",
-      "count": 17,
-      "last_extracted_at": "2026-05-15T00:00:00Z",
-      "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)",
-      "history": []
+      "count": 40,
+      "last_extracted_at": "2026-05-19T07:00:56Z",
+      "notes": null,
+      "history": [
+        {
+          "method": "me-as-llm-inline",
+          "model": "claude-opus-4-7",
+          "count": 17,
+          "last_extracted_at": "2026-05-15T00:00:00Z",
+          "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)"
+        }
+      ]
     },
     "2025-11-08": {
-      "method": "me-as-llm-inline",
+      "method": "me-as-llm-fork",
       "model": "claude-opus-4-7",
-      "count": 15,
-      "last_extracted_at": "2026-05-15T00:00:00Z",
-      "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)",
-      "history": []
+      "count": 42,
+      "last_extracted_at": "2026-05-19T07:00:58Z",
+      "notes": null,
+      "history": [
+        {
+          "method": "me-as-llm-inline",
+          "model": "claude-opus-4-7",
+          "count": 15,
+          "last_extracted_at": "2026-05-15T00:00:00Z",
+          "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)"
+        }
+      ]
     },
     "2025-11-09": {
-      "method": "me-as-llm-inline",
+      "method": "me-as-llm-fork",
       "model": "claude-opus-4-7",
-      "count": 23,
-      "last_extracted_at": "2026-05-15T00:00:00Z",
-      "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)",
-      "history": []
+      "count": 53,
+      "last_extracted_at": "2026-05-19T07:03:59Z",
+      "notes": null,
+      "history": [
+        {
+          "method": "me-as-llm-inline",
+          "model": "claude-opus-4-7",
+          "count": 23,
+          "last_extracted_at": "2026-05-15T00:00:00Z",
+          "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)"
+        }
+      ]
     },
     "2025-11-10": {
-      "method": "me-as-llm-inline",
+      "method": "me-as-llm-fork",
       "model": "claude-opus-4-7",
-      "count": 15,
-      "last_extracted_at": "2026-05-15T00:00:00Z",
-      "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)",
-      "history": []
+      "count": 52,
+      "last_extracted_at": "2026-05-19T07:04:01Z",
+      "notes": null,
+      "history": [
+        {
+          "method": "me-as-llm-inline",
+          "model": "claude-opus-4-7",
+          "count": 15,
+          "last_extracted_at": "2026-05-15T00:00:00Z",
+          "notes": "extract-loop batches 002-005 (recall-poor; pending re-extract)"
+        }
+      ]
     }
   }
 }
