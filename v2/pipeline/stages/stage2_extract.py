@@ -199,6 +199,20 @@ nouns) followed by a query indicator IS a connect quiz. Set `session_quiz_type=c
 The reveal goes in `session_connect_answer`.
 - **Standalone trivia from a non-active asker**: even one such question by a user who \
 hasn't been quizmastering recently is still a question. Don't require a session.
+- **Numbered rapid-fire mini-rounds**: when one asker posts a sequence of short \
+numbered items (`1. Sachhai Ka Jaal`, `2. Balle balle Amritsar to LA`, ...) or \
+short image-only items with the group guessing each — EACH NUMBERED ITEM IS A \
+SEPARATE Q. Asker = poster. Solver = first correct guesser confirmed by asker. \
+question_text = the item text (or "[image: ...]" for image bursts). Use the time \
+of the numbered post as question_timestamp. Common shapes: Hindi-title-of-Hollywood \
+movies, minimalist poster sets, dialogue guessing rounds, caption-this sets.
+- **Multi-hint single Qs**: when one asker posts a question and follows up over \
+the next 1-15 minutes with N additional hints (no new Q in between), this is ONE \
+Q. Bundle hints into discussion[] with role="hint". Do NOT split into multiple Qs.
+- **Self-revealed answers**: if the asker reveals the answer after the group fails \
+to crack it, it is still a valid Q. Set answer_solver=null, answer_confirmed=false, \
+answer_text=the reveal text, extraction_confidence=medium. The reveal message goes \
+in discussion[] with role="answer_reveal" by the asker.
 
 ### Exclude
 
