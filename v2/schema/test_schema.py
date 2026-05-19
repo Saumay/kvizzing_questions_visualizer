@@ -173,7 +173,7 @@ class TestEnums:
 
     def test_invalid_topic_rejected(self):
         ex = self._base()
-        ex["question"]["topic"] = "politics"
+        ex["question"]["topics"] = ["definitely_not_a_real_topic"]
         with pytest.raises(ValidationError):
             KVizzingQuestion.model_validate(ex)
 
