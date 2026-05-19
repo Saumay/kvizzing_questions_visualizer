@@ -410,6 +410,16 @@ def _run_pipeline(mode: str) -> None:
             total_stored += count
             log.info("  [%s] %d questions stored  (running total: %d)", date_str, count, total_stored)
 
+            # Provenance: record method = gemini (or claude-file if LLM_PROVIDER set)
+            try:
+                from utils import provenance as _prov
+                _provider = os.environ.get("LLM_PROVIDER", "gemini").lower()
+                _method = "claude-file" if _provider == "claude_file" else "gemini"
+                _model = "claude-opus-4-7" if _method == "claude-file" else "gemini-2.5-pro"
+                _prov.record(date_str, method=_method, model=_model, count=count, notes="pipeline.py backfill")
+            except Exception as e:
+                log.debug("  [%s] Provenance record skipped: %s", date_str, e)
+
             # Per-date media matching
             media_dir = V2_DIR / "data" / "raw"
             if media_dir.is_dir():

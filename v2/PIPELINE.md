@@ -732,6 +732,22 @@ make enrich-media MEDIA_DIR=path/to/WhatsApp/Media && make export && make build 
 
 ---
 
+## Extraction Provenance
+
+`v2/data/extraction_provenance.json` is the per-date audit log of HOW each date's Qs were extracted. Updated automatically by:
+- `pipeline.py backfill` (records `gemini` or `claude-file` based on `LLM_PROVIDER`)
+- `extract_loop.finalize_batch` (records `me-as-llm-inline` by default, or whatever the fork wrote into `_provenance_method`)
+
+**Methods:**
+- `gemini` — Gemini via OpenAI-compatible API (default; `LLM_PROVIDER=gemini` or unset)
+- `claude-file` — Claude via `ClaudeFileClient` file-queue handoff (`LLM_PROVIDER=claude_file`)
+- `me-as-llm-fork` — Claude extracting via dedicated background Agent fork with recall-first protocol (preferred for me-as-LLM runs)
+- `me-as-llm-inline` — Claude extracting inline in a conversation (DEPRECATED — recall drops 3-4x vs Gemini; see `feedback_meaself_extraction` memory)
+
+Each entry records `method`, `model`, `count`, `last_extracted_at`, `notes`, and prior runs under `history[]`. Helpers in `v2/pipeline/utils/provenance.py` (`record()`, `get()`, `all_dates()`). The file is tracked in git so the audit trail persists across clones.
+
+---
+
 ## Gitignore
 
 The following must be in `.gitignore` to prevent data files from being accidentally committed:

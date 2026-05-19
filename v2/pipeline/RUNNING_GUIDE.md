@@ -258,13 +258,29 @@ python3 pipeline.py backfill
 
 ## LLM provider
 
-The pipeline uses Gemini via its OpenAI-compatible endpoint (model: `gemini-2.5-pro`). Get a key at [aistudio.google.com](https://aistudio.google.com).
+Selectable via `LLM_PROVIDER` env var. Two providers wired in `clients/llm.py`:
 
 ```bash
+# Default — Gemini via OpenAI-compatible endpoint (model: gemini-2.5-pro)
 GEMINI_API_KEY=your_key python3 pipeline.py backfill
+
+# Claude via file-queue handoff to an external Claude session
+LLM_PROVIDER=claude_file python3 pipeline.py backfill
 ```
 
-Gemini's free tier has a 1M token context window — handles the largest quiz days without chunking.
+Gemini's free tier has a 1M token context window — handles the largest quiz days without chunking. Get a key at [aistudio.google.com](https://aistudio.google.com).
+
+`ClaudeFileClient` writes each LLM request to `v2/data/llm_queue/<uuid>.request.json` and polls for `<uuid>.response.json`; a watching Claude session services the queue. Use this for backfill stages 2/4 when Claude should drive the LLM calls instead of Gemini.
+
+---
+
+## Extraction provenance
+
+Every backfill / extract-loop finalize writes to `v2/data/extraction_provenance.json` so each date has a durable record of which extractor produced its Qs. See PIPELINE.md → "Extraction Provenance" for the full schema and method enum. Inspect quickly with:
+
+```bash
+python3 -c "import json; d=json.load(open('v2/data/extraction_provenance.json')); [print(f'{k}: {v[\"method\"]:<22} count={v[\"count\"]}') for k,v in sorted(d['dates'].items())]"
+```
 
 ---
 

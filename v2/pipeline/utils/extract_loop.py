@@ -196,15 +196,41 @@ def build_input_bundle(dates: list[str], batch_id: str) -> dict:
             f"Extract Q&A pairs for the listed `dates` ({', '.join(dates)}) following the "
             f"system prompt in v2/pipeline/stages/stage2_extract.py. Output to "
             f"v2/data/extract_batches/{batch_id}/output.json with shape: "
-            f"{{\"batch_id\": \"{batch_id}\", \"extracted\": [<full schema entries>]}}. "
+            f"{{\"batch_id\": \"{batch_id}\", \"extracted\": [<full schema entries>], "
+            f"\"_provenance_method\": \"me-as-llm-fork\", \"_provenance_model\": \"claude-opus-4-7\"}}. "
             f"Each entry must conform to the existing extraction_output schema "
             f"(question_timestamp, question_text, question_asker, topics, has_media, "
             f"is_session_question + session_* fields, answer_text + answer_solver + "
             f"answer_timestamp, answer_confirmed, confirmation_text, "
             f"answer_is_collaborative, answer_parts, discussion[], scores_after, "
             f"extraction_confidence). Apply STRONG-signal rules and the cross-asker / "
-            f"image-trigger / connect-quiz rules. Do not extract clarifying or guess "
-            f"messages. Return ONLY the dates listed; ignore others."
+            f"image-trigger / connect-quiz rules. Return ONLY the dates listed; ignore others.\n\n"
+            f"RECALL-FIRST DIRECTIVE: Missing a Q is the worst outcome. Missing the answer "
+            f"on a captured Q is acceptable (set extraction_confidence=low). When in doubt, "
+            f"include the Q.\n\n"
+            f"PROCESS THE ENTIRE DATE END-TO-END:\n"
+            f"  - Walk messages in 200-msg windows from index 0 to the last message.\n"
+            f"  - Do NOT stop after the first few hours. Quiz activity continues all day.\n"
+            f"  - Sanity check: timestamp range of extracted Qs should span the chat's "
+            f"active hours, not just the morning.\n\n"
+            f"PATTERNS TO CATCH (commonly missed):\n"
+            f"  1. Mini-round rapid-fire: when one asker posts a numbered list of items "
+            f"(e.g. '1. Sachhai Ka Jaal', '2. Balle balle...') with the group guessing "
+            f"each, treat EACH numbered item as a separate Q. Asker = poster. Solver = "
+            f"first correct guesser confirmed by asker.\n"
+            f"  2. Image-trigger Qs: an image + a short prompt ('Pehchaan kaun?', "
+            f"'What movie?', 'Connect:') is a Q even without '?'. has_media=true.\n"
+            f"  3. Multi-hint Qs: one asker posts question + N follow-up hints over "
+            f"minutes. Bundle as ONE Q (question_text concatenated with hints).\n"
+            f"  4. Cross-asker session continuation: when session host pauses ('back in 5') "
+            f"and resumes later, continue extracting Qs into same session_id.\n"
+            f"  5. Dialogue/title guess games: 'Guess this dialogue: ...' or 'What movie: "
+            f"...' is a Q. Answer = correctly guessed source.\n"
+            f"  6. Self-revealed answers: if asker reveals answer after group fails, still "
+            f"a Q (answer_confirmed=false, answer_solver=null, answer_text=reveal, "
+            f"extraction_confidence=medium; put reveal in discussion[] with role=answer_reveal).\n\n"
+            f"REJECTED LOG: include a `rejected` array alongside `extracted` for "
+            f"candidates you considered but excluded, with one-line reasons. Helps audit."
         ),
     }
 
@@ -271,6 +297,20 @@ def finalize_batch(batch_dir: Path) -> None:
     )
     (batch_dir / "stats.txt").write_text(stats, encoding="utf-8")
     (batch_dir / ".finalized").touch()
+
+    # Provenance: record each date with extraction method. Method is read from
+    # output.json `_provenance_method` if set by the LLM responder (forks set
+    # "me-as-llm-fork"); fallback to "me-as-llm-inline" for legacy/inline runs.
+    try:
+        from utils import provenance
+        method = out.get("_provenance_method", "me-as-llm-inline")
+        model = out.get("_provenance_model")
+        notes = out.get("_provenance_notes")
+        for date, entries in by_date.items():
+            provenance.record(date, method=method, model=model, count=len(entries), notes=notes)
+    except Exception as e:
+        log.warning("[%s] Provenance record failed: %s", batch_dir.name, e)
+
     log.info("[%s] Finalized.", batch_dir.name)
 
 
