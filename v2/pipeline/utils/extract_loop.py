@@ -303,6 +303,12 @@ def finalize_batch(batch_dir: Path) -> None:
     # "me-as-llm-fork"); fallback to "me-as-llm-inline" for legacy/inline runs.
     try:
         from utils import provenance
+        if "_provenance_method" not in out:
+            log.warning(
+                "[%s] output.json missing _provenance_method — defaulting to 'me-as-llm-inline'. "
+                "If this was a fork run, the fork forgot to self-tag. Check the prompt.",
+                batch_dir.name,
+            )
         method = out.get("_provenance_method", "me-as-llm-inline")
         model = out.get("_provenance_model")
         notes = out.get("_provenance_notes")
@@ -310,6 +316,32 @@ def finalize_batch(batch_dir: Path) -> None:
             provenance.record(date, method=method, model=model, count=len(entries), notes=notes)
     except Exception as e:
         log.warning("[%s] Provenance record failed: %s", batch_dir.name, e)
+
+    # Density sanity check: warn if msgs/Q ratio is outlier vs the recall-fix
+    # neighbor band (target 20-50 msgs/Q). Caught the original 11-06 baseline at
+    # 96 msgs/Q would have been flagged here.
+    for date, entries in by_date.items():
+        date_msgs = [m for m in inp.get("messages", []) if m.get("date") == date]
+        n_msgs = len(date_msgs)
+        n_qs = len(entries)
+        if n_qs == 0:
+            log.warning("[%s] DENSITY ALERT: 0 Qs extracted from %d msgs", date, n_msgs)
+            continue
+        ratio = n_msgs / n_qs
+        if ratio > 60:
+            log.warning(
+                "[%s] DENSITY ALERT: %d msgs / %d Qs = %.0f msgs/Q "
+                "(target 20-50). Likely under-extraction — verify recall.",
+                date, n_msgs, n_qs, ratio,
+            )
+        elif ratio < 8:
+            log.warning(
+                "[%s] DENSITY ALERT: %d msgs / %d Qs = %.0f msgs/Q "
+                "(target 20-50). Likely over-extraction — verify precision.",
+                date, n_msgs, n_qs, ratio,
+            )
+        else:
+            log.info("[%s] density ok: %d msgs / %d Qs = %.0f msgs/Q", date, n_msgs, n_qs, ratio)
 
     log.info("[%s] Finalized.", batch_dir.name)
 

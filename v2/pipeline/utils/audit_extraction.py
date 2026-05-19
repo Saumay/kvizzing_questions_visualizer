@@ -311,6 +311,25 @@ def audit_data(data: list) -> list[str]:
                     f"DISC_MEDIA_ROLE     {label}: has_media=true on {e.get('role')} entry by {e.get('username')}"
                 )
 
+        # 30. SOLVER_EQUALS_ASKER — fork fallback bug from me-as-llm extraction.
+        # When the LLM can't pick a clear winner in a mini-round, it sometimes
+        # defaults to the asker as solver. Real asker self-solves exist (host
+        # guesses a co-host's Q) but they are rare; flag for review.
+        asker = q.get("question_asker")
+        if solver and asker and solver == asker and not collab:
+            issues.append(f"SOLVER_EQUALS_ASKER {label}: solver={solver!r} (likely fork fallback)")
+
+        # 31. SELF_REVEAL_NO_ROLE — self-revealed Qs (asker reveals answer after
+        # group fails) must put the reveal in discussion with role=answer_reveal
+        # by the asker. Per stage2 prompt "Self-revealed answers" rule.
+        if q.get("answer_text") and not solver and not any(e.get("is_correct") is True for e in disc):
+            has_reveal = any(
+                e.get("role") == "answer_reveal" and e.get("username") == asker
+                for e in disc
+            )
+            if not has_reveal:
+                issues.append(f"SELF_REVEAL_NO_ROLE {label}: answer set, no solver, no asker reveal in discussion")
+
     return issues
 
 
