@@ -25,6 +25,34 @@ Add new entries at the top of "Deferred". Move to "Done" when landed.
 
 ## Deferred
 
+### Solver=asker fallback on image-burst mini-rounds (me-as-LLM forks)
+
+**Trigger:** after curator review of 11-06-style poster sessions; if >5% of mini-round Qs end up with solver=asker, address before next bulk run.
+**Effort:** S (hours)
+**Touches:** `v2/pipeline/utils/extract_loop.py` (`instructions_for_ai`), `v2/pipeline/utils/audit_extraction.py` (new SOLVER_EQUALS_ASKER check)
+
+**Problem.** When the fork can't unambiguously pick a winner among rapid-fire image-poster guesses, it defaults to the asker as solver (observed Vats marking himself as solver on Big Lebowski, Gangs of NY, Karate Kid, Munich during 11-06 R2 minimalist posters). Inflates host's solve count, misattributes solves.
+
+**Sketch.** Add explicit rule to the fork's instructions: "If no clear single solver wins a mini-round item, set answer_solver=null with extraction_confidence=medium. NEVER default to the asker." Add audit check `SOLVER_EQUALS_ASKER` that flags any Q where solver == asker AND is_session_question=true AND mini-round detected (numbered or rapid image bursts).
+
+**Alternatives considered.** Auto-fix at stage 3 (rewrite solver=asker → null) — too aggressive, asker can legitimately self-solve in some cases (asker guesses for a co-host's Q). Better to keep as audit warning + manual review.
+
+---
+
+### Synthetic timestamps on image-burst mini-rounds (DISC_BEFORE_Q noise)
+
+**Trigger:** when DISC_BEFORE_Q audit issues become >10 per heavy date.
+**Effort:** S (hours)
+**Touches:** `v2/pipeline/utils/extract_loop.py` (`instructions_for_ai`)
+
+**Problem.** Forks extracting rapid-fire image bursts (poster sessions with 12-28 Qs in 90 min) interpolate timestamps with `:00`/`:30` second markers rather than reading exact message timestamps from input.json. Result: stage 3 flags DISC_BEFORE_Q because synthetic Q timestamp lands after the first reply that arrived seconds earlier. Observed 8 such flags on 2025-11-06 across Vats poster R2 (18:34, 18:58, 19:06).
+
+**Sketch.** Strengthen the fork instructions: "question_timestamp MUST be copied verbatim from the exact input.json message timestamp of the asker's post. Do NOT round, interpolate, or estimate. If unsure which post is the Q in a multi-image burst, pick the earliest matching one."
+
+**Alternatives considered.** Auto-fix at stage 3 (shift Q timestamp to earliest discussion entry) — risky, could mask real chronology bugs. Keep audit signal, fix source.
+
+---
+
 ### Dynamic daily-chat loading from R2
 
 **Trigger:** when reviewers start hitting the 40/40 context window on the
