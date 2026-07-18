@@ -86,6 +86,18 @@
           "title": "Is Collaborative",
           "type": "boolean"
         },
+        "answer_source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AnswerSource"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Evidence type that resolved the answer: explicit_confirmation, asker_reveal, tally_implied, or inferred. Null for entries extracted before this field existed and not yet backfilled."
+        },
         "parts": {
           "anyOf": [
             {
@@ -142,6 +154,16 @@
       ],
       "title": "AnswerPart",
       "type": "object"
+    },
+    "AnswerSource": {
+      "enum": [
+        "explicit_confirmation",
+        "asker_reveal",
+        "tally_implied",
+        "inferred"
+      ],
+      "title": "AnswerSource",
+      "type": "string"
     },
     "Difficulty": {
       "enum": [

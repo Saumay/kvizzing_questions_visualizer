@@ -33,6 +33,7 @@ from schema import (
     Question,
     Answer,
     AnswerPart,
+    AnswerSource,
     DiscussionEntry,
     DiscussionRole,
     Stats,
@@ -151,6 +152,16 @@ def _map_answer_parts(parts: Optional[list[dict]]) -> Optional[list[AnswerPart]]
     ]
 
 
+def _parse_answer_source(value) -> Optional[AnswerSource]:
+    """Coerce the LLM's answer_source string to the enum; unknown values → None."""
+    if not value or not isinstance(value, str):
+        return None
+    try:
+        return AnswerSource(value.strip().lower())
+    except ValueError:
+        return None
+
+
 def _map_scores_after(scores: Optional[list[dict]]) -> Optional[list[Score]]:
     if not scores:
         return None
@@ -242,6 +253,7 @@ def structure(
             confirmation_text=raw.get("confirmation_text"),
             is_collaborative=bool(raw.get("answer_is_collaborative", False)),
             parts=_map_answer_parts(raw.get("answer_parts")),
+            answer_source=_parse_answer_source(raw.get("answer_source")),
         )
 
         stats = Stats(

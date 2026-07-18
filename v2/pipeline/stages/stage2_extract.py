@@ -250,6 +250,7 @@ Return a JSON array. Each element is a flat object with EXACTLY these fields:
   "answer_timestamp": "timestamp of answer_solver's is_correct=true attempt, or null",
   "answer_confirmed": true/false,
   "confirmation_text": "exact asker confirmation text, or null",
+  "answer_source": "explicit_confirmation|asker_reveal|tally_implied|inferred, or null if answer_text is null",
   "answer_is_collaborative": true if different people solved different parts,
   "answer_parts": null or [{"label": "X", "text": "answer", "solver": "username or null"}],
   "discussion": [ {
@@ -344,6 +345,22 @@ Do NOT set true if:
 ### confirmation_text
 Exact text of asker's confirmation message. null if answer_confirmed=false.
 
+### answer_source / closing signals
+First identify how the question CLOSED — the asker's first closing signal after the question:
+- **EXPLICIT CONFIRM**: asker affirms a participant's answer in text → answer_source="explicit_confirmation"
+- **ASKER REVEAL**: asker posts the answer themselves (nobody got it, or after partial attempts) \
+→ answer_source="asker_reveal"
+- **TALLY**: no direct confirmation, but asker posts a score/points update showing who earned \
+points for this question → answer_source="tally_implied"
+- **TRANSITION**: asker moves on ("Next", "Moving on", or simply posts the next question) with \
+no confirmatory signal → answer resolved by question-answer fit alone → answer_source="inferred"
+
+The active window for THIS question ends at its closing signal. Messages after the closing \
+signal belong to the NEXT question — do not attribute them as attempts or hints for this one. \
+Exception: post-close context about this answer is still `elaboration`.
+If both a reveal and an explicit confirm exist, prefer "explicit_confirmation".
+Set answer_source=null if and only if answer_text is null.
+
 ### answer_timestamp
 The timestamp of answer_solver's is_correct=true entry in discussion. NOT the asker's \
 confirmation timestamp. null if answer_solver is null.
@@ -408,9 +425,13 @@ null unless quizmaster explicitly lists per-player running totals right after th
 Point-value labels ("10 points!", "20 points!") are difficulty labels, NOT scores → null.
 
 ### extraction_confidence
-- "high": answer_confirmed=true (asker gave explicit text confirmation)
-- "medium": no explicit confirmation, but strong contextual signal (reveal, continued without dispute)
-- "low": no confirmation, weak or ambiguous signal
+Derive from answer_source (evidence strength, strongest → weakest):
+- "high": answer_source="explicit_confirmation" (answer_confirmed=true)
+- "medium": answer_source="asker_reveal" or "tally_implied" — answer is reliable but no \
+participant-attempt + explicit-confirm chain exists
+- "medium": answer_source="inferred" AND the asker transitioned immediately after one specific \
+attempt, or multiple participants converged on the same answer
+- "low": answer_source="inferred" with weak/ambiguous signal, or answer_text=null
 NOTE: extraction_confidence="high" if and only if answer_confirmed=true.
 
 ### Text cleaning (applies to ALL text fields)
@@ -437,6 +458,8 @@ NOTE: extraction_confidence="high" if and only if answer_confirmed=true.
 13. Does has_media=true on every hint/answer_reveal/elaboration entry that had a media marker? Is has_media=false (or absent) for all other roles?
 14. If is_session_question=true, is session_quizmaster set? Is session_question_number correct?
 15. Is session_announcement set ONLY on the first question of each session (session_question_number=1)?
+16. Is answer_source consistent? "explicit_confirmation" ⇔ answer_confirmed=true; "asker_reveal" ⇒ discussion contains an answer_reveal entry; null ⇔ answer_text=null.
+17. Did attribution of attempts/hints stop at this question's closing signal (no bleed from the next question)?
 16. Are session fields (session_quizmaster, session_theme, etc.) null for non-session questions?
 
 ---

@@ -54,6 +54,13 @@ class ExtractionConfidence(str, Enum):
     low    = "low"     # no confirmation found; question validity uncertain
 
 
+class AnswerSource(str, Enum):
+    explicit_confirmation = "explicit_confirmation"  # asker affirmed a participant's answer in text
+    asker_reveal          = "asker_reveal"           # asker posted the answer themselves
+    tally_implied         = "tally_implied"          # confirmed indirectly via a score/points update
+    inferred              = "inferred"               # no confirmatory signal; answer inferred from Q-A fit
+
+
 class DiscussionRole(str, Enum):
     attempt       = "attempt"       # participant answer try
     hint          = "hint"          # asker nudge
@@ -169,6 +176,12 @@ class Answer(BaseModel):
     )
     is_collaborative: bool = Field(
         description="True when multiple participants together produced the full answer"
+    )
+    answer_source: Optional[AnswerSource] = Field(
+        default=None,
+        description="Evidence type that resolved the answer: explicit_confirmation, "
+                    "asker_reveal, tally_implied, or inferred. Null for entries "
+                    "extracted before this field existed and not yet backfilled."
     )
     parts: Optional[list[AnswerPart]] = Field(
         default=None,
