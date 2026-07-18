@@ -812,7 +812,9 @@
     "asker": "Aditi Bapat",
     "type": "factual",
     "has_media": false,
-    "topic": "history",
+    "topics": [
+      "history"
+    ],
     "tags": [
       "patents",
       "USA",
@@ -826,6 +828,7 @@
     "confirmed": true,
     "confirmation_text": "Bingo",
     "is_collaborative": false,
+    "answer_source": "explicit_confirmation",
     "parts": null
   },
   "discussion": [
@@ -938,7 +941,9 @@
     "asker": "Kartikey Pradhan",
     "type": "multi_part",
     "has_media": false,
-    "topic": "technology",
+    "topics": [
+      "technology"
+    ],
     "tags": [
       "CEO",
       "semiconductors",
@@ -954,6 +959,7 @@
     "confirmed": true,
     "confirmation_text": "Lisa Su is X, AMD is Y, and Jensen Huang, her mamaji, is Z",
     "is_collaborative": false,
+    "answer_source": "explicit_confirmation",
     "parts": [
       {
         "label": "X",
@@ -1060,7 +1066,10 @@
     "asker": "pratik.s.chandarana",
     "type": "factual",
     "has_media": true,
-    "topic": "entertainment",
+    "topics": [
+      "entertainment",
+      "cinema"
+    ],
     "tags": [
       "movies",
       "Hollywood",
@@ -1074,6 +1083,7 @@
     "confirmed": true,
     "confirmation_text": "Rush Hour 2 is correct; Chinmay with the correct answer",
     "is_collaborative": false,
+    "answer_source": "explicit_confirmation",
     "parts": null
   },
   "discussion": [
@@ -1190,7 +1200,9 @@ Margaret Penrose",
     "asker": "Sidhesh K K",
     "type": "connect",
     "has_media": false,
-    "topic": "literature",
+    "topics": [
+      "literature"
+    ],
     "tags": [
       "pseudonyms",
       "publishing",
@@ -1205,6 +1217,7 @@ Margaret Penrose",
     "confirmed": true,
     "confirmation_text": "Together you folks have cracked the funda... these are pennames of authors given by the same syndicate",
     "is_collaborative": true,
+    "answer_source": "explicit_confirmation",
     "parts": null
   },
   "discussion": [
