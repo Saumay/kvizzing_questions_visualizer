@@ -130,9 +130,17 @@
           "type": "string"
         },
         "text": {
-          "description": "The answer for this part",
-          "title": "Text",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The answer for this part. Null if this part was never solved or revealed.",
+          "title": "Text"
         },
         "solver": {
           "anyOf": [
@@ -149,8 +157,7 @@
         }
       },
       "required": [
-        "label",
-        "text"
+        "label"
       ],
       "title": "AnswerPart",
       "type": "object"

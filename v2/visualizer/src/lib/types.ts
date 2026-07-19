@@ -33,7 +33,8 @@ export interface AnswerData {
   confirmed: boolean;
   confirmation_text: string;
   is_collaborative: boolean;
-  parts: { label: string; text: string; solver: string | null }[] | null;
+  answer_source?: 'explicit_confirmation' | 'asker_reveal' | 'tally_implied' | 'inferred' | null;
+  parts: { label: string; text: string | null; solver: string | null }[] | null;
 }
 
 export interface QuestionStats {

@@ -142,8 +142,9 @@ class AnswerPart(BaseModel):
     label: str = Field(
         description="Part identifier (e.g. 'X', 'Y', 'Z', or '1', '2', '3')"
     )
-    text: str = Field(
-        description="The answer for this part"
+    text: Optional[str] = Field(
+        default=None,
+        description="The answer for this part. Null if this part was never solved or revealed."
     )
     solver: Optional[str] = Field(
         default=None,
