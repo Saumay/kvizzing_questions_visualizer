@@ -1,3 +1,7 @@
+/** Show the animated Marauders Map login gate instead of the plain passphrase form.
+ *  Off for now — flip back on when we want the full "Fun & Lurn" reveal animation. */
+export const ENABLE_MARAUDERS_MAP_AUTH = false;
+
 /** Opacity of session background images (0–1).
  *  The wrapper's background colour shows through, so this is the only knob needed. */
 export const SESSION_IMAGE_OPACITY = {

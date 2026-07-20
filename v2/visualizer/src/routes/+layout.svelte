@@ -7,10 +7,11 @@
   import favicon from '$lib/assets/favicon.svg';
   import { QuestionStore } from '$lib/stores/questionStore';
   import { tzAbbr, dateInTz, formatDateTz } from '$lib/utils/time';
-  import { SESSION_IMAGE_OPACITY, sessionBgUrl } from '$lib/config/ui';
+  import { SESSION_IMAGE_OPACITY, sessionBgUrl, ENABLE_MARAUDERS_MAP_AUTH } from '$lib/config/ui';
   import CalendarSidebar from '$lib/components/CalendarSidebar.svelte';
   import BaseCalendar, { type Cell } from '$lib/components/BaseCalendar.svelte';
   import MaraudersAuth from '$lib/components/MaraudersAuth.svelte';
+  import SimpleAuth from '$lib/components/SimpleAuth.svelte';
 
   let { children, data } = $props();
 
@@ -533,7 +534,11 @@
     </div>
   </div>
 {:else if !authenticated}
-  <MaraudersAuth {onAuthenticated} />
+  {#if ENABLE_MARAUDERS_MAP_AUTH}
+    <MaraudersAuth {onAuthenticated} />
+  {:else}
+    <SimpleAuth {onAuthenticated} />
+  {/if}
 {:else}
 
 <div class="h-screen flex flex-col bg-ui-parchment overflow-hidden">
