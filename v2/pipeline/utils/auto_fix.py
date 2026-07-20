@@ -105,8 +105,19 @@ def apply_auto_fixes(data: list[dict], config_dir: Optional[Path] = None) -> int
 
         # COLLAB_MISMATCH
         parts = q.get("answer_parts") or []
+        if isinstance(parts, dict):
+            parts = q["answer_parts"] = [parts]
+            fixes += 1
+
+        # scores_after as {username: score} mapping instead of list of entries
+        scores = q.get("scores_after")
+        if isinstance(scores, dict):
+            q["scores_after"] = [
+                {"username": u, "score": s} for u, s in scores.items()
+            ]
+            fixes += 1
         if parts and not q.get("answer_is_collaborative"):
-            solvers = {p["solver"] for p in parts if p.get("solver")}
+            solvers = {p["solver"] for p in parts if isinstance(p, dict) and p.get("solver")}
             if len(solvers) > 1:
                 q["answer_is_collaborative"] = True
                 fixes += 1

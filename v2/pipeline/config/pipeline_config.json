@@ -1,28 +1,28 @@
 {
   "source_timezone": "America/Chicago",
   "chat_file": "data/raw/_chat.txt",
-
   "stage0": {
     "lookahead_hours": 4
   },
-
   "stage1": {
-    "locale_formats": ["%m/%d/%y, %H:%M:%S", "%m/%d/%y, %I:%M:%S %p", "%d/%m/%Y, %H:%M:%S"]
+    "locale_formats": [
+      "%m/%d/%y, %H:%M:%S",
+      "%m/%d/%y, %I:%M:%S %p",
+      "%d/%m/%Y, %H:%M:%S"
+    ]
   },
-
   "stage2": {
     "heuristic_reply_window_minutes": 15,
     "heuristic_min_replies": 2,
-    "llm_model": "gemini-2.5-pro",
+    "llm_model": "gemini-flash-latest",
     "llm_max_tokens": 65536,
     "llm_max_retries": 10,
     "llm_retry_base_delay_seconds": 2,
     "llm_rate_limit_sleep_seconds": 13,
-    "chunk_threshold_messages": 2000,
-    "chunk_target_size": 600,
+    "chunk_threshold_messages": 600,
+    "chunk_target_size": 150,
     "chunk_overlap_messages": 100
   },
-
   "rejected_candidates": {
     "min_text_length": 40,
     "reply_window_seconds": 600,
@@ -30,25 +30,21 @@
     "context_messages_before": 40,
     "context_messages_after": 40
   },
-
   "stage3": {
     "difficulty": {
       "easy_max_wrong_attempts": 0,
       "medium_max_wrong_attempts": 10
     }
   },
-
   "stage4": {
-    "llm_model": "gemini-2.5-pro",
+    "llm_model": "gemini-flash-latest",
     "llm_batch_size": 6,
     "llm_max_retries": 3,
     "llm_retry_base_delay_seconds": 2
   },
-
   "reactions_enrichment": {
     "timestamp_tolerance_seconds": 1
   },
-
   "media_enrichment": {
     "match_window_seconds": 150
   }

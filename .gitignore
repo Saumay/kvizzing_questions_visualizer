@@ -49,3 +49,5 @@ v2/visualizer/build/
 
 # Reference repo (Akshay's pipeline), cloned for technique comparison
 kvizzing_archivist/
+quiz_decks/
+backfill_run.log

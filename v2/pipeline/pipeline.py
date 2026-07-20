@@ -249,7 +249,7 @@ def _write_rejected_candidates(
 
 # ── Pipeline run ──────────────────────────────────────────────────────────────
 
-def _run_pipeline(mode: str) -> None:
+def _run_pipeline(mode: str, only_dates: list[str] | None = None) -> None:
     config = load_config(_PIPELINE_DIR / "config")
     config = dict(config)
     config["chat_file"] = str(V2_DIR / config["chat_file"])
@@ -299,6 +299,12 @@ def _run_pipeline(mode: str) -> None:
             by_date[m["timestamp"][:10]].append(m)
 
         target_dates = sorted(by_date.keys())
+        if only_dates:
+            requested = set(only_dates)
+            absent = requested - set(target_dates)
+            if absent:
+                log.warning("  --only-dates not in window (already stored or no messages): %s", ", ".join(sorted(absent)))
+            target_dates = [d for d in target_dates if d in requested]
         log.info("  %d dates in window.", len(target_dates))
         skipped_dates: list[str] = []
 
@@ -415,7 +421,7 @@ def _run_pipeline(mode: str) -> None:
                 from utils import provenance as _prov
                 _provider = os.environ.get("LLM_PROVIDER", "gemini").lower()
                 _method = "claude-file" if _provider == "claude_file" else "gemini"
-                _model = "claude-opus-4-7" if _method == "claude-file" else "gemini-2.5-pro"
+                _model = "claude-opus-4-7" if _method == "claude-file" else config["stage2"]["llm_model"]
                 _prov.record(date_str, method=_method, model=_model, count=count, notes="pipeline.py backfill")
             except Exception as e:
                 log.debug("  [%s] Provenance record skipped: %s", date_str, e)
@@ -1469,7 +1475,8 @@ def main() -> None:
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("backfill",    help="Process all dates not yet in the store")
+    p_backfill = sub.add_parser("backfill", help="Process all dates not yet in the store")
+    p_backfill.add_argument("--only-dates", nargs="+", metavar="YYYY-MM-DD", help="Restrict the run to these dates (must be missing from the store)")
     sub.add_parser("incremental", help="Process only new dates since last run")
     sub.add_parser("export",      help="Re-export JSON files from questions.db")
     sub.add_parser("generate-images", help="Generate background images for new sessions (via Stable Horde)")
@@ -1553,7 +1560,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command in ("backfill", "incremental"):
-        _run_pipeline(args.command)
+        _run_pipeline(args.command, only_dates=getattr(args, "only_dates", None))
     elif args.command == "export":
         _run_export()
     elif args.command == "generate-images":

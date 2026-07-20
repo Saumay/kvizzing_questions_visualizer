@@ -47,8 +47,23 @@ class _Messages:
 
 # ── Gemini client ──────────────────────────────────────────────────────────────
 
-_GEMINI_MODEL = "gemini-2.5-pro"
+_GEMINI_MODEL = "gemini-pro-latest"
 _GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+
+# Chat transcripts include unmoderated group discussion (politics, current
+# events); default safety thresholds intermittently block whole extraction
+# chunks with an empty response. Extraction is read-only over the group's own
+# messages, so disable the filters.
+_GEMINI_SAFETY_SETTINGS = [
+    {"category": c, "threshold": "BLOCK_NONE"}
+    for c in (
+        "HARM_CATEGORY_HARASSMENT",
+        "HARM_CATEGORY_HATE_SPEECH",
+        "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "HARM_CATEGORY_CIVIC_INTEGRITY",
+    )
+]
 
 
 class GeminiClient:
@@ -71,12 +86,24 @@ class GeminiClient:
 
     def _create(self, *, model: str, max_tokens: int, system: str, messages: list) -> _Response:
         response = self._client.chat.completions.create(
-            model=_GEMINI_MODEL,
+            model=model or _GEMINI_MODEL,
             max_tokens=max_tokens,
             temperature=0.0,
             messages=[{"role": "system", "content": system}] + messages,
+            # Thinking tokens share the max_tokens budget on Gemini's OpenAI-compat
+            # endpoint; cap them so long extraction outputs don't get truncated.
+            extra_body={
+                "reasoning_effort": "low",
+                "extra_body": {"google": {"safety_settings": _GEMINI_SAFETY_SETTINGS}},
+            },
         )
-        return _Response(response.choices[0].message.content)
+        choice = response.choices[0]
+        content = choice.message.content
+        if not content:
+            raise RuntimeError(
+                f"Gemini returned empty content (finish_reason={choice.finish_reason!r})"
+            )
+        return _Response(content)
 
 
 # ── Claude file-queue client ───────────────────────────────────────────────────

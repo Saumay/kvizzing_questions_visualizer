@@ -42,8 +42,8 @@ def main():
         print("No LLM client. Set GEMINI_API_KEY.")
         sys.exit(1)
 
-    # Use the client's default model (e.g. gemini-2.5-pro for GeminiClient)
-    model = getattr(client, '_model', None) or "gemini-2.5-pro"
+    # Use the client's default model (e.g. gemini-pro-latest for GeminiClient)
+    model = getattr(client, '_model', None) or "gemini-pro-latest"
 
     candidates = [s for s in sessions if s.get("quiz_type") != "connect" and s["question_count"] >= 5]
     print(f"Checking {len(candidates)} sessions for connect quiz pattern...\n")

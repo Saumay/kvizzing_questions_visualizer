@@ -612,18 +612,31 @@ def _call_llm_chunked(messages: list[dict], date_str: str, model: str, llm_clien
         end = min(len(messages), split_points[ci + 1] + (overlap if ci < n_chunks - 1 else 0))
         chunk_text = _format_messages(messages[start:end])
         log.debug("  Chunk %d/%d: messages %d–%d (%d msgs)", ci + 1, n_chunks, start, end - 1, end - start)
-        try:
-            raw = _llm_call_once(chunk_text, date_str, model, llm_client, max_tokens)
-            parsed = _parse_json(raw) if raw.strip() else []
-            pairs = _extract_rejected(parsed, date_str) if isinstance(parsed, dict) else (parsed if isinstance(parsed, list) else [])
-            for p in pairs:
-                key = p.get("question_timestamp", "")
-                if key in seen:
-                    seen[key] = _merge_extractions(seen[key], p)
+        chunk_retries = 4
+        for chunk_attempt in range(chunk_retries):
+            try:
+                raw = _llm_call_once(chunk_text, date_str, model, llm_client, max_tokens)
+                parsed = _parse_json(raw) if raw.strip() else []
+                pairs = _extract_rejected(parsed, date_str) if isinstance(parsed, dict) else (parsed if isinstance(parsed, list) else [])
+                for p in pairs:
+                    key = p.get("question_timestamp", "")
+                    if key in seen:
+                        seen[key] = _merge_extractions(seen[key], p)
+                    else:
+                        seen[key] = p
+                break
+            except Exception as e:
+                if chunk_attempt < chunk_retries - 1:
+                    delay = rate_limit_sleep * (chunk_attempt + 1)
+                    log.warning("  Chunk %d/%d failed (attempt %d/%d): %s — retrying in %ds",
+                                ci + 1, n_chunks, chunk_attempt + 1, chunk_retries, e, delay)
+                    time.sleep(delay)
                 else:
-                    seen[key] = p
-        except Exception as e:
-            log.warning("  Chunk %d/%d failed: %s — continuing with remaining chunks", ci + 1, n_chunks, e)
+                    # A dropped chunk means silently missing questions for this date.
+                    # Fail the whole date so it is skipped (not cached) and re-runs next time.
+                    raise RuntimeError(
+                        f"Chunk {ci + 1}/{n_chunks} failed after {chunk_retries} attempts: {e}"
+                    ) from e
         if ci < n_chunks - 1:
             time.sleep(rate_limit_sleep)  # Inter-chunk rate limit
 

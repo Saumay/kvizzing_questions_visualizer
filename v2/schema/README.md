@@ -484,9 +484,9 @@
           "type": "string"
         },
         "score": {
-          "description": "Score at this point in the session",
+          "description": "Score at this point in the session; may be fractional (half-points)",
           "title": "Score",
-          "type": "integer"
+          "type": "number"
         }
       },
       "required": [

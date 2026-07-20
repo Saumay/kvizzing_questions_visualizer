@@ -479,6 +479,237 @@
       "last_extracted_at": "2026-05-19T16:23:09Z",
       "notes": null,
       "history": []
+    },
+    "2025-11-16": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 38,
+      "last_extracted_at": "2026-07-19T02:41:38Z",
+      "notes": "pipeline.py backfill",
+      "history": [
+        {
+          "method": "gemini",
+          "model": "gemini-flash-latest",
+          "count": 29,
+          "last_extracted_at": "2026-07-19T02:33:31Z",
+          "notes": "pipeline.py backfill"
+        },
+        {
+          "method": "gemini",
+          "model": "gemini-flash-latest",
+          "count": 17,
+          "last_extracted_at": "2026-07-19T02:36:24Z",
+          "notes": "pipeline.py backfill"
+        }
+      ]
+    },
+    "2025-11-17": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 62,
+      "last_extracted_at": "2026-07-19T02:53:21Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-18": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 42,
+      "last_extracted_at": "2026-07-19T03:03:23Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-19": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 41,
+      "last_extracted_at": "2026-07-19T03:13:04Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-20": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 49,
+      "last_extracted_at": "2026-07-19T03:20:45Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-23": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 41,
+      "last_extracted_at": "2026-07-19T23:11:59Z",
+      "notes": "pipeline.py backfill",
+      "history": [
+        {
+          "method": "gemini",
+          "model": "gemini-flash-latest",
+          "count": 8,
+          "last_extracted_at": "2026-07-19T12:09:00Z",
+          "notes": "pipeline.py backfill"
+        }
+      ]
+    },
+    "2025-11-24": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 60,
+      "last_extracted_at": "2026-07-20T00:04:36Z",
+      "notes": "pipeline.py backfill",
+      "history": [
+        {
+          "method": "gemini",
+          "model": "gemini-flash-latest",
+          "count": 32,
+          "last_extracted_at": "2026-07-19T12:50:17Z",
+          "notes": "pipeline.py backfill"
+        }
+      ]
+    },
+    "2025-11-27": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 25,
+      "last_extracted_at": "2026-07-19T15:39:32Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-28": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 13,
+      "last_extracted_at": "2026-07-19T15:44:35Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-29": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 14,
+      "last_extracted_at": "2026-07-19T15:53:33Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-02": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 11,
+      "last_extracted_at": "2026-07-19T19:56:05Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-04": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 34,
+      "last_extracted_at": "2026-07-19T20:24:00Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-07": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 37,
+      "last_extracted_at": "2026-07-19T21:23:27Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-08": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 97,
+      "last_extracted_at": "2026-07-19T21:46:16Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-22": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 42,
+      "last_extracted_at": "2026-07-19T23:00:30Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-25": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 56,
+      "last_extracted_at": "2026-07-20T00:16:53Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-26": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 21,
+      "last_extracted_at": "2026-07-20T00:26:55Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-30": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 59,
+      "last_extracted_at": "2026-07-20T00:42:13Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-01": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 65,
+      "last_extracted_at": "2026-07-20T00:57:26Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-03": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 55,
+      "last_extracted_at": "2026-07-20T01:09:51Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-05": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 36,
+      "last_extracted_at": "2026-07-20T01:28:02Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-06": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 18,
+      "last_extracted_at": "2026-07-20T01:38:46Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-11-21": {
+      "method": "claude-file",
+      "model": "claude-opus-4-7",
+      "count": 34,
+      "last_extracted_at": "2026-07-20T04:21:44Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-09": {
+      "method": "claude-file",
+      "model": "claude-opus-4-7",
+      "count": 80,
+      "last_extracted_at": "2026-07-20T06:53:04Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2025-12-10": {
+      "method": "claude-file",
+      "model": "claude-opus-4-7",
+      "count": 102,
+      "last_extracted_at": "2026-07-20T09:17:11Z",
+      "notes": "pipeline.py backfill",
+      "history": []
     }
   }
 }

@@ -306,7 +306,7 @@ class Highlights(BaseModel):
 
 class Score(BaseModel):
     username: str = Field(description="Username of the participant")
-    score: int = Field(description="Score at this point in the session")
+    score: float = Field(description="Score at this point in the session; may be fractional (half-points)")
 
 
 class Source(BaseModel):
