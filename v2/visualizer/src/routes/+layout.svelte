@@ -405,6 +405,7 @@
     { href: '/', label: 'Feed' },
     { href: '/sessions', label: 'Quiz sessions' },
     { href: '/highlights', label: 'Highlights' },
+    { href: '/decks', label: 'Decks' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {

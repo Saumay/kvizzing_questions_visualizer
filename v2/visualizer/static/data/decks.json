@@ -1,0 +1,945 @@
+{
+  "series": [
+    {
+      "id": "gauntlet",
+      "title": "The Gauntlet",
+      "description": "Numbered head-to-head rounds, rotating hosts.",
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Sal gets things started",
+          "host": "Sal",
+          "date": "2026-04-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/1. KVIZZING GAUNTLET - Sal gets things started.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/1. KVIZZING GAUNTLET - Sal gets things started.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/1.%20KVIZZING%20GAUNTLET%20-%20Sal%20gets%20things%20started.pdf",
+              "size_bytes": 651409
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "A Wild Pavan appears",
+          "host": "Sid K",
+          "date": "2026-04-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/2. Quizzing Gauntlet - Sid K_A Wild Pavan appears.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/2. Quizzing Gauntlet - Sid K_A Wild Pavan appears.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/2.%20Quizzing%20Gauntlet%20-%20Sid%20K_A%20Wild%20Pavan%20appears.pdf",
+              "size_bytes": 1786323
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "title": "Strike it when it's hot",
+          "host": "Nikunj",
+          "date": "2026-04-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/3. Gauntlet Round 3 - Nikunj_Strike it when its hot.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/3. Gauntlet Round 3 - Nikunj_Strike it when its hot.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/3.%20Gauntlet%20Round%203%20-%20Nikunj_Strike%20it%20when%20its%20hot.pdf",
+              "size_bytes": 2786686
+            }
+          ]
+        },
+        {
+          "round": 4,
+          "title": "A not so redundant funda",
+          "host": "Aditi",
+          "date": "2026-04-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/4. Gauntlet Quiz 4 with Aditi_A not so redundant funda .pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/4. Gauntlet Quiz 4 with Aditi_A not so redundant funda .pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/4.%20Gauntlet%20Quiz%204%20with%20Aditi_A%20not%20so%20redundant%20funda%20.pdf",
+              "size_bytes": 2866820
+            }
+          ]
+        },
+        {
+          "round": 5,
+          "title": "Jagate Raho",
+          "host": "Zaf",
+          "date": "2026-04-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/5. Gauntlet 5- Zaf_Jagate Raho.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/5. Gauntlet 5- Zaf_Jagate Raho.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/5.%20Gauntlet%205-%20Zaf_Jagate%20Raho.pdf",
+              "size_bytes": 8591760
+            }
+          ]
+        },
+        {
+          "round": 6,
+          "title": "Jis raah pe tum chal rahe ho beta",
+          "host": "Vats",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/6. Gauntlet- Vats_Jis raah pe tum chal rahe ho beta.pptx",
+              "format": "pptx",
+              "r2_key": "decks/Gauntlet/6. Gauntlet- Vats_Jis raah pe tum chal rahe ho beta.pptx",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/6.%20Gauntlet-%20Vats_Jis%20raah%20pe%20tum%20chal%20rahe%20ho%20beta.pptx",
+              "size_bytes": 30727246
+            }
+          ]
+        },
+        {
+          "round": 7,
+          "title": "Add Gun to Cart",
+          "host": "Khandoba",
+          "date": "2026-05-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": "Gauntlet/7. Gauntlet - Khandoba_Add Gun to Cart.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/7. Gauntlet - Khandoba_Add Gun to Cart.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/7.%20Gauntlet%20-%20Khandoba_Add%20Gun%20to%20Cart.pdf",
+              "size_bytes": 1890727
+            },
+            {
+              "label": "Source (DOCX)",
+              "rel_path": "Gauntlet/7. Gauntlet - Khandoba_Add Gun to Cart.docx",
+              "format": "docx",
+              "r2_key": "decks/Gauntlet/7. Gauntlet - Khandoba_Add Gun to Cart.docx",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/7.%20Gauntlet%20-%20Khandoba_Add%20Gun%20to%20Cart.docx",
+              "size_bytes": 2189971
+            }
+          ]
+        },
+        {
+          "round": 8,
+          "title": "And through goes Nikunj",
+          "host": "KP",
+          "date": "2026-05-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/8. Gauntlet_VIII- KP_And through goes NIkunj.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/8. Gauntlet_VIII- KP_And through goes NIkunj.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/8.%20Gauntlet_VIII-%20KP_And%20through%20goes%20NIkunj.pdf",
+              "size_bytes": 6386051
+            }
+          ]
+        },
+        {
+          "round": 9,
+          "title": "GOAT Pavan - Nikunj stands firm like THE WALL",
+          "host": "Pavan",
+          "date": "2026-05-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/9. Gauntlet 9 - GOAT Pavan_NIkunj stands firm like THE WALL.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/9. Gauntlet 9 - GOAT Pavan_NIkunj stands firm like THE WALL.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/9.%20Gauntlet%209%20-%20GOAT%20Pavan_NIkunj%20stands%20firm%20like%20THE%20WALL.pdf",
+              "size_bytes": 3500566
+            }
+          ]
+        },
+        {
+          "round": 10,
+          "title": "Thodi si toh lift karade",
+          "host": "CM",
+          "date": "2026-05-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/10. Gauntlet 10 Deck - CM_Thodi si toh lift karade.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/10. Gauntlet 10 Deck - CM_Thodi si toh lift karade.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/10.%20Gauntlet%2010%20Deck%20-%20CM_Thodi%20si%20toh%20lift%20karade.pdf",
+              "size_bytes": 18802352
+            }
+          ]
+        },
+        {
+          "round": 11,
+          "title": "Better Call Sal",
+          "host": "Sal",
+          "date": "2026-05-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/11. GAUNTLET XI -Better Call Sal.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/11. GAUNTLET XI -Better Call Sal.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/11.%20GAUNTLET%20XI%20-Better%20Call%20Sal.pdf",
+              "size_bytes": 1684050
+            }
+          ]
+        },
+        {
+          "round": 12,
+          "title": "Vats the good word",
+          "host": "Vats",
+          "date": "2026-05-09",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/12. Gauntlet XII_Vats the good word.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/12. Gauntlet XII_Vats the good word.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/12.%20Gauntlet%20XII_Vats%20the%20good%20word.pdf",
+              "size_bytes": 6264368
+            }
+          ]
+        },
+        {
+          "round": 13,
+          "title": "Chinmay begins a streak",
+          "host": "Pavan",
+          "date": "2026-05-17",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/13. Gauntlet 13_Pavan_ Chinmay begins a streak.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/13. Gauntlet 13_Pavan_ Chinmay begins a streak.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/13.%20Gauntlet%2013_Pavan_%20Chinmay%20begins%20a%20streak.pdf",
+              "size_bytes": 4130699
+            }
+          ]
+        },
+        {
+          "round": 14,
+          "title": "Gauntlet 14",
+          "host": null,
+          "date": "2026-05-23",
+          "date_approx": false,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": "Gauntlet/14. 260523_Gauntlet 14.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/14. 260523_Gauntlet 14.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/14.%20260523_Gauntlet%2014.pdf",
+              "size_bytes": 10047044
+            },
+            {
+              "label": "Source (PPTX)",
+              "rel_path": "Gauntlet/14. 260523_Gauntlet 14.pptx",
+              "format": "pptx",
+              "r2_key": "decks/Gauntlet/14. 260523_Gauntlet 14.pptx",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/14.%20260523_Gauntlet%2014.pptx",
+              "size_bytes": 11519500
+            }
+          ]
+        },
+        {
+          "round": 15,
+          "title": "Chinmay scores a Four",
+          "host": "Khandoba",
+          "date": "2026-06-05",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/15. Gauntlet 15 Khandoba_ Chinmay scores a Four.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/15. Gauntlet 15 Khandoba_ Chinmay scores a Four.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/15.%20Gauntlet%2015%20Khandoba_%20Chinmay%20scores%20a%20Four.pdf",
+              "size_bytes": 3057367
+            }
+          ]
+        },
+        {
+          "round": 16,
+          "title": "Gauntlet 16",
+          "host": "Bijal Bhatt",
+          "date": "2026-06-05",
+          "date_approx": false,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/16. 05062026_Gauntlet_16_BijalBhatt.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/16. 05062026_Gauntlet_16_BijalBhatt.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/16.%2005062026_Gauntlet_16_BijalBhatt.pdf",
+              "size_bytes": 2688077
+            }
+          ]
+        },
+        {
+          "round": 17,
+          "title": "Seven by Nikunj",
+          "host": "Nikunj",
+          "date": "2026-06-19",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/17. Gauntlet X - Seven by Nikunj.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/17. Gauntlet X - Seven by Nikunj.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/17.%20Gauntlet%20X%20-%20Seven%20by%20Nikunj.pdf",
+              "size_bytes": 2810627
+            }
+          ]
+        },
+        {
+          "round": 18,
+          "title": "Gauntlet 18",
+          "host": "Prajwal",
+          "date": "2026-06-26",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": "Gauntlet/18. Gauntlet 18 - Prajwal.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/18. Gauntlet 18 - Prajwal.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/18.%20Gauntlet%2018%20-%20Prajwal.pdf",
+              "size_bytes": 681241
+            },
+            {
+              "label": "Source (PPTX)",
+              "rel_path": "Gauntlet/18. Gauntlet 18 - Prajwal.pptx",
+              "format": "pptx",
+              "r2_key": "decks/Gauntlet/18. Gauntlet 18 - Prajwal.pptx",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/18.%20Gauntlet%2018%20-%20Prajwal.pptx",
+              "size_bytes": 222213
+            }
+          ]
+        },
+        {
+          "round": 19,
+          "title": "Humans tire but not Shreya",
+          "host": "Gautam",
+          "date": "2026-06-29",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Gauntlet/19. Gauntlet 19 - Gautam_Humans tire but not Shreya.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Gauntlet/19. Gauntlet 19 - Gautam_Humans tire but not Shreya.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Gauntlet/19.%20Gauntlet%2019%20-%20Gautam_Humans%20tire%20but%20not%20Shreya.pdf",
+              "size_bytes": 1845171
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kviz-o-krazzy",
+      "title": "KVIZ-O-KRAZZY",
+      "description": "Sal's tournament bracket: 4 quarters, 2 semis, a final.",
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Q1",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/1. KVIZ-O-KRAZZY Q1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/1. KVIZ-O-KRAZZY Q1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/1.%20KVIZ-O-KRAZZY%20Q1.pdf",
+              "size_bytes": 1824120
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Q2",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/2. KVIZ-O-KRAZZY Q2.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/2. KVIZ-O-KRAZZY Q2.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/2.%20KVIZ-O-KRAZZY%20Q2.pdf",
+              "size_bytes": 1840396
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "title": "Q3",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/3. KVIZ-O-KRAZZY Q3.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/3. KVIZ-O-KRAZZY Q3.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/3.%20KVIZ-O-KRAZZY%20Q3.pdf",
+              "size_bytes": 3316619
+            }
+          ]
+        },
+        {
+          "round": 4,
+          "title": "Q4",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/4. KVIZ-O-KRAZZY Q4.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/4. KVIZ-O-KRAZZY Q4.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/4.%20KVIZ-O-KRAZZY%20Q4.pdf",
+              "size_bytes": 1152415
+            }
+          ]
+        },
+        {
+          "round": 5,
+          "title": "Semi-final 1",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/5. KVIZ-O-KRAZZY SF1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/5. KVIZ-O-KRAZZY SF1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/5.%20KVIZ-O-KRAZZY%20SF1.pdf",
+              "size_bytes": 1587725
+            }
+          ]
+        },
+        {
+          "round": 6,
+          "title": "Semi-final 2",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/6. KVIZ-O-KRAZZY SF2.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/6. KVIZ-O-KRAZZY SF2.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/6.%20KVIZ-O-KRAZZY%20SF2.pdf",
+              "size_bytes": 1097151
+            }
+          ]
+        },
+        {
+          "round": 7,
+          "title": "Finale",
+          "host": "Sal",
+          "date": "2026-04-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "KVIZ-O-KRAZZY BY SAL/7. KVIZ-O-KRAZZY FINALE.pdf",
+              "format": "pdf",
+              "r2_key": "decks/KVIZ-O-KRAZZY BY SAL/7. KVIZ-O-KRAZZY FINALE.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVIZ-O-KRAZZY%20BY%20SAL/7.%20KVIZ-O-KRAZZY%20FINALE.pdf",
+              "size_bytes": 1529320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mtv-tournament",
+      "title": "MTV Quiz Tournament",
+      "description": "Bijal Bhatt's quarter-final rounds.",
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Quarter-final 1",
+          "host": "Bijal Bhatt",
+          "date": "2026-07-11",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF1.pdf",
+              "size_bytes": 4781665
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Quarter-final 2",
+          "host": "Bijal Bhatt",
+          "date": "2026-07-12",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF2.pdf",
+              "format": "pdf",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF2.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF2.pdf",
+              "size_bytes": 2346770
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "title": "Quarter-final 3",
+          "host": "Bijal Bhatt",
+          "date": "2026-07-12",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF3.pdf",
+              "format": "pdf",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF3.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF3.pdf",
+              "size_bytes": 2164841
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "megakviz",
+      "title": "Akshay's Megakviz",
+      "description": null,
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Semi-final 1",
+          "host": "Akshay",
+          "date": "2025-12-13",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Akshay_s Megakviz/MEGAKVIZ_SF_1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Akshay_s Megakviz/MEGAKVIZ_SF_1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Akshay_s%20Megakviz/MEGAKVIZ_SF_1.pdf",
+              "size_bytes": 1965987
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Finale",
+          "host": "Akshay",
+          "date": "2026-02-15",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Akshay_s Megakviz/MEGAKVIZ_FINALE.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Akshay_s Megakviz/MEGAKVIZ_FINALE.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Akshay_s%20Megakviz/MEGAKVIZ_FINALE.pdf",
+              "size_bytes": 4057460
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "movie-quiz-bijal",
+      "title": "Movie Quiz - World Cinema",
+      "description": null,
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Set A",
+          "host": "Bijal Bhatt",
+          "date": "2026-04-25",
+          "date_approx": false,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_A.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_A.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_A.pdf",
+              "size_bytes": 2857043
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Set B",
+          "host": "Bijal Bhatt",
+          "date": "2026-04-25",
+          "date_approx": false,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_B.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_B.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Movie_Quiz_BijalBhatt_25042026/Movie_Quiz_World_Cinema_SET_B.pdf",
+              "size_bytes": 3295742
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buzzing-whatsapp-namrata",
+      "title": "Buzzing on WhatsApp",
+      "description": null,
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Board 1",
+          "host": "Namrata",
+          "date": "2026-05-01",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Buzzing on Whatsapp- Namrata/Board 1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Buzzing on Whatsapp- Namrata/Board 1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Buzzing%20on%20Whatsapp-%20Namrata/Board%201.pdf",
+              "size_bytes": 17745013
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Board 2",
+          "host": "Namrata",
+          "date": "2026-05-01",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Buzzing on Whatsapp- Namrata/Board 2.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Buzzing on Whatsapp- Namrata/Board 2.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Buzzing%20on%20Whatsapp-%20Namrata/Board%202.pdf",
+              "size_bytes": 8577181
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buzzing-entertainment",
+      "title": "Buzzing with Entertainment",
+      "description": null,
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Board 1",
+          "host": null,
+          "date": "2025-11-08",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Buzzing with Entertainment - Board 1.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Buzzing with Entertainment - Board 1.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Buzzing%20with%20Entertainment%20-%20Board%201.pdf",
+              "size_bytes": 1784430
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "title": "Board 2",
+          "host": null,
+          "date": "2025-11-08",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": "Buzzing with Entertainment - Board  2.pdf",
+              "format": "pdf",
+              "r2_key": "decks/Buzzing with Entertainment - Board  2.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Buzzing%20with%20Entertainment%20-%20Board%20%202.pdf",
+              "size_bytes": 2162646
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewind-2025",
+      "title": "2025 Rewind",
+      "description": "Kvest for the Best - year-end recap quiz.",
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Kvest for the Best",
+          "host": "Pavan",
+          "date": "2026-04-04",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": "2025 Rewind-Pavan/Kvest for the Best deck.pdf",
+              "format": "pdf",
+              "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best deck.pdf",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%20deck.pdf",
+              "size_bytes": 5331988
+            },
+            {
+              "label": "Transcript (VTT)",
+              "rel_path": "2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
+              "format": "vtt",
+              "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
+              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%202025%20transcript.vtt",
+              "size_bytes": 134403
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": "kp-quiz-final",
+      "title": "KP's Quiz Final",
+      "host": "KP",
+      "date": "2025-12-20",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "251220_KP_s quiz final.pdf",
+          "format": "pdf",
+          "r2_key": "decks/251220_KP_s quiz final.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/251220_KP_s%20quiz%20final.pdf",
+          "size_bytes": 22235675
+        }
+      ]
+    },
+    {
+      "id": "bollywood-kviz",
+      "title": "Bollywood Kviz",
+      "host": null,
+      "date": "2025-12-21",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "251221_BOLLYWOOD KVIZ.pdf",
+          "format": "pdf",
+          "r2_key": "decks/251221_BOLLYWOOD KVIZ.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/251221_BOLLYWOOD%20KVIZ.pdf",
+          "size_bytes": 2033778
+        }
+      ]
+    },
+    {
+      "id": "buzzer-bhide",
+      "title": "Sports Buzzing",
+      "host": "Bhide",
+      "date": "2026-05-03",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "260503_Buzzer done quickly_Bhide/Sports Buzzing_AB.pptx",
+          "format": "pptx",
+          "r2_key": "decks/260503_Buzzer done quickly_Bhide/Sports Buzzing_AB.pptx",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/260503_Buzzer%20done%20quickly_Bhide/Sports%20Buzzing_AB.pptx",
+          "size_bytes": 39339392
+        }
+      ]
+    },
+    {
+      "id": "tapish-sports",
+      "title": "Tapish's Sports Quiz",
+      "host": "Tapish",
+      "date": "2026-07-05",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "260705_Tapish_s Sports Quiz.pdf",
+          "format": "pdf",
+          "r2_key": "decks/260705_Tapish_s Sports Quiz.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/260705_Tapish_s%20Sports%20Quiz.pdf",
+          "size_bytes": 6750497
+        }
+      ]
+    },
+    {
+      "id": "history-smit",
+      "title": "History Quiz",
+      "host": "Smit",
+      "date": "2026-06-29",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "History Quiz by Smit June 2026.pdf",
+          "format": "pdf",
+          "r2_key": "decks/History Quiz by Smit June 2026.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/History%20Quiz%20by%20Smit%20June%202026.pdf",
+          "size_bytes": 4064743
+        }
+      ]
+    },
+    {
+      "id": "kvizimals",
+      "title": "KVizimals",
+      "host": null,
+      "date": "2026-04-04",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "KVizimals.pptx",
+          "format": "pptx",
+          "r2_key": "decks/KVizimals.pptx",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/KVizimals.pptx",
+          "size_bytes": 25442231
+        }
+      ]
+    },
+    {
+      "id": "movie-kviz",
+      "title": "Movie Kviz",
+      "host": null,
+      "date": "2025-12-07",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "MOVIE KVIZ.pdf",
+          "format": "pdf",
+          "r2_key": "decks/MOVIE KVIZ.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/MOVIE%20KVIZ.pdf",
+          "size_bytes": 450405
+        }
+      ]
+    },
+    {
+      "id": "may-the-4th",
+      "title": "May the 4th Quiz",
+      "host": null,
+      "date": "2026-05-04",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "May the 4th/May_The_4th_quiz_2026.pdf",
+          "format": "pdf",
+          "r2_key": "decks/May the 4th/May_The_4th_quiz_2026.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/May%20the%204th/May_The_4th_quiz_2026.pdf",
+          "size_bytes": 2622414
+        }
+      ]
+    },
+    {
+      "id": "old-school-kp",
+      "title": "Old School Quiz",
+      "host": "KP",
+      "date": "2026-07-04",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "Old school quiz_KP_040726.pdf",
+          "format": "pdf",
+          "r2_key": "decks/Old school quiz_KP_040726.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Old%20school%20quiz_KP_040726.pdf",
+          "size_bytes": 3099442
+        }
+      ]
+    },
+    {
+      "id": "swine-clue",
+      "title": "Swine Clue Quiz",
+      "host": null,
+      "date": "2025-11-21",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "Swine Clue Quiz.pdf",
+          "format": "pdf",
+          "r2_key": "decks/Swine Clue Quiz.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Swine%20Clue%20Quiz.pdf",
+          "size_bytes": 4371794
+        }
+      ]
+    },
+    {
+      "id": "visual-buzzing-bijal",
+      "title": "Visual Buzzing Kviz",
+      "host": "Bijal Bhatt",
+      "date": "2026-05-16",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "Visual Buzzing Kviz Bijal Bhatt_16052026/Kvizzing Visual buzzing _BijalBhatt.pdf",
+          "format": "pdf",
+          "r2_key": "decks/Visual Buzzing Kviz Bijal Bhatt_16052026/Kvizzing Visual buzzing _BijalBhatt.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Visual%20Buzzing%20Kviz%20Bijal%20Bhatt_16052026/Kvizzing%20Visual%20buzzing%20_BijalBhatt.pdf",
+          "size_bytes": 13215688
+        }
+      ]
+    },
+    {
+      "id": "yet-another-quiz",
+      "title": "Yet Another Quiz - Part 1",
+      "host": null,
+      "date": "2025-11-01",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": "Yet Another Quiz Part 1.pdf",
+          "format": "pdf",
+          "r2_key": "decks/Yet Another Quiz Part 1.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/Yet%20Another%20Quiz%20Part%201.pdf",
+          "size_bytes": 3855982
+        }
+      ]
+    }
+  ],
+  "total_bytes": 322165224
+}
