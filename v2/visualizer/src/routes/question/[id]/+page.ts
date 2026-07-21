@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 
-export const prerender = true;
+export const prerender = false;
 
 export async function load({ params, parent }) {
   const { questions } = await parent();
