@@ -178,23 +178,16 @@ SERIES = [
              "files": [_file("Buzzing with Entertainment - Board  2.pdf")]},
         ],
     },
-    {
-        "id": "rewind-2025",
-        "title": "2025 Rewind",
-        "description": "Kvest for the Best - year-end recap quiz.",
-        "rounds": [
-            {"round": 1, "title": "Kvest for the Best", "host": "Pavan", "date": "2026-04-04", "date_approx": True,
-             "files": [
-                 _file("2025 Rewind-Pavan/Kvest for the Best deck.pdf", "Slides (PDF)"),
-                 _file("2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt", "Transcript (VTT)"),
-             ]},
-        ],
-    },
 ]
 
 # ── One-off decks ──────────────────────────────────────────────────────────
 
 STANDALONE = [
+    {"id": "rewind-2025", "title": "2025 Rewind: Kvest for the Best", "host": "Pavan", "date": "2026-04-04", "date_approx": True,
+     "files": [
+         _file("2025 Rewind-Pavan/Kvest for the Best deck.pdf", "Slides (PDF)"),
+         _file("2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt", "Transcript (VTT)"),
+     ]},
     {"id": "kp-quiz-final", "title": "KP's Quiz Final", "host": "KP", "date": "2025-12-20", "date_approx": False,
      "files": [_file("251220_KP_s quiz final.pdf")]},
     {"id": "bollywood-kviz", "title": "Bollywood Kviz", "host": None, "date": "2025-12-21", "date_approx": False,

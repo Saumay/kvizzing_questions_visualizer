@@ -701,41 +701,34 @@
           ]
         }
       ]
-    },
-    {
-      "id": "rewind-2025",
-      "title": "2025 Rewind",
-      "description": "Kvest for the Best - year-end recap quiz.",
-      "rounds": [
-        {
-          "round": 1,
-          "title": "Kvest for the Best",
-          "host": "Pavan",
-          "date": "2026-04-04",
-          "date_approx": true,
-          "files": [
-            {
-              "label": "Slides (PDF)",
-              "rel_path": "2025 Rewind-Pavan/Kvest for the Best deck.pdf",
-              "format": "pdf",
-              "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best deck.pdf",
-              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%20deck.pdf",
-              "size_bytes": 5331988
-            },
-            {
-              "label": "Transcript (VTT)",
-              "rel_path": "2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
-              "format": "vtt",
-              "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
-              "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%202025%20transcript.vtt",
-              "size_bytes": 134403
-            }
-          ]
-        }
-      ]
     }
   ],
   "standalone": [
+    {
+      "id": "rewind-2025",
+      "title": "2025 Rewind: Kvest for the Best",
+      "host": "Pavan",
+      "date": "2026-04-04",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Slides (PDF)",
+          "rel_path": "2025 Rewind-Pavan/Kvest for the Best deck.pdf",
+          "format": "pdf",
+          "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best deck.pdf",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%20deck.pdf",
+          "size_bytes": 5331988
+        },
+        {
+          "label": "Transcript (VTT)",
+          "rel_path": "2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
+          "format": "vtt",
+          "r2_key": "decks/2025 Rewind-Pavan/Kvest for the Best 2025 transcript.vtt",
+          "url": "https://pub-cd827803aeef442786c76cc9e7313d95.r2.dev/decks/2025%20Rewind-Pavan/Kvest%20for%20the%20Best%202025%20transcript.vtt",
+          "size_bytes": 134403
+        }
+      ]
+    },
     {
       "id": "kp-quiz-final",
       "title": "KP's Quiz Final",

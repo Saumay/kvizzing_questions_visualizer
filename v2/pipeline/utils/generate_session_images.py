@@ -16,6 +16,8 @@ import time
 from pathlib import Path
 import requests
 
+from detect_censored_image import is_censored_placeholder
+
 V2_DIR = Path(__file__).parent.parent.parent
 SESSIONS_JSON = V2_DIR / "visualizer" / "static" / "data" / "sessions.json"
 OUTPUT_DIR = V2_DIR / "visualizer" / "static" / "images" / "sessions"
@@ -170,18 +172,24 @@ def main() -> None:
         print(f"  Prompt: {prompt[:80]}...")
 
         img_bytes = None
-        for attempt in range(3):
+        max_attempts = 5
+        for attempt in range(max_attempts):
             if attempt > 0:
-                print(f"  Retrying in 30s (attempt {attempt + 1}/3)...")
+                print(f"  Retrying in 30s (attempt {attempt + 1}/{max_attempts})...")
                 time.sleep(30)
             try:
                 # Random seed on every call so manual regenerations (delete +
                 # rerun) produce a different image. Reproducibility across
                 # fresh runs isn't useful here because the script skips any
                 # session whose file already exists.
-                img_bytes = generate(prompt, seed=random.randint(0, 2**31 - 1))
-                if img_bytes:
-                    break
+                candidate = generate(prompt, seed=random.randint(0, 2**31 - 1))
+                if not candidate:
+                    continue
+                if is_censored_placeholder(candidate):
+                    print("  Worker returned a CENSORED placeholder — discarding, retrying.")
+                    continue
+                img_bytes = candidate
+                break
             except Exception as e:
                 print(f"  Error: {e}")
 
@@ -189,7 +197,7 @@ def main() -> None:
             dest.write_bytes(img_bytes)
             print(f"  Saved ({len(img_bytes) // 1024} KB) → {dest.relative_to(V2_DIR)}\n")
         else:
-            print(f"  Failed after retries — skipping.\n")
+            print(f"  Failed after retries (or only got CENSORED placeholders) — skipping.\n")
 
 
 if __name__ == "__main__":
