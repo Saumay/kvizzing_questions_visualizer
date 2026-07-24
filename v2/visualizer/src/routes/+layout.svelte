@@ -406,7 +406,7 @@
     { href: '/', label: 'Feed' },
     { href: '/sessions', label: 'Quiz sessions' },
     { href: '/highlights', label: 'Highlights' },
-    { href: '/decks', label: 'Decks' },
+    { href: '/decks', label: 'Live Sessions' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {
@@ -1051,10 +1051,11 @@
                     {#each sidebarSessions.slice(0, 8) as session}
                       <a href="/session/{session.id}" class="relative overflow-hidden flex items-center gap-3 px-4 py-2.5 transition-colors group">
                         <div class="session-bg absolute inset-0 bg-cover bg-center transition-opacity" style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"></div>
-                        <span class="relative text-[10px] text-gray-600 dark:text-gray-400 flex-shrink-0 w-20">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
+                        <div class="absolute inset-0 bg-white/38 dark:bg-gray-900/38 pointer-events-none"></div>
+                        <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                         <div class="relative min-w-0 flex-1 text-right">
-                          <p class="text-xs font-semibold text-primary-700 dark:text-primary-200 truncate">{session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}</p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400 truncate">{session.quizmaster} · {session.question_count} questions</p>
+                          <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate">{session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}</p>
+                          <p class="text-xs text-gray-800 dark:text-gray-200 truncate">{session.quizmaster} · {session.question_count} questions</p>
                         </div>
                       </a>
                     {/each}
@@ -1129,7 +1130,7 @@
                     {#if sidebarSessions.length > 8}
                       <div class="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white dark:from-[#1c1c1c] to-transparent z-10"></div>
                     {/if}
-                    <div class="divide-y divide-stone-100 dark:divide-zinc-700/80 max-h-80 overflow-y-auto">
+                    <div class="divide-y divide-stone-100 dark:divide-zinc-700/80 max-h-[36rem] overflow-y-auto">
                       {#each sidebarSessions as session}
                         <a
                           href="/session/{session.id}"
@@ -1141,13 +1142,14 @@
                             class="session-bg absolute inset-0 bg-cover bg-center transition-opacity"
                             style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"
                           ></div>
+                          <div class="absolute inset-0 bg-white/30 dark:bg-gray-900/30 group-hover:bg-white/85 dark:group-hover:bg-gray-900/85 transition-colors pointer-events-none"></div>
 
-                          <span class="relative text-[10px] text-gray-600 dark:text-gray-400 flex-shrink-0 w-20 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
+                          <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                           <div class="relative min-w-0 flex-1 text-right">
-                            <p class="text-xs font-semibold text-primary-700 dark:text-primary-200 truncate group-hover:text-primary-900 dark:group-hover:text-primary-100 transition-colors">
+                            <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate group-hover:text-primary-900 dark:group-hover:text-primary-100 transition-colors">
                               {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}
                             </p>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 truncate group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{session.quizmaster} · {session.question_count} questions</p>
+                            <p class="text-xs text-gray-800 dark:text-gray-200 truncate group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{session.quizmaster} · {session.question_count} questions</p>
                           </div>
                         </a>
                       {/each}
