@@ -30,7 +30,8 @@
   function triggerMapOpen() {
     if (mapOpen) return;
     mapOpen = true;
-    // Let the map unfold animation play, then fade out and reveal UI
+    // Let the map unfold animation play (flaps/sides finish by ~2.4s), then
+    // fade out and reveal UI — no footsteps animation left to fill extra time.
     setTimeout(() => {
       fading = true;
       if (audio) {
@@ -56,7 +57,7 @@
         if (audio) { try { audio.pause(); } catch {} }
         onAuthenticated();
       }, 2000);
-    }, 7000);
+    }, 2800);
   }
 
   function handleInput(e: Event) {
