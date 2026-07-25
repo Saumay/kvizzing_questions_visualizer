@@ -106,20 +106,6 @@
   <div class="main-content">
     <div class="map-blur-wrap" class:active={mapOpen}>
     <div class="map-base" class:active={mapOpen}>
-      <div class="footsteps footsteps-1">
-        <div class="footstep left"></div>
-        <div class="footstep right"></div>
-        <div class="scroll-name">
-          <p>Fun</p>
-        </div>
-      </div>
-      <div class="footsteps footsteps-2">
-        <div class="footstep left"></div>
-        <div class="footstep right"></div>
-        <div class="scroll-name">
-          <p>Lurn</p>
-        </div>
-      </div>
       <div class="map-flap flap--1">
         <div class="map-flap__front"></div>
         <div class="map-flap__back"></div>
@@ -336,53 +322,6 @@
   .side-6 .front { background-size: 99.5%; }
   .side-6 .back { background-image: url(https://meowlivia.s3.us-east-2.amazonaws.com/codepen/map/17.png); }
 
-  /* Footsteps */
-  .scroll-name {
-    position: absolute;
-    bottom: 105px;
-    left: -60px;
-    width: 150px;
-    height: 30px;
-    font: 15px Satisfy, cursive;
-    text-align: center;
-    background: url("https://meowlivia.s3.us-east-2.amazonaws.com/codepen/map/scroll.svg") center center/cover;
-    z-index: 10;
-    color: #615349;
-    cursor: default;
-    opacity: 0;
-  }
-  .scroll-name p {
-    display: inline-block;
-    margin: 4px 0 0 15px;
-  }
-  .footstep {
-    position: absolute;
-    background: #615349;
-    width: 6px;
-    height: 12px;
-    border-radius: 80% 80% 70% 70%/130% 130% 25% 25%;
-    z-index: 10;
-    opacity: 0;
-  }
-  .footstep::before {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    top: 110%;
-    left: 0px;
-    background: #615349;
-    border-radius: 0 0 100% 100%;
-  }
-  .footstep.left  { transform: rotate(5deg); }
-  .footstep.right { transform: rotate(-3deg) translateY(15px) translateX(10px); }
-
-  .footsteps-1 .footstep.left  { bottom: 150px; left: 18px; transform: rotate(35deg); }
-  .footsteps-1 .footstep.right { bottom: 150px; left: 28px; transform: rotate(30deg); }
-  .footsteps-2 .footstep.left  { bottom: 285px; left: 230px; transform: rotate(-90deg); }
-  .footsteps-2 .footstep.right { bottom: 275px; left: 235px; transform: rotate(-85deg); }
-  .footsteps-2 .scroll-name    { bottom: 300px; left: 170px; }
-
   /* Active / open state */
   .map-base.active .flap--1 {
     transform: rotateX(180deg);
@@ -442,73 +381,6 @@
     transform: rotateY(180deg);
     transition: 0.1s transform;
   }
-  .map-base.active .footstep,
-  .map-base.active .scroll-name {
-    opacity: 1;
-    transition: 0.5s opacity 2.5s;
-  }
-  .map-base.active .footsteps-1 .footstep {
-    animation: 15s footsteps-1 ease 3s forwards;
-  }
-  .map-base.active .footsteps-1 .scroll-name {
-    animation: 15s scroll-1 ease 3s forwards;
-  }
-  .map-base.active .footsteps-2 .footstep {
-    animation: 15s footsteps-2 ease 3.2s forwards;
-  }
-  .map-base.active .footsteps-2 .scroll-name {
-    animation: 15s scroll-2 ease 3.2s forwards;
-  }
-
-  /* Footsteps-1: walks up from bottom-left along the left corridor, then turns right */
-  @keyframes footsteps-1 {
-    8%  { transform: translate(8px, -15px) rotate(30deg); }
-    16% { transform: translate(15px, -45px) rotate(25deg); }
-    24% { transform: translate(20px, -80px) rotate(15deg); }
-    32% { transform: translate(25px, -115px) rotate(10deg); }
-    40% { transform: translate(30px, -140px) rotate(5deg); }
-    48% { transform: translate(50px, -145px) rotate(-50deg); }
-    56% { transform: translate(80px, -140px) rotate(-70deg); }
-    64% { transform: translate(110px, -135px) rotate(-80deg); }
-    72% { transform: translate(110px, -135px) rotate(-80deg); }
-    100% { transform: translate(110px, -135px) rotate(-80deg); }
-  }
-  /* Footsteps-2: walks left along the horizontal corridor, then turns down */
-  @keyframes footsteps-2 {
-    8%  { transform: translate(-20px, 0px) rotate(-90deg); }
-    16% { transform: translate(-50px, 0px) rotate(-90deg); }
-    24% { transform: translate(-85px, 5px) rotate(-85deg); }
-    32% { transform: translate(-115px, 10px) rotate(-80deg); }
-    40% { transform: translate(-140px, 15px) rotate(-70deg); }
-    48% { transform: translate(-150px, 35px) rotate(-30deg); }
-    56% { transform: translate(-148px, 60px) rotate(-10deg); }
-    64% { transform: translate(-145px, 75px) rotate(0deg); }
-    72% { transform: translate(-145px, 75px) rotate(0deg); }
-    100% { transform: translate(-145px, 75px) rotate(0deg); }
-  }
-  @keyframes scroll-1 {
-    8%  { transform: translate(8px, -15px); }
-    16% { transform: translate(15px, -45px); }
-    24% { transform: translate(20px, -80px); }
-    32% { transform: translate(25px, -115px); }
-    40% { transform: translate(30px, -140px); }
-    48% { transform: translate(50px, -145px); }
-    56% { transform: translate(80px, -140px); }
-    64% { transform: translate(110px, -135px); }
-    100% { transform: translate(110px, -135px); }
-  }
-  @keyframes scroll-2 {
-    8%  { transform: translate(-20px, 0px); }
-    16% { transform: translate(-50px, 0px); }
-    24% { transform: translate(-85px, 5px); }
-    32% { transform: translate(-115px, 10px); }
-    40% { transform: translate(-140px, 15px); }
-    48% { transform: translate(-150px, 35px); }
-    56% { transform: translate(-148px, 60px); }
-    64% { transform: translate(-145px, 75px); }
-    100% { transform: translate(-145px, 75px); }
-  }
-
   /* Input */
   .instructions {
     text-align: center;
