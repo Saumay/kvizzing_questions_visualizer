@@ -212,10 +212,10 @@
   <div>
     <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Live Sessions</h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      Live sessions are the best, here's every deck from every hosted quiz night, fireside chat, slides and source files, ready to download.
+      Live sessions are the best, here's every session from every hosted quiz night, fireside chat, slides and source files, ready to download.
     </p>
     <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">
-      {totalDecks} decks &middot; {allHosts.length} hosts &middot;
+      {totalDecks} sessions &middot; {allHosts.length} hosts &middot;
       <a href="https://onedrive.live.com/?id=46AC280CA35DB7D4%21scf07fa2a6ff247399c81052c3d69f428&cid=46AC280CA35DB7D4&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">recordings</a>
       &middot;
       <a href="https://drive.google.com/drive/folders/1jrW0WThbmlnprdGACSLaOmTpn8-SZcuc" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">slides source</a>
@@ -227,7 +227,7 @@
     <input
       type="text"
       bind:value={search}
-      placeholder="Search decks or hosts…"
+      placeholder="Search sessions or hosts…"
       class="flex-1 min-w-[180px] text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
     />
     <div class="relative">
@@ -268,7 +268,7 @@
   </div>
 
   {#if filteredSeries.length === 0 && filteredStandalone.length === 0}
-    <EmptyState emoji="📂" message="No decks match your filters" onClear={clearFilters} />
+    <EmptyState emoji="📂" message="No sessions match your filters" onClear={clearFilters} />
   {:else}
     <!-- Series -->
     {#if filteredSeries.length > 0}
@@ -291,7 +291,7 @@
               <div class="absolute inset-0 bg-gradient-to-t from-white/85 dark:from-black/80 via-white/25 dark:via-black/20 to-white/5 dark:to-black/10"></div>
               <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
                 {#if seriesHasRecording(s)}<span title="Recording available">🎥</span>{/if}
-                {s.rounds.length} round{s.rounds.length !== 1 ? 's' : ''}
+                {s.rounds.length} session{s.rounds.length !== 1 ? 's' : ''}
               </span>
               <span
                 class="absolute top-2.5 left-2.5 w-10 h-10 rounded-xl bg-black/5 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 flex items-center justify-center text-xl"
@@ -310,7 +310,7 @@
     <!-- Standalone -->
     {#if filteredStandalone.length > 0}
       <div>
-        <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">One-off quizzes</h2>
+        <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">One-off sessions</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {#each filteredStandalone as d (d.id)}
             {@const [c1, c2] = gradientFor(d.id)}
@@ -381,8 +381,8 @@
           <button
             onclick={() => downloadAll(s.rounds.flatMap(r => r.files))}
             class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            title="Download all rounds"
-            aria-label="Download all rounds"
+            title="Download all sessions"
+            aria-label="Download all sessions"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
