@@ -817,7 +817,7 @@
     {
       "id": "kvizimals",
       "title": "KVizimals",
-      "host": null,
+      "host": "Manas",
       "date": "2026-04-04",
       "date_approx": true,
       "files": [
@@ -851,7 +851,7 @@
     {
       "id": "may-the-4th",
       "title": "May the 4th Quiz",
-      "host": null,
+      "host": "Bijal Bhatt",
       "date": "2026-05-04",
       "date_approx": false,
       "files": [
