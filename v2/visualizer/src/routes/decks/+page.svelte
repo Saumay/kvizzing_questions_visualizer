@@ -4,9 +4,9 @@
 
   interface DeckFile {
     label: string | null;
-    rel_path: string;
-    format: 'pdf' | 'pptx' | 'docx' | 'mp4' | 'vtt';
-    r2_key: string;
+    rel_path: string | null;
+    format: 'pdf' | 'pptx' | 'docx' | 'mp4' | 'vtt' | 'recording';
+    r2_key: string | null;
     url: string | null;
     size_bytes: number;
   }
@@ -47,7 +47,7 @@
   }
 
   const FORMAT_LABEL: Record<DeckFile['format'], string> = {
-    pdf: 'PDF', pptx: 'PPTX', docx: 'DOCX', mp4: 'MP4', vtt: 'VTT',
+    pdf: 'PDF', pptx: 'PPTX', docx: 'DOCX', mp4: 'MP4', vtt: 'VTT', recording: 'Watch',
   };
   const FORMAT_CLS: Record<DeckFile['format'], string> = {
     pdf: 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300',
@@ -55,6 +55,7 @@
     docx: 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300',
     mp4: 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300',
     vtt: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300',
+    recording: 'bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-300',
   };
 
   // Deterministic cover-art gradient per card — cheap, no external image
@@ -405,7 +406,7 @@
                 <span class="text-gray-400 dark:text-gray-500">#{r.round}</span> {r.title}
               </p>
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                {#if r.host}{r.host} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)} &middot; {formatBytes(roundSize(r.files))}
+                {#if r.host}{r.host} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)}{#if roundSize(r.files) > 0} &middot; {formatBytes(roundSize(r.files))}{/if}
               </p>
             </div>
             <div class="flex-shrink-0 flex items-center gap-1.5 flex-wrap justify-end">
@@ -490,7 +491,7 @@
               target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-md {FORMAT_CLS[f.format]} hover:opacity-80 transition-opacity"
             >
-              {f.label ?? FORMAT_LABEL[f.format]} &middot; {formatBytes(f.size_bytes)}
+              {f.label ?? FORMAT_LABEL[f.format]}{#if f.size_bytes > 0} &middot; {formatBytes(f.size_bytes)}{/if}
             </a>
           {:else}
             <span
