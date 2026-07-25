@@ -125,6 +125,12 @@
   function seriesHosts(s: Series): string[] {
     return [...new Set(s.rounds.map(r => r.host).filter((h): h is string => !!h))];
   }
+  function hasRecording(files: DeckFile[]): boolean {
+    return files.some(f => f.format === 'recording');
+  }
+  function seriesHasRecording(s: Series): boolean {
+    return s.rounds.some(r => hasRecording(r.files));
+  }
 
   // Opens every downloadable file in the group. Browsers only honor the
   // `download` attribute for same-origin URLs, and these are served from R2
@@ -283,7 +289,8 @@
                 ></div>
               {/each}
               <div class="absolute inset-0 bg-gradient-to-t from-white/85 dark:from-black/80 via-white/25 dark:via-black/20 to-white/5 dark:to-black/10"></div>
-              <span class="absolute top-2.5 right-2.5 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
+              <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
+                {#if seriesHasRecording(s)}<span title="Recording available">🎥</span>{/if}
                 {s.rounds.length} round{s.rounds.length !== 1 ? 's' : ''}
               </span>
               <span
@@ -326,7 +333,8 @@
                 ></div>
               {/each}
               <div class="absolute inset-0 bg-gradient-to-t from-white/85 dark:from-black/80 via-white/25 dark:via-black/20 to-white/5 dark:to-black/10"></div>
-              <span class="absolute top-2.5 right-2.5 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
+              <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
+                {#if !single && hasRecording(d.files)}<span title="Recording available">🎥</span>{/if}
                 {single ? FORMAT_LABEL[single.format] : `${d.files.length} files`}
               </span>
               <span
