@@ -47,7 +47,7 @@
   }
 
   const FORMAT_LABEL: Record<DeckFile['format'], string> = {
-    pdf: 'PDF', pptx: 'PPTX', docx: 'DOCX', mp4: 'MP4', vtt: 'VTT', recording: 'Watch',
+    pdf: 'PDF', pptx: 'PPTX', docx: 'DOCX', mp4: 'MP4', vtt: 'VTT', recording: 'Video',
   };
   const FORMAT_CLS: Record<DeckFile['format'], string> = {
     pdf: 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300',
