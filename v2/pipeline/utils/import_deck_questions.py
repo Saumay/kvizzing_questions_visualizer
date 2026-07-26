@@ -183,9 +183,14 @@ def ensure_session_thumbnail(
     banner (~3:1) with background-position centered, so a plain full-slide
     render gets center-cropped down to a thin horizontal strip — and title
     decks consistently put the title/byline text in the top portion, so a
-    dead-center crop cuts it out entirely. Cropping to the banner aspect
-    ourselves, anchored to the top of the slide, keeps the title visible
-    instead of leaving it to CSS's center crop.
+    dead-center crop cuts it out entirely (top-anchoring the crop fixes
+    that). But the title text itself is still crisp and readable at full
+    size, and it's rendered as a *background* behind the card's own UI text
+    (session name, "Hosted by ...") — two overlapping blocks of readable
+    text is illegible, worse than showing no text at all. Blurring after
+    crop turns the slide's own text into soft color texture (keeps the
+    deck's visual identity/colors) without competing for the reader's
+    attention the way crisp text does.
     """
     out_path = images_dir / f"{session_id}.jpg"
     if out_path.exists():
@@ -194,7 +199,7 @@ def ensure_session_thumbnail(
         return False
     try:
         import fitz
-        from PIL import Image
+        from PIL import Image, ImageFilter
         import io
 
         doc = fitz.open(quiz_decks_dir / rel_path)
@@ -208,6 +213,7 @@ def ensure_session_thumbnail(
         target_aspect = 3.0  # matches the common existing session-image shape
         crop_h = min(h, round(w / target_aspect))
         im = im.crop((0, 0, w, crop_h))  # top-anchored, not center-cropped
+        im = im.filter(ImageFilter.GaussianBlur(radius=max(20, w // 20)))
 
         images_dir.mkdir(parents=True, exist_ok=True)
         im.save(str(out_path), quality=85)
