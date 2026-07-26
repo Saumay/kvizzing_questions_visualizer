@@ -58,7 +58,11 @@ export interface Question {
   date: string;
   question: QuestionData;
   answer: AnswerData;
+  /** Trimmed to hint/answer_reveal entries only — see `discussion_count` for
+   *  the true total. Fetch `/data/discussion/<id>.json` for the full thread. */
   discussion: DiscussionEntry[];
+  /** True count of discussion entries, including ones not in `discussion`. */
+  discussion_count: number;
   stats: QuestionStats;
   extraction_confidence: 'high' | 'medium' | 'low';
   session: SessionRef | null;

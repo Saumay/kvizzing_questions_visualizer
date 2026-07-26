@@ -162,7 +162,7 @@
 
   // Most discussed questions
   const mostDiscussed = [...questions]
-    .sort((a, b) => (b.discussion?.length ?? 0) - (a.discussion?.length ?? 0))
+    .sort((a, b) => (b.discussion_count ?? 0) - (a.discussion_count ?? 0))
     .slice(0, 5);
 
   // Quickest solves
@@ -342,7 +342,7 @@
                   <p class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">{q.question.text}</p>
                   <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">{q.question.asker}</p>
                 </div>
-                <span class="text-sm font-semibold text-indigo-600 flex-shrink-0">{q.discussion?.length ?? 0}</span>
+                <span class="text-sm font-semibold text-indigo-600 flex-shrink-0">{q.discussion_count ?? 0}</span>
               </a>
             {/each}
           </div>

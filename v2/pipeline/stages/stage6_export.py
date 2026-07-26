@@ -3,7 +3,17 @@ Stage 6 — Export
 
 Reads questions.db and writes static JSON files for the visualizer:
 
-  questions.json   — full archive sorted by question.timestamp
+  questions.json   — full archive sorted by question.timestamp. Each
+                      question's `discussion` is trimmed to just the entries
+                      the feed/detail cards render inline (hint,
+                      answer_reveal) plus a `discussion_count` field with the
+                      true count, so the client never downloads the bulk of
+                      the discussion (attempts/chat/confirmations/
+                      elaboration — ~80% of discussion bytes) up front.
+  discussion/<id>.json — full per-question discussion (all roles), one file
+                      per question that has entries beyond what's already in
+                      the index. Fetched lazily by the question detail page
+                      only when a reader expands the thread.
   sessions.json    — session index with aggregate metadata + final scores
   stats.json       — pre-aggregated group stats (topics, difficulty, activity)
   tags.json        — tag → [question_id, ...] index for instant filtering
@@ -119,6 +129,52 @@ def build_questions(
             q["discussion"] = disc[:MAX_DISCUSSION]
 
     return payloads
+
+
+# ── questions.json index / discussion split ─────────────────────────────────────
+
+# Roles the feed card and question header render inline (hints revealed
+# during the quiz, and the answer-reveal message + its media). Everything
+# else (attempt/chat/confirmation/elaboration) only shows up when a reader
+# expands the full discussion thread on the question detail page.
+_INDEX_DISCUSSION_ROLES = {"hint", "answer_reveal"}
+
+
+def split_discussion(questions: list[dict]) -> tuple[list[dict], dict[str, list[dict]]]:
+    """
+    Split each question's discussion into (a) a small inline subset kept in
+    the index (hint/answer_reveal roles) and (b) the full discussion, keyed
+    by question id, for questions that have entries beyond that subset.
+
+    Returns (index_questions, discussion_by_id). index_questions are deep
+    copies — the input `questions` list is left untouched, since callers
+    (build_stats/build_tags/build_members) need the full discussion.
+    """
+    index_questions: list[dict] = []
+    discussion_by_id: dict[str, list[dict]] = {}
+
+    for q in questions:
+        full_disc = q.get("discussion") or []
+        inline_disc = [e for e in full_disc if e.get("role") in _INDEX_DISCUSSION_ROLES]
+
+        iq = dict(q)
+        iq["discussion"] = inline_disc
+        iq["discussion_count"] = len(full_disc)
+        index_questions.append(iq)
+
+        if len(full_disc) > len(inline_disc):
+            discussion_by_id[q["id"]] = full_disc
+
+    return index_questions, discussion_by_id
+
+
+def write_discussion_files(discussion_by_id: dict[str, list[dict]], output_dir: pathlib.Path) -> int:
+    """Write one JSON file per question under output_dir/discussion/<id>.json."""
+    disc_dir = output_dir / "discussion"
+    disc_dir.mkdir(parents=True, exist_ok=True)
+    for qid, disc in discussion_by_id.items():
+        _write_json(disc_dir / f"{qid}.json", disc)
+    return len(discussion_by_id)
 
 
 # ── sessions.json ─────────────────────────────────────────────────────────────
@@ -379,7 +435,13 @@ def run(
     tags = build_tags(questions)
     members = build_members(questions, config_members)
 
-    _write_json(output_dir / "questions.json", questions)
+    # Build the trimmed index + per-question discussion files from the full
+    # `questions` list — must happen after build_stats/build_tags/build_members,
+    # which need the untrimmed discussion (e.g. counting "attempt" entries).
+    index_questions, discussion_by_id = split_discussion(questions)
+    discussion_file_count = write_discussion_files(discussion_by_id, output_dir)
+
+    _write_json(output_dir / "questions.json", index_questions)
     _write_json(output_dir / "sessions.json", sessions)
     _write_json(output_dir / "stats.json", stats)
     _write_json(output_dir / "tags.json", tags)
@@ -395,4 +457,5 @@ def run(
         "sessions": len(sessions),
         "tags": len(tags),
         "members": len(members),
+        "discussion_files": discussion_file_count,
     }

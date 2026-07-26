@@ -30,6 +30,23 @@
   let discussionVisible = $state(false);
   let revealed = $state(false);
 
+  // `question.discussion` only carries hint/answer_reveal entries (see
+  // discussion_count for the true total) — fetch the full per-question
+  // thread whenever there's more to show, so the wrong-attempts/participants
+  // tooltips and the expandable thread below have the complete data.
+  let fullDiscussion = $state<any[] | null>(null);
+  $effect(() => {
+    const id = question.id;
+    fullDiscussion = null;
+    if (question.discussion_count > (question.discussion?.length ?? 0)) {
+      fetch(`/data/discussion/${id}.json`)
+        .then(r => r.ok ? r.json() : null)
+        .then(d => { if (question.id === id) fullDiscussion = d; })
+        .catch(() => {});
+    }
+  });
+  const disc = $derived(fullDiscussion ?? question.discussion ?? []);
+
   // Like / Save / Flag state
   let liked = $state(false);
   let likeCount = $state(0);
@@ -269,12 +286,11 @@
   {/if}
 
   <!-- Discussion Metrics -->
-  {#if stats || question.discussion?.length > 0}
+  {#if stats || question.discussion_count > 0}
     <div class="space-y-3">
       <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300">Discussion Metrics</h2>
 
       {#if stats}
-        {@const disc: any[] = question.discussion ?? []}
         {@const wrongAttempts: any[] = disc.filter((d: any) => d.role === 'attempt' && d.is_correct === false)}
         {@const hintEntries: any[] = disc.filter((d: any) => d.role === 'hint')}
         {@const participants = [...new Set(disc.filter((d: any) => d.role === 'attempt').map((d: any) => d.username))] as string[]}
@@ -329,7 +345,7 @@
       {/if}
 
   <!-- Discussion thread -->
-  {#if question.discussion?.length > 0}
+  {#if question.discussion_count > 0}
     <div class="bg-ui-card rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
       <button
         class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
@@ -340,7 +356,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
           <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Complete Discussion</span>
-          <span class="text-xs text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 px-2 py-0.5 rounded-full">{question.discussion.length}</span>
+          <span class="text-xs text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-600 px-2 py-0.5 rounded-full">{question.discussion_count}</span>
         </div>
         <svg class="w-4 h-4 text-gray-400 transition-transform {discussionVisible ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -350,7 +366,7 @@
       {#if discussionVisible}
         <div class="px-5 pb-5 border-t border-gray-100 dark:border-gray-700">
           <div class="pt-4">
-            <DiscussionThread entries={question.discussion} />
+            <DiscussionThread entries={disc} />
           </div>
         </div>
       {/if}

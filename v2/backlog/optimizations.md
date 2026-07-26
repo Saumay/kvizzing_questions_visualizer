@@ -25,36 +25,6 @@ Add new entries at the top of "Deferred". Move to "Done" when landed.
 
 ## Deferred
 
-### Questions / sessions JSON pagination
-
-**Status: TRIGGER CROSSED — do next.** `questions.json` is now 10.3 MB at 3,105 rows
-(checked via `wc -c`). Original note assumed 1,326 rows and ~300/month
-growth, landing 10 MB "sometime in 2028" — actual growth ran way ahead of
-that estimate (3,105 rows already). No longer a someday item.
-
-**Trigger:** `questions.json` > ~10 MB — **met**. The visualizer's home
-page, question list, and highlights all load this eagerly.
-**Effort:** M (touches several store consumers)
-**Touches:** `v2/pipeline/stages/stage6_export.py`,
-`v2/visualizer/src/lib/stores/questionStore.ts`, most route components.
-
-**Problem.** Same shape as rejected-candidates — a single bundle that every
-visitor pays for up-front. Now 3,105 rows / 10.3 MB, growing faster than
-originally projected.
-
-**Sketch.** Shard by month (likely the most-common filter). Keep
-`stats.json`, `sessions.json`, `tags.json`, `members.json` monolithic since
-they're aggregates and small. `questionStore` fetches shards on demand based
-on the active date filter / route.
-
-**Alternatives considered.**
-- **Client-side indexed search (e.g. flexsearch).** Complementary but
-  doesn't help first-paint size.
-- **Move to Supabase.** Overkill for what's essentially read-only browsing;
-  adds a runtime dependency and egress cost.
-
----
-
 ### Solver=asker fallback on image-burst mini-rounds (me-as-LLM forks)
 
 **Status: half-landed.** Audit check `SOLVER_EQUALS_ASKER` exists (`audit_extraction.py:314-320`) and flags every solver==asker case for manual review. The fork-instructions half of the sketch (explicit "NEVER default to the asker" rule in `extract_loop.py`) is NOT in — checked `instructions_for_ai`, no such rule present. So this is currently caught after the fact, not prevented at extraction time.
@@ -170,4 +140,29 @@ shard for the month a reviewer opens.
 
 ## Done
 
-_(none yet — move entries here as they land, with the commit hash and date)_
+### Questions / sessions JSON pagination — landed 2026-07-26
+
+Shipped a different approach than the original sketch (month-sharding).
+Measured where the bytes actually went first: 62% of `questions.json` was
+the `discussion` array, and most of that (attempt/chat/confirmation/
+elaboration roles) is only ever rendered on the question detail page behind
+a click, not in the feed. Month-sharding would've also broken every
+full-corpus store method (`random()`, `getAdjacentQuestions()`,
+`getAskers()`/`getSolvers()`/`getTopics()` dropdowns) since they scan
+`this.questions` regardless of date filter.
+
+Went with index + lazy body instead: `questions.json` now ships each
+question with `discussion` trimmed to just `hint`/`answer_reveal` entries
+(what the feed card and answer box render inline) plus a `discussion_count`
+field for the true total. The full per-question thread lives at
+`discussion/<id>.json`, fetched by the question detail page only when there's
+more to show than what's already inline. `questions.json`: 10.3 MB → 5.1 MB
+(-51%). No store methods changed — the full question set is still eager,
+only the heavy field within each object got deferred.
+
+**Touches:** `v2/pipeline/stages/stage6_export.py` (`split_discussion`,
+`write_discussion_files`), `v2/visualizer/src/lib/types.ts`,
+`v2/visualizer/src/lib/stores/questionStore.ts`,
+`v2/visualizer/src/lib/components/QuestionCard.svelte`,
+`v2/visualizer/src/routes/question/[id]/+page.svelte`,
+`v2/visualizer/src/routes/highlights/+page.svelte`.
