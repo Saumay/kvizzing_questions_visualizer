@@ -9,6 +9,14 @@ L2-normalized so cosine similarity reduces to a plain dot product. The
 browser side (transformers.js, running the ONNX port of the same model)
 must use the same normalization for query embeddings to be comparable.
 
+Text used: question text + answer text, concatenated. Question-only was
+tried first and dropped after empirical testing showed real failures: many
+questions are terse (single word, code, or number, e.g. "OR Tambo Intl")
+and only become meaningful with the answer attached, and connect/riddle
+questions describe clues rather than the underlying topic, so a paraphrase
+of the answer's topic doesn't match the clue text at all. Concatenating the
+answer fixed both failure modes across a 5-case manual test.
+
 Quantization: each embedding is L2-normalized, so every component is
 guaranteed to lie in [-1, 1] — quantize with a fixed global scale of 127
 (int8 range) rather than a per-vector scale. This keeps the output format
@@ -50,7 +58,10 @@ def main() -> None:
 
     questions = json.loads(QUESTIONS_JSON.read_text())
     ids = [q["id"] for q in questions]
-    texts = [q["question"]["text"] for q in questions]
+    texts = [
+        q["question"]["text"] + " " + (q["answer"]["text"] or "")
+        for q in questions
+    ]
     print(f"Encoding {len(texts)} questions with {MODEL_NAME}...")
 
     model = SentenceTransformer(MODEL_NAME)
