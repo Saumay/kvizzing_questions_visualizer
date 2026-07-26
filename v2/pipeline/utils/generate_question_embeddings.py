@@ -35,6 +35,10 @@ Install:
 
 Run from anywhere:
   python3 v2/pipeline/utils/generate_question_embeddings.py
+
+Also called automatically from pipeline.py after every export (best-effort —
+see pipeline.py's _maybe_regenerate_embeddings), so the duplicate-check
+corpus stays in sync with questions.json without a separate manual step.
 """
 
 from __future__ import annotations
@@ -45,18 +49,21 @@ from pathlib import Path
 import numpy as np
 
 V2_DIR = Path(__file__).parent.parent.parent
-QUESTIONS_JSON = V2_DIR / "visualizer" / "static" / "data" / "questions.json"
-OUT_BIN = V2_DIR / "visualizer" / "static" / "data" / "question_embeddings.bin"
-OUT_META = V2_DIR / "visualizer" / "static" / "data" / "question_embeddings_meta.json"
+DEFAULT_OUTPUT_DIR = V2_DIR / "visualizer" / "static" / "data"
 
 MODEL_NAME = "all-MiniLM-L6-v2"
 QUANT_SCALE = 127  # embeddings are unit-normalized, so components are in [-1, 1]
 
 
-def main() -> None:
+def main(output_dir: Path | None = None) -> None:
     from sentence_transformers import SentenceTransformer
 
-    questions = json.loads(QUESTIONS_JSON.read_text())
+    output_dir = Path(output_dir) if output_dir else DEFAULT_OUTPUT_DIR
+    questions_json = output_dir / "questions.json"
+    out_bin = output_dir / "question_embeddings.bin"
+    out_meta = output_dir / "question_embeddings_meta.json"
+
+    questions = json.loads(questions_json.read_text())
     ids = [q["id"] for q in questions]
     texts = [
         q["question"]["text"] + " " + (q["answer"]["text"] or "")
@@ -71,8 +78,8 @@ def main() -> None:
 
     quantized = np.clip(np.round(embeddings * QUANT_SCALE), -127, 127).astype(np.int8)
 
-    OUT_BIN.write_bytes(quantized.tobytes())
-    OUT_META.write_text(json.dumps({
+    out_bin.write_bytes(quantized.tobytes())
+    out_meta.write_text(json.dumps({
         "model": MODEL_NAME,
         "dim": embeddings.shape[1],
         "scale": QUANT_SCALE,
@@ -80,8 +87,8 @@ def main() -> None:
         "ids": ids,
     }, indent=2) + "\n")
 
-    print(f"Wrote {OUT_BIN.relative_to(V2_DIR)} ({OUT_BIN.stat().st_size / 1024:.0f} KB)")
-    print(f"Wrote {OUT_META.relative_to(V2_DIR)}")
+    print(f"Wrote {out_bin} ({out_bin.stat().st_size / 1024:.0f} KB)")
+    print(f"Wrote {out_meta}")
 
 
 if __name__ == "__main__":

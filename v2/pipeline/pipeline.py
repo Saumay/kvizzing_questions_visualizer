@@ -74,7 +74,7 @@ from stages.stage2_extract import run as stage2
 from stages.stage3_structure import run as stage3
 from stages.stage4_enrich import run as stage4
 from stages.stage5_store import run as stage5
-from stages.stage6_export import run as stage6
+from stages.stage6_export import run as _stage6_export_run
 from stages.stage4_enrich import enrich as _stage4_enrich, _normalize_tags
 from stages.stage5_store import load_all as _load_all, upsert as _upsert
 from utils.topic_rules import assign_topics as _assign_topics
@@ -83,6 +83,7 @@ from utils.export_rejected import export_rejected as _export_rejected
 from utils.reclassify_elaboration import run_on_file as _reclassify_elaboration
 from utils.detect_sessions import detect_sessions as _detect_sessions, apply_sessions as _apply_sessions
 from utils.detect_connect_quizzes import main as _detect_connect_main
+from utils.generate_question_embeddings import main as _generate_embeddings
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -90,6 +91,39 @@ from utils.detect_connect_quizzes import main as _detect_connect_main
 def _log_counts(counts: dict) -> None:
     for key, val in counts.items():
         log.info("  %s: %s", key, f"{val:,}")
+
+
+def _maybe_regenerate_embeddings(output_dir) -> None:
+    """
+    Best-effort: regenerate the duplicate-check semantic-search corpus after
+    every export, so it stays in sync with questions.json without a separate
+    manual step. sentence-transformers/torch is a heavy dependency that isn't
+    otherwise required by the pipeline, so a missing install or any runtime
+    failure here logs a warning and lets the export succeed anyway — it's a
+    secondary feature, not core data correctness.
+    """
+    try:
+        _generate_embeddings(output_dir)
+    except ImportError:
+        log.warning(
+            "sentence-transformers not installed — skipping duplicate-check "
+            "embeddings regeneration. Run manually: "
+            "python3 utils/generate_question_embeddings.py"
+        )
+    except Exception as e:
+        log.warning(
+            "Embeddings regeneration failed (%s: %s) — questions.json exported "
+            "OK, run utils/generate_question_embeddings.py manually to catch up.",
+            type(e).__name__, e,
+        )
+
+
+def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
+    """Wraps stage6_export.run to also regenerate duplicate-check embeddings —
+    see _maybe_regenerate_embeddings for why this is best-effort, not required."""
+    counts = _stage6_export_run(conn, output_dir, **kwargs)
+    _maybe_regenerate_embeddings(output_dir)
+    return counts
 
 
 def _extracted_timestamps(conn: sqlite3.Connection) -> set[str]:

@@ -35,14 +35,26 @@
   // thread whenever there's more to show, so the wrong-attempts/participants
   // tooltips and the expandable thread below have the complete data.
   let fullDiscussion = $state<any[] | null>(null);
+  let discussionError = $state(false);
+
+  async function loadFullDiscussion(id: string) {
+    discussionError = false;
+    try {
+      const r = await fetch(`/data/discussion/${id}.json`);
+      if (!r.ok) throw new Error(`status ${r.status}`);
+      const d = await r.json();
+      if (question.id === id) fullDiscussion = d;
+    } catch {
+      if (question.id === id) discussionError = true;
+    }
+  }
+
   $effect(() => {
     const id = question.id;
     fullDiscussion = null;
+    discussionError = false;
     if (question.discussion_count > (question.discussion?.length ?? 0)) {
-      fetch(`/data/discussion/${id}.json`)
-        .then(r => r.ok ? r.json() : null)
-        .then(d => { if (question.id === id) fullDiscussion = d; })
-        .catch(() => {});
+      loadFullDiscussion(id);
     }
   });
   const disc = $derived(fullDiscussion ?? question.discussion ?? []);
@@ -282,6 +294,13 @@
       {#if a.confirmation_text}
         <span class="text-xs text-green-600 dark:text-green-400 ml-auto italic">"{a.confirmation_text}"</span>
       {/if}
+    </div>
+  {/if}
+
+  {#if discussionError}
+    <div class="flex items-center gap-2 text-xs text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-2">
+      <span>Couldn't load the full discussion.</span>
+      <button class="underline font-medium" onclick={() => loadFullDiscussion(question.id)}>Retry</button>
     </div>
   {/if}
 

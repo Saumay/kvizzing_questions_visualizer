@@ -172,3 +172,24 @@ describe('QuestionStore — timezone-aware date filtering', () => {
     expect(results).toHaveLength(0);
   });
 });
+
+describe('QuestionStore — sorting', () => {
+  it('most_discussed sorts by discussion_count, not discussion.length', () => {
+    // discussion is trimmed to hint/answer_reveal entries in the exported
+    // index — discussion_count carries the true total and must drive the sort.
+    const low = makeQuestion({ id: 'low', discussion_count: 2 });
+    const high = makeQuestion({ id: 'high', discussion_count: 40 });
+    const mid = makeQuestion({ id: 'mid', discussion_count: 10 });
+    const store = new QuestionStore([low, high, mid], NO_SESSIONS, NO_MEMBERS);
+    const results = store.getQuestions(undefined, 'most_discussed');
+    expect(results.map(q => q.id)).toEqual(['high', 'mid', 'low']);
+  });
+
+  it('most_discussed treats missing discussion_count as zero', () => {
+    const withCount = makeQuestion({ id: 'with', discussion_count: 5 });
+    const withoutCount = makeQuestion({ id: 'without', discussion_count: undefined as any });
+    const store = new QuestionStore([withoutCount, withCount], NO_SESSIONS, NO_MEMBERS);
+    const results = store.getQuestions(undefined, 'most_discussed');
+    expect(results.map(q => q.id)).toEqual(['with', 'without']);
+  });
+});
