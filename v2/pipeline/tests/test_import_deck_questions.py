@@ -299,3 +299,31 @@ class TestEnsureSessionThumbnail:
                 "does/not/exist.pdf", "deck-test", images_dir=images_dir, quiz_decks_dir=Path(tmpdir)
             )
         assert result is False
+
+    def test_crop_is_top_anchored_banner_aspect(self):
+        # A normal ~4:3 slide crammed into a ~3:1 banner card gets center-cropped
+        # by CSS to a thin strip from the middle — and decks put title text near
+        # the top, so a center crop cuts it out. The thumbnail must crop from the
+        # top of the slide instead, so this asserts both: the output aspect ratio
+        # matches the banner shape, and it was cropped from y=0, not centered.
+        import fitz
+        from PIL import Image
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmpdir_path = Path(tmpdir)
+            pdf_path = tmpdir_path / "deck.pdf"
+            doc = fitz.open()
+            page = doc.new_page(width=800, height=600)  # 4:3, like a real slide
+            page.insert_text((50, 50), "TITLE TEXT NEAR THE TOP", fontsize=24)
+            doc.save(pdf_path)
+            doc.close()
+
+            images_dir = tmpdir_path / "images"
+            ensure_session_thumbnail("deck.pdf", "deck-test", images_dir=images_dir, quiz_decks_dir=tmpdir_path)
+
+            out = Image.open(images_dir / "deck-test.jpg")
+            assert abs(out.size[0] / out.size[1] - 3.0) < 0.05
+            # Top-anchored: cropped height should be well under the full 2x-rendered
+            # page height (600 * 2 = 1200), confirming it's a slice from the top,
+            # not the (taller) full page.
+            assert out.size[1] < 1200

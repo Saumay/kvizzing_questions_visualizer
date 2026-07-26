@@ -178,6 +178,14 @@ def ensure_session_thumbnail(
     frontend change is needed. Only PDFs are supported (matches the
     extraction path). Skips if a thumbnail already exists. Returns True if
     a thumbnail exists afterward (already there, or just rendered).
+
+    Slides are normal presentation aspect (~4:3/16:9) but the card is a wide
+    banner (~3:1) with background-position centered, so a plain full-slide
+    render gets center-cropped down to a thin horizontal strip — and title
+    decks consistently put the title/byline text in the top portion, so a
+    dead-center crop cuts it out entirely. Cropping to the banner aspect
+    ourselves, anchored to the top of the slide, keeps the title visible
+    instead of leaving it to CSS's center crop.
     """
     out_path = images_dir / f"{session_id}.jpg"
     if out_path.exists():
@@ -186,12 +194,23 @@ def ensure_session_thumbnail(
         return False
     try:
         import fitz
+        from PIL import Image
+        import io
+
         doc = fitz.open(quiz_decks_dir / rel_path)
         page = doc[page_number if page_number < doc.page_count else 0]
-        pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
-        images_dir.mkdir(parents=True, exist_ok=True)
-        pix.save(str(out_path), jpg_quality=85)
+        pix = page.get_pixmap(matrix=fitz.Matrix(2.0, 2.0))
+        img_bytes = pix.tobytes("png")
         doc.close()
+
+        im = Image.open(io.BytesIO(img_bytes)).convert("RGB")
+        w, h = im.size
+        target_aspect = 3.0  # matches the common existing session-image shape
+        crop_h = min(h, round(w / target_aspect))
+        im = im.crop((0, 0, w, crop_h))  # top-anchored, not center-cropped
+
+        images_dir.mkdir(parents=True, exist_ok=True)
+        im.save(str(out_path), quality=85)
         return True
     except Exception as e:
         print(f"  thumbnail failed for {session_id}: {e}")
