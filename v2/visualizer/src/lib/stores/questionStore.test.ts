@@ -28,6 +28,7 @@ function makeQuestion(overrides: Partial<Question> & { id: string }): Question {
       ...overrides.answer,
     },
     discussion: [],
+    discussion_count: overrides.discussion_count ?? 0,
     stats: {
       wrong_attempts: 0,
       hints_given: 0,

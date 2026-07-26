@@ -82,7 +82,7 @@ export class QuestionStore {
       case 'oldest':
         return q.sort((a, b) => (a.question?.timestamp ?? a.date).localeCompare(b.question?.timestamp ?? b.date));
       case 'most_discussed':
-        return q.sort((a, b) => (b.discussion?.length ?? 0) - (a.discussion?.length ?? 0));
+        return q.sort((a, b) => (b.discussion_count ?? 0) - (a.discussion_count ?? 0));
       case 'most_liked':
         // Sorted by caller with save counts; fallback to newest
         return q.sort((a, b) => (b.question?.timestamp ?? b.date).localeCompare(a.question?.timestamp ?? a.date));

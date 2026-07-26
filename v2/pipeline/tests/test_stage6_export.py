@@ -19,6 +19,8 @@ from stages.stage6_export import (
     build_stats,
     build_tags,
     build_members,
+    split_discussion,
+    write_discussion_files,
     run,
 )
 from stages.stage3_structure import structure
@@ -341,6 +343,62 @@ class TestBuildMembers:
         assert pratik["sessions_hosted"] == 1
 
 
+class TestSplitDiscussion:
+    def test_inline_subset_keeps_only_hint_and_answer_reveal(self):
+        q = json.loads(_make_question().model_dump_json())
+        q["discussion"] = [
+            {"timestamp": "t1", "username": "A", "text": "attempt", "role": "attempt", "is_correct": False, "has_media": False, "media": None},
+            {"timestamp": "t2", "username": "B", "text": "hint", "role": "hint", "is_correct": None, "has_media": False, "media": None},
+            {"timestamp": "t3", "username": "C", "text": "reveal", "role": "answer_reveal", "is_correct": None, "has_media": False, "media": None},
+        ]
+        index_questions, discussion_by_id = split_discussion([q])
+        roles = [e["role"] for e in index_questions[0]["discussion"]]
+        assert roles == ["hint", "answer_reveal"]
+
+    def test_discussion_count_is_full_length(self):
+        q = json.loads(_make_question().model_dump_json())
+        q["discussion"] = [
+            {"timestamp": "t1", "username": "A", "text": "x", "role": "attempt", "is_correct": False, "has_media": False, "media": None},
+            {"timestamp": "t2", "username": "B", "text": "y", "role": "chat", "is_correct": None, "has_media": False, "media": None},
+        ]
+        index_questions, _ = split_discussion([q])
+        assert index_questions[0]["discussion_count"] == 2
+
+    def test_full_discussion_keyed_by_id_when_extra_entries_exist(self):
+        q = json.loads(_make_question().model_dump_json())
+        q["discussion"] = [
+            {"timestamp": "t1", "username": "A", "text": "x", "role": "attempt", "is_correct": False, "has_media": False, "media": None},
+        ]
+        index_questions, discussion_by_id = split_discussion([q])
+        assert discussion_by_id[q["id"]] == q["discussion"]
+
+    def test_no_file_needed_when_only_inline_roles_present(self):
+        q = json.loads(_make_question().model_dump_json())
+        q["discussion"] = [
+            {"timestamp": "t1", "username": "A", "text": "hint", "role": "hint", "is_correct": None, "has_media": False, "media": None},
+        ]
+        _, discussion_by_id = split_discussion([q])
+        assert q["id"] not in discussion_by_id
+
+    def test_original_questions_list_untouched(self):
+        q = json.loads(_make_question().model_dump_json())
+        original_discussion = list(q["discussion"])
+        split_discussion([q])
+        assert q["discussion"] == original_discussion
+
+    def test_write_discussion_files_writes_one_file_per_id(self):
+        q1 = json.loads(_make_question().model_dump_json())
+        q2 = json.loads(_make_question(timestamp_offset=200).model_dump_json())
+        discussion_by_id = {q1["id"]: q1["discussion"], q2["id"]: q2["discussion"]}
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir)
+            count = write_discussion_files(discussion_by_id, output_dir)
+            assert count == 2
+            assert (output_dir / "discussion" / f"{q1['id']}.json").exists()
+            data = json.loads((output_dir / "discussion" / f"{q1['id']}.json").read_text())
+            assert data == q1["discussion"]
+
+
 class TestRun:
     def test_creates_all_json_files(self, db_with_questions):
         db, _ = db_with_questions
@@ -361,6 +419,27 @@ class TestRun:
             data = json.loads((output_dir / "questions.json").read_text())
             assert isinstance(data, list)
             assert len(data) == 7
+
+    def test_questions_json_discussion_trimmed_to_inline_roles(self, db_with_questions):
+        db, _ = db_with_questions
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir)
+            run(db, output_dir)
+            data = json.loads((output_dir / "questions.json").read_text())
+            for q in data:
+                assert all(e["role"] in ("hint", "answer_reveal") for e in q["discussion"])
+                assert "discussion_count" in q
+
+    def test_discussion_files_written_for_questions_with_attempts(self, db_with_questions):
+        db, _ = db_with_questions
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir)
+            run(db, output_dir)
+            # every fixture question has "attempt" entries, none have hint/answer_reveal,
+            # so every one should get a discussion file
+            disc_dir = output_dir / "discussion"
+            assert disc_dir.exists()
+            assert len(list(disc_dir.glob("*.json"))) == 7
 
     def test_state_file_updated(self, db_with_questions):
         db, _ = db_with_questions
