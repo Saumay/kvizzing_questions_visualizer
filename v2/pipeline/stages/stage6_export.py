@@ -169,9 +169,23 @@ def split_discussion(questions: list[dict]) -> tuple[list[dict], dict[str, list[
 
 
 def write_discussion_files(discussion_by_id: dict[str, list[dict]], output_dir: pathlib.Path) -> int:
-    """Write one JSON file per question under output_dir/discussion/<id>.json."""
+    """
+    Write one JSON file per question under output_dir/discussion/<id>.json,
+    and remove any existing files whose id isn't in discussion_by_id — e.g. a
+    question was re-extracted under a corrected id (timestamp fix changes the
+    id) or dropped during review reconciliation. Without this, a removed
+    question's full discussion (attempts, chat, real names) would stay
+    committed and live at a stable URL forever even after it disappears from
+    questions.json.
+    """
     disc_dir = output_dir / "discussion"
     disc_dir.mkdir(parents=True, exist_ok=True)
+
+    current_ids = set(discussion_by_id.keys())
+    for existing_file in disc_dir.glob("*.json"):
+        if existing_file.stem not in current_ids:
+            existing_file.unlink()
+
     for qid, disc in discussion_by_id.items():
         _write_json(disc_dir / f"{qid}.json", disc)
     return len(discussion_by_id)

@@ -398,6 +398,32 @@ class TestSplitDiscussion:
             data = json.loads((output_dir / "discussion" / f"{q1['id']}.json").read_text())
             assert data == q1["discussion"]
 
+    def test_write_discussion_files_prunes_stale_ids(self):
+        q1 = json.loads(_make_question().model_dump_json())
+        q2 = json.loads(_make_question(timestamp_offset=200).model_dump_json())
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir)
+            # First export: both questions have a discussion file.
+            write_discussion_files({q1["id"]: q1["discussion"], q2["id"]: q2["discussion"]}, output_dir)
+            assert (output_dir / "discussion" / f"{q1['id']}.json").exists()
+            assert (output_dir / "discussion" / f"{q2['id']}.json").exists()
+
+            # Second export: q1 was re-extracted under a corrected id and no
+            # longer appears — its old file must be removed, not just left behind.
+            write_discussion_files({q2["id"]: q2["discussion"]}, output_dir)
+            assert not (output_dir / "discussion" / f"{q1['id']}.json").exists()
+            assert (output_dir / "discussion" / f"{q2['id']}.json").exists()
+
+    def test_write_discussion_files_leaves_unrelated_files_alone(self):
+        q1 = json.loads(_make_question().model_dump_json())
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_dir = Path(tmpdir)
+            disc_dir = output_dir / "discussion"
+            disc_dir.mkdir(parents=True)
+            (disc_dir / ".gitkeep").write_text("")
+            write_discussion_files({q1["id"]: q1["discussion"]}, output_dir)
+            assert (disc_dir / ".gitkeep").exists()
+
 
 class TestRun:
     def test_creates_all_json_files(self, db_with_questions):
