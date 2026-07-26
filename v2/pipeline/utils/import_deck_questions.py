@@ -67,6 +67,8 @@ BASE_CONFIG = {
 }
 
 CANDIDATES_DIR = Path(__file__).parent.parent / "deck_extraction" / "candidates"
+QUIZ_DECKS_DIR = Path(__file__).parent.parent.parent.parent / "quiz_decks"
+SESSION_IMAGES_DIR = Path(__file__).parent.parent.parent / "visualizer" / "static" / "images" / "sessions"
 
 # Formats an extraction agent can actually read. PPTX can't be read directly
 # (binary, no LibreOffice available to render it) — those decks are skipped
@@ -148,6 +150,7 @@ def candidates_from_pairs(
             "session_theme": theme,
             "session_question_number": i,
             "session_id_override": session_id,
+            "session_is_live": True,
             "answer_text": pair.get("answer_text"),
             "answer_solver": None,
             "answer_timestamp": None,
@@ -159,6 +162,40 @@ def candidates_from_pairs(
             "extraction_confidence": pair.get("extraction_confidence", "medium"),
         })
     return out
+
+
+def ensure_session_thumbnail(
+    rel_path: str,
+    session_id: str,
+    images_dir: Path = SESSION_IMAGES_DIR,
+    quiz_decks_dir: Path = QUIZ_DECKS_DIR,
+    page_number: int = 0,
+) -> bool:
+    """
+    Render a deck's title slide as its session card thumbnail, at
+    images_dir/<session_id>.jpg — the exact path the frontend already looks
+    up for every session (see sessionBgUrl in lib/config/ui.ts), so no
+    frontend change is needed. Only PDFs are supported (matches the
+    extraction path). Skips if a thumbnail already exists. Returns True if
+    a thumbnail exists afterward (already there, or just rendered).
+    """
+    out_path = images_dir / f"{session_id}.jpg"
+    if out_path.exists():
+        return True
+    if not rel_path.lower().endswith(".pdf"):
+        return False
+    try:
+        import fitz
+        doc = fitz.open(quiz_decks_dir / rel_path)
+        page = doc[page_number if page_number < doc.page_count else 0]
+        pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
+        images_dir.mkdir(parents=True, exist_ok=True)
+        pix.save(str(out_path), jpg_quality=85)
+        doc.close()
+        return True
+    except Exception as e:
+        print(f"  thumbnail failed for {session_id}: {e}")
+        return False
 
 
 def import_file(
@@ -222,6 +259,7 @@ def import_all_available(
         imported += 1
         total_stored += stored
         total_failed += failed
+        ensure_session_thumbnail(s["rel_path"], s["session_id"])
 
     print(
         f"\n{imported} deck(s) imported ({total_stored} questions, {total_failed} failed), "

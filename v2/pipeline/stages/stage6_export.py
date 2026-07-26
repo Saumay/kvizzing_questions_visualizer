@@ -251,6 +251,7 @@ def build_sessions(
             "quiz_type": overrides.get("quiz_type", s.get("quiz_type")),
             "connect_answer": overrides.get("connect_answer", connect_answer),
             "announcement": overrides.get("announcement", announcement),
+            "is_live": overrides.get("is_live", s.get("is_live", False)),
             "date": questions[0].get("date"),
             "question_count": len(questions),
             "avg_time_to_answer_seconds": (

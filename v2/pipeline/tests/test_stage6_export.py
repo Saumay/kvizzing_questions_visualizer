@@ -189,6 +189,22 @@ class TestBuildSessions:
         sessions = build_sessions(db)
         assert sessions[0]["quizmaster"] == "pratik.s.chandarana"
 
+    def test_is_live_defaults_false(self, db_with_questions):
+        db, _ = db_with_questions
+        sessions = build_sessions(db)
+        assert sessions[0]["is_live"] is False
+
+    def test_is_live_true_when_session_flagged(self, db):
+        live_questions = [
+            _make_session_question(timestamp_offset=200 * i, question_number=i + 1)
+            for i in range(5)
+        ]
+        for q in live_questions:
+            q.session.is_live = True
+        store_run(live_questions, db)
+        sessions = build_sessions(db)
+        assert sessions[0]["is_live"] is True
+
     def test_theme_populated(self, db_with_questions):
         db, _ = db_with_questions
         sessions = build_sessions(db)
