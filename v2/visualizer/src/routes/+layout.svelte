@@ -406,6 +406,7 @@
     { href: '/sessions', label: 'Quiz sessions' },
     { href: '/highlights', label: 'Highlights' },
     { href: '/decks', label: 'Live Sessions' },
+    { href: '/duplicate-check', label: 'Check Duplicates' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {
