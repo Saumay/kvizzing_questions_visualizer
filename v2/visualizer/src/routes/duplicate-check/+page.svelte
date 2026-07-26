@@ -107,8 +107,9 @@
   <div>
     <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Check for Duplicates</h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      Paste your draft question and search the full question bank for similar ones already asked — catches
-      reworded repeats, not just exact-text matches. Runs entirely in your browser; nothing is sent anywhere.
+      Paste your draft question and search the full question bank for similar ones already asked, catching
+      reworded repeats, not just exact-text matches. Everything runs in your browser, so your question is
+      never sent anywhere or seen by anyone else.
     </p>
   </div>
 
