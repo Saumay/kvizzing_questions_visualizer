@@ -25,21 +25,55 @@ Add new entries at the top of "Deferred". Move to "Done" when landed.
 
 ## Deferred
 
+### Questions / sessions JSON pagination
+
+**Status: TRIGGER CROSSED — do next.** `questions.json` is now 10.3 MB at 3,105 rows
+(checked via `wc -c`). Original note assumed 1,326 rows and ~300/month
+growth, landing 10 MB "sometime in 2028" — actual growth ran way ahead of
+that estimate (3,105 rows already). No longer a someday item.
+
+**Trigger:** `questions.json` > ~10 MB — **met**. The visualizer's home
+page, question list, and highlights all load this eagerly.
+**Effort:** M (touches several store consumers)
+**Touches:** `v2/pipeline/stages/stage6_export.py`,
+`v2/visualizer/src/lib/stores/questionStore.ts`, most route components.
+
+**Problem.** Same shape as rejected-candidates — a single bundle that every
+visitor pays for up-front. Now 3,105 rows / 10.3 MB, growing faster than
+originally projected.
+
+**Sketch.** Shard by month (likely the most-common filter). Keep
+`stats.json`, `sessions.json`, `tags.json`, `members.json` monolithic since
+they're aggregates and small. `questionStore` fetches shards on demand based
+on the active date filter / route.
+
+**Alternatives considered.**
+- **Client-side indexed search (e.g. flexsearch).** Complementary but
+  doesn't help first-paint size.
+- **Move to Supabase.** Overkill for what's essentially read-only browsing;
+  adds a runtime dependency and egress cost.
+
+---
+
 ### Solver=asker fallback on image-burst mini-rounds (me-as-LLM forks)
 
+**Status: half-landed.** Audit check `SOLVER_EQUALS_ASKER` exists (`audit_extraction.py:314-320`) and flags every solver==asker case for manual review. The fork-instructions half of the sketch (explicit "NEVER default to the asker" rule in `extract_loop.py`) is NOT in — checked `instructions_for_ai`, no such rule present. So this is currently caught after the fact, not prevented at extraction time.
+
 **Trigger:** after curator review of 11-06-style poster sessions; if >5% of mini-round Qs end up with solver=asker, address before next bulk run.
-**Effort:** S (hours)
-**Touches:** `v2/pipeline/utils/extract_loop.py` (`instructions_for_ai`), `v2/pipeline/utils/audit_extraction.py` (new SOLVER_EQUALS_ASKER check)
+**Effort:** S (hours) — just the remaining fork-instructions half
+**Touches:** `v2/pipeline/utils/extract_loop.py` (`instructions_for_ai`)
 
 **Problem.** When the fork can't unambiguously pick a winner among rapid-fire image-poster guesses, it defaults to the asker as solver (observed Vats marking himself as solver on Big Lebowski, Gangs of NY, Karate Kid, Munich during 11-06 R2 minimalist posters). Inflates host's solve count, misattributes solves.
 
-**Sketch.** Add explicit rule to the fork's instructions: "If no clear single solver wins a mini-round item, set answer_solver=null with extraction_confidence=medium. NEVER default to the asker." Add audit check `SOLVER_EQUALS_ASKER` that flags any Q where solver == asker AND is_session_question=true AND mini-round detected (numbered or rapid image bursts).
+**Sketch (remaining).** Add explicit rule to the fork's instructions: "If no clear single solver wins a mini-round item, set answer_solver=null with extraction_confidence=medium. NEVER default to the asker."
 
 **Alternatives considered.** Auto-fix at stage 3 (rewrite solver=asker → null) — too aggressive, asker can legitimately self-solve in some cases (asker guesses for a co-host's Q). Better to keep as audit warning + manual review.
 
 ---
 
 ### Synthetic timestamps on image-burst mini-rounds (DISC_BEFORE_Q noise)
+
+**Status: not landed.** Checked `extract_loop.py` — no verbatim-timestamp rule in the fork instructions. Audit check `DISC_BEFORE_Q` exists (`audit_extraction.py:242`) so the signal still fires; the fix at the source hasn't shipped.
 
 **Trigger:** when DISC_BEFORE_Q audit issues become >10 per heavy date.
 **Effort:** S (hours)
@@ -55,9 +89,11 @@ Add new entries at the top of "Deferred". Move to "Done" when landed.
 
 ### Dynamic daily-chat loading from R2
 
+**Status: not landed, but `r2_upload.py` reusable.** No "load full day" control on the review page. `v2/pipeline/utils/r2_upload.py` already exists with a working boto3 R2 client (currently used for media images) — its auth/upload boilerplate can be reused for chat blobs, not built from scratch.
+
 **Trigger:** when reviewers start hitting the 40/40 context window on the
 review page and want the full day's chat. Also when `rejected_candidates.json`
-approaches ~10 MB (see next item).
+approaches ~10 MB (see next item — currently 7.5 MB, getting close).
 **Effort:** M (2–3 days including R2 upload, frontend fetch, loading UI)
 **Touches:** `v2/pipeline/utils/r2_upload.py`, `v2/pipeline/pipeline.py`
 (`_write_rejected_candidates` → also emit per-date full-chat blobs),
@@ -102,9 +138,14 @@ Supabase edge function. Pick before implementing.
 
 ### Rejected-candidates JSON pagination
 
+**Status: approaching trigger.** Now 7.5 MB (472 threads), up from 3.7 MB
+(246 threads) — tracking almost exactly linear with thread count, faster
+than the "+1 MB/quarter" original estimate. At this rate it crosses 10 MB
+within the next couple months. Revisit trigger check before then.
+
 **Trigger:** `rejected_candidates.json` > ~10 MB (first-paint / mobile
-bandwidth starts to hurt). Currently 3.7 MB with 40/40 context and 246
-threads; roughly tracking +1 MB per quarter of new data.
+bandwidth starts to hurt). Currently 7.5 MB with 40/40 context and 472
+threads.
 **Effort:** S (one afternoon)
 **Touches:** `v2/pipeline/utils/export_rejected.py`,
 `v2/pipeline/pipeline.py` (the `_write_rejected_candidates` + combine path),
@@ -124,33 +165,6 @@ shard for the month a reviewer opens.
   the full archive. Monthly is ~6 fetches/year.
 - **Host on R2 instead of bundling.** Similar idea, extra infra. Revisit if
   combined with the chat-loading work above.
-
----
-
-### Questions / sessions JSON pagination
-
-**Trigger:** `questions.json` > ~10 MB (currently monitor; estimate by
-`wc -c v2/visualizer/static/data/questions.json`). The visualizer's home
-page, question list, and highlights all load this eagerly.
-**Effort:** M (touches several store consumers)
-**Touches:** `v2/pipeline/stages/stage6_export.py`,
-`v2/visualizer/src/lib/stores/questionStore.ts`, most route components.
-
-**Problem.** Same shape as rejected-candidates — a single bundle that every
-visitor pays for up-front. Grows ~1 question per row, currently 1326 rows.
-At the current capture rate (~300/month) we'll hit 5K rows mid-2027, and
-10 MB sometime in 2028.
-
-**Sketch.** Shard by month (likely the most-common filter). Keep
-`stats.json`, `sessions.json`, `tags.json`, `members.json` monolithic since
-they're aggregates and small. `questionStore` fetches shards on demand based
-on the active date filter / route.
-
-**Alternatives considered.**
-- **Client-side indexed search (e.g. flexsearch).** Complementary but
-  doesn't help first-paint size.
-- **Move to Supabase.** Overkill for what's essentially read-only browsing;
-  adds a runtime dependency and egress cost.
 
 ---
 
