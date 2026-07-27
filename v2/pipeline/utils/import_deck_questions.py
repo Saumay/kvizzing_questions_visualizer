@@ -39,6 +39,17 @@ not a tracked live chat, so there's no "who got it right first" data to
 capture. answer_confirmed=True since the slide IS the canonical answer key,
 not something needing chat confirmation.
 
+Session card thumbnails: run `python3 pipeline.py generate-images` after
+importing — it already handles "session has no real photo" for every
+session (chat or deck), generating a themed AI background via Stable
+Horde. Tried rendering/cropping the deck's own title slide instead (skip
+generate-images, use real deck content) — worse on every deck tested: flat
+vector/gradient title art has no texture to survive a blur strong enough
+to stop the title text from reading as text, and picking an embedded photo
+via heuristics (largest non-repeated image) is unreliable — it grabbed a
+blank decorative divider graphic on one deck. generate-images already
+solves the general case well; no reason to duplicate it worse.
+
 Known gap (not handled yet): question/answer slide images aren't extracted
 or uploaded anywhere — has_media reflects whether the source slide had an
 essential image, but media itself is None, so those cards render without a
@@ -67,8 +78,6 @@ BASE_CONFIG = {
 }
 
 CANDIDATES_DIR = Path(__file__).parent.parent / "deck_extraction" / "candidates"
-QUIZ_DECKS_DIR = Path(__file__).parent.parent.parent.parent / "quiz_decks"
-SESSION_IMAGES_DIR = Path(__file__).parent.parent.parent / "visualizer" / "static" / "images" / "sessions"
 
 # Formats an extraction agent can actually read. PPTX can't be read directly
 # (binary, no LibreOffice available to render it) — those decks are skipped
@@ -164,65 +173,6 @@ def candidates_from_pairs(
     return out
 
 
-def ensure_session_thumbnail(
-    rel_path: str,
-    session_id: str,
-    images_dir: Path = SESSION_IMAGES_DIR,
-    quiz_decks_dir: Path = QUIZ_DECKS_DIR,
-    page_number: int = 0,
-) -> bool:
-    """
-    Render a deck's title slide as its session card thumbnail, at
-    images_dir/<session_id>.jpg — the exact path the frontend already looks
-    up for every session (see sessionBgUrl in lib/config/ui.ts), so no
-    frontend change is needed. Only PDFs are supported (matches the
-    extraction path). Skips if a thumbnail already exists. Returns True if
-    a thumbnail exists afterward (already there, or just rendered).
-
-    Slides are normal presentation aspect (~4:3/16:9) but the card is a wide
-    banner (~3:1) with background-position centered, so a plain full-slide
-    render gets center-cropped down to a thin horizontal strip — and title
-    decks consistently put the title/byline text in the top portion, so a
-    dead-center crop cuts it out entirely (top-anchoring the crop fixes
-    that). But the title text itself is still crisp and readable at full
-    size, and it's rendered as a *background* behind the card's own UI text
-    (session name, "Hosted by ...") — two overlapping blocks of readable
-    text is illegible, worse than showing no text at all. Blurring after
-    crop turns the slide's own text into soft color texture (keeps the
-    deck's visual identity/colors) without competing for the reader's
-    attention the way crisp text does.
-    """
-    out_path = images_dir / f"{session_id}.jpg"
-    if out_path.exists():
-        return True
-    if not rel_path.lower().endswith(".pdf"):
-        return False
-    try:
-        import fitz
-        from PIL import Image, ImageFilter
-        import io
-
-        doc = fitz.open(quiz_decks_dir / rel_path)
-        page = doc[page_number if page_number < doc.page_count else 0]
-        pix = page.get_pixmap(matrix=fitz.Matrix(2.0, 2.0))
-        img_bytes = pix.tobytes("png")
-        doc.close()
-
-        im = Image.open(io.BytesIO(img_bytes)).convert("RGB")
-        w, h = im.size
-        target_aspect = 3.0  # matches the common existing session-image shape
-        crop_h = min(h, round(w / target_aspect))
-        im = im.crop((0, 0, w, crop_h))  # top-anchored, not center-cropped
-        im = im.filter(ImageFilter.GaussianBlur(radius=max(20, w // 20)))
-
-        images_dir.mkdir(parents=True, exist_ok=True)
-        im.save(str(out_path), quality=85)
-        return True
-    except Exception as e:
-        print(f"  thumbnail failed for {session_id}: {e}")
-        return False
-
-
 def import_file(
     path: Path,
     *,
@@ -284,7 +234,6 @@ def import_all_available(
         imported += 1
         total_stored += stored
         total_failed += failed
-        ensure_session_thumbnail(s["rel_path"], s["session_id"])
 
     print(
         f"\n{imported} deck(s) imported ({total_stored} questions, {total_failed} failed), "

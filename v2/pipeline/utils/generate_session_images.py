@@ -16,7 +16,10 @@ import time
 from pathlib import Path
 import requests
 
-from detect_censored_image import is_censored_placeholder
+try:
+    from detect_censored_image import is_censored_placeholder  # run directly from utils/
+except ImportError:
+    from utils.detect_censored_image import is_censored_placeholder  # run via pipeline.py
 
 V2_DIR = Path(__file__).parent.parent.parent
 SESSIONS_JSON = V2_DIR / "visualizer" / "static" / "data" / "sessions.json"

@@ -626,6 +626,10 @@ def _run_import_decks() -> None:
     up whatever candidate files exist, imports them, and skips decks that
     haven't been extracted yet (not an error — re-run once more decks are
     extracted). See utils/import_deck_questions.py for the full workflow.
+
+    Run `generate-images` afterward to get session card thumbnails — it
+    already handles "session has no real photo" for every session
+    regardless of origin, so deck sessions just get picked up by it.
     """
     data_dir = V2_DIR / "data"
     output_dir = V2_DIR / "visualizer" / "static" / "data"
