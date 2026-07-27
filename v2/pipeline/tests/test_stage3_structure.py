@@ -188,6 +188,21 @@ class TestStructure:
         # Session ID uses first name component (split on space or dot)
         assert obj.session.id == "2025-09-23-pratik"
 
+    def test_session_is_live_defaults_false(self):
+        c = _base()
+        c["is_session_question"] = True
+        c["session_quizmaster"] = "pratik.s.chandarana"
+        obj = structure(c, BASE_CONFIG, Counter())
+        assert obj.session.is_live is False
+
+    def test_session_is_live_set_when_flagged(self):
+        c = _base()
+        c["is_session_question"] = True
+        c["session_quizmaster"] = "Sal"
+        c["session_is_live"] = True
+        obj = structure(c, BASE_CONFIG, Counter())
+        assert obj.session.is_live is True
+
     def test_session_slug_split_on_space(self):
         c = _base()
         c["is_session_question"] = True

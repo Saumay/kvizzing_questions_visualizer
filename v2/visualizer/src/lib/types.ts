@@ -87,6 +87,8 @@ export interface Session {
   connect_answer?: string | null;
   /** Quizmaster's introductory message announcing the session */
   announcement?: string | null;
+  /** True for sessions hosted live (e.g. a Zoom quiz night from a slide deck), false for async WhatsApp group quizzes */
+  is_live?: boolean;
 }
 
 export interface Member {

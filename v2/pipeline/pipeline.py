@@ -84,6 +84,7 @@ from utils.reclassify_elaboration import run_on_file as _reclassify_elaboration
 from utils.detect_sessions import detect_sessions as _detect_sessions, apply_sessions as _apply_sessions
 from utils.detect_connect_quizzes import main as _detect_connect_main
 from utils.generate_question_embeddings import main as _generate_embeddings
+from utils.import_deck_questions import import_all_available as _import_decks_available
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -609,6 +610,54 @@ def _run_export() -> None:
         log.info("Export complete.")
     except Exception:
         log.exception("Export crashed.")
+        raise
+    finally:
+        db.close()
+
+
+def _run_import_decks() -> None:
+    """
+    Import live-session slide-deck Q&A into questions.db and re-export.
+
+    Extraction itself (reading a deck's slides and transcribing Q&A pairs)
+    isn't scriptable — it needs an LLM with vision-capable file reading, done
+    via an agent that writes its output to
+    deck_extraction/candidates/deck-<session_id>.json. This subcommand picks
+    up whatever candidate files exist, imports them, and skips decks that
+    haven't been extracted yet (not an error — re-run once more decks are
+    extracted). See utils/import_deck_questions.py for the full workflow.
+
+    Run `generate-images` afterward to get session card thumbnails — it
+    already handles "session has no real photo" for every session
+    regardless of origin, so deck sessions just get picked up by it.
+    """
+    data_dir = V2_DIR / "data"
+    output_dir = V2_DIR / "visualizer" / "static" / "data"
+    db_path = data_dir / "questions.db"
+    decks_manifest_path = output_dir / "decks.json"
+    members_config = _PIPELINE_DIR / "config" / "members.json"
+    session_overrides_config = _PIPELINE_DIR / "config" / "session_overrides.json"
+
+    if not db_path.exists():
+        log.error("questions.db not found at %s — run backfill first.", db_path)
+        sys.exit(1)
+    if not decks_manifest_path.exists():
+        log.error("decks.json not found at %s — run scripts/build_decks_manifest.py first.", decks_manifest_path)
+        sys.exit(1)
+
+    db = sqlite3.connect(str(db_path))
+    try:
+        log.info("Importing deck Q&A candidates…")
+        import_counts = _import_decks_available(db, decks_manifest_path)
+        if import_counts["decks_imported"] == 0:
+            log.info("No candidate files found — nothing to import.")
+            return
+        log.info("[Stage 6] Re-exporting JSON files…")
+        counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=None)
+        _log_counts(counts)
+        log.info("Import + export complete.")
+    except Exception:
+        log.exception("Deck import crashed.")
         raise
     finally:
         db.close()
@@ -1513,6 +1562,7 @@ def main() -> None:
     p_backfill.add_argument("--only-dates", nargs="+", metavar="YYYY-MM-DD", help="Restrict the run to these dates (must be missing from the store)")
     sub.add_parser("incremental", help="Process only new dates since last run")
     sub.add_parser("export",      help="Re-export JSON files from questions.db")
+    sub.add_parser("import-decks", help="Import live-session slide-deck Q&A candidates (deck_extraction/candidates/) into questions.db and re-export")
     sub.add_parser("generate-images", help="Generate background images for new sessions (via Stable Horde)")
 
     p_reactions = sub.add_parser("enrich-reactions", help="Enrich reactions from WhatsApp SQLite backup")
@@ -1597,6 +1647,8 @@ def main() -> None:
         _run_pipeline(args.command, only_dates=getattr(args, "only_dates", None))
     elif args.command == "export":
         _run_export()
+    elif args.command == "import-decks":
+        _run_import_decks()
     elif args.command == "generate-images":
         _run_generate_images()
     elif args.command == "enrich-reactions":

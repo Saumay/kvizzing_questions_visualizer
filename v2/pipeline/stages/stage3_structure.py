@@ -292,6 +292,7 @@ def structure(
                 quiz_type=raw.get("session_quiz_type"),
                 connect_answer=raw.get("session_connect_answer"),
                 announcement=raw.get("session_announcement"),
+                is_live=bool(raw.get("session_is_live", False)),
             )
 
         source = Source(file=source_file, pair_index=pair_index)

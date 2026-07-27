@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "Q 1. Identify X and Y\n\nThe \"mechanical\" sound of X's movements was not created using high-tech machinery or industrial robots. To achieve the specific metallic clatter of the joints, sound designer Ben Burtt utilized a common, low-tech household item Y featuring a mechanical lever used to \"crack\" .\n\nBy manipulating and rattling these metal containers, Burtt created the rhythmic \"walking\" sounds that defined the character's jittery, protocol-driven persona.",
+    "answer_text": "C3PO; Metal Ice cube tray",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 2. Identify X and Y\n\nThe X is a prime example of \"Quantity over Quality\" logistics. To maximize production speed and minimize weight, engineers famously omitted three critical \"Survival Systems\" that are standard on their adversary Y. Those 3 were Life Support, Deflector Shield and hyperdrives",
+    "answer_text": "Tie Fighters; X-Wings",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 3. What are we talking about\n\nIn the \"Mortis\", the galaxy is revealed to be a massive \"Software Environment\" maintained by three ancient entities. These \"Administrators\" reside in a realm that serves as the Mainframe for all of existence.\n\nOn this world, the Altar of Mortis serves as a hardware interface for the \"Light\" protocols. When a character attempts to use the Dagger of Mortis to kill the Father or Daughter, they are attempting a \"System-Level Delete\" which will corrupt the \"Source Code\". What are we talking about",
+    "answer_text": "Source code of the force",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 4. Identify X\n\nDuring the final stages of the Clone Wars, a specialized unit X operated as a set of \"Product Deviations.\" Unlike the millions of standardized units produced on Kamino, these soldiers were born with \"Desirable Mutations\" that functioned like unique Hardware Enhancements.\n\nBecause their neural architecture was a \"Glitch\" in the standard production line, they were immune to the \"Mass Firmware Update\" that reprogrammed the rest of the Grand Army. This allowed them to retain their \"Legacy Software \", while the rest of the galaxy's military transitioned into a rigid, imperialized system.",
+    "answer_text": "Bad Batch",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 5. Identify whose personal flagship?\n\n1. Designated as a UB-1600 Peregrine, this massive, 30-meter-long armored transport functions as a \"Mobile Throne Room.\" It is uniquely engineered to survive the harsh environment of the _____ Sea by combining anti-gravity repulsorlifts with three retractable, orange Solar Sails to capture thermal winds and conserve fuel.\n2. Though its official name is the Khetanna, it is most famous for its role in the skirmish at the Great Pit of Carkoon, where it served as the primary platform for a planned execution. It features multiple decks, including a galley, a viewing lounge, and a deck-mounted heavy blaster cannon used for \"security.\"",
+    "answer_text": "Jabba the hut",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 6. Identify X\n\nThis iconic character's equipment is a \"Patchwork of Logistics,\" consisting of a reinforced Beskar helmet, a Z-6 jetpack, and a pair of \"Wookiee Scalp\" trophies.\n\nOriginally designed as a \"Super Trooper\" prototype for the Empire, this suit of armor eventually became a \"Legacy Asset,\" passing as an inheritance to X. After surviving a \"Structural Stress Test\" inside the belly of a Sarlacc, the armor was salvaged by Jawas and worn by a desert Marshal before finally being reclaimed and \"Re-painted\" by its rightful owner to establish a new criminal empire",
+    "answer_text": "Boba Fett",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 7. Identify X and Y\n\nWhile most Imperial engineers focused on \"Maximum Output,\" this brilliant scientist focused on a \"Critical System Failure.\" As the lead architect of the X's primary weapon, Y was responsible for the \"Industrial Logistics\" of scaling Kyber Crystal energy.\n\nHowever, he secretly performed an act of High-Level Sabotage by building a \"compromise\". He ensured that any pressurized strike to the station's cooling system would trigger a chain reaction, effectively hiding a \"Kill Switch\".",
+    "answer_text": "Death Star; Galen Erso",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 8. Identify X\n\nAccording to official Imperial records used as a \"Logistical Cover,\" X was born on the planet Fest. However, his true origin lies on a mid-rim wilderness world where he was known by the name Kassa before being \"salvaged\" by a scavenging crew to prevent his capture by Republic forces.\n\nHis real home world was the site of a massive \"Industrial Accident\" involving a mining operation that left the planet's surface toxic and its children orphaned. This upbringing in a \"Suppressed Disaster Zone\" fueled his lifelong resentment toward centralized authority and his expertise in operating \"Under the Radar.\"",
+    "answer_text": "Cassian Andor",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 9. Identify X and Y\n\nIn a famous \"Agricultural Defense\" episode of the series X, the narrative follows a beat-for-beat Homage to a 1954 classic film Y where a group of warriors protects a village of farmers.\n\nThe episode focuses on \"Resource Management\" and \"Force Multiplication,\" as the local community is trained to utilize their terrain to defeat a salvaged Imperial AT-ST. This specific storytelling structure—warriors-for-hire training civilians to defend their livelihoods—was the primary inspiration for George Lucas's original vision of the Jedi",
+    "answer_text": "The Mandalorian; Seven Samurai",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 10. Identify the movie\n\nAlthough this 2003 blockbuster is often compared to another movie for its plot, its Opening Credits serve as a direct visual \"Patch\" from the franchise.\n\nThe sequence utilizes a star-field background and a specific typographic presentation that mirrors the iconic opening crawl used to introduce every \"Episode\" of the Skywalker Saga. This stylistic choice was intended to immediately signal the film's status as a serious entry into the science-fiction genre.",
+    "answer_text": "Koi... Mil Gaya",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 11. Identify\n\nThis veteran commander's body is a \"Living Museum\" of the scars of war, composed of a patchwork of cybernetic limbs and a pressurized life-support suit. Due to severe respiratory damage, he is tethered to a mechanical breathing apparatus that serves as his primary \"Interface\" with the world.\n\nHis transformation from a young, athletic freedom fighter to a broken, \"More-Machine-Than-Man\" extremist serves as a haunting warning: that the tools of the oppressor and the tools of the radical often lead to the same Mechanical Fate",
+    "answer_text": "Saw Garrera",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 12. Identify the moon and X\n\nIn 1980, the Voyager 1 mission captured images of this Saturnian moon, revealing a surface feature known as the Herschel Crater. This massive impact site gives the moon a silhouette that is remarkably similar to a legendary X from a galaxy far, far away.\n\nDespite its natural origins, this moon is frequently cited as the real-world inspiration for X even though the film's \"Source Code\" was designed years before these high-resolution images were ever taken.\n\nThe Giant's Legacy: In Greek mythology, the moon is named after a Giant who was a son of Gaia and Uranus. During the \"Gigantomachy\" (a massive system-wide conflict), he was defeated by a god using a \"high-energy projectile\" (a thunderbolt) or molten iron.",
+    "answer_text": "Mimas; Death Star",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 13. What are we talking about?\n\nA world-famous \"Industrial Silhouette\" was born from a literal Culinary Crisis. After a previous design was scrapped for being too derivative, the creator found inspiration in his lunch: a partially eaten hamburger with an olive stuck to the side.\n\nThis lunch-table observation became one of the most recognizable shapes in modern pop culture, proving that high-level \"Visual Architecture\" can sometimes be found in a diner basket.",
+    "answer_text": "Millenium Falcon",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 14. Identify X\n\nDuring the 2001 census cycle in countries like the UK, Australia, and New Zealand, a \"Systemic Glitch\" occurred when hundreds of thousands of citizens listed their official religion as \"X\"\n\nIn the UK alone, nearly 390,000 people reported this as their \"Primary Protocol,\" making it the fourth-largest reported religion in the country at the time. While most governments treated this as a \"Non-Standard Entry,\" it remains one of the largest coordinated \"Pop-Culture Protests\" in demographic history.",
+    "answer_text": "Jedi / Jediism",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 15. Identify X\n\nJohn _____ was a 19th-century pioneer and rancher who lived in the area in the mid-1800s. He was the nephew of Timothy Murphy (also known as Don Timoteo Murphy), a naturalized Mexican citizen and administrator of Mission San Rafael who held a massive Mexican Land Grant of over 21,000 acres.\n\nIn 1853, John _____ inherited a 7,600-acre section of his uncle's estate known as the Santa Margarita rancho. Because this sprawling ranch encompassed the entire valley, the local geography and the primary road running through his property were naturally named in his honor. The famous road _____ valley road was named after him. The location was later called as X and the road name has no relations to the new owner.",
+    "answer_text": "Skywalker Ranch",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q 16. Identify X\n\nWhen this character X first debuted, X was widely rejected by the \"Legacy User Base\" for being too abrasive and for \"Corrupting the Canon\" of the Prequel Trilogy.\n\nHowever, through a multi-year \"Character Level-Up\" and eventually evolving into a fan-favorite \"Independent Asset.\" X's journey is now cited as the gold standard for how to write a long-term redemption arc for a character the audience initially \"Deleted\".",
+    "answer_text": "Ahsoka Tano",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Q TB. Deep-sea ____ acorn worm",
+    "answer_text": "Deep sea \"Yoda\" Acorn Worm",
+    "has_media": true,
+    "extraction_confidence": "high"
+  }
+]

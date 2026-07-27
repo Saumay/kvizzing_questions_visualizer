@@ -1,0 +1,152 @@
+[
+  {
+    "question_text": "Identify the Bollywood movie from this minimalist poster: a vintage red rotary telephone illustration (ringing) on a maroon background, with the title blanked out.",
+    "answer_text": "Hera Pheri",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie from this minimalist poster: a cracked/split mountain illustration on a cream background, with the title blanked out.",
+    "answer_text": "Manjhi The Mountain Man",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie from this minimalist poster: a seesaw illustration with a woman on one side balanced against a house, car, buildings and money on the other, title blanked out.",
+    "answer_text": "Deewar",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie from this minimalist poster: a black cat-shaped silhouette on a red background containing icons of a raised fist, hands behind bars, and a rearing horse, title blanked out.",
+    "answer_text": "Jaane Tu Ya Jaane Na",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie from this minimalist poster: a sack of red dried chillies with an assault rifle laid across them, set against a map of Rajasthan, title blanked out.",
+    "answer_text": "Sarfarosh",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Harem Pants, Kurti with a collar, and a jhola bag",
+    "answer_text": "Rani Mukherjee- Bunty aur Babli",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A White Salwar Kameez with a Bandhani Dupatta",
+    "answer_text": "Kajol- Kuch Kuch Hota Hai",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A red organza saree with a black shawl",
+    "answer_text": "Aishwarya Rai- Hum Dil De Chuke Sanam",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A polka dot, crop top with a tie-up detail in the front paired with a mini skirt",
+    "answer_text": "Dimple Kapadia- Bobby",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A shimmery silver sleeveless short dress",
+    "answer_text": "Priyanka Chopra- Don",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV show from this prop: an orange tufted sofa with gold fringe trim (the iconic couch).",
+    "answer_text": "Friends",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV show from this prop: a pink fuzzy teddy bear plush toy.",
+    "answer_text": "Breaking Bad",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV show from this prop: a sheet cake iced with 'Happy Day ALEX & DAVID' in blue icing.",
+    "answer_text": "Schitts Creek",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV show from this prop: a handmade burlap sack mask/puppet with stitched-on eyes and mouth, held up by a hand.",
+    "answer_text": "The Office",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV show from this prop: an old bronze hand bell.",
+    "answer_text": "Game of Thrones",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie and the name of this dog: a white dog wearing a red scarf, holding a small wrapped item in its mouth at what appears to be a wedding.",
+    "answer_text": "Tuffy- Hum Aapke Hain Kaun",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie and the name of this dog: a bullmastiff lying on the deck of a cruise ship.",
+    "answer_text": "Pluto- Dil Dhadakne Do",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie and the name of this horse: a white horse tethered outdoors near bushes/rocks.",
+    "answer_text": "Dhanno- Sholay",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie and the name of this parrot: a red and yellow macaw with wings spread.",
+    "answer_text": "Raja Tota- Main Prem Ki Deewani Hu",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the Bollywood movie and the name of this dog: a golden retriever lying on a park bench.",
+    "answer_text": "Entertainment- Entertainment",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Goliyon Ki Raasleela Ram-Leela",
+    "answer_text": "Deepika Padukone- Ranveer Singh",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Do Dooni Chaar",
+    "answer_text": "Neetu Singh- Rishi Kapoor",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tujhe Meri Kasam",
+    "answer_text": "Riteish Deshmukh- Genelia D’souza",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "U Me Aur Hum",
+    "answer_text": "Kajol- Ajay Devgn",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Gopi",
+    "answer_text": "Dilip Kumar- Saira Banu",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

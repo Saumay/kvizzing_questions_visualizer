@@ -266,6 +266,11 @@ class Session(BaseModel):
         default=None,
         description="Quizmaster's introductory message announcing the session (only on Q1)"
     )
+    is_live: bool = Field(
+        default=False,
+        description="True for sessions hosted live (e.g. a Zoom quiz night from a slide deck), "
+                    "false for async WhatsApp group quizzes"
+    )
 
 
 class Reaction(BaseModel):

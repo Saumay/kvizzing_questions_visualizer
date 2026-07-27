@@ -565,6 +565,12 @@
           "default": null,
           "description": "Quizmaster's introductory message announcing the session (only on Q1)",
           "title": "Announcement"
+        },
+        "is_live": {
+          "default": false,
+          "description": "True for sessions hosted live (e.g. a Zoom quiz night from a slide deck), false for async WhatsApp group quizzes",
+          "title": "Is Live",
+          "type": "boolean"
         }
       },
       "required": [
