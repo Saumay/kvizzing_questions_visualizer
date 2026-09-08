@@ -94,7 +94,7 @@ class GeminiClient:
             # endpoint; cap them so long extraction outputs don't get truncated.
             extra_body={
                 "reasoning_effort": "low",
-                "extra_body": {"google": {"safety_settings": _GEMINI_SAFETY_SETTINGS}},
+                "google": {"safety_settings": _GEMINI_SAFETY_SETTINGS},
             },
         )
         choice = response.choices[0]
