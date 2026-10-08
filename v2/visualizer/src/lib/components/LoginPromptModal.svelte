@@ -27,7 +27,7 @@
         <h2 class="font-semibold text-gray-900 dark:text-white">Sign in to continue</h2>
       </div>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">
-        Liking, saving, and flagging questions needs a KVizzing identity — sign in with Google to keep this action.
+        Liking, saving, and flagging questions needs a KVizzing identity. Sign in with Google to keep this action.
       </p>
       <div class="flex gap-2">
         <button

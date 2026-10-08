@@ -76,7 +76,7 @@
   setContext('loginPrompt', loginPrompt);
 
   // ── Mandatory site-wide sign-in (Google or email/password via /login). ──
-  // All the WhatsApp-history usernames this account has claimed — a person can
+  // All the WhatsApp-history usernames this account has claimed. A person can
   // have several (renames, or WhatsApp's decorative fonts splitting one name
   // into several distinct strings in the archive). username.value is always
   // their chosen "primary" of this set.
@@ -231,7 +231,7 @@
   function randomQuiz() { if (sidebarSessions.length === 0) return; const s = sidebarSessions[Math.floor(Math.random() * sidebarSessions.length)]; goto(`/session/${s.id}`); }
 
   // ── Review sidebar data ────────────────────────────────────────────────────
-  // Only id/date are needed for the calendar dots below — the lightweight
+  // Only id/date are needed for the calendar dots below. The lightweight
   // index avoids pulling the full (multi-MB) candidate bodies just for this.
   type ReviewThread = { id: string; date: string };
 
@@ -311,7 +311,7 @@
 
   onMount(() => {
     const saved = localStorage.getItem('kvizzing-reviewer-name') || '';
-    // No forced prompt for guests — browsing works with no identity at all.
+    // No forced prompt for guests: browsing works with no identity at all.
     // Identity-gated actions (like/save/flag/vote) trigger the sign-in prompt themselves.
     if (saved) {
       username.value = saved;
@@ -595,7 +595,7 @@
 {:else if !authenticated}
   <MaraudersAuth {onAuthenticated} />
 {:else if $page.url.pathname === '/login'}
-  <!-- /login renders bare, without the site chrome below — it's its own full-screen page -->
+  <!-- /login renders bare, without the site chrome below: it's its own full-screen page -->
   {@render children()}
 {:else if !sessionChecked}
   {@render loadingSplash('Checking session...')}

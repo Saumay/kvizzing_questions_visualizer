@@ -123,7 +123,7 @@
     saving = false;
     if (error) {
       if (error.code === '23505') {
-        errorMessage = 'Someone just claimed one of those names — recheck your picks.';
+        errorMessage = 'Someone just claimed one of those names, recheck your picks.';
         claimedUsernames = await getClaimedUsernames();
         selected = new Set([...selected].filter(u => !claimedUsernames.has(u)));
         if (!selected.has(primary)) primary = [...selected][0] ?? '';
@@ -251,7 +251,7 @@
     {:else if stage === 'picking_member'}
       <p class="text-sm text-gray-700 dark:text-gray-300 mb-1">Signed in as <span class="font-medium">{accountEmail || accountName}</span>.</p>
       <p class="text-xs text-gray-400 mb-3">
-        Select every name in the chat history that's <span class="font-medium">you</span> — some people show up under more than one (renamed, or WhatsApp's stylised fonts split into different names). One-time, locked to your account once confirmed.
+        Select every name in the chat history that's <span class="font-medium">you</span>: some people show up under more than one (renamed, or WhatsApp's stylised fonts split into different names). One-time, locked to your account once confirmed.
       </p>
 
       {#if suggested.length > 0}
@@ -298,7 +298,7 @@
 
       <details class="mb-4 group">
         <summary class="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer select-none">
-          Can't find your name? You may never have asked or answered a question in the archive — add it
+          Can't find your name? You may never have asked or answered a question in the archive, add it
         </summary>
         <div class="flex gap-2 mt-2">
           <input
@@ -319,7 +319,7 @@
 
       {#if selectedList.length > 0}
         <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
-          Picked ({selectedList.length}) — which is your main one?
+          Picked ({selectedList.length}): which is your main one?
         </p>
         <div class="space-y-1 mb-4">
           {#each selectedList as u}
@@ -345,7 +345,7 @@
         class="w-full py-2.5 rounded-lg text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >{saving ? 'Linking…' : `Confirm${selectedList.length > 1 ? ` (${selectedList.length} names)` : ''}`}</button>
       <button onclick={switchAccount} class="w-full mt-2 py-1.5 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-        Not me — sign out
+        Not me, sign out
       </button>
       {#if errorMessage}
         <p class="mt-3 text-xs text-red-500">{errorMessage}</p>
@@ -356,7 +356,7 @@
         <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
-        <p class="text-sm text-gray-600 dark:text-gray-300">You're all set — redirecting…</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300">You're all set, redirecting…</p>
       </div>
 
     {:else if stage === 'error'}

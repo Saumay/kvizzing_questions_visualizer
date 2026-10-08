@@ -17,7 +17,7 @@ export async function signInWithGoogle(redirectPath = '/login') {
   });
 }
 
-/** Email/password signup — no confirmation email required (configured in Supabase). */
+/** Email/password signup, no confirmation email required (configured in Supabase). */
 export async function signUpWithEmail(email: string, password: string, fullName: string) {
   return supabase.auth.signUp({
     email,
@@ -56,7 +56,7 @@ export async function getMemberLinks(authUserId: string): Promise<MemberLink[]> 
  * `usernames` must include `primaryUsername`. Each username has a UNIQUE
  * constraint across the whole table, so if someone else already claimed one
  * of these, the whole batch fails with a Postgres unique-violation
- * (error.code === '23505') — the caller should re-check availability and retry.
+ * (error.code === '23505'). The caller should re-check availability and retry.
  */
 export async function linkMembers(
   authUserId: string,
@@ -74,7 +74,7 @@ export async function linkMembers(
   return supabase.from('member_links').insert(rows);
 }
 
-/** Usernames already claimed by anyone — the picker should exclude these. */
+/** Usernames already claimed by anyone; the picker should exclude these. */
 export async function getClaimedUsernames(): Promise<Set<string>> {
   const { data, error } = await supabase.from('claimed_usernames').select('username');
   if (error || !data) return new Set();

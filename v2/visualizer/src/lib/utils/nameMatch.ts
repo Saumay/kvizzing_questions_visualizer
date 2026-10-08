@@ -4,7 +4,7 @@ import type { Member } from '$lib/types';
 /**
  * Given a person's real name (from their Google account, or typed at email
  * signup) and the full member list, returns the members most likely to be
- * the same person — for a "select which of these are you" picker rather
+ * the same person, for a "select which of these are you" picker rather
  * than making someone scroll an alphabetical list of 75 names.
  */
 export function suggestMembers(fullName: string, members: Member[], limit = 8): Member[] {
