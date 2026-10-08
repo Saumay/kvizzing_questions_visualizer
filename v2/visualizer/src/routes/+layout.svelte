@@ -190,12 +190,14 @@
   function randomQuiz() { if (sidebarSessions.length === 0) return; const s = sidebarSessions[Math.floor(Math.random() * sidebarSessions.length)]; goto(`/session/${s.id}`); }
 
   // ── Review sidebar data ────────────────────────────────────────────────────
-  type ReviewThread = { id: string; date: string; candidates: { timestamp: string; username: string; text: string }[] };
+  // Only id/date are needed for the calendar dots below — the lightweight
+  // index avoids pulling the full (multi-MB) candidate bodies just for this.
+  type ReviewThread = { id: string; date: string };
 
   let reviewThreads = $state<ReviewThread[]>([]);
 
   onMount(() => {
-    fetch('/data/rejected_candidates.json')
+    fetch('/data/rejected_index.json')
       .then(r => r.ok ? r.json() : [])
       .then(d => { reviewThreads = d; })
       .catch(() => {});

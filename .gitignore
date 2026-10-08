@@ -34,6 +34,7 @@ v2/data/rejected_candidates/
 v2/data/unmatched_media.json
 v2/data/review_input.json
 v2/data/auto_review_suggestions.json
+v2/data/client_secret_*.json
 v2/pipeline/logs/
 v2/pipeline/.env
 

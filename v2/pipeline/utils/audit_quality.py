@@ -112,14 +112,23 @@ def audit_quality(questions: list[dict]) -> dict:
 
 def audit_rejected_overlap(
     questions: list[dict],
-    rejected_path: Path,
+    rejected_data_dir: Path,
 ) -> list[dict]:
-    """Find rejected candidates whose timestamp matches an extracted question."""
-    if not rejected_path.exists():
-        return []
-    try:
-        threads = json.loads(rejected_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
+    """Find rejected candidates whose timestamp matches an extracted question.
+
+    Reads across all `rejected_candidates_<YYYY-MM>.json` monthly shards —
+    export_rejected() already tags these as `extracted` when it runs, so a
+    hit here means the tag is missing (stale shard) rather than expected.
+    """
+    threads: list[dict] = []
+    for shard in sorted(rejected_data_dir.glob("rejected_candidates_*.json")):
+        try:
+            data = json.loads(shard.read_text(encoding="utf-8"))
+            if isinstance(data, list):
+                threads.extend(data)
+        except (json.JSONDecodeError, OSError):
+            continue
+    if not threads:
         return []
 
     q_timestamps = {
@@ -131,7 +140,10 @@ def audit_rejected_overlap(
     overlaps = []
     for t in threads:
         for c in t.get("candidates", []):
-            if c.get("timestamp") in q_timestamps:
+            # export_rejected() already tags overlapping candidates with
+            # extracted_id — only flag ones that overlap but weren't tagged
+            # (a stale shard export_rejected hasn't refreshed yet).
+            if c.get("timestamp") in q_timestamps and not c.get("extracted_id"):
                 overlaps.append({
                     "thread_id": t.get("id", "?"),
                     "timestamp": c["timestamp"],
@@ -183,7 +195,7 @@ def print_report(results: dict, overlaps: list[dict] | None = None) -> None:
 def main() -> None:
     v2_dir = Path(__file__).resolve().parent.parent.parent
     questions_path = v2_dir / "visualizer" / "static" / "data" / "questions.json"
-    rejected_path = v2_dir / "visualizer" / "static" / "data" / "rejected_candidates.json"
+    rejected_data_dir = v2_dir / "visualizer" / "static" / "data"
 
     if not questions_path.exists():
         print(f"questions.json not found at {questions_path}")
@@ -192,7 +204,7 @@ def main() -> None:
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
     print(f"Auditing {len(questions)} questions…")
     results = audit_quality(questions)
-    overlaps = audit_rejected_overlap(questions, rejected_path)
+    overlaps = audit_rejected_overlap(questions, rejected_data_dir)
     print_report(results, overlaps)
 
 

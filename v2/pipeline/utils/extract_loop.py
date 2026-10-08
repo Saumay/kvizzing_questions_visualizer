@@ -229,6 +229,16 @@ def build_input_bundle(dates: list[str], batch_id: str) -> dict:
             f"  6. Self-revealed answers: if asker reveals answer after group fails, still "
             f"a Q (answer_confirmed=false, answer_solver=null, answer_text=reveal, "
             f"extraction_confidence=medium; put reveal in discussion[] with role=answer_reveal).\n\n"
+            f"NO-WINNER MINI-ROUNDS: if a rapid-fire image-burst item has no unambiguous "
+            f"single winner (multiple simultaneous correct guesses, or you can't tell who "
+            f"was first), set answer_solver=null and extraction_confidence=medium. NEVER "
+            f"default answer_solver to the asker — a solver=asker fallback inflates the "
+            f"host's solve count and is treated as a likely bug downstream.\n\n"
+            f"VERBATIM TIMESTAMPS: question_timestamp MUST be copied exactly from the "
+            f"input message's own timestamp — never rounded, interpolated, or estimated "
+            f"(no synthetic :00/:30 seconds). If unsure which post in a multi-image burst "
+            f"is the actual question, pick the earliest matching message and use its "
+            f"exact timestamp.\n\n"
             f"REJECTED LOG: include a `rejected` array alongside `extracted` for "
             f"candidates you considered but excluded, with one-line reasons. Helps audit."
         ),
@@ -386,13 +396,13 @@ def _run_stages_for_dates(dates: list[str]) -> None:
                 by_date.setdefault(d, []).append(m)
 
     rejected_dir = DATA_DIR / "attribution_gaps" / "rejected_candidates"
-    rejected_json = output_dir / "rejected_candidates.json"
 
     # Lazy imports for optional steps (skipped on error).
     try:
-        from pipeline import _write_rejected_candidates
+        from pipeline import _write_rejected_candidates, _extracted_timestamps
     except ImportError:
         _write_rejected_candidates = None
+        _extracted_timestamps = None
     try:
         from utils.export_rejected import export_rejected as _export_rejected
     except ImportError:
@@ -434,11 +444,15 @@ def _run_stages_for_dates(dates: list[str]) -> None:
         stage6(db, output_dir, members_config_path=members_cfg,
                session_overrides_path=sess_overrides, state_path=state_path)
 
-    # Refresh combined rejected_candidates.json for the visualizer
+    # Refresh the rejected-candidates index + monthly shards for the visualizer
     if _export_rejected and rejected_dir.exists():
         try:
-            _export_rejected(rejected_dir, rejected_json)
-            log.info("Refreshed %s", rejected_json.name)
+            extracted_ts = {}
+            if _extracted_timestamps:
+                with sqlite3.connect(str(DB_PATH)) as db:
+                    extracted_ts = _extracted_timestamps(db)
+            _export_rejected(rejected_dir, output_dir, extracted_ts)
+            log.info("Refreshed rejected-candidates index + monthly shards")
         except Exception as e:
             log.warning("export_rejected skipped: %s", e)
 

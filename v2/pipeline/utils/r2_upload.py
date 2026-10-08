@@ -76,6 +76,57 @@ def _make_client():
     )
 
 
+def upload_chat_blobs(messages_by_date: dict[str, list[dict]], dry_run: bool = False) -> dict[str, str]:
+    """
+    Upload one JSON blob per date (that date's full chat, not just the
+    40/40-message context bundled into rejected_candidates) to R2 under a
+    `chat/` prefix. Backs the review page's "Load full day" control.
+
+    URLs are unguessable-by-obscurity only (no auth/signing) — the bucket is
+    public like existing media uploads. Revisit if that stops being
+    acceptable for chat content specifically.
+
+    Args:
+        messages_by_date: date (YYYY-MM-DD) -> list of
+            {timestamp, username, text, has_media} for that day.
+        dry_run: if True, log what would be uploaded without uploading.
+
+    Returns:
+        date -> public URL for each successfully uploaded blob.
+    """
+    import json
+
+    bucket      = os.environ.get("R2_BUCKET")
+    public_base = os.environ.get("R2_PUBLIC_URL", "").rstrip("/")
+
+    if not bucket:
+        raise RuntimeError("Set R2_BUCKET env var (e.g. 'kvizzing-media').")
+    if not public_base:
+        raise RuntimeError(
+            "Set R2_PUBLIC_URL env var (e.g. 'https://pub-xxx.r2.dev' "
+            "or your custom domain)."
+        )
+
+    if dry_run:
+        for date in sorted(messages_by_date):
+            log.info("  [dry-run] Would upload chat/%s.json (%d messages)", date, len(messages_by_date[date]))
+        return {}
+
+    client = _make_client()
+    urls: dict[str, str] = {}
+    for date, messages in messages_by_date.items():
+        key = f"chat/{date}.json"
+        body = json.dumps(messages, ensure_ascii=False).encode("utf-8")
+        try:
+            client.put_object(Bucket=bucket, Key=key, Body=body, ContentType="application/json")
+            urls[date] = f"{public_base}/{key}"
+        except Exception as e:
+            log.error("  Failed to upload %s: %s", key, e)
+
+    log.info("  Uploaded %d/%d chat blob(s).", len(urls), len(messages_by_date))
+    return urls
+
+
 def upload_media(questions: list, media_dir: Path, dry_run: bool = False) -> list:
     """
     For each question with media[].filename set and url=None, upload the file

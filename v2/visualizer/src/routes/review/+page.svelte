@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, getContext } from 'svelte';
+  import { SvelteMap, SvelteSet } from 'svelte/reactivity';
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import { page } from '$app/stores';
   import { supabase } from '$lib/supabase';
@@ -22,12 +23,78 @@
 
   type Candidate = { timestamp: string; username: string; text: string; reason_flagged: string; extracted_id?: string };
   type ContextMsg = { timestamp: string; username: string; text: string; is_candidate: boolean };
-  type Thread = { id: string; date: string; candidates: Candidate[]; context: ContextMsg[]; extracted?: boolean };
+  // Index-level thread — candidate_count/extracted come precomputed from the
+  // server; candidates/context are the heavy per-thread body, fetched lazily
+  // per month shard (rejected_candidates_<YYYY-MM>.json) only for threads that
+  // actually render — see ensureMonthLoaded() below.
+  type Thread = { id: string; date: string; candidate_count: number; extracted?: boolean };
+  type ThreadBody = { candidates: Candidate[]; context: ContextMsg[] };
   type Status = 'valid' | 'not_valid' | 'maybe';
   type Vote = { thread_id: string; reviewer: string; status: Status; reason: string; comment: string; synthetic?: boolean };
 
   const threads: Thread[] = $derived(data.threads);
   const questionsByTs: Map<string, { id: string; text: string }> = $derived(data.questionsByTs);
+
+  // ── Lazy thread bodies ───────────────────────────────────────────────────
+  // Plain `$state(new Map())` only makes the variable reactive on
+  // reassignment — .set() mutation on the underlying Map is invisible to
+  // Svelte's reactivity. SvelteMap/SvelteSet proxy mutation methods too.
+  const threadBodies = new SvelteMap<string, ThreadBody>();
+  const loadedMonths = new SvelteSet<string>();
+  const loadingMonths = new Set<string>(); // plain lock, not reactive
+
+  async function ensureMonthLoaded(month: string) {
+    if (loadedMonths.has(month) || loadingMonths.has(month)) return;
+    loadingMonths.add(month);
+    try {
+      const res = await fetch(`/data/rejected_candidates_${month}.json`);
+      if (res.ok) {
+        const shardThreads = await res.json();
+        for (const t of shardThreads as (Thread & ThreadBody)[]) {
+          threadBodies.set(t.id, { candidates: t.candidates, context: t.context });
+        }
+      }
+      loadedMonths.add(month);
+    } catch {
+      // leave unloaded — a later effect run (e.g. filter change) retries
+    } finally {
+      loadingMonths.delete(month);
+    }
+  }
+
+  function bodyOf(id: string): ThreadBody | undefined {
+    return threadBodies.get(id);
+  }
+
+  // ── "Load full day" (R2 chat blobs) ─────────────────────────────────────
+  // date -> public R2 URL, written by `pipeline.py upload-chat`. Only dates
+  // with at least one rejected-candidate thread have an entry.
+  const chatUrlsByDate: Map<string, string> = $derived(data.chatUrlsByDate ?? new Map());
+  const fullDayContext = new SvelteMap<string, ContextMsg[]>();
+  const loadingFullDay = new SvelteSet<string>();
+
+  async function loadFullDay(thread: Thread) {
+    if (fullDayContext.has(thread.id) || loadingFullDay.has(thread.id)) return;
+    const url = chatUrlsByDate.get(thread.date);
+    if (!url) return;
+    loadingFullDay.add(thread.id);
+    try {
+      // no-store: R2/CDN can return a transient 5xx moments after a fresh
+      // upload — don't let the browser cache that failure and keep serving
+      // it once the object is actually available.
+      const res = await fetch(url, { cache: 'no-store' });
+      if (res.ok) {
+        const dayMessages = await res.json() as { timestamp: string; username: string; text: string }[];
+        const candTs = new Set((bodyOf(thread.id)?.candidates ?? []).map(c => c.timestamp));
+        fullDayContext.set(thread.id, dayMessages.map(m => ({ ...m, is_candidate: candTs.has(m.timestamp) })));
+      }
+    } catch {
+      // leave unloaded — button stays clickable to retry
+    } finally {
+      loadingFullDay.delete(thread.id);
+    }
+  }
+
   type Suggestion = { thread_id: string; status: Status; reason: string; confidence: number; source: string };
   const aiSuggestions: Map<string, Suggestion> = $derived(
     (data.suggestions ?? new Map()) as Map<string, Suggestion>
@@ -35,6 +102,7 @@
 
   // ── Reviewer identity (from site-wide context) ─────────────────────────────
   const usernameCtx = getContext<{ value: string }>('username');
+  const loginPromptCtx = getContext<{ value: boolean } | undefined>('loginPrompt');
   let reviewer = $derived(usernameCtx?.value || '');
 
   // Load votes on mount and when username changes (e.g. user sets name after page load)
@@ -99,7 +167,7 @@
   let customReasonText = $state('');
 
   function startVote(id: string, status: Status) {
-    if (!reviewer) return;
+    if (!reviewer) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     const existing = myVotes.get(id);
     // Toggle-off only applies to a real saved vote — never delete a synthetic
     // self-vote (extracted thread); allow the user to cast/customise instead.
@@ -318,6 +386,14 @@
     const dates = [...new Set(limitedFiltered.map(t => t.date))];
     dates.sort((a, b) => dateSort === 'newest' ? b.localeCompare(a) : a.localeCompare(b));
     return dates;
+  });
+
+  // Fetch the month shard for any currently-rendered thread whose body isn't
+  // loaded yet. Runs whenever the visible page of threads changes (filter,
+  // sort, pagination, or scrolling further in).
+  $effect(() => {
+    const months = new Set(limitedFiltered.map(t => t.date.slice(0, 7)));
+    for (const m of months) ensureMonthLoaded(m);
   });
 
   function dateReviewStats(d: string) {
@@ -592,9 +668,17 @@
       {@const status = myVote?.status}
       {@const tally = voteTally(thread.id)}
       {@const aiSug = !myVote ? aiSuggestions.get(thread.id) : undefined}
+      {@const tbody = bodyOf(thread.id)}
       <div class="bg-ui-card rounded-xl border overflow-hidden transition-all duration-300 {vanishingIds.has(thread.id) ? 'opacity-0 scale-95 -translate-x-4' : ''} {status === 'valid' ? 'border-green-300 dark:border-green-700 bg-green-50/30 dark:bg-green-900/10 opacity-50' : status === 'maybe' ? 'border-yellow-300 dark:border-yellow-700 bg-yellow-50/30 dark:bg-yellow-900/10 opacity-50' : status === 'not_valid' ? 'border-red-200 dark:border-red-800 opacity-50' : 'border-gray-200 dark:border-gray-700'}">
         <div class="p-4">
-          {#each thread.candidates as cand, ci}
+          {#if !tbody}
+            <div class="animate-pulse space-y-2">
+              {#each Array(thread.candidate_count) as _}
+                <div class="h-4 bg-gray-100 dark:bg-gray-700 rounded"></div>
+              {/each}
+            </div>
+          {/if}
+          {#each tbody?.candidates ?? [] as cand, ci}
             {@const dt = fmtDateTime(cand.timestamp)}
             <div class="flex items-start gap-3 {ci > 0 ? 'mt-3 pt-3 border-t border-gray-100 dark:border-gray-700' : ''}">
               <MemberAvatar username={cand.username} />
@@ -742,8 +826,18 @@
 
         <!-- Context as chat bubbles -->
         {#if expandedIds.has(thread.id)}
+          {@const dayCtx = fullDayContext.get(thread.id)}
           <div class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 px-4 py-3 max-h-80 overflow-y-auto space-y-2">
-            {#each thread.context as msg}
+            {#if !dayCtx && chatUrlsByDate.has(thread.date)}
+              <button
+                onclick={() => loadFullDay(thread)}
+                disabled={loadingFullDay.has(thread.id)}
+                class="text-xs text-primary-500 dark:text-primary-400 hover:text-primary-600 disabled:opacity-50 disabled:cursor-wait"
+              >
+                {loadingFullDay.has(thread.id) ? 'Loading full day…' : 'Load full day for more context ↓'}
+              </button>
+            {/if}
+            {#each dayCtx ?? tbody?.context ?? [] as msg}
               {@const ctxDt = fmtDateTime(msg.timestamp)}
               {@const linkedQ = questionsByTs.get(msg.timestamp)}
               <div class="flex items-start gap-2

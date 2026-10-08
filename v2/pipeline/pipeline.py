@@ -127,12 +127,16 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     return counts
 
 
-def _extracted_timestamps(conn: sqlite3.Connection) -> set[str]:
-    """Pull the set of currently-stored question timestamps so rejected-candidate
-    exports can filter out any message that was later extracted."""
-    return {r[0] for r in conn.execute(
-        "SELECT json_extract(payload, '$.question.timestamp') FROM questions"
-    ).fetchall() if r[0]}
+def _extracted_timestamps(conn: sqlite3.Connection) -> dict[str, str]:
+    """Map of currently-stored question timestamp -> question id, so rejected-
+    candidate exports can tag any message that was later extracted/promoted."""
+    return {
+        r[0]: r[1]
+        for r in conn.execute(
+            "SELECT json_extract(payload, '$.question.timestamp'), id FROM questions"
+        ).fetchall()
+        if r[0]
+    }
 
 
 def _write_rejected_candidates(
@@ -486,9 +490,8 @@ def _run_pipeline(mode: str, only_dates: list[str] | None = None) -> None:
             try:
                 rejected_dir = data_dir / "attribution_gaps" / "rejected_candidates"
                 _write_rejected_candidates({date_str: by_date.get(date_str, [])}, extraction_output_dir, rejected_dir, config)
-                rejected_json = output_dir / "rejected_candidates.json"
                 if rejected_dir.exists():
-                    _export_rejected(rejected_dir, rejected_json)
+                    _export_rejected(rejected_dir, output_dir, _extracted_timestamps(db))
             except Exception as e:
                 log.debug("  [%s] Rejected candidates skipped: %s", date_str, e)
 
@@ -517,10 +520,9 @@ def _run_pipeline(mode: str, only_dates: list[str] | None = None) -> None:
         log.info("[Rejected] Writing rejected candidate files…")
         rejected_dir = data_dir / "attribution_gaps" / "rejected_candidates"
         _write_rejected_candidates(by_date, extraction_output_dir, rejected_dir, config)
-        rejected_json = output_dir / "rejected_candidates.json"
         if rejected_dir.exists():
-            count = _export_rejected(rejected_dir, rejected_json)
-            log.info("  Exported %d rejected entries to %s", count, rejected_json.name)
+            count = _export_rejected(rejected_dir, output_dir, _extracted_timestamps(db))
+            log.info("  Exported %d rejected entries to %s (index + monthly shards)", count, output_dir)
 
         # Log unmatched media — questions with has_media=true but no matched files
         try:
@@ -949,6 +951,66 @@ def _run_upload_media(media_dir: str, dry_run: bool = False) -> None:
     finally:
         conn.close()
     log.info("upload-media complete.")
+
+
+def _run_upload_chat(dry_run: bool = False) -> None:
+    """Upload one full-day chat JSON blob per reviewed date to R2, backing
+    the review page's 'Load full day' control. Only dates that have at
+    least one rejected-candidate thread are uploaded — nobody will ever ask
+    to load the full chat for a day with nothing flagged to review. Safe to
+    re-run: each blob is fully overwritten, never appended."""
+    from utils.r2_upload import upload_chat_blobs
+    from utils.r2_usage import check_and_warn
+
+    config = dict(load_config(_PIPELINE_DIR / "config"))
+    config["chat_file"] = str(V2_DIR / config["chat_file"])
+    aliases = load_aliases(_PIPELINE_DIR / "config")
+
+    chat_path = Path(config["chat_file"])
+    if not chat_path.exists():
+        log.error("Chat file not found: %s", chat_path)
+        sys.exit(1)
+
+    rejected_dir = V2_DIR / "data" / "attribution_gaps" / "rejected_candidates"
+    reviewed_dates = {p.stem for p in rejected_dir.glob("*.json")} if rejected_dir.exists() else set()
+    if not reviewed_dates:
+        log.info("No rejected-candidate dates found — nothing to upload.")
+        return
+
+    log.info("Parsing chat file…")
+    lines = chat_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    messages = stage1(lines, config, aliases=aliases)
+
+    by_date: dict[str, list[dict]] = defaultdict(list)
+    for m in messages:
+        d = m["timestamp"][:10]
+        if d in reviewed_dates:
+            by_date[d].append({
+                "timestamp": m["timestamp"],
+                "username": m["username"],
+                "text": m["text"],
+                "has_media": m.get("has_media", False),
+            })
+
+    log.info("Uploading %d day(s) of chat context to R2…", len(by_date))
+    urls = upload_chat_blobs(by_date, dry_run=dry_run)
+    if dry_run:
+        return
+    log.info("  Uploaded %d/%d day(s).", len(urls), len(by_date))
+
+    # Small manifest the review page fetches to know which dates have a
+    # full-day blob and where — written fresh each run, not merged, so a
+    # date that stops being reviewed (thread resolved, dir cleaned up) drops
+    # out on the next upload-chat run rather than lingering forever.
+    import json as _json
+    paths = _post_hoc_paths()
+    chat_index_path = paths["output_dir"] / "chat_index.json"
+    chat_index_path.write_text(_json.dumps(urls, indent=2, ensure_ascii=False), encoding="utf-8")
+    log.info("  Wrote %s (%d date(s))", chat_index_path.name, len(urls))
+
+    log.info("Checking R2 free-tier usage…")
+    check_and_warn(output_path=paths["output_dir"] / "r2_usage.json")
+    log.info("upload-chat complete.")
 
 
 def _run_check_r2() -> None:
@@ -1387,9 +1449,9 @@ def _run_reimport(dates: list[str]) -> None:
 
 
 def _run_export_rejected() -> None:
-    """Parse rejected-candidate .txt files and write combined JSON."""
+    """Parse rejected-candidate .txt files and write index + monthly shard JSON."""
     rejected_dir = V2_DIR / "data" / "attribution_gaps" / "rejected_candidates"
-    output_path = V2_DIR / "visualizer" / "static" / "data" / "rejected_candidates.json"
+    output_dir = V2_DIR / "visualizer" / "static" / "data"
 
     if not rejected_dir.exists():
         log.error("Rejected candidates directory not found: %s", rejected_dir)
@@ -1397,10 +1459,18 @@ def _run_export_rejected() -> None:
         sys.exit(1)
 
     log.info("[export-rejected] Parsing .txt files from %s…", rejected_dir)
+    db_path = V2_DIR / "data" / "questions.db"
+    extracted_timestamps: dict[str, str] = {}
+    if db_path.exists():
+        conn = sqlite3.connect(str(db_path))
+        try:
+            extracted_timestamps = _extracted_timestamps(conn)
+        finally:
+            conn.close()
     # Keep already-extracted threads in the output — the review UI marks them
     # with a ✓ Extracted badge so the audit trail stays intact.
-    count = _export_rejected(rejected_dir, output_path)
-    log.info("[export-rejected] Wrote %d entries to %s", count, output_path)
+    count = _export_rejected(rejected_dir, output_dir, extracted_timestamps)
+    log.info("[export-rejected] Wrote %d thread(s) to %s (index + monthly shards)", count, output_dir)
 
 
 def _run_check_coverage() -> None:
@@ -1576,6 +1646,9 @@ def main() -> None:
     p_upload.add_argument("--media-dir", required=True, metavar="PATH", help="Directory containing the local media files")
     p_upload.add_argument("--dry-run", action="store_true", help="Show what would be uploaded without uploading")
 
+    p_upload_chat = sub.add_parser("upload-chat", help="Upload per-date full-chat JSON blobs to R2 for the review page's 'Load full day' control")
+    p_upload_chat.add_argument("--dry-run", action="store_true", help="Show what would be uploaded without uploading")
+
     sub.add_parser("check-r2", help="Check R2 free-tier usage and warn if limits are close")
 
     p_cleanup = sub.add_parser("cleanup-r2", help="Delete R2 objects not referenced by any question in the DB")
@@ -1657,6 +1730,8 @@ def main() -> None:
         _run_enrich_media(args.media_dir, dry_run=args.dry_run)
     elif args.command == "upload-media":
         _run_upload_media(args.media_dir, dry_run=args.dry_run)
+    elif args.command == "upload-chat":
+        _run_upload_chat(dry_run=args.dry_run)
     elif args.command == "check-r2":
         _run_check_r2()
     elif args.command == "cleanup-r2":
