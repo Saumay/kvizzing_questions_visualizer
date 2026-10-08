@@ -1,3 +1,8 @@
+/** Site-wide passphrase gate (MaraudersAuth). Google sign-in via /login is now the
+ *  primary entry point; flip this to true to bring the shared-passphrase screen back
+ *  in front of it. */
+export const MARAUDERS_GATE_ENABLED = false;
+
 /** Opacity of session background images (0–1).
  *  The wrapper's background colour shows through, so this is the only knob needed. */
 export const SESSION_IMAGE_OPACITY = {

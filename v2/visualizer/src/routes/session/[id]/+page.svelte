@@ -112,6 +112,7 @@
 
   // Session save
   const usernameCtx = getContext<{ value: string } | undefined>('username');
+  const loginPromptCtx = getContext<{ value: boolean } | undefined>('loginPrompt');
   const savedSessionIds = getContext<{ value: Set<string> } | undefined>('savedSessionIds');
   let sessionSaved = $state(false);
   $effect(() => {
@@ -120,7 +121,7 @@
 
   async function toggleSessionSave() {
     const user = usernameCtx?.value || '';
-    if (!user) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     if (sessionSaved) {
       sessionSaved = false;
       if (savedSessionIds) { const next = new Set(savedSessionIds.value); next.delete(session.id); savedSessionIds.value = next; }

@@ -16,6 +16,7 @@
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
   const usernameCtx = getContext<{ value: string } | undefined>('username');
+  const loginPromptCtx = getContext<{ value: boolean } | undefined>('loginPrompt');
   const likedIds = getContext<{ value: Set<string> } | undefined>('likedIds');
   const likeCounts = getContext<{ value: Map<string, number> } | undefined>('likeCounts');
   const savedIds = getContext<{ value: Set<string> } | undefined>('savedIds');
@@ -69,7 +70,7 @@
 
   async function toggleLike() {
     const user = usernameCtx?.value || '';
-    if (!user) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     if (liked) {
       liked = false;
       likeCount = Math.max(0, likeCount - 1);
@@ -87,7 +88,8 @@
 
   async function toggleSave() {
     const user = usernameCtx?.value || '';
-    if (!user || !savedIds) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
+    if (!savedIds) return;
     if (saved) {
       saved = false;
       const next = new Set(savedIds.value); next.delete(question.id); savedIds.value = next;
@@ -112,7 +114,7 @@
 
   async function submitFlag(reason: string) {
     const user = usernameCtx?.value || '';
-    if (!user) { showFlagModal = false; return; }
+    if (!user) { showFlagModal = false; if (loginPromptCtx) loginPromptCtx.value = true; return; }
     showFlagModal = false;
     flagged = true;
     if (flaggedIds) flaggedIds.value = new Set([...flaggedIds.value, question.id]);
@@ -124,7 +126,7 @@
 
   async function unflag() {
     const user = usernameCtx?.value || '';
-    if (!user) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     flagged = false;
     if (flaggedIds) {
       const next = new Set(flaggedIds.value); next.delete(question.id); flaggedIds.value = next;

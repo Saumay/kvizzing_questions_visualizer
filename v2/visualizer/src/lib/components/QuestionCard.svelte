@@ -13,6 +13,7 @@
 
   const tzCtx = getContext<{ value: string } | undefined>('timezone');
   const usernameCtx = getContext<{ value: string }>('username');
+  const loginPromptCtx = getContext<{ value: boolean } | undefined>('loginPrompt');
 
   let {
     question,
@@ -66,7 +67,7 @@
   async function toggleLike(e: MouseEvent) {
     e.stopPropagation();
     const user = usernameCtx?.value || '';
-    if (!user) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     if (liked) {
       // Unlike
       liked = false;
@@ -97,7 +98,7 @@
   async function toggleSave(e: MouseEvent) {
     e.stopPropagation();
     const user = usernameCtx?.value || '';
-    if (!user) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     if (saved) {
       saved = false;
       if (savedIds) { const next = new Set(savedIds.value); next.delete(question.id); savedIds.value = next; }
@@ -124,7 +125,7 @@
 
   async function submitFlag(reason: string) {
     const reporter = usernameCtx?.value || '';
-    if (!reporter) { showFlagModal = false; return; }
+    if (!reporter) { showFlagModal = false; if (loginPromptCtx) loginPromptCtx.value = true; return; }
     showFlagModal = false;
     flagged = true;
     if (flaggedIds) flaggedIds.value = new Set([...flaggedIds.value, question.id]);
@@ -138,7 +139,7 @@
 
   async function unflag() {
     const reporter = usernameCtx?.value || '';
-    if (!reporter) return;
+    if (!reporter) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
     flagged = false;
     if (flaggedIds) {
       const next = new Set(flaggedIds.value);

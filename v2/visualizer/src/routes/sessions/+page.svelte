@@ -17,6 +17,7 @@
 
   const store = getContext<QuestionStore>('store');
   const usernameCtx = getContext<{ value: string } | undefined>('username');
+  const loginPromptCtx = getContext<{ value: boolean } | undefined>('loginPrompt');
   const savedSessionIds = getContext<{ value: Set<string> } | undefined>('savedSessionIds');
   const tzCtx = getContext<{ value: string }>('timezone');
   const sessions = store.getSessions();
@@ -173,7 +174,8 @@
     e.preventDefault();
     e.stopPropagation();
     const user = usernameCtx?.value || '';
-    if (!user || !savedSessionIds) return;
+    if (!user) { if (loginPromptCtx) loginPromptCtx.value = true; return; }
+    if (!savedSessionIds) return;
     const isSaved = savedSessionIds.value.has(sessionId);
     if (isSaved) {
       const next = new Set(savedSessionIds.value); next.delete(sessionId); savedSessionIds.value = next;

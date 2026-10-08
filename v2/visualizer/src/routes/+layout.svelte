@@ -7,10 +7,12 @@
   import favicon from '$lib/assets/favicon.svg';
   import { QuestionStore } from '$lib/stores/questionStore';
   import { tzAbbr, dateInTz, formatDateTz } from '$lib/utils/time';
-  import { SESSION_IMAGE_OPACITY, sessionBgUrl } from '$lib/config/ui';
+  import { SESSION_IMAGE_OPACITY, sessionBgUrl, MARAUDERS_GATE_ENABLED } from '$lib/config/ui';
   import CalendarSidebar from '$lib/components/CalendarSidebar.svelte';
   import BaseCalendar, { type Cell } from '$lib/components/BaseCalendar.svelte';
   import MaraudersAuth from '$lib/components/MaraudersAuth.svelte';
+  import LoginPromptModal from '$lib/components/LoginPromptModal.svelte';
+  import { getSession, getMemberLinks } from '$lib/auth';
 
   let { children, data } = $props();
 
@@ -67,6 +69,45 @@
   let showUsernamePrompt = $state(false);
   let usernameInput = $state('');
   setContext('username', username);
+
+  // ── "Sign in to continue" prompt, shown by child components when a guest
+  //    tries an identity-gated action (like/save/flag/vote). ──
+  let loginPrompt = $state({ value: false });
+  setContext('loginPrompt', loginPrompt);
+
+  // ── Mandatory site-wide sign-in (Google or email/password via /login). ──
+  // All the WhatsApp-history usernames this account has claimed — a person can
+  // have several (renames, or WhatsApp's decorative fonts splitting one name
+  // into several distinct strings in the archive). username.value is always
+  // their chosen "primary" of this set.
+  let myUsernames = $state({ value: [] as string[] });
+  setContext('myUsernames', myUsernames);
+  let sessionChecked = $state(false);
+  let hasValidSession = $state(false);
+
+  onMount(async () => {
+    const session = await getSession().catch(() => null);
+    if (session) {
+      const links = await getMemberLinks(session.user.id);
+      if (links.length > 0) {
+        const p = links.find(l => l.is_primary) ?? links[0];
+        username.value = p.username;
+        currentReviewer = p.username;
+        myUsernames.value = links.map(l => l.username);
+        localStorage.setItem('kvizzing-reviewer-name', p.username);
+        localStorage.setItem('kvizzing_google_linked', 'true');
+        googleLinked = true;
+        loadFlaggedIds(p.username);
+        loadLikes(p.username);
+        loadSavedIds(p.username);
+        hasValidSession = true;
+      }
+    }
+    sessionChecked = true;
+    if (!hasValidSession && $page.url.pathname !== '/login') {
+      goto('/login');
+    }
+  });
 
   // ── Flagged question IDs (loaded once, shared with all QuestionCards) ──
   let flaggedIds = $state({ value: new Set<string>() });
@@ -270,11 +311,11 @@
 
   onMount(() => {
     const saved = localStorage.getItem('kvizzing-reviewer-name') || '';
+    // No forced prompt for guests — browsing works with no identity at all.
+    // Identity-gated actions (like/save/flag/vote) trigger the sign-in prompt themselves.
     if (saved) {
       username.value = saved;
       usernameInput = saved;
-    } else {
-      showUsernamePrompt = true;
     }
     currentReviewer = saved;
     if (saved) loadFlaggedIds(saved);
@@ -304,6 +345,7 @@
 
   let authChecked = $state(false);
   let authenticated = $state(false);
+  let googleLinked = $state(false);
   const dm = $state({ value: false });
   let showTzPicker = $state(false);
 
@@ -336,7 +378,8 @@
   let colorTheme = $state('sky');
 
   onMount(() => {
-    authenticated = localStorage.getItem('kvizzing_auth_v2') === 'true';
+    authenticated = !MARAUDERS_GATE_ENABLED || localStorage.getItem('kvizzing_auth_v2') === 'true';
+    googleLinked = localStorage.getItem('kvizzing_google_linked') === 'true';
     authChecked = true;
     dm.value = localStorage.getItem('kvizzing_dark') === 'true';
     if (dm.value) document.documentElement.classList.add('dark');
@@ -396,9 +439,20 @@
     authenticated = true;
   }
 
-  function logout() {
-    localStorage.removeItem('kvizzing_auth_v2');
-    authenticated = false;
+  async function logout() {
+    if (MARAUDERS_GATE_ENABLED) {
+      localStorage.removeItem('kvizzing_auth_v2');
+      authenticated = false;
+    }
+    const { supabase: sb } = await import('$lib/supabase');
+    await sb.auth.signOut();
+    localStorage.removeItem('kvizzing_google_linked');
+    localStorage.removeItem('kvizzing-reviewer-name');
+    hasValidSession = false;
+    username.value = '';
+    myUsernames.value = [];
+    googleLinked = false;
+    goto('/login');
   }
 
   let mobileMenuOpen = $state(false);
@@ -518,8 +572,7 @@
   <title>KVizzing</title>
 </svelte:head>
 
-{#if !authChecked}
-  <!-- Loading splash while checking localStorage -->
+{#snippet loadingSplash(label = 'Loading...')}
   <div class="h-screen flex flex-col items-center justify-center bg-ui-parchment gap-4">
     <div class="flex items-center gap-3">
       <div class="w-14 h-14 rounded-2xl bg-primary-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
@@ -532,11 +585,22 @@
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
       </svg>
-      <span class="text-sm">Loading...</span>
+      <span class="text-sm">{label}</span>
     </div>
   </div>
+{/snippet}
+
+{#if !authChecked}
+  {@render loadingSplash()}
 {:else if !authenticated}
   <MaraudersAuth {onAuthenticated} />
+{:else if $page.url.pathname === '/login'}
+  <!-- /login renders bare, without the site chrome below — it's its own full-screen page -->
+  {@render children()}
+{:else if !sessionChecked}
+  {@render loadingSplash('Checking session...')}
+{:else if !hasValidSession}
+  {@render loadingSplash('Redirecting to sign in...')}
 {:else}
 
 <div class="h-screen flex flex-col bg-ui-parchment overflow-hidden">
@@ -691,6 +755,32 @@
                   <span class="flex-1 text-left">{TIMEZONES.find(z => z.id === tz.value)?.label ?? tzAbbr(tz.value)}</span>
                   <span class="text-xs text-gray-400 font-mono">{tzAbbr(tz.value)}</span>
                 </button>
+                <!-- My profile (only for real Google-linked members, not guests with a freeform name) -->
+                {#if username.value && googleLinked}
+                  <a
+                    href="/member/{encodeURIComponent(username.value)}"
+                    onclick={() => showUserMenu = false}
+                    class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    My profile
+                  </a>
+                {/if}
+                <!-- Google sign-in -->
+                {#if !googleLinked}
+                  <a
+                    href="/login"
+                    onclick={() => showUserMenu = false}
+                    class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" />
+                    </svg>
+                    Sign in with Google
+                  </a>
+                {/if}
                 <!-- Change name -->
                 <button
                   onclick={() => { showUserMenu = false; showUsernamePrompt = true; usernameInput = username.value; }}
@@ -1210,6 +1300,8 @@
     </div>
   </div>
 {/if}
+
+<LoginPromptModal bind:show={loginPrompt.value} />
 
 <!-- Timezone picker modal -->
 {#if showTzPicker}
