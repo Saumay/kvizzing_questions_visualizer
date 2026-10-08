@@ -49,15 +49,20 @@ right after upload), and splices in the full day, marking messages that
 match the thread's own candidate timestamps the same way inline context
 does.
 
-**Verification note:** confirmed end-to-end via direct `curl` (blob
-uploads, is public, fetchable, correct content) and confirmed the button
-appears/wires correctly in the browser. The actual click-through fetch
-inside the Chrome automation session got repeated `503`s from the R2 dev
-domain while plain `curl` against the same URL from the same machine got
-`200` every time — most likely Cloudflare's bot protection flagging the
-automated browser context specifically, not a bug in the fetch code (which
-is a plain `fetch(url).json()`). Worth a real click from an actual browser
-session to confirm, though nothing in the implementation looks suspect.
+**Verification note (resolved 2026-10-07):** the click-through fetch was
+actually broken, not a browser-automation artifact. The R2 bucket had no
+CORS policy, so every cross-origin `fetch()` from the review page (dev or
+prod) failed (`Access-Control-Allow-Origin` missing on `GET`, preflight
+`OPTIONS` returned 403). `curl` never showed this because CORS is a
+browser-only check. Images never hit it either, since `<img src>` doesn't
+trigger CORS. Fixed by applying a CORS policy to the `kvizzing-media`
+bucket (`GET` from `localhost:5173`, the prod Netlify domain, and its
+deploy-preview subdomains) via a one-time `put_bucket_cors` call, using a
+new R2 API token scoped to Admin Read & Write (the token already in
+`v2/pipeline/.env` only has Object Read & Write and can't touch bucket
+settings). Confirmed fixed with a real in-browser `fetch()`: 200, 562
+messages for 2025-09-24. No code change needed, the bug was bucket config,
+not the fetch logic.
 
 **Touches:** `v2/pipeline/utils/r2_upload.py` (`upload_chat_blobs`),
 `v2/pipeline/pipeline.py` (`_run_upload_chat` + `upload-chat` subcommand),
