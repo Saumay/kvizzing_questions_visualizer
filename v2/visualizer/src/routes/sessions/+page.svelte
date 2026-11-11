@@ -130,18 +130,27 @@
   const selectCls = 'w-full sm:w-40 text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 text-gray-600';
 
   const MOBILE_PAGE_SIZE = 6;
+  const DESKTOP_PAGE_SIZE = 24;
   let isMobile = $state(false);
-  let mobileLimit = $state(MOBILE_PAGE_SIZE);
+  // Desktop used to render every filtered session at once (up to all 825) —
+  // each with its own eager CSS background-image — which fired that many
+  // image requests simultaneously. Now paginated like mobile, just with a
+  // bigger page size.
+  let renderLimit = $state(DESKTOP_PAGE_SIZE);
 
   onMount(() => {
     const mq = window.matchMedia('(max-width: 1023px)');
     isMobile = mq.matches;
-    mq.addEventListener('change', e => { isMobile = e.matches; });
+    renderLimit = isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE;
+    mq.addEventListener('change', e => {
+      isMobile = e.matches;
+      renderLimit = isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE;
+    });
   });
 
   $effect(() => {
     search; filterQuizmaster; filterConnect; filterTopics; filterTags; sortBy; minQuestions;
-    mobileLimit = MOBILE_PAGE_SIZE;
+    renderLimit = isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE;
   });
 
   let sessionsAtBottom = $state(true);
@@ -331,7 +340,7 @@
     {/if}
     <div class="lg:max-h-[92vh] lg:overflow-y-auto space-y-6 pr-1 scrollbar-hide" bind:this={sessionsScrollEl} onscroll={onSessionsScroll}>
       {#each sessionsByDate as group, gi}
-        {@const visibleSessions = isMobile ? group.sessions.filter(s => filtered.indexOf(s) < mobileLimit) : group.sessions}
+        {@const visibleSessions = group.sessions.filter(s => filtered.indexOf(s) < renderLimit)}
         {#if visibleSessions.length > 0}
         <div class="relative pl-7">
           <!-- Timeline vertical line -->
@@ -360,8 +369,6 @@
 
           {#if session.quiz_type === 'connect'}
             <div class="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-primary-500 z-10"></div>
-          {:else if session.is_live}
-            <div class="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-red-500 z-10"></div>
           {/if}
           <div class="relative flex items-start justify-between gap-4">
             <div class="flex-1 min-w-0">
@@ -378,9 +385,8 @@
                       {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}
                     </h2>
                     {#if session.is_live}
-                      <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold bg-red-500 text-white shadow-sm flex-shrink-0">
-                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                        LIVE
+                      <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 flex-shrink-0">
+                        🎞️ Recorded
                       </span>
                     {/if}
                   </div>
@@ -456,12 +462,12 @@
         </div>
         {/if}
       {/each}
-      {#if isMobile && mobileLimit < filtered.length}
+      {#if renderLimit < filtered.length}
         <button
-          onclick={() => mobileLimit += MOBILE_PAGE_SIZE}
+          onclick={() => renderLimit += (isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE)}
           class="w-full py-3 text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-200 dark:border-primary-800 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         >
-          Show more ({filtered.length - mobileLimit} remaining)
+          Show more ({filtered.length - renderLimit} remaining)
         </button>
       {/if}
     </div>

@@ -19,6 +19,17 @@
   const tzCtx = getContext<{ value: string }>('timezone');
 
   let searchQuery = $state('');
+  // The input itself stays bound to searchQuery for instant visual feedback;
+  // the expensive Fuse search + multi-filter pipeline below reads this
+  // debounced copy instead, so fast typing doesn't re-run a full-dataset
+  // fuzzy search on every keystroke.
+  let debouncedSearchQuery = $state('');
+  let _searchDebounceTimer: ReturnType<typeof setTimeout>;
+  $effect(() => {
+    const q = searchQuery;
+    clearTimeout(_searchDebounceTimer);
+    _searchDebounceTimer = setTimeout(() => { debouncedSearchQuery = q; }, 200);
+  });
   let filterAsker = $state('');
   let filterSolver = $state('');
   let filterDateFrom = $state('');
@@ -173,8 +184,8 @@
       results = [...results].sort((a, b) => (saveCounts.get(b.id) ?? 0) - (saveCounts.get(a.id) ?? 0));
     }
 
-    if (searchQuery.trim()) {
-      const fuseResults = fuse.search(searchQuery.trim());
+    if (debouncedSearchQuery.trim()) {
+      const fuseResults = fuse.search(debouncedSearchQuery.trim());
       const matchedIds = new Set(fuseResults.map(r => r.item.id));
       results = results.filter(q => matchedIds.has(q.id));
       if (sortBy === 'newest') {
