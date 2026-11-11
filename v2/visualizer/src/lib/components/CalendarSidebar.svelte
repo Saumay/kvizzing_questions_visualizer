@@ -11,7 +11,7 @@
   const questions = store.getQuestions();
 
   type SessionInfo = { id: string; label: string; tooltip: string };
-  type DayActivity = { sessions: SessionInfo[]; questionCount: number };
+  type DayActivity = { sessions: SessionInfo[]; questionCount: number; hasLive: boolean };
 
   function initials(name: string): string {
     return name.split(' ').map(w => w[0] ?? '').join('').slice(0, 2).toUpperCase();
@@ -33,19 +33,22 @@
     for (const session of allSessions) {
       const ts = sessionEarliestTs.get(session.id);
       const d = ts ? dateInTz(ts, tz) : session.date;
-      if (!map.has(d)) map.set(d, { sessions: [], questionCount: 0 });
+      if (!map.has(d)) map.set(d, { sessions: [], questionCount: 0, hasLive: false });
       const label = initials(session.quizmaster);
       const tooltip = session.quiz_type === 'connect'
         ? `${session.quizmaster}'s Connect Quiz`
         : session.theme
           ? `${session.quizmaster} — ${session.theme}`
-          : `${session.quizmaster}'s Quiz`;
+          : session.summary
+            ? `${session.quizmaster} — ${session.summary}`
+            : `${session.quizmaster}'s Quiz`;
       map.get(d)!.sessions.push({ id: session.id, label, tooltip });
+      if (session.is_live) map.get(d)!.hasLive = true;
     }
 
     for (const q of questions) {
       const d = q.question?.timestamp ? dateInTz(q.question.timestamp, tz) : q.date;
-      if (!map.has(d)) map.set(d, { sessions: [], questionCount: 0 });
+      if (!map.has(d)) map.set(d, { sessions: [], questionCount: 0, hasLive: false });
       map.get(d)!.questionCount++;
     }
 
@@ -146,6 +149,7 @@
     {@const hasActivity = !!activity && cell.inMonth}
     {@const sessionInfos = activity?.sessions ?? []}
     {@const questionCount = activity?.questionCount ?? 0}
+    {@const isLiveDay = (activity?.hasLive ?? false) && cell.inMonth}
 
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
@@ -155,6 +159,7 @@
       tabindex={hasActivity ? 0 : undefined}
       class="flex flex-col items-center py-0.5 px-0.5 rounded-lg transition-colors
         {hasActivity ? 'cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-900/20' : 'cursor-default'}
+        {isLiveDay ? 'ring-2 ring-inset ring-red-400 dark:ring-red-500 bg-red-50 dark:bg-red-900/10' : ''}
         {!cell.inMonth ? 'opacity-20' : ''}"
     >
       <span class="
@@ -192,6 +197,10 @@
     <a href="/sessions" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
       <span class="inline-block w-5 h-3.5 rounded {CALENDAR_PILL.sessions.bg}"></span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Quiz sessions</span>
+    </a>
+    <a href="/sessions" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
+      <span class="inline-block w-5 h-3.5 rounded ring-2 ring-inset ring-red-400 dark:ring-red-500 bg-red-50 dark:bg-red-900/10"></span>
+      <span class="text-[10px] text-gray-600 dark:text-gray-300">Live quiz</span>
     </a>
   {/snippet}
 </BaseCalendar>

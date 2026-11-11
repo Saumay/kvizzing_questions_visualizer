@@ -360,6 +360,8 @@
 
           {#if session.quiz_type === 'connect'}
             <div class="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-primary-500 z-10"></div>
+          {:else if session.is_live}
+            <div class="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-red-500 z-10"></div>
           {/if}
           <div class="relative flex items-start justify-between gap-4">
             <div class="flex-1 min-w-0">
@@ -373,16 +375,19 @@
                 <div>
                   <div class="flex items-center gap-2">
                     <h2 class="text-base font-semibold text-primary-700 dark:text-primary-200 group-hover:text-primary-800 dark:group-hover:text-primary-100 transition-colors">
-                      {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}
+                      {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}
                     </h2>
                     {#if session.is_live}
-                      <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300 flex-shrink-0">
-                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                        Live
+                      <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold bg-red-500 text-white shadow-sm flex-shrink-0">
+                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                        LIVE
                       </span>
                     {/if}
                   </div>
                   <p class="text-xs text-gray-700 dark:text-gray-300">Hosted by {session.quizmaster} · {sessionDate(session)}</p>
+                  {#if session.summary}
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{session.summary}</p>
+                  {/if}
                 </div>
               </div>
               {#if session.announcement}
