@@ -179,8 +179,8 @@
           <ConnectBadge variant="on-dark" label="Connect Quiz" />
         {/if}
         {#if session.is_live}
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-white/10 text-white/70 border border-white/15 flex-shrink-0">
-            🎞️ Recorded session
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-200 border border-amber-300/30 flex-shrink-0">
+            ⭐ Live session
           </span>
         {/if}
       </div>
