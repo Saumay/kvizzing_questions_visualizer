@@ -441,7 +441,7 @@
               <span class="text-3xl sm:text-4xl flex-shrink-0">{emojiFor(heroSeries.title)}</span>
               <div class="min-w-0">
                 <h2 class="text-xl sm:text-3xl font-black text-white leading-tight truncate">{heroSeries.title}</h2>
-                <p class="text-xs sm:text-sm text-white/70 mt-1 truncate">
+                <p class="text-sm sm:text-base font-medium text-white/80 mt-1 truncate">
                   {hosts.slice(0, 5).join(', ')}{hosts.length > 5 ? ` +${hosts.length - 5} more` : ''}
                 </p>
               </div>
@@ -504,7 +504,7 @@
                         <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
                         <div class="min-w-0">
                           <p class="text-base font-bold text-white leading-tight truncate">{card.title}</p>
-                          <p class="text-xs text-white/70 mt-0.5 truncate">{card.subtitle}</p>
+                          <p class="text-sm font-medium text-white/80 mt-0.5 truncate">{card.subtitle}</p>
                         </div>
                       </div>
                       <div class="flex items-center gap-3 flex-shrink-0">
