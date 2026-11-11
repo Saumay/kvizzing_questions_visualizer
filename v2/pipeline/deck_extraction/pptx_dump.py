@@ -21,6 +21,18 @@ from pathlib import Path
 from pptx import Presentation
 
 PICTURE_SHAPE_TYPE = 13
+GROUP_SHAPE_TYPE = 6
+
+
+def _walk_shapes(shapes):
+    """Yield every shape, recursing into GROUP shapes — group members (e.g. a
+    picture nested inside a Google-Slides-exported group) aren't visited by a
+    flat `for shape in slide.shapes` loop otherwise, so a slide can silently
+    report 0 images despite holding picture-only clues inside a group."""
+    for shape in shapes:
+        yield shape
+        if shape.shape_type == GROUP_SHAPE_TYPE:
+            yield from _walk_shapes(shape.shapes)
 
 
 def dump(pptx_path: Path, out_dir: Path) -> None:
@@ -31,7 +43,7 @@ def dump(pptx_path: Path, out_dir: Path) -> None:
     for i, slide in enumerate(prs.slides, start=1):
         texts = []
         img_count = 0
-        for shape in slide.shapes:
+        for shape in _walk_shapes(slide.shapes):
             if shape.has_text_frame and shape.text_frame.text.strip():
                 texts.append(shape.text_frame.text.strip())
             if shape.shape_type == PICTURE_SHAPE_TYPE:
