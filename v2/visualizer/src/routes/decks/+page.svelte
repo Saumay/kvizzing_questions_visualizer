@@ -1,6 +1,7 @@
 <script lang="ts">
   import { formatDate } from '$lib/utils/time';
   import EmptyState from '$lib/components/EmptyState.svelte';
+  import DecksCalendar from '$lib/components/DecksCalendar.svelte';
 
   interface DeckFile {
     label: string | null;
@@ -204,6 +205,23 @@
 
   let openSeries = $state<Series | null>(null);
   let openStandalone = $state<Standalone | null>(null);
+  let showCalendar = $state(true);
+
+  const MONTH_NAMES = ['January','February','March','April','May','June',
+                       'July','August','September','October','November','December'];
+  function monthGroups(rounds: Round[]): { label: string; rounds: Round[] }[] {
+    const sorted = [...rounds].sort((a, b) => a.date.localeCompare(b.date) || a.round - b.round);
+    const groups = new Map<string, Round[]>();
+    for (const r of sorted) {
+      const key = r.date.slice(0, 7); // YYYY-MM
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(r);
+    }
+    return [...groups.entries()].map(([key, groupRounds]) => {
+      const [y, m] = key.split('-').map(Number);
+      return { label: `${MONTH_NAMES[m - 1]} ${y}`, rounds: groupRounds };
+    });
+  }
 </script>
 
 <svelte:window onkeydown={(e) => { if (e.key === 'Escape') { openSeries = null; openStandalone = null; } }} />
@@ -220,6 +238,28 @@
       &middot;
       <a href="https://drive.google.com/drive/folders/1jrW0WThbmlnprdGACSLaOmTpn8-SZcuc" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">slides source</a>
     </p>
+  </div>
+
+  <!-- Browse by date -->
+  <div>
+    <button
+      onclick={() => showCalendar = !showCalendar}
+      class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+    >
+      <span>📅 Browse by date</span>
+      <svg class="w-4 h-4 transition-transform {showCalendar ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+    {#if showCalendar}
+      <div class="mt-2 max-w-md">
+        <DecksCalendar
+          {decks}
+          onOpenSeries={(s) => openSeries = s}
+          onOpenStandalone={(d) => openStandalone = d}
+        />
+      </div>
+    {/if}
   </div>
 
   <!-- Search + host filter -->
@@ -400,52 +440,57 @@
         </div>
       </div>
       <div class="overflow-y-auto divide-y divide-gray-100 dark:divide-gray-700">
-        {#each s.rounds as r}
-          {@const single = r.files.length === 1 ? r.files[0] : null}
-          <svelte:element
-            this={single ? 'a' : 'div'}
-            href={single ? (single.url ?? undefined) : undefined}
-            target={single ? '_blank' : undefined}
-            rel={single ? 'noopener noreferrer' : undefined}
-            class="flex items-center justify-between gap-4 px-5 py-3 transition-colors {single && !single.url ? 'opacity-60 pointer-events-none' : 'hover:bg-primary-50 dark:hover:bg-primary-900/20'}"
-          >
-            <div class="flex-1 min-w-0">
-              <p class="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
-                <span class="text-gray-400 dark:text-gray-500">#{r.round}</span> {r.title}
-              </p>
-              <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                {#if r.host}{r.host} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)}{#if roundSize(r.files) > 0} &middot; {formatBytes(roundSize(r.files))}{/if}
-              </p>
-            </div>
-            <div class="flex-shrink-0 flex items-center gap-1.5 flex-wrap justify-end">
-              {#each withPdfLast(r.files) as f}
-                {#if single}
-                  <!-- Row itself is the link; badge is decorative only -->
-                  <span
-                    class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md {f.url ? FORMAT_CLS[f.format] : 'bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-500'}"
-                  >
-                    {FORMAT_LABEL[f.format]}
-                  </span>
-                {:else if f.url}
-                  <a
-                    href={f.url}
-                    target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md {FORMAT_CLS[f.format]} hover:opacity-80 transition-opacity"
-                    title={f.label ?? FORMAT_LABEL[f.format]}
-                  >
-                    {FORMAT_LABEL[f.format]}
-                  </a>
-                {:else}
-                  <span
-                    class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-500 cursor-not-allowed"
-                    title="Upload pending"
-                  >
-                    {FORMAT_LABEL[f.format]}
-                  </span>
-                {/if}
-              {/each}
-            </div>
-          </svelte:element>
+        {#each monthGroups(s.rounds) as group (group.label)}
+          <p class="px-5 py-1.5 text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide bg-gray-50 dark:bg-gray-800/50 sticky top-0">
+            {group.label}
+          </p>
+          {#each group.rounds as r}
+            {@const single = r.files.length === 1 ? r.files[0] : null}
+            <svelte:element
+              this={single ? 'a' : 'div'}
+              href={single ? (single.url ?? undefined) : undefined}
+              target={single ? '_blank' : undefined}
+              rel={single ? 'noopener noreferrer' : undefined}
+              class="flex items-center justify-between gap-4 px-5 py-3 transition-colors {single && !single.url ? 'opacity-60 pointer-events-none' : 'hover:bg-primary-50 dark:hover:bg-primary-900/20'}"
+            >
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
+                  <span class="text-gray-400 dark:text-gray-500">#{r.round}</span> {r.title}
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                  {#if r.host}{r.host} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)}{#if roundSize(r.files) > 0} &middot; {formatBytes(roundSize(r.files))}{/if}
+                </p>
+              </div>
+              <div class="flex-shrink-0 flex items-center gap-1.5 flex-wrap justify-end">
+                {#each withPdfLast(r.files) as f}
+                  {#if single}
+                    <!-- Row itself is the link; badge is decorative only -->
+                    <span
+                      class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md {f.url ? FORMAT_CLS[f.format] : 'bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-500'}"
+                    >
+                      {FORMAT_LABEL[f.format]}
+                    </span>
+                  {:else if f.url}
+                    <a
+                      href={f.url}
+                      target="_blank" rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md {FORMAT_CLS[f.format]} hover:opacity-80 transition-opacity"
+                      title={f.label ?? FORMAT_LABEL[f.format]}
+                    >
+                      {FORMAT_LABEL[f.format]}
+                    </a>
+                  {:else}
+                    <span
+                      class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-md bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-500 cursor-not-allowed"
+                      title="Upload pending"
+                    >
+                      {FORMAT_LABEL[f.format]}
+                    </span>
+                  {/if}
+                {/each}
+              </div>
+            </svelte:element>
+          {/each}
         {/each}
       </div>
     </div>
