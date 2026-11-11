@@ -27,6 +27,7 @@ Output: JSON files written to output_dir
 
 from __future__ import annotations
 
+import hashlib
 import json
 import pathlib
 import sqlite3
@@ -40,6 +41,23 @@ from typing import Optional
 def _write_json(path: pathlib.Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, default=str), encoding="utf-8")
+
+
+def _write_data_version(output_dir: pathlib.Path, filenames: list[str]) -> str:
+    """
+    Hash the just-written bulk data files and write data_version.json, so the
+    client can fetch this tiny file first and skip re-downloading
+    questions/sessions/members/tags (the ~28MB payload fetched on every full
+    page load) when its cached IndexedDB copy already matches.
+    """
+    h = hashlib.sha256()
+    for name in filenames:
+        path = output_dir / name
+        if path.exists():
+            h.update(path.read_bytes())
+    version = h.hexdigest()[:16]
+    _write_json(output_dir / "data_version.json", {"version": version})
+    return version
 
 
 def _load_payloads(conn: sqlite3.Connection) -> list[dict]:
@@ -504,6 +522,10 @@ def run(
     _write_json(output_dir / "stats.json", stats)
     _write_json(output_dir / "tags.json", tags)
     _write_json(output_dir / "members.json", members)
+    _write_data_version(
+        output_dir,
+        ["questions.json", "sessions.json", "members.json", "tags.json"],
+    )
 
     if state_path and questions:
         dates = [q["date"] for q in questions if q.get("date")]
