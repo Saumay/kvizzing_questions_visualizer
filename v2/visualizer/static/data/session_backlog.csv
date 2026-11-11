@@ -1,0 +1,774 @@
+session_id,date,quizmaster,question_count,questions_published_pct,theme_present,image_present,scores_present,low_conf_pct
+2025-09-25-akshay,2025-09-25,Akshay,10,100.0,True,True,False,0.0
+2025-09-28-aditi,2025-09-28,Aditi Bapat,25,100.0,True,True,False,0.0
+2025-09-29-abhishek,2025-09-29,Abhishek S,31,100.0,True,True,False,0.0
+2025-09-30-pavan,2025-09-30,Pavan Pamidimarri,7,100.0,False,True,False,0.0
+2025-10-01-kartikey,2025-10-01,Kartikey Pradhan,5,100.0,False,True,False,0.0
+2025-10-02-kartikey,2025-10-02,Kartikey Pradhan,17,100.0,True,True,False,0.0
+2025-10-03-prathamesh,2025-10-03,Prathamesh,14,100.0,True,True,False,0.0
+2025-10-04-abhishek,2025-10-04,Abhishek S,10,100.0,True,True,False,20.0
+2025-10-05-akshay,2025-10-05,Akshay,11,100.0,True,True,False,0.0
+2025-10-07-abhishek,2025-10-07,Abhishek S,5,100.0,True,True,False,0.0
+2025-10-08-akshay,2025-10-08,Akshay,5,100.0,True,True,False,0.0
+2025-10-09-abhishek,2025-10-09,Abhishek S,11,100.0,True,True,False,18.2
+2025-10-10-kartikey,2025-10-10,Kartikey Pradhan,5,100.0,True,True,False,0.0
+2025-10-10-pavan,2025-10-10,Pavan Pamidimarri,10,100.0,True,True,False,0.0
+2025-10-11-pavan,2025-10-11,Pavan Pamidimarri,11,100.0,True,True,False,0.0
+2025-10-12-abhishek,2025-10-12,Abhishek S,9,100.0,True,True,False,55.6
+2025-10-13-abhishek,2025-10-13,Abhishek S,10,100.0,True,True,False,0.0
+2025-10-14-kartikey,2025-10-14,Kartikey Pradhan,6,100.0,True,True,False,16.7
+2025-10-14-akshay,2025-10-14,Akshay,15,100.0,False,True,False,6.7
+2025-10-15-abhishek,2025-10-15,Abhishek S,8,100.0,False,True,False,12.5
+2025-10-15-kartikey,2025-10-15,Kartikey Pradhan,13,100.0,True,True,False,0.0
+2025-10-16-abhishek,2025-10-16,Abhishek S,14,100.0,True,True,False,14.3
+2025-10-16-pavan,2025-10-16,Pavan Pamidimarri,7,100.0,False,True,False,0.0
+2025-10-17-pavan,2025-10-17,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-10-18-abhishek,2025-10-18,Abhishek S,11,100.0,True,True,False,0.0
+2025-10-20-akshay,2025-10-20,Akshay,5,100.0,False,True,False,0.0
+2025-10-20-pavan,2025-10-20,Pavan Pamidimarri,6,100.0,True,True,False,0.0
+2025-10-21-abhishek,2025-10-21,Abhishek S,17,100.0,True,True,False,5.9
+2025-10-22-akshay,2025-10-22,Akshay,34,100.0,True,True,False,0.0
+2025-10-24-abhishek,2025-10-24,Abhishek S,12,100.0,False,True,False,8.3
+2025-10-24-akshay,2025-10-24,Akshay,9,100.0,False,True,False,0.0
+2025-10-24-pavan,2025-10-24,Pavan Pamidimarri,11,100.0,True,True,False,0.0
+2025-10-26-akshay,2025-10-26,Akshay,12,100.0,True,True,False,0.0
+2025-10-27-kartikey,2025-10-27,Kartikey Pradhan,5,100.0,True,True,False,0.0
+2025-10-27-pavan,2025-10-27,Pavan Pamidimarri,24,100.0,True,True,False,8.3
+2025-10-27-meghna,2025-10-27,Meghna,6,100.0,True,True,False,0.0
+2025-10-27-abhishek,2025-10-27,Abhishek S,14,100.0,True,True,False,7.1
+2025-10-27-akshay,2025-10-27,Akshay,5,100.0,False,True,False,0.0
+2025-10-28-ricky,2025-10-28,Ricky,5,100.0,True,True,False,60.0
+2025-10-28-abhishek,2025-10-28,Abhishek S,9,100.0,True,True,False,11.1
+2025-10-28-kartikey,2025-10-28,Kartikey Pradhan,15,100.0,True,True,False,20.0
+2025-10-28-pavan,2025-10-28,Pavan Pamidimarri,20,100.0,False,True,False,5.0
+2025-10-29-kartikey,2025-10-29,Kartikey Pradhan,8,100.0,True,True,False,0.0
+2025-10-29-pavan,2025-10-29,Pavan Pamidimarri,9,100.0,True,True,False,0.0
+2025-10-30-kartikey,2025-10-30,Kartikey Pradhan,10,100.0,True,True,False,10.0
+2025-10-31-kartikey,2025-10-31,Kartikey Pradhan,6,100.0,True,True,False,0.0
+2025-10-31-akshay,2025-10-31,Akshay,9,100.0,True,True,False,11.1
+2025-11-01-pavan,2025-11-01,Pavan Pamidimarri,11,100.0,True,True,False,0.0
+2025-11-01-abhishek,2025-11-01,Abhishek S,11,100.0,True,True,False,0.0
+2025-11-02-pavan,2025-11-02,Pavan Pamidimarri,8,100.0,True,True,False,0.0
+2025-11-03-pavan,2025-11-03,Pavan Pamidimarri,12,100.0,True,True,False,0.0
+2025-11-04-pavan,2025-11-04,Pavan Pamidimarri,12,100.0,True,True,False,0.0
+2025-11-04-akshay,2025-11-04,Akshay,17,100.0,True,True,False,0.0
+2025-11-05-pavan,2025-11-05,Pavan Pamidimarri,19,100.0,True,False,False,0.0
+2025-11-06-khandoba,2025-11-06,Khandoba,11,100.0,True,True,False,0.0
+2025-11-06-abhishek,2025-11-06,Abhishek S,46,100.0,True,True,False,2.2
+2025-11-06-saara,2025-11-06,Saara,5,100.0,False,True,False,0.0
+2025-11-06-kartikey,2025-11-06,Kartikey Pradhan,9,100.0,True,True,False,0.0
+2025-11-07-abhishek,2025-11-07,Abhishek S,14,100.0,True,True,False,7.1
+2025-11-07-nikunj,2025-11-07,Nikunj,8,100.0,True,True,False,0.0
+deck-buzzing-entertainment-r1,2025-11-08,unknown,25,0.0,True,True,False,0.0
+2025-11-09-ryan,2025-11-09,Ryan Colaço,5,100.0,True,True,False,0.0
+2025-11-09-abhishek,2025-11-09,Abhishek Vats,6,100.0,True,True,False,0.0
+2025-11-09-pavan,2025-11-09,Pavan Pamidimarri,20,100.0,True,True,False,0.0
+2025-11-10-abhishek,2025-11-10,Abhishek S,18,100.0,True,True,False,0.0
+2025-11-11-khandoba,2025-11-11,Khandoba,20,100.0,True,True,False,0.0
+2025-11-12-shiv,2025-11-12,Shiv Ram,7,100.0,True,True,False,0.0
+2025-11-12-kartikey,2025-11-12,Kartikey Pradhan,23,100.0,True,True,False,0.0
+2025-11-12-khandoba,2025-11-12,Khandoba,19,100.0,True,True,False,0.0
+2025-11-12-pavan,2025-11-12,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-11-12-lzafeer,2025-11-12,Lzafeer Ahmad B F,11,100.0,True,True,False,0.0
+2025-11-12-akshay,2025-11-12,Akshay,10,100.0,True,True,False,0.0
+2025-11-13-pavan,2025-11-13,Pavan Pamidimarri,22,100.0,True,True,False,0.0
+2025-11-13-kartikey,2025-11-13,Kartikey Pradhan,8,100.0,True,True,False,0.0
+2025-11-13-anurag,2025-11-13,Anurag Bhide,5,100.0,True,True,False,0.0
+2025-11-14-lzafeer,2025-11-14,Lzafeer Ahmad B F,14,100.0,True,True,False,7.1
+2025-11-14-sidhesh,2025-11-14,Sidhesh K K,11,100.0,True,True,False,0.0
+2025-11-14-pavan,2025-11-14,Pavan Pamidimarri,5,100.0,False,True,False,0.0
+2025-11-15-akshay,2025-11-15,Akshay,6,100.0,True,True,False,0.0
+2025-11-16-abhishek,2025-11-16,Abhishek S,21,100.0,True,True,False,0.0
+2025-11-17-kartikey,2025-11-17,Kartikey Pradhan,25,100.0,True,True,False,0.0
+2025-11-17-pavan,2025-11-17,Pavan Pamidimarri,16,100.0,True,True,False,0.0
+2025-11-17-lzafeer,2025-11-17,Lzafeer Ahmad B F,5,100.0,True,True,False,0.0
+2025-11-18-kartikey,2025-11-18,Kartikey Pradhan,12,100.0,True,True,False,0.0
+2025-11-18-nikunj,2025-11-18,Nikunj,13,100.0,True,True,False,0.0
+2025-11-19-akshay,2025-11-19,Akshay,5,100.0,False,True,False,0.0
+2025-11-20-pavan,2025-11-20,Pavan Pamidimarri,12,100.0,True,True,False,0.0
+2025-11-20-kartikey,2025-11-20,Kartikey Pradhan,7,100.0,True,True,False,0.0
+2025-11-21-ricky,2025-11-21,Ricky,17,100.0,True,True,False,17.6
+2025-11-22-kartikey,2025-11-22,Kartikey Pradhan,17,100.0,True,True,False,0.0
+2025-11-22-మాन$,2025-11-22,మాन$,20,100.0,True,True,False,0.0
+2025-11-23-abhishek,2025-11-23,Abhishek S,8,100.0,True,True,False,0.0
+2025-11-23-kartikey,2025-11-23,Kartikey Pradhan,21,100.0,True,True,False,0.0
+2025-11-23-prathamesh,2025-11-23,Prathamesh,6,100.0,True,True,False,0.0
+2025-11-24-abhishek,2025-11-24,Abhishek Vats,16,100.0,True,True,False,0.0
+2025-11-24-pavan,2025-11-24,Pavan Pamidimarri,18,100.0,True,False,False,0.0
+2025-11-24-kartikey,2025-11-24,Kartikey Pradhan,17,100.0,True,True,False,0.0
+2025-11-25-abhishek,2025-11-25,Abhishek S,32,100.0,True,True,False,0.0
+2025-11-25-akshay,2025-11-25,Akshay,7,100.0,True,True,False,0.0
+2025-11-25-kartikey,2025-11-25,Kartikey Pradhan,11,100.0,True,True,False,0.0
+2025-11-26-pavan,2025-11-26,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-11-26-abhishek,2025-11-26,Abhishek S,6,100.0,True,True,False,0.0
+2025-11-26-anurag,2025-11-26,Anurag Bhide,16,100.0,True,True,False,6.2
+2025-11-27-kartikey,2025-11-27,Kartikey Pradhan,11,100.0,True,True,False,0.0
+2025-11-28-kartikey,2025-11-28,Kartikey Pradhan,6,100.0,True,True,False,0.0
+2025-11-30-kartikey,2025-11-30,Kartikey Pradhan,28,100.0,True,True,False,0.0
+2025-11-30-pavan,2025-11-30,Pavan Pamidimarri,21,100.0,True,True,False,0.0
+2025-12-01-మాन$,2025-12-01,మాन$,21,100.0,True,True,False,0.0
+2025-12-01-nikunj,2025-12-01,Nikunj,6,100.0,False,True,False,0.0
+2025-12-01-akshay,2025-12-01,Akshay,20,100.0,True,True,False,0.0
+2025-12-01-prathamesh,2025-12-01,Prathamesh,5,100.0,True,True,False,0.0
+2025-12-03-lzafeer,2025-12-03,Lzafeer Ahmad B F,49,100.0,True,True,False,0.0
+2025-12-04-pavan,2025-12-04,Pavan Pamidimarri,11,100.0,True,True,False,0.0
+2025-12-04-మాन$,2025-12-04,మాन$,10,100.0,True,True,False,0.0
+2025-12-05-abhishek,2025-12-05,Abhishek S,9,100.0,False,True,False,0.0
+2025-12-05-pavan,2025-12-05,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-12-06-pavan,2025-12-06,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-12-07-paavas,2025-12-07,Paavas,10,100.0,True,True,False,0.0
+deck-movie-kviz,2025-12-07,unknown,16,0.0,True,True,False,0.0
+2025-12-08-kartikey,2025-12-08,Kartikey Pradhan,68,100.0,True,True,False,0.0
+2025-12-08-abhishek,2025-12-08,Abhishek S,9,100.0,True,True,False,0.0
+2025-12-08-prathamesh,2025-12-08,Prathamesh,8,100.0,True,True,False,0.0
+2025-12-09-kartikey,2025-12-09,Kartikey Pradhan,22,100.0,True,True,False,13.6
+2025-12-09-abhishek,2025-12-09,Abhishek S,15,100.0,True,True,False,0.0
+2025-12-09-ryan,2025-12-09,Ryan Colaço,5,100.0,True,True,False,0.0
+2025-12-09-pavan,2025-12-09,Pavan Pamidimarri,15,100.0,False,True,False,0.0
+2025-12-10-kartikey,2025-12-10,Kartikey Pradhan,34,100.0,True,True,False,8.8
+2025-12-10-abhishek,2025-12-10,Abhishek S,19,100.0,True,True,False,15.8
+2025-12-10-akshay,2025-12-10,Akshay,9,100.0,True,True,False,0.0
+2025-12-10-pavan,2025-12-10,Pavan Pamidimarri,12,100.0,True,True,False,0.0
+2025-12-10-ryan,2025-12-10,Ryan Colaço,8,100.0,True,True,False,12.5
+2025-12-11-pavan,2025-12-11,Pavan Pamidimarri,5,100.0,True,True,False,0.0
+2025-12-11-kartikey,2025-12-11,Kartikey Pradhan,19,100.0,False,True,False,5.3
+2025-12-12-abhishek,2025-12-12,Abhishek S,15,100.0,False,True,False,13.3
+2025-12-12-sidhesh,2025-12-12,Sidhesh K K,6,100.0,True,True,False,0.0
+2025-12-12-shiv,2025-12-12,Shiv Ram,14,100.0,True,True,False,7.1
+2025-12-13-kartikey,2025-12-13,Kartikey Pradhan,19,100.0,True,True,False,0.0
+2025-12-13-abhishek,2025-12-13,Abhishek S,13,100.0,True,True,False,0.0
+2025-12-14-tapish,2025-12-14,Tapish,19,100.0,True,True,False,5.3
+2025-12-14-dhruv,2025-12-14,Dhruv Nath,30,100.0,True,True,False,0.0
+2025-12-15-abhishek,2025-12-15,Abhishek S,24,100.0,True,True,False,0.0
+2025-12-15-prathamesh,2025-12-15,Prathamesh,24,100.0,True,True,False,0.0
+2025-12-15-lzafeer,2025-12-15,Lzafeer Ahmad B F,7,100.0,True,True,False,0.0
+2025-12-15-sidhesh,2025-12-15,Sidhesh K K,7,100.0,True,True,False,0.0
+2025-12-15-kartikey,2025-12-15,Kartikey Pradhan,10,100.0,True,True,False,0.0
+2025-12-16-akshay,2025-12-16,Akshay,8,100.0,True,True,False,0.0
+2025-12-16-kartikey,2025-12-16,Kartikey Pradhan,10,100.0,True,True,False,0.0
+2025-12-17-nikunj,2025-12-17,Nikunj,15,100.0,False,True,False,6.7
+2025-12-17-abhishek,2025-12-17,Abhishek Vats,16,100.0,True,True,False,0.0
+2025-12-17-kartikey,2025-12-17,Kartikey Pradhan,10,100.0,True,True,False,0.0
+2025-12-17-dhruv,2025-12-17,Dhruv,5,100.0,False,True,False,0.0
+2025-12-18-dhruv,2025-12-18,Dhruv,8,100.0,True,True,False,12.5
+2025-12-18-abhishek,2025-12-18,Abhishek S,5,100.0,True,False,False,0.0
+2025-12-18-anurag,2025-12-18,Anurag Bhide,6,100.0,True,False,False,0.0
+2025-12-19-kartikey,2025-12-19,Kartikey Pradhan,8,100.0,True,True,False,0.0
+2025-12-19-anand,2025-12-19,Anand Nagapurkar,20,100.0,True,True,False,20.0
+2025-12-19-pavan,2025-12-19,Pavan Pamidimarri,10,100.0,True,True,False,0.0
+2025-12-20-akshay,2025-12-20,Akshay,6,100.0,False,True,False,0.0
+2025-12-20-kartikey,2025-12-20,Kartikey Pradhan,8,100.0,False,True,False,0.0
+2025-12-20-antnishu,2025-12-20,AntNishu,6,100.0,False,True,False,0.0
+deck-kp-quiz-final,2025-12-20,KP,40,0.0,True,True,False,0.0
+2025-12-21-kartikey,2025-12-21,Kartikey Pradhan,15,100.0,True,True,False,0.0
+2025-12-21-abhishek,2025-12-21,Abhishek S,25,100.0,True,True,False,4.0
+deck-bollywood-kviz,2025-12-21,unknown,16,0.0,True,False,False,0.0
+2025-12-22-kartikey,2025-12-22,Kartikey Pradhan,9,100.0,True,True,False,0.0
+2025-12-22-antnishu,2025-12-22,AntNishu,6,100.0,True,True,False,0.0
+2025-12-22-meghna,2025-12-22,Meghna,6,100.0,True,False,False,0.0
+2025-12-22-akshay,2025-12-22,Akshay,5,100.0,True,True,False,20.0
+2025-12-23-abhishek,2025-12-23,Abhishek S,42,100.0,True,True,False,2.4
+2025-12-23-akshay,2025-12-23,Akshay,12,100.0,False,True,False,0.0
+2025-12-23-dhruv,2025-12-23,Dhruv,7,100.0,True,True,False,28.6
+2025-12-23-kartikey,2025-12-23,Kartikey Pradhan,5,100.0,True,True,False,0.0
+2025-12-24-kartikey,2025-12-24,Kartikey Pradhan,19,100.0,True,True,False,0.0
+2025-12-24-abhishek,2025-12-24,Abhishek S,8,100.0,True,True,False,0.0
+2025-12-24-akshay,2025-12-24,Akshay,24,100.0,True,True,False,4.2
+2025-12-24-pavan,2025-12-24,Pavan Pamidimarri,5,100.0,False,True,False,0.0
+2025-12-24-మాన$,2025-12-24,మాన$,13,100.0,True,True,False,15.4
+2025-12-25-dhruv,2025-12-25,Dhruv,14,100.0,True,True,False,14.3
+2025-12-25-abhishek,2025-12-25,Abhishek Vats,6,100.0,True,True,False,0.0
+2025-12-25-kartikey,2025-12-25,Kartikey Pradhan,9,100.0,True,True,False,0.0
+2025-12-26-kartikey,2025-12-26,Kartikey Pradhan,9,100.0,False,True,False,0.0
+2025-12-26-abhishek,2025-12-26,Abhishek S,17,100.0,True,True,False,5.9
+2025-12-27-kintu,2025-12-27,Kintu,6,100.0,True,True,False,0.0
+2025-12-27-nikunj,2025-12-27,Nikunj,8,100.0,False,True,False,50.0
+2025-12-27-kartikey,2025-12-27,Kartikey Pradhan,10,100.0,True,True,False,0.0
+2025-12-27-abhishek,2025-12-27,Abhishek Vats,9,100.0,True,True,False,55.6
+2025-12-28-abhishek,2025-12-28,Abhishek Vats,20,100.0,True,True,False,5.0
+2025-12-28-మాన$,2025-12-28,మాన$,10,100.0,True,True,False,80.0
+2025-12-29-lzafeer,2025-12-29,Lzafeer Ahmad B F,8,100.0,True,True,False,0.0
+2025-12-29-kartikey,2025-12-29,Kartikey Pradhan,15,100.0,True,True,False,0.0
+2025-12-29-ryan,2025-12-29,Ryan Colaço,8,100.0,True,True,False,12.5
+2025-12-29-abhishek,2025-12-29,Abhishek Vats,8,100.0,False,True,False,0.0
+2025-12-30-kartikey,2025-12-30,Kartikey Pradhan,26,100.0,True,True,False,0.0
+2025-12-30-abhishek,2025-12-30,Abhishek S,28,100.0,True,True,False,0.0
+2025-12-30-dhruv,2025-12-30,Dhruv,6,100.0,False,True,False,0.0
+2025-12-31-abhishek,2025-12-31,Abhishek Vats,39,100.0,True,True,False,0.0
+2025-12-31-pratik,2025-12-31,pratik.s.chandarana,20,100.0,True,True,False,0.0
+2026-01-01-nikunj,2026-01-01,Nikunj,5,100.0,False,True,False,20.0
+2026-01-01-abhishek,2026-01-01,Abhishek Vats,23,100.0,False,True,False,13.0
+2026-01-02-pavan,2026-01-02,Pavan Pamidimarri,12,100.0,False,True,False,0.0
+2026-01-03-abhishek,2026-01-03,Abhishek S,23,100.0,False,True,False,4.3
+2026-01-03-pavan,2026-01-03,Pavan Pamidimarri,15,100.0,False,True,False,0.0
+2026-01-03-antnishu,2026-01-03,AntNishu,31,100.0,False,True,False,22.6
+2026-01-03-prathamesh,2026-01-03,Prathamesh,5,100.0,False,True,False,60.0
+2026-01-03-kartikey,2026-01-03,Kartikey Pradhan,13,100.0,False,True,False,0.0
+2026-01-04-kartikey,2026-01-04,Kartikey Pradhan,20,100.0,False,True,False,0.0
+2026-01-04-antnishu,2026-01-04,AntNishu,7,100.0,False,True,False,14.3
+2026-01-04-pratik,2026-01-04,pratik.s.chandarana,7,100.0,False,True,False,0.0
+2026-01-05-kartikey,2026-01-05,Kartikey Pradhan,41,100.0,False,True,False,0.0
+2026-01-05-kintu,2026-01-05,Kintu,10,100.0,True,True,False,0.0
+2026-01-05-shiv,2026-01-05,Shiv Ram,5,100.0,True,True,False,0.0
+2026-01-06-dhruv,2026-01-06,Dhruv,15,100.0,True,True,False,0.0
+2026-01-06-kartikey,2026-01-06,Kartikey Pradhan,11,100.0,True,True,False,0.0
+2026-01-06-nikunj,2026-01-06,Nikunj,5,100.0,False,True,False,0.0
+2026-01-07-abhishek,2026-01-07,Abhishek S,5,100.0,False,True,False,0.0
+2026-01-07-pavan,2026-01-07,Pavan Pamidimarri,8,100.0,False,True,False,0.0
+2026-01-08-pavan,2026-01-08,Pavan Pamidimarri,13,100.0,False,True,False,23.1
+2026-01-08-sidhesh,2026-01-08,Sidhesh K K,6,100.0,False,True,False,16.7
+2026-01-08-abhishek,2026-01-08,Abhishek S,9,100.0,False,True,False,11.1
+2026-01-09-abhishek,2026-01-09,Abhishek Vats,16,100.0,False,True,False,0.0
+2026-01-10-sidhesh,2026-01-10,Sidhesh K K,9,100.0,False,True,False,33.3
+2026-01-10-nikunj,2026-01-10,Nikunj,7,100.0,False,True,False,42.9
+2026-01-11-tapish,2026-01-11,Tapish,5,100.0,False,True,False,20.0
+2026-01-11-shiv,2026-01-11,Shiv Ram,10,100.0,False,True,False,0.0
+2026-01-11-abhishek,2026-01-11,Abhishek Vats,11,100.0,False,True,False,27.3
+2026-01-11-dhruv,2026-01-11,Dhruv,7,100.0,False,True,False,14.3
+2026-01-11-pratik,2026-01-11,pratik.s.chandarana,8,100.0,False,True,False,12.5
+2026-01-12-nikunj,2026-01-12,Nikunj,7,100.0,False,True,False,0.0
+2026-01-12-kartikey,2026-01-12,Kartikey Pradhan,26,100.0,False,True,False,0.0
+2026-01-12-abhishek,2026-01-12,Abhishek S,13,100.0,False,True,False,0.0
+2026-01-12-lzafeer,2026-01-12,Lzafeer Ahmad B F,11,100.0,False,True,False,9.1
+2026-01-13-shiv,2026-01-13,Shiv Ram,10,100.0,False,True,False,0.0
+2026-01-13-tapish,2026-01-13,Tapish,16,100.0,False,True,False,0.0
+2026-01-13-kartikey,2026-01-13,Kartikey Pradhan,13,100.0,False,True,False,0.0
+2026-01-13-lzafeer,2026-01-13,Lzafeer Ahmad B F,10,100.0,False,True,False,10.0
+2026-01-14-ryan,2026-01-14,Ryan Colaço,6,100.0,False,True,False,0.0
+2026-01-15-akshay,2026-01-15,Akshay,12,100.0,False,True,False,8.3
+2026-01-15-abhishek,2026-01-15,Abhishek S,28,100.0,False,True,False,3.6
+2026-01-15-nikunj,2026-01-15,Nikunj,7,100.0,False,True,False,0.0
+2026-01-15-antnishu,2026-01-15,AntNishu,10,100.0,False,True,False,0.0
+2026-01-16-nikunj,2026-01-16,Nikunj,6,100.0,False,True,False,16.7
+2026-01-16-prathamesh,2026-01-16,Prathamesh,9,100.0,False,True,False,0.0
+2026-01-16-abhishek,2026-01-16,Abhishek Vats,10,100.0,False,True,False,20.0
+2026-01-17-nikunj,2026-01-17,Nikunj,11,100.0,False,True,False,9.1
+2026-01-17-pavan,2026-01-17,Pavan Pamidimarri,12,100.0,False,True,False,0.0
+2026-01-19-ryan,2026-01-19,Ryan Colaço,7,100.0,False,True,False,0.0
+2026-01-20-chinmay,2026-01-20,Chinmay Mehta,21,100.0,False,True,False,0.0
+2026-01-20-akshay,2026-01-20,Akshay,6,100.0,False,True,False,16.7
+2026-01-20-abhishek,2026-01-20,Abhishek S,7,100.0,False,True,False,0.0
+2026-01-21-abhishek,2026-01-21,Abhishek Vats,18,100.0,False,True,False,0.0
+2026-01-22-antnishu,2026-01-22,AntNishu,6,100.0,False,True,False,0.0
+2026-01-22-abhishek,2026-01-22,Abhishek Vats,27,100.0,False,True,False,0.0
+2026-01-22-ryan,2026-01-22,Ryan Colaço,8,100.0,False,True,False,0.0
+2026-01-23-abhishek,2026-01-23,Abhishek Vats,14,100.0,False,True,False,0.0
+2026-01-24-smit,2026-01-24,Smit D Mahajani,6,100.0,False,True,False,0.0
+2026-01-24-abhishek,2026-01-24,Abhishek Vats,13,100.0,False,True,False,0.0
+2026-01-24-pavan,2026-01-24,Pavan Pamidimarri,5,100.0,False,True,False,0.0
+2026-01-24-anurag,2026-01-24,Anurag Bhide,25,100.0,False,True,False,4.0
+2026-01-24-pratik,2026-01-24,pratik.s.chandarana,21,100.0,False,True,False,0.0
+2026-01-25-kartikey,2026-01-25,Kartikey Pradhan,12,100.0,False,True,False,0.0
+2026-01-25-abhishek,2026-01-25,Abhishek Vats,10,100.0,False,True,False,10.0
+2026-01-26-dhruv,2026-01-26,Dhruv,7,100.0,False,True,False,28.6
+2026-01-26-dr,2026-01-26,Dr.Namrata Srinivasan,24,100.0,False,True,False,8.3
+2026-01-26-kartikey,2026-01-26,Kartikey Pradhan,28,100.0,False,True,False,3.6
+2026-01-26-abhishek,2026-01-26,Abhishek Vats,22,100.0,False,True,False,18.2
+2026-01-27-dr,2026-01-27,Dr.Namrata Srinivasan,10,100.0,False,True,False,0.0
+2026-01-27-prathamesh,2026-01-27,Prathamesh,5,100.0,False,True,False,0.0
+2026-01-27-akshay,2026-01-27,Akshay,6,100.0,False,True,False,0.0
+2026-01-27-antnishu,2026-01-27,AntNishu,6,100.0,False,True,False,0.0
+2026-01-27-abhishek,2026-01-27,Abhishek Vats,21,100.0,False,True,False,0.0
+2026-01-27-kartikey,2026-01-27,Kartikey Pradhan,16,100.0,False,True,False,0.0
+2026-01-27-manik,2026-01-27,Manik Kamra,8,100.0,False,True,False,0.0
+2026-01-28-dr,2026-01-28,Dr.Namrata Srinivasan,13,100.0,False,True,False,0.0
+2026-01-28-smit,2026-01-28,Smit D Mahajani,7,100.0,False,True,False,14.3
+2026-01-28-shiv,2026-01-28,Shiv Ram,8,100.0,False,True,False,0.0
+2026-01-28-anurag,2026-01-28,Anurag Bhide,7,100.0,False,True,False,14.3
+2026-01-29-abhishek,2026-01-29,Abhishek S,20,100.0,False,True,False,15.0
+2026-01-29-kartikey,2026-01-29,Kartikey Pradhan,26,100.0,False,True,False,0.0
+2026-01-29-lzafeer,2026-01-29,Lzafeer Ahmad B F,8,100.0,False,True,False,0.0
+2026-01-29-మాन$,2026-01-29,మాन$,6,100.0,False,True,False,66.7
+2026-01-30-kartikey,2026-01-30,Kartikey Pradhan,10,100.0,False,True,False,0.0
+2026-01-30-abhishek,2026-01-30,Abhishek S,50,100.0,False,True,False,2.0
+2026-01-30-akshay,2026-01-30,Akshay,9,100.0,False,True,False,11.1
+2026-01-31-abhishek,2026-01-31,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-02-01-abhishek,2026-02-01,Abhishek Vats,13,100.0,False,True,False,7.7
+2026-02-01-akshay,2026-02-01,Akshay,6,100.0,False,True,False,0.0
+2026-02-01-lzafeer,2026-02-01,Lzafeer Ahmad B F,22,100.0,False,True,False,40.9
+2026-02-02-sidhesh,2026-02-02,Sidhesh K K,10,100.0,False,True,False,0.0
+2026-02-02-smit,2026-02-02,Smit D Mahajani,13,100.0,False,True,False,0.0
+2026-02-02-kartikey,2026-02-02,Kartikey Pradhan,25,100.0,False,True,False,0.0
+2026-02-02-pratik,2026-02-02,pratik.s.chandarana,27,100.0,False,True,False,7.4
+2026-02-02-pavan,2026-02-02,Pavan Pamidimarri,25,100.0,False,True,False,0.0
+2026-02-03-kartikey,2026-02-03,Kartikey Pradhan,5,100.0,False,True,False,0.0
+2026-02-03-మాन$,2026-02-03,మాन$,19,100.0,False,True,False,26.3
+2026-02-03-khandoba,2026-02-03,Khandoba,12,100.0,False,True,False,0.0
+2026-02-04-khandoba,2026-02-04,Khandoba,7,100.0,False,True,False,14.3
+2026-02-04-abhishek,2026-02-04,Abhishek S,13,100.0,False,True,False,0.0
+2026-02-04-nikunj,2026-02-04,Nikunj,9,100.0,False,True,False,0.0
+2026-02-04-kartikey,2026-02-04,Kartikey Pradhan,13,100.0,False,True,False,0.0
+2026-02-04-smit,2026-02-04,Smit D Mahajani,6,100.0,False,True,False,0.0
+2026-02-04-pratik,2026-02-04,pratik.s.chandarana,15,100.0,False,True,False,0.0
+2026-02-05-akshay,2026-02-05,Akshay,18,100.0,False,True,False,0.0
+2026-02-05-మాन$,2026-02-05,మాन$,11,100.0,False,True,False,9.1
+2026-02-05-smit,2026-02-05,Smit D Mahajani,21,100.0,False,True,False,4.8
+2026-02-06-manik,2026-02-06,Manik Kamra,9,100.0,False,True,False,0.0
+2026-02-06-shiv,2026-02-06,Shiv Ram,15,100.0,False,True,False,6.7
+2026-02-06-pavan,2026-02-06,Pavan Pamidimarri,9,100.0,False,True,False,0.0
+2026-02-06-chinmay,2026-02-06,Chinmay Mehta,13,100.0,False,True,False,7.7
+2026-02-06-antnishu,2026-02-06,AntNishu,22,100.0,False,True,False,4.5
+2026-02-06-lzafeer,2026-02-06,Lzafeer Ahmad B F,17,100.0,False,True,False,23.5
+2026-02-06-abhishek,2026-02-06,Abhishek S,10,100.0,False,True,False,0.0
+2026-02-07-abhishek,2026-02-07,Abhishek Vats,21,100.0,False,True,False,4.8
+2026-02-07-akshay,2026-02-07,Akshay,5,100.0,False,True,False,0.0
+2026-02-07-lzafeer,2026-02-07,Lzafeer Ahmad B F,8,100.0,False,True,False,12.5
+2026-02-08-dhruv,2026-02-08,Dhruv Nath,27,100.0,False,True,False,7.4
+2026-02-08-smit,2026-02-08,Smit D Mahajani,9,100.0,False,True,False,0.0
+2026-02-08-abhishek,2026-02-08,Abhishek Vats,21,100.0,False,True,False,0.0
+2026-02-08-ryan,2026-02-08,Ryan Colaço,6,100.0,False,True,False,0.0
+2026-02-08-dr,2026-02-08,Dr.Namrata Srinivasan,12,100.0,False,True,False,0.0
+2026-02-08-tapish,2026-02-08,Tapish,10,100.0,False,True,False,0.0
+2026-02-09-smit,2026-02-09,Smit D Mahajani,16,100.0,False,True,False,6.2
+2026-02-09-abhishek,2026-02-09,Abhishek Vats,21,100.0,False,True,False,4.8
+2026-02-09-kartikey,2026-02-09,Kartikey Pradhan,8,100.0,False,True,False,0.0
+2026-02-09-pratik,2026-02-09,pratik.s.chandarana,9,100.0,False,True,False,11.1
+2026-02-10-khandoba,2026-02-10,Khandoba,10,100.0,False,True,False,0.0
+2026-02-10-anurag,2026-02-10,Anurag Bhide,11,100.0,False,True,False,0.0
+2026-02-10-sidhesh,2026-02-10,Sidhesh K K,5,100.0,False,True,False,40.0
+2026-02-10-pratik,2026-02-10,pratik.s.chandarana,26,100.0,False,True,False,3.8
+2026-02-10-smit,2026-02-10,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-02-10-kartikey,2026-02-10,Kartikey Pradhan,11,100.0,False,True,False,0.0
+2026-02-11-abhishek,2026-02-11,Abhishek Vats,37,100.0,False,True,False,0.0
+2026-02-11-sidhesh,2026-02-11,Sidhesh K K,10,100.0,False,True,False,40.0
+2026-02-11-pavan,2026-02-11,Pavan Pamidimarri,5,100.0,False,True,False,0.0
+2026-02-11-smit,2026-02-11,Smit D Mahajani,8,100.0,False,True,False,0.0
+2026-02-11-lzafeer,2026-02-11,Lzafeer Ahmad B F,5,100.0,False,True,False,0.0
+2026-02-12-sidhesh,2026-02-12,Sidhesh K K,5,100.0,False,True,False,40.0
+2026-02-12-manik,2026-02-12,Manik Kamra,7,100.0,False,True,False,0.0
+2026-02-12-smit,2026-02-12,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-02-12-abhishek,2026-02-12,Abhishek Vats,13,100.0,False,True,False,0.0
+2026-02-12-akshay,2026-02-12,Akshay,10,100.0,False,True,False,0.0
+2026-02-13-abhishek,2026-02-13,Abhishek S,48,100.0,False,True,False,0.0
+2026-02-13-nikunj,2026-02-13,Nikunj,16,100.0,False,True,False,0.0
+2026-02-13-మాन$,2026-02-13,మాन$,14,100.0,False,True,False,7.1
+2026-02-14-pavan,2026-02-14,Pavan Pamidimarri,10,100.0,False,True,False,0.0
+2026-02-14-abhishek,2026-02-14,Abhishek S,56,100.0,False,True,False,0.0
+2026-02-14-nikunj,2026-02-14,Nikunj,5,100.0,False,True,False,0.0
+2026-02-14-anurag,2026-02-14,Anurag Bhide,10,100.0,False,True,False,0.0
+2026-02-14-antnishu,2026-02-14,AntNishu,12,100.0,False,True,False,0.0
+2026-02-15-khandoba,2026-02-15,Khandoba,7,100.0,False,True,False,0.0
+2026-02-15-abhishek,2026-02-15,Abhishek S,7,100.0,False,True,False,0.0
+2026-02-16-kartikey,2026-02-16,Kartikey Pradhan,7,100.0,False,True,False,0.0
+2026-02-16-chinmay,2026-02-16,Chinmay Mehta,16,100.0,False,True,False,0.0
+2026-02-16-saumay,2026-02-16,Saumay,11,100.0,False,True,False,0.0
+2026-02-17-tapish,2026-02-17,Tapish,20,100.0,False,True,False,0.0
+2026-02-17-abhishek,2026-02-17,Abhishek Vats,17,100.0,False,True,False,0.0
+2026-02-17-pavan,2026-02-17,Pavan Pamidimarri,15,100.0,False,True,False,0.0
+2026-02-17-kartikey,2026-02-17,Kartikey Pradhan,9,100.0,False,True,False,0.0
+2026-02-18-nikunj,2026-02-18,Nikunj,10,100.0,False,True,False,0.0
+2026-02-18-pavan,2026-02-18,Pavan Pamidimarri,10,100.0,False,True,False,0.0
+2026-02-18-dr,2026-02-18,Dr.Namrata Srinivasan,15,100.0,False,True,False,0.0
+2026-02-18-smit,2026-02-18,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-02-19-smit,2026-02-19,Smit D Mahajani,5,100.0,False,True,False,0.0
+2026-02-19-khandoba,2026-02-19,Khandoba,10,100.0,False,True,False,0.0
+2026-02-19-akshay,2026-02-19,Akshay,8,100.0,False,True,False,0.0
+2026-02-20-kartikey,2026-02-20,Kartikey Pradhan,15,100.0,False,True,False,0.0
+2026-02-20-antnishu,2026-02-20,AntNishu,21,100.0,False,True,False,0.0
+2026-02-21-anurag,2026-02-21,Anurag Bhide,5,100.0,False,True,False,0.0
+2026-02-21-antnishu,2026-02-21,AntNishu,7,100.0,False,True,False,0.0
+2026-02-21-dr,2026-02-21,Dr.Namrata Srinivasan,14,100.0,False,True,False,7.1
+2026-02-21-abhishek,2026-02-21,Abhishek Vats,15,100.0,False,True,False,0.0
+2026-02-21-smit,2026-02-21,Smit D Mahajani,21,100.0,False,True,False,0.0
+2026-02-22-dr,2026-02-22,Dr.Namrata Srinivasan,15,100.0,False,True,False,0.0
+2026-02-22-abhishek,2026-02-22,Abhishek Vats,10,100.0,False,True,False,0.0
+2026-02-22-pavan,2026-02-22,Pavan Pamidimarri,10,100.0,False,True,False,0.0
+2026-02-22-smit,2026-02-22,Smit D Mahajani,9,100.0,False,True,False,11.1
+2026-02-22-tapish,2026-02-22,Tapish,20,100.0,False,True,False,5.0
+2026-02-23-మాन$,2026-02-23,మాन$,22,100.0,False,True,False,0.0
+2026-02-23-dr,2026-02-23,Dr.Namrata Srinivasan,12,100.0,False,True,False,0.0
+2026-02-23-saumay,2026-02-23,Saumay,13,100.0,False,True,False,7.7
+2026-02-23-dhruv,2026-02-23,Dhruv,12,100.0,False,True,False,25.0
+2026-02-24-tapish,2026-02-24,Tapish,10,100.0,False,True,False,0.0
+2026-02-24-మాन$,2026-02-24,మాन$,13,100.0,False,True,False,15.4
+2026-02-24-dr,2026-02-24,Dr.Namrata Srinivasan,11,100.0,False,True,False,0.0
+2026-02-25-kartikey,2026-02-25,Kartikey Pradhan,14,100.0,False,True,False,0.0
+2026-02-25-chinmay,2026-02-25,Chinmay Mehta,18,100.0,False,True,False,0.0
+2026-02-25-dr,2026-02-25,Dr.Namrata Srinivasan,16,100.0,False,True,False,0.0
+2026-02-25-smit,2026-02-25,Smit D Mahajani,11,100.0,False,True,False,9.1
+2026-02-26-smit,2026-02-26,Smit D Mahajani,34,0.0,False,True,False,5.9
+2026-02-26-dr,2026-02-26,Dr.Namrata Srinivasan,12,0.0,False,True,False,0.0
+2026-02-26-pratik,2026-02-26,pratik.s.chandarana,5,0.0,False,True,False,0.0
+2026-02-26-మాन$,2026-02-26,మాन$,13,100.0,False,True,False,0.0
+2026-02-27-dr,2026-02-27,Dr.Namrata Srinivasan,8,100.0,False,True,False,0.0
+2026-02-27-chinmay,2026-02-27,Chinmay Mehta,16,100.0,False,True,False,0.0
+2026-02-27-antnishu,2026-02-27,AntNishu,12,100.0,False,True,False,0.0
+2026-02-28-abhishek,2026-02-28,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-02-28-మాन$,2026-02-28,మాन$,13,100.0,False,True,False,0.0
+2026-02-28-antnishu,2026-02-28,AntNishu,5,100.0,False,True,False,20.0
+2026-03-02-మాन$,2026-03-02,మాन$,12,100.0,False,True,False,0.0
+2026-03-02-sidhesh,2026-03-02,Sidhesh K K,7,100.0,False,True,False,0.0
+2026-03-02-pavan,2026-03-02,Pavan Pamidimarri,7,100.0,False,True,False,0.0
+2026-03-02-kartikey,2026-03-02,Kartikey Pradhan,8,100.0,False,True,False,12.5
+2026-03-02-abhishek,2026-03-02,Abhishek Vats,15,100.0,False,True,False,0.0
+2026-03-03-abhishek,2026-03-03,Abhishek Vats,23,100.0,False,True,False,8.7
+2026-03-03-kartikey,2026-03-03,Kartikey Pradhan,12,100.0,False,True,False,8.3
+2026-03-03-prathamesh,2026-03-03,Prathamesh,7,100.0,False,True,False,28.6
+2026-03-04-మాन$,2026-03-04,మాन$,13,100.0,False,True,False,7.7
+2026-03-04-pavan,2026-03-04,Pavan Pamidimarri,18,100.0,False,True,False,5.6
+2026-03-04-abhishek,2026-03-04,Abhishek Vats,13,100.0,False,True,False,0.0
+2026-03-06-abhishek,2026-03-06,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-03-06-tapish,2026-03-06,Tapish,23,100.0,False,True,False,8.7
+2026-03-06-pratik,2026-03-06,pratik.s.chandarana,14,100.0,False,True,False,7.1
+2026-03-08-pavan,2026-03-08,Pavan Pamidimarri,12,100.0,False,True,False,0.0
+2026-03-09-akshay,2026-03-09,Akshay,5,100.0,False,True,False,60.0
+2026-03-09-abhishek,2026-03-09,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-03-09-kartikey,2026-03-09,Kartikey Pradhan,11,100.0,False,True,False,18.2
+2026-03-10-antnishu,2026-03-10,AntNishu,6,100.0,False,True,False,50.0
+2026-03-11-abhishek,2026-03-11,Abhishek Vats,11,100.0,False,True,False,18.2
+2026-03-11-smit,2026-03-11,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-03-12-saumay,2026-03-12,Saumay,16,100.0,False,True,False,6.2
+2026-03-12-kartikey,2026-03-12,Kartikey Pradhan,12,100.0,False,True,False,0.0
+2026-03-12-abhishek,2026-03-12,Abhishek Vats,28,100.0,False,True,False,46.4
+2026-03-12-manik,2026-03-12,Manik Kamra,9,100.0,False,True,False,22.2
+2026-03-13-pavan,2026-03-13,Pavan Pamidimarri,9,100.0,False,True,False,77.8
+2026-03-13-dhruv,2026-03-13,Dhruv,12,100.0,False,True,False,0.0
+2026-03-13-antnishu,2026-03-13,AntNishu,15,100.0,False,True,False,0.0
+2026-03-13-abhishek,2026-03-13,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-03-14-akshay,2026-03-14,Akshay,13,100.0,False,True,False,0.0
+2026-03-14-pavan,2026-03-14,Pavan Pamidimarri,16,100.0,False,True,False,6.2
+2026-03-14-antnishu,2026-03-14,AntNishu,10,100.0,False,True,False,50.0
+2026-03-14-abhishek,2026-03-14,Abhishek Vats,13,100.0,False,True,False,23.1
+2026-03-14-smit,2026-03-14,Smit D Mahajani,8,100.0,False,True,False,0.0
+2026-03-15-abhishek,2026-03-15,Abhishek S,41,100.0,False,True,False,31.7
+2026-03-15-anurag,2026-03-15,Anurag Bhide,12,100.0,False,True,False,0.0
+2026-03-15-kartikey,2026-03-15,Kartikey Pradhan,10,100.0,False,True,False,0.0
+2026-03-15-smit,2026-03-15,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-03-16-smit,2026-03-16,Smit D Mahajani,28,100.0,False,True,False,25.0
+2026-03-16-pavan,2026-03-16,Pavan Pamidimarri,10,100.0,False,True,False,0.0
+2026-03-16-pratik,2026-03-16,pratik.s.chandarana,20,100.0,False,True,False,0.0
+2026-03-16-abhishek,2026-03-16,Abhishek Vats,15,100.0,False,True,False,6.7
+2026-03-17-smit,2026-03-17,Smit D Mahajani,9,100.0,False,True,False,44.4
+2026-03-17-anand,2026-03-17,Anand Nagapurkar,7,100.0,False,True,False,0.0
+2026-03-18-smit,2026-03-18,Smit D Mahajani,9,100.0,False,True,False,0.0
+2026-03-18-akshay,2026-03-18,Akshay,5,100.0,False,True,False,0.0
+2026-03-18-bijal,2026-03-18,bijal bhatt,21,100.0,False,True,False,4.8
+2026-03-18-dr,2026-03-18,Dr.Namrata Srinivasan,16,100.0,False,True,False,6.2
+2026-03-19-abhishek,2026-03-19,Abhishek Vats,15,100.0,False,True,False,0.0
+2026-03-19-nikunj,2026-03-19,Nikunj,14,100.0,False,True,False,0.0
+2026-03-19-smit,2026-03-19,Smit D Mahajani,11,100.0,False,True,False,0.0
+2026-03-19-das,2026-03-19,Das,5,100.0,False,True,False,0.0
+2026-03-19-dr,2026-03-19,Dr.Namrata Srinivasan,20,100.0,False,True,False,25.0
+2026-03-20-pratik,2026-03-20,pratik.s.chandarana,9,100.0,False,True,False,0.0
+2026-03-20-abhishek,2026-03-20,Abhishek Vats,11,100.0,False,True,False,0.0
+2026-03-20-మాन$,2026-03-20,మాन$,17,100.0,False,True,False,0.0
+2026-03-20-dr,2026-03-20,Dr.Namrata Srinivasan,10,100.0,False,True,False,40.0
+2026-03-20-smit,2026-03-20,Smit D Mahajani,10,100.0,False,True,False,0.0
+2026-03-21-smit,2026-03-21,Smit D Mahajani,17,100.0,False,True,False,17.6
+2026-03-21-pavan,2026-03-21,Pavan Pamidimarri,12,100.0,False,True,False,0.0
+2026-03-21-pratik,2026-03-21,pratik.s.chandarana,12,100.0,False,True,False,0.0
+2026-03-21-abhishek,2026-03-21,Abhishek Vats,20,100.0,False,True,False,0.0
+2026-03-21-dr,2026-03-21,Dr.Namrata Srinivasan,11,100.0,False,True,False,18.2
+2026-03-22-abhishek,2026-03-22,Abhishek Vats,14,100.0,False,True,False,28.6
+2026-03-22-khandoba,2026-03-22,Khandoba,11,100.0,False,True,False,0.0
+2026-03-22-bijal,2026-03-22,bijal bhatt,10,100.0,False,True,False,20.0
+2026-03-23-pavan,2026-03-23,Pavan Pamidimarri,12,100.0,False,True,False,0.0
+2026-03-23-abhishek,2026-03-23,Abhishek Vats,57,100.0,False,True,False,15.8
+2026-03-23-bijal,2026-03-23,bijal bhatt,12,100.0,False,True,False,8.3
+2026-03-23-das,2026-03-23,Das,6,100.0,False,True,False,16.7
+2026-03-24-pavan,2026-03-24,Pavan Pamidimarri,12,100.0,False,True,False,8.3
+2026-03-24-bijal,2026-03-24,bijal bhatt,9,100.0,False,True,False,33.3
+2026-03-24-kartikey,2026-03-24,Kartikey Pradhan,11,100.0,False,True,False,0.0
+2026-03-24-abhishek,2026-03-24,Abhishek Vats,18,100.0,False,True,False,5.6
+2026-03-24-akshay,2026-03-24,Akshay,6,100.0,False,True,False,0.0
+2026-03-24-sidhesh,2026-03-24,Sidhesh K K,10,100.0,False,True,False,0.0
+2026-03-25-మాन$,2026-03-25,మాन$,14,100.0,False,True,False,50.0
+2026-03-25-bijal,2026-03-25,bijal bhatt,6,100.0,False,True,False,83.3
+2026-03-25-kartikey,2026-03-25,Kartikey Pradhan,15,100.0,False,True,False,0.0
+2026-03-25-smit,2026-03-25,Smit D Mahajani,9,100.0,False,True,False,11.1
+2026-03-25-abhishek,2026-03-25,Abhishek Vats,17,100.0,False,True,False,11.8
+2026-03-25-pratik,2026-03-25,pratik.s.chandarana,21,100.0,False,True,False,9.5
+2026-03-26-abhishek,2026-03-26,Abhishek Vats,16,100.0,False,True,False,0.0
+2026-03-27-bijal,2026-03-27,bijal bhatt,13,100.0,False,True,False,23.1
+2026-03-27-smit,2026-03-27,Smit D Mahajani,6,100.0,False,True,False,0.0
+2026-03-27-abhishek,2026-03-27,Abhishek Vats,16,100.0,False,True,False,0.0
+2026-03-27-sidhesh,2026-03-27,Sidhesh K K,9,100.0,False,True,False,0.0
+2026-03-28-pavan,2026-03-28,Pavan Pamidimarri,17,100.0,False,True,False,0.0
+2026-03-28-das,2026-03-28,Das,5,100.0,False,True,False,100.0
+2026-03-28-khandoba,2026-03-28,Khandoba,33,100.0,False,True,False,36.4
+2026-03-28-abhishek,2026-03-28,Abhishek Vats,10,100.0,False,True,False,0.0
+2026-03-29-chinmay,2026-03-29,Chinmay Mehta,17,100.0,False,True,False,0.0
+2026-03-29-nikhil,2026-03-29,Nikhil Borra,11,100.0,False,True,False,0.0
+2026-03-29-abhishek,2026-03-29,Abhishek Vats,14,100.0,False,True,False,7.1
+2026-03-30-మాन$,2026-03-30,మాन$,23,100.0,False,True,False,8.7
+2026-03-30-bijal,2026-03-30,bijal bhatt,30,100.0,False,True,False,30.0
+2026-03-30-kartikey,2026-03-30,Kartikey Pradhan,10,100.0,False,True,False,0.0
+2026-03-30-lzafeer,2026-03-30,Lzafeer Ahmad B F,24,100.0,False,True,False,20.8
+2026-03-30-khandoba,2026-03-30,Khandoba,15,100.0,False,True,False,66.7
+2026-03-30-abhishek,2026-03-30,Abhishek Vats,13,100.0,False,True,False,0.0
+2026-03-30-das,2026-03-30,Das,11,100.0,False,True,False,0.0
+2026-03-31-pranshu,2026-03-31,Pranshu,11,100.0,False,True,False,0.0
+2026-03-31-మాन$,2026-03-31,మాन$,10,100.0,False,True,False,0.0
+2026-03-31-tapish,2026-03-31,Tapish,11,100.0,False,True,False,0.0
+2026-03-31-abhishek,2026-03-31,Abhishek Vats,28,100.0,False,True,False,14.3
+2026-03-31-bijal,2026-03-31,bijal bhatt,32,100.0,False,True,False,62.5
+deck-rewind-2025,2026-04-04,Pavan,26,0.0,True,False,False,0.0
+deck-gauntlet-r1,2026-04-05,Sal,16,0.0,True,False,False,0.0
+deck-gauntlet-r2,2026-04-05,Sid K,16,0.0,True,False,False,0.0
+deck-gauntlet-r3,2026-04-05,Nikunj,18,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r1,2026-04-15,Sal,16,0.0,True,True,False,0.0
+deck-kviz-o-krazzy-r2,2026-04-15,Sal,16,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r3,2026-04-15,Sal,16,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r4,2026-04-15,Sal,16,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r5,2026-04-15,Sal,16,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r6,2026-04-15,Sal,16,0.0,True,False,False,0.0
+deck-kviz-o-krazzy-r7,2026-04-15,Sal,21,0.0,True,False,False,0.0
+deck-movie-quiz-bijal-r2,2026-04-25,Bijal Bhatt,16,0.0,True,False,False,0.0
+2026-05-02-pavan,2026-05-02,Pavan Pamidimarri,7,0.0,False,True,False,0.0
+2026-05-02-nikhil,2026-05-02,Nikhil Borra,9,0.0,False,True,False,0.0
+2026-05-03-abhishek,2026-05-03,Abhishek Saluja,27,0.0,False,True,False,0.0
+2026-05-03-dr,2026-05-03,Dr.Namrata Srinivasan,23,0.0,False,True,False,8.7
+2026-05-03-radhika,2026-05-03,Radhika,7,0.0,False,True,False,0.0
+deck-gauntlet-r7,2026-05-03,Khandoba,17,0.0,True,False,False,0.0
+deck-gauntlet-r8,2026-05-03,KP,18,0.0,True,False,False,0.0
+deck-gauntlet-r9,2026-05-03,Pavan,18,0.0,True,False,False,0.0
+2026-05-04-మాन$,2026-05-04,మాन$,13,0.0,False,True,False,7.7
+2026-05-04-bijal,2026-05-04,bijal bhatt,10,0.0,False,True,False,0.0
+deck-may-the-4th,2026-05-04,Bijal Bhatt,17,0.0,True,True,False,0.0
+2026-05-05-akshay,2026-05-05,Akshay,7,0.0,False,True,False,0.0
+2026-05-05-abhishek,2026-05-05,Abhishek Saluja,32,0.0,False,True,False,3.1
+2026-05-05-kartikey,2026-05-05,Kartikey Pradhan,13,0.0,False,True,False,0.0
+2026-05-05-aakanksha,2026-05-05,Aakanksha Sinha,7,0.0,False,True,False,0.0
+2026-05-05-bijal,2026-05-05,bijal bhatt,8,0.0,False,True,False,0.0
+2026-05-06-abhishek,2026-05-06,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-05-06-lzafeer,2026-05-06,Lzafeer Ahmad B F,33,0.0,False,True,False,0.0
+2026-05-07-pavan,2026-05-07,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-05-07-sidhesh,2026-05-07,Sidhesh K K,6,0.0,False,True,False,0.0
+2026-05-07-abhishek,2026-05-07,Abhishek Saluja,26,0.0,False,True,False,3.8
+2026-05-08-sidhesh,2026-05-08,Sidhesh K K,8,0.0,False,True,False,0.0
+2026-05-08-kartikey,2026-05-08,Kartikey Pradhan,21,0.0,False,True,False,0.0
+2026-05-08-abhishek,2026-05-08,Abhishek Saluja,19,0.0,False,True,False,0.0
+2026-05-08-pratik,2026-05-08,pratik.s.chandarana,23,0.0,False,True,False,0.0
+2026-05-08-gautam,2026-05-08,Gautam Ramachandran,11,0.0,False,True,False,0.0
+2026-05-08-smit,2026-05-08,Smit D Mahajani,10,0.0,False,True,False,30.0
+2026-05-09-pratik,2026-05-09,pratik.s.chandarana,13,0.0,False,True,False,0.0
+2026-05-09-akshay,2026-05-09,Akshay,10,0.0,False,True,False,0.0
+2026-05-10-chirag,2026-05-10,Chirag Jain,8,0.0,False,True,False,12.5
+2026-05-10-smit,2026-05-10,Smit D Mahajani,16,0.0,False,True,False,12.5
+2026-05-10-dr,2026-05-10,Dr. Prajwal K Aradhya,28,0.0,False,True,False,0.0
+2026-05-10-pavan,2026-05-10,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-05-10-bijal,2026-05-10,bijal bhatt,8,0.0,False,True,False,0.0
+2026-05-11-pratik,2026-05-11,pratik.s.chandarana,19,0.0,False,True,False,5.3
+2026-05-11-abhishek,2026-05-11,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-12-abhishek,2026-05-12,Abhishek Saluja,26,0.0,False,True,False,3.8
+2026-05-12-dr,2026-05-12,Dr. Prajwal K Aradhya,9,0.0,False,True,False,0.0
+2026-05-12-bijal,2026-05-12,bijal bhatt,8,0.0,False,True,False,0.0
+2026-05-12-kartikey,2026-05-12,Kartikey Pradhan,12,0.0,False,True,False,8.3
+2026-05-13-bijal,2026-05-13,bijal bhatt,11,0.0,False,True,False,0.0
+2026-05-13-pratik,2026-05-13,pratik.s.chandarana,20,0.0,False,True,False,0.0
+2026-05-13-abhishek,2026-05-13,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-13-smit,2026-05-13,Smit D Mahajani,11,0.0,False,True,False,0.0
+2026-05-14-chinmay,2026-05-14,Chinmay Mehta,11,0.0,False,True,False,0.0
+2026-05-14-smit,2026-05-14,Smit D Mahajani,12,0.0,False,True,False,8.3
+2026-05-14-abhishek,2026-05-14,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-05-15-abhishek,2026-05-15,Abhishek Saluja,8,0.0,False,True,False,0.0
+2026-05-15-bijal,2026-05-15,bijal bhatt,10,0.0,False,True,False,0.0
+2026-05-15-pratik,2026-05-15,pratik.s.chandarana,14,0.0,False,True,False,0.0
+2026-05-15-gautam,2026-05-15,Gautam Ramachandran,11,0.0,False,True,False,0.0
+2026-05-15-akshay,2026-05-15,Akshay,10,0.0,False,True,False,0.0
+2026-05-16-dr,2026-05-16,Dr. Prajwal K Aradhya,8,0.0,False,True,False,0.0
+2026-05-16-yash,2026-05-16,Yash Agrawal,10,0.0,False,True,False,0.0
+deck-visual-buzzing-bijal,2026-05-16,Bijal Bhatt,50,0.0,True,False,False,0.0
+2026-05-17-harshvardhan,2026-05-17,Harshvardhan Ranade,7,0.0,False,True,False,14.3
+2026-05-17-khandoba,2026-05-17,Khandoba,13,0.0,False,True,False,0.0
+2026-05-18-harshvardhan,2026-05-18,Harshvardhan Ranade,10,0.0,False,True,False,0.0
+2026-05-18-dr,2026-05-18,Dr. Prajwal K Aradhya,10,0.0,False,True,False,0.0
+2026-05-18-abhishek,2026-05-18,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-19-akshay,2026-05-19,Akshay,11,0.0,False,True,False,0.0
+2026-05-19-aakanksha,2026-05-19,Aakanksha Sinha,11,0.0,False,True,False,0.0
+2026-05-19-abhishek,2026-05-19,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-19-meghna,2026-05-19,Meghna,14,0.0,False,True,False,0.0
+2026-05-20-radhika,2026-05-20,Radhika,10,0.0,False,True,False,20.0
+2026-05-20-nikunj,2026-05-20,Nikunj,8,0.0,False,True,False,0.0
+2026-05-20-abhishek,2026-05-20,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-20-bijal,2026-05-20,bijal bhatt,13,0.0,False,True,False,23.1
+2026-05-20-smit,2026-05-20,Smit D Mahajani,22,0.0,False,True,False,36.4
+2026-05-20-akshay,2026-05-20,Akshay,5,0.0,False,True,False,0.0
+2026-05-21-dr,2026-05-21,Dr.Namrata Srinivasan,8,0.0,False,True,False,0.0
+2026-05-21-aakanksha,2026-05-21,Aakanksha Sinha,12,0.0,False,True,False,0.0
+2026-05-21-abhishek,2026-05-21,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-21-bijal,2026-05-21,bijal bhatt,14,0.0,False,True,False,0.0
+2026-05-21-smit,2026-05-21,Smit D Mahajani,11,0.0,False,True,False,9.1
+2026-05-22-abhishek,2026-05-22,Abhishek Saluja,18,0.0,False,True,False,0.0
+2026-05-22-smit,2026-05-22,Smit D Mahajani,10,0.0,False,True,False,0.0
+2026-05-22-aakanksha,2026-05-22,Aakanksha Sinha,11,0.0,False,True,False,0.0
+2026-05-23-abhishek,2026-05-23,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-23-dr,2026-05-23,Dr.Namrata Srinivasan,10,0.0,False,True,False,0.0
+2026-05-24-nikhil,2026-05-24,Nikhil Borra,10,0.0,False,True,False,0.0
+2026-05-24-bijal,2026-05-24,bijal bhatt,9,0.0,False,True,False,0.0
+2026-05-25-pavan,2026-05-25,Pavan Pamidimarri,14,0.0,False,True,False,0.0
+2026-05-25-prathamesh,2026-05-25,Prathamesh,7,0.0,False,True,False,0.0
+2026-05-25-smit,2026-05-25,Smit D Mahajani,15,0.0,False,True,False,46.7
+2026-05-26-smit,2026-05-26,Smit D Mahajani,15,0.0,False,True,False,6.7
+2026-05-26-abhishek,2026-05-26,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-27-abhishek,2026-05-27,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-28-gautam,2026-05-28,Gautam Ramachandran,10,0.0,False,True,False,0.0
+2026-05-28-abhishek,2026-05-28,Abhishek Vats,10,0.0,False,True,False,0.0
+2026-05-29-smit,2026-05-29,Smit Mahajani,10,0.0,False,True,False,0.0
+2026-05-29-pratik,2026-05-29,pratik.s.chandarana,5,0.0,False,True,False,20.0
+2026-05-29-shreya,2026-05-29,Shreya,20,0.0,False,True,False,0.0
+2026-05-29-dr,2026-05-29,Dr. Prajwal K Aradhya,8,0.0,False,True,False,0.0
+2026-05-29-abhishek,2026-05-29,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-29-aakanksha,2026-05-29,Aakanksha Sinha,11,0.0,False,True,False,0.0
+2026-05-30-sidhesh,2026-05-30,Sidhesh K K,11,0.0,False,True,False,0.0
+2026-05-30-abhishek,2026-05-30,Abhishek Saluja,11,0.0,False,True,False,0.0
+2026-05-30-akshay,2026-05-30,Akshay,12,0.0,False,True,False,0.0
+2026-05-30-pavan,2026-05-30,Pavan Pamidimarri,18,0.0,False,True,False,0.0
+2026-05-31-antnishu,2026-05-31,AntNishu,13,0.0,False,True,False,0.0
+2026-05-31-shreya,2026-05-31,Shreya,12,0.0,False,True,False,0.0
+2026-05-31-pavan,2026-05-31,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-06-01-kartikey,2026-06-01,Kartikey Pradhan,10,0.0,False,True,False,0.0
+2026-06-01-aakanksha,2026-06-01,Aakanksha Sinha,10,0.0,False,True,False,10.0
+2026-06-01-smit,2026-06-01,Smit Mahajani,10,0.0,False,True,False,0.0
+2026-06-01-gautam,2026-06-01,Gautam Aswani,8,0.0,False,True,False,12.5
+2026-06-02-lzafeer,2026-06-02,Lzafeer Ahmad B F,6,0.0,False,True,False,0.0
+2026-06-02-akshay,2026-06-02,Akshay,12,0.0,False,True,False,0.0
+2026-06-02-abhishek,2026-06-02,Abhishek Saluja,10,0.0,False,True,False,0.0
+2026-06-03-abhinav,2026-06-03,Abhinav,6,0.0,False,True,False,16.7
+2026-06-03-aakanksha,2026-06-03,Aakanksha Sinha,8,0.0,False,True,False,50.0
+2026-06-03-shreya,2026-06-03,Shreya,6,0.0,False,True,False,0.0
+2026-06-03-abhishek,2026-06-03,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-03-sidhesh,2026-06-03,Sidhesh K K,10,0.0,False,True,False,0.0
+2026-06-04-chinmay,2026-06-04,Chinmay Mehta,16,0.0,False,True,False,0.0
+2026-06-04-abhishek,2026-06-04,Abhishek Saluja,20,0.0,False,True,False,0.0
+2026-06-04-antnishu,2026-06-04,AntNishu,14,0.0,False,True,False,0.0
+2026-06-04-bijal,2026-06-04,bijal bhatt,11,0.0,False,True,False,0.0
+2026-06-04-akshay,2026-06-04,Akshay,7,0.0,False,True,False,0.0
+2026-06-05-మాन$,2026-06-05,మాन$,13,0.0,False,True,False,0.0
+2026-06-05-sidhesh,2026-06-05,Sidhesh K K,11,0.0,False,True,False,0.0
+deck-gauntlet-r15,2026-06-05,Khandoba,17,0.0,True,False,False,0.0
+2026-06-06-pavan,2026-06-06,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-06-06-shreya,2026-06-06,Shreya,10,0.0,False,True,False,0.0
+2026-06-06-smit,2026-06-06,Smit Mahajani,10,0.0,False,True,False,0.0
+2026-06-07-khandoba,2026-06-07,Khandoba,13,0.0,False,True,False,7.7
+2026-06-07-smit,2026-06-07,Smit Mahajani,11,0.0,False,True,False,0.0
+2026-06-08-kartikey,2026-06-08,Kartikey Pradhan,20,0.0,False,True,False,0.0
+2026-06-08-smit,2026-06-08,Smit Mahajani,7,0.0,False,True,False,14.3
+2026-06-08-abhishek,2026-06-08,Abhishek Vats,32,0.0,False,True,False,0.0
+2026-06-09-shreya,2026-06-09,Shreya,11,0.0,False,True,False,9.1
+2026-06-09-abhishek,2026-06-09,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-10-yash,2026-06-10,Yash Badani,6,0.0,False,True,False,0.0
+2026-06-10-gautam,2026-06-10,Gautam Ramachandran,16,0.0,False,True,False,0.0
+2026-06-10-akshay,2026-06-10,Akshay,10,0.0,False,True,False,0.0
+2026-06-11-smit,2026-06-11,Smit Mahajani,10,0.0,False,True,False,0.0
+2026-06-11-shreya,2026-06-11,Shreya,20,0.0,False,True,False,0.0
+2026-06-11-dr,2026-06-11,Dr.Namrata Srinivasan,25,0.0,False,True,False,4.0
+2026-06-11-abhishek,2026-06-11,Abhishek Vats,12,0.0,False,True,False,8.3
+2026-06-12-dr,2026-06-12,Dr. Prajwal K Aradhya,28,0.0,False,True,False,0.0
+2026-06-12-samyak,2026-06-12,samyak mitra,11,0.0,False,True,False,0.0
+2026-06-12-smit,2026-06-12,Smit Mahajani,9,0.0,False,True,False,0.0
+2026-06-12-abhishek,2026-06-12,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-13-harshvardhan,2026-06-13,Harshvardhan Ranade,9,0.0,False,True,False,0.0
+2026-06-13-abhishek,2026-06-13,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-06-14-pavan,2026-06-14,Pavan Pamidimarri,15,0.0,False,True,False,0.0
+2026-06-15-abhishek,2026-06-15,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-15-kartikey,2026-06-15,Kartikey Pradhan,14,0.0,False,True,False,0.0
+2026-06-16-abhishek,2026-06-16,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-17-aakanksha,2026-06-17,Aakanksha Sinha,5,0.0,False,True,False,0.0
+2026-06-17-abhishek,2026-06-17,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-06-18-sidhesh,2026-06-18,Sidhesh K K,11,100.0,False,True,False,0.0
+2026-06-18-smit,2026-06-18,Smit Mahajani,12,100.0,False,True,False,0.0
+2026-06-19-abhishek,2026-06-19,Abhishek Saluja,26,0.0,False,True,False,3.8
+2026-06-19-antnishu,2026-06-19,AntNishu,17,0.0,False,True,False,5.9
+2026-06-19-shreya,2026-06-19,Shreya,12,0.0,False,True,False,0.0
+2026-06-20-shreya,2026-06-20,Shreya,10,0.0,False,True,False,10.0
+2026-06-20-manik,2026-06-20,Manik Kamra,12,0.0,False,True,False,0.0
+2026-06-20-pavan,2026-06-20,Pavan Pamidimarri,15,0.0,False,True,False,6.7
+2026-06-20-bijal,2026-06-20,bijal bhatt,11,0.0,False,True,False,0.0
+2026-06-21-shreya,2026-06-21,Shreya,44,0.0,False,True,False,0.0
+2026-06-21-pavan,2026-06-21,Pavan Pamidimarri,14,0.0,False,True,False,0.0
+2026-06-22-khandoba,2026-06-22,Khandoba,11,0.0,False,True,False,0.0
+2026-06-22-dr,2026-06-22,Dr.Namrata Srinivasan,22,0.0,False,True,False,27.3
+2026-06-22-shreya,2026-06-22,Shreya,9,0.0,False,True,False,0.0
+2026-06-23-sidhesh,2026-06-23,Sidhesh K K,10,0.0,False,True,False,0.0
+2026-06-23-pratik,2026-06-23,pratik.s.chandarana,8,0.0,False,True,False,0.0
+2026-06-23-bijal,2026-06-23,bijal bhatt,8,0.0,False,True,False,0.0
+2026-06-23-shreya,2026-06-23,Shreya,11,0.0,False,True,False,9.1
+2026-06-24-sidhesh,2026-06-24,Sidhesh K K,12,0.0,False,True,False,0.0
+2026-06-24-shreya,2026-06-24,Shreya,14,0.0,False,True,False,0.0
+2026-06-24-pratik,2026-06-24,pratik.s.chandarana,21,0.0,False,True,False,0.0
+2026-06-25-antnishu,2026-06-25,AntNishu,10,0.0,False,True,False,0.0
+2026-06-25-harshvardhan,2026-06-25,Harshvardhan Ranade,12,0.0,False,True,False,16.7
+2026-06-25-abhishek,2026-06-25,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-25-dhruv,2026-06-25,Dhruv Nath,11,0.0,False,True,False,0.0
+2026-06-25-smit,2026-06-25,Smit Mahajani,11,0.0,False,True,False,9.1
+2026-06-26-kartikey,2026-06-26,Kartikey Pradhan,8,0.0,False,True,False,0.0
+2026-06-26-shreya,2026-06-26,Shreya,21,0.0,False,True,False,0.0
+2026-06-26-harshvardhan,2026-06-26,Harshvardhan Ranade,16,0.0,False,True,False,6.2
+2026-06-27-abhishek,2026-06-27,Abhishek Vats,16,0.0,False,True,False,0.0
+2026-06-27-dr,2026-06-27,Dr. Prajwal K Aradhya,14,0.0,False,True,False,0.0
+2026-06-27-antnishu,2026-06-27,AntNishu,9,0.0,False,True,False,0.0
+2026-06-27-pavan,2026-06-27,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-06-27-chirag,2026-06-27,Chirag Jain,12,0.0,False,True,False,0.0
+2026-06-28-abhishek,2026-06-28,Abhishek Vats,15,0.0,False,True,False,0.0
+2026-06-28-harshvardhan,2026-06-28,Harshvardhan Ranade,10,0.0,False,True,False,0.0
+2026-06-28-yash,2026-06-28,Yash Badani,11,0.0,False,True,False,9.1
+2026-06-28-nikhil,2026-06-28,Nikhil Borra,10,0.0,False,True,False,0.0
+2026-06-29-chirag,2026-06-29,Chirag Jain,12,0.0,False,True,False,8.3
+2026-06-29-dr,2026-06-29,Dr.Namrata Srinivasan,10,0.0,False,True,False,0.0
+2026-06-29-abhishek,2026-06-29,Abhishek Vats,9,0.0,False,True,False,0.0
+2026-06-30-dr,2026-06-30,Dr.Namrata Srinivasan,17,0.0,False,True,False,0.0
+2026-06-30-shreya,2026-06-30,Shreya,7,0.0,False,True,False,0.0
+2026-06-30-abhishek,2026-06-30,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-30-prathamesh,2026-06-30,Prathamesh,5,0.0,False,True,False,0.0
+2026-07-01-dr,2026-07-01,Dr. Prajwal K Aradhya,24,0.0,False,True,False,4.2
+2026-07-01-shreya,2026-07-01,Shreya,14,0.0,False,True,False,0.0
+2026-07-01-yash,2026-07-01,Yash Badani,12,0.0,False,True,False,8.3
+2026-07-01-abhishek,2026-07-01,Abhishek Saluja,9,0.0,False,True,False,0.0
+2026-07-02-dr,2026-07-02,Dr. Prajwal K Aradhya,17,0.0,False,True,False,0.0
+2026-07-02-abhishek,2026-07-02,Abhishek Saluja,7,0.0,False,True,False,0.0
+2026-07-02-khandoba,2026-07-02,Khandoba,19,0.0,False,True,False,0.0
+2026-07-03-antnishu,2026-07-03,AntNishu,11,0.0,False,True,False,0.0
+2026-07-03-gautam,2026-07-03,Gautam Ramachandran,10,0.0,False,True,False,0.0
+2026-07-03-lzafeer,2026-07-03,Lzafeer Ahmad B F,13,0.0,False,True,False,0.0
+2026-07-03-smit,2026-07-03,Smit Mahajani,10,0.0,False,True,False,50.0
+2026-07-03-shreya,2026-07-03,Shreya,21,0.0,False,True,False,0.0
+2026-07-04-lzafeer,2026-07-04,Lzafeer Ahmad B F,9,0.0,False,True,False,0.0
+2026-07-04-pavan,2026-07-04,Pavan Pamidimarri,22,0.0,False,True,False,0.0
+2026-07-04-shreya,2026-07-04,Shreya,11,0.0,False,True,False,0.0
+2026-07-05-abhishek,2026-07-05,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-07-05-anurag,2026-07-05,Anurag Bhide,20,0.0,False,True,False,10.0
+deck-tapish-sports,2026-07-05,Tapish,28,0.0,True,False,False,0.0
+2026-07-06-dr,2026-07-06,Dr. Prajwal K Aradhya,29,0.0,False,True,False,0.0
+2026-07-06-chinmay,2026-07-06,Chinmay Mehta,6,0.0,False,True,False,0.0
+2026-07-06-abhishek,2026-07-06,Abhishek Vats,17,0.0,False,True,False,0.0
+2026-07-06-shreya,2026-07-06,Shreya,20,0.0,False,True,False,5.0
+2026-07-07-dr,2026-07-07,Dr.Namrata Srinivasan,9,0.0,False,True,False,0.0
+2026-07-07-abhishek,2026-07-07,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-07-07-shreya,2026-07-07,Shreya,14,0.0,False,True,False,0.0
+2026-07-08-tapish,2026-07-08,Tapish,8,0.0,False,True,False,0.0
+2026-07-08-dr,2026-07-08,Dr.Namrata Srinivasan,12,0.0,False,True,False,8.3
+2026-07-09-akshay,2026-07-09,Akshay,6,0.0,False,True,False,0.0
+2026-07-09-shreya,2026-07-09,Shreya,32,0.0,False,True,False,0.0
+2026-07-09-sidhesh,2026-07-09,Sidhesh K K,9,0.0,False,True,False,0.0
+2026-07-09-smit,2026-07-09,Smit Mahajani,10,0.0,False,True,False,0.0
+2026-07-09-pavan,2026-07-09,Pavan Pamidimarri,10,0.0,False,True,False,0.0
+2026-07-10-shreya,2026-07-10,Shreya,26,0.0,False,True,False,3.8
+2026-07-10-dr,2026-07-10,Dr.Namrata Srinivasan,5,0.0,False,True,False,0.0
+2026-07-10-abhishek,2026-07-10,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-07-11-abhishek,2026-07-11,Abhishek Vats,27,0.0,False,True,False,3.7
+2026-07-11-shubhankar,2026-07-11,Shubhankar,8,0.0,False,True,False,12.5
+2026-07-12-lzafeer,2026-07-12,Lzafeer Ahmad B F,9,0.0,False,True,False,0.0
+2026-07-12-abhishek,2026-07-12,Abhishek Saluja,6,0.0,False,True,False,16.7
+2026-07-13-dr,2026-07-13,Dr. Prajwal K Aradhya,19,0.0,False,True,False,15.8
+2026-07-13-gautam,2026-07-13,Gautam Ramachandran,7,0.0,False,True,False,0.0
+2026-07-13-aakanksha,2026-07-13,Aakanksha Sinha,11,0.0,False,True,False,9.1
+2026-07-13-shreya,2026-07-13,Shreya,10,0.0,False,True,False,0.0
+2026-07-14-dr,2026-07-14,Dr.Namrata Srinivasan,6,0.0,False,True,False,0.0
+2026-07-14-sidhesh,2026-07-14,Sidhesh K K,13,0.0,False,True,False,0.0
+2026-07-14-harshvardhan,2026-07-14,Harshvardhan Ranade,7,0.0,False,True,False,14.3
+2026-07-19-gautam,2026-07-19,Gautam Ramachandran,9,0.0,False,True,False,11.1
+2026-07-19-pavan,2026-07-19,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-07-20-tapish,2026-07-20,Tapish,6,0.0,False,True,False,100.0
+2026-07-20-antnishu,2026-07-20,AntNishu,10,0.0,False,True,False,0.0
+2026-07-22-shreya,2026-07-22,Shreya,12,0.0,False,True,False,8.3
+2026-07-22-harshvardhan,2026-07-22,Harshvardhan Ranade,8,0.0,False,True,False,0.0
+2026-07-22-sameer,2026-07-22,Sameer Kulkarni,8,0.0,False,True,False,12.5
+2026-07-22-abhishek,2026-07-22,Abhishek Vats,12,0.0,False,True,False,8.3
+2026-07-23-abhishek,2026-07-23,Abhishek Saluja,10,0.0,False,True,False,10.0
+2026-07-23-shreya,2026-07-23,Shreya,34,0.0,False,True,False,0.0
+2026-07-23-sameer,2026-07-23,Sameer Kulkarni,5,0.0,False,True,False,0.0
+2026-07-25-shreya,2026-07-25,Shreya,7,0.0,False,True,False,71.4
+2026-07-28-smit,2026-07-28,Smit Mahajani,10,0.0,False,True,False,40.0
+2026-07-28-antnishu,2026-07-28,AntNishu,10,0.0,False,True,False,0.0
+2026-07-28-pavan,2026-07-28,Pavan Pamidimarri,5,0.0,False,True,False,0.0
