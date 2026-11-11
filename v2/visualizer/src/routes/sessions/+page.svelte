@@ -356,7 +356,8 @@
       {#each visibleSessions as session}
         <a
           href="/session/{session.id}"
-          class="relative overflow-hidden block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-5 group"
+          class="relative overflow-hidden block bg-ui-card rounded-xl border shadow-sm hover:shadow-md transition-all p-5 group
+            {session.is_live ? 'border-amber-300 dark:border-amber-500/40 hover:border-amber-400 dark:hover:border-amber-400/60' : 'border-gray-200 dark:border-gray-700 hover:border-primary-200'}"
           onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.hover); }}
           onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.default); }}
         >
