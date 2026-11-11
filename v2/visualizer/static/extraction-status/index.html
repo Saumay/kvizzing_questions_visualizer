@@ -260,6 +260,18 @@
   </div>
   <div class="lx-note" style="margin-top:-8px; margin-bottom: 16px;">Decks (slide-deck quiz rounds) have a different lifecycle than chat days: fetch the slide file &rarr; transcribe Q&amp;A &rarr; import. A deck counts as "file fetched" only once its slide file is actually downloaded and mirrored to R2, not just when a source link is known.</div>
 
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Monthly rollup</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Decks per month, by pipeline stage reached.</div>
+    <div class="lx-chart-box3 dash-skeleton" id="lx-deck-monthly"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>not fetched</span>
+      <span><i class="lx-dot" style="background:var(--fg-muted)"></i>fetched, not transcribed</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>transcribed, not populated</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>populated</span>
+    </div>
+  </div>
+
   <div class="lx-card">
     <div class="lx-section-title">Decks table</div>
     <input type="text" class="lx-search" id="lx-deck-search" placeholder="Search by session, series, title or host&hellip;">
@@ -491,6 +503,7 @@
     if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
     if (id === 'tab-dates' && dateRows) { drawMonthly(dateRows); drawStrip(dateRows); drawTrend(dateRows); drawDateQuality(dateRows); }
     if (id === 'tab-sessions' && sessionRows) { drawSessionMonthly(sessionRows); drawSessionStrip(sessionRows); drawSessionQuality(sessionRows); }
+    if (id === 'tab-decks' && deckRows) { drawDeckMonthly(deckRows); }
   }
 
   // --- monthly rollup: stacked bar, same 4 buckets as the daily strip ---
@@ -753,6 +766,76 @@
         .style('left', (ev.clientX - rect.left + 10) + 'px')
         .style('top', (ev.clientY - rect.top - 10) + 'px')
         .html(`<b>${d3.utcFormat('%B %Y')(new Date(m.month + '-01T00:00:00Z'))}</b><br>100% ${m.ok} &middot; 50-99% ${m.warn} &middot; &lt;50% ${m.bad}`);
+    }).on('mouseleave', () => tip.style('opacity', 0));
+    el.appendChild(svg.node());
+  }
+
+  function deckBucket(r) {
+    if (!toBool(r.file_extracted)) return 'notFetched';
+    if (!toBool(r.json_extracted)) return 'fetched';
+    if (toNum(r.questions_populated) <= 0) return 'transcribed';
+    return 'populated';
+  }
+  const DECK_BUCKET_COLOR = { notFetched: 'var(--bad)', fetched: 'var(--fg-muted)', transcribed: 'var(--warn)', populated: 'var(--ok)' };
+
+  function drawDeckMonthly(rows) {
+    const el = document.getElementById('lx-deck-monthly');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byMonth = new Map();
+    for (const r of rows) {
+      const key = String(r.date).slice(0, 7);
+      if (!byMonth.has(key)) byMonth.set(key, { month: key, notFetched: 0, fetched: 0, transcribed: 0, populated: 0 });
+      byMonth.get(key)[deckBucket(r)]++;
+    }
+    const months = Array.from(byMonth.values()).sort((a, b) => a.month.localeCompare(b.month));
+    const buckets = ['notFetched', 'fetched', 'transcribed', 'populated'];
+    const width = el.clientWidth || 600, height = 140;
+    const margin = { top: 6, right: 8, bottom: 20, left: 32 };
+    const x = d3.scaleBand().domain(months.map((m) => m.month)).range([margin.left, width - margin.right]).paddingInner(0.25);
+    const maxN = d3.max(months, (m) => m.notFetched + m.fetched + m.transcribed + m.populated) || 1;
+    const y = d3.scaleLinear().domain([0, maxN]).range([height - margin.bottom, margin.top]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(3))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g2) => g2.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g2) => g2.selectAll('line,path').attr('stroke', 'var(--border)'));
+    const minLabelPx = 42;
+    const maxLabels = Math.max(1, Math.floor((width - margin.left - margin.right) / minLabelPx));
+    const monthTickEvery = Math.max(1, Math.ceil(months.length / maxLabels));
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+      .selectAll('text').data(months.filter((_, i) => i % monthTickEvery === 0))
+      .join('text')
+      .attr('x', (m) => x(m.month) + x.bandwidth() / 2)
+      .attr('y', 13)
+      .attr('text-anchor', 'middle')
+      .attr('fill', 'var(--fg-muted)')
+      .style('font-size', '0.72rem')
+      .text((m) => d3.utcFormat('%b ’%y')(new Date(m.month + '-01T00:00:00Z')));
+    const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+    const bars = svg.selectAll('g.lx-month-col').data(months).join('g').attr('class', 'lx-month-col');
+    bars.each(function (m) {
+      let yCursor = height - margin.bottom;
+      const g2 = d3.select(this);
+      buckets.forEach((b) => {
+        const v = m[b];
+        if (!v) return;
+        const barH = (height - margin.bottom - margin.top) * (v / maxN);
+        yCursor -= barH;
+        g2.append('rect')
+          .attr('x', x(m.month)).attr('width', x.bandwidth())
+          .attr('y', yCursor).attr('height', barH)
+          .attr('fill', DECK_BUCKET_COLOR[b]);
+      });
+    });
+    bars.on('mousemove', function (ev, m) {
+      const rect = el.getBoundingClientRect();
+      tip.style('opacity', 1)
+        .style('left', (ev.clientX - rect.left + 10) + 'px')
+        .style('top', (ev.clientY - rect.top - 10) + 'px')
+        .html(`<b>${d3.utcFormat('%B %Y')(new Date(m.month + '-01T00:00:00Z'))}</b><br>populated ${m.populated} &middot; transcribed ${m.transcribed} &middot; fetched only ${m.fetched} &middot; not fetched ${m.notFetched}`);
     }).on('mouseleave', () => tip.style('opacity', 0));
     el.appendChild(svg.node());
   }

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { formatDate } from '$lib/utils/time';
   import EmptyState from '$lib/components/EmptyState.svelte';
-  import DecksCalendar from '$lib/components/DecksCalendar.svelte';
 
   interface DeckFile {
     label: string | null;
@@ -84,17 +83,6 @@
     return GRADIENTS[hashString(id) % GRADIENTS.length];
   }
 
-  // Two soft glow blobs (one per gradient color) positioned deterministically
-  // per card, on a near-black base — a "dark poster" look rather than a flat
-  // color fill, with no external image asset needed.
-  function glowsFor(id: string, c1: string, c2: string): { top: number; left: number; size: number; color: string }[] {
-    const h = hashString(id);
-    return [
-      { top: -10 + (h % 30), left: 50 + ((h >> 4) % 40), size: 160 + (h % 60), color: c1 },
-      { top: 40 + ((h >> 8) % 40), left: -15 + ((h >> 12) % 30), size: 130 + ((h >> 6) % 60), color: c2 },
-    ];
-  }
-
   function emojiFor(title: string): string {
     const t = title.toLowerCase();
     if (t.includes('gauntlet')) return '🥊';
@@ -118,6 +106,16 @@
   // slot whether or not a round has other formats alongside it.
   function withPdfLast(files: DeckFile[]): DeckFile[] {
     return [...files].sort((a, b) => (a.format === 'pdf' ? 1 : 0) - (b.format === 'pdf' ? 1 : 0));
+  }
+
+  // Dedicated, title/type-curated banner per series or standalone deck — NOT
+  // tied to any one round's auto-generated session photo, so it doesn't need
+  // regenerating every time a new round lands. See
+  // pipeline/utils/generate_deck_banners.py for the curated prompts. No
+  // existence check — a missing file just renders nothing, leaving the
+  // gradient base visible underneath.
+  function deckBannerUrl(id: string): string {
+    return `/images/decks/${id}.jpg`;
   }
 
   function roundSize(files: DeckFile[]): number {
@@ -148,6 +146,14 @@
   let search = $state('');
   let filterHosts = $state(new Set<string>());
   let showHostMenu = $state(false);
+  let filterKind = $state<'all' | 'series' | 'standalone'>('all');
+  let filterRecordingOnly = $state(false);
+  let dateFrom = $state('');
+  let dateTo = $state('');
+
+  function matchesDateRange(date: string): boolean {
+    return (!dateFrom || date >= dateFrom) && (!dateTo || date <= dateTo);
+  }
 
   const allHosts = $derived.by(() => {
     const set = new Set<string>();
@@ -177,35 +183,123 @@
     return !q || text.toLowerCase().includes(q);
   }
 
-  const filteredSeries = $derived.by(() =>
-    decks.series
+  const filteredSeries = $derived.by(() => {
+    if (filterKind === 'standalone') return [];
+    return decks.series
       .map(s => ({
         ...s,
         rounds: s.rounds.filter(r =>
           matchesHost(r.host) &&
+          matchesDateRange(r.date) &&
+          (!filterRecordingOnly || hasRecording(r.files)) &&
           (matchesSearch(s.title) || matchesSearch(r.title) || (r.host ? matchesSearch(r.host) : false))
         ),
       }))
-      .filter(s => s.rounds.length > 0)
-  );
+      .filter(s => s.rounds.length > 0);
+  });
 
-  const filteredStandalone = $derived.by(() =>
-    decks.standalone
+  const filteredStandalone = $derived.by(() => {
+    if (filterKind === 'series') return [];
+    return decks.standalone
       .filter(d => matchesHost(d.host))
+      .filter(d => matchesDateRange(d.date))
+      .filter(d => !filterRecordingOnly || hasRecording(d.files))
       .filter(d => matchesSearch(d.title) || (d.host ? matchesSearch(d.host) : false))
-      .sort((a, b) => b.date.localeCompare(a.date))
-  );
+      .sort((a, b) => b.date.localeCompare(a.date));
+  });
 
-  const hasFilters = $derived(!!(search || filterHosts.size > 0));
-  function clearFilters() { search = ''; filterHosts = new Set(); }
+  const hasFilters = $derived(!!(
+    search || filterHosts.size > 0 || filterKind !== 'all' || filterRecordingOnly || dateFrom || dateTo
+  ));
+  function clearFilters() {
+    search = ''; filterHosts = new Set(); filterKind = 'all'; filterRecordingOnly = false; dateFrom = ''; dateTo = '';
+  }
 
   const totalDecks = $derived(
     decks.series.reduce((n, s) => n + s.rounds.length, 0) + decks.standalone.length
   );
 
+  // Gauntlet is the flagship series — give it a hero banner instead of
+  // sitting in the grid as just another tile. Falls back to the biggest
+  // series if Gauntlet itself gets filtered out, so the hero slot never
+  // just vanishes while a Gauntlet round is still actually in the results.
+  const heroSeries = $derived.by(() => {
+    if (filteredSeries.length === 0) return null;
+    return filteredSeries.find(s => s.id === 'gauntlet')
+      ?? [...filteredSeries].sort((a, b) => b.rounds.length - a.rounds.length)[0];
+  });
+  const restSeries = $derived(filteredSeries.filter(s => s.id !== heroSeries?.id));
+  const heroLatestRound = $derived.by(() => {
+    if (!heroSeries || heroSeries.rounds.length === 0) return null;
+    return [...heroSeries.rounds].sort((a, b) => a.date.localeCompare(b.date)).at(-1)!;
+  });
+
   let openSeries = $state<Series | null>(null);
   let openStandalone = $state<Standalone | null>(null);
-  let showCalendar = $state(true);
+
+  // Unified timeline: series (minus the hero) and standalone sessions as one
+  // sortable/groupable list, each rendered as the same banner-style card.
+  type TimelineCard = {
+    id: string; kind: 'series' | 'standalone'; title: string; subtitle: string;
+    badge: string; recording: boolean; count: number; latestDate: string; onSelect: () => void;
+  };
+
+  const timelineCards = $derived.by((): TimelineCard[] => {
+    const cards: TimelineCard[] = [];
+    for (const s of restSeries) {
+      const latest = [...s.rounds].sort((a, b) => a.date.localeCompare(b.date)).at(-1)!;
+      cards.push({
+        id: s.id, kind: 'series', title: s.title,
+        subtitle: seriesHosts(s).join(', ') || 'Various hosts',
+        badge: `${s.rounds.length} session${s.rounds.length !== 1 ? 's' : ''}`,
+        recording: seriesHasRecording(s),
+        count: s.rounds.length,
+        latestDate: latest.date,
+        onSelect: () => openSeries = s,
+      });
+    }
+    for (const d of filteredStandalone) {
+      const single = d.files.length === 1 ? d.files[0] : null;
+      cards.push({
+        id: d.id, kind: 'standalone', title: d.title,
+        subtitle: `${d.host ? d.host + ' · ' : ''}${d.date_approx ? '~' : ''}${formatDate(d.date)}`,
+        badge: single ? FORMAT_LABEL[single.format] : `${d.files.length} files`,
+        recording: !single && hasRecording(d.files),
+        count: 1,
+        latestDate: d.date,
+        onSelect: () => {
+          if (single) { if (single.url) window.open(single.url, '_blank', 'noopener'); }
+          else { openStandalone = d; }
+        },
+      });
+    }
+    return cards;
+  });
+
+  let sortBy = $state<'recency' | 'count' | 'alpha'>('recency');
+
+  const sortedTimelineCards = $derived.by(() => {
+    const cards = [...timelineCards];
+    if (sortBy === 'count') return cards.sort((a, b) => b.count - a.count || b.latestDate.localeCompare(a.latestDate));
+    if (sortBy === 'alpha') return cards.sort((a, b) => a.title.localeCompare(b.title));
+    return cards.sort((a, b) => b.latestDate.localeCompare(a.latestDate));
+  });
+
+  // Month-grouped headers only make sense when sorted chronologically —
+  // other sort modes render as one flat list instead.
+  const timelineGroups = $derived.by(() => {
+    if (sortBy !== 'recency') return [{ label: null as string | null, cards: sortedTimelineCards }];
+    const groups = new Map<string, TimelineCard[]>();
+    for (const c of sortedTimelineCards) {
+      const key = c.latestDate.slice(0, 7);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(c);
+    }
+    return [...groups.entries()].map(([key, cards]) => {
+      const [y, m] = key.split('-').map(Number);
+      return { label: `${MONTH_NAMES[m - 1]} ${y}`, cards };
+    });
+  });
 
   const MONTH_NAMES = ['January','February','March','April','May','June',
                        'July','August','September','October','November','December'];
@@ -238,28 +332,6 @@
       &middot;
       <a href="https://drive.google.com/drive/folders/1jrW0WThbmlnprdGACSLaOmTpn8-SZcuc" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">slides source</a>
     </p>
-  </div>
-
-  <!-- Browse by date -->
-  <div>
-    <button
-      onclick={() => showCalendar = !showCalendar}
-      class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-    >
-      <span>📅 Browse by date</span>
-      <svg class="w-4 h-4 transition-transform {showCalendar ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    {#if showCalendar}
-      <div class="mt-2 max-w-md">
-        <DecksCalendar
-          {decks}
-          onOpenSeries={(s) => openSeries = s}
-          onOpenStandalone={(d) => openStandalone = d}
-        />
-      </div>
-    {/if}
   </div>
 
   <!-- Search + host filter -->
@@ -299,6 +371,42 @@
         </div>
       {/if}
     </div>
+
+    <!-- Series / standalone toggle -->
+    <div class="inline-flex rounded-lg border border-gray-200 dark:border-gray-600 overflow-hidden text-sm">
+      {#each [['all', 'All'], ['series', 'Series'], ['standalone', 'One-off']] as [value, label] (value)}
+        <button
+          onclick={() => filterKind = value as typeof filterKind}
+          class="px-3 py-2 transition-colors {filterKind === value ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
+        >
+          {label}
+        </button>
+      {/each}
+    </div>
+
+    <!-- Recording only -->
+    <button
+      onclick={() => filterRecordingOnly = !filterRecordingOnly}
+      class="inline-flex items-center gap-1.5 text-sm border rounded-lg px-3 py-2 transition-colors {filterRecordingOnly ? 'bg-primary-500 text-white border-primary-500' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
+    >
+      <span>🎥 Has recording</span>
+    </button>
+
+    <!-- Date range -->
+    <div class="flex items-center gap-1.5 text-sm">
+      <input
+        type="date"
+        bind:value={dateFrom}
+        class="border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-2 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
+      />
+      <span class="text-gray-400 dark:text-gray-500">&ndash;</span>
+      <input
+        type="date"
+        bind:value={dateTo}
+        class="border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-2 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
+      />
+    </div>
+
     <button
       onclick={clearFilters}
       class="text-sm text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 {hasFilters ? '' : 'invisible pointer-events-none'}"
@@ -310,89 +418,107 @@
   {#if filteredSeries.length === 0 && filteredStandalone.length === 0}
     <EmptyState emoji="📂" message="No sessions match your filters" onClear={clearFilters} />
   {:else}
-    <!-- Series -->
-    {#if filteredSeries.length > 0}
-      <div>
-        <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Series</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {#each filteredSeries as s (s.id)}
-            {@const [c1, c2] = gradientFor(s.id)}
-            {@const glows = glowsFor(s.id, c1, c2)}
-            <button
-              onclick={() => openSeries = s}
-              class="tile-grain group relative aspect-[4/3] rounded-2xl overflow-hidden text-left bg-gray-100 dark:bg-gray-950 ring-1 ring-gray-200 dark:ring-white/10 shadow-md hover:shadow-xl hover:ring-gray-300 dark:hover:ring-white/20 transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary-400"
-            >
-              {#each glows as glow}
-                <div
-                  class="absolute rounded-full blur-3xl pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                  style="top: {glow.top}%; left: {glow.left}%; width: {glow.size}px; height: {glow.size}px; background: {glow.color}; opacity: 0.55"
-                ></div>
-              {/each}
-              <div class="absolute inset-0 bg-gradient-to-t from-white/85 dark:from-black/80 via-white/25 dark:via-black/20 to-white/5 dark:to-black/10"></div>
-              <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
-                {#if seriesHasRecording(s)}<span title="Recording available">🎥</span>{/if}
-                {s.rounds.length} session{s.rounds.length !== 1 ? 's' : ''}
-              </span>
-              <span
-                class="absolute top-2.5 left-2.5 w-10 h-10 rounded-xl bg-black/5 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 flex items-center justify-center text-xl"
-                style="box-shadow: 0 0 22px {c1}66"
-              >{emojiFor(s.title)}</span>
-              <div class="absolute bottom-0 inset-x-0 p-3">
-                <p class="text-base font-bold text-gray-900 dark:text-white leading-tight line-clamp-2">{s.title}</p>
-                <p class="text-[11px] text-gray-600 dark:text-white/65 mt-0.5 truncate">{seriesHosts(s).join(', ') || 'Various hosts'}</p>
-              </div>
-            </button>
-          {/each}
-        </div>
-      </div>
-    {/if}
-
-    <!-- Standalone -->
-    {#if filteredStandalone.length > 0}
-      <div>
-        <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">One-off sessions</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {#each filteredStandalone as d (d.id)}
-            {@const [c1, c2] = gradientFor(d.id)}
-            {@const glows = glowsFor(d.id, c1, c2)}
-            {@const single = d.files.length === 1 ? d.files[0] : null}
-            <svelte:element
-              this={single ? 'a' : 'button'}
-              href={single ? (single.url ?? undefined) : undefined}
-              target={single ? '_blank' : undefined}
-              rel={single ? 'noopener noreferrer' : undefined}
-              role={single ? undefined : 'button'}
-              tabindex={single ? undefined : 0}
-              onclick={single ? undefined : () => openStandalone = d}
-              class="tile-grain group relative aspect-[4/3] rounded-2xl overflow-hidden text-left bg-gray-100 dark:bg-gray-950 ring-1 ring-gray-200 dark:ring-white/10 shadow-md hover:shadow-xl hover:ring-gray-300 dark:hover:ring-white/20 transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary-400 {single && !single.url ? 'pointer-events-none' : ''}"
-            >
-              {#each glows as glow}
-                <div
-                  class="absolute rounded-full blur-3xl pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                  style="top: {glow.top}%; left: {glow.left}%; width: {glow.size}px; height: {glow.size}px; background: {glow.color}; opacity: 0.55"
-                ></div>
-              {/each}
-              <div class="absolute inset-0 bg-gradient-to-t from-white/85 dark:from-black/80 via-white/25 dark:via-black/20 to-white/5 dark:to-black/10"></div>
-              <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-1 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 text-gray-800 dark:text-white/90">
-                {#if !single && hasRecording(d.files)}<span title="Recording available">🎥</span>{/if}
-                {single ? FORMAT_LABEL[single.format] : `${d.files.length} files`}
-              </span>
-              <span
-                class="absolute top-2.5 left-2.5 w-10 h-10 rounded-xl bg-black/5 dark:bg-white/10 backdrop-blur-md ring-1 ring-black/10 dark:ring-white/10 flex items-center justify-center text-xl"
-                style="box-shadow: 0 0 22px {c1}66"
-              >{emojiFor(d.title)}</span>
-              <div class="absolute bottom-0 inset-x-0 p-3">
-                <p class="text-base font-bold text-gray-900 dark:text-white leading-tight line-clamp-2">{d.title}</p>
-                <p class="text-[11px] text-gray-600 dark:text-white/65 mt-0.5 truncate">
-                  {#if d.host}{d.host} &middot; {/if}{d.date_approx ? '~' : ''}{formatDate(d.date)}
+    <!-- Hero: flagship series -->
+    {#if heroSeries}
+      {@const [c1, c2] = gradientFor(heroSeries.id)}
+      {@const imgUrl = deckBannerUrl(heroSeries.id)}
+      {@const hosts = seriesHosts(heroSeries)}
+      <button
+        onclick={() => openSeries = heroSeries}
+        class="tile-grain group relative w-full overflow-hidden rounded-2xl text-left ring-1 ring-black/10 dark:ring-white/10 shadow-lg hover:shadow-2xl transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
+      >
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
+        {#if imgUrl}
+          <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 transition-opacity duration-300" style="background-image: url('{imgUrl}')"></div>
+        {/if}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
+        <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]">
+          <div class="min-w-0">
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-2">
+              ⭐ Flagship series
+            </span>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl sm:text-4xl flex-shrink-0">{emojiFor(heroSeries.title)}</span>
+              <div class="min-w-0">
+                <h2 class="text-xl sm:text-3xl font-black text-white leading-tight truncate">{heroSeries.title}</h2>
+                <p class="text-xs sm:text-sm text-white/70 mt-1 truncate">
+                  {hosts.slice(0, 5).join(', ')}{hosts.length > 5 ? ` +${hosts.length - 5} more` : ''}
                 </p>
               </div>
-              {#if single && !single.url}
-                <div class="absolute inset-0 flex items-center justify-center bg-white/70 dark:bg-black/60">
-                  <span class="text-[10px] font-semibold text-gray-800 dark:text-white bg-white/70 dark:bg-black/50 px-2 py-1 rounded-full">Upload pending</span>
-                </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-5 flex-shrink-0 self-start sm:self-end">
+            <div class="text-right">
+              <p class="text-2xl sm:text-3xl font-black text-white leading-none">{heroSeries.rounds.length}</p>
+              <p class="text-[10px] text-white/60 uppercase tracking-wide mt-1">rounds</p>
+            </div>
+            {#if heroLatestRound}
+              <div class="text-right hidden sm:block border-l border-white/20 pl-5">
+                <p class="text-xs text-white/80">Latest: #{heroLatestRound.round}</p>
+                <p class="text-[11px] text-white/50 mt-0.5">{heroLatestRound.date_approx ? '~' : ''}{formatDate(heroLatestRound.date)}</p>
+              </div>
+            {/if}
+            <svg class="w-6 h-6 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </button>
+    {/if}
+
+    <!-- Unified timeline: every other series + standalone, as banner cards -->
+    {#if timelineCards.length > 0}
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">All sessions</h2>
+          <div class="inline-flex rounded-lg border border-gray-200 dark:border-gray-600 overflow-hidden text-xs">
+            {#each [['recency', 'Recent'], ['count', 'Most sessions'], ['alpha', 'A–Z']] as [value, label] (value)}
+              <button
+                onclick={() => sortBy = value as typeof sortBy}
+                class="px-2.5 py-1.5 transition-colors {sortBy === value ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
+              >
+                {label}
+              </button>
+            {/each}
+          </div>
+        </div>
+        <div class="space-y-6">
+          {#each timelineGroups as group (group.label ?? 'flat')}
+            <div>
+              {#if group.label}
+                <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-2">{group.label}</p>
               {/if}
-            </svelte:element>
+              <div class="space-y-3">
+                {#each group.cards as card (card.id)}
+                  {@const [c1, c2] = gradientFor(card.id)}
+                  {@const imgUrl = deckBannerUrl(card.id)}
+                  <button
+                    onclick={card.onSelect}
+                    class="tile-grain group relative overflow-hidden block w-full text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  >
+                    <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
+                    <div class="absolute inset-0 bg-cover bg-center opacity-45 group-hover:opacity-65 transition-opacity duration-300" style="background-image: url('{imgUrl}')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/5"></div>
+                    <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]">
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
+                        <div class="min-w-0">
+                          <p class="text-base font-bold text-white leading-tight truncate">{card.title}</p>
+                          <p class="text-xs text-white/70 mt-0.5 truncate">{card.subtitle}</p>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-3 flex-shrink-0">
+                        {#if card.recording}<span title="Recording available">🎥</span>{/if}
+                        <span class="text-xs font-medium text-white/80 whitespace-nowrap">{card.badge}</span>
+                        <svg class="w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </button>
+                {/each}
+              </div>
+            </div>
           {/each}
         </div>
       </div>

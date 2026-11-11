@@ -700,9 +700,12 @@ def _run_import_decks() -> None:
     haven't been extracted yet (not an error — re-run once more decks are
     extracted). See utils/import_deck_questions.py for the full workflow.
 
-    Run `generate-images` afterward to get session card thumbnails — it
-    already handles "session has no real photo" for every session
-    regardless of origin, so deck sessions just get picked up by it.
+    Also runs `generate-images` at the end to backfill thumbnails for any
+    newly-imported deck sessions — it already handles "session has no real
+    photo" for every session regardless of origin, so deck sessions just get
+    picked up by it. (Previously this was a separate manual step and most
+    deck/round batches never got it re-run, leaving dozens of sessions with
+    no card image.)
     """
     data_dir = V2_DIR / "data"
     output_dir = V2_DIR / "visualizer" / "static" / "data"
@@ -744,12 +747,15 @@ def _run_import_decks() -> None:
         log.info("[Stage 6] Re-exporting JSON files…")
         counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=None)
         _log_counts(counts)
-        log.info("Import + export complete.")
     except Exception:
         log.exception("Deck import crashed.")
         raise
     finally:
         db.close()
+
+    log.info("Generating session background images for newly-imported decks…")
+    _generate_images_main()
+    log.info("Import + export complete.")
 
 
 # ── Post-hoc subcommands ──────────────────────────────────────────────────────

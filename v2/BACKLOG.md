@@ -970,35 +970,35 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-03-31-abhishek | 2026-03-31 | Abhishek Vats | 28 | 100.0% |  | yes |  | 14.3% |
 | 2026-03-31-bijal | 2026-03-31 | bijal bhatt | 32 | 100.0% |  | yes |  | 62.5% |
 | deck-rewind-2025 | 2026-04-04 | Pavan | 26 | 88.5% | yes | yes |  | 0.0% |
-| deck-kvizimals | 2026-04-04 | Manas | 20 | 100.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r1 | 2026-04-05 | Sal | 16 | 100.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r2 | 2026-04-05 | Sid K | 16 | 75.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r3 | 2026-04-05 | Nikunj | 18 | 88.9% | yes |  |  | 0.0% |
-| deck-gauntlet-r4 | 2026-04-05 | Aditi | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-gauntlet-r5 | 2026-04-05 | Zaf | 19 | 94.7% | yes |  |  | 0.0% |
-| deck-gauntlet-r6 | 2026-04-15 | Vats | 17 | 100.0% | yes |  |  | 0.0% |
+| deck-kvizimals | 2026-04-04 | Manas | 20 | 100.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r1 | 2026-04-05 | Sal | 16 | 100.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r2 | 2026-04-05 | Sid K | 16 | 75.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r3 | 2026-04-05 | Nikunj | 18 | 88.9% | yes | yes |  | 0.0% |
+| deck-gauntlet-r4 | 2026-04-05 | Aditi | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-gauntlet-r5 | 2026-04-05 | Zaf | 19 | 94.7% | yes | yes |  | 0.0% |
+| deck-gauntlet-r6 | 2026-04-15 | Vats | 17 | 100.0% | yes | yes |  | 0.0% |
 | deck-kviz-o-krazzy-r1 | 2026-04-15 | Sal | 16 | 87.5% | yes | yes |  | 0.0% |
-| deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | 16 | 87.5% | yes |  |  | 0.0% |
-| deck-kviz-o-krazzy-r3 | 2026-04-15 | Sal | 16 | 93.8% | yes |  |  | 0.0% |
-| deck-kviz-o-krazzy-r4 | 2026-04-15 | Sal | 16 | 100.0% | yes |  |  | 0.0% |
-| deck-kviz-o-krazzy-r5 | 2026-04-15 | Sal | 16 | 87.5% | yes |  |  | 0.0% |
-| deck-kviz-o-krazzy-r6 | 2026-04-15 | Sal | 16 | 100.0% | yes |  |  | 0.0% |
-| deck-kviz-o-krazzy-r7 | 2026-04-15 | Sal | 21 | 76.2% | yes |  |  | 0.0% |
-| deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | 16 | 93.8% | yes |  |  | 0.0% |
-| deck-movie-quiz-bijal-r2 | 2026-04-25 | Bijal Bhatt | 16 | 81.2% | yes |  |  | 0.0% |
-| deck-buzzing-whatsapp-namrata-r1 | 2026-05-01 | Namrata | 30 | 56.7% | yes |  |  | 0.0% |
-| deck-buzzing-whatsapp-namrata-r2 | 2026-05-01 | Namrata | 30 | 33.3% | yes |  |  | 0.0% |
+| deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | 16 | 87.5% | yes | yes |  | 0.0% |
+| deck-kviz-o-krazzy-r3 | 2026-04-15 | Sal | 16 | 93.8% | yes | yes |  | 0.0% |
+| deck-kviz-o-krazzy-r4 | 2026-04-15 | Sal | 16 | 100.0% | yes | yes |  | 0.0% |
+| deck-kviz-o-krazzy-r5 | 2026-04-15 | Sal | 16 | 87.5% | yes | yes |  | 0.0% |
+| deck-kviz-o-krazzy-r6 | 2026-04-15 | Sal | 16 | 100.0% | yes | yes |  | 0.0% |
+| deck-kviz-o-krazzy-r7 | 2026-04-15 | Sal | 21 | 76.2% | yes | yes |  | 0.0% |
+| deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | 16 | 93.8% | yes | yes |  | 0.0% |
+| deck-movie-quiz-bijal-r2 | 2026-04-25 | Bijal Bhatt | 16 | 81.2% | yes | yes |  | 0.0% |
+| deck-buzzing-whatsapp-namrata-r1 | 2026-05-01 | Namrata | 30 | 56.7% | yes | yes |  | 0.0% |
+| deck-buzzing-whatsapp-namrata-r2 | 2026-05-01 | Namrata | 30 | 33.3% | yes | yes |  | 0.0% |
 | 2026-05-02-pavan | 2026-05-02 | Pavan Pamidimarri | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-02-nikhil | 2026-05-02 | Nikhil Borra | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-03-abhishek | 2026-05-03 | Abhishek Saluja | 27 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-03-dr | 2026-05-03 | Dr.Namrata Srinivasan | 23 | 0.0% |  | yes |  | 8.7% |
 | 2026-05-03-radhika | 2026-05-03 | Radhika | 7 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r7 | 2026-05-03 | Khandoba | 17 | 100.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r8 | 2026-05-03 | KP | 18 | 94.4% | yes |  |  | 0.0% |
-| deck-gauntlet-r9 | 2026-05-03 | Pavan | 18 | 88.9% | yes |  |  | 0.0% |
-| deck-gauntlet-r10 | 2026-05-03 | CM | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-gauntlet-r11 | 2026-05-03 | Sal | 17 | 100.0% | yes |  |  | 0.0% |
-| deck-buzzer-bhide | 2026-05-03 | Bhide | 60 | 71.7% | yes |  |  | 0.0% |
+| deck-gauntlet-r7 | 2026-05-03 | Khandoba | 17 | 100.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r8 | 2026-05-03 | KP | 18 | 94.4% | yes | yes |  | 0.0% |
+| deck-gauntlet-r9 | 2026-05-03 | Pavan | 18 | 88.9% | yes | yes |  | 0.0% |
+| deck-gauntlet-r10 | 2026-05-03 | CM | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-gauntlet-r11 | 2026-05-03 | Sal | 17 | 100.0% | yes | yes |  | 0.0% |
+| deck-buzzer-bhide | 2026-05-03 | Bhide | 60 | 71.7% | yes | yes |  | 0.0% |
 | 2026-05-04-మాन$ | 2026-05-04 | మాन$ | 13 | 0.0% |  | yes |  | 7.7% |
 | 2026-05-04-bijal | 2026-05-04 | bijal bhatt | 10 | 0.0% |  | yes |  | 0.0% |
 | deck-may-the-4th | 2026-05-04 | Bijal Bhatt | 17 | 94.1% | yes | yes |  | 0.0% |
@@ -1020,7 +1020,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-05-08-smit | 2026-05-08 | Smit D Mahajani | 10 | 0.0% |  | yes |  | 30.0% |
 | 2026-05-09-pratik | 2026-05-09 | pratik.s.chandarana | 13 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-09-akshay | 2026-05-09 | Akshay | 10 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r12 | 2026-05-09 | Vats | 16 | 100.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r12 | 2026-05-09 | Vats | 16 | 100.0% | yes | yes |  | 0.0% |
 | 2026-05-10-chirag | 2026-05-10 | Chirag Jain | 8 | 0.0% |  | yes |  | 12.5% |
 | 2026-05-10-smit | 2026-05-10 | Smit D Mahajani | 16 | 0.0% |  | yes |  | 12.5% |
 | 2026-05-10-dr | 2026-05-10 | Dr. Prajwal K Aradhya | 28 | 0.0% |  | yes |  | 0.0% |
@@ -1046,10 +1046,10 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-05-15-akshay | 2026-05-15 | Akshay | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-16-dr | 2026-05-16 | Dr. Prajwal K Aradhya | 8 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-16-yash | 2026-05-16 | Yash Agrawal | 10 | 0.0% |  | yes |  | 0.0% |
-| deck-visual-buzzing-bijal | 2026-05-16 | Bijal Bhatt | 50 | 0.0% | yes |  |  | 0.0% |
+| deck-visual-buzzing-bijal | 2026-05-16 | Bijal Bhatt | 50 | 0.0% | yes | yes |  | 0.0% |
 | 2026-05-17-harshvardhan | 2026-05-17 | Harshvardhan Ranade | 7 | 0.0% |  | yes |  | 14.3% |
 | 2026-05-17-khandoba | 2026-05-17 | Khandoba | 13 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r13 | 2026-05-17 | Pavan | 17 | 94.1% | yes |  |  | 0.0% |
+| deck-gauntlet-r13 | 2026-05-17 | Pavan | 17 | 94.1% | yes | yes |  | 0.0% |
 | 2026-05-18-harshvardhan | 2026-05-18 | Harshvardhan Ranade | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-18-dr | 2026-05-18 | Dr. Prajwal K Aradhya | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-18-abhishek | 2026-05-18 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
@@ -1073,7 +1073,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-05-22-aakanksha | 2026-05-22 | Aakanksha Sinha | 11 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-23-abhishek | 2026-05-23 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-23-dr | 2026-05-23 | Dr.Namrata Srinivasan | 10 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r14 | 2026-05-23 | Lzafeer | 18 | 88.9% | yes |  |  | 0.0% |
+| deck-gauntlet-r14 | 2026-05-23 | Lzafeer | 18 | 88.9% | yes | yes |  | 0.0% |
 | 2026-05-24-nikhil | 2026-05-24 | Nikhil Borra | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-24-bijal | 2026-05-24 | bijal bhatt | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-25-pavan | 2026-05-25 | Pavan Pamidimarri | 14 | 0.0% |  | yes |  | 0.0% |
@@ -1116,8 +1116,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-04-akshay | 2026-06-04 | Akshay | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-05-మాन$ | 2026-06-05 | మాन$ | 13 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-05-sidhesh | 2026-06-05 | Sidhesh K K | 11 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r15 | 2026-06-05 | Khandoba | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-gauntlet-r16 | 2026-06-05 | Bijal Bhatt | 18 | 94.4% | yes |  |  | 0.0% |
+| deck-gauntlet-r15 | 2026-06-05 | Khandoba | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-gauntlet-r16 | 2026-06-05 | Bijal Bhatt | 18 | 94.4% | yes | yes |  | 0.0% |
 | 2026-06-06-pavan | 2026-06-06 | Pavan Pamidimarri | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-06-shreya | 2026-06-06 | Shreya | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-06-smit | 2026-06-06 | Smit Mahajani | 10 | 0.0% |  | yes |  | 0.0% |
@@ -1152,7 +1152,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-19-abhishek | 2026-06-19 | Abhishek Saluja | 26 | 0.0% |  | yes |  | 3.8% |
 | 2026-06-19-antnishu | 2026-06-19 | AntNishu | 17 | 0.0% |  | yes |  | 5.9% |
 | 2026-06-19-shreya | 2026-06-19 | Shreya | 12 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r17 | 2026-06-19 | Nikunj | 20 | 75.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r17 | 2026-06-19 | Nikunj | 20 | 75.0% | yes | yes |  | 0.0% |
 | 2026-06-20-shreya | 2026-06-20 | Shreya | 10 | 0.0% |  | yes |  | 10.0% |
 | 2026-06-20-manik | 2026-06-20 | Manik Kamra | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-20-pavan | 2026-06-20 | Pavan Pamidimarri | 15 | 0.0% |  | yes |  | 6.7% |
@@ -1177,7 +1177,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-26-kartikey | 2026-06-26 | Kartikey Pradhan | 8 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-26-shreya | 2026-06-26 | Shreya | 21 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-26-harshvardhan | 2026-06-26 | Harshvardhan Ranade | 16 | 0.0% |  | yes |  | 6.2% |
-| deck-gauntlet-r18 | 2026-06-26 | Prajwal | 17 | 94.1% | yes |  |  | 0.0% |
+| deck-gauntlet-r18 | 2026-06-26 | Prajwal | 17 | 94.1% | yes | yes |  | 0.0% |
 | 2026-06-27-abhishek | 2026-06-27 | Abhishek Vats | 16 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-27-dr | 2026-06-27 | Dr. Prajwal K Aradhya | 14 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-27-antnishu | 2026-06-27 | AntNishu | 9 | 0.0% |  | yes |  | 0.0% |
@@ -1190,8 +1190,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-29-chirag | 2026-06-29 | Chirag Jain | 12 | 0.0% |  | yes |  | 8.3% |
 | 2026-06-29-dr | 2026-06-29 | Dr.Namrata Srinivasan | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-29-abhishek | 2026-06-29 | Abhishek Vats | 9 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r19 | 2026-06-29 | Gautam | 18 | 77.8% | yes |  |  | 0.0% |
-| deck-history-smit | 2026-06-29 | Smit | 20 | 100.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r19 | 2026-06-29 | Gautam | 18 | 77.8% | yes | yes |  | 0.0% |
+| deck-history-smit | 2026-06-29 | Smit | 20 | 100.0% | yes | yes |  | 0.0% |
 | 2026-06-30-dr | 2026-06-30 | Dr.Namrata Srinivasan | 17 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-30-shreya | 2026-06-30 | Shreya | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-30-abhishek | 2026-06-30 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
@@ -1211,10 +1211,10 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-04-lzafeer | 2026-07-04 | Lzafeer Ahmad B F | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-04-pavan | 2026-07-04 | Pavan Pamidimarri | 22 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-04-shreya | 2026-07-04 | Shreya | 11 | 0.0% |  | yes |  | 0.0% |
-| deck-old-school-kp | 2026-07-04 | KP | 21 | 71.4% | yes |  |  | 0.0% |
+| deck-old-school-kp | 2026-07-04 | KP | 21 | 71.4% | yes | yes |  | 0.0% |
 | 2026-07-05-abhishek | 2026-07-05 | Abhishek Vats | 11 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-05-anurag | 2026-07-05 | Anurag Bhide | 20 | 0.0% |  | yes |  | 10.0% |
-| deck-tapish-sports | 2026-07-05 | Tapish | 28 | 89.3% | yes |  |  | 0.0% |
+| deck-tapish-sports | 2026-07-05 | Tapish | 28 | 89.3% | yes | yes |  | 0.0% |
 | 2026-07-06-dr | 2026-07-06 | Dr. Prajwal K Aradhya | 29 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-06-chinmay | 2026-07-06 | Chinmay Mehta | 6 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-06-abhishek | 2026-07-06 | Abhishek Vats | 17 | 0.0% |  | yes |  | 0.0% |
@@ -1234,12 +1234,12 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-10-abhishek | 2026-07-10 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-11-abhishek | 2026-07-11 | Abhishek Vats | 27 | 0.0% |  | yes |  | 3.7% |
 | 2026-07-11-shubhankar | 2026-07-11 | Shubhankar | 8 | 0.0% |  | yes |  | 12.5% |
-| deck-gauntlet-r20 | 2026-07-11 | Chinmay | 17 | 100.0% | yes |  |  | 0.0% |
-| deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | 16 | 75.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r20 | 2026-07-11 | Chinmay | 17 | 100.0% | yes | yes |  | 0.0% |
+| deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | 16 | 75.0% | yes | yes |  | 0.0% |
 | 2026-07-12-lzafeer | 2026-07-12 | Lzafeer Ahmad B F | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-12-abhishek | 2026-07-12 | Abhishek Saluja | 6 | 0.0% |  | yes |  | 16.7% |
-| deck-mtv-tournament-r2 | 2026-07-12 | Bijal Bhatt | 16 | 100.0% | yes |  |  | 0.0% |
-| deck-mtv-tournament-r3 | 2026-07-12 | Bijal Bhatt | 16 | 87.5% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r2 | 2026-07-12 | Bijal Bhatt | 16 | 100.0% | yes | yes |  | 0.0% |
+| deck-mtv-tournament-r3 | 2026-07-12 | Bijal Bhatt | 16 | 87.5% | yes | yes |  | 0.0% |
 | 2026-07-13-dr | 2026-07-13 | Dr. Prajwal K Aradhya | 19 | 0.0% |  | yes |  | 15.8% |
 | 2026-07-13-gautam | 2026-07-13 | Gautam Ramachandran | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-13-aakanksha | 2026-07-13 | Aakanksha Sinha | 11 | 0.0% |  | yes |  | 9.1% |
@@ -1249,7 +1249,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-14-harshvardhan | 2026-07-14 | Harshvardhan Ranade | 7 | 0.0% |  | yes |  | 14.3% |
 | 2026-07-19-gautam | 2026-07-19 | Gautam Ramachandran | 9 | 0.0% |  | yes |  | 11.1% |
 | 2026-07-19-pavan | 2026-07-19 | Pavan Pamidimarri | 12 | 0.0% |  | yes |  | 0.0% |
-| deck-gauntlet-r21 | 2026-07-19 | unknown | 16 | 100.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r21 | 2026-07-19 | unknown | 16 | 100.0% | yes | yes |  | 0.0% |
 | 2026-07-20-tapish | 2026-07-20 | Tapish | 6 | 0.0% |  | yes |  | 100.0% |
 | 2026-07-20-antnishu | 2026-07-20 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-22-shreya | 2026-07-22 | Shreya | 12 | 0.0% |  | yes |  | 8.3% |
@@ -1260,32 +1260,32 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-23-shreya | 2026-07-23 | Shreya | 34 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-23-sameer | 2026-07-23 | Sameer Kulkarni | 5 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-25-shreya | 2026-07-25 | Shreya | 7 | 0.0% |  | yes |  | 71.4% |
-| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-gauntlet-r22 | 2026-07-26 | Khandoba | 18 | 94.4% | yes |  |  | 0.0% |
-| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | 21 | 95.2% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-gauntlet-r22 | 2026-07-26 | Khandoba | 18 | 94.4% | yes | yes |  | 0.0% |
+| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | 21 | 95.2% | yes | yes |  | 0.0% |
 | 2026-07-28-smit | 2026-07-28 | Smit Mahajani | 10 | 0.0% |  | yes |  | 40.0% |
 | 2026-07-28-antnishu | 2026-07-28 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-28-pavan | 2026-07-28 | Pavan Pamidimarri | 5 | 0.0% |  | yes |  | 0.0% |
-| 2026-07-29-anurag | 2026-07-29 | Anurag Bhide | 24 | 0.0% | yes |  |  | 8.3% |
-| 2026-07-29-smit | 2026-07-29 | Smit D Mahajani | 20 | 0.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r23 | 2026-08-01 | unknown | 18 | 94.4% | yes |  |  | 0.0% |
-| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | 17 | 82.4% | yes |  |  | 0.0% |
-| deck-long-connect-gautam | 2026-08-09 | Gautam | 17 | 52.9% | yes |  |  | 0.0% |
-| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | 17 | 64.7% | yes |  |  | 0.0% |
-| deck-gauntlet-r24 | 2026-08-16 | Namrata | 16 | 75.0% | yes |  |  | 0.0% |
-| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | 47 | 100.0% | yes |  |  | 0.0% |
-| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | 12 | 75.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r25 | 2026-08-29 | Sid K | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | 32 | 46.9% | yes |  |  | 0.0% |
-| deck-gauntlet-r26 | 2026-09-12 | Apratim | 16 | 100.0% | yes |  |  | 0.0% |
-| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | 21 | 71.4% | yes |  |  | 0.0% |
-| deck-gauntlet-r27 | 2026-09-20 | unknown | 16 | 62.5% | yes |  |  | 0.0% |
-| deck-gauntlet-r29 | 2026-10-04 | Pavan | 17 | 94.1% | yes |  |  | 0.0% |
-| deck-gauntlet-r28 | 2026-10-12 | Pranshu | 17 | 82.4% | yes |  |  | 0.0% |
-| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | 17 | 100.0% | yes |  |  | 0.0% |
-| deck-gauntlet-r30 | 2026-10-26 | Sal | 17 | 64.7% | yes |  |  | 0.0% |
-| deck-gauntlet-r31 | 2026-10-26 | Aditi | 17 | 70.6% | yes |  |  | 0.0% |
-| deck-gauntlet-r32 | 2026-11-01 | Khandoba | 17 | 94.1% | yes |  |  | 0.0% |
+| 2026-07-29-anurag | 2026-07-29 | Anurag Bhide | 24 | 0.0% | yes | yes |  | 8.3% |
+| 2026-07-29-smit | 2026-07-29 | Smit D Mahajani | 20 | 0.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r23 | 2026-08-01 | unknown | 18 | 94.4% | yes | yes |  | 0.0% |
+| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | 17 | 82.4% | yes | yes |  | 0.0% |
+| deck-long-connect-gautam | 2026-08-09 | Gautam | 17 | 52.9% | yes | yes |  | 0.0% |
+| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | 17 | 64.7% | yes | yes |  | 0.0% |
+| deck-gauntlet-r24 | 2026-08-16 | Namrata | 16 | 75.0% | yes | yes |  | 0.0% |
+| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | 47 | 100.0% | yes | yes |  | 0.0% |
+| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | 12 | 75.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r25 | 2026-08-29 | Sid K | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | 32 | 46.9% | yes | yes |  | 0.0% |
+| deck-gauntlet-r26 | 2026-09-12 | Apratim | 16 | 100.0% | yes | yes |  | 0.0% |
+| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | 21 | 71.4% | yes | yes |  | 0.0% |
+| deck-gauntlet-r27 | 2026-09-20 | unknown | 16 | 62.5% | yes | yes |  | 0.0% |
+| deck-gauntlet-r29 | 2026-10-04 | Pavan | 17 | 94.1% | yes | yes |  | 0.0% |
+| deck-gauntlet-r28 | 2026-10-12 | Pranshu | 17 | 82.4% | yes | yes |  | 0.0% |
+| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | 17 | 100.0% | yes | yes |  | 0.0% |
+| deck-gauntlet-r30 | 2026-10-26 | Sal | 17 | 64.7% | yes | yes |  | 0.0% |
+| deck-gauntlet-r31 | 2026-10-26 | Aditi | 17 | 70.6% | yes | yes |  | 0.0% |
+| deck-gauntlet-r32 | 2026-11-01 | Khandoba | 17 | 94.1% | yes | yes |  | 0.0% |
 
 
 ## Decks
@@ -1313,17 +1313,17 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r19 | 2026-06-29 | Gautam | yes |  | yes | yes | 18 |
 | deck-gauntlet-r20 | 2026-07-11 | Chinmay | yes |  | yes | yes | 17 |
 | deck-gauntlet-r21 | 2026-07-19 |  | yes |  | yes | yes | 16 |
-| deck-gauntlet-r22 | 2026-07-26 | Khandoba | yes |  |  | yes | 18 |
-| deck-gauntlet-r23 | 2026-08-01 |  | yes |  |  | yes | 18 |
-| deck-gauntlet-r24 | 2026-08-16 | Namrata | yes |  |  | yes | 16 |
-| deck-gauntlet-r25 | 2026-08-29 | Sid K | yes |  |  | yes | 17 |
-| deck-gauntlet-r26 | 2026-09-12 | Apratim | yes |  |  | yes | 16 |
-| deck-gauntlet-r27 | 2026-09-20 |  | yes |  |  | yes | 16 |
-| deck-gauntlet-r28 | 2026-10-12 | Pranshu | yes |  |  | yes | 17 |
-| deck-gauntlet-r29 | 2026-10-04 | Pavan | yes |  |  | yes | 17 |
-| deck-gauntlet-r30 | 2026-10-26 | Sal | yes |  |  | yes | 17 |
-| deck-gauntlet-r31 | 2026-10-26 | Aditi | yes |  |  | yes | 17 |
-| deck-gauntlet-r32 | 2026-11-01 | Khandoba | yes |  |  | yes | 17 |
+| deck-gauntlet-r22 | 2026-07-26 | Khandoba | yes |  | yes | yes | 18 |
+| deck-gauntlet-r23 | 2026-08-01 |  | yes |  | yes | yes | 18 |
+| deck-gauntlet-r24 | 2026-08-16 | Namrata | yes |  | yes | yes | 16 |
+| deck-gauntlet-r25 | 2026-08-29 | Sid K | yes |  | yes | yes | 17 |
+| deck-gauntlet-r26 | 2026-09-12 | Apratim | yes |  | yes | yes | 16 |
+| deck-gauntlet-r27 | 2026-09-20 |  | yes |  | yes | yes | 16 |
+| deck-gauntlet-r28 | 2026-10-12 | Pranshu | yes |  | yes | yes | 17 |
+| deck-gauntlet-r29 | 2026-10-04 | Pavan | yes |  | yes | yes | 17 |
+| deck-gauntlet-r30 | 2026-10-26 | Sal | yes |  | yes | yes | 17 |
+| deck-gauntlet-r31 | 2026-10-26 | Aditi | yes |  | yes | yes | 17 |
+| deck-gauntlet-r32 | 2026-11-01 | Khandoba | yes |  | yes | yes | 17 |
 | deck-kviz-o-krazzy-r1 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
 | deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
 | deck-kviz-o-krazzy-r3 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
@@ -1339,7 +1339,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | yes |  |  | yes | 17 |
 | deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | yes |  | yes | yes | 32 |
 | deck-megakviz-r1 | 2025-12-13 | Akshay | yes |  |  | yes | 16 |
-| deck-megakviz-r2 | 2026-02-15 | Akshay | yes |  |  | yes | 39 |
+| deck-megakviz-r2 | 2026-02-15 | Akshay | yes |  | yes | yes | 39 |
 | deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | yes |  | yes | yes | 16 |
 | deck-movie-quiz-bijal-r2 | 2026-04-25 | Bijal Bhatt | yes |  | yes | yes | 16 |
 | deck-buzzing-whatsapp-namrata-r1 | 2026-05-01 | Namrata | yes |  |  | yes | 30 |
@@ -1375,7 +1375,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-long-connect-gautam | 2026-08-09 | Gautam | yes |  | yes | yes | 17 |
 | deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | yes |  | yes | yes | 12 |
 | deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | yes |  |  | yes | 47 |
-| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | yes |  |  | yes | 21 |
+| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | yes |  | yes | yes | 21 |
 | deck-cricket-quiz-harsh | 2026-10-25 | Harsh |  |  | yes |  | 0 |
 | deck-triwizard-tourney-aditi | 2026-08-08 | Aditi |  |  | yes |  | 0 |
 

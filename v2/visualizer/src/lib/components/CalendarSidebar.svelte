@@ -157,11 +157,17 @@
       onkeydown={(e) => { if (e.key === 'Enter') handleDayClick(cell); }}
       role={hasActivity ? 'button' : undefined}
       tabindex={hasActivity ? 0 : undefined}
-      class="flex flex-col items-center py-0.5 px-0.5 rounded-lg transition-colors
+      class="relative flex flex-col items-center py-0.5 px-0.5 rounded-lg transition-colors
         {hasActivity ? 'cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-900/20' : 'cursor-default'}
-        {isLiveDay ? 'ring-2 ring-inset ring-red-400 dark:ring-red-500 bg-red-50 dark:bg-red-900/10' : ''}
+        {isLiveDay ? 'bg-amber-50 dark:bg-amber-900/10' : ''}
         {!cell.inMonth ? 'opacity-20' : ''}"
     >
+      {#if isLiveDay}
+        <span
+          title="Live quiz"
+          class="absolute -top-1 -right-1 text-[11px] leading-none drop-shadow-sm"
+        >⭐</span>
+      {/if}
       <span class="
         text-xs font-medium w-6 h-6 flex items-center justify-center rounded-full flex-shrink-0
         {isToday ? 'bg-primary-500 dark:bg-primary-600 text-white' : hasActivity ? 'text-gray-800 dark:text-gray-200 font-semibold' : 'text-gray-400 dark:text-gray-500'}
@@ -199,7 +205,7 @@
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Quiz sessions</span>
     </a>
     <a href="/sessions" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
-      <span class="inline-block w-5 h-3.5 rounded ring-2 ring-inset ring-red-400 dark:ring-red-500 bg-red-50 dark:bg-red-900/10"></span>
+      <span class="text-xs leading-none">⭐</span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Live quiz</span>
     </a>
   {/snippet}

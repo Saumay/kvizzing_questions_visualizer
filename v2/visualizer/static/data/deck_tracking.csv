@@ -20,17 +20,17 @@ deck-gauntlet-r18,gauntlet,18,The Gauntlet: Gauntlet 18,Prajwal,2026-06-26,True,
 deck-gauntlet-r19,gauntlet,19,The Gauntlet: Humans tire but not Shreya,Gautam,2026-06-29,True,False,True,True,18
 deck-gauntlet-r20,gauntlet,20,The Gauntlet: Gauntlet 20,Chinmay,2026-07-11,True,False,True,True,17
 deck-gauntlet-r21,gauntlet,21,The Gauntlet: It is Vat itteezz,,2026-07-19,True,False,True,True,16
-deck-gauntlet-r22,gauntlet,22,The Gauntlet: A New Champion,Khandoba,2026-07-26,True,False,False,True,18
-deck-gauntlet-r23,gauntlet,23,The Gauntlet: Top 10 on 10,,2026-08-01,True,False,False,True,18
-deck-gauntlet-r24,gauntlet,24,The Gauntlet: Straight Outta 'Nam,Namrata,2026-08-16,True,False,False,True,16
-deck-gauntlet-r25,gauntlet,25,The Gauntlet: It's all 25,Sid K,2026-08-29,True,False,False,True,17
-deck-gauntlet-r26,gauntlet,26,The Gauntlet: Gauntlet 26,Apratim,2026-09-12,True,False,False,True,16
-deck-gauntlet-r27,gauntlet,27,The Gauntlet: Straight Outta 'Nam,,2026-09-20,True,False,False,True,16
-deck-gauntlet-r28,gauntlet,28,The Gauntlet: Battle of the QMs,Pranshu,2026-10-12,True,False,False,True,17
-deck-gauntlet-r29,gauntlet,29,The Gauntlet: KP extends his streak,Pavan,2026-10-04,True,False,False,True,17
-deck-gauntlet-r30,gauntlet,30,The Gauntlet: Gauntlet XXX,Sal,2026-10-26,True,False,False,True,17
-deck-gauntlet-r31,gauntlet,31,The Gauntlet: Gauntlet 31,Aditi,2026-10-26,True,False,False,True,17
-deck-gauntlet-r32,gauntlet,32,The Gauntlet: Gauntlet 32,Khandoba,2026-11-01,True,False,False,True,17
+deck-gauntlet-r22,gauntlet,22,The Gauntlet: A New Champion,Khandoba,2026-07-26,True,False,True,True,18
+deck-gauntlet-r23,gauntlet,23,The Gauntlet: Top 10 on 10,,2026-08-01,True,False,True,True,18
+deck-gauntlet-r24,gauntlet,24,The Gauntlet: Straight Outta 'Nam,Namrata,2026-08-16,True,False,True,True,16
+deck-gauntlet-r25,gauntlet,25,The Gauntlet: It's all 25,Sid K,2026-08-29,True,False,True,True,17
+deck-gauntlet-r26,gauntlet,26,The Gauntlet: Gauntlet 26,Apratim,2026-09-12,True,False,True,True,16
+deck-gauntlet-r27,gauntlet,27,The Gauntlet: Straight Outta 'Nam,,2026-09-20,True,False,True,True,16
+deck-gauntlet-r28,gauntlet,28,The Gauntlet: Battle of the QMs,Pranshu,2026-10-12,True,False,True,True,17
+deck-gauntlet-r29,gauntlet,29,The Gauntlet: KP extends his streak,Pavan,2026-10-04,True,False,True,True,17
+deck-gauntlet-r30,gauntlet,30,The Gauntlet: Gauntlet XXX,Sal,2026-10-26,True,False,True,True,17
+deck-gauntlet-r31,gauntlet,31,The Gauntlet: Gauntlet 31,Aditi,2026-10-26,True,False,True,True,17
+deck-gauntlet-r32,gauntlet,32,The Gauntlet: Gauntlet 32,Khandoba,2026-11-01,True,False,True,True,17
 deck-kviz-o-krazzy-r1,kviz-o-krazzy,1,KVIZ-O-KRAZZY: Q1,Sal,2026-04-15,True,False,False,True,16
 deck-kviz-o-krazzy-r2,kviz-o-krazzy,2,KVIZ-O-KRAZZY: Q2,Sal,2026-04-15,True,False,False,True,16
 deck-kviz-o-krazzy-r3,kviz-o-krazzy,3,KVIZ-O-KRAZZY: Q3,Sal,2026-04-15,True,False,False,True,16
@@ -46,7 +46,7 @@ deck-mtv-tournament-r5,mtv-tournament,5,MTV Quiz Tournament: Semi-final 1,Bijal 
 deck-mtv-tournament-r6,mtv-tournament,6,MTV Quiz Tournament: Semi-final 2,Bijal Bhatt,2026-08-14,True,False,False,True,17
 deck-mtv-tournament-r7,mtv-tournament,7,MTV Quiz Tournament: Final,Bijal Bhatt,2026-08-31,True,False,True,True,32
 deck-megakviz-r1,megakviz,1,Akshay's Megakviz: Semi-final 1,Akshay,2025-12-13,True,False,False,True,16
-deck-megakviz-r2,megakviz,2,Akshay's Megakviz: Finale,Akshay,2026-02-15,True,False,False,True,39
+deck-megakviz-r2,megakviz,2,Akshay's Megakviz: Finale,Akshay,2026-02-15,True,False,True,True,39
 deck-movie-quiz-bijal-r1,movie-quiz-bijal,1,Movie Quiz - World Cinema: Set A,Bijal Bhatt,2026-04-25,True,False,True,True,16
 deck-movie-quiz-bijal-r2,movie-quiz-bijal,2,Movie Quiz - World Cinema: Set B,Bijal Bhatt,2026-04-25,True,False,True,True,16
 deck-buzzing-whatsapp-namrata-r1,buzzing-whatsapp-namrata,1,Buzzing on WhatsApp: Board 1,Namrata,2026-05-01,True,False,False,True,30
@@ -82,6 +82,6 @@ deck-general-quiz-smit-sep-2026,,,General Quiz (Sep 2026),Smit,2026-09-12,True,F
 deck-long-connect-gautam,,,Long Connect Quiz,Gautam,2026-08-09,True,False,True,True,17
 deck-random-quiz-namrata-aug-2026,,,Random Quiz,Namrata,2026-08-20,True,False,True,True,12
 deck-india-independence-qotd-shreya,,,India's Struggle for Independence QOTD,Shreya,2026-08-16,True,False,False,True,47
-deck-india-quiz-smit-jul-2026,,,India Quiz,Smit,2026-07-26,True,False,False,True,21
+deck-india-quiz-smit-jul-2026,,,India Quiz,Smit,2026-07-26,True,False,True,True,21
 deck-cricket-quiz-harsh,,,Cricket Quiz,Harsh,2026-10-25,False,False,True,False,0
 deck-triwizard-tourney-aditi,,,Triwizard Tourney: The Harry Potter Quiz,Aditi,2026-08-08,False,False,True,False,0
