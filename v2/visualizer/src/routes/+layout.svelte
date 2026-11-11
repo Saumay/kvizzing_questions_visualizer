@@ -463,7 +463,6 @@
     { href: '/highlights', label: 'Highlights' },
     { href: '/decks', label: 'Live Sessions' },
     { href: '/duplicate-check', label: 'Check Duplicates' },
-    { href: '/extraction-status/', label: 'Publish backlog' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {
@@ -658,6 +657,13 @@
 
         <!-- Preferences (right) -->
         <div class="hidden sm:flex items-center gap-1">
+          <!-- Status (extraction-status dashboard) -->
+          <a
+            href="/extraction-status/"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {isActive('/extraction-status', $page.url.pathname)
+              ? 'text-primary-600 dark:text-primary-400'
+              : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700'}"
+          ><span class="text-xs font-medium">Status</span></a>
           <!-- Review -->
           <a
             href="/review"
@@ -909,6 +915,13 @@
             {link.label}{link.external ? ' ↗' : ''}
           </a>
         {/each}
+        <a
+          href="/extraction-status/"
+          class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors {isActive('/extraction-status', $page.url.pathname)
+            ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
+            : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'}"
+          onclick={() => mobileMenuOpen = false}
+        >Status</a>
         <a
           href="/review"
           class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors {isActive('/review', $page.url.pathname)
