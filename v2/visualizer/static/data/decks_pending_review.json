@@ -43,5 +43,14 @@
     "size_bytes": 250560074,
     "discovered_at": "2026-11-11",
     "reason": "Video for rewind-2025, which already has a OneDrive recording; likely the same content, unclear whether to add as mp4."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sb2239ffb38954aba806aac9f2c551ed8",
+    "name": "260718_India Quiz_Smit",
+    "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21sb2239ffb38954aba806aac9f2c551ed8&cid=46AC280CA35DB7D4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-11",
+    "reason": "Matches india-quiz-smit-jul-2026 by title and host, but recording is dated 2026-07-18 while the catalogued deck is dated 2026-07-26; conflicting dates."
   }
 ]

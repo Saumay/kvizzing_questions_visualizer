@@ -939,6 +939,14 @@
               "r2_key": null,
               "url": "https://drive.google.com/file/d/1K5nsl_O6wTtAVH--hgPOipij2uBCgllf/view?usp=drivesdk",
               "size_bytes": 2248699
+            },
+            {
+              "label": "Recording",
+              "rel_path": null,
+              "format": "recording",
+              "r2_key": null,
+              "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21se6dc799189434a5e9f58e8adaa3edd01&cid=46AC280CA35DB7D4",
+              "size_bytes": 0
             }
           ]
         },
@@ -956,6 +964,14 @@
               "r2_key": null,
               "url": "https://drive.google.com/file/d/1k-CWjfKcLHvX-iNg_3nyXeb-7N1kFrKR/view?usp=drivesdk",
               "size_bytes": 3038861
+            },
+            {
+              "label": "Recording",
+              "rel_path": null,
+              "format": "recording",
+              "r2_key": null,
+              "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21sa1f1fbda0ab441128f00bb98c9316902&cid=46AC280CA35DB7D4",
+              "size_bytes": 0
             }
           ]
         },
@@ -990,6 +1006,14 @@
               "r2_key": null,
               "url": "https://drive.google.com/file/d/1MoEsnoB_jUa1m6ijtTR4bfgggOKBS1Z9/view?usp=drivesdk",
               "size_bytes": 4731342
+            },
+            {
+              "label": "Recording",
+              "rel_path": null,
+              "format": "recording",
+              "r2_key": null,
+              "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21s3bfb99ed56934b969aee6817914ec14d&cid=46AC280CA35DB7D4",
+              "size_bytes": 0
             }
           ]
         }
@@ -1694,6 +1718,14 @@
           "r2_key": null,
           "url": "https://drive.google.com/file/d/1MzTxpXTRtxrTA9KoB5sZ7zxOX9HLyIk5/view?usp=drivesdk",
           "size_bytes": 5883228
+        },
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21sc8db7c487695467dae35bcf4e88429d0&cid=46AC280CA35DB7D4",
+          "size_bytes": 0
         }
       ]
     },
@@ -1711,6 +1743,14 @@
           "r2_key": null,
           "url": "https://drive.google.com/file/d/1mjKM6wSEkrQ5mJoURF2jc-hU8lUmgz4q/view?usp=drivesdk",
           "size_bytes": 3492873
+        },
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21s2a194281b29e4d4bbc35576dbf8c8321&cid=46AC280CA35DB7D4",
+          "size_bytes": 0
         }
       ]
     },
@@ -1728,6 +1768,14 @@
           "r2_key": null,
           "url": "https://drive.google.com/file/d/1Z2_xoCActYdsmf83f1kaDI7SU0eX52Va/view?usp=drivesdk",
           "size_bytes": 4323608
+        },
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21s4f351bef4a5f41fea917c25335ef72c0&cid=46AC280CA35DB7D4",
+          "size_bytes": 0
         }
       ]
     },
@@ -1762,6 +1810,40 @@
           "r2_key": null,
           "url": "https://drive.google.com/file/d/1Hzqa3oBehaOyxCBTJvWoE257R0NRY4I1/view?usp=drivesdk",
           "size_bytes": 5157729
+        }
+      ]
+    },
+    {
+      "id": "cricket-quiz-harsh",
+      "title": "Cricket Quiz",
+      "host": "Harsh",
+      "date": "2026-10-25",
+      "date_approx": false,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21s8489f1212d8e4d41afa3e718ab05d27f&cid=46AC280CA35DB7D4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "triwizard-tourney-aditi",
+      "title": "Triwizard Tourney: The Harry Potter Quiz",
+      "host": "Aditi",
+      "date": "2026-08-08",
+      "date_approx": false,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=46AC280CA35DB7D4%21s8a36ee216515415eb0c0ad0f903fd75b&cid=46AC280CA35DB7D4",
+          "size_bytes": 0
         }
       ]
     }
