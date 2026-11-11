@@ -8,9 +8,12 @@ Two-step workflow, since the actual slide-reading has to be done by an LLM
 (text-heuristic extraction doesn't hold across decks — formats vary too
 much, and many question slides are pure images with no extractable text):
 
-  1. Extraction (manual/agent-driven, not scriptable): read a deck's PDF
-     via an agent with vision-capable Read access, transcribe each
-     question/answer slide pair, write the result to
+  1. Extraction (manual/agent-driven, not scriptable): for a PDF deck, read
+     it via an agent with vision-capable Read access; for a PPTX deck, dump
+     slide text + embedded images with deck_extraction/pptx_dump.py (text
+     frames give most Q&A pairs directly, embedded images only need viewing
+     for picture-only clues). Either way, transcribe each question/answer
+     slide pair, write the result to
      deck_extraction/candidates/deck-<session_id>.json as a JSON array:
        [{"question_text": str, "answer_text": str, "has_media": bool,
          "extraction_confidence": "high"|"medium"}, ...]
@@ -79,10 +82,11 @@ BASE_CONFIG = {
 
 CANDIDATES_DIR = Path(__file__).parent.parent / "deck_extraction" / "candidates"
 
-# Formats an extraction agent can actually read. PPTX can't be read directly
-# (binary, no LibreOffice available to render it) — those decks are skipped
-# here until a PPTX image/text extraction path exists.
-_EXTRACTABLE_FORMATS = {"pdf"}
+# Formats an extraction agent can actually read. PPTX is read directly via
+# python-pptx (slide text frames + embedded images, no LibreOffice/Keynote
+# render needed) — see deck_extraction/candidates/deck-kvizimals.json and
+# deck-gauntlet-r6.json for examples extracted this way.
+_EXTRACTABLE_FORMATS = {"pdf", "pptx"}
 
 
 def derive_deck_sessions(decks_manifest_path: Path) -> list[dict]:

@@ -1,0 +1,122 @@
+[
+  {
+    "question_text": "In Greek mythology, which primordial creature is said to have birthed the Sphinx, the Hydra, and Cerberus along with many other monsters?",
+    "answer_text": "Echidna, the 'Mother of Monsters'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Japanese yokai Nue is a chimera-like creature. According to classical texts, what four animals make up its appearance?",
+    "answer_text": "A monkey's head, a raccoon dog (tanuki) body, a tiger's legs, and a snake for a tail",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Mesopotamian mythology, the lion-headed, eagle-winged creature Lamassu guarded the gates of palaces. What specific symbolic function did each of its three components (human head, animal body, wings) represent?",
+    "answer_text": "Human head: intelligence and wisdom. Animal (bull/lion) body: physical strength and stability. Eagle wings: divine protection and speed.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Celtic lore speaks of the Each-Uisge (ech-OOSH-kyuh), a shape-shifting water horse. What is the one key physical sign that reveals its true nature even when it disguises itself as a man?",
+    "answer_text": "It always has wet, seaweed-like hair or water dripping from it, even in human form, betraying its aquatic nature",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Hindu mythology, the Makara serves as the vahana of which deities, and how do South Indian temple sculptures uniquely reinterpret its anatomy?",
+    "answer_text": "Vahana of Ganga, Varuna, and sometimes Kamadeva. South Indian sculptures reinterpret it as a composite sea-creature combining a crocodile's mouth, an elephant's trunk curl, a fish's body, and a peacock's tail, giving a more elaborate, dragon-like depiction than Northern versions.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Aztec feathered serpent Quetzalcoatl is often compared to which Mayan deity, and what is the major philosophical difference between the two?",
+    "answer_text": "Kukulkan. Quetzalcoatl is often associated with wisdom, arts, wind, morality, and sometimes as a culture-bringer opposed to blood sacrifice, while Kukulkan is more strictly linked to rulership, war, and state power in Mayan culture.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Norse lore describes Fafnir transforming into a dragon due to what root cause, and which magical item is central to this transformation?",
+    "answer_text": "Greed, and the curse of the Andvaranaut ring, a magical ring that brings destruction and obsession",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Slavic mythology, the Rusalka is sometimes benevolent and sometimes malevolent. What cultural factor determines how she is depicted in different regions?",
+    "answer_text": "Local cultural views of women who died unnatural deaths: drowned maidens are depicted as vengeful in East Slavic regions, while fertility water spirits are depicted as benevolent in some South Slavic regions",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Persian creature Simurgh appears in the Shahnameh multiple times. What unique property does its presence have in relation to fate and time?",
+    "answer_text": "It is said to exist beyond time, able to bridge past, present and future, heal destiny, or alter fate through wisdom, representing timeless cosmic guidance",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Filipino Manananggal separates its torso from its lower body at night. According to folklore, which specific herbal ingredient must be applied to the severed lower half to ensure the creature cannot reunite and regenerate?",
+    "answer_text": "Salt, garlic, or ash applied to the severed lower torso (salt/ashes traditionally considered most potent)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Greek mythology, Echidna is known as the 'Mother of Monsters.' Which unusual feature about her origin makes her lineage ambiguous even among ancient sources?",
+    "answer_text": "Ancient sources disagree on her parentage: she is sometimes said to be the daughter of Phorcys and Ceto (a sea-monster lineage), or of Tartarus and Gaia (a primordial earth-underworld lineage), making her origin uniquely unclear",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Chinese dragon is often depicted holding or chasing the flaming pearl. What does this pearl traditionally symbolize, and why is it rarely shown being caught?",
+    "answer_text": "It symbolizes wisdom, spiritual energy (qi), prosperity, and ultimate truth. It is rarely shown being caught because it represents an eternal pursuit of enlightenment, not possession.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Inuit mythology, the creature Qalupalik steals children who wander near icy shores. What specific sound is said to announce its presence?",
+    "answer_text": "A humming or gurgling sound, often described as a 'hmmmmmm', said to come from the creature beneath the icy waters",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Garuda appears in both Hindu and Buddhist mythologies. What is the key doctrinal difference in its role between the two traditions?",
+    "answer_text": "In Hinduism, Garuda is a vahana (mount) of Vishnu, a singular divine being. In Buddhism, Garudas are a race of powerful bird-beings, often engaged in conflict with Nagas, rather than a single deity.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Yoruba mythology, the forest spirit Aroni grants magical powers. What physical deformity is Aroni known for, and what is the symbolic reason behind it?",
+    "answer_text": "A withered or twisted leg, symbolizing that true magical wisdom comes through sacrifice, imbalance, or hardship",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Celtic Banshee is famous for her wail, but only certain families are said to hear her. What historic reason explains which families she serves?",
+    "answer_text": "She traditionally serves ancient Gaelic families whose names begin with O' or Mac/Mc, clans historically tied to old Irish noble lineages believed to have ancestral guardian spirits",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Slavic folklore, the dragon-like Zmey is sometimes heroic instead of demonic. What major cultural influence explains this positive portrayal?",
+    "answer_text": "The positive versions come from pre-Christian pagan traditions, where dragons represented natural forces, fertility, and guardianship rather than evil",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Japanese folklore, the Jorogumo can transform into a woman. What specific location type does she typically inhabit, and why?",
+    "answer_text": "Waterfalls or abandoned forest houses, ideal for giant spiders to build webs and symbolizing the boundary between safety and danger",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Egyptian Bennu bird is linked to the sun god Ra and rebirth. Which real-world animal inspired its imagery, and what astronomical cycle is it tied to?",
+    "answer_text": "Inspired by the grey heron, and linked to the solar cycle, especially the rising sun and periods of renewal every morning (sometimes also tied to longer cosmic cycles of creation)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Filipino mythology, the Tikbalang's tendency to mislead travelers is linked to which natural phenomenon, and according to older pre-colonial beliefs, what specific gesture must a traveler perform when passing through a forest crossroads to avoid being enchanted by a Tikbalang?",
+    "answer_text": "Its tricks symbolize forest fog/mists that confuse travelers. The traveler must wear their shirt inside-out when passing through a forest crossroads, a traditional gesture believed to confuse or repel the Tikbalang.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

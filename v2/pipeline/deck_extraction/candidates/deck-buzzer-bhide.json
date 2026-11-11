@@ -1,0 +1,362 @@
+[
+  {
+    "question_text": "The long & short of it - Trial Ball: The first black test centurion and permanent captain of South Africa, he became the centre of a body-shaming debate when referred to as \"bauna\" by Jasprit Bumrah in reference to his diminutive 5'4\" stature.",
+    "answer_text": "Temba Bavuma",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The long & short of it - $100: The first player since Eric Cantona to win back-to-back English Premier League titles with two different clubs, this 5'6\" midfielder is also a UEFA Champions League and FIFA World Cup winner.",
+    "answer_text": "N'Golo Kante",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The long & short of it - $200: At 6'6\" the tallest man to represent India, he became the first seam bowler to take 400 wickets in the Ranji Trophy.",
+    "answer_text": "Pankaj Singh",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The long & short of it - $300: Not only is he the shortest men's singles world No. 1 at 5'9\", this South American is also the only man in the open era to reach the no. 1 ranking without ever winning a grand slam title.",
+    "answer_text": "Marcelo Rios",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The long & short of it - $400: This South African-born wicketkeeper-batsman is the shortest men's international cricketer in history at 4'9\", representing New Zealand in 9 test matches.",
+    "answer_text": "Kruger van Wyk",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The long & short of it - $500: An 11-time NBA all-star, at 6'0\" he is the shortest man to be crowned MVP while leading the Philadelphia 76ers to the NBA finals in 2001.",
+    "answer_text": "Allen Iverson",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - Trial Ball: [A photo of a venue is shown, with the year '2011']. What happened here?",
+    "answer_text": "Wankhede Stadium, Mumbai. India beat Sri Lanka in the ICC ODI World Cup Final 2011.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - $100: [A photo of a venue is shown, with the year '1983']. What happened here?",
+    "answer_text": "Nevill Ground, Tunbridge Wells. Kapil Dev rescued India from 17/5 with 175* against Zimbabwe, ICC ODI World Cup 1983.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - $200: [A photo of a venue is shown, with the year '1936']. What happened here?",
+    "answer_text": "Olympiastadion, Berlin. Jesse Owens won 4 gold medals in track & field (100m, 200m, long jump, 4x100m relay), 1936 Summer Olympics.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - $300: [A photo of a venue is shown, with the date 'July 19, 2026']. What happened here?",
+    "answer_text": "MetLife Stadium, New Jersey. The FIFA World Cup Final 2026 (teams not yet determined at time of writing).",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - $400: [A photo of a venue is shown, with the year '2008']. What happened here?",
+    "answer_text": "National Aquatics Centre a.k.a. Water Cube, Beijing. Michael Phelps won the most gold medals (8) at a single Olympic games, 2008 Summer Olympics.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happened here? - $500: [A photo of a venue is shown, with the year '2007']. What happened here?",
+    "answer_text": "Interlagos Circuit, Sao Paulo. Kimi Raikkonen overcame a 7-point deficit in a three-way title decider to win the F1 Drivers' Championship, 2007 Brazilian Grand Prix.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - Trial Ball: \"Oh it's a biggie! The little man has the big fella for six! He's half his size and he's smashed him down the ground! What a player! What a wonderful player!\"",
+    "answer_text": "Tony Greig, India vs Australia, Coca-Cola Cup Final, Sharjah 1998",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - $100: \"Corner taken quickly....._____!\"",
+    "answer_text": "Steve Hunter, Liverpool v Barcelona, UEFA Champions League Semifinal 2nd Leg, Anfield, 2019",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - $200: \"______ have won the World Cup by the barest of margins! By the barest of all margins! Absolute ecstasy for ______! Agony, agony for ___ _______!\"",
+    "answer_text": "Ian Smith, England vs New Zealand, ICC ODI World Cup Final, Lord's, 2019",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - $300: \"We have a surgeon at one end and a butcher at the other.\"",
+    "answer_text": "Harsha Bhogle, on the first Men's ODI double century, India vs South Africa, 2nd ODI, Gwalior, 2010",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - $400: \"There's a new man at the helm of men's tennis!\"",
+    "answer_text": "Andrew Castle, Rafael Nadal vs Roger Federer, Wimbledon Men's Singles Final, 2008",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "FBD, DBF! - $500: \"______, charging through the midfield! ______! It's up for grabs now!\"",
+    "answer_text": "Brian Moore, Liverpool vs Arsenal, Anfield, English First Division 1988-89 Final Matchday",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - Trial Ball: X has had a public falling out with his eldest son who has claimed his mother hijacked his wedding dance and has since issued a cease-and-desist letter to his parents, even snubbing X's 50th birthday celebrations and knighthood ceremony.",
+    "answer_text": "David Beckham",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - $100: X named his first daughter after his favourite city where he scored his first test century, a monumental 277.",
+    "answer_text": "Brian Lara",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - $200: X named his daughter after the country where she was born as a tribute to the country's rich culture, heritage, and spirituality, as well as the profound impact the nation has had on his personal growth.",
+    "answer_text": "Jonty Rhodes",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - $300: X's daughter is named Olympia Lightning, a name that could hardly be more fitting given X's staggering achievements.",
+    "answer_text": "Usain Bolt",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - $400: X has a tattoo of his daughter's name, an anagram of a legendary stadium he called home for 3 and a half seasons, on his right wrist that he often kisses to celebrate goals.",
+    "answer_text": "Luis Suarez",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "COTOB - $500: Legendary pugilist X has 12 children, famously naming his 5 sons after himself as X II, X III, X IV, X V and X VI, which brings to mind the British monarchs of the 18th and early 19th century.",
+    "answer_text": "George Foreman",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - Trial Ball: Although he claimed to have taken the pill given by his mother to lose weight and reduce his double chin before a TV appearance, he was slapped with a 12 month ban and sent home from a World Cup while at the peak of his powers.",
+    "answer_text": "Shane Warne",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - $100: X was sent home from a series and effectively banned for a period for skipping a mandatory team meeting and going fishing instead.",
+    "answer_text": "Andrew Symonds",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - $200: In his autobiography, X admitted to using crystal meth, though he managed to get away without a ban despite testing positive by claiming someone had spiked his drink.",
+    "answer_text": "Andre Agassi",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - $300: While it remains an unsubstantiated conspiracy theory, X has been out of action around his sister's birthday for 10 of the last 11 years, through a combination of disciplinary suspensions, \"muscle tightness\" and in a couple of instances legitimate long-term injuries.",
+    "answer_text": "Neymar",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - $400: X was banned by WADA from all major sporting events including World Cups and Olympics for four years on evidence of a massive, state-sponsored doping program and the manipulation of laboratory data.",
+    "answer_text": "Russia",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The dog ate my homework - $500: Nearly the entire squad of X was sidelined for the final game of the 2005-06 season with severe food poisoning allegedly from a buffet lasagna, leading to a loss that cost them Champions League qualification.",
+    "answer_text": "Tottenham Hotspur FC",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - Trial Ball: Unarguably the most improbable comeback in the history of the sport, the goalkeeper's spaghetti legs routine won the day after a manic 6 minutes that brought them back from the dead.",
+    "answer_text": "Liverpool beating AC Milan in the UEFA Champions League Final 2005 in Istanbul",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - $100: Trailing since the 6th minute, the ___ ______ scored twice in stoppage time with a baby-faced assassin scoring the winning goal to complete a miraculous comeback.",
+    "answer_text": "Manchester United beating Bayern Munich in the UEFA Champions League Final 1999 at the Camp Nou, Barcelona",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - $200: From the brink of elimination in the group stages after 1 win, 3 losses and a rained out game, the ________ _____ stormed back, inspired by an ageing leader, a young batsman of lazy elegance and a wizard of aerodynamics.",
+    "answer_text": "Pakistan cricket team in the 1992 ICC ODI World Cup",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - $300: X was awarded the Laureus World Comeback of the Year recognizing his remarkable return to professional sport just 259 days after suffering a cardiac arrest on the pitch.",
+    "answer_text": "Christian Eriksen",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - $400: The only team in the history of North American leagues outside of the NHL to perform a \"reverse sweep\" i.e. overcome a 3-0 deficit in a best-of-seven series.",
+    "answer_text": "Boston Red Sox beating New York Yankees in the ALCS before winning the World Series in 2004",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "SFTBNWH - $500: In the longest final in ______ ______ history, X came back from 2 sets down, saving 3 championship points from 0-40 on serve at 3-5 in the 4th set against Y who himself had won a grand slam final from 2 sets down the previous year.",
+    "answer_text": "Carlos Alcaraz beating Jannik Sinner 4-6, 6-7(4), 6-4, 7-6(3), 7-6(10-2) in the 2025 French Open Men's Singles Final",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - Trial Ball: [Photo/video: an Indian bowler stands face to face with a Pakistani batsman after a confrontation at the crease; scoreboard reads PAK 113/1, Overs 14.5, Target 288]. What happens next?",
+    "answer_text": "Venkatesh Prasad bowling Aamir Sohail in the 1996 ICC World Cup quarterfinal",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - $100: [Photo/video: Indian batsmen mid-pitch with England fielders nearby, a 'World Twenty20' advertising banner in the background]. What happens next?",
+    "answer_text": "Yuvraj Singh hitting 6 sixes off Stuart Broad at the ICC World T20 2007",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - $200: [Photo/video: Zinedine Zidane (France, number 10) jogging near an Italian player on the pitch]. What happens next?",
+    "answer_text": "Zinedine Zidane headbutting Marco Materazzi and getting a red card in the FIFA World Cup 2006 final, his last professional game",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - $300: [Photo/video: Indian cricketers in blue, one eating a banana]. What happens next?",
+    "answer_text": "Ashish Nehra taking 6/23 against England in the ICC ODI World Cup 2003",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - $400: Thotha chana, baaje ghana. What happens next?",
+    "answer_text": "Tragic death of South Australia opening batsman Phil Hughes due to a bouncer from NSW bowler Sean Abbott striking his neck",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What happens next? - $500: [Photo/video: an Indian batsman with an umpire inspecting his bat and pads on the field]. What happens next?",
+    "answer_text": "Zaheer Khan taking 5/75 to win the 2nd test in Nottingham after England players threw jellybeans at him, helping India take the series 1-0",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - Trial Ball: In 1997, she became the first player in history to score a double century in an ODI.",
+    "answer_text": "Belinda Clark",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - $100: The only tennis player in history to achieve a Calendar Golden Slam (all four Grand Slams and Olympic gold in the same year).",
+    "answer_text": "Steffi Graf",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - $200: She made history on the uneven bars at the age of 14 with the first ever perfect score of 10 in Olympic gymnastics.",
+    "answer_text": "Nadia Comaneci",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - $300: While the first man to equal her only got there in 2023, she has been sitting pretty on 24 since 1973.",
+    "answer_text": "Margaret Court (24 Grand Slam singles titles)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - $400: The first and only Indian athlete to win multiple medals at a single Olympic games post Independence.",
+    "answer_text": "Manu Bhaker",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MCCSKHK? - $500: The only person - male or female - to have ever scored a double century and taken five wickets in the same ODI.",
+    "answer_text": "Amelia Kerr",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - Trial Ball: [Picture round: a mountain peak at sunset, plus a poster of an actor dressed for an action role]. Id the sportsperson.",
+    "answer_text": "Shikhar Dhawan (Shikhar = peak/summit; the actor poster is for a film produced by Aditya Chopra, giving 'Dhawan' via the actor's surname)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - $100: [Picture round: a pink lotus flower, plus the poster for the film Dhoom:3, produced by Aditya Chopra]. Id the sportsperson.",
+    "answer_text": "Neeraj Chopra (Neeraj = lotus; Chopra from the film's producer)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - $200: [Picture round: an image of the deity Venkateswara (Balaji) with Goddess Lakshmi]. Id the sportsperson.",
+    "answer_text": "Lakshmipathy Balaji (Lakshmipathy, 'consort of Lakshmi', is an epithet of the deity Balaji, both depicted in the image)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - $300: [Picture round: a cosmic image of galaxies and nebulae, plus a photo of a laughing child]. Id the sportsperson.",
+    "answer_text": "Viswanathan Anand (Viswanathan = lord of the universe/cosmos; Anand = joy, shown by the laughing child)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - $400: [Picture round: a photovoltaic solar panel, plus a map of the Indus river]. Id the sportsperson.",
+    "answer_text": "P.V. Sindhu (PV = photovoltaic; Sindhu = the Indus river, shown on the map)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "APSASN - $500: [Picture round: Lord Shiva depicted as a stoner holding a mug of 'herbal tea', plus a photo of a man]. Id the sportsperson.",
+    "answer_text": "Shivil Kaushik (Shivil from the Shiva depiction)",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "PBDHH - Trial Ball: Born in Madras, this legendary captain led England in 45 Tests, transforming their cricket culture during the early 2000s.",
+    "answer_text": "Nasser Hussain",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "PBDHH - $100: A Mumbai-born engineer who became a USA hero by bowling the iconic 2024 T20 World Cup Super Over win against Pakistan.",
+    "answer_text": "Saurabh Netravalkar",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "PBDHH - $200: The Calgary-born \"Modern Day Maharaja\" made history in 2017 as the first wrestler of Indian descent to win the WWE Championship.",
+    "answer_text": "Jinder Mahal",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "PBDHH - $300: A British-Indian Formula 1 prodigy and Red Bull junior who recently became the youngest winner of an FIA F3 feature race.",
+    "answer_text": "Arvid Lindblad",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "PBDHH - $400: This American former World No. 1 doubles specialist has claimed six Grand Slam titles and two Olympic medals for the USA.",
+    "answer_text": "Rajeev Ram",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "PBDHH - $500: A clinical Dutch winger with Indo-Surinamese roots who earned 19 caps for the Netherlands, including a stint at Euro 2012.",
+    "answer_text": "Luciano Narsingh",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]
