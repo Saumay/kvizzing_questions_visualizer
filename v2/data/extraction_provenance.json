@@ -958,6 +958,14 @@
       "last_extracted_at": "2026-11-02T22:23:19Z",
       "notes": "pipeline.py backfill",
       "history": []
+    },
+    "2026-07-29": {
+      "method": "claude-file",
+      "model": "claude-opus-4-7",
+      "count": 51,
+      "last_extracted_at": "2026-11-11T14:03:57Z",
+      "notes": "pipeline.py backfill",
+      "history": []
     }
   }
 }

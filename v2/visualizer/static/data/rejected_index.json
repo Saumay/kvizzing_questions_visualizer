@@ -7600,5 +7600,17 @@
     "date": "2026-05-01",
     "candidate_count": 3,
     "extracted": false
+  },
+  {
+    "id": "2026-07-29-t1",
+    "date": "2026-07-29",
+    "candidate_count": 2,
+    "extracted": false
+  },
+  {
+    "id": "2026-07-29-t2",
+    "date": "2026-07-29",
+    "candidate_count": 2,
+    "extracted": false
   }
 ]

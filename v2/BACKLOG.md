@@ -343,7 +343,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-07-26 | yes | yes | 50 | 0.0% | 100.0% | 78.0% | 0.0% | 4.0% |  |
 | 2026-07-27 | yes | yes | 15 | 0.0% | 100.0% | 0.0% | 0.0% | 6.7% |  |
 | 2026-07-28 | yes | yes | 34 | 0.0% | 100.0% | 0.0% | 0.0% | 14.7% |  |
-| 2026-07-29 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-07-29 | yes | yes | 51 | 0.0% | 100.0% | 3.9% | 0.0% | 7.8% |  |
 | 2026-07-30 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-07-31 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-01 | yes | yes | 18 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
@@ -1266,6 +1266,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-28-smit | 2026-07-28 | Smit Mahajani | 10 | 0.0% |  | yes |  | 40.0% |
 | 2026-07-28-antnishu | 2026-07-28 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-28-pavan | 2026-07-28 | Pavan Pamidimarri | 5 | 0.0% |  | yes |  | 0.0% |
+| 2026-07-29-anurag | 2026-07-29 | Anurag Bhide | 24 | 0.0% | yes |  |  | 8.3% |
+| 2026-07-29-smit | 2026-07-29 | Smit D Mahajani | 20 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r23 | 2026-08-01 | unknown | 18 | 94.4% | yes |  |  | 0.0% |
 | deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | 17 | 82.4% | yes |  |  | 0.0% |
 | deck-long-connect-gautam | 2026-08-09 | Gautam | 17 | 52.9% | yes |  |  | 0.0% |

@@ -1,0 +1,940 @@
+[
+  {
+    "id": "2026-07-29-t1",
+    "date": "2026-07-29",
+    "thread_number": 1,
+    "candidates": [
+      {
+        "timestamp": "2026-07-29T17:23:56Z",
+        "username": "Dhruv Nath",
+        "text": "Is it outperforming their teammate in every qualifying?",
+        "reason_flagged": "question_mark"
+      },
+      {
+        "timestamp": "2026-07-29T17:26:29Z",
+        "username": "Dhruv Nath",
+        "text": "4. Y is Kal Penn? Z is Harold and Kumar?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2026-07-29T10:49:52Z",
+        "username": "Smit D Mahajani",
+        "text": "No but good track in a way",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:49:59Z",
+        "username": "Smit D Mahajani",
+        "text": "But nothing to do with particular posts per se ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:51:35Z",
+        "username": "Abhishek Chakravorty",
+        "text": "Is it something to do with Languages?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:51:40Z",
+        "username": "Smit D Mahajani",
+        "text": "No",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:51:45Z",
+        "username": "Abhishek Chakravorty",
+        "text": "Achha ok",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:51:59Z",
+        "username": "Abhishek Chakravorty",
+        "text": "1952 was India's 1st ever General Elections no....",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:06Z",
+        "username": "Abhishek Chakravorty",
+        "text": "Something to do with that...",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:09Z",
+        "username": "Smit D Mahajani",
+        "text": "Very good track",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:25Z",
+        "username": "Chinmay Mehta",
+        "text": "Parliament was created",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:30Z",
+        "username": "Chinmay Mehta",
+        "text": "In 1952 ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:47Z",
+        "username": "Smit D Mahajani",
+        "text": "Yes very good track again",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:52:52Z",
+        "username": "Shreya",
+        "text": "Constituent assembly was provisional parliament ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:53:01Z",
+        "username": "Shreya",
+        "text": "That became redundant",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:53:19Z",
+        "username": "Smit D Mahajani",
+        "text": "Provisional* but yes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T10:54:17Z",
+        "username": "Smit D Mahajani",
+        "text": "Article 379 provided for the Provisional Parliament of India, between 26th January 1950 until India's first elected Parliament, which was in 1952 ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:11:51Z",
+        "username": "Abhishek Vats",
+        "text": "July 29 without answers.pdf • ‎2 pages ‎<attached: 00282180-July 29 without answers.pdf>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:15:24Z",
+        "username": "Sameer Kulkarni",
+        "text": "7x. Josh Radnor",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:16:09Z",
+        "username": "Anurag Bhide",
+        "text": "5. Jim Beglin ❤️❤️❤️",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:16:43Z",
+        "username": "Sameer Kulkarni",
+        "text": "4x. Obama?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:18:25Z",
+        "username": "Anurag Bhide",
+        "text": "3. A driver asked to crash to make his teammate win? Know this only because of Nelson Piquet Jr question in a recent QOTD 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:02Z",
+        "username": "Pavan Pamidimarri",
+        "text": "1. Y is Pinochhio?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:05Z",
+        "username": "Tapish",
+        "text": "Bias saaf jhalakta hai iss answer ki khushi mein aur usski commentary mein",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:38Z",
+        "username": "Smit D Mahajani",
+        "text": "Y is Elizabeth Olsen",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:46Z",
+        "username": "Pavan Pamidimarri",
+        "text": "2. X is Kurosawa?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:55Z",
+        "username": "Pavan Pamidimarri",
+        "text": "and Z is Sorcese?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:19:57Z",
+        "username": "Smit D Mahajani",
+        "text": "7Y*",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:20:03Z",
+        "username": "Sameer Kulkarni",
+        "text": "8x is at the tip of my tongue, but just cannot remember the name - later also became India’s defence minister IIRC",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:20:12Z",
+        "username": "Pavan Pamidimarri",
+        "text": "and Y is Kurosawa’s Dreams",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:20:16Z",
+        "username": "Smit D Mahajani",
+        "text": "George Fernandes?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:20:27Z",
+        "username": "Pavan Pamidimarri",
+        "text": "4. X is Obama.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:20:46Z",
+        "username": "Sameer Kulkarni",
+        "text": "But I could be wrong also lol",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:05Z",
+        "username": "Smit D Mahajani",
+        "text": "This is a decent movie btw",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:12Z",
+        "username": "Smit D Mahajani",
+        "text": "Liberal Arts ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:30Z",
+        "username": "Pavan Pamidimarri",
+        "text": "6. Wil Wheaton",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:36Z",
+        "username": "Pavan Pamidimarri",
+        "text": "of TBBT fame 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:42Z",
+        "username": "Sameer Kulkarni",
+        "text": "10 Y is John Travolta?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:21:56Z",
+        "username": "Dhruv Nath",
+        "text": "3. X is Alonso, Z is Stroll?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:23:34Z",
+        "username": "Pavan Pamidimarri",
+        "text": "8. George Fernandes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:23:50Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Tata Steel ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:23:53Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Tata",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:23:56Z",
+        "username": "Dhruv Nath",
+        "text": "Is it outperforming their teammate in every qualifying?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2026-07-29T17:24:15Z",
+        "username": "Abhishek Vats",
+        "text": "Whitewash",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:24:16Z",
+        "username": "Smit D Mahajani",
+        "text": "Ho gaye kya sab?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:24:21Z",
+        "username": "Dhruv Nath",
+        "text": "Dunno who Y is",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:24:44Z",
+        "username": "Abhishek Vats",
+        "text": "Toy story",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:24:53Z",
+        "username": "Pavan Pamidimarri",
+        "text": "9. braces",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:05Z",
+        "username": "Pavan Pamidimarri",
+        "text": "for teeth",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:18Z",
+        "username": "Abhishek Vats",
+        "text": "A bit specific",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:45Z",
+        "username": "Pavan Pamidimarri",
+        "text": "10. Diana?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:56Z",
+        "username": "Pavan Pamidimarri",
+        "text": "orthodontic braces?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:56Z",
+        "username": "Smit D Mahajani",
+        "text": "Dentures?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:25:59Z",
+        "username": "Smit D Mahajani",
+        "text": "No",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:26:06Z",
+        "username": "Anurag Bhide",
+        "text": "Easy peasy toothsi",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:26:29Z",
+        "username": "Dhruv Nath",
+        "text": "4. Y is Kal Penn? Z is Harold and Kumar?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2026-07-29T17:26:30Z",
+        "username": "Smit D Mahajani",
+        "text": "Oh yes could be",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:26:48Z",
+        "username": "Dhruv Nath",
+        "text": "Or is Y Shah Rukh?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:09Z",
+        "username": "Pavan Pamidimarri",
+        "text": "this is a great crack",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:10Z",
+        "username": "Smit D Mahajani",
+        "text": "Aishwarya Rai?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:23Z",
+        "username": "Dhruv Nath",
+        "text": "If correct. 🙈",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:34Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Kal had a role in the admin, as a liaison of some sort",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:40Z",
+        "username": "Abhishek Vats",
+        "text": "He had to go to America but \"trip\" got cancelled",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:43Z",
+        "username": "Abhishek Vats",
+        "text": "Hint",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:50Z",
+        "username": "Smit D Mahajani",
+        "text": "Madhavan?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:27:59Z",
+        "username": "Abhishek Vats",
+        "text": "Not bollywood",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:28:07Z",
+        "username": "Smit D Mahajani",
+        "text": "Nahi wo toh Londonwaale hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:28:23Z",
+        "username": "Abhishek Vats",
+        "text": "The character actually",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:13Z",
+        "username": "Shreya",
+        "text": "Munna bhai?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:25Z",
+        "username": "Smit D Mahajani",
+        "text": "Oh what a crack!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:27Z",
+        "username": "Dhruv Nath",
+        "text": "Sanjay Dutt?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:32Z",
+        "username": "Smit D Mahajani",
+        "text": "Yeah the threequel",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:41Z",
+        "username": "Smit D Mahajani",
+        "text": "What a hint as well",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:29:52Z",
+        "username": "Abhishek Vats",
+        "text": "July 29 with answers.pdf • ‎4 pages ‎<attached: 00282237-July 29 with answers.pdf>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:30:12Z",
+        "username": "Pavan Pamidimarri",
+        "text": "oh wow, had no idea Sanjay Dutt showed up at an Obama fundraiser",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:30:50Z",
+        "username": "Khandoba",
+        "text": "You’re not showing enough confidence in Pavan’s Google-esque knowledge",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:32:34Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Fantastic questions @⁨~Abhishek Vats⁩ loved the angles you chose to mark NASA's founding and Van Gogh's death",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:33:11Z",
+        "username": "Smit D Mahajani",
+        "text": "Superb set @⁨~Abhishek Vats⁩!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:34:43Z",
+        "username": "Shreya",
+        "text": "🇮🇳 India’s Struggle for Independence QOTD",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:10Z",
+        "username": "Shreya",
+        "text": "Q23. Driven by a twenty-one-year vow of absolute vengeance following a horrific 1919 assembly massacre in Punjab, a radical operative spent over two decades tracking his high-ranking imperial target across multiple continents under a web of assumed names. In March 1940, the revolutionary [X] finally cornered the retired colonial administrator at a public meeting inside London's Caxton Hall.\nTo sneak his loaded revolver past the heavy British security checkpoints at the entrance of the venue, he deployed a classic piece of espionage tradecraft. He meticulously cut out the inner layer of a thick [Y] in the exact physical contour of the firearm, closing it shut to walk right past inspectors completely undetected.\nFollowing the successful assassination, he surrendered calmly and defiantly refused to reveal his birth name to the police, insisting his legal identity was [Z].\nIdentify:\nThe operative [X] (5 pts)\nThe item [Y] hollowed out to act as a custom weapon holster (10 pts)\nThe alias [Z] he officially claimed upon arrest (10 pts)",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:19Z",
+        "username": "Smit D Mahajani",
+        "text": "Udham",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:20Z",
+        "username": "Smit D Mahajani",
+        "text": "Singh?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:25Z",
+        "username": "Khandoba",
+        "text": "Udham Singh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:30Z",
+        "username": "Smit D Mahajani",
+        "text": "Dyer",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:32Z",
+        "username": "Smit D Mahajani",
+        "text": "?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:33Z",
+        "username": "Khandoba",
+        "text": "Book",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:35Z",
+        "username": "Pavan Pamidimarri",
+        "text": "md ram rahim singh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:38Z",
+        "username": "Khandoba",
+        "text": "Bible",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:36:41Z",
+        "username": "Khandoba",
+        "text": "?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:37:10Z",
+        "username": "Pavan Pamidimarri",
+        "text": "ram mohammad singh azad? ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:37:38Z",
+        "username": "Abhishek Saluja",
+        "text": "Mohammad Deepak",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:38:10Z",
+        "username": "Smit D Mahajani",
+        "text": "Mast crack!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:38:59Z",
+        "username": "Smit D Mahajani",
+        "text": "Another great Q @⁨Shreya KVizzing⁩!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:39:10Z",
+        "username": "Shreya",
+        "text": "Answer\n[X]: Udham Singh\n[Y]: Book\n[Z]: Ram Mohammad Singh Azad",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T17:39:53Z",
+        "username": "Shreya",
+        "text": "Trivia Q23. Udham Singh survived the Jallianwala Bagh massacre as a teenager and swore to punish Michael O'Dwyer, the Lieutenant Governor of Punjab who had approved the firing. To execute the strike 21 years later in London, he hid his revolver inside a hollowed-out book to bypass the Caxton Hall security guards. Upon his arrest, his choice of the name \"Ram Mohammad Singh Azad\" beautifully brought together the major religious communities of undivided India under the single banner of absolute freedom.",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
+    "id": "2026-07-29-t2",
+    "date": "2026-07-29",
+    "thread_number": 2,
+    "candidates": [
+      {
+        "timestamp": "2026-07-29T23:44:49Z",
+        "username": "Pranshu",
+        "text": "Yeah it definitely is more complicated…and would love to learn more…but in a simplistic sense I was told ki breathing releases that co2…is that correct?",
+        "reason_flagged": "question_mark"
+      },
+      {
+        "timestamp": "2026-07-29T23:46:22Z",
+        "username": "Dhruva",
+        "text": "So does breathing faster help you lose weight?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2026-07-29T20:16:06Z",
+        "username": "Gautam Aswani",
+        "text": "The series of vessels that you see on the right are shops by the way.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T20:18:00Z",
+        "username": "Gautam Aswani",
+        "text": "Yoga hall",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T20:18:08Z",
+        "username": "Gautam Aswani",
+        "text": "Library",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T20:19:10Z",
+        "username": "Gautam Aswani",
+        "text": "Not the correct group I know. Just shared here since the subject was on. 🙏🙏",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:00:42Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Q.\tThis map shows places in India with names ending in the suffix X. As you can see, Tamil Nadu, eastern Uttar Pradesh, and Bihar have many such place names, while there are a few in other parts of UP and Rajasthan, and a smattering in other states. What is X? ‎<attached: 00283172-PHOTO-2026-07-29-14-00-42.jpg>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:02:18Z",
+        "username": "Tushar Rao",
+        "text": "Cherry?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:04:15Z",
+        "username": "Pavan Pamidimarri",
+        "text": "not cherry",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:04:35Z",
+        "username": "Yash Badani",
+        "text": "Gadh or Ganj?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:04:44Z",
+        "username": "Pavan Pamidimarri",
+        "text": "No",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:05:01Z",
+        "username": "Yash Badani",
+        "text": "Patti ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T21:05:26Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Patti is correct",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:11:05Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Q.\tThe Status of Policing in India Report 2025 was published recently, summarizing the results of a comprehensive survey of most aspects of policing and law enforcement. The survey had responses from more than 8,000 police personnel across 17 states. Here is one of the survey results. What is blacked out? In other words, what do a majority of Indian cops at all levels think they should be allowed to do? ‎<attached: 00283181-PHOTO-2026-07-29-16-11-05.jpg>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:12:27Z",
+        "username": "Khandoba",
+        "text": "Apply third degree?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:12:33Z",
+        "username": "AntNishu",
+        "text": "third degree beating?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:12:40Z",
+        "username": "Khandoba",
+        "text": "For interrogation?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:13:34Z",
+        "username": "Pavan Pamidimarri",
+        "text": "more general, but will give it to you",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:13:49Z",
+        "username": "Khandoba",
+        "text": "Coerce",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:13:53Z",
+        "username": "Akshay",
+        "text": "Immunity for beating",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:13:54Z",
+        "username": "Khandoba",
+        "text": "Or apply pressure",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:13:55Z",
+        "username": "Akshay",
+        "text": "Use of force",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:14:16Z",
+        "username": "Khandoba",
+        "text": "This is the phrase that was eluding me",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:14:38Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Ability to use force without any fear of punishment to the cop is what the majority of Indian cops want",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:15:01Z",
+        "username": "Pavan Pamidimarri",
+        "text": "You can read the full report here, disturbing stuff: https://www.commoncause.in/wotadmin/upload/SPIR_2025.pdf",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:15:15Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Summary here: https://www.thehindu.com/data/more-than-70-police-personnel-believe-they-should-be-allowed-to-use-force-without-punishment/article71274147.ece",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:19:17Z",
+        "username": "Pranshu",
+        "text": "Question about something I learnt today:\nWhen we lose weight (exercise, fat burn), how does the most of the “extra” pounds leave our body?\n(If it’s bad framing, I can clarify)",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:20:43Z",
+        "username": "Khandoba",
+        "text": "Water?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:21:40Z",
+        "username": "Pranshu",
+        "text": "Looking for the mechanism",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:26:28Z",
+        "username": "Smit D Mahajani",
+        "text": "Is it a technical term or a general term?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:26:50Z",
+        "username": "Pranshu",
+        "text": "General term",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:27:12Z",
+        "username": "Pavan Pamidimarri",
+        "text": "carbon dioxide we breathe out?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:28:13Z",
+        "username": "Pranshu",
+        "text": "Yeah basically we exhale our weight  😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:29:07Z",
+        "username": "Khandoba",
+        "text": "I can see that, sure feels like it after I go up a flight of stairs",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:29:21Z",
+        "username": "Smit D Mahajani",
+        "text": "Mast Q!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:30:44Z",
+        "username": "Pranshu",
+        "text": "When I found I was like duh yeah obviously but before knowing it, I was honestly stumped by the simplicity of the question",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:31:04Z",
+        "username": "Pavan Pamidimarri",
+        "text": "yeah i really had to think what happens when we “burn calories\"",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:31:22Z",
+        "username": "Pranshu",
+        "text": "Exactly!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:31:48Z",
+        "username": "Pranshu",
+        "text": "My instinct was sweat but sweat is just h2o where does the carbon go!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:40:27Z",
+        "username": "Smit D Mahajani",
+        "text": "Although, this phrasing is simplistic tbh, coz molecular level pe it's not viewed like this. Coz by the time the fatty acids are broken down, they stop being fatty acids. So the CO2 is its own thing. So you don't really \"exhale fatty acids as CO2\". I'm just nitpicking, but that phrasing threw me off coz I went into like details lol. Not saying that the Q is wrong ofc ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:40:52Z",
+        "username": "Smit D Mahajani",
+        "text": "Coz general sense mein, yeah, one can say that ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:43:05Z",
+        "username": "Smit D Mahajani",
+        "text": "H2O is also produced as well",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:44:49Z",
+        "username": "Pranshu",
+        "text": "Yeah it definitely is more complicated…and would love to learn more…but in a simplistic sense I was told ki breathing releases that co2…is that correct?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2026-07-29T23:46:22Z",
+        "username": "Dhruva",
+        "text": "So does breathing faster help you lose weight?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2026-07-29T23:46:58Z",
+        "username": "Pranshu",
+        "text": "Exercise causes us to breath fast 😛",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:47:56Z",
+        "username": "Pranshu",
+        "text": "I don’t think that would work directly…we wouldn’t be able to breath fast enough to burn calories 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:47:56Z",
+        "username": "Smit D Mahajani",
+        "text": "Haan breathing out definitely releases co2. But first the fatty acids go into the muscles from the bloodstream coz they need energy and fatty acids are a source of energy. There, they get broken down into acetyl-coA in the muscles, which then gets further broken down, and then in that process, co2 is released. That co2 then goes to the lungs via the bloodstream and is then exhaled. This is the basic process ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:49:35Z",
+        "username": "Pranshu",
+        "text": "Yep makes sense! I think the question that person asked was ki “where does the weight go after weight loss” and so the answer was we just breath it out. I tried to frame it but wo ho hi nahi paya sahi se 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:49:41Z",
+        "username": "Smit D Mahajani",
+        "text": "I'm just going by whatever I remember coz I really haven't worked in the field of fatty acids and lipid metabolism. So this is just going by the basic stuff I learnt in my Bachelor's and Master's 😅 ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:50:23Z",
+        "username": "Smit D Mahajani",
+        "text": "I'd to confirm a couple of things even before I replied, coz I wasn't sure of them completely lol",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:50:39Z",
+        "username": "Dhruva",
+        "text": "It seems that you can't hack weight loss that way (just breathing faster without doing anything else), each breath releases less and less CO2",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:51:11Z",
+        "username": "Smit D Mahajani",
+        "text": "Nahi general sense mein you're right like I said. Like I would also kind of say something similar in general. It's just I went too technical when reading the Q lol",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:51:49Z",
+        "username": "Pranshu",
+        "text": "Yep…just to clarify breathing doesn’t lead to weight loss…that’s just how the weight IS lost after all the process @⁨~Smit D Mahajani⁩ explained",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:52:11Z",
+        "username": "Pranshu",
+        "text": "Haha the curse of knowledge 😆",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:52:20Z",
+        "username": "Pavan Pamidimarri",
+        "text": "no — you don’t make much more CO2 by breathing faster",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:53:25Z",
+        "username": "Smit D Mahajani",
+        "text": "Haan the weight is technically lost the moment the fatty acids get used up, coz the stored fatty acids get used up more and more as you exercise. The Co2 is just one of the final products which gets exhaled out ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:54:03Z",
+        "username": "Smit D Mahajani",
+        "text": "Baaki sab final products use up ho jaate hai in their own ways",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2026-07-29T23:58:56Z",
+        "username": "Smit D Mahajani",
+        "text": "No it doesn't, coz breathing faster doesn't require so much energy that stored fatty acids would be required to be used in the first place. Fatty acids are burned during exercising coz the energy requirement is so high, that the muscles require additional sources other than the glucose in them. And that's why fatty acids are used ‎<This message was edited>",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  }
+]
