@@ -59,6 +59,8 @@
         <img
           src={images[0].url ?? ''}
           alt={images[0].caption ?? ''}
+          loading="lazy"
+          decoding="async"
           class="rounded-lg block mx-auto max-w-full object-contain {compact ? 'max-h-[300px] sm:max-w-[400px]' : 'max-h-[500px] sm:max-w-[600px]'}"
         />
       </button>
@@ -83,6 +85,8 @@
               <img
                 src={img.url ?? ''}
                 alt={img.caption ?? ''}
+                loading="lazy"
+                decoding="async"
                 class="rounded-lg block max-w-full object-contain {compact ? 'max-h-[300px] sm:max-w-[400px]' : 'max-h-[500px] sm:max-w-[600px]'}"
                 draggable="false"
               />
