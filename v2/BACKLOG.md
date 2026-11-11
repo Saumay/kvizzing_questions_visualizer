@@ -30,7 +30,7 @@ Dead ends tried:
 
 Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Photos app (if "Save to Camera Roll" was ever on), other group members' phones, ask original senders directly.
 
-## Full per-day table (2025-09-23 - 2026-11-10)
+## Full per-day table (2025-09-23 - 2026-11-11)
 
 | Date | Source | Extracted | Questions | Media % | Topic % | Tags % | Reactions % | Low conf % | Published |
 |---|---|---|---|---|---|---|---|---|---|
@@ -73,14 +73,14 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2025-10-29 | yes | yes | 52 | 100.0% | 100.0% | 100.0% | 0.0% | 3.8% | YES |
 | 2025-10-30 | yes | yes | 28 | 100.0% | 100.0% | 100.0% | 0.0% | 3.6% | YES |
 | 2025-10-31 | yes | yes | 37 | 100.0% | 100.0% | 100.0% | 0.0% | 2.7% | YES |
-| 2025-11-01 | yes | yes | 38 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
+| 2025-11-01 | yes | yes | 55 | 72.2% | 69.1% | 69.1% | 0.0% | 0.0% |  |
 | 2025-11-02 | yes | yes | 10 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-03 | yes | yes | 32 | 100.0% | 100.0% | 100.0% | 0.0% | 6.2% | YES |
 | 2025-11-04 | yes | yes | 60 | 100.0% | 100.0% | 100.0% | 0.0% | 5.0% | YES |
 | 2025-11-05 | yes | yes | 63 | 100.0% | 100.0% | 100.0% | 0.0% | 6.3% | YES |
 | 2025-11-06 | yes | yes | 110 | 100.0% | 100.0% | 100.0% | 0.0% | 1.8% | YES |
 | 2025-11-07 | yes | yes | 40 | 100.0% | 100.0% | 100.0% | 0.0% | 2.5% | YES |
-| 2025-11-08 | yes | yes | 67 | 34.8% | 62.7% | 62.7% | 0.0% | 3.0% |  |
+| 2025-11-08 | yes | yes | 92 | 21.1% | 45.7% | 45.7% | 0.0% | 2.2% |  |
 | 2025-11-09 | yes | yes | 53 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-10 | yes | yes | 52 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-11 | yes | yes | 56 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
@@ -93,7 +93,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2025-11-18 | yes | yes | 47 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-19 | yes | yes | 41 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-20 | yes | yes | 49 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
-| 2025-11-21 | yes | yes | 34 | 100.0% | 100.0% | 100.0% | 0.0% | 14.7% | YES |
+| 2025-11-21 | yes | yes | 51 | 84.6% | 66.7% | 66.7% | 0.0% | 9.8% |  |
 | 2025-11-22 | yes | yes | 42 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-23 | yes | yes | 41 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2025-11-24 | yes | yes | 65 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
@@ -115,7 +115,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2025-12-10 | yes | yes | 102 | 100.0% | 100.0% | 100.0% | 0.0% | 9.8% | YES |
 | 2025-12-11 | yes | yes | 46 | 100.0% | 100.0% | 100.0% | 0.0% | 6.5% | YES |
 | 2025-12-12 | yes | yes | 60 | 100.0% | 100.0% | 100.0% | 0.0% | 8.3% | YES |
-| 2025-12-13 | yes | yes | 53 | 100.0% | 100.0% | 100.0% | 0.0% | 3.8% | YES |
+| 2025-12-13 | yes | yes | 69 | 85.7% | 76.8% | 76.8% | 0.0% | 2.9% |  |
 | 2025-12-14 | yes | yes | 67 | 100.0% | 100.0% | 100.0% | 0.0% | 7.5% | YES |
 | 2025-12-15 | yes | yes | 87 | 100.0% | 100.0% | 100.0% | 0.0% | 1.1% | YES |
 | 2025-12-16 | yes | yes | 31 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
@@ -179,7 +179,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-02-12 | yes | yes | 54 | 100.0% | 100.0% | 100.0% | 0.0% | 3.7% | YES |
 | 2026-02-13 | yes | yes | 89 | 100.0% | 100.0% | 100.0% | 0.0% | 3.4% | YES |
 | 2026-02-14 | yes | yes | 99 | 100.0% | 100.0% | 100.0% | 0.0% | 1.0% | YES |
-| 2026-02-15 | yes | yes | 21 | 100.0% | 100.0% | 100.0% | 0.0% | 14.3% | YES |
+| 2026-02-15 | yes | yes | 60 | 25.7% | 35.0% | 35.0% | 0.0% | 5.0% |  |
 | 2026-02-16 | yes | yes | 45 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2026-02-17 | yes | yes | 81 | 100.0% | 100.0% | 100.0% | 0.0% | 2.5% | YES |
 | 2026-02-18 | yes | yes | 61 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
@@ -228,7 +228,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-04-02 | yes | yes | 92 | 0.0% | 100.0% | 0.0% | 0.0% | 23.9% |  |
 | 2026-04-03 | yes | yes | 68 | 0.0% | 100.0% | 0.0% | 0.0% | 19.1% |  |
 | 2026-04-04 | yes | yes | 133 | 0.0% | 65.4% | 0.0% | 0.0% | 16.5% |  |
-| 2026-04-05 | yes | yes | 147 | 0.0% | 66.0% | 0.0% | 0.0% | 10.2% |  |
+| 2026-04-05 | yes | yes | 183 | 0.0% | 53.0% | 0.0% | 0.0% | 8.2% |  |
 | 2026-04-06 | yes | yes | 79 | 0.0% | 100.0% | 0.0% | 0.0% | 16.5% |  |
 | 2026-04-07 | yes | yes | 63 | 0.0% | 100.0% | 0.0% | 0.0% | 19.0% |  |
 | 2026-04-08 | yes | yes | 88 | 0.0% | 100.0% | 0.0% | 0.0% | 11.4% |  |
@@ -248,21 +248,21 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-04-22 | yes | yes | 35 | 0.0% | 100.0% | 0.0% | 0.0% | 8.6% |  |
 | 2026-04-23 | yes | yes | 23 | 0.0% | 100.0% | 0.0% | 0.0% | 8.7% |  |
 | 2026-04-24 | yes | yes | 69 | 0.0% | 100.0% | 0.0% | 0.0% | 11.6% |  |
-| 2026-04-25 | yes | yes | 74 | 0.0% | 78.4% | 0.0% | 0.0% | 5.4% |  |
+| 2026-04-25 | yes | yes | 90 | 0.0% | 64.4% | 0.0% | 0.0% | 4.4% |  |
 | 2026-04-26 | yes | yes | 41 | 0.0% | 100.0% | 0.0% | 0.0% | 24.4% |  |
 | 2026-04-27 | yes | yes | 112 | 0.0% | 100.0% | 0.0% | 0.0% | 20.5% |  |
 | 2026-04-28 | yes | yes | 119 | 0.0% | 100.0% | 0.0% | 0.0% | 18.5% |  |
 | 2026-04-29 | yes | yes | 104 | 0.0% | 100.0% | 0.0% | 0.0% | 15.4% |  |
 | 2026-04-30 | yes | yes | 123 | 0.0% | 100.0% | 0.0% | 0.0% | 14.6% |  |
-| 2026-05-01 | yes | yes | 22 | 0.0% | 100.0% | 0.0% | 0.0% | 13.6% |  |
+| 2026-05-01 | yes | yes | 82 | 0.0% | 26.8% | 0.0% | 0.0% | 3.7% |  |
 | 2026-05-02 | yes | yes | 31 | 0.0% | 100.0% | 0.0% | 0.0% | 9.7% |  |
-| 2026-05-03 | yes | yes | 177 | 0.0% | 36.2% | 0.0% | 0.0% | 1.7% |  |
+| 2026-05-03 | yes | yes | 211 | 0.0% | 30.3% | 0.0% | 0.0% | 1.4% |  |
 | 2026-05-04 | yes | yes | 55 | 0.0% | 69.1% | 0.0% | 0.0% | 1.8% |  |
 | 2026-05-05 | yes | yes | 86 | 0.0% | 100.0% | 0.0% | 0.0% | 2.3% |  |
 | 2026-05-06 | yes | yes | 61 | 0.0% | 100.0% | 0.0% | 0.0% | 3.3% |  |
 | 2026-05-07 | yes | yes | 65 | 0.0% | 100.0% | 0.0% | 0.0% | 1.5% |  |
 | 2026-05-08 | yes | yes | 108 | 0.0% | 100.0% | 0.0% | 0.0% | 4.6% |  |
-| 2026-05-09 | yes | yes | 34 | 0.0% | 100.0% | 0.0% | 0.0% | 11.8% |  |
+| 2026-05-09 | yes | yes | 50 | 0.0% | 68.0% | 0.0% | 0.0% | 8.0% |  |
 | 2026-05-10 | yes | yes | 79 | 0.0% | 100.0% | 0.0% | 0.0% | 6.3% |  |
 | 2026-05-11 | yes | yes | 56 | 0.0% | 100.0% | 0.0% | 0.0% | 10.7% |  |
 | 2026-05-12 | yes | yes | 66 | 0.0% | 100.0% | 0.0% | 0.0% | 7.6% |  |
@@ -270,13 +270,13 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-05-14 | yes | yes | 44 | 0.0% | 100.0% | 0.0% | 0.0% | 9.1% |  |
 | 2026-05-15 | yes | yes | 70 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-05-16 | yes | yes | 74 | 0.0% | 32.4% | 0.0% | 0.0% | 2.7% |  |
-| 2026-05-17 | yes | yes | 25 | 0.0% | 100.0% | 0.0% | 0.0% | 8.0% |  |
+| 2026-05-17 | yes | yes | 42 | 0.0% | 59.5% | 0.0% | 0.0% | 4.8% |  |
 | 2026-05-18 | yes | yes | 44 | 0.0% | 100.0% | 0.0% | 0.0% | 11.4% |  |
 | 2026-05-19 | yes | yes | 56 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-05-20 | yes | yes | 92 | 0.0% | 100.0% | 0.0% | 0.0% | 20.7% |  |
 | 2026-05-21 | yes | yes | 66 | 0.0% | 100.0% | 0.0% | 0.0% | 4.5% |  |
 | 2026-05-22 | yes | yes | 45 | 0.0% | 100.0% | 0.0% | 0.0% | 2.2% |  |
-| 2026-05-23 | yes | yes | 25 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-05-23 | yes | yes | 43 | 0.0% | 58.1% | 0.0% | 0.0% | 0.0% |  |
 | 2026-05-24 | yes | yes | 29 | 0.0% | 100.0% | 0.0% | 0.0% | 6.9% |  |
 | 2026-05-25 | yes | yes | 43 | 0.0% | 100.0% | 0.0% | 0.0% | 20.9% |  |
 | 2026-05-26 | yes | yes | 42 | 0.0% | 100.0% | 0.0% | 0.0% | 2.4% |  |
@@ -289,7 +289,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-06-02 | yes | yes | 39 | 0.0% | 100.0% | 0.0% | 0.0% | 5.1% |  |
 | 2026-06-03 | yes | yes | 63 | 0.0% | 100.0% | 0.0% | 0.0% | 12.7% |  |
 | 2026-06-04 | yes | yes | 79 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-06-05 | yes | yes | 54 | 0.0% | 68.5% | 0.0% | 0.0% | 7.4% |  |
+| 2026-06-05 | yes | yes | 72 | 0.0% | 51.4% | 0.0% | 0.0% | 5.6% |  |
 | 2026-06-06 | yes | yes | 37 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-06-07 | yes | yes | 40 | 0.0% | 100.0% | 0.0% | 0.0% | 7.5% |  |
 | 2026-06-08 | yes | yes | 72 | 0.0% | 100.0% | 0.0% | 0.0% | 1.4% |  |
@@ -303,30 +303,30 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-06-16 | yes | yes | 33 | 0.0% | 100.0% | 0.0% | 0.0% | 3.0% |  |
 | 2026-06-17 | yes | yes | 48 | 0.0% | 100.0% | 0.0% | 0.0% | 4.2% |  |
 | 2026-06-18 | yes | yes | 30 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
-| 2026-06-19 | yes | yes | 76 | 0.0% | 100.0% | 0.0% | 0.0% | 5.3% |  |
+| 2026-06-19 | yes | yes | 96 | 0.0% | 79.2% | 0.0% | 0.0% | 4.2% |  |
 | 2026-06-20 | yes | yes | 60 | 0.0% | 100.0% | 0.0% | 0.0% | 6.7% |  |
 | 2026-06-21 | yes | yes | 73 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-06-22 | yes | yes | 58 | 0.0% | 100.0% | 0.0% | 0.0% | 12.1% |  |
 | 2026-06-23 | yes | yes | 53 | 0.0% | 100.0% | 0.0% | 0.0% | 3.8% |  |
 | 2026-06-24 | yes | yes | 73 | 0.0% | 100.0% | 0.0% | 0.0% | 4.1% |  |
 | 2026-06-25 | yes | yes | 85 | 0.0% | 100.0% | 0.0% | 0.0% | 4.7% |  |
-| 2026-06-26 | yes | yes | 77 | 0.0% | 100.0% | 0.0% | 0.0% | 7.8% |  |
+| 2026-06-26 | yes | yes | 94 | 0.0% | 81.9% | 0.0% | 0.0% | 6.4% |  |
 | 2026-06-27 | yes | yes | 89 | 0.0% | 100.0% | 0.0% | 0.0% | 1.1% |  |
 | 2026-06-28 | yes | yes | 60 | 0.0% | 100.0% | 0.0% | 0.0% | 3.3% |  |
-| 2026-06-29 | yes | yes | 49 | 0.0% | 100.0% | 0.0% | 0.0% | 6.1% |  |
+| 2026-06-29 | yes | yes | 87 | 0.0% | 56.3% | 0.0% | 0.0% | 3.4% |  |
 | 2026-06-30 | yes | yes | 62 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-07-01 | yes | yes | 72 | 0.0% | 100.0% | 0.0% | 0.0% | 4.2% |  |
 | 2026-07-02 | yes | yes | 69 | 0.0% | 100.0% | 0.0% | 0.0% | 2.9% |  |
 | 2026-07-03 | yes | yes | 78 | 0.0% | 100.0% | 0.0% | 0.0% | 9.0% |  |
-| 2026-07-04 | yes | yes | 53 | 0.0% | 100.0% | 0.0% | 0.0% | 5.7% |  |
+| 2026-07-04 | yes | yes | 74 | 0.0% | 71.6% | 0.0% | 0.0% | 4.1% |  |
 | 2026-07-05 | yes | yes | 89 | 0.0% | 68.5% | 0.0% | 0.0% | 10.1% |  |
 | 2026-07-06 | yes | yes | 91 | 0.0% | 100.0% | 0.0% | 0.0% | 3.3% |  |
 | 2026-07-07 | yes | yes | 65 | 0.0% | 100.0% | 0.0% | 0.0% | 1.5% |  |
 | 2026-07-08 | yes | yes | 58 | 0.0% | 100.0% | 0.0% | 0.0% | 5.2% |  |
 | 2026-07-09 | yes | yes | 92 | 0.0% | 100.0% | 0.0% | 0.0% | 1.1% |  |
 | 2026-07-10 | yes | yes | 61 | 0.0% | 100.0% | 0.0% | 0.0% | 6.6% |  |
-| 2026-07-11 | yes | yes | 48 | 0.0% | 100.0% | 0.0% | 0.0% | 6.2% |  |
-| 2026-07-12 | yes | yes | 32 | 0.0% | 100.0% | 0.0% | 0.0% | 12.5% |  |
+| 2026-07-11 | yes | yes | 64 | 0.0% | 75.0% | 0.0% | 0.0% | 4.7% |  |
+| 2026-07-12 | yes | yes | 64 | 0.0% | 50.0% | 0.0% | 0.0% | 6.2% |  |
 | 2026-07-13 | yes | yes | 75 | 0.0% | 100.0% | 0.0% | 0.0% | 10.7% |  |
 | 2026-07-14 | yes | yes | 50 | 0.0% | 100.0% | 0.0% | 0.0% | 10.0% |  |
 | 2026-07-15 | yes | yes | 36 | 0.0% | 100.0% | 0.0% | 0.0% | 19.4% |  |
@@ -448,6 +448,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-08 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-09 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-10 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-11 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
 ## How to update this file
 
@@ -509,6 +510,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-10-31-akshay | 2025-10-31 | Akshay | 9 | 100.0% | yes | yes |  | 11.1% |
 | 2025-11-01-pavan | 2025-11-01 | Pavan Pamidimarri | 11 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-01-abhishek | 2025-11-01 | Abhishek S | 11 | 100.0% | yes | yes |  | 0.0% |
+| deck-yet-another-quiz | 2025-11-01 | unknown | 17 | 0.0% | yes |  |  | 0.0% |
 | 2025-11-02-pavan | 2025-11-02 | Pavan Pamidimarri | 8 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-03-pavan | 2025-11-03 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-04-pavan | 2025-11-04 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
@@ -521,6 +523,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-11-07-abhishek | 2025-11-07 | Abhishek S | 14 | 100.0% | yes | yes |  | 7.1% |
 | 2025-11-07-nikunj | 2025-11-07 | Nikunj | 8 | 100.0% | yes | yes |  | 0.0% |
 | deck-buzzing-entertainment-r1 | 2025-11-08 | unknown | 25 | 0.0% | yes | yes |  | 0.0% |
+| deck-buzzing-entertainment-r2 | 2025-11-08 | unknown | 25 | 0.0% | yes |  |  | 0.0% |
 | 2025-11-09-ryan | 2025-11-09 | Ryan Colaço | 5 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-09-abhishek | 2025-11-09 | Abhishek Vats | 6 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-09-pavan | 2025-11-09 | Pavan Pamidimarri | 20 | 100.0% | yes | yes |  | 0.0% |
@@ -549,6 +552,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-11-20-pavan | 2025-11-20 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-20-kartikey | 2025-11-20 | Kartikey Pradhan | 7 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-21-ricky | 2025-11-21 | Ricky | 17 | 100.0% | yes | yes |  | 17.6% |
+| deck-swine-clue | 2025-11-21 | unknown | 17 | 0.0% | yes |  |  | 0.0% |
 | 2025-11-22-kartikey | 2025-11-22 | Kartikey Pradhan | 17 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-22-మాन$ | 2025-11-22 | మాन$ | 20 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-23-abhishek | 2025-11-23 | Abhishek S | 8 | 100.0% | yes | yes |  | 0.0% |
@@ -598,6 +602,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-12-12-shiv | 2025-12-12 | Shiv Ram | 14 | 100.0% | yes | yes |  | 7.1% |
 | 2025-12-13-kartikey | 2025-12-13 | Kartikey Pradhan | 19 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-13-abhishek | 2025-12-13 | Abhishek S | 13 | 100.0% | yes | yes |  | 0.0% |
+| deck-megakviz-r1 | 2025-12-13 | Akshay | 16 | 0.0% | yes |  |  | 0.0% |
 | 2025-12-14-tapish | 2025-12-14 | Tapish | 19 | 100.0% | yes | yes |  | 5.3% |
 | 2025-12-14-dhruv | 2025-12-14 | Dhruv Nath | 30 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-15-abhishek | 2025-12-15 | Abhishek S | 24 | 100.0% | yes | yes |  | 0.0% |
@@ -810,6 +815,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-02-14-antnishu | 2026-02-14 | AntNishu | 12 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-15-khandoba | 2026-02-15 | Khandoba | 7 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-15-abhishek | 2026-02-15 | Abhishek S | 7 | 100.0% |  | yes |  | 0.0% |
+| deck-megakviz-r2 | 2026-02-15 | Akshay | 39 | 0.0% | yes |  |  | 0.0% |
 | 2026-02-16-kartikey | 2026-02-16 | Kartikey Pradhan | 7 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-16-chinmay | 2026-02-16 | Chinmay Mehta | 16 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-16-saumay | 2026-02-16 | Saumay | 11 | 100.0% |  | yes |  | 0.0% |
@@ -968,6 +974,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r1 | 2026-04-05 | Sal | 16 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r2 | 2026-04-05 | Sid K | 16 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r3 | 2026-04-05 | Nikunj | 18 | 0.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r4 | 2026-04-05 | Aditi | 17 | 0.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r5 | 2026-04-05 | Zaf | 19 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r6 | 2026-04-15 | Vats | 17 | 0.0% | yes |  |  | 0.0% |
 | deck-kviz-o-krazzy-r1 | 2026-04-15 | Sal | 16 | 0.0% | yes | yes |  | 0.0% |
 | deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | 16 | 0.0% | yes |  |  | 0.0% |
@@ -976,7 +984,10 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-kviz-o-krazzy-r5 | 2026-04-15 | Sal | 16 | 0.0% | yes |  |  | 0.0% |
 | deck-kviz-o-krazzy-r6 | 2026-04-15 | Sal | 16 | 0.0% | yes |  |  | 0.0% |
 | deck-kviz-o-krazzy-r7 | 2026-04-15 | Sal | 21 | 0.0% | yes |  |  | 0.0% |
+| deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | 16 | 0.0% | yes |  |  | 0.0% |
 | deck-movie-quiz-bijal-r2 | 2026-04-25 | Bijal Bhatt | 16 | 0.0% | yes |  |  | 0.0% |
+| deck-buzzing-whatsapp-namrata-r1 | 2026-05-01 | Namrata | 30 | 0.0% | yes |  |  | 0.0% |
+| deck-buzzing-whatsapp-namrata-r2 | 2026-05-01 | Namrata | 30 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-02-pavan | 2026-05-02 | Pavan Pamidimarri | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-02-nikhil | 2026-05-02 | Nikhil Borra | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-03-abhishek | 2026-05-03 | Abhishek Saluja | 27 | 0.0% |  | yes |  | 0.0% |
@@ -985,6 +996,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r7 | 2026-05-03 | Khandoba | 17 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r8 | 2026-05-03 | KP | 18 | 0.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r9 | 2026-05-03 | Pavan | 18 | 0.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r10 | 2026-05-03 | CM | 17 | 0.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r11 | 2026-05-03 | Sal | 17 | 0.0% | yes |  |  | 0.0% |
 | deck-buzzer-bhide | 2026-05-03 | Bhide | 60 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-04-మాन$ | 2026-05-04 | మాन$ | 13 | 0.0% |  | yes |  | 7.7% |
 | 2026-05-04-bijal | 2026-05-04 | bijal bhatt | 10 | 0.0% |  | yes |  | 0.0% |
@@ -1007,6 +1020,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-05-08-smit | 2026-05-08 | Smit D Mahajani | 10 | 0.0% |  | yes |  | 30.0% |
 | 2026-05-09-pratik | 2026-05-09 | pratik.s.chandarana | 13 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-09-akshay | 2026-05-09 | Akshay | 10 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r12 | 2026-05-09 | Vats | 16 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-10-chirag | 2026-05-10 | Chirag Jain | 8 | 0.0% |  | yes |  | 12.5% |
 | 2026-05-10-smit | 2026-05-10 | Smit D Mahajani | 16 | 0.0% |  | yes |  | 12.5% |
 | 2026-05-10-dr | 2026-05-10 | Dr. Prajwal K Aradhya | 28 | 0.0% |  | yes |  | 0.0% |
@@ -1035,6 +1049,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-visual-buzzing-bijal | 2026-05-16 | Bijal Bhatt | 50 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-17-harshvardhan | 2026-05-17 | Harshvardhan Ranade | 7 | 0.0% |  | yes |  | 14.3% |
 | 2026-05-17-khandoba | 2026-05-17 | Khandoba | 13 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r13 | 2026-05-17 | Pavan | 17 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-18-harshvardhan | 2026-05-18 | Harshvardhan Ranade | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-18-dr | 2026-05-18 | Dr. Prajwal K Aradhya | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-18-abhishek | 2026-05-18 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
@@ -1058,6 +1073,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-05-22-aakanksha | 2026-05-22 | Aakanksha Sinha | 11 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-23-abhishek | 2026-05-23 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-23-dr | 2026-05-23 | Dr.Namrata Srinivasan | 10 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r14 | 2026-05-23 | Lzafeer | 18 | 0.0% | yes |  |  | 0.0% |
 | 2026-05-24-nikhil | 2026-05-24 | Nikhil Borra | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-24-bijal | 2026-05-24 | bijal bhatt | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-05-25-pavan | 2026-05-25 | Pavan Pamidimarri | 14 | 0.0% |  | yes |  | 0.0% |
@@ -1101,6 +1117,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-05-మాन$ | 2026-06-05 | మాन$ | 13 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-05-sidhesh | 2026-06-05 | Sidhesh K K | 11 | 0.0% |  | yes |  | 0.0% |
 | deck-gauntlet-r15 | 2026-06-05 | Khandoba | 17 | 0.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r16 | 2026-06-05 | Bijal Bhatt | 18 | 0.0% | yes |  |  | 0.0% |
 | 2026-06-06-pavan | 2026-06-06 | Pavan Pamidimarri | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-06-shreya | 2026-06-06 | Shreya | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-06-smit | 2026-06-06 | Smit Mahajani | 10 | 0.0% |  | yes |  | 0.0% |
@@ -1135,6 +1152,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-19-abhishek | 2026-06-19 | Abhishek Saluja | 26 | 0.0% |  | yes |  | 3.8% |
 | 2026-06-19-antnishu | 2026-06-19 | AntNishu | 17 | 0.0% |  | yes |  | 5.9% |
 | 2026-06-19-shreya | 2026-06-19 | Shreya | 12 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r17 | 2026-06-19 | Nikunj | 20 | 0.0% | yes |  |  | 0.0% |
 | 2026-06-20-shreya | 2026-06-20 | Shreya | 10 | 0.0% |  | yes |  | 10.0% |
 | 2026-06-20-manik | 2026-06-20 | Manik Kamra | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-20-pavan | 2026-06-20 | Pavan Pamidimarri | 15 | 0.0% |  | yes |  | 6.7% |
@@ -1159,6 +1177,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-26-kartikey | 2026-06-26 | Kartikey Pradhan | 8 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-26-shreya | 2026-06-26 | Shreya | 21 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-26-harshvardhan | 2026-06-26 | Harshvardhan Ranade | 16 | 0.0% |  | yes |  | 6.2% |
+| deck-gauntlet-r18 | 2026-06-26 | Prajwal | 17 | 0.0% | yes |  |  | 0.0% |
 | 2026-06-27-abhishek | 2026-06-27 | Abhishek Vats | 16 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-27-dr | 2026-06-27 | Dr. Prajwal K Aradhya | 14 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-27-antnishu | 2026-06-27 | AntNishu | 9 | 0.0% |  | yes |  | 0.0% |
@@ -1171,6 +1190,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-06-29-chirag | 2026-06-29 | Chirag Jain | 12 | 0.0% |  | yes |  | 8.3% |
 | 2026-06-29-dr | 2026-06-29 | Dr.Namrata Srinivasan | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-29-abhishek | 2026-06-29 | Abhishek Vats | 9 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r19 | 2026-06-29 | Gautam | 18 | 0.0% | yes |  |  | 0.0% |
+| deck-history-smit | 2026-06-29 | Smit | 20 | 0.0% | yes |  |  | 0.0% |
 | 2026-06-30-dr | 2026-06-30 | Dr.Namrata Srinivasan | 17 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-30-shreya | 2026-06-30 | Shreya | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-06-30-abhishek | 2026-06-30 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
@@ -1190,6 +1211,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-04-lzafeer | 2026-07-04 | Lzafeer Ahmad B F | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-04-pavan | 2026-07-04 | Pavan Pamidimarri | 22 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-04-shreya | 2026-07-04 | Shreya | 11 | 0.0% |  | yes |  | 0.0% |
+| deck-old-school-kp | 2026-07-04 | KP | 21 | 0.0% | yes |  |  | 0.0% |
 | 2026-07-05-abhishek | 2026-07-05 | Abhishek Vats | 11 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-05-anurag | 2026-07-05 | Anurag Bhide | 20 | 0.0% |  | yes |  | 10.0% |
 | deck-tapish-sports | 2026-07-05 | Tapish | 28 | 0.0% | yes |  |  | 0.0% |
@@ -1212,8 +1234,11 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-10-abhishek | 2026-07-10 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-11-abhishek | 2026-07-11 | Abhishek Vats | 27 | 0.0% |  | yes |  | 3.7% |
 | 2026-07-11-shubhankar | 2026-07-11 | Shubhankar | 8 | 0.0% |  | yes |  | 12.5% |
+| deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | 16 | 0.0% | yes |  |  | 0.0% |
 | 2026-07-12-lzafeer | 2026-07-12 | Lzafeer Ahmad B F | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-12-abhishek | 2026-07-12 | Abhishek Saluja | 6 | 0.0% |  | yes |  | 16.7% |
+| deck-mtv-tournament-r2 | 2026-07-12 | Bijal Bhatt | 16 | 0.0% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r3 | 2026-07-12 | Bijal Bhatt | 16 | 0.0% | yes |  |  | 0.0% |
 | 2026-07-13-dr | 2026-07-13 | Dr. Prajwal K Aradhya | 19 | 0.0% |  | yes |  | 15.8% |
 | 2026-07-13-gautam | 2026-07-13 | Gautam Ramachandran | 7 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-13-aakanksha | 2026-07-13 | Aakanksha Sinha | 11 | 0.0% |  | yes |  | 9.1% |

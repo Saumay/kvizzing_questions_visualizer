@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "Because long strings of digits are hard to remember, companies and local businesses come up with a clever trick. They create catchy, instructional idioms to help you \"speed dial\" for help. If you need a leak fixed or a line connected, the slogans tell you how to reach your Plumber or your Operator. This idea was used as an inspiration for a movie title. Identify the title.",
+    "answer_text": "Dial M for Murder",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On a single Saturday in April 1988, Japanese audiences were presented with perhaps the most tonally dissonant double bill in cinematic history, an experimental distribution strategy born from the fact that neither film was deemed a safe bet on its own. The first film, X, is an Isao Takahata work adapted from a Naoki Prize winning short story. It is a harrowing exercise in neo realism that utilizes a rusted tin of Sakuma fruit drops as a centerpiece for both childhood joy and, eventually, a reliquary for ashes. Its companion, Y, was originally conceived with a single protagonist before being split into sisters named after the months of May and June. While X's depiction of the Kobe firebombing led to early school group exits and middling box office returns, Y's titular entity, a massive Cinnamomum camphora dweller whose name stems from a mispronunciation of the word Troll, triggered a plushie fueled merchandising boom that effectively stabilized their fledgling production house and became its permanent mascot. Identify these two 1988 Studio Ghibli masterpieces.",
+    "answer_text": "X: Grave of the Fireflies. Y: My Neighbor Totoro.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Fill in the blank: ____ ____ is a clause or provision in a life insurance or accident policy whereby the company agrees to pay the stated multiple (i.e. double) of the face amount in the contract in cases of death caused by accidental means. This includes murder by a person other than, and not in collusion with, the beneficiary of the insurance policy, and most accidental deaths. It excludes suicide, deaths caused by the insured person's own gross negligence, and natural causes such as cancer or heart disease.",
+    "answer_text": "Double Indemnity",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. X was released on 1 March 1963. The number of kidnappings in the country increased slightly following the film's release. Y had intended to inspire harsher punishments by emphasizing the crime's lenient sentencing, but was instead blamed for an increase in kidnapping cases. In the aftermath of the Yoshinobu-chan murder and kidnapping case in late March, Y said that because of this increase, the case took a personal toll on him. People called the Y household and threatened to kidnap the director's daughter, then 8 or 9 years old. She was driven to and from school every day and forbidden from leaving the house as a precaution against a potential kidnapping.",
+    "answer_text": "X: High and Low. Y: Akira Kurosawa.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie and X. The production of this masterpiece was shadowed by a private tragedy: just ten days before filming commenced, X's infant son had passed away. This grief is often cited as the catalyst for the profound, paternal chemistry displayed on screen with his young co-star, whom X discovered performing a shimmy at the Orpheum Theatre. To build an authentic bond, the legendary performer spent his Sundays taking Jackie Coogan to amusement parks and pony rides, effectively attempting to reclaim the childhood he himself had lost. The resulting film, which opens with the title card \"A picture with a smile, and perhaps, a tear,\" follows an abandoned waif and the glass-repairing vagrant who takes him in.",
+    "answer_text": "The Kid, starring and directed by Charlie Chaplin (X).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the phrase and the movie. In the wardrobe department of this 1999 production, a continuity constraint was strictly enforced: the protagonist is never seen in any garment he didn't interact with on the night of a fateful event. This subtle sartorial clue serves as a visual anchor for a narrative that famously operates on a second-viewing logic. The director initially worried that the game was up during a specific bedroom scene, where the camera performs a slow, deliberate zoom on the protagonist's face. This cinematic tell occurs just as Cole says: \"____________.\"",
+    "answer_text": "The phrase is \"I see dead people,\" from the movie The Sixth Sense.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. Rubino Romeo Salmonì, an Italian Jew, was born in Rome in 1920. He escaped the first mass arrests of Jews from the Roman Ghetto in October 1943 but was arrested by the Italian police in April 1944. After being imprisoned in Rome, he was moved to a camp in Fossoli and arrived at Auschwitz when he was 24. He was given the identification number A15810 and forced to work, facing starvation and cold. Salmonì and other prisoners in the camp were freed by the Red Army in 1945. While Salmonì was reunited with his parents, he found his brothers were murdered. After the war, Salmonì visited many schools and colleges to share his experiences. His book, In the End, I Beat Hitler, also recounts his experiences, incorporating elements of irony and black humor. He wrote, \"I came out of Auschwitz alive, I have a wonderful family, I celebrated my golden wedding anniversary, I have 12 splendid grandchildren, I think I can say I ruined Hitler's plan for me.\" The writings served as an inspiration for X.",
+    "answer_text": "Life Is Beautiful",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "How do we know this scene as? The Revelation: Dr. Cawley reveals that Teddy is actually Andrew Laeddis, the hospital's most dangerous patient, and that the entire \"investigation\" was an elaborate role-play designed by the doctors to help him confront the truth of his past. The Moment: as Teddy's \"partner\" Chuck enters the room and reveals he is actually Teddy's primary psychiatrist, Dr. Sheehan, Teddy's world begins to crumble. The Line: distraught and feeling utterly betrayed, Teddy asks in a low, hurt voice...",
+    "answer_text": "The scene (from Shutter Island) is popularly known by the reaction it provokes: \"WTF is going on here?\"",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and Y. In 1930, when Y placed an ad in the newspaper stating that his next film would be Mörder unter uns (Murderer Among Us) and was about a child murderer, he immediately began receiving threatening letters in the mail. He was also denied a studio space to shoot the film at Stakken studio. When Y confronted the head of Stakken studio to find out why he was being denied access, the studio head informed Y that he was a member of the Nazi party and that the party suspected the film was meant to depict the Nazis. This assumption was based entirely on the film's original title, and only after the director clarified that his subject was not political, but rather a compulsive predator stalking the streets of Düsseldorf, did the regime relent, allowing the shoot to proceed. X was eventually shot in six weeks at a Stanken Zeppelinhalle studio just outside of Berlin. This film is perhaps most famous for its sonic leitmotif: the chilling, off-key whistling of Grieg's \"In the Hall of the Mountain King\" that heralds the arrival of a man portrayed by Peter Lorre. It is a masterpiece of early sound design, famously depicting a kangaroo court where the city's criminal underworld, rather than the police, hunts the protagonist to clear the heat from their own rackets.",
+    "answer_text": "X: M. Y: Fritz Lang.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. The setting of the film ties its characters to the political situation in two different time periods: 1975 and 1999. 1975 is the prelude to the \"Dirty War.\" The main events of the murder investigation happen in 1974, a profoundly unstable and violent period in the country's history, marked by the death of President Perón and the rise of the Triple A anticommunist alliance, which was tasked with hunting down and assassinating left-wing guerrillas, student activists, union leaders, and political opponents, frequently recruiting common criminals released from prison and given badges, weapons, and total immunity. This historical context is the exact reason the traditional justice system fails the characters in the movie. When Espósito and his partner Pablo finally catch Isidoro Gómez for the brutal rape and murder of Liliana Coloto, they secure a life sentence. Justice appears to be served. However, Espósito soon discovers Gómez walking free and heavily armed in the company of the corrupt bureaucratic rival, Romano, who recruits him to the AAA. When the film jumps to 1999, the military dictatorship (which formally took power in 1976 and fell in 1983) is long over, but the film shows how the trauma and lack of closure from that era still haunt the survivors. Because the state weaponized a murderer for political gain, Morales (the victim's husband) is denied legal justice.",
+    "answer_text": "The Secret in Their Eyes",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify A, B, X, and Y. While A is a quintessentially Indian story based on real life, director B did indeed draw stylistic inspiration from X's Y for the living quarters. The Perspective: in Y the camera often sits at floor level, looking up at a small, rectangular window that shows the feet of people walking by on the street. The window represents the family's precarious connection to the middle class: it's where they see the light, but also where they are exposed to the smell and indignities of the street. In A, the living quarters inside the mill are framed almost identically. The main character is shown in a cramped, subterranean-feeling space, looking up at a high, small window. The window represents his singular focus. Through that tiny frame of light, he sees the world he wants to conquer, highlighting his isolation and the crushing weight of the \"flour dust\" (poverty) that surrounds him.",
+    "answer_text": "A: 12th Fail, directed by B: Vidhu Vinod Chopra. X: Bong Joon-ho's Y: Parasite.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect and funda. ____________ is the strategic process of distributing or assigning resources, such as money, time, or personnel, to specific purposes or recipients. The slide shows a large pile of garbage/trash, a yellow forklift labeled \"Load Lifter,\" and a poster for an \"Earth Day Class\" (22 April) showing hands holding the globe with plants. Identify the term being defined and the movie/character it points to.",
+    "answer_text": "Waste Allocation Load Lifter - Earth Class, i.e. WALL-E",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Put funda. Documentary & Newsreel Footage: ____ is shown what appear to be real-world documentary images of extreme brutality, including gang violence (footage of groups committing acts of assault and rape) and war atrocities (extensive WWII newsreel footage, including the horrors of the Holocaust and Nazi military operations). High-Octane Destruction: as part of his \"second round\" of treatment, the imagery shifts toward large-scale devastation: explosions, crashes, falling debris, and pervasive flames and fire designed to overstimulate and overwhelm his senses. The Beethoven Connection: during the Nazi war footage, a synthesized version of Beethoven's Ninth Symphony plays in the background. This is a critical turning point in the film because ____ recognizes the music as his favorite, \"Ludwig van.\" Identify the technique being described.",
+    "answer_text": "The Ludovico Technique (from A Clockwork Orange)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. The car in the film X is a 1972 ____ ____. It acts as a physical metaphor for Y's character, Walt Kowalski: slick, powerful, and a relic of a bygone era. The Movie Car specs: it features a 351-cubic-inch Cobra Jet V8 engine producing roughly 266 horsepower, is painted a deep green metallic with a distinctive \"laser stripe\" down the side, has Magnum 500 wheels, and 1972 was the only year for that specific body style with the large \"egg-crate\" oval grille. Production secrets: the car wasn't a studio-built prop, it was a \"barn find\" discovered on eBay from a classic car dealer; the previous owner, Jim Craig, had no idea his restored car was being used for a Y movie until he saw it on screen. After filming wrapped, Y liked the car so much that he purchased it for his own private collection, and it remains in his possession today. The car was chosen because it represents the \"beginning of the end\" for the muscle car era, much like Walt is facing the end of his own era.",
+    "answer_text": "X: Gran Torino (the car is a 1972 Ford Gran Torino). Y: Clint Eastwood.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the song and movie. In the world in general, and in India in particular, it often happens that a person's value is not appreciated during his lifetime, but when he departs, rich tributes are paid to him and his creations, which never sold during his life, start selling like hot cakes. The beneficiaries fully capitalize on the newfound saleability of the works of the departed soul. What happens if the person presumed dead comes back? All those beneficiaries gathered to pay tribute and praise his works are too stunned to react at first. Once they regain their senses, they don't welcome the \"departed\" soul back; instead they realize he is worth more to them dead than alive, and he is forcibly removed from the place where people had gathered to pay tribute to him. How ironic! This song from X is memorable for the irony it conveys; it is such a high-quality song that one does not know where to begin. The lyrics of Sahir Ludhianvi convey the feelings of the \"departed\" so emphatically and with supreme irony. The music of S D Burman is appropriately understated. Rafi's voice covers a range of pitches till, in the end, it climbs to a very high pitch as the protagonist is being forcibly evicted.",
+    "answer_text": "The song is \"Yeh Duniya Agar Mil Bhi Jaaye To Kya Hai\" from the movie Pyaasa.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. Philippe Pozzo di Borgo (14 February 1951 to 1 June 2023) was a French businessman who was the director of Pommery and the owner of the inherited historic Hôtel de Maisons particulier in Paris. Philippe was the second son of the French duke Pozzo di Borgo and the Marquise de Vogüé; the noble family dates back to the 1500s. After completing his education, he began working in the champagne industry, including as a manager at Moët and Chandon prior to his role as director of Pommery. Philippe di Borgo had a paragliding accident in 1993. In July 2012, he was appointed a Knight of the Legion of Honour. Pozzo di Borgo died on 1 June 2023, at the age of 72, after struggling with immobility and depression. The story of Philippe and his North African attendant, Abdel Sellou, was adapted into a biographical movie released in 2011.",
+    "answer_text": "Intouchables (The Intouchables)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

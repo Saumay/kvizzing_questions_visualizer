@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "During the 1989 production of her final cinematic role, a legendary actress shared a haunting wartime memory with director A. She recalled an incident from World War II where, amidst the terror of citizens being loaded onto trains, her eyes locked onto a lone little girl wearing a distinct coat, a vivid image forever etched into her mind. A few years later, this exact anecdote deeply resonated with A, heavily inspiring his decision to use a similar visual to shoot the girl sequence in the movie Y. Identify the iconic actress (X) and the movie (Y) that visually immortalized this memory.",
+    "answer_text": "X - Audrey Hepburn; Y - Schindler's List",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is the name of an iconic, creamy milk-based dessert from Madurai; the name refers to its intense properties as a natural coolant. Made with condensed milk, sarsaparilla root syrup, and almond gum, it is traditionally consumed to soothe the body down to its innermost core during brutal summers. However, when an acclaimed Indian filmmaker chose this beverage as the title for his 2014 gangster comedy set in Madurai, he deliberately subverted its soothing etymology, explaining that in the gritty world of contract killers, the title undergoing a semantic shift serves as a stark, poetic description for a cold-hearted ruthless assassin. Identify X.",
+    "answer_text": "Jigarthanda",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Prior to the 1990s, the depiction of a scientist on television was largely limited to a standard trope: an older, socially awkward man in a lab coat. This visual mold was completely shattered by a young, brilliant fictional character X in the show Y, who approached the paranormal using cold, hard empirical data and rigorous forensic pathology. Her presence as an intellectual equal sparked a massive, real-world cultural phenomenon known as \"The X Effect,\" where a massive influx of women pursued degrees and careers in male-dominated STEM fields. For decades, this sociological shift was merely a widely accepted theory backed by fan letters and class surveys from the show's real-life science consultant, Dr. Anne Simon. However, a major study by the Geena Davis Institute on Gender in Media officially confirmed the correlation with hard data, proving that women who were regular, medium-to-heavy viewers of this media property were 50% more likely to have actively worked in a STEM field compared to non-watchers. Identify X and Y.",
+    "answer_text": "X - Dana Scully (the Scully Effect); Y - The X-Files",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In this chapter, a group of friends kicks one of their core friends off their academic quiz team and actively looks for a replacement. During a brainstorming session, one character suggests recruiting a real-world celebrity, noting: \"You know who's apparently very smart, is the girl who played TV's Blossom. She got a PhD in ___ or something.\" In a brilliant case of meta-casting, the very actress they were discussing was introduced a few years later, eventually joining the permanent main cast. Identify this show (X) and the real-life actress (Y).",
+    "answer_text": "X - The Big Bang Theory; Y - Mayim Bialik",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In this specific scene, A is sitting on his living room couch with a cold beer and a cigarette, hanging out with his best friend, B. They have the TV turned on to watch a real-world 1960s crime show called The F.B.I., because A managed to land a guest-starring role as a bad guy in that night's episode. As they watch the opening credits roll by, A gets incredibly excited. The moment his name and face pop up on the broadcast, he leans forward, snaps his fingers, and points emphatically at the television screen, alerting B that his big moment has finally arrived. What are we talking about?",
+    "answer_text": "The \"Hey, that's me\" scene/meme from Once Upon a Time in Hollywood",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was appointed as the chairman of the Film and Television Institute of India (FTII) in Pune by the Ministry of Information and Broadcasting. FTII's past chairmen included cinematic titans like Shyam Benegal, Girish Karnad, Adoor Gopalakrishnan, and U.R. Ananthamurthy. The moment his appointment was announced, FTII students went on an immediate strike that grew into a national media firestorm supported by prominent alumni. Students argued X lacked the intellectual depth, global cinematic vocabulary, and artistic merit required to guide elite filmmakers. It was later revealed via an RTI request that X had been chosen based on a one-paragraph CV, and his 34-year filmography included forgettable cameos, television serials, and low-budget B-grade/C-grade adult entertainment films like Vaasna, Khuli Khidki, Jungle Love, Inteqam Aurat Ka, and Bhayanak Panja. When journalists and film critics aggressively questioned his filmography, X tried to defend himself using math rather than merit, claiming that because he had acted in over 600 television series and roughly 150 movies, he had effectively logged an immense volume of screen time, including his infamous claim of \"94 hours of cinema,\" which is roughly 30 movies for his role in Y. Identify X and Y.",
+    "answer_text": "X - Gajendra Chauhan; Y - Mahabharat",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In X, a powerful part tackles one of the focal family's darkest historical chapters, exposing the deeply troubling ties between the family head's uncle and the Nazi regime. Though based on archival documents discovered at the end of World War II, the narrative shares a profound spiritual connection with a massive, real-world media scandal that erupted just two years before. In that real-world event, a country's top-selling tabloid shocked the public by publishing a front-page splash featuring a leaked, privately shot 17-second home movie from 1933. The graphy, black-and-white footage showed a seven-year-old, her three-year-old sister, and their mother laughing and playing while performing a Nazi salute, eagerly encouraged by that same uncle. Identify X.",
+    "answer_text": "The Crown, Season 2, Episode \"Vergangenheit\"",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Hoping to deliver a lighthearted surprise, X kept her cameo in a highly anticipated film secret from her new rockstar husband. Upon her request, the film's star and producer arranged a private advance screening attended by Hollywood heavyweights like Steven Spielberg. However, the surprise backfired disastrously: the film Y not only culminated in a chaotic, public bride-kidnapping attempt on X but also featured explicit, mocking references to her infamous real-life leaked tape. Enraged by the jokes and the sight of a room full of industry elites laughing at his wife's expense, the husband suffered an explosive meltdown, storming out of the screening while cursing her. The incident shattered the relationship, leading the couple to file for divorce less than a month after the film hit theaters. Identify the actress (X) and the movie (Y).",
+    "answer_text": "X - Pamela Anderson; Y - Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan (husband - Kid Rock)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The car in the story is a 1964 Chevrolet Chevelle Malibu SS convertible. Because X was an independent film working with a relatively tight, modest budget, Y decided to save production money by volunteering his own personal ride. In the movie, right after A gets his Malibu out of a long storage period, someone keys the side of it; A vents his absolute fury to his drug dealer, delivering a classic monologue about car etiquette: \"You don't muck with another man's vehicle. You don't do it. It's against the rules... What's more cowardly than mucking with a man's automobile?\" The fact that someone literally \"mucked\" with Y's exact automobile while he was making a movie containing that exact speech is the kind of bizarre, cosmic irony that even Y himself couldn't write. Right around the time the movie wrapped production, the car was stolen. Fast forward nearly two decades later to April 2013: a San Bernardino County sheriff's deputy was investigating a suspicious old Malibu in Victorville, California. While that specific car turned out to be legally owned, the investigation accidentally tipped off police to a completely different 1964 Chevelle Malibu located hundreds of miles away in Oakland. When authorities ran the Vehicle Identification Number (VIN) on the Oakland car, they realized it had a \"cloned\" fake identity, and when they traced the true, hidden VIN back through the system, it flagged a stolen vehicle report from about 20 years back: it was Y's long-lost X car. Identify X and Y.",
+    "answer_text": "X - Pulp Fiction; Y - Quentin Tarantino",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Rooted in the geopolitics of the Treaty of Tordesillas, which essentially divided the global maritime map between Catholic superpowers, Portugal successfully maintained a fiercely guarded, highly lucrative trade monopoly by intentionally keeping an archipelago isolated from other European powers, leading the ruling regional lords to believe the Iberian nations were the only civilizations in the West. To ensure Protestant rivals like England and the Netherlands remained locked out of the Pacific entirely, the exact navigation coordinates to the Strait of Magellan were kept a strictly classified state secret. This geopolitical stranglehold serves as the explosive catalyst for the show X. The narrative follows an English pilot navigating a Dutch warship; armed with a stolen Portuguese map (a \"rutter\"), his high-stakes, highly illegal mission is to break through Magellan's Pass to challenge the Catholic monopoly. When his battered ship finally washes ashore, his mere existence becomes a profound existential threat to the established order. Identify X.",
+    "answer_text": "Shogun",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Raised within a German-Austrian immigrant community in Pennsylvania and Chicago, this legendary athlete learned a specific vocal style (yodeling) as a child, even winning a local competition as a teenager. Years later, when Metro-Goldwyn-Mayer (MGM) cast him as a famous literary hero, the directors faced the challenge of translating the character's iconic, textually described \"victory cry\" into cinema sound. Stepping up to the microphone, he weaponized his childhood hobby to forge the basic acoustic blueprint for one of modern pop culture's most recognizable cinematic sound effects. Identify X, famously portrayed on screen by Johnny Weissmuller.",
+    "answer_text": "Tarzan",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Before 1966, Area A was a vibrant, historic, multi-racial neighborhood right in the heart of a city, home to roughly 60,000 people, mostly artisans, merchants, and working-class families of mixed race (referred to as Cape Coloured), alongside Black, Indian, and Jewish residents. It was famous for its jazz culture, artistic community, and relative racial harmony. The government declared the integrated, bustling inner-city neighborhood \"slums\" and sent in military and police forces. Over the next several years, the government systematically tore the neighborhood down: over 60,000 people were forcibly evicted from their homes, loaded into government trucks, and dumped into bleak, desolate, underfunded townships on the far outskirts of the city, while bulldozers completely leveled the houses, businesses, and community hubs to the ground. The director of the movie X took the exact playbook used by the government in 1966 and applied it to the sci-fi setting of his film: the inciting incident involves a corporate bureaucrat, Wikus van de Merwe, serving eviction notices to an alien population to move them out of their shantytown, mirroring the cold, bureaucratic paperwork served to the residents of Area A before the military arrived. In the movie, humans justify the harsh treatment of the aliens by calling them \"Prawns,\" accusing them of being filthy, lawless, and causing property values to drop, again drawing a parallel to Area A. Identify the movie X.",
+    "answer_text": "District 9",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Kowalski, a 21-year-old living in La Grange Highlands (a western suburb of Chicago, Illinois), was arrested by the Cook County Sheriff's Department after deputies received a tip that he was running an active illegal drug laboratory out of his coach house. When police raided the residence, they uncovered a full clandestine setup, finding glass beakers, burners, and specialized chemicals; step-by-step written instructions for manufacturing methamphetamine; and 12 jars of psychedelic mushrooms. The mugshot after his arrest went viral. Why?",
+    "answer_text": "He was wearing a Los Pollos Hermanos (Breaking Bad) T-shirt",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The phrase is a traditional English idiom that means \"everything,\" \"the whole thing,\" or \"all of it.\" The origin of the saying comes from the manufacturing of old-fashioned firearms. A complete firearm was made of three main components: A, the firing mechanism that strikes the spark (the lock); B, the wooden handle/butt of the gun held against the shoulder (the stock); and C, the metal tube the bullet travels through (the barrel). A, B, and C together make the entire gun, and over time the phrase evolved into a common expression (\"lock, stock, and barrel\"). The director cleverly modified this famous idiom to directly fit the crime plot of his film X, in which the main characters accidentally end up in possession of two specific guns. Identify the idiom-inspired title of the film X.",
+    "answer_text": "Lock, Stock and Two Smoking Barrels",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In everyday [a reduplicated phrase], a beloved children's song is traditionally used in elementary schools to play a wholesome, cooperative version of musical chairs. The literal translation of the opening lyrics is incredibly sweet: \"Round and round, round and round, let's go around in circles and dance. We will clap our hands and sing, la-la-la-la, let's have fun dancing! Ring-a, ring-a, ring-a, ring-a-ring... We will go hand in hand, and jump around excitedly!\" While the song plays, children hold hands and skip around in a giant circle. Where have we seen this?",
+    "answer_text": "Squid Game (referencing a circle game used in Squid Game 2)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "A list of podcast episodes is shown, all belonging to the same show X: episode 1, \"[blank blank blank blank] Talk at the Same Time for the First Time,\" hosted by A, 1:06:31, released August 30, 2023; episode 2, \"A Second Episode About First Episodes,\" hosted by B, 1:03:31, September 3, 2023; episode 3, \"Stories We Missed, Vasectomies and Moby Dick,\" hosted by C, 59:29, September 7, 2023; episode 4, \"Awards Show Screwups, Late Night Multiverse & Batman Wants to Murder A,\" hosted by D, 51:07, September 12, 2023; episode 5, \"[blank blank] Wives!,\" hosted by E, 1:01:39, September 15, 2023; episode 6, \"The Guys Answer Questions from Listeners,\" hosted by A, 51:42, September 19, 2023; episode 7, \"Jon Stewart Makes it Six,\" hosted by C, 57:44, September 22, 2023; episode 8, \"The [blank blank] Hosts Name Sneaky Great [blank blank] Guests,\" hosted by B, 57:11, September 26, 2023; episode 9, \"David Letterman Makes it Six,\" hosted by A, 1:12:49, September 29, 2023; episode 10, \"The [blank] is Over But the Podcast Isn't Yet,\" hosted by D, 42:09, October 3, 2023; episode 11, \"The Return of [blank blank] Wives!,\" hosted by E, 1:06:40, October 6, 2023; episode 12, \"The X Says Goodbye (with a Special Guest),\" hosted by B and C, 55:51, October 10, 2023; and a video reunion episode 13, \"X Returns to Celebrate C,\" hosted by A, 47:31, released May 13, 2026. Which show X do these episodes belong to?",
+    "answer_text": "Strike Force Five (the late-night host podcast featuring Jimmy Fallon, Stephen Colbert, Seth Meyers, Jimmy Kimmel, and John Oliver)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  }
+]

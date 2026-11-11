@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "X: 1990. Jacinda Ardern: 2018. End of list. What is this exhaustive list of, and who is X?",
+    "answer_text": "Democratic Heads of State Giving Birth while in Office. X = Benazir Bhutto.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Synthpop duo I Am X was formed in 1999 in Athens, Georgia by musician Daniel Geller, and vocalist Amy Dykes, who was dating Geller at the time. After making their live debut at South by Southwest in 2000, the duo went on to release three albums over the course of their career: Out of the Loop in 2001, The Tight Connection in 2002, and The Cover Up in 2004. The track listing of their debut, Out of the Loop, is: Metro (Brooklyn Mix), Me to Be, Sounds So Crazy, Look Around You, Light Delay, Inside Your Head, Holland Tunnel, Flute Loops, Aurora Borealis, You Don't Even Know Her, September, Move On, Analogous, Metro (Athens Mix), plus Japanese edition bonus tracks Istanbul, Orchestral Maneuvers, and The Future of Breakdancing. In a 2002 interview with The Stanford Daily, Geller and Dykes explained that the name represented the dynamic of the duo's relationship: Just like ___ ___ _____, we are both equal and independent yet forming a single whole. The blanks here might remind you of a movie sequel. ID the name of the duo (X).",
+    "answer_text": "I Am the World Trade Center (the blanks are The World Trade Center; the twin towers were both equal and independent yet forming a single whole).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In France it is called bras de fer chinois, and in parts of South America la pulseada china, both attributing it to China despite the sport having no traceable connection to the country. In Japan it goes by yubi sumo, in which opponents bow ceremonially to one another before commencing. The humorist and screenwriter Paul Davidson has claimed that his grandfather Bernard invented it. The American novelist Norman Mailer, twice a Pulitzer winner, was reportedly devoted to it; he claimed for years to be its unofficial American champion, and said he had once held the world title before losing it one evening to a visiting Mexican bullfighter who, by his own admission, had only picked up the sport earlier that day. ID this sport which has held its annual World Championships in the English county of Suffolk since 2010, drawing competitors from all around the world.",
+    "answer_text": "Thumb Wrestling / Thumb Wars.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On June 12, 1970, Dock Ellis, a pitcher for the Pittsburgh Pirates, was in Los Angeles on what he believed was an off day. By the time he realised the Pirates had a doubleheader against the San Diego Padres that evening in which he was the scheduled starter, he was already quite late. A friend rushed him to the airport, and he made it to San Diego just in time to take the mound. In a legendary display, Ellis threw a complete no-hitter (a rare feat that has only been achieved 326 times since 1876), but revealed later that he didn't have a great vision of the batters throughout. In fact, it was only because his catcher Jerry May wore reflective tape on his fingers, that it helped Ellis recognise signal patterns for throwing. What could have led Ellis, an otherwise decent player, to turn up with this kind of an oddly outlier of a performance?",
+    "answer_text": "He was tripping on LSD.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 2014, the company X partnered with the engineering firm Argotec and the Italian Space Agency to develop a machine. The project was selected through the agency's standing framework for public-private partnerships, and the unit was developed across an eighteen-month programme that produced four progressive prototype models, with the final version incorporating extensive redundancies in its critical subsystems to satisfy stringent compatibility requirements and facilitate an elaborate routine in challenging circumstances during extended missions. The unit weighed roughly 20 kilograms, was built around steel ducts rated for pressures exceeding 400 bar, far beyond its usual operational requirement, and substituted an open vessel with a sealed pouch from which the contents were drawn through a straw. It was first operated by Samantha Cristoforetti in April 2015. A model is now on display at London's Victoria and Albert Museum. ID the company X and the punny name of the machine.",
+    "answer_text": "Lavazza ISSpresso (an espresso machine built for the International Space Station).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In April 1934, Henry Ford received a handwritten letter posted from Tulsa, Oklahoma, several days earlier. In misspelled but enthusiastic prose, the sender praised the Ford V-8: While I still have got breath in my lungs I will tell you what a dandy car you make. I have drove Fords exclusively when I could get away with one. For sustained speed and freedom from trouble the Ford has got ever other car skinned and even if my business hasen't been strickly legal it don't hurt anything to tell you what a fine car you got in the V8. The letter was signed off Yours truly, X. Ford, taking it at face value, had his secretary send a thank-you reply to General Delivery in Tulsa, which the addressee never collected. Six weeks later, X was ambushed and killed on a rural road in Louisiana, at the wheel of a stolen Ford V-8 sedan. The original letter is now held at the Henry Ford Museum in Dearborn, Michigan. ID X.",
+    "answer_text": "Clyde Barrow (of Bonnie and Clyde fame).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In computer programming, an integer is a data type used to store whole numbers. Unlike in mathematics, where integers extend infinitely in both directions, a programmed integer is confined to a fixed block of memory, and the size of that block determines the range of values it can hold. A 32-bit signed integer can hold any whole number between negative 2,147,483,648 and positive 2,147,483,647. The problem arises when a counter built on a 32-bit integer climbs past its maximum value. Instead of incrementing further, the number rolls over and turns negative, a glitch known as integer overflow. Such bugs have miscounted bank balances, broken arcade games, and even triggered software resets in commercial aircraft. In contrast, a 64-bit signed integer can hold values up to roughly 9.2 quintillion. The smaller format uses less memory, which is why early software systems often defaulted to it for variables not expected to grow particularly large. In December 2014, Google quietly made a similar upgrade on one of their platforms, switching from a 32-bit signed integer to a 64-bit one. What prompted this change?",
+    "answer_text": "PSY's Gangnam Style music video on YouTube, whose view count exceeded the 32-bit integer limit, forcing YouTube to switch view counters to 64-bit.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The word X is generally believed to have entered English as a contraction of another word, one that may bring to mind a famous novel and the film it inspired. From that origin it drifted to mean an old man or village elder, and later anyone holding a position of seniority within a small community. In British English, it settled into informal use as a way of addressing a boss or foreman. The word has also acquired a second professional life, visible scrolling past in the closing credits of nearly every film and television production. There it denotes a department head working directly under the cinematographer. ID X.",
+    "answer_text": "Gaffer.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On Tuesday, 15 December 1970, the final sketch of the 25th episode of Monty Python's Flying Circus aired, set in a greasy spoon called the Green Midget Cafe in Bromley, inexplicably occupied by a large group of Vikings. A couple enter and ask the waitress what is on the menu. She recites a long list of breakfast items in which nearly every dish contains X: egg and X, egg bacon and X, X bacon sausage and X, X egg X X bacon and X, all the way up to a Lobster Thermidor aux Crevettes with a Mornay sauce, a fried egg on top, and X. One customer protests that she does not want any X. The other, who loves it, offers to have hers and orders a dish with even more of it. Throughout the sketch, the Vikings drown out all conversation by breaking into a chant of X, X, X, X, lovely X, wonderful X, growing louder each time. Even the episode's closing credits were flooded with the word, with every crew member's name altered to include X or another menu item. The word is said at least 132 times. What is the word X, which we today know in an entirely different context?",
+    "answer_text": "Spam.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In a 1979 paper published in The American Naturalist, Patrick J. Weatherhead and Raleigh J. Robertson of Queen's University in Ontario proposed what came to be known as the X hypothesis, building on Ronald Fisher's earlier work on runaway selection in mate choice. The argument runs as follows. In polygynous species, a female's optimal mate is not the one who will be the best provider or partner, but the one whose genes will produce male offspring who themselves enjoy the greatest breeding success in the next generation. Any losses the female incurs by mating with a less attentive partner are made up for through the reproductive success of her male descendants, who inherit from the father the same qualities that drew her to him in the first place. Despite its somewhat scandalous-sounding name, the hypothesis is widely cited in studies of mate selection across birds, fish, and insects. What is X (an alliterative two-word phrase)?",
+    "answer_text": "Sexy Son Hypothesis.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In December 2006, X was featured on the cover of TIME Magazine as the Person of the Year. While X seemed like a great pick at the time, it appears TIME jumped the gun with the assessment. In fact, on reflection, even in the year X was so chosen, it would have been more apt to call X the Second Person of the Year. Ever since that cover, X has been on the receiving end of one loss after another, probably more deserving of the title Loser of the Year than Person of the Year. Twenty years on, by most reasonable accounts, it has been a slow and uninterrupted slide, with X turning up on the wrong side of nearly every contest that mattered. Whatever momentum the cover was meant to capture appears to have politely excused itself shortly after the issue went to print, and has not been seen since. Who is X?",
+    "answer_text": "You (TIME's 2006 Person of the Year cover read You, and the pun is that since then you, the second person pronoun, has lost in just about every contest/argument).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "In 2020, Apple removed a hugely popular product from the App Store over a dispute about payment processing fees, specifically, Apple's 30% commission on all in-app transactions. Its makers fired back by releasing an Epic Short Film that was a near shot-for-shot recreation of an iconic Super Bowl commercial for Apple, directed by Ridley Scott. The widely acclaimed commercial, produced to announce the launch of the Macintosh, is considered one of the greatest television ads ever made. It aired only once during its intended national broadcast. The parody short, titled X, as a wordplay on the original commercial, racked up tens of millions of views within hours, and its makers simultaneously filed an antitrust lawsuit against Apple. ID X.",
+    "answer_text": "Nineteen Eighty-Fortnite (a parody of Apple's 1984 commercial, released by Epic Games/Fortnite).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Steven Schmidt is an independent professional wrestler from Midlothian, Illinois who wrestles under the ring name, Steven ___. He debuted at the SuperWrestlers: Unleashed event at Chicago's Concord Music Hall in December 2024 and currently works for Juggalo Championship Wrestling. His gimmick is built almost entirely around his ring name. His entrance theme is a parody of a well-known rock song, except the original lyrics have been replaced with just his full name being sung over and over. His look completes the act: long flowing hair, cutoff jeans, a guitar held aloft, and not one but two flannel shirts, one worn and one tied around his waist. A video of his debut entrance racked up nearly two million views on X. ID the band whose song his entire gimmick is built on.",
+    "answer_text": "Pearl Jam (his ring name is Steven Flowe, a parody of their song Even Flow).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "John Whitney, widely regarded as a pioneer of computer animation, and graphic designer Saul Bass were hired to work on a movie adapted from a French novel, D'entre les morts. Whitney used a World War 2 anti-aircraft targeting machine called the M5 gun director, essentially an analog computer, to produce precise mathematical spiral patterns. The result is widely considered the first use of computer-generated graphics in a motion picture. The spirals were not just decorative but tied directly to the film's central theme. The film itself was a commercial disappointment on release and was pulled from circulation for decades before being reappraised as one of the greatest films ever made. ID the movie.",
+    "answer_text": "Vertigo (specifically its title sequence).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the Mughal court and later princely states, formal appointments to office involved a ceremonial act: the appointee would be adorned by a superior, confirming their new rank. The ritual was treated with great seriousness and carried real authority. Conmen in the bazaars of Shahjahanabad devised a scam around this. They would approach a gullible newcomer to the city, bestow upon him a title and an accessory signifying his appointment to some fabricated post, collect a fee for processing the honour, and disappear. The victim, unfamiliar with court protocol, would only realise later that the entire thing had been theatre. What common Hindi expression did this give rise to?",
+    "answer_text": "Topi Pehnana (literally to make someone wear a cap; meaning to dupe or fool someone).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Every X is born male. Groups are structured around a single breeding pair, with the female being dominant. When the female dies, the dominant male undergoes a full biological sex change to become the new female, and the next-ranking male takes over the breeding role. Which popular children's film would have had a very different plot if its makers had followed this aspect of X's biology accurately?",
+    "answer_text": "Finding Nemo (X is the clownfish; scientifically, Nemo's dad would have become female after Nemo's mom died, and then mated with his son).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie Breaker: In 2005, actor, comedian, and QI host Stephen Fry penned a primer on poetry, pitched at anyone with a passing grasp of English. The book guides readers through metre, rhyme, and verse forms, covering sonnets, villanelles, ballads, and haiku, and closes each chapter with exercises. Critics called it both a comprehensive companion to prosody and a witty celebration of poetic craft. What is the name of this book on poetry, which uses a poetry-based pun referencing a line from a famous work of poetry?",
+    "answer_text": "The Ode Less Travelled (a pun on Robert Frost's The Road Not Taken).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

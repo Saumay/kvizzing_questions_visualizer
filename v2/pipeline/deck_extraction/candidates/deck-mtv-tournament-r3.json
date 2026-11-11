@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "Identify X. First invented by Irmin Roberts for 1958's Vertigo, a dolly zoom is a camera trick where the camera physically moves backward on a dolly while the operator zooms the lens in (or vice versa), so the subject's head and shoulders stay the same size while the background warps, collapsing or expanding. This technique was used ingeniously in X: because a wider lens exaggerates facial features and a tighter lens flattens them, the dolly zoom causes the actor's face to subtly reshape in real-time as the character moves back and forth between their different worlds, matching the micro-expression of a person waking up and switching to their world. Identify X.",
+    "answer_text": "Severance",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. The theory described is phrenology, a 19th-century pseudoscience claiming a person's intellect and character were determined by the shape of their skull; during the era of slavery, white supremacists used phrenology as 'scientific racism' to claim Black individuals were naturally suited for bondage. The actor delivering a speech about this theory in the movie came up with the idea himself: while preparing for the role he bought a real historical book at auction in which the author tried to justify human bondage using skull shapes, brought it to the director, who wrote it straight into the script. Identify the movie.",
+    "answer_text": "Django Unchained",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In the dark comedy X, Sarah Churchill, Duchess of Marlborough, is portrayed as a sharp-tongued, politically ruthless mastermind essentially running Great Britain from the shadows (true in real life). In the early 1700s the ruling monarch A was physically fragile and plagued by chronic health issues; Sarah, A's childhood best friend, stepped into the power vacuum, holding the titles of Mistress of the Robes and Keeper of the Privy Purse, controlling A's finances, household, and access, and heavily influencing the War of the Spanish Succession through her husband the Duke of Marlborough who commanded the British army. Sarah's downfall came when her impoverished cousin Abigail Hill offered the submissive flattery A craved; in 1711 a furious A stripped Sarah of her court offices and banished her. Sarah nonetheless outlived both A and Abigail, wrote a bestselling memoir, built Blenheim Palace, and became an ancestor of both Winston Churchill and Princess Diana. Identify X.",
+    "answer_text": "The Favourite",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie X. The black-and-white gangster movie shown within X is 100% fake; for decades fans believed it was a real classic Hollywood film from the 1930s or 40s. The fictional film-within-the-film is titled 'Angels with Filthy Souls,' a parody of the real 1938 Warner Bros. gangster film 'Angels with Dirty Faces' starring James Cagney and Humphrey Bogart. The famous scripted dialogue exchange between Johnny and Snakes ends with Johnny counting to ten and firing a machine gun, then shouting a famous line (blank to fill in: '_____________!'). Identify X and the missing line.",
+    "answer_text": "Home Alone (the missing line is: \"Keep the change, ya filthy animal!\")",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. When developing the story for this acclaimed animated feature film X, the creators needed a name for the protagonist's childhood-hero-turned-obsessive villain and settled on 'Charles Muntz,' subtly changing a single letter from a real-world historic 'original villain' of the animation industry. In the film, Muntz spends decades aggressively hunting a rare animal to validate himself to a dismissive society; in real life, the villain's namesake spent his career trying to hijack and profit off the creative genius of others, having secretly acquired the legal rights to a pioneering animator's breakout cartoon character and poached his animation staff, forcing the animator to start over from scratch. Identify X.",
+    "answer_text": "Up (the real-life namesake is Charles Mintz, the Universal Pictures executive who in 1928 took over Walt Disney's \"Oswald the Lucky Rabbit\" production rights and staff)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. By 1985, British legend X, an Academy Award winner with a dozen nominations, was 77 years old and suffering from confusion and poor health. Walked out to the podium by host Jack Lemmon to a standing ovation, X forgot about the envelope rules, the teleprompter, and the existence of the other nominees. As soon as he reached the microphone, he opened the envelope containing the Best Picture winner, glanced down, and blurted out the winner's name: Y, without reading out the other nominees first. The room erupted in cheers, shocked laughter, and confusion; the producers of Y were thrilled but the other four nominated films were robbed of their moment. When Y's producer accepted the Oscar, he handled it with class, explicitly naming and praising the other four nominated pictures. Identify X and Y.",
+    "answer_text": "X - Sir Laurence Olivier; Y - Amadeus",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify both movies. In 2006, an acclaimed Hollywood filmmaker released two separate, large-scale war films in the same calendar year, both centering on the exact same battle. The first film, adapted from a bestselling book, examines the conflict from one side's perspective, tracking the trauma and media exploitation of the servicemen who raised the American flag. The second film is a companion piece presenting a haunting, intimate counter-narrative from the perspective of the other side's soldiers defending the island's subterranean tunnels. Identify both movies.",
+    "answer_text": "Flags of Our Fathers and Letters from Iwo Jima",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y-Z. When X takes its characters to the border town of Moreh, it introduces mainstream audiences to a real-life Tamil-speaking population living on the Y-Z border. This community's origins date to the late 19th/early 20th century when hundreds of thousands of Tamils migrated under British colonial rule to work as traders, laborers, and civil servants in Z. Following a 1962 military coup in Z, the junta stripped non-citizens of assets and expelled them; tens of thousands of Tamil refugees traveled toward Y, with a substantial group stopping right at the border in the trading hub of Moreh, where over decades they built a vibrant mini-Chennai with Tamil temples, schools, and businesses. Identify X and the Y-Z border.",
+    "answer_text": "X - The Family Man; Y-Z - the Indo-Myanmar border, Manipur",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Whose filmography? A list of credited roles including: Silhouette at Office of Vital Statistics; Anna Massey in Frenzy; Spectator at Opening Rally; Man in Wheelchair at Airport; Man in Hotel Lobby with Baby; Man Leaving Hotel Room; Man Walking Dogs Out of Pet Shop; Man Outside Real Estate Office; Man Who Misses Bus; Man Walking Past Elster's Office; Man in Marrakesh Marketplace; Man Walking Past Sam's Outdoor Exhibition; Man Sitting Next to John Robie on Bus/Guest in Hotel D'Angleterre lobby; Lux Video Theatre Guest; Songwriter's Clock-Winder; Man Crossing the Top of Long Staircase; Man Boarding Train Carrying a Double Bass; Man Staring at Eve on Street; Man at Governor's Reception; Man Walking in Street After Opening Credits; Man Carrying Cello; Man Drinking Champagne at Party; Man Leaving Elevator; Man on Train Playing Cards; Man in Front of New York Drugstore; Man Mailing Letter; Man Passing David Smith on Street; Man with Newspaper on Street; Man Outside Phone Booth; Man at Victoria Station; Photographer Outside Courthouse; Man Walking Past the Cinema as the Light Is Renewed; Passerby Near the Bus; Man in the Raincoat Passing The Bus; Man on Street; Man on Subway; Man with Stick Near Tennis Court; Man-Dipping Attraction Worker; Extra in Newspaper Office. Whose filmography is this?",
+    "answer_text": "Alfred Hitchcock's acting cameos (his cameo appearances in his own films)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Picture connect round. Seven images are shown: a menacing, scary-faced black silhouette of a bare tree; a black office/executive swivel chair; an Indian family-planning awareness poster showing people balancing on a seesaw with the caption 'Do not let them break you... you can support them if they are planned'; a stock photo of a burglar in a ski mask stealing a flat-screen TV/monitor from a living room; a passport-photo specification diagram showing a 2x2 inch photo with staple marks; an illustration of folded currency notes (Rs 500, Rs 100, Rs 1000) tucked into a red turban/safa; and an illustration of a rural Indian village scene with a water tower and women collecting water. Connect all these images.",
+    "answer_text": "Panchayat (Season 1)",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and the famous B. In the world of X, the in-universe currency isn't called the national currency, it's affectionately called 'Dollarbucks.' The show's creators parodied real currency for background props: in real life, the $5 note is bright pink and traditionally features A. Because the show is entirely populated by B, the creators replaced A on the in-show note with a famous B of A, wearing a regal necklace and earrings; fans spotted this easter egg in episodes where the kids handle cash. Identify X and the famous B.",
+    "answer_text": "Bluey; the famous B is the Queen's Corgi",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In the LAPD, X is always referred to as 'boots,' a piece of historical military jargon adopted by law enforcement. Pre-shift grunt work for X includes shop inspection, loading the 'go-bag' and supplies, and setting the shop's temperature to their partner's liking while keeping fresh coffee ready. In the field, X is the driver and communicator, first contact on calls, and does the 'hands-on' work: if an arrest is made, X physically applies the handcuffs, conducts searches for weapons or drugs, and maneuvers the suspect into the back of the cruiser. Post-incident, X faces the clerical nightmare of writing every report, evidence booking, and booking prisoners. Identify X.",
+    "answer_text": "The Rookie (a rookie/trainee police officer)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X (3), Y (4), and the movie Z (3). In the classic romantic comedy Pyar Kiye Jaa, actor X plays an eccentric, penniless, wildly ambitious aspiring filmmaker who establishes his own independent film company called Y. The highlight of the movie is when X tries to convince his wealthy, skeptical father Ramlal to finance his upcoming film, one of the most iconic comedy sequences in Indian cinema. 28 years later, in movie Z, X makes a cameo: when a character goes to X's studio hoping to become a Bollywood hero, Johnny cons him out of his money under the guise of launching his career, and the studio Johnny runs is explicitly named Y as a callback. Identify X, Y, and Z.",
+    "answer_text": "X - Mehmood; Y - Wah Wah Productions; Z - Andaz Apna Apna",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This is a page from which website's/person's annual year-end awards? An informal, sarcastic first-person blog post discusses the end of a sports campaign, jokes about a bad breakup where an ex got engaged to someone with a stake in a club the writer works for, and announces the site's '1st Annual Year End Awards,' with award categories named after favorite quotes from the 1988 baseball movie Bull Durham, comparing the season to 1980s baseball films like Major League and Bull Durham. The tone and references (a club in a relegation/promotion 'Championship' battle) suggest a fictional recap tied to a specific TV show and its club.",
+    "answer_text": "AFC Richmond (the fictional club from Ted Lasso)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and Y. In an iconic feature film X, the production designers paid a chilling homage to a horror masterpiece Y by meticulously replicating a specific geometric floor pattern. The visual nod occurs when the film's two mismatched protagonists find themselves trapped upstairs in the suburban home of a sadistic antagonist; as they try to evade a psychotic dog and a horde of twisted, mutated creations, they bolt into a hallway whose floor pattern matches the infamous corridor from Y line-for-line. Identify X and Y.",
+    "answer_text": "X - Toy Story; Y - The Shining (the hallway carpet pattern homage)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Whose diary is this? Irma Gobb first appears as the librarian the author visits; although he takes her out several times, she does not become his girlfriend and marries 'Giles Gummer' by the end of the book. The diary references a visit to the swimming pool including a draft apology letter for his trunks coming off, and taking Irma Gobb to see a horror film after which he spends two weeks sleeping with the light on, nailing boards over his front door, and calling the local vicar for an exorcism. The author launches a campaign to prevent dog fouling in the local park, including a bizarre plan to launch his Mini from a rooftop with glider wings to bomb dog owners with horse manure (prevented by police). A Mr. Wilkinson responds to his canvassing, steals his car (later returned by police), and later wins 3 million pounds in a lottery without mentioning the author's generosity. The author's oven breaks down, so he tries to bake a cake by dumping flour and eggs on a community bonfire on November 5th, and is mistaken for a bomber and arrested. Whose diary is this?",
+    "answer_text": "Mr. Bean's Diary",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

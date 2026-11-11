@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "The first reference \"big man\" was towards general businessmen, holding wealth and power. Second reference, \"you f-cked up old hag\", was for the UK leader of opposition at that time. The third reference \"Hey you Whitehouse, you house proud town mouse\", was a bit controversial, because the US politicians took that as an attack on the then-POTUS Gerald Ford. This was later clarified that it was targeted towards Mary Whitehouse, a conservative British activist. Who was making these references and where? (One answer, no parts)",
+    "answer_text": "Pink Floyd's track \"Pigs\" from the album Animals.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Taoism (Daoism), Tao and Te are two foundational, inseparable concepts. They come primarily from the Tao Te Ching, attributed to Laozi. Tao is the underlying, ineffable source, pattern, and flow of the universe, while Te is the particular expression of the Tao in an individual being, often translated as virtue. If you think of two literary characters X and Y from early 20th century, best of friends, these traits would be remarkably visible. X is polite, social, kind-hearted, whereas Y shows the virtue of a great heart despite limitations of ability. This overlay of Taoism with these two characters was immortalized in two popular books published across 1982-1992. Identify X and Y. (Two-part answer)",
+    "answer_text": "X = Pooh, Y = Piglet (from Winnie the Pooh).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was a 2017 Korean sci-fi action-adventure film, which critics called a weird, beautiful, emotional roller coaster, equal parts satire, adventure, and gut punch. Its plot is a satirical take on corporate capitalism, coupled with a sweet story of friendship, loyalty, and love. The director Y is however better known for his works of thrillers, black comedy, and apocalyptic settings. The film competed for the Palme d'Or in the main competition section at the 2017 Cannes Film Festival and was released on Netflix. Identify X and Y. (Two-part answer)",
+    "answer_text": "X = Okja, Y = Bong Joon Ho.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This painting featuring pigs/boars in a snowy landscape was made by X, known best as a painter of animals (animaliere). It has been claimed that X was openly homosexual. At a time when homosexuality was regarded as animalistic and bestiality by most French officials, X's outspokenness about personal life was groundbreaking. X's works are featured in some of the best museums across the world, including MOMA and Musee d'Orsay. Who was X? (One-part answer)",
+    "answer_text": "Rosa Bonheur.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Earlier this year, X, a Bollywood actor, during promotion of his upcoming film Match Fixing, was caught in a controversy when he replied to a media question on nepotism saying \"I don't think this nepotism debate should even be there. Because it is in nature's law that aadmi ka bachcha aadmi hoga, suar ka bachcha suar hoga. Everyone will take their next generation forward as per what they have seen or done in their lives.\" There was criticism that he was calling nepo kids swines, which he denied, saying it was just a phrase he used in passing. Who is X?",
+    "answer_text": "Vineet Kumar Singh.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Germany, it was called Flemish. In Senegal, it was called Brazilian. In Spain, it was called French. In Brazil, it was called German. In France, it was first called American, then Spanish. In Poland, it was called Bolshevik. In Russia, it was called Kyrgyz. Who or what is this that can't establish its land of birth?",
+    "answer_text": "The Spanish Flu of 1918.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Maurice Miller, a 57-year-old from NYC suffering from cancer, was declared brain dead by NYU Langone Health Patient Care Hospital in 2021, before he became the center of a study, and subsequent global attention overnight. Suddenly, he was being described as \"...this decedent might be the most highly studied human in history\". A photo shows Maurice Miller holding a black cat. What relevance does his story have in this quiz? Need a particular keyword.",
+    "answer_text": "His body was used for the world's first pig-to-human liver xenotransplant in a living recipient, as reported in the Journal of Hepatology.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X, real name Y, is a superhero appearing in American comic books published by Marvel Comics. The character is an anthropomorphic pig and is a cartoon animal parody version of Spider-Man. He was created by Larry Hama, Tom DeFalco, and Mark Armstrong. Both X and Y are parody names. A comic book cover depicting a pig version of Spider-Man is shown. Identify X and Y (two-part answer).",
+    "answer_text": "X = Spider-Ham, Y = Peter Pork-er.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Three black-and-white photographs are shown: a young Joseph Stalin, Vyacheslav Molotov, and Leon Trotsky. What specifically connects these three to this quiz?",
+    "answer_text": "They were the inspirations for pig characters in George Orwell's Animal Farm: Joseph Stalin = Napoleon, Leon Trotsky = Snowball, Vyacheslav Molotov = Squealer.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Greek mythology, X is an enchantress known for her knowledge of herbs and potions. Using these and a magic wand or staff, she would transform her enemies, or those who offended her, into animals. Her most famous account occurs in the Iliad, where she transforms the Greek army into a group of pigs. X has featured heavily in global literature and art, ranging from Homer to Ovid's Metamorphoses, from James Joyce's Ulysses to Virgil's Aeneid, from Nathaniel Hawthorne to Rick Riordan, classical ballets and operas, DC Comics' Wonder Woman and Marvel Comics' Avengers, Duck Tales, Game of Thrones, video games such as Assassin's Creed, botany plant names, enzyme effects, and the list goes on. Who is X?",
+    "answer_text": "Circe. For example, Cersei's name in Game of Thrones was derived from Circe.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is a well-known Indian politician, lawyer and former elected representative who has served as an MP from ___ constituency. He was also the senior most Cabinet Minister in the Government of UP when his party was in power and has been an elected MLA ten times from the same constituency. Funnily, his son, a small-time MLA, represented the Suar constituency from 2017 to 2019 before being disqualified due to a discrepancy in the election affidavit. Who is X, the father?",
+    "answer_text": "Azam Khan from the Samajwadi Party. His son is Abdullah Azam Khan.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was a 145-pound (66 kg) domestic pig that was nominated for POTUS as a theatrical gesture by the Youth International Party (Yippies) in 1968, just before the opening of the DNC in Chicago, Illinois. It was a rhetorical symbolism that those days had arrived in US politics when pigs could fly, meaning even the most absurd outcomes were possible. What fitting name X did the Yippies give to this pig, a pun on a mythical creature?",
+    "answer_text": "Pigasus.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is a Hindi idiom/\"muhavara\" that means \"to be ungrateful, thankless, or being ignorant of someone's favor onto themselves\". Although the source isn't exactly documented anywhere, linguists believe this is derived from the fact that because pigs usually wallow in muddy waters, their body hair becomes hard and thicker and could help in closing your eyes on those who helped you. What is this Hindi muhavara?",
+    "answer_text": "Aankh mein suar ka baal hona.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "An American farmer, Lyman, shot a free-roaming pig that had repeatedly invaded his garden bearing potatoes. The pig belonged to a certain Irishman called Charles. Lyman offered $10 in compensation, but Griffin demanded $100, insisting the pig was not at fault. When Lyman was threatened with an arrest by Charles and his side of people, Lyman's well wishers requested military protection, turning the small incident into a huge event. What is being described here?",
+    "answer_text": "The Pig War of 1859 (a standoff between Britain and the United States at Griffin Bay).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is an anthropomorphic, shapeshifting pig featuring in the famous anime Dragon Ball Z. It is loosely based on the character Zhu Bajie from the classic Chinese novel Journey to the West. X as a word may also remind you of a traditional semi-oxidized Chinese tea whose literal translation means \"black dragon\" tea, since it is dark, long, and curly. What is X?",
+    "answer_text": "Oolong.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Citizens Against Governmental Waste is a US-based non-partisan, non-profit government watch group that publishes an annual report called the Congressional Pig Book. It exposes the most glaring and irresponsible X projects in the 13 annual appropriations bills and their sponsors. X is a metaphor for allocating government spending to projects in the representative's district or for securing direct expenditures primarily serving the sole interests of the representative. Identify X.",
+    "answer_text": "Pork Barrel.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie breaker: This phrase is used in political rhetoric to criticize spin, and to insinuate that a political opponent is attempting to repackage established policies and present them as new. By 2008, the phrase became common and often controversial political invective in the UK and the United States. It was used by many US politicians, including Barack Obama, John McCain and former Vice President Dick Cheney (who called it his \"favorite line\"). In 2017 in New Zealand, the phrase became controversial when Opportunities Party leader Gareth Morgan used it in a way that was interpreted by journalists as an insult to Labour Party leader Jacinda Ardern. Identify the phrase.",
+    "answer_text": "Putting lipstick on a pig.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "X is a city of 70,000 people in Africa. In the Berber language, X means \"water springs.\" During French colonial rule it was the base of the Bataillons d'Infanterie Légère d'Afrique made up of convicts. The below-ground \"cave dwellings\" of the native Berber people, designed for coolness and protection from Saharan sandstorms, make the city a tourist attraction. The reason you know X is because it served as the inspiration for a name in a film. The filmmaker originally had the name Utapau in mind but abandoned it because it sounded too much like the character T'Pau from ____ ____. After scouting locations in Africa, he decided to use X instead, with a slight change from the French spelling, replacing a u with an o. ID X.",
+    "answer_text": "X=Tatouine, inspiration for Tatooine. The Berber pronunciation is along the lines of taTawin.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Periodic Table has 118 confirmed elements, of which 94 occur naturally in the universe. The first 65 elements that humanity identified were found here on earth. The 66th element, discovered in 1868, was not on earth. Astronomer Jules Janssen was in the Guntur district of Andhra Pradesh on August 18 of that year to observe a rare event. He noticed a bright yellow spectral line at a wavelength of 587.49 nanometers, distinct from all other known elements. Astronomer Norman Lockyear noticed the same line weeks later, proposed that it is evidence of a new element, and named it X to signify where it was found. For the next 27 years, most chemists did not believe that X is an element. That changed when William Ramsay isolated X by treating cleveite ore with acid and captured a gas whose spectrum matched the line that Janssen had noticed first. ID X.",
+    "answer_text": "X=helium. Named after the sun (Greek Helios), it is the only element that was discovered in space first before it was isolated on earth. Lockyer used the naming convention of metals (e.g. sodium, aluminium) when naming helium, likely because its spectral lines were close to sodium. By the time it was understood to be a noble gas, not a metal, the name had already been in use for decades, so it stuck.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In late August 1854, a violent outbreak of X tore through Soho in London. Within ten days, the death toll exceeded 500. The prevailing scientific consensus was that X was spread by \"miasma.\" Local physician John Snow disagreed. Snow went door-to-door, plotting every death on a map (see black dots). It pointed unmistakably to a single source: a public Y (see red box) on Broad Street. Anomalies were the most telling part of the story: workers at local breweries were spared, while a widow in Hampstead 5 km away receiving deliveries from the Broad Street Y was the only casualty in Hampstead. Snow used this map to persuade the authorities to remove the Y handle on September 8. The outbreak ended within days. ID X (4 points) and Y (6 points).",
+    "answer_text": "X=Cholera. Y=water pump. Brewery workers drank the beer they made, not water from the public pump. This is the water pump with its handle removed, at the same location now. The street is now called Broadwick Street.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The portmanteau X first appeared in a Wall Street Journal article in 2012, with the prefix \"over-\" in front of it. People shortened that original formulation by dropping the prefix. The term spread quietly through journals on family law and digital privacy. It became prominent on May 25, 2019, when Gwyneth Paltrow posted a ski selfie with her daughter Apple on Instagram and Apple commented publicly on the post. The exchange was picked up by news outlets mainstreaming a debate brewing in academic journals for years. Oxford English Dictionary admitted X formally in 2022. In 2024, France passed a law targeting X and granted family-court judges the power to protect digital privacy. ID X.",
+    "answer_text": "X=sharenting. By age five, the average kid has 1,500 photos of them online.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1991 some researchers at the University of Cambridge Computer Lab faced an annoying problem: the coffee pot in the Trojan Room was far away, and they often found it empty after a long walk there. They solved this by rigging up some off-the-shelf hardware with a small piece of custom software called XCoffee that they put on their local network. In 1993 the Centre Européenne pour la Recherche Nucléaire made something available to the public; the Cambridge researchers then created the first-ever X by putting XCoffee on it. XCoffee quickly attained celebrity status in some circles. It was finally switched off in 2001 and the coffee pot was auctioned on Y, where the German magazine Der Spiegel bought it for £3,350. The pot was repaired and is reportedly still used. ID X (6 points) and Y (4 points).",
+    "answer_text": "X=webcam. Y=eBay. The Trojan Room coffee pot webcam was one of the most popular sites of the early World-Wide Web. It got 1 million hits by 1996 and 2 million hits by 1998.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "An Italian contractor at the Louvre stole the Mona Lisa in 1911. Before the theft, the painting wasn't even the most famous work in the room that it hung in, let alone the Louvre. The police investigation was a mess, and it was all over the headlines. This frenzy quickly made it the world's most famous painting. Police investigated many suspects, including the banker J.P. Morgan and Kaiser Wilhelm II. Paris police arrested the poet and art critic Guillaume Apollinaire and his 29-year-old friend X for questioning because X was in possession of ancient Iberian statues that a mutual friend had stolen from the Louvre a few years earlier. They were both released when their alibi checked out. After their release, the duo found a way to discreetly return the Iberian statues to the Louvre through a newspaper. ID X.",
+    "answer_text": "X=Pablo Picasso. The thief was arrested in Florence two years later and Mona Lisa was sent back to France a few months before the beginning of the First World War. The rough-hewn heads filched from the Louvre directly inspired two of the faces in Picasso's 1907 painting Les Demoiselles d'Avignon.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was 28 when he finished writing his first novel in 1934. He had spent three years on it, while working as a junior clerk and a freelance journalist. Every London publisher he sent it to rejected the novel. Out of options, the green author attached a note to the manuscript when he sent it to one last publisher, J. M. Dent, asking that if Dent rejected it too, the manuscript be forwarded to his friend Kittu Purna, then studying at Oxford, with a separate note to Purna asking him to weight the manuscript with rocks and drown it in the Thames. Dent did as X asked. Purna did not. He instead handed the manuscript to the writer Y. Y read it, recognized it as extraordinary, and personally placed it with Hamish Hamilton, who published it. Y suggested shortening X's name from 38 letters to the 9 we know him by. X and Y corresponded for five decades and met in person only once in London. Y is now remembered as the author of The Quiet American and The Power and the Glory. ID X (6 points) and Y (4 points).",
+    "answer_text": "X=R.K. Narayan. Y=Graham Greene. Greene suggested Swami and Friends as the name of the book. Narayan later gave him a copy with the note: \"But for you, Swami should be in the bottom of Thames now.\" Narayan's full name is Rasipuram Krishnaswami Narayanaswami Iyer.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "India first competed in X in 1921 and reached the final three times, more than any other Asian nation. In the 1966 final, India lost 1-4 to Australia. In 1974, with the Y brothers at their peak, India beat Australia in a record-breaking tie that lasted 327 ____s, then beat the Soviet Union, and stood as overwhelming favorites to win the final against Z. The Indian government refused to let the team travel to Z for political reasons. The trophy was awarded to Z by walkover in front of an empty Indian chair. The Indian boycott seeded a wider movement: Mexico, Colombia, and the Soviet Union all subsequently refused to play Z, who were suspended from the competition in 1978. India reached the final again in 1987 but lost 0-5 to Sweden. ID X (4 points), Y (3 points), and Z (3 points).",
+    "answer_text": "X=Davis Cup. Y=Amritraj, Anand and Vijay. Z=South Africa. India's last great performance was a stunning 3-2 upset of France in the 1993 quarterfinals. Ramesh Krishnhan and Leander Paes led the team to a win over France that had much-higher-ranked players Henri Leconte and Guy Forget.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What is this list (5 points)? 1. Zahir 2. Nasir 3. X 4. Nur 5. Shahab 6. Muhi. ID X (5 points).",
+    "answer_text": "These are the first names of the first six Mughal emperors. X=Jalal. The popular names we know them by are all nicknames or titles: Zahir-ud-din Muhammad \"Babar\", Nasir-ud-din Muhammad \"Humayun\", Jalal-ud-din Muhammad \"Akbar\", Nur-ud-din Muhammad Salim \"Jahangir\", Shahab-ud-din Muhammad Khurram \"Shah Jahan\", Muhi-ud-din Muhammad Aurangzeb \"Alamgir\".",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The popular convention we use for an important aspect of modern identity is rather arbitrary. A two-word phrase first appeared in 1952 as the working title of a photo essay in Holiday magazine: a global ethnography of 23 young people who grew up during the Second World War titled \"Youth of the World.\" The phrase next surfaced in 1964 in a London paperback by the journalists Charles Hamblett and Jane Deverson for a book about Mods, Rockers, and disaffected British youth. A copy of this book sat on the shelf of a North London household in the mid-1970s; when a young Billy Idol was looking for a name for his new band, he picked it up off his mother's shelf. His punk-rock band lasted from 1976 to 1981. Finally, in 1991, Canadian writer Douglas Coupland published his debut novel under the same two-word title, this time describing a cohort of alienated and disaffected youth, set in Coachella Valley in California. What is this phrase that inspires a defining aspect of the identity of millions of people?",
+    "answer_text": "Generation X. The original intent behind using X was to signify \"unknown,\" not the 24th letter of the alphabet. But once the name Gen X stuck for my generation, the next generation came to be called Gen Y, and then Z, Alpha, and Beta followed.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Jawaharlal Nehru invited X to be present at the Red Fort on the night of August 14-15, 1947. As the tricolor was hoisted, khadi-clad X played Raga Kaafi on his Y from the ramparts. He went on to play there on every Independence Day for the next 58 years. Born in 1916 in a small village in Bihar, X was sent at the age of six to live with his maternal uncle, the official Y player at the Vishwanath temple in Varanasi, where for the next eight decades he would practice for many hours a day on the ghats of the Ganga. He turned what was a folk ceremonial instrument into a concert instrument fit for the great recital halls. He received all four civilian awards from the Indian government: Padma Shri, Padma Bhushan, Padma Vibhushan, and Bharat Ratna. ID X (7 points) and Y (3 points).",
+    "answer_text": "X=Ustad Bismillah Khan. Y=shehnai. He refused many offers from his students settled in America to move there, saying he could not live without the Ganga and Varanasi.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In February 2026 scholars gathered in Chennai for the International Conference on Tamil Epigraphy. The most talked-about paper was presented by Charlotte Schmid from Paris and Ingo Strauch from Lausanne, who reported findings from their 2024-'25 field surveys. Across six rock-cut tombs in a necropolis on the west bank of the X river, they had identified around 30 graffito inscriptions dating to the 1st through 3rd centuries CE. Around 20 used a Tamil variant of the Y script. The rest were in Sanskrit and Prakrit in the Y and Kharoshthi scripts. The graffiti read like graffiti everywhere, e.g. \"kopAN varata kantan,\" meaning \"Kopan came and saw.\" ID X (5 points) and Y (5 points).",
+    "answer_text": "X=Nile. Y=Brahmi. Indian traders were visiting and living in Roman Egypt at that time.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On the afternoon of July 6, 1957, two teenage boys were introduced to each other after a show at St Peter's Church in Woolton. Over the following years, the duo routinely took shortcuts through the St Peter's churchyard between school and home, often stopping among the graves to smoke. In the second row of stones to the left of the central walkway stood a worn sandstone headstone marking the grave of X, who had spent her working life as a scullery maid at the city's hospital, married a railway foreman 17 years her senior at the age of 35, was unable to have children, and died of a brain hemorrhage at the age of 44. A few rows away stood another headstone bearing the surname McKenzie. In 1966, the duo composed the song X built around two lonely characters, who never meet while alive. The second character officiates the first character's funeral. The song topped singles charts in several countries. ID X.",
+    "answer_text": "X=Eleanor Rigby. McCartney insisted for years that the names came from other sources, but later conceded that he may have picked them up subconsciously from those headstones. This is one of the rare songs where Lennon and McCartney disagreed about writing credit.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "You might know X as a place featured in the opening scene of a 1995 film that has completed 30 years of continuous screening in a movie theater. Or you might know it because of a decisive event that took place in October 1805 near Cabo de X, and the place featured in the film was named after this decisive event. Cabo de X is a headland in the province of Cádiz in the Andalusia region of Spain, halfway between Cádiz and Gibraltar. The original version of X has three possible meanings: \"cape of the west,\" or \"cape of the cave,\" or \"cape of the laurel.\" The most prominent structure at Cabo de X is a lighthouse first illuminated in 1862. ID X.",
+    "answer_text": "X=Trafalgar. There are two possible Arabic origins for Trafalgar: taraf al-ghar meaning \"cape of the cave\" or \"cape of the laurel,\" and taraf-al-gharb meaning \"cape of the west.\" The film opening shows Amrish Puri as Chaudhary Baldev Singh feeding the pigeons in Trafalgar Square, London.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "During the American Revolutionary War, as the colonies fought Britain for independence, they were keenly following developments halfway around the world in India. This is because British troops were tied down there trying to expand East India Company's control, troops that would otherwise be fighting them. X appears several times in the papers of Ben Franklin and John Adams, representatives of the Continental Congress in France and Holland during the war. A letter from C.W.F. Dumas to Adams dated February 15, 1781 (with X's name redacted in the shown excerpt) mentions his recent assistance to the French in defeating the British, reading roughly: \"The English are in a bad state in the East Indies. [X] has taken Mahé, a place they had conquered from France; the Marats have defeated them in Arcote. All their forces there now consist of only three ships of the line and a few frigates. The French, summoned by [X], have gone there with five ships of the line.\" Congress toyed with the idea of sending American military help to X. ID X.",
+    "answer_text": "X=Hyder Ali Khan of Mysore. The British saw winning in south India as a bigger prize than keeping control of their American colonies. The unredacted letter reads: \"The English are in a bad state in the East Indies. Hyder Alikans has taken Mahé, a place they had conquered from France; the Marats have defeated them in Arcote. All their forces there now consist of only three ships of the line and a few frigates. The French, summoned by Hyder Alikans, have gone there with five ships of the line.\"",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "X was born in the now-embattled Donbas region of Ukraine. He won his first world championship in 1983 and his last in 1997. In 1992, after the fall of the Soviet Union, he signed a sponsorship contract with Y. Y figured that offering him win bonuses in the contract wouldn't do much because X always won anyway. So Y offered him a special bonus of $40,000 for every time he broke a world record. X had already broken world records, but this started a trend where he would break his own previous world record by exactly one centimeter at a time in the indoor and outdoor versions of the event. He broke world records a total of 35 times, a feat unmatched in any event in track-and-field history. In the process he became the first person to clear 6 meters in the event. His outdoor world record set in 1994 stood for 26 years until it was broken in 2020 at an event that he had founded and was hosting himself. ID X (7 points) and Y (3 points).",
+    "answer_text": "X=Sergey Bubka. Y=Nike. This is Bubka's statue in his hometown of Donetsk.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tiebreaker. In 1863 classicist, painter, sheep farmer, and naturalist Samuel Butler wrote a letter to a Christchurch newspaper titled \"Darwin among the Machines.\" He argued that machines were already undergoing rapid evolution by selection, that they were reproducing themselves through their human attendants, and that the only logical response was the immediate destruction of all machines before they outpaced humanity. He developed the argument in the novel Erehwon. In 1965, X published a novel whose backstory turned on a crusade waged 10,000 years earlier, in which humanity had revolted against and destroyed all \"computers, thinking machines, and conscious robots\" because these had been used by technocratic elites to enslave them. X named that war \"Butlerian jihad.\" The resulting commandment, preserved in the universe's Orange Catholic Bible, runs: \"Thou shalt not make a machine in the likeness of a human mind.\" ID X.",
+    "answer_text": "X=Frank Herbert. Frank Herbert's son Brian co-wrote a prequel called Butlerian Jihad dealing with this war.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

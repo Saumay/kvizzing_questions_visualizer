@@ -1,0 +1,122 @@
+[
+  {
+    "question_text": "Picture clue: a tweet from David Rattigan (@davidmrattigan) reading \"buying this and then dying immediately and forcing my descendants to finish building it over the next 100 years.\" Which new product, priced at about $800, is David talking about here?",
+    "answer_text": "Lego Basilica Sagrada Familia",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Picture clue: a gravestone reading \"THAT'S ALL FOLKS\" with the name blacked out, and below it \"BELOVED HUSBAND AND FATHER, 1908 - 1989\". Whose epitaph is this?",
+    "answer_text": "Mel Blanc",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 2008, Juli Caspar became the first woman as well as the first non-French national to become the editor of X. The appointment was a surprise since French people seldom appreciated German contributions to this field. Identify X.",
+    "answer_text": "The Michelin Guide",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The liberal candidate for Central Finsbury in London, X, won his seat during the 1892 elections by a slender margin of 5 votes. His detractors used to rhyme his name and call him \"Narrow majority\". Identify X.",
+    "answer_text": "Dadabhai Naoroji",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Romans gave three distinctions for this activity: basium, osculum and savium. Basium: between acquaintances; osculum: between friends; and savium: between lovers. Give the funda (word).",
+    "answer_text": "Kissing",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The first empirical research on this phenomenon well-known to quizzers was undertaken by Harvard researchers Roger Brown and David McNeill and published in 1966 in the Journal of Verbal Learning and Verbal Behavior. Brown and McNeill wanted to determine if the feeling of imminent retrieval experienced was based on actual retrieval ability or was just an illusion. Which phenomenon / phrase?",
+    "answer_text": "Tip of the Tongue",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Born in 1922 to a Scottish father and Swiss mother, he was orphaned at 11 when both parents died in a climbing accident in Chamonix. Brought up by his aunt, Miss Charmian, he went to Eton and Fettes, which he represented twice as a lightweight boxer. Briefly married in 1962, he was created a Companion of the Order of St. Michael and St. George (CMG) and was a member of the Royal Naval Volunteer Reserve. The proposed words for his epitaph were \"I shall not waste my days in trying to prolong them.\" Who?",
+    "answer_text": "James Bond",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Spielberg's films A.I. Artificial Intelligence, Minority Report, and Catch Me If You Can, all feature characters undertaking a literal journey, seeking something - proof of their innocence, or a return to a life they once knew. They are hence dubbed as what trilogy? This two-word name is shared by a Korean reality-variety show where the cast must complete missions at various places to win the race & is also the title of a Stephen King Book.",
+    "answer_text": "Running Man Trilogy",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X and Y collaborated on a song, \"See U in Hell\" for some Netflix series. X was a popular band in the early 2000s and Y is a rapper who has recently found fame. Interestingly, the species mentioned in X's name is referenced in A, a very recent political movement, while Y has a direct reference in B, an established political movement. Give me X & Y.",
+    "answer_text": "Papa Roach & Hanumankind",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This medical procedure saved more lives during the US Civil War than any other wartime medical procedure by instantly turning complex injuries into simple ones. Battlefield surgeons eventually took no longer than six minutes for this procedure. Even in deplorable conditions, they lost only about 25% of their patients - compared to a 75% mortality rate among similarly injured civilians at the time. Which medical procedure?",
+    "answer_text": "Amputation",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The document shown is a decree granting extraordinary privileges to a Roman connected to Marc Antony's circle. It includes tax exemptions, personal protection and so on. Most of the text is written by scribes but at the end there's a signature with the Greek word \"GINESTHOI\" which translates to \"So be it\" or \"Let it be done\". This is believed to be the only surviving handwriting of X, a very prominent figure of the times. (Picture clue: a photo of an ancient papyrus fragment covered in Greek handwriting.) Identify X.",
+    "answer_text": "Cleopatra",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "When X wanted to create a custom walkout jacket for Y, they didn't just want it to look like the iconic tournament, they wanted it to contain it. To print the large graphic on the back, the design team avoided traditional paint or screen inks. Instead, they gathered actual ____ from _____ and mixed it into a highly specialized, experimental liquid binder formula. They used it to fuse the material directly into the jacket's textile fibers. What are we talking about? Give X & Y.",
+    "answer_text": "Lacoste and Novak Djokovic - the jacket (worn at Roland Garros) was made by fusing actual red clay from the Roland Garros courts into the printing binder for its graphic.",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Picture clue: a photo of a dessert shaped like a dinosaur (Tyrannosaurus) skull, dusted with cocoa powder and served on a plate. This image has recently gone viral. It's of a dessert made in Suwon, South Korea. The name of the dessert is a wordplay on another popular dessert. Give the name of this viral dessert.",
+    "answer_text": "Tyrannomisu",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Individually, these diseases affect a tiny fraction of the population, but combined, their sufferers would make up the world's third most populous country. Because they are rarely adopted by major pharmaceutical companies due to high R&D costs, what poignant name is given to this category of illnesses?",
+    "answer_text": "Orphan Diseases",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The word X's journey provides a fascinating example of \"semantic shift,\" where the meaning of a word evolves over time. When the word first entered Middle English via Old French, it meant \"foolish,\" \"stupid,\" or \"absurd\". Over the years its meaning softened to describe someone who was overly fastidious, excessively shy, or finely and impractically dressed. By the Victorian era, the association with polite society and refined social graces led to the modern sense of the word. Identify X.",
+    "answer_text": "Nice",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This event happened in February 1983 at Bhind in Madhya Pradesh. Ideally, it should have been Uttar Pradesh where much of the action had taken place, but the protagonist did not trust the UP authorities and insisted on MP as the venue. It took place before the portraits of Mahatma Gandhi and Goddess Durga as per the request of the protagonist. The onlookers included a crowd of around 10,000 people and 300 policemen, apart from the then Chief Minister of MP, Arjun Singh. What event are we talking about?",
+    "answer_text": "Surrender of Phoolan Devi",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tiebreaker: While the event X is remembered for one of the most famous/infamous heel turns, the more surprising thing was that just one week before X, A purchased its rival promotion outright bringing an end to a legendary \"War\" that they had been engaged in. Identify X.",
+    "answer_text": "WrestleMania X-Seven",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "\"Connect\" picture round: two photographs are shown side by side - one of a man in a dark suit with slicked-back blond hair, smiling with his hands in his pockets against a plain background, and the other of an older man in a white tank top with a mustache and a gold chain, holding a cigarette. What connects these two images?",
+    "answer_text": "Beat It (Michael Jackson's song and music video)",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Brazil once had a fully qualified medical doctor and later a political leader as the captain of their national team. This player, despite being a doctor, smoked 2 packs of cigarettes a day and openly drank beer before games. He even practiced medicine full time for a short period after he retired from football. He used his popularity and platform to fight against the military dictatorship ruling Brazil at the time. Who is the player being described?",
+    "answer_text": "Socrates (Socrates Brasileiro)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "During the 1940 Blitz, the British Royal Air Force began shooting down German bombers at night with uncanny accuracy. To hide the real reason for their success, the invention of a secret new airborne radar, the British Ministry of Information launched a massive public relations campaign. This led the birth to a myth that many still believe. What is the myth / give the funda?",
+    "answer_text": "Carrots improve eyesight",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

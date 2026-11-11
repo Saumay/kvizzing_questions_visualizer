@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "Identify Y and Z. In 1901, immigrants arriving at Ellis Island's Great Hall faced inspection procedures including the infamous 'Six-Second Medical Exam,' where officials used blue chalk to mark immigrants with specific letters, such as an 'X' indicating a suspected mental defect; those flagged were diverted to an isolated quarantine ward. A film dramatized this process by showing a young, speechless boy being marked with this chalk, leading to his forced isolation and a bureaucratic clerical error that permanently rewrote his identity. Identify the young boy (Y) and the movie (Z) that depicts this moment.",
+    "answer_text": "Y: Vito Corleone (born Vito Andolini). Z: The Godfather Part II.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. Following a dominant first-round submission victory against Indian fighter Pooja Tomar at the Road to UFC Season 5 tournament in Macau, fighter Shi Ming gave an emotional Octagon interview about her personal connection to X, saying: \"It's really important to me that people believe in me. I want to say that I like ______. The movie, X, is so touching. I hope someone can make a movie about me like that someday. X 2, let's go!\"",
+    "answer_text": "X: Dangal",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What grocery list are we talking about? Half eaten box of cookies, apples, tortilla chips, yogurt, diet soda, orange juice, scotch tape.",
+    "answer_text": "This is the grocery list from Rachel's shopping in Friends (the episode 'The One with the Embryos'), which Joey and Chandler had to guess; Orange Juice was the incorrect guess.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these songs to a 2010s Bollywood movie: 'Yeh Jeevan Hai' (from Piya Ka Ghar, 1972), sung by Kishore Kumar with music by Laxmikant-Pyarelal; 'Teri Galiyon Mein Na Rakhenge Kadam' (from Hawas, 1974), a soulful, melancholic classic sung by Mohammed Rafi with music by Usha Khanna; and 'Mere Pyase Man Ki Bahar' (from Honeymoon, 1973), a playful romantic duet by Asha Bhosle and Kishore Kumar featuring Anil Dhawan and Leena Chandavarkar.",
+    "answer_text": "Andhadhun",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie from this first-person monologue: 'This is my flat. I have lived here for years, and I am perfectly capable of taking care of myself. But lately, things have started shifting when I'm not looking.' The speaker describes 'The Missing Watch and the Paris Nonsense': his daughter Anne keeps checking on him, one day saying she's moving to Paris with a man, the next day saying she isn't moving and is married to Paul (or was it James?); he hides his watch under the bathtub to keep it safe from a caregiver Anne tried to force on him. He then describes 'The Strangers in My Home': a stranger named Paul claims to live in the flat with Anne, who then appears with a different face but speaks with Anne's voice; the furniture betrays him, paintings disappear from the walls, and walking through his hallway suddenly puts him in a hospital corridor as he struggles to hold onto facts like his name and birthdate.",
+    "answer_text": "The Father",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In the late 20th century, a sprawling facility known as Ignalina was constructed in the Visaginas Municipality of Lithuania. It mirrored a much more infamous counterpart so precisely that it earned the grim historical moniker of being its 'twin sister.' Decades later, because it was a decommissioned, near-identical visual clone of its sibling, showrunners chose it as the principal filming location to recreate that very history. Identify X, which utilized the Ignalina facility to bring its story to the screen.",
+    "answer_text": "Chernobyl",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In the 2013 mini-episode of X, the following sightings were discussed: The Tibetan Temple Case (Tibet) - during a Buddhist ceremony, a hooded abbot pulls back the hood of one monk in a line, revealing her to be a blonde, disguised drug smuggler, with someone noting that only a particular person would have the perception to ferret out a rogue smuggler hiding in a remote monastery. The Chocolate Flake Deduction (New Delhi, India) - an Indian police officer, Inspector Prakesh, is praised at a press conference for solving a murder by working out how deep a chocolate Flake had sunk into the victim's ice-cream cone, while behind the scenes he thanks a shadowed silhouette. The Case of the Mysterious Juror (Hamburg, Germany) - a jury deliberates whether Herr Trepoff is guilty of murdering his wife; eleven jurors agree he is 'not guilty,' but a mysterious, quiet juror refuses to agree while impatiently tapping his fingers in a familiar rhythmic way, and the next day Trepoff is found guilty. Identify X.",
+    "answer_text": "Sherlock (the referenced 2013 mini-episode is 'Many Happy Returns')",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the TV series depicted by this 'Historical Events Timeline: 1912-1928' infographic, which charts events including the sinking of the RMS Titanic (1912), the British Suffragette Movement (1912-1914), the outbreak of World War I (1914), the Battle of the Somme (1916), country houses used as convalescent homes (1916-1918), the execution of the Romanov family (1918), Armistice Day (1918), the Spanish Flu pandemic (1918-1919), the collapse of the Grand Trunk Railway (1919-1920), the Irish War of Independence (1919-1922), the Teapot Dome Scandal (1921-1923), the Munich Putsch (1923), the rise of the first British Labour Government (January 1924), King George V's first radio broadcast (1924), the Royal visit to Yorkshire (1927), and the rise of 'talkies' and the end of silent cinema (1928).",
+    "answer_text": "Downton Abbey",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and Y. In the late 1990s, when Disney acquired the North American distribution rights for a sweeping animated epic, they handed the theatrical release to a subsidiary executive known by the notorious trade nickname '_____ Scissorhands' due to his ruthless habit of re-editing independent films. Insisting the 134-minute runtime was far too long for Western audiences, he aggressively demanded massive cuts. However, the film's legendary director, who had already seen an earlier masterpiece butchered into a 90-minute Americanized release titled Warriors of the Wind, flatly refused to yield. The standoff ended in a New York boardroom when the film's producer presented the Hollywood executive with an authentic traditional sword accompanied by a blunt, four-word warning: '_____ hime, NO CUT!' The stunt worked, forcing the executive to release the film entirely uncut. Identify the film (X) and the producer (Y) who was famously defeated by a sword.",
+    "answer_text": "X: Princess Mononoke. Y: Harvey Weinstein.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these comic-book panel images to a single franchise. The panels show various characters in a grim, post-apocalyptic graphic-novel art style, including a bearded man, a woman with messy dark hair, a man in a wide-brimmed hat, a blonde woman, a bald man in a police cap shouting 'NOTHING!', a woman holding a child, a girl in a baseball cap, a man pointing and threatening in dialogue bubbles, a priest holding a cross and bible, a man standing before a tank shouting 'KILL THEM ALL,' and another serious-looking man.",
+    "answer_text": "The Walking Dead",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify the presenter. In a stylistically unique departure from traditional travel journalism, a 2013 television episode abandoned standard landmarks to construct a neon-soaked, Blade Runner-esque psychological portrait of Tokyo, examining the societal pressure of rigid corporate conformity (salaryman life) alongside extreme underground subcultures of escapism and radical fantasy. The journey begins at Shinjuku's iconic Lost in Translation bar before diving into predatory host clubs and the shanty-style micro-bars of Golden Gai, eating yakitori and kushiage at Taito-ku's street-side Daitoryo, exploring a hidden shibari bondage studio, and sharing a meal of motsu nabe with a historic pioneer of modern Japanese tentacle porn to discuss censorship and otaku culture. After a chaotic live performance by death metal band Merging Moon and surviving the sensory assault of Kabukicho's Robot Restaurant, the episode features a sushi masterclass with Chef Naomichi Yasuda at Sushi Yasuda, before winding down with Worcestershire-braised okonomiyaki in Nakameguro. Identify the legendary American presenter and storyteller behind this episode.",
+    "answer_text": "Anthony Bourdain",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "'Put Funda' - identify the show depicted by this elaborate family tree / genealogy chart, divided into colored sections representing different time periods, showing generations of interconnected families with surnames including Kahnwald, Nielsen, Tannhaus, Doppler, Tiedemann, Albers, Kruger, and Waller.",
+    "answer_text": "Dark",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. X's father is an introverted widower who refuses to leave his house, spending all his time obsessing over a miniature mausoleum he built for his late wife and tending to his prized garden gnome. To break him out of his shell and force him to pursue his lifelong dream of seeing the world, X steals the gnome and secretly hands it off to her flight attendant friend, who sends the father mysterious, anonymous polaroids showing his lawn ornament posing in front of world-famous landmarks like the Eiffel Tower and the Leaning Tower of Pisa; seeing his gnome living a life of global adventure eventually inspires him to pack his bags and travel. The concept later inspired real-life copycat gnome-photographing pranks and was famously adapted into Travelocity's 2004 'Roaming Gnome' advertising campaign. Identify X.",
+    "answer_text": "Amelie (Amelie Poulain, the title character of the film Amelie)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Whose diary is this, and what creation does it depict? Shown across two slides are handwritten Spanish-language diary/notebook pages filled with intricate illustrations: a horned, ram-like humanoid creature; a pale, gaunt humanoid figure with visible red veins running through its body and eyes embedded in the palms of its hands; a gnarled tree-root/bark creature with embedded faces; grotesque sketches of a screaming fish-like face, skeletal designs, insects, and an umbrella motif; a yellow-skinned creature with a long tongue and red eyes labeled 'OUT of SEASON'; a knight-like figure and armored designs; and a horned silhouette walking through an archway of bare trees, with handwritten annotations referencing Steven Spielberg and Hellboy.",
+    "answer_text": "Guillermo Del Toro's diary/notebook, containing the creature designs and concept sketches for Pan's Labyrinth.",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify the series. The showrunner intentionally weaves Irma Thomas's 1964 soul classic 'Anyone Who Knows What Love Is (Will Understand)' into every single season of this television series. According to executive producer Annabel Jones, the track acts as an artistic anchor, nesting disparate narratives into a shared universe while highlighting the tragic, corrupted nature of human emotion under the weight of technology. While not always sung aloud by a character (sometimes playing ambiently on a radio, embedded in a digital memory, or humming hauntingly in the background), the song is strategically deployed whenever a character has their capacity for love, empathy, or autonomy stripped away. Identify this acclaimed television series.",
+    "answer_text": "Black Mirror",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. Derived from a real-world branch of ornithology dedicated to the study and collection of birds' eggs, this specialized term X underwent a high-tech corporate redefinition within a prominent movie Y. In this dystopian setting, the villainous conglomerate IOI (Innovative Online Industries) employs an entire division of researchers to meticulously dissect the pop-culture obsessions of an eccentric billionaire. Because the ultimate grand prize hidden deep within the virtual universe known as the OASIS takes the literal, titular form of a hidden digital object, this army of corporate hunters is named after those real-world avian egg experts. Identify X and Y.",
+    "answer_text": "X: Oologist. Y: Ready Player One.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]
