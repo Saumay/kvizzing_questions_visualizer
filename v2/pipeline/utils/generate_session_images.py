@@ -157,7 +157,12 @@ def main() -> None:
             print(f"[{sid}] Connect quiz — uses connect-quiz-bg.png, skipping.")
             continue
 
-        theme = session.get("theme") or f"{session['quizmaster']}'s Quiz"
+        # Prefer a real theme, then the topic-derived summary (e.g. "A mix of
+        # cinema, history and sports questions") over the generic
+        # "{quizmaster}'s Quiz" fallback — that fallback carries almost no
+        # signal, which is why most unthemed sessions were generating
+        # near-identical generic abstract images.
+        theme = session.get("theme") or session.get("summary") or f"{session['quizmaster']}'s Quiz"
         # Sanitize theme for NSFW-sensitive AI image generators
         safe_theme = theme.replace("Indian", "South Asian").replace("Bollywood", "cinema").replace("Hindu", "cultural").replace("Muslim", "cultural").replace("nude", "").replace("naked", "")
         prompt = THEME_PROMPTS.get(theme)

@@ -51,19 +51,13 @@ _GEMINI_MODEL = "gemini-pro-latest"
 _GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
 # Chat transcripts include unmoderated group discussion (politics, current
-# events); default safety thresholds intermittently block whole extraction
-# chunks with an empty response. Extraction is read-only over the group's own
-# messages, so disable the filters.
-_GEMINI_SAFETY_SETTINGS = [
-    {"category": c, "threshold": "BLOCK_NONE"}
-    for c in (
-        "HARM_CATEGORY_HARASSMENT",
-        "HARM_CATEGORY_HATE_SPEECH",
-        "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        "HARM_CATEGORY_DANGEROUS_CONTENT",
-        "HARM_CATEGORY_CIVIC_INTEGRITY",
-    )
-]
+# events); default safety thresholds can intermittently block a chunk with
+# an empty response. We used to disable the filters via extra_body.google
+# .safety_settings, but Gemini's OpenAI-compat endpoint rejects that field
+# outright (400 "Unknown name") — Google's own forum confirms safety_settings
+# passthrough has never actually worked there, despite being documented.
+# No working alternative exists yet, so this risk is unmitigated; callers
+# already handle an empty-content response as a retryable/skippable error.
 
 
 class GeminiClient:
@@ -94,7 +88,6 @@ class GeminiClient:
             # endpoint; cap them so long extraction outputs don't get truncated.
             extra_body={
                 "reasoning_effort": "low",
-                "extra_body": {"google": {"safety_settings": _GEMINI_SAFETY_SETTINGS}},
             },
         )
         choice = response.choices[0]

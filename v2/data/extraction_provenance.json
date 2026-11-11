@@ -784,12 +784,20 @@
       "history": []
     },
     "2025-12-21": {
-      "method": "claude-file",
-      "model": "claude-opus-4-7",
+      "method": "gemini",
+      "model": "gemini-flash-latest",
       "count": 50,
-      "last_extracted_at": "2026-09-17T04:11:07Z",
+      "last_extracted_at": "2026-11-02T20:48:22Z",
       "notes": "pipeline.py backfill",
-      "history": []
+      "history": [
+        {
+          "method": "claude-file",
+          "model": "claude-opus-4-7",
+          "count": 50,
+          "last_extracted_at": "2026-09-17T04:11:07Z",
+          "notes": "pipeline.py backfill"
+        }
+      ]
     },
     "2025-12-22": {
       "method": "claude-file",
@@ -856,12 +864,20 @@
       "history": []
     },
     "2026-01-05": {
-      "method": "claude-file",
-      "model": "claude-opus-4-7",
+      "method": "gemini",
+      "model": "gemini-flash-latest",
       "count": 85,
-      "last_extracted_at": "2026-09-23T08:04:53Z",
+      "last_extracted_at": "2026-11-02T22:21:40Z",
       "notes": "pipeline.py backfill",
-      "history": []
+      "history": [
+        {
+          "method": "claude-file",
+          "model": "claude-opus-4-7",
+          "count": 85,
+          "last_extracted_at": "2026-09-23T08:04:53Z",
+          "notes": "pipeline.py backfill"
+        }
+      ]
     },
     "2025-12-30": {
       "method": "claude-file",
@@ -884,6 +900,62 @@
       "model": "claude-opus-4-7",
       "count": 53,
       "last_extracted_at": "2026-09-24T02:19:10Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-01": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 49,
+      "last_extracted_at": "2026-11-02T22:20:21Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-02": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 24,
+      "last_extracted_at": "2026-11-02T22:20:42Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-03": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 107,
+      "last_extracted_at": "2026-11-02T22:21:02Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-04": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 50,
+      "last_extracted_at": "2026-11-02T22:21:23Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-07": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 35,
+      "last_extracted_at": "2026-11-02T22:21:57Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-08": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 49,
+      "last_extracted_at": "2026-11-02T22:22:14Z",
+      "notes": "pipeline.py backfill",
+      "history": []
+    },
+    "2026-01-09": {
+      "method": "gemini",
+      "model": "gemini-flash-latest",
+      "count": 32,
+      "last_extracted_at": "2026-11-02T22:23:19Z",
       "notes": "pipeline.py backfill",
       "history": []
     }

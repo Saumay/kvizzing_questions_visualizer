@@ -1,0 +1,158 @@
+[
+  {
+    "question_text": "In September, Phoebe Adams filmed herself unboxing a plain X, while telling her boyfriend, Dan, that it was a pricey home decor item from Y. Dan's shock and horror at the perceived $150 price tag for a simple X went viral. In follow-up videos, Adams took Dan to a Y store and pointed out displays of “Xs” (also part of the gag) for up to $1,000, further convincing viewers and Dan. The videos gained millions of views and inspired many recreations. The viral meme was embraced by Y, with the retailer collaborating with Adams. ID X and Y.",
+    "answer_text": "#AnthropologieRock",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Russell Bentley was a US citizen from Texas and a convicted drug trafficker. In 2014, he moved to X to fight on the pro-Russian side and he became a naturalized Russian citizen in 2020. He referred to himself as an information warrior while working for Russian news site Sputnik and styled himself as X Y, a play on his place of origin. He disappeared in April 2024. In December 2025, a Russian military court convicted four soldiers of torturing and killing Bentley. ID X and Y.",
+    "answer_text": "Donbas Cowboy",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The top all-time post on the r/LinkedInLunatics subreddit is this one from the summer of 2025. Why? I am looking for at least one keyword that is the name of an entity.",
+    "answer_text": "Coldplay concert kiss-cam",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What is blacked out in this viral tweet from April that was featured in the New York Times? Funda is enough.",
+    "answer_text": "Trump tariffs on penguin islands + Trump and Vance berating Zelenskyy for not wearing a suit and not saying \"thank you\"",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X Bhosle is a 16-year-old girl from Indore, Madhya Pradesh. She attracted viral attention at the Y in January. The virality led to declining sales at Bhosle's family business, as people showed up take selfies with her instead of buying the merchandise. She faced chronic harassment forcing her to leave Y. The media referred to her as “Y ki X,” citing a resemblance to a well-known work of art. ID X and Y.",
+    "answer_text": "Maha Kumbh ki Mona Lisa",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Mansão Curtorim is a 236-year-old villa that highlights its old furniture and still-working Bakelite light switches. It became an unexpected travel sensation and the most wish-listed AirBnB in India in 2025, thanks to its focus on the traditional concept of susegad. Instead of parties or outdoor activities, it offered “The Art of _____ _______.” FITB or explain what susegad means.",
+    "answer_text": "The Art of Doing Nothing; Susegad (from Portuguese sossegado) is a Goan philosophy of life meaning peaceful contentment, relaxation, and an unhurried approach, enjoying simple pleasures and finding balance",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The chart below shows the price trend for a common RAM kit in the US. This kind of RAM is used in consumer devices like smartphones, tablets, and laptops. Why have these RAM prices almost quadrupled in late 2025?",
+    "answer_text": "The AI boom needs a lot of high-end RAM chips, so companies are using available capacity to produce those high-margin chips and making fewer consumer-grade RAM kits. Your next phone will be more expensive, thanks to ChatGPT and Gemini!",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The PKK was founded in 1978 in the Ziyaret neighborhood of Lice in X. Its original ideology was a fusion of Marxism with Y nationalism, as reflected in its flag below. Decades of violent struggle and severe repression by X ensued, including several massacres. After a ceasefire with X, PKK announced in May plans for total dissolution of the organization. ID X and Y.",
+    "answer_text": "Kurdistan Workers' Party in Türkiye",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "In his campaign for the Nobel Peace Prize, Donald Trump claimed to have stopped as many as eight wars. Below are four of those wars that he said he stopped. But one pair here has never fought each other. Which pair?\na) Albania vs. Azerbaijan\nb) Cambodia vs. Thailand\nc) Egypt vs. Ethiopia\nd) Kosovo vs. Serbia",
+    "answer_text": "a) Albania vs. Azerbaijan",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "One of the best wins of 2025 was in the fight against X. The R21/Matrix-M vaccine developed by Oxford University and Serum Institute of India changed the game with cheap vaccines available in large quantities. Over 40 million doses were administered this year, compared to fewer than 10 million doses in total until 2024. ID X.",
+    "answer_text": "Malaria",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Percival Everett's novel James won the 2025 Pulitzer Prize for Fiction. The novel is a reimagining of X, a classic American novel from the late 19th century written by Y. X has two main characters, one of them the narrator. This new novel flips that script and tells the story from the perspective of the other main character and provides a different ending to the story. ID X and Y.",
+    "answer_text": "Adventures of Huckleberry Finn by Mark Twain. The story is told by Jim, not Huck.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In October, X announced the creation of India's first gigawatt-scale AI data center located in Y in partnership with Adani Enterprises and Airtel. According to X, “the multi-faceted investment in Y will deploy cutting-edge infrastructure, establish a new international subsea gateway, and deliver gigawatt-scale compute to power services globally.” ID X and Y.",
+    "answer_text": "Google, Visakhapatnam",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The C2PA standard moved from a niche professional tool to mainstream consumer requirement in 2025, after Sony, Nikon, and Canon started supporting it. The tipping point came in October when Google launched the Pixel 10 with C2PA integrated by default. The logo for this standard is shown here. What does the C2PA standard do?",
+    "answer_text": "Coalition for Content Provenance and Authenticity – standard to certify that AI was not used in the creation of an image. This pin only appears on images shot with compatible cameras and disappears if any AI is used to modify it.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "At its Annual Conference in Durban, South Africa in July 2023, X changed course after decades of resistance. It finally adopted a policy of “equal pay.” The impact of this change became prominent for the first time in November 2025. It resulted in the prize money for Y nearly quadrupling from just four years earlier. ID X and Y.",
+    "answer_text": "ICC Women's World Cup",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "The 2024 film X did not receive a theatrical release in India despite popular demand. Distributors felt that the CBFC would demand extensive cuts making the movie incomprehensible, so it went straight to streaming instead. The only public screening in India was as the Closing Film of the MAMI Mumbai Film Festival. Tickets for the showing sold out in seconds and became a status symbol for the city's film elite. Within the movie, a character translates the movie name to “light” or “honor.” ID X.",
+    "answer_text": "Anora, winner of five 2025 Oscars",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "India began serious negotiations for a Free Trade Agreement with X in 2022. India and X signed the final agreement this May. Key provisions include duty-free access to X for most of India's goods exports, elimination of some double taxation, and perhaps most importantly for some of us, a reduction in India's 150% import duty on Y to 75% immediately, with a roadmap to reduce it to 30% in 10 years. ID X and Y.",
+    "answer_text": "United Kingdom, Scotch whisky",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 2009, an elite military unit called CAPSAT mutinied and installed Andry Rajoelina as the President of X. Gen-Z protests began this September after frustration mounted over severe and chronic water and electricity shortages in the capital city. This time CAPSAT was ordered to fire on the protestors, but they refused orders, escorted protestors to the presidential palace, and deposed Rajoelina. X was named in a recent kviz question about the Jolly Roger flag that the protestors used. ID X.",
+    "answer_text": "Madagascar",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On April 2, Trump announced “reciprocal” tariffs on much of the world. Financial markets around the world tanked in response. However, by the end of May, the markets recovered and a “TACO Trade” took hold on Wall Street, enraging Trump. What does TACO stand for?",
+    "answer_text": "Trump Always Chickens Out",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On November 18, an engineer at X made a change to a database to improve permission management. This caused a certain file to grow beyond its size limit. Millions of servers around the world downloaded that file and entered a “boot loop,” taking down much of the secure internet as a result. ID X.",
+    "answer_text": "Cloudfare",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Blue Ghost M1 was a robotic Moon landing mission that launched on January 15 and soft-landed on the lunar surface on March 2. The mission delivered 10 scientific experiments to advance future human exploration under NASA's Artemis program. This marked a major milestone in lunar exploration. What milestone did this mission achieve?",
+    "answer_text": "First fully successful private/commercial moon landing. All previous such landings were by nations (e. g. NASA and ISRO).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Namibia marked a significant milestone in its political history in March. Suriname did it in July. Japan did it in October. What is this “first-ever” milestone that all three countries reached this year?",
+    "answer_text": "First female President/PM; Netumbo Nandi-Ndaitwah; Jennifer Geerlings-Simons; Sanae Takaichi",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On August 12, opposition MPs protested outside Parliament wearing t-shirts showing the photo and name of Minta Devi, a voter from Bihar. What was the protest about, and what was printed on the back of those t-shirts?",
+    "answer_text": "Irregularities in voter rolls, “124 not out”",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In February, the Arc Institute released “Evo 2,” an AI trained on 9 trillion _________. Just as ChatGPT predicts the next word in a sentence, Evo 2 predicts the next _________ in a ___ sequence. As a test, researchers asked Evo 2 to predict which random mutations would cause breast cancer and which were harmless. Without ever being explicitly taught oncology, the system achieved 90% accuracy in its predictions.",
+    "answer_text": "Nucleotides in a DNA sequence. Evo 2 has read the entire “tree of life” and it can now “write” the code of life, albeit imperfectly.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Since 2013, the Economist has picked a “country of the year” based on which country “improved the most” in that year. In 2025 they had a very short list of real contenders because not many countries improved. Some potential contenders like Moldova, Brazil, South Korea, and Canada were ruled out because they merely averted looming disaster. It came down to just two choices: Argentina and X. They picked X citing the return of relative peace and freedom, even if its new government is far from perfect. ID X.",
+    "answer_text": "Syria; Nonetheless, Syria in 2025 is far happier and more peaceful than it was in 2024. Fear is no longer universal. Life is not easy, but it is more or less normal for most people. Voting with their feet, some 3m Syrians have returned home. Our choice goes to Syria, too.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "2025 was supposed to be the year that X took off, with analyst revenue projections over $10 billion based on the production capacity numbers cited by its manufacturer. Because of several issues with X and its biggest booster, things turned out very differently, and X is now considered the biggest flop in the history of its industry, missing sales projections by over 80%. ID X.",
+    "answer_text": "Tesla Cybertruck",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "N X vs. Y is a thought experiment about who would win a hypothetical battle between the X and a Y. N is a specific number, X and Y are common nouns. First recorded in a Reddit post in 2020, the question went viral this April inspiring many memes and prompting commentaries about the nature of modern masculinity. ID N, X, and Y.",
+    "answer_text": "100 men vs. a gorilla",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

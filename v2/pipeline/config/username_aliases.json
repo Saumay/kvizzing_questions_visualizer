@@ -1,4 +1,21 @@
 {
   "_comment": "Map alias display names to canonical usernames. Keys are aliases, values are canonical.",
-  "aliases": {}
+  "aliases": {
+    "Aditi Bapat KVizzing": "Aditi Bapat",
+    "Akshay KVizzing": "Akshay",
+    "Dr. Prajwal K Aradhya KVizzing": "Dr. Prajwal K Aradhya",
+    "Dr.Namrata Srinivasan KVizzing": "Dr.Namrata Srinivasan",
+    "Hrishikesh Dabir KVizzing": "Hrishikesh Dabir",
+    "KP KVizzing": "Kartikey Pradhan",
+    "Mahita KVizzing": "Mahita",
+    "Paavas KVizzing": "Paavas",
+    "Pavan KVizzing": "Pavan Pamidimarri",
+    "Raksha KVizzing": "Raksha",
+    "Shreya KVizzing": "Shreya",
+    "Sid K": "Sidhesh K K",
+    "Khandoba Salunkhe WR": "Khandoba",
+    "మాన$": "మాन$",
+    "Maan$": "మాन$",
+    "Dr.Namrata": "Dr.Namrata Srinivasan"
+  }
 }

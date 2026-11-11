@@ -38,7 +38,7 @@
   },
   "stage4": {
     "llm_model": "gemini-flash-latest",
-    "llm_batch_size": 6,
+    "llm_batch_size": 40,
     "llm_max_retries": 3,
     "llm_retry_base_delay_seconds": 2
   },

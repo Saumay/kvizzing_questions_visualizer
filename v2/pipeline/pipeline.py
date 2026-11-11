@@ -124,7 +124,42 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     see _maybe_regenerate_embeddings for why this is best-effort, not required."""
     counts = _stage6_export_run(conn, output_dir, **kwargs)
     _maybe_regenerate_embeddings(output_dir)
+    _maybe_regenerate_backlog_report()
+    _maybe_deploy_dashboard()
     return counts
+
+
+def _maybe_regenerate_backlog_report() -> None:
+    """
+    Best-effort: regenerate BACKLOG.md / backlog_tracking.csv / session_backlog.csv
+    after every export, so the publish-status tables never drift from questions.db.
+    Never blocks or fails the real export on a reporting error.
+    """
+    try:
+        from utils.backlog_report import main as _backlog_main
+        _backlog_main()
+    except Exception as e:
+        log.warning(
+            "Backlog report regeneration failed (%s: %s) — export succeeded OK, "
+            "run utils/backlog_report.py manually to catch up.", type(e).__name__, e,
+        )
+
+
+def _maybe_deploy_dashboard() -> None:
+    """
+    Best-effort: push the visualizer (incl. the static /backlog/ dashboard) to
+    Netlify after every export, so the live site stays in sync with the data —
+    no-ops silently until the site has been linked (see utils/deploy_dashboard.py).
+    Never blocks or fails the real export on a deploy error.
+    """
+    try:
+        from utils.deploy_dashboard import main as _deploy_main
+        _deploy_main()
+    except Exception as e:
+        log.warning(
+            "Dashboard auto-deploy failed (%s: %s) — export succeeded OK, "
+            "run utils/deploy_dashboard.py manually to catch up.", type(e).__name__, e,
+        )
 
 
 def _extracted_timestamps(conn: sqlite3.Connection) -> dict[str, str]:

@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "ID what is hidden/what's the funda here\n\nAll-format Stats:\nName | Avg | 100's | [hidden] | Avg | 100's\nVirat Kohli | 54.72 | 52 | | 49 | 30\nJoe Root | 49.55 | 28 | | 49.97 | 30\nSteve Smith | 49.56 | 31 | | 45.12 | 17\nRohit Sharma | 37.67 | 11 | | 45.08 | 39",
+    "answer_text": "Pre and Post Marriage Stats; Virat Kohli - Dec 11, 2017; Joe Root - Dec 1, 2018; Steve Smith - Sep 15, 2018; Rohit Sharma - December 13, 2015",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "X is a legendary king of the Ikshvaku dynasty in Hindu Mythology. He is best known for his legend of bringing the Ganga from heaven to earth through severe penance so she could purify the ashes of King Sagara's 60,000 sons, who were reduced to ash by Sage Kapila after the princes disturbed the sage while looking for the ashwamedha horse that Indra had hidden in Patal Lok. ID X whose name also lends itself to one of the many names of the Holy river, Ganga.",
+    "answer_text": "Bhagirath",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "25 January Revolution was a protest movement that led to the ouster of X in 2011. X had served as the President of Y for 30 straight years at the time, and the last few years of his Presidency had seen an increase in police brutality. This was one of the main reasons the date was chosen for the protest that sparked the revolution, since the date coincided with Y's annual \"National Police Day\". ID X and Y.",
+    "answer_text": "Hosni Mubarak; Egypt",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Eri Polu is an Assamese delicacy where the main ingredient, X, is cooked in mustard oil with onions, garlic, ginger, and green chillies. It is often paired with fermented bamboo shoot (khorisa) or mustard greens (lai xaak). The ingredient X is sold fresh or sun-dried in weekly haats, and is valued for its high protein and a nutty, creamy bite after frying. ID X.",
+    "answer_text": "Silkworm",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "One of the most memorable ad campaigns by the Late Piyush Pandey, for Cadbury's Dairy Milk, featured a young girl running onto the field and doing a jig to celebrate a cricketer's on field exploits. This was inspired by a real life incident where X, playing a test match against Australia at home, was kissed on a cheek by a young female fan after scoring his second fifty of the match. A painting called \"The Kissing of X\", depicting the incident was also featured in Salman Rushdie's novel The Moor's Last Sigh. X also held the record for the youngest Indian to score a century on debut (a record later broken by Prithvi Shaw), and was the first Indian to score a debut hundred outside India. ID X.",
+    "answer_text": "Abbas Ali Baig",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The word, X, comes from a Latin word meaning \"on the left side.\" The present meaning of the word has a negative connotation, likely because of the dominance of right-handers and an inherent negative outlook towards left handers. There is also evidence of the word being used in both senses in Old English - that is, the present meaning, and to denote the left side - dating back to the 15th century. The name of one of DC's supervillains, ________, a former member and a primary antagonist of the Green Lantern Corps, is derived from X.",
+    "answer_text": "Sinister",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is the goddess of agriculture, grain crops, fertility and motherly relationships in Roman Mythology, and the only one of Rome's many agricultural deities to be listed among the Dii Consentes, Rome's equivalent to the Twelve Olympians of Greek mythology. ID X whose name is the origin of a staple food item.",
+    "answer_text": "Ceres",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On 10th and 11th January, 2015, a series of rallies took place in cities across France, termed Marches républicaines or the Republican marches. About 2 million people, including more than 40 world leaders marched in Paris, with around 3.7 million people joining demonstrations across France. Not since 1944, when Paris was liberated from the Germans at the end of World War II, had any mass movement in France gathered such mass appeal. ID the incident that prompted these marches?",
+    "answer_text": "Charlie Hebdo Shooting",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "_____ ___ is a fictional astronaut and one of the most enigmatic and influential characters ever created in modern music and pop culture. Originally introduced in David Bowie's 1969 song \"Space Oddity,\" the character has since transcended his musical origins to become a symbol of isolation, existential crisis, and the human condition. He represents both the wonder and horror of space exploration, a metaphor for disconnection, and a cultural icon whose presence continues to echo across decades and artistic forms. ID this fictional character from David Bowie's works.",
+    "answer_text": "Major Tom",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is a traditional soup or stew from Mexican cuisine. It is made from hominy with meat (typically chicken or pork), and can be seasoned and garnished with shredded lettuce or cabbage, chili peppers, onion, garlic, radishes, avocado, salsa or limes. Known in Mesoamerica since the pre-Columbian era, the stew is common across Mexico and neighboring countries, served both as a day-to-day meal and as a festive dish. According to researchers, Aztecs used to serve X on special occasions, and on these special occasions, the meat used in X may have been human. ID X.",
+    "answer_text": "Pozole",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was a legendary vocalist and a towering figure of Hindustani Classical music. After partition, he initially moved to his hometown in Pakistan. Later, in 1957, he moved back to India to settle permanently and acquired Indian citizenship with the help of then Bombay Chief Minister, Morarji Desai. Regarding the Partition of India, he once stated: \"If one child in every home had been taught Hindustani classical music, India would never have been partitioned.\" ID X.",
+    "answer_text": "Bade Ghulam Ali Khan",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was an Indian Bollywood actor, best known for his roles in Bandit Queen, Godmother, and Train to Pakistan. X has a unique distinction of being one of the few male actors to win a Best Actress award, which he received at France's Valenciennes Film Festival in 1997, for his portrayal of a transvestite in Amol Palekar's Daayraa. ID X.",
+    "answer_text": "Nirmal Pandey",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The word X is derived from the Ancient Greek words for Rock (πέτρος), and the ethereal fluid (ἰχώρ) that is the blood of the gods in Greek mythology. The term was first coined by Australian Biochemist, Richard Thomas, in a research paper published in 1964. ID X.",
+    "answer_text": "Petrichor",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Euglossa X is a euglossine bee species found in Brazil. It was previously misidentified as Euglossa ignita, and hence, while naming this particular species, biologists gave it the name X since it \"has tricked us for some time\". X Rieki is a species of Jellyfish, also named X because of how it fooled biologists for the longest time in identifying it due to being mistaken for a juvenile of another species due to its small size. Both names were chosen as a reference to a fictional character popular in the science community. ID X.",
+    "answer_text": "Bazinga",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is an arboreal herbivorous animal, easily recognisable by its stout, tailless body and large head with round, fluffy ears and large, dark nose. While it might not seem that X have much in common with human beings, their fingerprints are very similar to human fingerprints - so similar, in fact, that it is a valid concern that X could contaminate crime scenes. ID X.",
+    "answer_text": "Koala",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was a pioneering Indian film and theatre actor, with over five decades of work in Hindi and Marathi cinema. Among the first women from a \"respectable\" family to work in cinema, she moved from lead roles in 1930s to key character roles later on, like Jodhabai in Mughal-e-Azam (1960). Part of a film family, she was the aunt of two sibling actors, one of whom you might remember as Kaaliya from Sholay. In 1983, she was awarded the Dada Saheb Phalke. ID this actor.",
+    "answer_text": "Durga Khote",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

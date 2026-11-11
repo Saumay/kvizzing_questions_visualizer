@@ -193,6 +193,46 @@ def write_discussion_files(discussion_by_id: dict[str, list[dict]], output_dir: 
 
 # ── sessions.json ─────────────────────────────────────────────────────────────
 
+_TOPIC_LABELS = {
+    "art_culture": "art & culture",
+    "food_drink": "food & drink",
+}
+
+
+def _topic_label(topic: str) -> str:
+    return _TOPIC_LABELS.get(topic, topic.replace("_", " "))
+
+
+def _session_summary(questions: list[dict], quiz_type: str | None, theme: str | None) -> str | None:
+    """
+    One-line, human-readable description of what a session was about, used
+    where there's no explicit curator-set theme (~75% of sessions). Derived
+    from the topic distribution of the session's own questions — never
+    fabricated, never an LLM call, so it's instant and always accurate to
+    what's actually in the session.
+    """
+    if quiz_type == "connect":
+        return "Connect quiz"
+    if theme:
+        return None  # theme already serves as the description; don't duplicate
+
+    counts: dict[str, int] = defaultdict(int)
+    for q in questions:
+        for t in (q.get("question", {}).get("topics") or []):
+            if t and t != "general":
+                counts[t] += 1
+    if not counts:
+        return None
+
+    top = sorted(counts.items(), key=lambda kv: -kv[1])[:3]
+    labels = [_topic_label(t) for t, _ in top]
+    if len(labels) == 1:
+        return f"Mostly {labels[0]} questions"
+    if len(labels) == 2:
+        return f"A mix of {labels[0]} and {labels[1]} questions"
+    return f"A mix of {labels[0]}, {labels[1]} and {labels[2]} questions"
+
+
 def build_sessions(
     conn: sqlite3.Connection,
     session_overrides: dict[str, dict] | None = None,
@@ -244,11 +284,14 @@ def build_sessions(
                 connect_answer = sess["connect_answer"]
 
         overrides = (session_overrides or {}).get(session_id, {})
+        final_theme = overrides.get("theme", s.get("theme"))
+        final_quiz_type = overrides.get("quiz_type", s.get("quiz_type"))
         sessions.append({
             "id": session_id,
             "quizmaster": overrides.get("quizmaster", s.get("quizmaster")),
-            "theme": overrides.get("theme", s.get("theme")),
-            "quiz_type": overrides.get("quiz_type", s.get("quiz_type")),
+            "theme": final_theme,
+            "quiz_type": final_quiz_type,
+            "summary": overrides.get("summary") or _session_summary(questions, final_quiz_type, final_theme),
             "connect_answer": overrides.get("connect_answer", connect_answer),
             "announcement": overrides.get("announcement", announcement),
             "is_live": overrides.get("is_live", s.get("is_live", False)),

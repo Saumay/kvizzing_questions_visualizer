@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "X is a part-lion and part-bird deity in Hinduism, described as more powerful than a lion or an elephant, possessing the ability to clear a valley in one jump in Sanskrit literature. Shaivaite scriptures narrate that X was an avatar of Shiva meant to pacify Y, an avatar of Vishnu. Vaishnav scriptures refute the claim and worship X as a different version of Vishnu. X also appears in the Jataka tales as an earlier birth of Buddha.\nID X and Y",
+    "answer_text": "Sharabha",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "2 word Connect:\n- Classic English folklore figure known for adventures and cleverness, featured in tales from the 17th century onwards, often gets into situations like being swallowed by animals, outsmarting robbers, and serving King Arthur\n- American grocery store chain, primarily serving the Dallas-Fort Worth (DFW) metroplex in Texas, operating as a division of Albertsons Companies.\n- A genius inventor and member of the Squadron Supreme, a heroic team from an alternate Earth (Earth-712) known for tackling global threats with advanced tech, despite being born a dwarf due to a pituitary abnormality.",
+    "answer_text": "Tom Thumb",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X, was banned by the British colonists in India using the Bombay Akbari Act of 1878 and ____ Act of 1892. It is a traditional, sweet, floral spirit, brewed from the naturally sugary flowers of the eponymous tree, revered by Adivasis as 'Tree of Life' for centuries. The spirit, often considered smoother than whiskey is now being popularized by brands like Six Brothers.",
+    "answer_text": "Mahua/Mahura",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "XY is a romantic comedy film directed by Sabbir Khan, based on the Tamil film Pammal K. Sambandam which in turn was based on the 1999 film The Bachelor. The movie is unique for cameos by: Whoopi Goldberg, Brandon Routh, Denise Richards, Sylvester Stallone, Holly Valance.",
+    "answer_text": "Kambakkht Ishq",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Sahu Jain family is an industrial family of India, from the Jain community and has its origins in the small town of Najibabad, Bijnor district. The family is known for being owners of X, which was acquired by Ramkrishan Dalmia in 1947. The lead patriarch of the family and son-in-law of Mr. Dalmia was entrusted the operations when the latter was sentenced to prison following an inquiry into the transaction, headed by Feroze Gandhi and the Vivian Bose commission. X is now a powerhouse in its field leading the market share and with interests in pageants, movies and business awards.\nIn 1944, the family also founded Y, at the suggestion of many scholars who had gathered at Varanasi for the All-India Oriental Conference. Y has been conferring an award which is considered amongst the most prestigious in its field.\nID X and Y",
+    "answer_text": "X: Bennett Coleman (Times of India); Y: Jnanpith",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1994, when X's flight touched down at Muscat airport, Sultan Qaboos bin Said Al Said, a monarch who had never personally received any foreign dignitary at the airport broke all protocols. He went up the stairs to receive his guest and even drove him around personally.\nWho was X and why were the protocols broken?",
+    "answer_text": "Shankar Dayal Sharma. The protocols were broken because Sharma had been the Sultan's teacher at Mayo College, Pune.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is the patron saint of sailors, merchants, archers, repentant thieves, brewers, pawnbrokers, unmarried people, and students in various cities and countries. Fewer than 200 years after his death, a Church was built in Myra under the orders of Theodosius II. Soon after the beginning of the East-West schism, a group of merchants from the Italian city of Bari removed his remains and brought them to their hometown. The remaining bone fragments from the sarcophagus were later removed by Y sailors and taken to Y during the First Crusade.\nID X and Y",
+    "answer_text": "X: St. Nicholas; Y: Venice",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Recently, with a figure of 3/18, X became the first Indian to surpass 150 wickets in T20Is. She holds the record at 151 with Australian legend Megan Schutt. Overall (Tests + ODIs + T20Is), she's the 3rd highest wicket taker with 333 wickets. With 355 wickets in 291 matches, another legend Y sits on top of the list.\nID X and Y",
+    "answer_text": "X: Deepti Sharma; Y: Jhulan Goswami",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Shires and Clydesdales measure about 18 hands high,\nThe Falabella is 7, what a cute little guy\nAppaloosas are covered with spots,\nNative Americans preferred them lots.\nWhat am I talking about?",
+    "answer_text": "Horses",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The instrument is called a Didgeridoo. While the name itself is not in the native tongue, locals call it yidaki, sometimes also mandapul.\nWhich country is it originally from?",
+    "answer_text": "Australia",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A British series created by Neville Astley and Mark Baker, X is based upon an anthropomorphic ______. Interestingly, it has a huge fan following in China, it has been featured by official news media such as People's Daily and even endorsed by the People's Liberation Army and Chinese weapons manufacturer Norinco. Initially aired in 2004, it is currently in its 9th season.\nID X",
+    "answer_text": "Peppa Pig",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Give the question to the answer.\nAnswer: Etruscan Shrew, Kitti's hog-nosed bat",
+    "answer_text": "What are the smallest known mammals? (by mass and size)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "[Cartoon: a dentist at a podium with an x-ray of fanged teeth behind her, captioned \"Transylvanian dentists claim to have proof that vampires exist.\"] Caption the cartoon / what's the punchline on the sign?",
+    "answer_text": "Nosferatooth",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "ID the event for the wanted poster. [A $100,000 reward poster for \"The Murderer\", War Department, Washington, April 20, 1865, with photos of Surratt, Booth, and Harold]",
+    "answer_text": "Assassination of Abraham Lincoln",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the western part of the world, X is a food paste made from taro plant root. Traditionally not eaten with utensils, they are typically characterized as being one-, two- or three-finger depending on how many digits are needed to scoop it up.\nIn the South Asian part of the world X refers to a traditional, leavened bread that was introduced by European settlers. It is known for its round shape, soft texture, and characteristic hollow center, making it ideal for stuffing or soaking up curries.",
+    "answer_text": "Poi/Poiee",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The pattern X is composed of diamonds of various colours on a plain background, used in knitted garments such as sweaters and socks.\nIncidentally this Irish name means \"from Ireland\" or \"coast of the Gaels\" and is traditionally given to boys.\nThe name was made popular by actor De'voreaux White in a late 1980s movie.\nID X",
+    "answer_text": "Argyle",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

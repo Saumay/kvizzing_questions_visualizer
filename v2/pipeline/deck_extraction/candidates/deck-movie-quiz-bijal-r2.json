@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "Give the two lines and the movie: It is perhaps the most famous \"false memory\" in cinema history! The confusion exists because first line is the emotional finale, while actual line is the narrative finale. Here is the breakdown of why everyone gets them mixed up and the drama that happened behind the scenes. He is walking out the door. she asks, \"If you go, where shall I go? What shall I do?\". He turns and delivers the legendary: \"_______, __ ____, _ ____ ____ _ ____.\" She collapses on the stairs, weeping. This is a long, dramatic scene. The Actual Last Line: She wipes her tears, stands tall, and says, \"I'll think about it tomorrow, at Tara. I can stand it then... _____ ___, ________ __ ________ ___!\"",
+    "answer_text": "Frankly, my dear, I don't give a damn.; After all, tomorrow is another day!; Gone with the Wind",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie and X: X(Director) stated that he named the main character __ ___-__ \"to remind the viewer of Oedipus. In one of the film's iconic shots, the antagonist strikes an extraordinary yoga pose. X said he designed this pose to convey \"the image of Apollo\". It was Apollo's prophecy that revealed Oedipus' fate in Sophocles' Oedipus the King. The prophecy was that Oedipus was fated to couple with his mother... and he will be the killer of his father. Besides the theme of unknown incest revealed, Oedipus gouges his eyes out to avoid seeing a world that despises the truth, while the main character in the movie cuts off his tongue to prevent the truth from being revealed.",
+    "answer_text": "Old Boy; Park Chan-Wook",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie: The American controversy surrounding the French masterpiece X is a fascinating case of Cold War paranoia clashing with cinematic art. When the film was first brought to the United States in 1955, it was heavily censored—not for violence or nudity, but for politics. The \"Anti-American\" Accusations. The primary controversy stemmed from the film's portrayal of the S.O.C. (Southern Oil Company), a fictional American corporation operating in South America. The film depicts the company as: Callous and Exploitative: The company is shown hiring desperate men for a \"suicide mission\" (driving nitroglycerin) because they are cheap, expendable, and lack union protection. Negligent: The company is portrayed as being responsible for a massive oil field fire and then showing little regard for the local workers' lives during the cleanup. Plot summary: In the Central American jungle supplies of nitroglycerin are needed at a remote oil field. The oil company pays four men to deliver the supplies in two trucks. A tense rivalry develops between the two sets of drivers and on the rough remote roads the slightest jolt can result in death. 32 years before Super Mario Bros. came out on the NES, this film features two characters named Mario and Luigi.",
+    "answer_text": "Le laire de la peur – The Wages Of Fear",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie, country and the actor: In the realm of global box-office anomalies, this coming-of-age feature X remains the gold standard for \"unintentional\" market disruption. While the film's domestic success was massive, its impact on the nation of Y was forged not in cinema halls, but in the digital grey market of peer-to-peer downloads. This movie found an intense, visceral resonance with Y's youth, who saw their own struggles mirrored in the characters' defiance of \"the machine.\" This \"accidental\" cultural phenomenon turned Z into a local icon, leading him to famously remark that piracy was the true engine behind his stardom in the region. This opened the market in Y and future Z projects were extremely successful in Y, more than the home country.",
+    "answer_text": "3 Idiots; China; Aamir Khan",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie: X(1939) is now considered a patriotic masterpiece, but at the time of its release, it was treated like a declaration of war by the U.S. government. The \"Disastrous\" Premiere: In October 1939, Columbia Pictures held a massive premiere at Constitution Hall in D.C. for 4,000 guests, including 45 Senators. The Reaction: About halfway through, Senators began getting up and walking out in a huff. The Accusation: They were outraged that the film depicted the Senate as a place of corruption and \"graft.\" Senator Alben W. Barkley called it \"a grotesque distortion\" that would make the U.S. look weak to enemies abroad (WWII had just begun in Europe). Banned by the Axis Powers: Because the film celebrated the power of a single individual standing up against a corrupt system, it was viewed as a dangerous \"pro-democracy\" tool. The Ban: It was banned in Nazi Germany, Fascist Italy, and Imperial Japan. The French Rebellion: When France was occupied by the Nazis, several theaters chose X as the final movie they showed before the Nazi ban on American films took effect, as a final act of defiance. Director was denied permission to film inside the actual U.S. Senate Chamber. He commissioned an exact, 1:1 scale replica of the Senate. It was so accurate that it reportedly cost $100,000 (a fortune in 1939) and included details like the specific inkwells and snuff boxes on the desks.",
+    "answer_text": "Mr. Smith Goes to Washington",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. [Chart titled \"Narrative Structure Chronology\" plotting Screenplay Timeline (Film Order) against Chronological Sequence, with points labeled Start, Happy Times, Unhappy Times, The Break Up, Opening, and The ending.] Hint: [Chart relabeled plotting Screenplay Timeline (Film Order) against Story Timeline (Chronological Order), with points labeled: 1. Meeting (Start), 2. Relationship Highs, 3. Relationship Decline / Discovery (The Breakup), 4. The Breakup, 5. Memory Erasure Phase (Erasure Begins - Late Memories; Erasure Middle - Happy Times; Erasure Ends - The Beach House), 6. Re-meeting (Intro) / Opening (Train/Montauk), 7. The Tapes (End) / The Ending (The Tapes/Okay).]",
+    "answer_text": "Eternal Sunshine of the Spotless Mind",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Movie and the place: In movie X, Y is far more than just a destination; it represents the ultimate \"geographic rebirth\". Y has been interpreted as an analog for heaven or paradise. In the film, ____ describes it as a place with no memory, offering absolution from his sins by forgetting about them or allowing them to be washed away by the Pacific Ocean. Similarly, ____ freedom is only earned once he accepts, he cannot save himself or atone for his sins.",
+    "answer_text": "The Shawshank Redemption; Zihuatanejo",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify director and the movie: A legendary director—maniacal about every frame and famous for demanding hundreds of retakes—faced his most \"fluid\" challenge. He envisioned a scene where a massive tide of liquid would erupt from the metal gates, flooding the lobby in a slow-motion nightmare. While this director was known for draining his actors' energy with endless repetitions, he surprisingly captured this specific, messy shot in only three takes. However, that \"efficiency\" is an illusion: it actually took the crew nearly a year to master the physics of the scene. For the final setup, it took nine days just to pour the hundreds of gallons of fake liquid into the container. Each time they tested it, the director would look at the playback with a frown and dismiss the entire effort, dryly claiming, \"It doesn't look like ______.\" The pressure of the liquid was so immense that it eventually started to rip the set apart. Despite what your eyes tell you when watching the film, those heavy doors never actually opened; the pressure simply forced the red torrent through the gaps at the sides, creating one of the most famous scene in history.",
+    "answer_text": "Stanley Kubrick; The Shining",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie: The Changes Inspired by the movie. Permissive Action Links (PALs): Before the film and the novel it was based on (Red Alert), many nuclear weapons—especially those stationed abroad—lacked physical locks. A rogue commander or a small crew could theoretically arm and fire them. Following the movies era of anxiety, the U.S. government (notably through NSAM 160) mandated that all nuclear weapons be fitted with PALs—sophisticated locks that require a specific, secret code from the President to be \"unlocked\" for use. Ending \"Pre-delegation\": Previously, certain military commanders did have the legal authority to launch nuclear strikes if the President was unreachable (a \"decapitation\" of command). The film highlighted how easily this could be abused. Policy was later tightened to centralize all launch authority strictly within the Presidency. The 25th Amendment: Beyond just military hardware, the \"__. _________ Situation\"—the fear of a leader becoming mentally unstable or incapacitated while holding the \"button\"—was a major driver behind the 25th Amendment to the U.S. Constitution. The amendment's architect, Senator Birch Bayh, specifically invoked the film to explain why the country needed a clear legal path to remove a President who had \"gone strange\" or was otherwise unable to fulfill their duties.",
+    "answer_text": "Dr. Strangelove Or: How I learned to stop worrying and love the bomb",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify both the movies and the actor: In the world of cinematic \"Easter eggs,\" a blink-and-you'll-miss-it billboard serves as a bridge between two of the most celebrated performances in the career of a single actor. The scene takes place as a powerful patriarch is buying fruit at a street stall. In the background, an advertisement promotes a match between Tommy Bell and X. While the two films are entirely unrelated in narrative, they are tethered by the man who would win Academy Awards for portraying both the fruit-buying victim (in his younger years) and the pugilist mentioned on that very poster.",
+    "answer_text": "Robert De Niro; The Godfather - Vito Corleone (The Godfather II); Raging Bull – Jake La Motta",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie: The movie is inspired by the most infamous violent crime series and the first identifiable as done by a serial killer in the country's modern history. The murders remained unsolved for almost 30 years. In 2019, a man in his 50s, was identified as the killer. He was identified after DNA from the underwear of one victim was matched with his, and subsequent DNA testing linked him to four of the other unsolved serial murders. At the time he was identified, he was already serving a life sentence in a prison for the rape and murder of his sister-in-law. He confessed to killing 14 people including 10 serial murders. Director of the movie was confident that the killer would watch the film. In the final shot of the film, the detective looks directly into the camera. He is looking at the audience, and he is face to face with killer (if he is watching the scene).",
+    "answer_text": "Memories Of Murder",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify movie: While the opening crawl of this film asserts that the events depicted is a true story, the claim was actually a characteristic \"hoax\" by the directorial duo behind the film. Though it bills itself as a \"True Story\" out of respect for the dead, the narrative was merely an amalgam of disparate incidents, seasoned with the brothers' signature dark humor. The most gruesome detail—and the film's most enduring visual—was allegedly inspired by the 1986 \"homicide-by-proxy\" of Danish-American flight attendant Helle Crafts. Her husband, Richard, famously attempted to erase all physical evidence by disposing of her body through a specific piece of industrial machinery. Despite a Snopes investigation pointing out the standard fictitious persons disclaimer in the credits, the legend of its veracity persists.",
+    "answer_text": "Fargo",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect. [Images shown: a stone tunnel archway topped with a jeweled crown; a blue ice cooler topped with a crown, next to a baseball; a large red X; a hand swapping a photo in a passport; a person dumpster-diving with a cart; dandelion seeds blowing in the wind; factory workers at an assembly line; a mole digging out of the dirt.] Identify the movie.",
+    "answer_text": "The Great Escape",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and the Movie: X was approached by American director Tad Danielewski and writer Pearl Buck for an American film based on the 1958 novel Y. X declined at first but agreed to collaborate with Danielewski when he met him again. X agreed and started discussing the project. X then bought the right to the story from the author. X decided that the movie would be made in 2 languages simultaneously. The Indian and American production teams clashed, causing X to postpone the Hindi version, thereby freeing his brother to direct other film. Once English version was completed X's other brother came on board to direct the Hindi version, but he demanded that the whole screenplay will be Rewritten to favor the Indian audience. That resulted in very different version compared to English one. The English version failed to create any buzz in Hollywood, but the Indian version was a great success.",
+    "answer_text": "Dev Anand; Guide",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X, Y and Z: X is a master of the \"visual remix,\" and the opening of Y is one of his most deliberate and effective nods to cinema history. It specifically pays homage to the opening of 1967 classic, Z. The most direct parallel is the long, side-profile tracking shot of the protagonist moving through Los Angeles International Airport. Z: Benjamin Braddock stands on a moving walkway, staring blankly ahead as the tiled walls of the airport slide past behind him. He looks passive, numb, and overwhelmed by the world he's returning to. Y: She stands on the exact same moving walkway. The framing is nearly identical, capturing her in profile against the similar tiled background. X used this reference to ground ______ in the tradition of \"cool\" cinema while simultaneously subverting it. By placing a middle-aged woman of color in the same cinematic space previously occupied by the ultimate symbol of 60s white youth angst, he elevates her status.",
+    "answer_text": "Quentin Tarantino; Jackie Brown; The Graduate",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect. [Images shown: Roman Polanski; Steve McQueen; Bruce Lee; a cowboy on horseback in a pink shirt, resembling a Western TV actor. Two boxes below are labeled X and Y.]",
+    "answer_text": "Sharon Tate; Once Upon a Time in Hollywood; Charles Manson",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  }
+]
