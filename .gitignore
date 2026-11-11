@@ -44,6 +44,10 @@ v2/data/extract_batches/
 v2/data/ai_classifications/
 v2/data/llm_queue/
 
+# raw WhatsApp archive data lives outside the repo, this is just a symlink to it
+akshay_kvizzing_archivist
+"WhatsApp Chat - Hum Kvizzy Se Kam Nhi || Quizzing"*.zip
+
 # v2 visualizer
 v2/visualizer/node_modules/
 v2/visualizer/.svelte-kit/
