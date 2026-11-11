@@ -14,8 +14,17 @@ the roll-up of its own questions' publish status, plus theme/background-image/
 scores presence. None of theme/image/scores gate anything — they're tracked for
 visibility only, per 2026-10-31 decision.
 
-Writes v2/backlog_tracking.csv + v2/session_backlog.csv, and regenerates both
-tables in v2/BACKLOG.md.
+Also generates a per-deck report (v2/deck_tracking.csv): decks.json rounds/
+standalone decks have a different lifecycle than chat days (fetch file ->
+transcribe -> import), so they're tracked separately with their own columns:
+file_extracted (slide file actually downloaded/mirrored to R2, not just a
+known Drive/OneDrive link), file_known_not_fetched (we know a slide file
+exists but haven't pulled it yet), video_extracted (recording link present),
+json_extracted (candidate Q&A JSON written), questions_populated (question
+count actually imported into questions.json).
+
+Writes v2/backlog_tracking.csv + v2/session_backlog.csv + v2/deck_tracking.csv,
+and regenerates all three tables in v2/BACKLOG.md.
 
 Usage:
     python3 pipeline/utils/backlog_report.py
@@ -43,8 +52,11 @@ V1_CHAT = APP_DIR / "v1" / "_chat.txt"
 DB_PATH = V2_DIR / "data" / "questions.db"
 SESSIONS_JSON = V2_DIR / "visualizer" / "static" / "data" / "sessions.json"
 SESSION_IMAGES_DIR = V2_DIR / "visualizer" / "static" / "images" / "sessions"
+DECKS_JSON = V2_DIR / "visualizer" / "static" / "data" / "decks.json"
+CANDIDATES_DIR = V2_DIR / "pipeline" / "deck_extraction" / "candidates"
 CSV_OUT = V2_DIR / "backlog_tracking.csv"
 SESSION_CSV_OUT = V2_DIR / "session_backlog.csv"
+DECK_CSV_OUT = V2_DIR / "deck_tracking.csv"
 BACKLOG_MD = V2_DIR / "BACKLOG.md"
 # Mirrors for the standalone static dashboard at visualizer/static/extraction-status/ —
 # kept alongside the repo-root CSVs so that dashboard stays current without a
@@ -52,7 +64,13 @@ BACKLOG_MD = V2_DIR / "BACKLOG.md"
 VISUALIZER_DATA_DIR = V2_DIR / "visualizer" / "static" / "data"
 VISUALIZER_CSV_OUT = VISUALIZER_DATA_DIR / "backlog_tracking.csv"
 VISUALIZER_SESSION_CSV_OUT = VISUALIZER_DATA_DIR / "session_backlog.csv"
+VISUALIZER_DECK_CSV_OUT = VISUALIZER_DATA_DIR / "deck_tracking.csv"
 VISUALIZER_META_OUT = VISUALIZER_DATA_DIR / "backlog_meta.json"
+
+# Formats an extraction agent can actually read — mirrors import_deck_questions
+# ._EXTRACTABLE_FORMATS. Duplicated here (not imported) to avoid this report
+# depending on the import pipeline module for a one-line constant.
+_DECK_EXTRACTABLE_FORMATS = {"pdf", "pptx"}
 
 _CHAT_DATE_RE = re.compile(r"^\[(\d{1,2})/(\d{1,2})/(\d{2}),")
 _FILE_DATE_RE = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
@@ -189,6 +207,106 @@ def _append_session_table_md(rows_out: list[dict]) -> None:
     BACKLOG_MD.write_text(content)
 
 
+def generate_deck_report() -> None:
+    if not DECKS_JSON.exists():
+        print(f"skip decks: {DECKS_JSON} not found")
+        return
+    manifest = json.loads(DECKS_JSON.read_text())
+
+    question_counts: dict[str, int] = {}
+    if SESSIONS_JSON.exists():
+        for sess in json.loads(SESSIONS_JSON.read_text()):
+            question_counts[sess["id"]] = sess.get("question_count", 0)
+
+    def _slide_file(files: list[dict]) -> dict | None:
+        return next((f for f in files if f.get("format") in _DECK_EXTRACTABLE_FORMATS), None)
+
+    def _recording_file(files: list[dict]) -> dict | None:
+        return next((f for f in files if f.get("format") == "recording"), None)
+
+    def _row(session_id: str, series_id: str | None, round_num: int | None,
+             title: str, host: str | None, date_str: str, files: list[dict]) -> dict:
+        slide = _slide_file(files)
+        rec = _recording_file(files)
+        return {
+            "session_id": session_id,
+            "series_id": series_id or "",
+            "round": round_num if round_num is not None else "",
+            "title": title,
+            "host": host or "",
+            "date": date_str,
+            "file_extracted": bool(slide and slide.get("rel_path")),
+            "file_known_not_fetched": bool(slide and not slide.get("rel_path")),
+            "video_extracted": bool(rec and rec.get("url")),
+            "json_extracted": (CANDIDATES_DIR / f"{session_id}.json").exists(),
+            "questions_populated": question_counts.get(session_id, 0),
+        }
+
+    rows_out = []
+    for series in manifest.get("series", []):
+        for r in series["rounds"]:
+            session_id = f'deck-{series["id"]}-r{r["round"]}'
+            rows_out.append(_row(
+                session_id, series["id"], r["round"], f'{series["title"]}: {r["title"]}',
+                r.get("host"), r.get("date", ""), r["files"],
+            ))
+    for deck in manifest.get("standalone", []):
+        session_id = f'deck-{deck["id"]}'
+        rows_out.append(_row(
+            session_id, None, None, deck["title"], deck.get("host"),
+            deck.get("date", ""), deck["files"],
+        ))
+
+    fieldnames = list(rows_out[0].keys()) if rows_out else []
+    if fieldnames:
+        VISUALIZER_DATA_DIR.mkdir(parents=True, exist_ok=True)
+        for out_path in (DECK_CSV_OUT, VISUALIZER_DECK_CSV_OUT):
+            with open(out_path, "w", newline="") as f:
+                w = csv.DictWriter(f, fieldnames=fieldnames)
+                w.writeheader()
+                w.writerows(rows_out)
+
+    _append_deck_table_md(rows_out)
+
+    n = len(rows_out)
+    n_file = sum(r["file_extracted"] for r in rows_out)
+    n_known = sum(r["file_known_not_fetched"] for r in rows_out)
+    n_video = sum(r["video_extracted"] for r in rows_out)
+    n_json = sum(r["json_extracted"] for r in rows_out)
+    n_populated = sum(1 for r in rows_out if r["questions_populated"])
+    print(f"{n} decks | file fetched: {n_file} | file known, not fetched: {n_known} "
+          f"| video: {n_video} | json extracted: {n_json} | questions populated: {n_populated}")
+    print(f"wrote {DECK_CSV_OUT}")
+
+
+def _append_deck_table_md(rows_out: list[dict]) -> None:
+    lines = ["| Session | Date | Host | File | File known (not fetched) | Video | JSON | Questions |",
+             "|---|---|---|---|---|---|---|---|"]
+    for r in rows_out:
+        lines.append(
+            f"| {r['session_id']} | {r['date']} | {r['host']} "
+            f"| {'yes' if r['file_extracted'] else ''} "
+            f"| {'yes' if r['file_known_not_fetched'] else ''} "
+            f"| {'yes' if r['video_extracted'] else ''} "
+            f"| {'yes' if r['json_extracted'] else ''} "
+            f"| {r['questions_populated']} |"
+        )
+    table_md = "\n".join(lines)
+    marker = "## Decks"
+
+    content = BACKLOG_MD.read_text() if BACKLOG_MD.exists() else "# Data backlog tracking\n"
+    idx = content.find(marker)
+    if idx != -1:
+        header_end = content.find("\n", idx) + 1
+        next_section = content.find("\n## ", header_end)
+        if next_section == -1:
+            next_section = len(content)
+        content = content[:header_end] + "\n" + table_md + "\n\n" + content[next_section:]
+    else:
+        content += f"\n\n{marker}\n\nfile_known_not_fetched means a Drive/OneDrive link is known but the file hasn't been pulled into R2 yet.\n\n{table_md}\n"
+    BACKLOG_MD.write_text(content)
+
+
 def main() -> None:
     src_dates = chat_dates(RAW_CHAT) | chat_dates(ARCHIVIST_CHAT) | chat_dates(V1_CHAT)
     media_all = media_dates(RAW_MEDIA_DIR) | media_dates(ARCHIVIST_MEDIA_DIR)
@@ -290,6 +408,7 @@ def main() -> None:
     print(f"wrote {BACKLOG_MD}")
 
     generate_session_report()
+    generate_deck_report()
 
 
 def _rewrite_backlog_md(rows_out: list[dict]) -> None:

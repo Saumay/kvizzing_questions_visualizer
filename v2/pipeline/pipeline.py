@@ -166,8 +166,9 @@ def _maybe_attach_deck_links(output_dir: Path) -> None:
 
 def _maybe_regenerate_backlog_report() -> None:
     """
-    Best-effort: regenerate BACKLOG.md / backlog_tracking.csv / session_backlog.csv
-    after every export, so the publish-status tables never drift from questions.db.
+    Best-effort: regenerate BACKLOG.md / backlog_tracking.csv / session_backlog.csv /
+    deck_tracking.csv after every export, so the publish-status tables never drift
+    from questions.db or decks.json.
     Never blocks or fails the real export on a reporting error.
     """
     try:
@@ -724,6 +725,22 @@ def _run_import_decks() -> None:
         if import_counts["decks_imported"] == 0:
             log.info("No candidate files found — nothing to import.")
             return
+
+        needs_topics = [
+            q for q in _load_all(db)
+            if q.session and q.session.id.startswith("deck-") and len(q.question.topics) < 2
+        ]
+        if needs_topics:
+            client = get_client()
+            if client is None:
+                log.warning("No LLM client available (set GEMINI_API_KEY) — "
+                            "skipping topic/tag enrichment for %d deck question(s).", len(needs_topics))
+            else:
+                log.info("Enriching topics/tags for %d deck question(s)…", len(needs_topics))
+                config = load_config(_PIPELINE_DIR / "config")
+                enriched = _stage4_enrich(needs_topics, config, client)
+                _upsert(enriched, db)
+
         log.info("[Stage 6] Re-exporting JSON files…")
         counts = stage6(db, output_dir, members_config_path=members_config, session_overrides_path=session_overrides_config, state_path=None)
         _log_counts(counts)

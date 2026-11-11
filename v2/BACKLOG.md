@@ -1262,3 +1262,97 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-28-antnishu | 2026-07-28 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-28-pavan | 2026-07-28 | Pavan Pamidimarri | 5 | 0.0% |  | yes |  | 0.0% |
 
+
+
+## Decks
+
+file_known_not_fetched means a Drive/OneDrive link is known but the file hasn't been pulled into R2 yet.
+
+| Session | Date | Host | File | File known (not fetched) | Video | JSON | Questions |
+|---|---|---|---|---|---|---|---|
+| deck-gauntlet-r1 | 2026-04-05 | Sal | yes |  |  | yes | 16 |
+| deck-gauntlet-r2 | 2026-04-05 | Sid K | yes |  |  | yes | 16 |
+| deck-gauntlet-r3 | 2026-04-05 | Nikunj | yes |  | yes | yes | 18 |
+| deck-gauntlet-r4 | 2026-04-05 | Aditi | yes |  | yes | yes | 17 |
+| deck-gauntlet-r5 | 2026-04-05 | Zaf | yes |  |  | yes | 19 |
+| deck-gauntlet-r6 | 2026-04-15 | Vats | yes |  | yes | yes | 17 |
+| deck-gauntlet-r7 | 2026-05-03 | Khandoba | yes |  | yes | yes | 17 |
+| deck-gauntlet-r8 | 2026-05-03 | KP | yes |  | yes | yes | 18 |
+| deck-gauntlet-r9 | 2026-05-03 | Pavan | yes |  | yes | yes | 18 |
+| deck-gauntlet-r10 | 2026-05-03 | CM | yes |  | yes | yes | 17 |
+| deck-gauntlet-r11 | 2026-05-03 | Sal | yes |  | yes | yes | 17 |
+| deck-gauntlet-r12 | 2026-05-09 | Vats | yes |  | yes | yes | 16 |
+| deck-gauntlet-r13 | 2026-05-17 | Pavan | yes |  | yes | yes | 17 |
+| deck-gauntlet-r14 | 2026-05-23 | Lzafeer | yes |  | yes | yes | 18 |
+| deck-gauntlet-r15 | 2026-06-05 | Khandoba | yes |  | yes | yes | 17 |
+| deck-gauntlet-r16 | 2026-06-05 | Bijal Bhatt | yes |  | yes | yes | 18 |
+| deck-gauntlet-r17 | 2026-06-19 | Nikunj | yes |  | yes | yes | 20 |
+| deck-gauntlet-r18 | 2026-06-26 | Prajwal | yes |  | yes | yes | 17 |
+| deck-gauntlet-r19 | 2026-06-29 | Gautam | yes |  | yes | yes | 18 |
+| deck-gauntlet-r20 | 2026-07-11 | Chinmay |  | yes | yes |  | 0 |
+| deck-gauntlet-r21 | 2026-07-19 |  |  | yes | yes |  | 0 |
+| deck-gauntlet-r22 | 2026-07-26 | Khandoba |  | yes |  |  | 0 |
+| deck-gauntlet-r23 | 2026-08-01 |  |  | yes |  |  | 0 |
+| deck-gauntlet-r24 | 2026-08-16 | Namrata |  | yes |  |  | 0 |
+| deck-gauntlet-r25 | 2026-08-29 | Sid K |  | yes |  |  | 0 |
+| deck-gauntlet-r26 | 2026-09-12 | Apratim |  | yes |  |  | 0 |
+| deck-gauntlet-r27 | 2026-09-20 |  |  | yes |  |  | 0 |
+| deck-gauntlet-r28 | 2026-10-12 | Pranshu |  | yes |  |  | 0 |
+| deck-gauntlet-r29 | 2026-10-04 | Pavan |  | yes |  |  | 0 |
+| deck-gauntlet-r30 | 2026-10-26 | Sal |  | yes |  |  | 0 |
+| deck-gauntlet-r31 | 2026-10-26 | Aditi |  | yes |  |  | 0 |
+| deck-gauntlet-r32 | 2026-11-01 | Khandoba |  | yes |  |  | 0 |
+| deck-kviz-o-krazzy-r1 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r3 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r4 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r5 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r6 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
+| deck-kviz-o-krazzy-r7 | 2026-04-15 | Sal | yes |  |  | yes | 21 |
+| deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | yes |  | yes | yes | 16 |
+| deck-mtv-tournament-r2 | 2026-07-12 | Bijal Bhatt | yes |  | yes | yes | 16 |
+| deck-mtv-tournament-r3 | 2026-07-12 | Bijal Bhatt | yes |  | yes | yes | 16 |
+| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt |  | yes | yes |  | 0 |
+| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt |  | yes | yes |  | 0 |
+| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt |  | yes |  |  | 0 |
+| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt |  | yes | yes |  | 0 |
+| deck-megakviz-r1 | 2025-12-13 | Akshay | yes |  |  | yes | 16 |
+| deck-megakviz-r2 | 2026-02-15 | Akshay | yes |  |  | yes | 39 |
+| deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | yes |  | yes | yes | 16 |
+| deck-movie-quiz-bijal-r2 | 2026-04-25 | Bijal Bhatt | yes |  | yes | yes | 16 |
+| deck-buzzing-whatsapp-namrata-r1 | 2026-05-01 | Namrata | yes |  |  | yes | 30 |
+| deck-buzzing-whatsapp-namrata-r2 | 2026-05-01 | Namrata | yes |  |  | yes | 30 |
+| deck-buzzing-entertainment-r1 | 2025-11-08 |  | yes |  |  | yes | 25 |
+| deck-buzzing-entertainment-r2 | 2025-11-08 |  | yes |  |  | yes | 25 |
+| deck-breaking-bad-quiz-r1 | 2026-05-25 |  |  |  | yes |  | 0 |
+| deck-breaking-bad-quiz-r2 | 2026-06-01 |  |  |  | yes |  | 0 |
+| deck-fireside-chats-r1 | 2026-02-08 | KP |  |  | yes |  | 0 |
+| deck-fireside-chats-r2 | 2026-05-23 | Shvetal |  |  | yes |  | 0 |
+| deck-fireside-chats-r3 | 2026-06-21 | Shreya |  |  | yes |  | 0 |
+| deck-fireside-chats-r4 | 2026-06-28 |  |  |  | yes |  | 0 |
+| deck-rewind-2025 | 2026-04-04 | Pavan | yes |  | yes | yes | 26 |
+| deck-kp-quiz-final | 2025-12-20 | KP | yes |  |  | yes | 40 |
+| deck-bollywood-kviz | 2025-12-21 |  | yes |  |  | yes | 16 |
+| deck-buzzer-bhide | 2026-05-03 | Bhide | yes |  | yes | yes | 60 |
+| deck-tapish-sports | 2026-07-05 | Tapish | yes |  | yes | yes | 28 |
+| deck-history-smit | 2026-06-29 | Smit | yes |  | yes | yes | 20 |
+| deck-kvizimals | 2026-04-04 | Manas | yes |  |  | yes | 20 |
+| deck-movie-kviz | 2025-12-07 |  | yes |  |  | yes | 16 |
+| deck-may-the-4th | 2026-05-04 | Bijal Bhatt | yes |  | yes | yes | 17 |
+| deck-old-school-kp | 2026-07-04 | KP | yes |  | yes | yes | 21 |
+| deck-swine-clue | 2025-11-21 |  | yes |  |  | yes | 17 |
+| deck-visual-buzzing-bijal | 2026-05-16 | Bijal Bhatt | yes |  |  | yes | 50 |
+| deck-yet-another-quiz | 2025-11-01 |  | yes |  |  | yes | 17 |
+| deck-naman-avval-number | 2026-01-04 | Naman |  |  | yes |  | 0 |
+| deck-popcorn-buzzing-aditi | 2026-01-24 | Aditi |  |  | yes |  | 0 |
+| deck-tension-gourav | 2026-05-09 | Gourav |  |  | yes |  | 0 |
+| deck-buzzy-mushkil-hai | 2026-05-16 | Bijal Bhatt |  |  | yes |  | 0 |
+| deck-qotd-100 | 2026-06-23 |  |  |  | yes |  | 0 |
+| deck-retro-bollywood-sameer | 2026-10-20 | Sameer |  | yes |  |  | 0 |
+| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit |  | yes | yes |  | 0 |
+| deck-long-connect-gautam | 2026-08-09 | Gautam |  | yes | yes |  | 0 |
+| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata |  | yes | yes |  | 0 |
+| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya |  | yes |  |  | 0 |
+| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit |  | yes |  |  | 0 |
+| deck-cricket-quiz-harsh | 2026-10-25 | Harsh |  |  | yes |  | 0 |
+| deck-triwizard-tourney-aditi | 2026-08-08 | Aditi |  |  | yes |  | 0 |

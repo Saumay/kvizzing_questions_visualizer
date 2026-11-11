@@ -1,0 +1,87 @@
+session_id,series_id,round,title,host,date,file_extracted,file_known_not_fetched,video_extracted,json_extracted,questions_populated
+deck-gauntlet-r1,gauntlet,1,The Gauntlet: Sal gets things started,Sal,2026-04-05,True,False,False,True,16
+deck-gauntlet-r2,gauntlet,2,The Gauntlet: A Wild Pavan appears,Sid K,2026-04-05,True,False,False,True,16
+deck-gauntlet-r3,gauntlet,3,The Gauntlet: Strike it when it's hot,Nikunj,2026-04-05,True,False,True,True,18
+deck-gauntlet-r4,gauntlet,4,The Gauntlet: A not so redundant funda,Aditi,2026-04-05,True,False,True,True,17
+deck-gauntlet-r5,gauntlet,5,The Gauntlet: Jagate Raho,Zaf,2026-04-05,True,False,False,True,19
+deck-gauntlet-r6,gauntlet,6,The Gauntlet: Jis raah pe tum chal rahe ho beta,Vats,2026-04-15,True,False,True,True,17
+deck-gauntlet-r7,gauntlet,7,The Gauntlet: Add Gun to Cart,Khandoba,2026-05-03,True,False,True,True,17
+deck-gauntlet-r8,gauntlet,8,The Gauntlet: And through goes Nikunj,KP,2026-05-03,True,False,True,True,18
+deck-gauntlet-r9,gauntlet,9,The Gauntlet: GOAT Pavan - Nikunj stands firm like THE WALL,Pavan,2026-05-03,True,False,True,True,18
+deck-gauntlet-r10,gauntlet,10,The Gauntlet: Thodi si toh lift karade,CM,2026-05-03,True,False,True,True,17
+deck-gauntlet-r11,gauntlet,11,The Gauntlet: Better Call Sal,Sal,2026-05-03,True,False,True,True,17
+deck-gauntlet-r12,gauntlet,12,The Gauntlet: Vats the good word,Vats,2026-05-09,True,False,True,True,16
+deck-gauntlet-r13,gauntlet,13,The Gauntlet: Chinmay begins a streak,Pavan,2026-05-17,True,False,True,True,17
+deck-gauntlet-r14,gauntlet,14,The Gauntlet: Gauntlet 14,Lzafeer,2026-05-23,True,False,True,True,18
+deck-gauntlet-r15,gauntlet,15,The Gauntlet: Chinmay scores a Four,Khandoba,2026-06-05,True,False,True,True,17
+deck-gauntlet-r16,gauntlet,16,The Gauntlet: Gauntlet 16,Bijal Bhatt,2026-06-05,True,False,True,True,18
+deck-gauntlet-r17,gauntlet,17,The Gauntlet: Seven by Nikunj,Nikunj,2026-06-19,True,False,True,True,20
+deck-gauntlet-r18,gauntlet,18,The Gauntlet: Gauntlet 18,Prajwal,2026-06-26,True,False,True,True,17
+deck-gauntlet-r19,gauntlet,19,The Gauntlet: Humans tire but not Shreya,Gautam,2026-06-29,True,False,True,True,18
+deck-gauntlet-r20,gauntlet,20,The Gauntlet: Gauntlet 20,Chinmay,2026-07-11,False,True,True,False,0
+deck-gauntlet-r21,gauntlet,21,The Gauntlet: It is Vat itteezz,,2026-07-19,False,True,True,False,0
+deck-gauntlet-r22,gauntlet,22,The Gauntlet: A New Champion,Khandoba,2026-07-26,False,True,False,False,0
+deck-gauntlet-r23,gauntlet,23,The Gauntlet: Top 10 on 10,,2026-08-01,False,True,False,False,0
+deck-gauntlet-r24,gauntlet,24,The Gauntlet: Straight Outta 'Nam,Namrata,2026-08-16,False,True,False,False,0
+deck-gauntlet-r25,gauntlet,25,The Gauntlet: It's all 25,Sid K,2026-08-29,False,True,False,False,0
+deck-gauntlet-r26,gauntlet,26,The Gauntlet: Gauntlet 26,Apratim,2026-09-12,False,True,False,False,0
+deck-gauntlet-r27,gauntlet,27,The Gauntlet: Straight Outta 'Nam,,2026-09-20,False,True,False,False,0
+deck-gauntlet-r28,gauntlet,28,The Gauntlet: Battle of the QMs,Pranshu,2026-10-12,False,True,False,False,0
+deck-gauntlet-r29,gauntlet,29,The Gauntlet: KP extends his streak,Pavan,2026-10-04,False,True,False,False,0
+deck-gauntlet-r30,gauntlet,30,The Gauntlet: Gauntlet XXX,Sal,2026-10-26,False,True,False,False,0
+deck-gauntlet-r31,gauntlet,31,The Gauntlet: Gauntlet 31,Aditi,2026-10-26,False,True,False,False,0
+deck-gauntlet-r32,gauntlet,32,The Gauntlet: Gauntlet 32,Khandoba,2026-11-01,False,True,False,False,0
+deck-kviz-o-krazzy-r1,kviz-o-krazzy,1,KVIZ-O-KRAZZY: Q1,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r2,kviz-o-krazzy,2,KVIZ-O-KRAZZY: Q2,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r3,kviz-o-krazzy,3,KVIZ-O-KRAZZY: Q3,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r4,kviz-o-krazzy,4,KVIZ-O-KRAZZY: Q4,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r5,kviz-o-krazzy,5,KVIZ-O-KRAZZY: Semi-final 1,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r6,kviz-o-krazzy,6,KVIZ-O-KRAZZY: Semi-final 2,Sal,2026-04-15,True,False,False,True,16
+deck-kviz-o-krazzy-r7,kviz-o-krazzy,7,KVIZ-O-KRAZZY: Finale,Sal,2026-04-15,True,False,False,True,21
+deck-mtv-tournament-r1,mtv-tournament,1,MTV Quiz Tournament: Quarter-final 1,Bijal Bhatt,2026-07-11,True,False,True,True,16
+deck-mtv-tournament-r2,mtv-tournament,2,MTV Quiz Tournament: Quarter-final 2,Bijal Bhatt,2026-07-12,True,False,True,True,16
+deck-mtv-tournament-r3,mtv-tournament,3,MTV Quiz Tournament: Quarter-final 3,Bijal Bhatt,2026-07-12,True,False,True,True,16
+deck-mtv-tournament-r4,mtv-tournament,4,MTV Quiz Tournament: Quarter-final 4,Bijal Bhatt,2026-07-25,False,True,True,False,0
+deck-mtv-tournament-r5,mtv-tournament,5,MTV Quiz Tournament: Semi-final 1,Bijal Bhatt,2026-08-03,False,True,True,False,0
+deck-mtv-tournament-r6,mtv-tournament,6,MTV Quiz Tournament: Semi-final 2,Bijal Bhatt,2026-08-14,False,True,False,False,0
+deck-mtv-tournament-r7,mtv-tournament,7,MTV Quiz Tournament: Final,Bijal Bhatt,2026-08-31,False,True,True,False,0
+deck-megakviz-r1,megakviz,1,Akshay's Megakviz: Semi-final 1,Akshay,2025-12-13,True,False,False,True,16
+deck-megakviz-r2,megakviz,2,Akshay's Megakviz: Finale,Akshay,2026-02-15,True,False,False,True,39
+deck-movie-quiz-bijal-r1,movie-quiz-bijal,1,Movie Quiz - World Cinema: Set A,Bijal Bhatt,2026-04-25,True,False,True,True,16
+deck-movie-quiz-bijal-r2,movie-quiz-bijal,2,Movie Quiz - World Cinema: Set B,Bijal Bhatt,2026-04-25,True,False,True,True,16
+deck-buzzing-whatsapp-namrata-r1,buzzing-whatsapp-namrata,1,Buzzing on WhatsApp: Board 1,Namrata,2026-05-01,True,False,False,True,30
+deck-buzzing-whatsapp-namrata-r2,buzzing-whatsapp-namrata,2,Buzzing on WhatsApp: Board 2,Namrata,2026-05-01,True,False,False,True,30
+deck-buzzing-entertainment-r1,buzzing-entertainment,1,Buzzing with Entertainment: Board 1,,2025-11-08,True,False,False,True,25
+deck-buzzing-entertainment-r2,buzzing-entertainment,2,Buzzing with Entertainment: Board 2,,2025-11-08,True,False,False,True,25
+deck-breaking-bad-quiz-r1,breaking-bad-quiz,1,Breaking Bad Quiz: The Rule,,2026-05-25,False,False,True,False,0
+deck-breaking-bad-quiz-r2,breaking-bad-quiz,2,Breaking Bad Quiz: Semi-final 2,,2026-06-01,False,False,True,False,0
+deck-fireside-chats-r1,fireside-chats,1,Fireside Chats: Art,KP,2026-02-08,False,False,True,False,0
+deck-fireside-chats-r2,fireside-chats,2,Fireside Chats: Literature,Shvetal,2026-05-23,False,False,True,False,0
+deck-fireside-chats-r3,fireside-chats,3,Fireside Chats: Fireside Chat,Shreya,2026-06-21,False,False,True,False,0
+deck-fireside-chats-r4,fireside-chats,4,Fireside Chats: Religion and Atheism,,2026-06-28,False,False,True,False,0
+deck-rewind-2025,,,2025 Rewind: Kvest for the Best,Pavan,2026-04-04,True,False,True,True,26
+deck-kp-quiz-final,,,KP's Quiz Final,KP,2025-12-20,True,False,False,True,40
+deck-bollywood-kviz,,,Bollywood Kviz,,2025-12-21,True,False,False,True,16
+deck-buzzer-bhide,,,Sports Buzzing,Bhide,2026-05-03,True,False,True,True,60
+deck-tapish-sports,,,Tapish's Sports Quiz,Tapish,2026-07-05,True,False,True,True,28
+deck-history-smit,,,History Quiz,Smit,2026-06-29,True,False,True,True,20
+deck-kvizimals,,,KVizimals,Manas,2026-04-04,True,False,False,True,20
+deck-movie-kviz,,,Movie Kviz,,2025-12-07,True,False,False,True,16
+deck-may-the-4th,,,May the 4th Quiz,Bijal Bhatt,2026-05-04,True,False,True,True,17
+deck-old-school-kp,,,Old School Quiz,KP,2026-07-04,True,False,True,True,21
+deck-swine-clue,,,Swine Clue Quiz,,2025-11-21,True,False,False,True,17
+deck-visual-buzzing-bijal,,,Visual Buzzing Kviz,Bijal Bhatt,2026-05-16,True,False,False,True,50
+deck-yet-another-quiz,,,Yet Another Quiz - Part 1,,2025-11-01,True,False,False,True,17
+deck-naman-avval-number,,,Avval Number,Naman,2026-01-04,False,False,True,False,0
+deck-popcorn-buzzing-aditi,,,Popcorn Buzzing with Aditi,Aditi,2026-01-24,False,False,True,False,0
+deck-tension-gourav,,,Tension,Gourav,2026-05-09,False,False,True,False,0
+deck-buzzy-mushkil-hai,,,Buzzy Mushkil Hai,Bijal Bhatt,2026-05-16,False,False,True,False,0
+deck-qotd-100,,,QOTD 100,,2026-06-23,False,False,True,False,0
+deck-retro-bollywood-sameer,,,"Retro Bollywood Quiz: Jimmy, Aaja!",Sameer,2026-10-20,False,True,False,False,0
+deck-general-quiz-smit-sep-2026,,,General Quiz (Sep 2026),Smit,2026-09-12,False,True,True,False,0
+deck-long-connect-gautam,,,Long Connect Quiz,Gautam,2026-08-09,False,True,True,False,0
+deck-random-quiz-namrata-aug-2026,,,Random Quiz,Namrata,2026-08-20,False,True,True,False,0
+deck-india-independence-qotd-shreya,,,India's Struggle for Independence QOTD,Shreya,2026-08-16,False,True,False,False,0
+deck-india-quiz-smit-jul-2026,,,India Quiz,Smit,2026-07-26,False,True,False,False,0
+deck-cricket-quiz-harsh,,,Cricket Quiz,Harsh,2026-10-25,False,False,True,False,0
+deck-triwizard-tourney-aditi,,,Triwizard Tourney: The Harry Potter Quiz,Aditi,2026-08-08,False,False,True,False,0
