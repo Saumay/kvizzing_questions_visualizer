@@ -489,10 +489,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/20. Gauntlet 20.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1NzGazxbGwfujEd1BD9r4-EpkHMmanbtc/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/20. Gauntlet 20.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/20.%20Gauntlet%2020.pdf",
               "size_bytes": 15489555
             },
             {
@@ -514,10 +514,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/21. It is Vat itteezz.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1gJJ3bjBAgMbsUf2uTzn4QkMZhP4QxnDK/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/21. It is Vat itteezz.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/21.%20It%20is%20Vat%20itteezz.pdf",
               "size_bytes": 6012005
             },
             {
@@ -539,10 +539,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/22. A New Champion.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1s3xqkqCFQFq2dUaKZgVUQcDPSjFk1uGX/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/22. A New Champion.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/22.%20A%20New%20Champion.pdf",
               "size_bytes": 4254885
             }
           ]
@@ -556,10 +556,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/23. Top 10 on 10.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1BLUL_CoW9DHfhQivkjvFiQLymDf678uM/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/23. Top 10 on 10.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/23.%20Top%2010%20on%2010.pdf",
               "size_bytes": 8868701
             }
           ]
@@ -573,10 +573,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/24. Straight Outta Nam.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1M12JT_5zOg8ynU-utXYYGEFH4Ij-4goP/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/24. Straight Outta Nam.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/24.%20Straight%20Outta%20Nam.pdf",
               "size_bytes": 7472148
             }
           ]
@@ -590,10 +590,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/25. It's all 25.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1lwRhmw3IQ0WanRpaVT1NQu9fcaOURV13/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/25. It's all 25.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/25.%20It%27s%20all%2025.pdf",
               "size_bytes": 3787278
             }
           ]
@@ -607,10 +607,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/26. Gauntlet 26.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/15XUlX1X7KBAvPl701sXl7_kpMP0IIm2d/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/26. Gauntlet 26.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/26.%20Gauntlet%2026.pdf",
               "size_bytes": 1126035
             }
           ]
@@ -624,10 +624,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/27. Straight Outta Nam.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1b9IbToVKFa7F9EYmrEOepnwQn_0sAZeZ/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/27. Straight Outta Nam.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/27.%20Straight%20Outta%20Nam.pdf",
               "size_bytes": 4449585
             }
           ]
@@ -641,10 +641,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/28. Battle of the QMs.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1rku0THrcv_ZiNRt1ygTNQzblCm3bwTOx/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/28. Battle of the QMs.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/28.%20Battle%20of%20the%20QMs.pdf",
               "size_bytes": 80781390
             }
           ]
@@ -658,10 +658,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/29. KP extends his streak.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1tfm6PukfWPBBZ9L70SrsaqBLeSeHxktp/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/29. KP extends his streak.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/29.%20KP%20extends%20his%20streak.pdf",
               "size_bytes": 3951085
             }
           ]
@@ -675,10 +675,10 @@
           "files": [
             {
               "label": "Source (PPTX)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/30. Gauntlet XXX.pptx",
               "format": "pptx",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1ka5KRU2loiJ4QXMWnZVOcAPJtCKAmiDf/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/30. Gauntlet XXX.pptx",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/30.%20Gauntlet%20XXX.pptx",
               "size_bytes": 24898778
             }
           ]
@@ -692,10 +692,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/31. Gauntlet 31.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1VtHVNSiEsfV2awXrgOvgzinPYvon8EHi/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/31. Gauntlet 31.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/31.%20Gauntlet%2031.pdf",
               "size_bytes": 33855974
             }
           ]
@@ -709,10 +709,10 @@
           "files": [
             {
               "label": "Slides (PDF)",
-              "rel_path": null,
+              "rel_path": "Gauntlet/32. Gauntlet 32.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/19HCd72pP9I4ztcd3hlC-UBlB5EcC5h-f/view?usp=drivesdk",
+              "r2_key": "decks/Gauntlet/32. Gauntlet 32.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/Gauntlet/32.%20Gauntlet%2032.pdf",
               "size_bytes": 2746115
             }
           ]
@@ -934,10 +934,10 @@
           "files": [
             {
               "label": null,
-              "rel_path": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF4.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1K5nsl_O6wTtAVH--hgPOipij2uBCgllf/view?usp=drivesdk",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF4.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_QF4.pdf",
               "size_bytes": 2248699
             },
             {
@@ -959,10 +959,10 @@
           "files": [
             {
               "label": null,
-              "rel_path": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF1.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1k-CWjfKcLHvX-iNg_3nyXeb-7N1kFrKR/view?usp=drivesdk",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF1.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF1.pdf",
               "size_bytes": 3038861
             },
             {
@@ -984,10 +984,10 @@
           "files": [
             {
               "label": null,
-              "rel_path": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF2.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1nHBKu6jj7NOigABqM2HHSXDekmZfJ4Gi/view?usp=drivesdk",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF2.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_SF2.pdf",
               "size_bytes": 4529623
             }
           ]
@@ -1001,10 +1001,10 @@
           "files": [
             {
               "label": null,
-              "rel_path": null,
+              "rel_path": "MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_Final.pdf",
               "format": "pdf",
-              "r2_key": null,
-              "url": "https://drive.google.com/file/d/1MoEsnoB_jUa1m6ijtTR4bfgggOKBS1Z9/view?usp=drivesdk",
+              "r2_key": "decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_Final.pdf",
+              "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/MTV_Quiz_Tournament_BijalBhatt/MTV_Quiz_Final.pdf",
               "size_bytes": 4731342
             },
             {
@@ -1696,10 +1696,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/Retro Bollywood Quiz - Jimmy Aaja.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1AblleWaxcumnKCQw_PHZ2XEz7-gUTFWN/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/Retro Bollywood Quiz - Jimmy Aaja.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/Retro%20Bollywood%20Quiz%20-%20Jimmy%20Aaja.pdf",
           "size_bytes": 2204212
         }
       ]
@@ -1713,10 +1713,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/General Quiz Smit Sep 2026.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1MzTxpXTRtxrTA9KoB5sZ7zxOX9HLyIk5/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/General Quiz Smit Sep 2026.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/General%20Quiz%20Smit%20Sep%202026.pdf",
           "size_bytes": 5883228
         },
         {
@@ -1738,10 +1738,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/Long Connect Quiz Gautam.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1mjKM6wSEkrQ5mJoURF2jc-hU8lUmgz4q/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/Long Connect Quiz Gautam.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/Long%20Connect%20Quiz%20Gautam.pdf",
           "size_bytes": 3492873
         },
         {
@@ -1763,10 +1763,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/Random Quiz Namrata Aug 2026.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1Z2_xoCActYdsmf83f1kaDI7SU0eX52Va/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/Random Quiz Namrata Aug 2026.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/Random%20Quiz%20Namrata%20Aug%202026.pdf",
           "size_bytes": 4323608
         },
         {
@@ -1788,10 +1788,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/India Independence QOTD Shreya.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1wrmT1ZqeG7RHUilmBNllv5xigbrMDGPu/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/India Independence QOTD Shreya.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/India%20Independence%20QOTD%20Shreya.pdf",
           "size_bytes": 741986
         }
       ]
@@ -1805,10 +1805,10 @@
       "files": [
         {
           "label": null,
-          "rel_path": null,
+          "rel_path": "standalone_pending/India Quiz Smit Jul 2026.pdf",
           "format": "pdf",
-          "r2_key": null,
-          "url": "https://drive.google.com/file/d/1Hzqa3oBehaOyxCBTJvWoE257R0NRY4I1/view?usp=drivesdk",
+          "r2_key": "decks/standalone_pending/India Quiz Smit Jul 2026.pdf",
+          "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/India%20Quiz%20Smit%20Jul%202026.pdf",
           "size_bytes": 5157729
         }
       ]
