@@ -136,6 +136,43 @@ def derive_deck_sessions(decks_manifest_path: Path) -> list[dict]:
     return sessions
 
 
+def deck_file_links(decks_manifest_path: Path) -> dict[str, list[dict]]:
+    """
+    Map deck session_id -> every file (slide + recording) from its decks.json
+    entry, for sessions that were actually imported (i.e. have an extractable
+    slide). Used to attach "View slides" / "Watch recording" links to the
+    exported session record, since the question/session payload itself has
+    no link back to decks.json.
+    """
+    manifest = json.loads(decks_manifest_path.read_text())
+    links: dict[str, list[dict]] = {}
+
+    def _extractable_file(files: list[dict]) -> dict | None:
+        for f in files:
+            if f.get("format") in _EXTRACTABLE_FORMATS and f.get("rel_path"):
+                return f
+        return None
+
+    def _files(files: list[dict]) -> list[dict]:
+        return [
+            {"label": f.get("label"), "format": f["format"], "url": f["url"]}
+            for f in files if f.get("url")
+        ]
+
+    for series in manifest.get("series", []):
+        for round_ in series["rounds"]:
+            if not _extractable_file(round_["files"]):
+                continue
+            links[f'deck-{series["id"]}-r{round_["round"]}'] = _files(round_["files"])
+
+    for deck in manifest.get("standalone", []):
+        if not _extractable_file(deck["files"]):
+            continue
+        links[f'deck-{deck["id"]}'] = _files(deck["files"])
+
+    return links
+
+
 def candidates_from_pairs(
     pairs: list[dict],
     *,

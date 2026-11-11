@@ -22,6 +22,7 @@ of this script's directory). Logs are written to pipeline/logs/YYYY-MM-DD.log.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sqlite3
 import sys
@@ -85,6 +86,7 @@ from utils.detect_sessions import detect_sessions as _detect_sessions, apply_ses
 from utils.detect_connect_quizzes import main as _detect_connect_main
 from utils.generate_question_embeddings import main as _generate_embeddings
 from utils.import_deck_questions import import_all_available as _import_decks_available
+from utils.import_deck_questions import deck_file_links as _deck_file_links
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -124,9 +126,42 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     see _maybe_regenerate_embeddings for why this is best-effort, not required."""
     counts = _stage6_export_run(conn, output_dir, **kwargs)
     _maybe_regenerate_embeddings(output_dir)
+    _maybe_attach_deck_links(output_dir)
     _maybe_regenerate_backlog_report()
     _maybe_deploy_dashboard()
     return counts
+
+
+def _maybe_attach_deck_links(output_dir: Path) -> None:
+    """
+    Best-effort: attach each live (deck-sourced) session's slide/recording
+    links from decks.json onto its exported sessions.json entry, so session
+    detail pages can show "View slides" / "Watch recording" — the question
+    payload itself has no link back to decks.json. Runs on every export, not
+    just import-decks, so a recording added later via the weekly decks sync
+    shows up on the next pipeline run without a separate deck re-import.
+    """
+    decks_manifest_path = output_dir / "decks.json"
+    sessions_path = output_dir / "sessions.json"
+    if not decks_manifest_path.exists() or not sessions_path.exists():
+        return
+    try:
+        links = _deck_file_links(decks_manifest_path)
+        if not links:
+            return
+        sessions = json.loads(sessions_path.read_text())
+        attached = 0
+        for s in sessions:
+            if s["id"] in links:
+                s["files"] = links[s["id"]]
+                attached += 1
+        sessions_path.write_text(json.dumps(sessions, ensure_ascii=False, default=str))
+        log.info("Attached slide/recording links to %d session(s).", attached)
+    except Exception as e:
+        log.warning(
+            "Deck link attachment failed (%s: %s) — export succeeded OK.",
+            type(e).__name__, e,
+        )
 
 
 def _maybe_regenerate_backlog_report() -> None:

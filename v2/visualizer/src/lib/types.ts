@@ -91,6 +91,8 @@ export interface Session {
   announcement?: string | null;
   /** True for sessions hosted live (e.g. a Zoom quiz night from a slide deck), false for async WhatsApp group quizzes */
   is_live?: boolean;
+  /** Slide deck / recording links for live sessions, sourced from decks.json */
+  files?: { label: string | null; format: string; url: string }[];
 }
 
 export interface Member {

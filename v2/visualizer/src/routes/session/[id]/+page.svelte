@@ -238,6 +238,21 @@
         </div>
       {/if}
     </div>
+
+    {#if session.files?.length}
+      <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-primary-400">
+        {#each session.files as f}
+          <a
+            href={f.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            {f.format === 'recording' || f.format === 'mp4' || f.format === 'vtt' ? '🎥 Watch recording' : '📄 View slides'}
+          </a>
+        {/each}
+      </div>
+    {/if}
     </div>
   </div>
 
