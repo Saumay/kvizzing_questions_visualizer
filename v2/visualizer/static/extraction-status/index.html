@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KVizzing Questions Extraction</title>
+<meta name="description" content="Per-day and per-session publish status for the KVizzing question archive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  :root {
+    --bg: #faf9f7; --panel: #ffffff; --border: #e4e0da; --fg: #1c1a17; --fg-muted: #726d64;
+    --ok: #1a7f4f; --warn: #b4740e; --bad: #c23a3a;
+    --accent1: #2f6f8f; --accent2: #8f5a2f; --accent3: #5a6f2f;
+    --font-serif: 'Fraunces', Georgia, serif; --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17161a; --panel: #201f24; --border: #35333a; --fg: #ece9e4; --fg-muted: #9b968d;
+      --ok: #4ad196; --warn: #e3a33e; --bad: #ef6464;
+      --accent1: #6fb4d6; --accent2: #d6a06f; --accent3: #a3c16f;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-sans);
+    padding: 24px max(16px, env(safe-area-inset-left, 0px)) 48px max(16px, env(safe-area-inset-right, 0px));
+  }
+  .lx-wrap { max-width: 1320px; margin: 0 auto; }
+  .lx-header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom: 24px; }
+  .lx-header-main { display:flex; flex-direction:column; gap:4px; min-width:0; }
+  .lx-share-backup { max-width: 22rem; }
+  .lx-share-backup .lx-section-title { font-size: 0.85rem; margin-bottom: 2px; }
+  .lx-share-backup p { font-size: 0.72rem; margin: 0; }
+  .lx-title {
+    font-family: var(--font-serif); font-weight:500; font-size: 1.75rem; margin:0;
+    background: linear-gradient(90deg, var(--accent1), var(--accent3));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lx-takeaway { font-size: 0.95rem; color: var(--fg-muted); margin:0; }
+  .lx-section-title { font-weight: 600; font-size: 1.05rem; color: var(--fg); margin: 0 0 8px 0; }
+  .lx-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .lx-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: 12px; margin-bottom: 24px; }
+  .lx-section { margin-bottom: 24px; }
+  .lx-tile-label { font-size: 0.72rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: .04em; }
+  .lx-tile-value { font-family: var(--font-serif); font-weight:500; font-size: 1.75rem; font-variant-numeric: tabular-nums; color: var(--fg); display:block; margin-top: 2px; }
+  .lx-tile-value.lx-v-ok { color: var(--ok); }
+  .lx-tile-value.lx-v-warn { color: var(--warn); }
+  .lx-tile-value.lx-v-bad { color: var(--bad); }
+  .lx-grid .lx-card { border-left-width: 3px; border-left-style: solid; border-left-color: var(--border); }
+  .lx-grid .lx-card.lx-c-ok { border-left-color: var(--ok); }
+  .lx-grid .lx-card.lx-c-warn { border-left-color: var(--warn); }
+  .lx-grid .lx-card.lx-c-bad { border-left-color: var(--bad); }
+  .lx-tile-sub { font-size: 0.75rem; color: var(--fg-muted); margin-top: 2px; }
+  .lx-note { font-size: 0.78rem; color: var(--fg-muted); margin-top: 8px; }
+  .dash-skeleton { display:inline-block; min-width: 3em; height: 1em; border-radius: 6px; background: var(--border); animation: lx-pulse 1.4s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .dash-skeleton { animation: none; opacity: .5; } }
+  @keyframes lx-pulse { 0%,100% { opacity:.4 } 50% { opacity:.9 } }
+  .lx-legend { display:flex; gap: 12px; flex-wrap:wrap; font-size: 0.78rem; color: var(--fg-muted); margin-top: 8px; }
+  .lx-legend span { display:inline-flex; align-items:center; gap:5px; }
+  .lx-dot { width:9px; height:9px; border-radius:2px; display:inline-block; }
+  .lx-chart-box { min-height: 72px; position: relative; }
+  .lx-chart-box2 { min-height: 220px; position: relative; }
+  .lx-chart-box3 { min-height: 160px; position: relative; }
+  .lx-tooltip { position:absolute; pointer-events:none; background: var(--panel); border:1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.18); padding: 6px 10px; font-size: 0.75rem; color: var(--fg); z-index: 5; opacity:0; transition: opacity .1s; }
+  .lx-table-wrap { max-height: 420px; overflow:auto; border:1px solid var(--border); border-radius: 12px; }
+  table.lx-table { width:100%; border-collapse: collapse; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+  table.lx-table th, table.lx-table td { padding: 6px 10px; text-align:left; white-space:nowrap; }
+  table.lx-table thead th { position: sticky; top:0; background: var(--panel); border-bottom: 1px solid var(--border); cursor:pointer; user-select:none; color: var(--fg-muted); font-weight: 600; }
+  table.lx-table thead th:hover { color: var(--fg); }
+  table.lx-table tbody tr { border-bottom: 1px solid var(--border); }
+  table.lx-table tbody tr:last-child { border-bottom: none; }
+  .lx-pub-yes { color: var(--ok); font-weight: 600; }
+  .lx-pub-no { color: var(--fg-muted); }
+  .lx-search { font-size: 0.9rem; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--fg); margin-bottom: 8px; width: 100%; max-width: 22rem; box-sizing: border-box; font-family: inherit; }
+  .lx-metric-toggle { display:flex; gap:6px; margin-bottom: 8px; flex-wrap:wrap; }
+  .lx-metric-btn { font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); color: var(--fg-muted); cursor: pointer; font-family: inherit; }
+  .lx-metric-btn:hover { color: var(--fg); }
+  .lx-metric-btn.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .lx-sort-arrow { font-size: 0.8em; opacity: .6; }
+  .lx-tabs { display:flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .lx-tab { font-size: 0.95rem; font-weight: 600; color: var(--fg-muted); background: none; border: none; padding: 8px 2px; margin-bottom: -1px; border-bottom: 2px solid transparent; cursor: pointer; font-family: inherit; }
+  .lx-tab:hover { color: var(--fg); }
+  .lx-tab.active { color: var(--fg); border-bottom-color: var(--fg); }
+  a.lx-src-link { color: var(--accent1); }
+</style>
+</head>
+<body>
+<div class="lx-wrap">
+
+<div class="lx-header">
+  <div class="lx-header-main">
+    <a class="lx-src-link" href="/" style="font-size:0.82rem;">&larr; Back to KVizzing</a>
+    <h1 class="lx-title">KVizzing Questions Extraction</h1>
+    <p class="lx-takeaway" id="lx-takeaway">&nbsp;</p>
+  </div>
+  <div class="lx-card lx-share-backup">
+    <div class="lx-section-title">Have a backup for a missing date?</div>
+    <p>Some dates have no chat text or media in any of our exports. If you have an old WhatsApp backup or exported media covering any of them, drop it here: <a class="lx-src-link" href="https://drive.google.com/drive/folders/1ADbKtRRZo3lOemiVIcDKu-C3Bo3mR1JX" id="lx-drive-link" target="_blank" rel="noopener">this Drive folder</a>.</p>
+  </div>
+</div>
+
+<div class="lx-tabs">
+  <button type="button" class="lx-tab" data-tab="tab-dates">Dates</button>
+  <button type="button" class="lx-tab" data-tab="tab-sessions">Sessions</button>
+</div>
+
+<section id="tab-dates" class="lx-tab-panel">
+  <h2 class="lx-section-title">Per-day status (2025-09-23 &rarr; today)</h2>
+  <div class="lx-grid">
+    <div class="lx-card"><div class="lx-tile-label">Days tracked</div><span class="lx-tile-value dash-skeleton" data-tile="total">&nbsp;</span></div>
+    <div class="lx-card"><div class="lx-tile-label">Extracted</div><span class="lx-tile-value dash-skeleton" data-tile="extracted">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="pctExtracted">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Fully published</div><span class="lx-tile-value dash-skeleton" data-tile="published">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="pctPublished">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">No source yet</div><span class="lx-tile-value dash-skeleton" data-tile="sourceMissing">&nbsp;</span><div class="lx-tile-sub">days with no raw chat/media available</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Need tags</div><span class="lx-tile-value dash-skeleton" data-tile="needsTags">&nbsp;</span><div class="lx-tile-sub">extracted days, &lt;100% tags &mdash; needs LLM re-enrichment</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Media coverage</div><span class="lx-tile-value dash-skeleton" data-tile="avgMedia">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="needsMedia">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Low-confidence extractions</div><span class="lx-tile-value dash-skeleton" data-tile="avgLowConf">&nbsp;</span><div class="lx-tile-sub">share of questions with an unconfirmed/weak answer match</div></div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Monthly rollup</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Same status categories as the daily strip below, grouped by month so the trend reads at a glance.</div>
+    <div class="lx-chart-box3 dash-skeleton" id="lx-monthly"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>no source</span>
+      <span><i class="lx-dot" style="background:var(--fg-muted)"></i>source, not extracted</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>extracted, not published</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>fully published</span>
+    </div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Daily pipeline status</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">One column per calendar day, one strip per year. Hover a day for its numbers.</div>
+    <div id="lx-strip-years"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>no source</span>
+      <span><i class="lx-dot" style="background:var(--fg-muted)"></i>source, not extracted</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>extracted, not published</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>fully published</span>
+    </div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Coverage % over time (extracted days)</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Media match, topic assignment, tag coverage &mdash; each must hit 100% for a day to count as fully published.</div>
+    <div class="lx-metric-toggle" id="lx-trend-toggle">
+      <button type="button" class="lx-metric-btn active" data-metric="all">All</button>
+      <button type="button" class="lx-metric-btn" data-metric="media">Media</button>
+      <button type="button" class="lx-metric-btn" data-metric="topic">Topic</button>
+      <button type="button" class="lx-metric-btn" data-metric="tags">Tags</button>
+      <button type="button" class="lx-metric-btn" data-metric="count">Extracted</button>
+    </div>
+    <div class="lx-chart-box2 dash-skeleton" id="lx-trend"></div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Extraction quality over time</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Share of each day's questions flagged low-confidence.</div>
+    <div class="lx-chart-box3 dash-skeleton" id="lx-date-quality"></div>
+  </div>
+
+  <div class="lx-card lx-section">
+    <div class="lx-section-title">Full per-day table</div>
+    <input type="text" class="lx-search" id="lx-date-search" placeholder="Search by date (YYYY-MM-DD)&hellip;">
+    <div class="lx-table-wrap">
+      <table class="lx-table" data-row-key="date" id="lx-date-table">
+        <thead><tr>
+          <th data-field="date" data-sort="date">Date</th>
+          <th data-field="source_available" data-sort="source_available">Source</th>
+          <th data-field="extracted" data-sort="extracted">Extracted</th>
+          <th data-field="question_count" data-sort="question_count">Questions</th>
+          <th data-field="media_pct" data-sort="media_pct">Media %</th>
+          <th data-field="topic_pct" data-sort="topic_pct">Topic %</th>
+          <th data-field="tags_pct" data-sort="tags_pct">Tags %</th>
+          <th data-field="reactions_pct" data-sort="reactions_pct">Reactions %</th>
+          <th data-field="fully_published" data-sort="fully_published">Published</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="tab-sessions" class="lx-tab-panel" hidden>
+  <h2 class="lx-section-title">Per-session status</h2>
+  <div class="lx-grid">
+    <div class="lx-card"><div class="lx-tile-label">Sessions tracked</div><span class="lx-tile-value dash-skeleton" data-tile="s_total">&nbsp;</span></div>
+    <div class="lx-card"><div class="lx-tile-label">Questions 100% published</div><span class="lx-tile-value dash-skeleton" data-tile="s_fullyPublished">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="s_pctFullyPublished">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Have theme</div><span class="lx-tile-value dash-skeleton" data-tile="s_theme">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="s_pctTheme">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Have background image</div><span class="lx-tile-value dash-skeleton" data-tile="s_image">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="s_pctImage">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Have scores</div><span class="lx-tile-value dash-skeleton" data-tile="s_scores">&nbsp;</span><div class="lx-tile-sub dash-skeleton" data-tile="s_pctScores">&nbsp;</div></div>
+    <div class="lx-card"><div class="lx-tile-label">Low-confidence extractions</div><span class="lx-tile-value dash-skeleton" data-tile="s_avgLowConf">&nbsp;</span><div class="lx-tile-sub">avg share with an unconfirmed/weak answer match</div></div>
+  </div>
+  <div class="lx-note" style="margin-top:-8px; margin-bottom: 16px;">Theme / image / scores are tracked for visibility only &mdash; none of them block a session from counting as published.</div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Monthly rollup</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Sessions per month, by questions-published bucket.</div>
+    <div class="lx-chart-box3 dash-skeleton" id="lx-session-monthly"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>&lt;50% published</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>50&ndash;99% published</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>100% published</span>
+    </div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Session publish status by date</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">One column per session, one strip per year, ordered by date. Hover a session for its numbers.</div>
+    <div id="lx-session-strip-years"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>&lt;50% published</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>50&ndash;99% published</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>100% published</span>
+    </div>
+  </div>
+
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Extraction quality over time</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">Average share of questions flagged low-confidence, by the date sessions happened.</div>
+    <div class="lx-chart-box3 dash-skeleton" id="lx-session-quality"></div>
+  </div>
+
+  <div class="lx-card">
+    <div class="lx-section-title">Sessions table</div>
+    <input type="text" class="lx-search" id="lx-session-search" placeholder="Search by session, date or quizmaster&hellip;">
+    <div class="lx-table-wrap">
+      <table class="lx-table" data-row-key="session_id" id="lx-session-table">
+        <thead><tr>
+          <th data-field="session_id" data-sort="session_id">Session</th>
+          <th data-field="date" data-sort="date">Date</th>
+          <th data-field="quizmaster" data-sort="quizmaster">Quizmaster</th>
+          <th data-field="question_count" data-sort="question_count">Questions</th>
+          <th data-field="questions_published_pct" data-sort="questions_published_pct">Published %</th>
+          <th data-field="theme_present" data-sort="theme_present">Theme</th>
+          <th data-field="image_present" data-sort="image_present">Image</th>
+          <th data-field="scores_present" data-sort="scores_present">Scores</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<p class="lx-note">Generated by <code>pipeline/utils/backlog_report.py</code>, refreshed after every pipeline run. Raw data: <a class="lx-src-link" href="/data/backlog_tracking.csv">backlog_tracking.csv</a> &middot; <a class="lx-src-link" href="/data/session_backlog.csv">session_backlog.csv</a></p>
+
+</div>
+
+<script>
+(function () {
+  const COLORS = ['#2f6f8f', '#8f5a2f', '#5a6f2f', '#8f2f6f', '#2f8f6f', '#8f8f2f', '#6f2f8f', '#2f8f2f'];
+  const fmtPct = (v) => (v === null || v === undefined || Number.isNaN(v)) ? '—' : v.toFixed(1) + '%';
+  const toBool = (v) => v === true || v === 'True' || v === 'true' || v === '1' || v === 1;
+  const toNum = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
+  const parseDay = (d) => new Date(d + 'T00:00:00Z');
+
+  const GROUP_START = parseDay('2025-09-23');
+  const daysSinceStart = Math.floor((Date.now() - GROUP_START.getTime()) / 86400000);
+  document.getElementById('lx-takeaway').textContent =
+    `${d3.format(',')(daysSinceStart)} days of quizzing since the group started.`;
+
+  let trendMetric = 'all';
+  let lastDateRows = null;
+  document.querySelectorAll('#lx-trend-toggle .lx-metric-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      trendMetric = btn.dataset.metric;
+      document.querySelectorAll('#lx-trend-toggle .lx-metric-btn').forEach((b) => b.classList.toggle('active', b === btn));
+      if (lastDateRows) drawTrend(lastDateRows);
+    });
+  });
+
+  function statusBucket(r) {
+    if (!toBool(r.source_available)) return 'noSource';
+    if (!toBool(r.extracted)) return 'pending';
+    if (!toBool(r.fully_published)) return 'partial';
+    return 'published';
+  }
+  const BUCKET_COLOR = {
+    noSource: 'var(--bad)', pending: 'var(--fg-muted)',
+    partial: 'var(--warn)', published: 'var(--ok)',
+  };
+  function statusColor(r) { return BUCKET_COLOR[statusBucket(r)]; }
+
+  function computeDateSummary(rows) {
+    const total = rows.length;
+    const extractedRows = rows.filter((r) => toBool(r.extracted));
+    const published = rows.filter((r) => toBool(r.fully_published)).length;
+    const sourceMissing = rows.filter((r) => !toBool(r.source_available)).length;
+    const needsTags = extractedRows.filter((r) => toNum(r.tags_pct) < 100).length;
+    const needsMedia = extractedRows.filter((r) => toNum(r.media_pct) < 100).length;
+    const avg = (f) => extractedRows.length ? extractedRows.reduce((s, r) => s + toNum(r[f]), 0) / extractedRows.length : 0;
+    return {
+      total, extracted: extractedRows.length, published, sourceMissing, needsTags, needsMedia,
+      pctExtracted: total ? (100 * extractedRows.length / total) : 0,
+      pctPublished: total ? (100 * published / total) : 0,
+      avgMedia: avg('media_pct'), avgTopic: avg('topic_pct'), avgTags: avg('tags_pct'), avgReactions: avg('reactions_pct'),
+      avgLowConf: avg('low_conf_pct'),
+    };
+  }
+
+  function computeSessionSummary(rows) {
+    const total = rows.length;
+    const fullyPublished = rows.filter((r) => toNum(r.questions_published_pct) === 100).length;
+    const theme = rows.filter((r) => toBool(r.theme_present)).length;
+    const image = rows.filter((r) => toBool(r.image_present)).length;
+    const scores = rows.filter((r) => toBool(r.scores_present)).length;
+    const pct = (n) => total ? (100 * n / total) : 0;
+    const avgLowConf = total ? rows.reduce((s, r) => s + toNum(r.low_conf_pct), 0) / total : 0;
+    return {
+      total, fullyPublished, theme, image, scores,
+      pctFullyPublished: pct(fullyPublished), pctTheme: pct(theme), pctImage: pct(image), pctScores: pct(scores),
+      avgLowConf,
+    };
+  }
+
+  const fillTile = (field, value, formatter) => {
+    document.querySelectorAll(`[data-tile="${field}"]`).forEach((el) => {
+      el.classList.remove('dash-skeleton');
+      el.textContent = value === null || value === undefined ? '—' : formatter(value);
+    });
+  };
+
+  // Status color on a tile's value AND its card's left edge — never decorative,
+  // only applied where the number genuinely signals good/warn/bad.
+  const colorTile = (field, level) => {
+    document.querySelectorAll(`[data-tile="${field}"]`).forEach((el) => {
+      el.classList.remove('lx-v-ok', 'lx-v-warn', 'lx-v-bad');
+      el.classList.add(`lx-v-${level}`);
+      const card = el.closest('.lx-card');
+      if (card) {
+        card.classList.remove('lx-c-ok', 'lx-c-warn', 'lx-c-bad');
+        card.classList.add(`lx-c-${level}`);
+      }
+    });
+  };
+
+  function makeSortableTable(tableId, searchId, columns, searchFields) {
+    let sortKey = null, sortDir = 1, filterText = '';
+    function render(rows) {
+      const table = document.getElementById(tableId);
+      const tbody = table.querySelector('tbody');
+      let data = rows.slice();
+      if (filterText) {
+        const needle = filterText.toLowerCase();
+        data = data.filter((r) => searchFields.some((f) => String(r[f] ?? '').toLowerCase().includes(needle)));
+      }
+      if (sortKey) {
+        data.sort((a, b) => {
+          const colDef = columns.find((c) => c.key === sortKey);
+          const av = colDef.num ? toNum(a[sortKey]) : (colDef.bool ? toBool(a[sortKey]) : String(a[sortKey] ?? ''));
+          const bv = colDef.num ? toNum(b[sortKey]) : (colDef.bool ? toBool(b[sortKey]) : String(b[sortKey] ?? ''));
+          if (av < bv) return -1 * sortDir;
+          if (av > bv) return 1 * sortDir;
+          return 0;
+        });
+      }
+      tbody.replaceChildren();
+      const frag = document.createDocumentFragment();
+      data.forEach((r) => {
+        const tr = document.createElement('tr');
+        if (table.dataset.rowKey) tr.dataset.key = r[table.dataset.rowKey];
+        columns.forEach((c) => {
+          const td = document.createElement('td');
+          const text = c.fmt(r[c.key]);
+          if (c.link) {
+            const a = document.createElement('a');
+            a.href = c.link(r);
+            a.textContent = text;
+            a.className = 'lx-src-link';
+            td.appendChild(a);
+          } else {
+            td.textContent = text;
+          }
+          if (c.cls) { const cls = c.cls(r[c.key]); if (cls) td.className = (td.className ? td.className + ' ' : '') + cls; }
+          tr.appendChild(td);
+        });
+        frag.appendChild(tr);
+      });
+      tbody.appendChild(frag);
+    }
+    document.querySelectorAll(`#${tableId} thead th`).forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+        document.querySelectorAll(`#${tableId} thead th .lx-sort-arrow`).forEach((a) => a.remove());
+        const arrow = document.createElement('span');
+        arrow.className = 'lx-sort-arrow';
+        arrow.textContent = sortDir === 1 ? ' ↑' : ' ↓';
+        th.appendChild(arrow);
+        render(currentRows);
+      });
+    });
+    const search = document.getElementById(searchId);
+    search.addEventListener('input', () => { filterText = search.value; render(currentRows); });
+    let currentRows = [];
+    return (rows) => { currentRows = rows || []; render(currentRows); };
+  }
+
+  const renderDateTable = makeSortableTable('lx-date-table', 'lx-date-search', [
+    { key: 'date', fmt: (v) => v, link: (r) => `/?dateFrom=${r.date}&dateTo=${r.date}` },
+    { key: 'source_available', fmt: (v) => toBool(v) ? 'yes' : 'NO' },
+    { key: 'extracted', fmt: (v) => toBool(v) ? 'yes' : 'pending' },
+    { key: 'question_count', num: true, fmt: (v) => d3.format(',')(toNum(v)) },
+    { key: 'media_pct', num: true, fmt: (v) => fmtPct(toNum(v)) },
+    { key: 'topic_pct', num: true, fmt: (v) => fmtPct(toNum(v)) },
+    { key: 'tags_pct', num: true, fmt: (v) => fmtPct(toNum(v)) },
+    { key: 'reactions_pct', num: true, fmt: (v) => fmtPct(toNum(v)) },
+    { key: 'fully_published', bool: true, fmt: (v) => toBool(v) ? 'YES' : '', cls: (v) => toBool(v) ? 'lx-pub-yes' : 'lx-pub-no' },
+  ], ['date']);
+
+  const renderSessionTable = makeSortableTable('lx-session-table', 'lx-session-search', [
+    { key: 'session_id', fmt: (v) => v, link: (r) => `/session/${r.session_id}` },
+    { key: 'date', fmt: (v) => v },
+    { key: 'quizmaster', fmt: (v) => v || '—' },
+    { key: 'question_count', num: true, fmt: (v) => d3.format(',')(toNum(v)) },
+    { key: 'questions_published_pct', num: true, fmt: (v) => fmtPct(toNum(v)), cls: (v) => toNum(v) === 100 ? 'lx-pub-yes' : 'lx-pub-no' },
+    { key: 'theme_present', bool: true, fmt: (v) => toBool(v) ? 'yes' : '' },
+    { key: 'image_present', bool: true, fmt: (v) => toBool(v) ? 'yes' : '' },
+    { key: 'scores_present', bool: true, fmt: (v) => toBool(v) ? 'yes' : '' },
+  ], ['session_id', 'date', 'quizmaster']);
+
+  function showTab(id, dateRows, sessionRows) {
+    document.querySelectorAll('.lx-tab-panel').forEach((el) => { el.hidden = el.id !== id; });
+    document.querySelectorAll('.lx-tab').forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === id));
+    if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
+    if (id === 'tab-dates' && dateRows) { drawMonthly(dateRows); drawStrip(dateRows); drawTrend(dateRows); drawDateQuality(dateRows); }
+    if (id === 'tab-sessions' && sessionRows) { drawSessionMonthly(sessionRows); drawSessionStrip(sessionRows); drawSessionQuality(sessionRows); }
+  }
+
+  // --- monthly rollup: stacked bar, same 4 buckets as the daily strip ---
+  function drawMonthly(rows) {
+    const el = document.getElementById('lx-monthly');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byMonth = new Map();
+    for (const r of rows) {
+      const key = r.date.slice(0, 7);
+      if (!byMonth.has(key)) byMonth.set(key, { month: key, noSource: 0, pending: 0, partial: 0, published: 0 });
+      byMonth.get(key)[statusBucket(r)]++;
+    }
+    const months = Array.from(byMonth.values()).sort((a, b) => a.month.localeCompare(b.month));
+    const buckets = ['noSource', 'pending', 'partial', 'published'];
+    const width = el.clientWidth || 600, height = 140;
+    const margin = { top: 6, right: 8, bottom: 20, left: 32 };
+    const x = d3.scaleBand().domain(months.map((m) => m.month)).range([margin.left, width - margin.right]).paddingInner(0.25);
+    const maxDays = d3.max(months, (m) => m.noSource + m.pending + m.partial + m.published) || 1;
+    const y = d3.scaleLinear().domain([0, maxDays]).range([height - margin.bottom, margin.top]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(3))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g2) => g2.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g2) => g2.selectAll('line,path').attr('stroke', 'var(--border)'));
+    // Width-aware, not just count-based: guarantees labels never crowd even on
+    // a narrow phone screen or a browser whose font metrics differ from ours
+    // (seen overlapping in WhatsApp's in-app browser at count-only thinning).
+    const minLabelPx = 42;
+    const maxLabels = Math.max(1, Math.floor((width - margin.left - margin.right) / minLabelPx));
+    const monthTickEvery = Math.max(1, Math.ceil(months.length / maxLabels));
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+      .selectAll('text').data(months.filter((_, i) => i % monthTickEvery === 0))
+      .join('text')
+      .attr('x', (m) => x(m.month) + x.bandwidth() / 2)
+      .attr('y', 13)
+      .attr('text-anchor', 'middle')
+      .attr('fill', 'var(--fg-muted)')
+      .style('font-size', '0.72rem')
+      .text((m) => d3.utcFormat('%b ’%y')(new Date(m.month + '-01T00:00:00Z')));
+    const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+    const bars = svg.selectAll('g.lx-month-col').data(months).join('g').attr('class', 'lx-month-col');
+    bars.each(function (m) {
+      let yCursor = height - margin.bottom;
+      const g2 = d3.select(this);
+      buckets.forEach((b) => {
+        const v = m[b];
+        if (!v) return;
+        const barH = (height - margin.bottom - margin.top) * (v / maxDays);
+        yCursor -= barH;
+        g2.append('rect')
+          .attr('x', x(m.month)).attr('width', x.bandwidth())
+          .attr('y', yCursor).attr('height', barH)
+          .attr('fill', BUCKET_COLOR[b]);
+      });
+    });
+    bars.on('mousemove', function (ev, m) {
+      const rect = el.getBoundingClientRect();
+      tip.style('opacity', 1)
+        .style('left', (ev.clientX - rect.left + 10) + 'px')
+        .style('top', (ev.clientY - rect.top - 10) + 'px')
+        .html(`<b>${d3.utcFormat('%B %Y')(new Date(m.month + '-01T00:00:00Z'))}</b><br>published ${m.published} &middot; partial ${m.partial} &middot; pending ${m.pending} &middot; no source ${m.noSource}`);
+    }).on('mouseleave', () => tip.style('opacity', 0));
+    el.appendChild(svg.node());
+  }
+
+  function fullYearDays(year) {
+    const days = [];
+    const y = Number(year);
+    const isLeap = (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+    const daysInMonth = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    for (let m = 0; m < 12; m++) {
+      for (let d = 1; d <= daysInMonth[m]; d++) {
+        days.push(`${year}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
+      }
+    }
+    return days;
+  }
+
+  function drawStrip(rows) {
+    const container = document.getElementById('lx-strip-years');
+    container.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byYear = new Map();
+    for (const r of rows) {
+      const y = r.date.slice(0, 4);
+      if (!byYear.has(y)) byYear.set(y, new Map());
+      byYear.get(y).set(r.date, r);
+    }
+    const years = Array.from(byYear.keys()).sort();
+    years.forEach((year, i) => {
+      const byDate = byYear.get(year);
+      const allDays = fullYearDays(year);
+      const wrap = document.createElement('div');
+      wrap.style.position = 'relative';
+      if (i > 0) wrap.style.marginTop = '16px';
+      const label = document.createElement('div');
+      label.textContent = year;
+      label.style.cssText = 'font-size:0.78rem; color:var(--fg-muted); margin-bottom:4px; font-weight:600;';
+      wrap.appendChild(label);
+      const el = document.createElement('div');
+      el.className = 'lx-chart-box';
+      wrap.appendChild(el);
+      container.appendChild(wrap);
+
+      const width = el.clientWidth || 600;
+      const height = 48;
+      const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+      const x = d3.scaleBand().domain(allDays).range([0, width]).paddingInner(0.15);
+      const bw = Math.max(1, x.bandwidth());
+      const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+      svg.selectAll('rect').data(allDays).join('rect')
+        .attr('x', (d) => x(d)).attr('y', 4).attr('width', bw).attr('height', height - 8)
+        .attr('rx', Math.min(2, bw / 2))
+        .attr('fill', (d) => byDate.has(d) ? statusColor(byDate.get(d)) : 'var(--border)')
+        .on('mousemove', function (ev, d) {
+          const r = byDate.get(d);
+          const rect = el.getBoundingClientRect();
+          tip.style('opacity', 1)
+            .style('left', (ev.clientX - rect.left + 10) + 'px')
+            .style('top', (ev.clientY - rect.top - 10) + 'px')
+            .html(r
+              ? `<b>${r.date}</b><br>${r.question_count} questions &middot; media ${fmtPct(toNum(r.media_pct))} &middot; topic ${fmtPct(toNum(r.topic_pct))} &middot; tags ${fmtPct(toNum(r.tags_pct))}`
+              : `<b>${d}</b><br>outside tracked range`);
+        })
+        .on('mouseleave', () => tip.style('opacity', 0));
+      el.appendChild(svg.node());
+    });
+  }
+
+  function sessionColor(pct) {
+    if (pct >= 100) return 'var(--ok)';
+    if (pct >= 50) return 'var(--warn)';
+    return 'var(--bad)';
+  }
+
+  function drawSessionStrip(rows) {
+    const container = document.getElementById('lx-session-strip-years');
+    container.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byYear = new Map();
+    for (const r of rows) {
+      const y = String(r.date).slice(0, 4);
+      if (!byYear.has(y)) byYear.set(y, []);
+      byYear.get(y).push(r);
+    }
+    const years = Array.from(byYear.keys()).sort();
+    // Fixed slot count shared across every year's strip, so one bar's width means
+    // the same thing in every row — a year with fewer sessions just runs out
+    // partway and shows grey for the remaining slots, instead of its few bars
+    // stretching to fill the same width as a year with many more.
+    const maxSlots = d3.max(years, (yr) => byYear.get(yr).length) || 1;
+    years.forEach((year, i) => {
+      const sorted = byYear.get(year).slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      const wrap = document.createElement('div');
+      wrap.style.position = 'relative';
+      if (i > 0) wrap.style.marginTop = '16px';
+      const label = document.createElement('div');
+      label.textContent = year;
+      label.style.cssText = 'font-size:0.78rem; color:var(--fg-muted); margin-bottom:4px; font-weight:600;';
+      wrap.appendChild(label);
+      const el = document.createElement('div');
+      el.className = 'lx-chart-box';
+      wrap.appendChild(el);
+      container.appendChild(wrap);
+
+      const width = el.clientWidth || 600;
+      const height = 48;
+      const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+      const slots = d3.range(maxSlots);
+      const x = d3.scaleBand().domain(slots).range([0, width]).paddingInner(0.15);
+      const bw = Math.max(1, x.bandwidth());
+      const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+      svg.selectAll('rect').data(slots).join('rect')
+        .attr('x', (idx) => x(idx)).attr('y', 4).attr('width', bw).attr('height', height - 8)
+        .attr('rx', Math.min(2, bw / 2))
+        .attr('fill', (idx) => idx < sorted.length ? sessionColor(toNum(sorted[idx].questions_published_pct)) : 'var(--border)')
+        .on('mousemove', function (ev, idx) {
+          const r = sorted[idx];
+          const rect = el.getBoundingClientRect();
+          tip.style('opacity', 1)
+            .style('left', (ev.clientX - rect.left + 10) + 'px')
+            .style('top', (ev.clientY - rect.top - 10) + 'px')
+            .html(r
+              ? `<b>${r.session_id}</b> &middot; ${r.date}<br>${r.quizmaster || '—'} &middot; ${r.question_count} questions<br>published ${fmtPct(toNum(r.questions_published_pct))} &middot; theme ${toBool(r.theme_present) ? 'yes' : 'no'} &middot; image ${toBool(r.image_present) ? 'yes' : 'no'} &middot; scores ${toBool(r.scores_present) ? 'yes' : 'no'}`
+              : `<b>${year}</b><br>no session in this slot`);
+        })
+        .on('mouseleave', () => tip.style('opacity', 0));
+      el.appendChild(svg.node());
+    });
+  }
+
+  function sessionBucket(pct) {
+    if (pct >= 100) return 'ok';
+    if (pct >= 50) return 'warn';
+    return 'bad';
+  }
+  const SESSION_BUCKET_COLOR = { bad: 'var(--bad)', warn: 'var(--warn)', ok: 'var(--ok)' };
+
+  function drawSessionMonthly(rows) {
+    const el = document.getElementById('lx-session-monthly');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byMonth = new Map();
+    for (const r of rows) {
+      const key = String(r.date).slice(0, 7);
+      if (!byMonth.has(key)) byMonth.set(key, { month: key, bad: 0, warn: 0, ok: 0 });
+      byMonth.get(key)[sessionBucket(toNum(r.questions_published_pct))]++;
+    }
+    const months = Array.from(byMonth.values()).sort((a, b) => a.month.localeCompare(b.month));
+    const buckets = ['bad', 'warn', 'ok'];
+    const width = el.clientWidth || 600, height = 140;
+    const margin = { top: 6, right: 8, bottom: 20, left: 32 };
+    const x = d3.scaleBand().domain(months.map((m) => m.month)).range([margin.left, width - margin.right]).paddingInner(0.25);
+    const maxN = d3.max(months, (m) => m.bad + m.warn + m.ok) || 1;
+    const y = d3.scaleLinear().domain([0, maxN]).range([height - margin.bottom, margin.top]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(3))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g2) => g2.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g2) => g2.selectAll('line,path').attr('stroke', 'var(--border)'));
+    // Width-aware, not just count-based: guarantees labels never crowd even on
+    // a narrow phone screen or a browser whose font metrics differ from ours
+    // (seen overlapping in WhatsApp's in-app browser at count-only thinning).
+    const minLabelPx = 42;
+    const maxLabels = Math.max(1, Math.floor((width - margin.left - margin.right) / minLabelPx));
+    const monthTickEvery = Math.max(1, Math.ceil(months.length / maxLabels));
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+      .selectAll('text').data(months.filter((_, i) => i % monthTickEvery === 0))
+      .join('text')
+      .attr('x', (m) => x(m.month) + x.bandwidth() / 2)
+      .attr('y', 13)
+      .attr('text-anchor', 'middle')
+      .attr('fill', 'var(--fg-muted)')
+      .style('font-size', '0.72rem')
+      .text((m) => d3.utcFormat('%b ’%y')(new Date(m.month + '-01T00:00:00Z')));
+    const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+    const bars = svg.selectAll('g.lx-month-col').data(months).join('g').attr('class', 'lx-month-col');
+    bars.each(function (m) {
+      let yCursor = height - margin.bottom;
+      const g2 = d3.select(this);
+      buckets.forEach((b) => {
+        const v = m[b];
+        if (!v) return;
+        const barH = (height - margin.bottom - margin.top) * (v / maxN);
+        yCursor -= barH;
+        g2.append('rect')
+          .attr('x', x(m.month)).attr('width', x.bandwidth())
+          .attr('y', yCursor).attr('height', barH)
+          .attr('fill', SESSION_BUCKET_COLOR[b]);
+      });
+    });
+    bars.on('mousemove', function (ev, m) {
+      const rect = el.getBoundingClientRect();
+      tip.style('opacity', 1)
+        .style('left', (ev.clientX - rect.left + 10) + 'px')
+        .style('top', (ev.clientY - rect.top - 10) + 'px')
+        .html(`<b>${d3.utcFormat('%B %Y')(new Date(m.month + '-01T00:00:00Z'))}</b><br>100% ${m.ok} &middot; 50-99% ${m.warn} &middot; &lt;50% ${m.bad}`);
+    }).on('mouseleave', () => tip.style('opacity', 0));
+    el.appendChild(svg.node());
+  }
+
+  function drawDateQuality(rows) {
+    const el = document.getElementById('lx-date-quality');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    const extractedRows = (rows || []).filter((r) => toBool(r.extracted));
+    if (!extractedRows.length) { el.innerHTML = '<div class="lx-note">No extracted days yet.</div>'; return; }
+    const days = extractedRows.map((r) => ({ date: parseDay(r.date), value: toNum(r.low_conf_pct) }))
+      .sort((a, b) => a.date - b.date);
+    drawQualityLine(el, days, 'day');
+  }
+
+  function drawQualityLine(el, points, grain) {
+    const width = el.clientWidth || 600, height = 140;
+    const margin = { top: 10, right: 8, bottom: 20, left: 36 };
+    const x = d3.scaleUtc().domain(d3.extent(points, (p) => p.date)).range([margin.left, width - margin.right]);
+    const maxV = Math.max(10, d3.max(points, (p) => p.value) || 0);
+    const y = d3.scaleLinear().domain([0, maxV]).range([height - margin.bottom, margin.top]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y).ticks(3).tickFormat((v) => v + '%'))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g2) => g2.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g2) => g2.selectAll('line,path').attr('stroke', 'var(--border)'));
+    const tickCount = Math.max(3, Math.min(6, Math.floor((width - margin.left - margin.right) / 90)));
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(x).ticks(tickCount).tickFormat(d3.utcFormat('%b %-d')))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g2) => g2.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g2) => g2.selectAll('line,path').attr('stroke', 'var(--border)'));
+    const area = d3.area().x((p) => x(p.date)).y0(height - margin.bottom).y1((p) => y(p.value));
+    svg.append('path').datum(points).attr('d', area).attr('fill', 'var(--bad)').attr('opacity', 0.15);
+    const line = d3.line().x((p) => x(p.date)).y((p) => y(p.value));
+    svg.append('path').datum(points).attr('d', line).attr('fill', 'none').attr('stroke', 'var(--bad)').attr('stroke-width', 1.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+    const hoverDot = svg.append('circle').attr('r', 3.5).attr('fill', 'var(--bad)').style('opacity', 0);
+    const bisect = d3.bisector((p) => p.date).left;
+    const overlay = svg.append('rect').attr('x', margin.left).attr('y', margin.top)
+      .attr('width', Math.max(0, width - margin.left - margin.right)).attr('height', height - margin.top - margin.bottom)
+      .attr('fill', 'transparent');
+    overlay.on('mousemove', function (ev) {
+      const [mx] = d3.pointer(ev, this);
+      const d = x.invert(mx);
+      const i = Math.min(points.length - 1, Math.max(0, bisect(points, d)));
+      const p = points[i];
+      hoverDot.style('opacity', 1).attr('cx', x(p.date)).attr('cy', y(p.value));
+      const rect = el.getBoundingClientRect();
+      const label = grain === 'day' ? d3.utcFormat('%b %-d, %Y')(p.date) : d3.utcFormat('%B %Y')(p.date);
+      tip.style('opacity', 1).style('left', (ev.clientX - rect.left + 10) + 'px').style('top', (ev.clientY - rect.top - 10) + 'px')
+        .html(`<b>${label}</b><br>low-confidence ${p.value.toFixed(1)}%`);
+    }).on('mouseleave', () => { tip.style('opacity', 0); hoverDot.style('opacity', 0); });
+    el.appendChild(svg.node());
+  }
+
+  function drawSessionQuality(rows) {
+    const el = document.getElementById('lx-session-quality');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byDay = new Map();
+    for (const r of rows) {
+      const key = String(r.date);
+      if (!byDay.has(key)) byDay.set(key, { date: key, sum: 0, n: 0 });
+      const m = byDay.get(key);
+      m.sum += toNum(r.low_conf_pct);
+      m.n += 1;
+    }
+    const days = Array.from(byDay.values()).map((m) => ({ date: parseDay(m.date), value: m.n ? m.sum / m.n : 0 }))
+      .sort((a, b) => a.date - b.date);
+    drawQualityLine(el, days, 'day');
+  }
+
+  function drawTrend(rows) {
+    const el = document.getElementById('lx-trend');
+    el.classList.remove('dash-skeleton');
+    el.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const trendRows = rows.map((r) => ({
+      date: parseDay(r.date), extracted: toBool(r.extracted),
+      media: toNum(r.media_pct), topic: toNum(r.topic_pct), tags: toNum(r.tags_pct),
+      count: toNum(r.question_count),
+    }));
+    const extractedRows = trendRows.filter((r) => r.extracted);
+    if (!extractedRows.length) { el.innerHTML = '<div class="lx-note">No extracted days yet.</div>'; return; }
+    const isCount = trendMetric === 'count';
+    const width = el.clientWidth || 600, height = 200;
+    const margin = { top: 10, right: 72, bottom: 24, left: 44 };
+    const x = d3.scaleUtc().domain(d3.extent(trendRows, (r) => r.date)).range([margin.left, width - margin.right]);
+    const y = d3.scaleLinear().domain([0, 100]).range([height - margin.bottom, margin.top]);
+    const maxCount = d3.max(extractedRows, (r) => r.count) || 1;
+    const volumeBandTop = margin.top + (height - margin.top - margin.bottom) * 0.65;
+    const yCount = d3.scaleLinear().domain([0, maxCount]).range([height - margin.bottom, isCount ? margin.top : volumeBandTop]);
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+    const tickCount = Math.max(3, Math.min(6, Math.floor((width - margin.left - margin.right) / 90)));
+    const countArea = d3.area().defined((r) => r.extracted).x((r) => x(r.date)).y0(height - margin.bottom).y1((r) => yCount(r.count));
+    svg.append('path').datum(trendRows).attr('d', countArea)
+      .attr('fill', isCount ? COLORS[3] : 'var(--fg-muted)').attr('opacity', isCount ? 0.5 : 0.18);
+    if (isCount) {
+      const countLine = d3.line().defined((r) => r.extracted).x((r) => x(r.date)).y((r) => yCount(r.count));
+      svg.append('path').datum(trendRows).attr('d', countLine).attr('fill', 'none').attr('stroke', COLORS[3]).attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    } else {
+      svg.append('text').attr('x', margin.left + 2).attr('y', volumeBandTop - 4)
+        .attr('fill', 'var(--fg-muted)').style('font-size', '0.68rem')
+        .text(`Questions extracted per day (0–${d3.format(',')(maxCount)})`);
+    }
+    svg.append('g').attr('transform', `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(x).ticks(tickCount).tickFormat(d3.utcFormat('%b %-d')))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g) => g.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g) => g.selectAll('line,path').attr('stroke', 'var(--border)'))
+      .call((g) => { const last = g.selectAll('.tick').nodes().at(-1); if (last) d3.select(last).select('text').attr('text-anchor', 'end'); });
+    svg.append('g').attr('transform', `translate(${margin.left},0)`)
+      .call(isCount ? d3.axisLeft(yCount).ticks(4).tickFormat(d3.format(',')) : d3.axisLeft(y).ticks(4).tickFormat((v) => v + '%'))
+      .attr('font-size', null).attr('font-family', null)
+      .call((g) => g.selectAll('text').attr('fill', 'var(--fg-muted)').style('font-size', '0.72rem'))
+      .call((g) => g.selectAll('line,path').attr('stroke', 'var(--border)'));
+    const allSeries = [
+      { key: 'media', color: COLORS[0], label: 'Media' },
+      { key: 'topic', color: COLORS[1], label: 'Topic' },
+      { key: 'tags', color: COLORS[2], label: 'Tags' },
+    ];
+    const series = isCount ? [] : (trendMetric === 'all' ? allSeries : allSeries.filter((s) => s.key === trendMetric));
+    const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+    const last = extractedRows[extractedRows.length - 1];
+    const lastX = x(last.date);
+    const labelPlans = series.map((s) => ({ s, y: y(last[s.key]) }));
+    labelPlans.sort((a, b) => a.y - b.y);
+    const minGap = 12;
+    for (let i = 1; i < labelPlans.length; i++) {
+      if (labelPlans[i].y - labelPlans[i - 1].y < minGap) labelPlans[i].y = labelPlans[i - 1].y + minGap;
+    }
+    const maxY = height - margin.bottom - 2, minY = margin.top + 8;
+    for (let i = labelPlans.length - 1; i >= 0; i--) {
+      if (labelPlans[i].y > maxY) labelPlans[i].y = maxY - (labelPlans.length - 1 - i) * minGap;
+    }
+    labelPlans.forEach((p) => { if (p.y < minY) p.y = minY; });
+    series.forEach((s) => {
+      const line = d3.line().defined((r) => r.extracted).x((r) => x(r.date)).y((r) => y(r[s.key]));
+      svg.append('path').datum(trendRows).attr('d', line).attr('fill', 'none').attr('stroke', s.color).attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    });
+    labelPlans.forEach(({ s, y: ly }) => {
+      svg.append('circle').attr('cx', lastX).attr('cy', y(last[s.key])).attr('r', 2.5).attr('fill', s.color);
+      svg.append('text').attr('x', Math.min(lastX + 6, width - margin.right + 4)).attr('y', ly).attr('text-anchor', 'start').attr('fill', s.color)
+        .style('font-size', '0.72rem')
+        .text(`${s.label} ${last[s.key].toFixed(0)}%`);
+    });
+    if (isCount) {
+      svg.append('circle').attr('cx', lastX).attr('cy', yCount(last.count)).attr('r', 2.5).attr('fill', COLORS[3]);
+      svg.append('text').attr('x', Math.min(lastX + 6, width - margin.right + 4)).attr('y', yCount(last.count)).attr('text-anchor', 'start').attr('fill', COLORS[3])
+        .style('font-size', '0.72rem')
+        .text(`${d3.format(',')(last.count)} questions`);
+    }
+    const overlay = svg.append('rect').attr('x', margin.left).attr('y', margin.top).attr('width', Math.max(0, width - margin.left - margin.right)).attr('height', height - margin.top - margin.bottom).attr('fill', 'transparent');
+    const bisect = d3.bisector((r) => r.date).left;
+    overlay.on('mousemove', function (ev) {
+      const [mx] = d3.pointer(ev, this);
+      const date = x.invert(mx);
+      const i = Math.min(trendRows.length - 1, Math.max(0, bisect(trendRows, date)));
+      const r = trendRows[i];
+      const rect = el.getBoundingClientRect();
+      tip.style('opacity', 1).style('left', (ev.clientX - rect.left + 10) + 'px').style('top', (ev.clientY - rect.top - 10) + 'px')
+        .html(r.extracted
+          ? `<b>${d3.utcFormat('%b %-d, %Y')(r.date)}</b><br>${r.count} questions<br>Media ${r.media.toFixed(1)}%<br>Topic ${r.topic.toFixed(1)}%<br>Tags ${r.tags.toFixed(1)}%`
+          : `<b>${d3.utcFormat('%b %-d, %Y')(r.date)}</b><br>not extracted yet`);
+    }).on('mouseleave', () => tip.style('opacity', 0));
+    el.appendChild(svg.node());
+  }
+
+  Promise.all([
+    d3.csv('/data/backlog_tracking.csv'),
+    d3.csv('/data/session_backlog.csv'),
+  ]).then(([dateRows, sessionRows]) => {
+    lastDateRows = dateRows;
+    const ds = computeDateSummary(dateRows);
+    fillTile('total', ds.total, (v) => d3.format(',')(v));
+    fillTile('extracted', ds.extracted, (v) => d3.format(',')(v));
+    document.querySelector('[data-tile="pctExtracted"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="pctExtracted"]').textContent = fmtPct(ds.pctExtracted) + ' of days';
+    fillTile('published', ds.published, (v) => d3.format(',')(v));
+    document.querySelector('[data-tile="pctPublished"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="pctPublished"]').textContent = fmtPct(ds.pctPublished) + ' of days';
+    fillTile('sourceMissing', ds.sourceMissing, (v) => d3.format(',')(v));
+    colorTile('sourceMissing', 'bad');
+    fillTile('needsTags', ds.needsTags, (v) => d3.format(',')(v));
+    colorTile('needsTags', 'warn');
+    fillTile('avgMedia', ds.avgMedia, fmtPct);
+    document.querySelector('[data-tile="needsMedia"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="needsMedia"]').textContent = `${d3.format(',')(ds.needsMedia)} days still need media`;
+    colorTile('avgMedia', ds.avgMedia >= 95 ? 'ok' : ds.avgMedia >= 50 ? 'warn' : 'bad');
+    fillTile('avgLowConf', ds.avgLowConf, fmtPct);
+    colorTile('avgLowConf', ds.avgLowConf <= 5 ? 'ok' : ds.avgLowConf <= 15 ? 'warn' : 'bad');
+    colorTile('published', 'ok');
+
+    const ss = computeSessionSummary(sessionRows);
+    fillTile('s_total', ss.total, (v) => d3.format(',')(v));
+    fillTile('s_fullyPublished', ss.fullyPublished, (v) => d3.format(',')(v));
+    colorTile('s_fullyPublished', 'ok');
+    document.querySelector('[data-tile="s_pctFullyPublished"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="s_pctFullyPublished"]').textContent = fmtPct(ss.pctFullyPublished) + ' of sessions';
+    fillTile('s_theme', ss.theme, (v) => d3.format(',')(v));
+    document.querySelector('[data-tile="s_pctTheme"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="s_pctTheme"]').textContent = fmtPct(ss.pctTheme) + ' of sessions';
+    fillTile('s_image', ss.image, (v) => d3.format(',')(v));
+    document.querySelector('[data-tile="s_pctImage"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="s_pctImage"]').textContent = fmtPct(ss.pctImage) + ' of sessions';
+    fillTile('s_scores', ss.scores, (v) => d3.format(',')(v));
+    document.querySelector('[data-tile="s_pctScores"]').classList.remove('dash-skeleton');
+    document.querySelector('[data-tile="s_pctScores"]').textContent = fmtPct(ss.pctScores) + ' of sessions';
+    fillTile('s_avgLowConf', ss.avgLowConf, fmtPct);
+    colorTile('s_avgLowConf', ss.avgLowConf <= 5 ? 'ok' : ss.avgLowConf <= 15 ? 'warn' : 'bad');
+
+    renderDateTable(dateRows);
+    renderSessionTable(sessionRows);
+
+    document.querySelectorAll('.lx-tab').forEach((btn) => btn.addEventListener('click', () => showTab(btn.dataset.tab, dateRows, sessionRows)));
+    window.addEventListener('hashchange', () => {
+      const id = location.hash.slice(1);
+      if (document.getElementById(id)) showTab(id, dateRows, sessionRows);
+    });
+    showTab(document.getElementById(location.hash.slice(1)) ? location.hash.slice(1) : 'tab-dates', dateRows, sessionRows);
+  }).catch((err) => {
+    document.getElementById('lx-takeaway').textContent = 'Failed to load backlog data: ' + err.message;
+  });
+})();
+</script>
+</body>
+</html>

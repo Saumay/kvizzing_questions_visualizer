@@ -463,6 +463,7 @@
     { href: '/highlights', label: 'Highlights' },
     { href: '/decks', label: 'Live Sessions' },
     { href: '/duplicate-check', label: 'Check Duplicates' },
+    { href: '/extraction-status/', label: 'Publish backlog' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {
@@ -641,11 +642,13 @@
           {#each navLinks as link}
             <a
               href={link.href}
-              class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {isActive(link.href, $page.url.pathname)
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener' : undefined}
+              class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {!link.external && isActive(link.href, $page.url.pathname)
                 ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-700'}"
             >
-              {link.label}
+              {link.label}{link.external ? ' ↗' : ''}
             </a>
           {/each}
         </div>
@@ -896,12 +899,14 @@
         {#each navLinks as link}
           <a
             href={link.href}
-            class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors {isActive(link.href, $page.url.pathname)
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener' : undefined}
+            class="block px-3 py-2 rounded-lg text-sm font-medium transition-colors {!link.external && isActive(link.href, $page.url.pathname)
               ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
               : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'}"
             onclick={() => mobileMenuOpen = false}
           >
-            {link.label}
+            {link.label}{link.external ? ' ↗' : ''}
           </a>
         {/each}
         <a
@@ -1112,7 +1117,7 @@
                   <div class="divide-y divide-stone-100 dark:divide-zinc-700/80">
                     {#each sidebarQuestions.slice(0, 8) as question}
                       <a href="/question/{question.id}" class="relative overflow-hidden flex items-center gap-3 px-4 py-2.5 transition-colors group">
-                        <div class="absolute inset-0" style="background-image: url('/images/connect-quiz-bg-old.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"></div>
+                        <div class="absolute inset-0" style="background-image: url('/images/connect-quiz-bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"></div>
                         <span class="relative text-[10px] text-gray-600 dark:text-gray-400 flex-shrink-0 w-20">{ordinalDate(question.question?.timestamp ? dateInTz(question.question.timestamp, tz.value) : question.date)}</span>
                         <div class="relative min-w-0 flex-1 text-right">
                           <p class="text-xs font-semibold text-primary-700 dark:text-primary-200 truncate">{question.question.text}</p>
@@ -1142,7 +1147,7 @@
                         <div class="absolute inset-0 bg-white/38 dark:bg-gray-900/38 pointer-events-none"></div>
                         <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                         <div class="relative min-w-0 flex-1 text-right">
-                          <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate">{session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}</p>
+                          <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate">{session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}</p>
                           <p class="text-xs text-gray-800 dark:text-gray-200 truncate">{session.quizmaster} · {session.question_count} questions</p>
                         </div>
                       </a>
@@ -1191,7 +1196,7 @@
                         >
                           <div
                             class="question-bg absolute inset-0 transition-opacity"
-                            style="background-image: url('/images/connect-quiz-bg-old.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"
+                            style="background-image: url('/images/connect-quiz-bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"
                           ></div>
                           <span class="relative text-[10px] text-gray-600 dark:text-gray-400 flex-shrink-0 w-20 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{ordinalDate(question.question?.timestamp ? dateInTz(question.question.timestamp, tz.value) : question.date)}</span>
                           <div class="relative min-w-0 flex-1 text-right">
@@ -1235,7 +1240,7 @@
                           <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                           <div class="relative min-w-0 flex-1 text-right">
                             <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate group-hover:text-primary-900 dark:group-hover:text-primary-100 transition-colors">
-                              {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)}
+                              {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}
                             </p>
                             <p class="text-xs text-gray-800 dark:text-gray-200 truncate group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{session.quizmaster} · {session.question_count} questions</p>
                           </div>
@@ -1255,14 +1260,11 @@
     <!-- Footer -->
     <footer class="mt-auto pt-8 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto px-6 py-4 rounded-t-2xl bg-gradient-to-br from-primary-300 to-primary-900 text-white text-center">
-        <p class="text-sm font-medium tracking-wide">Apes together strong 🦍</p>
-        <div class="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 mt-1.5 text-xs text-primary-100">
+        <div class="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-primary-100">
           <a href="https://github.com/Saumay/kvizzing_questions_visualizer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 hover:text-white transition-colors whitespace-nowrap">
             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             Contribute on GitHub
           </a>
-          <span class="text-primary-300">·</span>
-          <span class="whitespace-nowrap">Built with <span class="text-primary-300">&#9829;</span> by <a href="https://github.com/Saumay" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Saumay</a></span>
         </div>
       </div>
     </footer>

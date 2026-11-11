@@ -75,6 +75,8 @@ export interface Session {
   id: string;
   quizmaster: string;
   theme: string | null;
+  /** One-line topic-derived description (e.g. "A mix of cinema and history questions"), shown when there's no explicit theme. "Connect quiz" for quiz_type 'connect'. */
+  summary?: string | null;
   date: string;
   question_count: number;
   avg_time_to_answer_seconds: number | null;

@@ -17,6 +17,49 @@
   to = "/200.html"
   status = 200
 
+# No longer prerendered (were baking the full question dataset into every
+# page's HTML) — now served via the SPA shell, same as question/session/member.
+[[redirects]]
+  from = "/"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/sessions"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/highlights"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/decks"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/review"
+  to = "/200.html"
+  status = 200
+
+[[redirects]]
+  from = "/duplicate-check"
+  to = "/200.html"
+  status = 200
+
+# Backward-compat: dashboard moved from /backlog/ to /extraction-status/.
+[[redirects]]
+  from = "/backlog/*"
+  to = "/extraction-status/:splat"
+  status = 301
+
 [[redirects]]
   from = "/*"
   to = "/404.html"

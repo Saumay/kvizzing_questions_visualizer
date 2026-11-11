@@ -1,7 +1,7 @@
-export async function load({ fetch }) {
-  const [index, questions, autoSuggestionsRaw, chatUrls] = await Promise.all([
+export async function load({ fetch, parent }) {
+  const [{ questions }, index, autoSuggestionsRaw, chatUrls] = await Promise.all([
+    parent(),
     fetch('/data/rejected_index.json').then(r => r.ok ? r.json() : []).catch(() => []),
-    fetch('/data/questions.json').then(r => r.ok ? r.json() : []).catch(() => []),
     fetch('/data/auto_review_suggestions.json').then(r => r.ok ? r.json() : null).catch(() => null),
     // date -> full-chat-blob URL on R2, written by `pipeline.py upload-chat`.
     // Tiny (one line per reviewed date) — safe to fetch eagerly.

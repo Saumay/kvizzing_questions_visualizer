@@ -154,7 +154,7 @@
 </script>
 
 <svelte:head>
-  <title>{isConnect && !connectRevealed ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? `${session.quizmaster}'s Quiz`)} — KVizzing</title>
+  <title>{isConnect && !connectRevealed ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)} — KVizzing</title>
 </svelte:head>
 
 <div class="space-y-6">
@@ -189,13 +189,18 @@
         {#if isConnect && !connectRevealed}
           {session.quizmaster}'s Connect Quiz
         {:else}
-          {session.theme ?? `${session.quizmaster}'s Quiz`}
+          {session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`}
         {/if}
       </h1>
       <div class="flex items-center justify-between">
-        <p class="text-primary-100 text-sm">
-          Hosted by {session.quizmaster} · {formatDateTz(sessionQuestions[0]?.question?.timestamp ?? session.date, tzCtx?.value ?? 'Europe/London')}
-        </p>
+        <div>
+          <p class="text-primary-100 text-sm">
+            Hosted by {session.quizmaster} · {formatDateTz(sessionQuestions[0]?.question?.timestamp ?? session.date, tzCtx?.value ?? 'Europe/London')}
+          </p>
+          {#if session.theme && session.summary}
+            <p class="text-primary-200 text-xs mt-0.5">{session.summary}</p>
+          {/if}
+        </div>
         <button
           onclick={toggleSessionSave}
           class="flex-shrink-0 p-1.5 rounded-lg transition-colors {sessionSaved ? 'text-white bg-white/20' : 'text-primary-200 hover:text-white hover:bg-white/10'}"
@@ -428,7 +433,7 @@
         </svg>
         <div class="min-w-0">
           <p class="text-xs text-gray-400 dark:text-gray-500">Older</p>
-          <p class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 truncate">{adj.next.quiz_type === 'connect' ? `${adj.next.quizmaster}'s Connect Quiz` : (adj.next.theme ?? `${adj.next.quizmaster}'s Quiz`)}</p>
+          <p class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 truncate">{adj.next.quiz_type === 'connect' ? `${adj.next.quizmaster}'s Connect Quiz` : (adj.next.theme ?? adj.next.summary ?? `${adj.next.quizmaster}'s Quiz`)}</p>
         </div>
       </a>
     {:else}
@@ -439,7 +444,7 @@
       <a href="/session/{adj.prev.id}" class="flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group text-right max-w-[45%]">
         <div class="min-w-0">
           <p class="text-xs text-gray-400 dark:text-gray-500">Newer</p>
-          <p class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 truncate">{adj.prev.quiz_type === 'connect' ? `${adj.prev.quizmaster}'s Connect Quiz` : (adj.prev.theme ?? `${adj.prev.quizmaster}'s Quiz`)}</p>
+          <p class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 truncate">{adj.prev.quiz_type === 'connect' ? `${adj.prev.quizmaster}'s Connect Quiz` : (adj.prev.theme ?? adj.prev.summary ?? `${adj.prev.quizmaster}'s Quiz`)}</p>
         </div>
         <svg class="w-4 h-4 flex-shrink-0 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
