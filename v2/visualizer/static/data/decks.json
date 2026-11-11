@@ -488,6 +488,14 @@
           "date_approx": true,
           "files": [
             {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1NzGazxbGwfujEd1BD9r4-EpkHMmanbtc/view?usp=drivesdk",
+              "size_bytes": 15489555
+            },
+            {
               "label": "Recording",
               "rel_path": null,
               "format": "recording",
@@ -505,12 +513,207 @@
           "date_approx": true,
           "files": [
             {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1gJJ3bjBAgMbsUf2uTzn4QkMZhP4QxnDK/view?usp=drivesdk",
+              "size_bytes": 6012005
+            },
+            {
               "label": "Recording",
               "rel_path": null,
               "format": "recording",
               "r2_key": null,
               "url": "https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH&cid=46AC280CA35DB7D4&sb=name&sd=1&id=46AC280CA35DB7D4%21sd620c3671cc34f0ebed4c13b407fae31&parId=46AC280CA35DB7D4%21s6d8f464aaf7d4071b7d2d13b80b34aca&o=OneUp",
               "size_bytes": 0
+            }
+          ]
+        },
+        {
+          "round": 22,
+          "title": "A New Champion",
+          "host": "Khandoba",
+          "date": "2026-07-26",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1s3xqkqCFQFq2dUaKZgVUQcDPSjFk1uGX/view?usp=drivesdk",
+              "size_bytes": 4254885
+            }
+          ]
+        },
+        {
+          "round": 23,
+          "title": "Top 10 on 10",
+          "host": null,
+          "date": "2026-08-01",
+          "date_approx": false,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1BLUL_CoW9DHfhQivkjvFiQLymDf678uM/view?usp=drivesdk",
+              "size_bytes": 8868701
+            }
+          ]
+        },
+        {
+          "round": 24,
+          "title": "Straight Outta 'Nam",
+          "host": "Namrata",
+          "date": "2026-08-16",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1M12JT_5zOg8ynU-utXYYGEFH4Ij-4goP/view?usp=drivesdk",
+              "size_bytes": 7472148
+            }
+          ]
+        },
+        {
+          "round": 25,
+          "title": "It's all 25",
+          "host": "Sid K",
+          "date": "2026-08-29",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1lwRhmw3IQ0WanRpaVT1NQu9fcaOURV13/view?usp=drivesdk",
+              "size_bytes": 3787278
+            }
+          ]
+        },
+        {
+          "round": 26,
+          "title": "Gauntlet 26",
+          "host": "Apratim",
+          "date": "2026-09-12",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/15XUlX1X7KBAvPl701sXl7_kpMP0IIm2d/view?usp=drivesdk",
+              "size_bytes": 1126035
+            }
+          ]
+        },
+        {
+          "round": 27,
+          "title": "Straight Outta 'Nam",
+          "host": null,
+          "date": "2026-09-20",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1b9IbToVKFa7F9EYmrEOepnwQn_0sAZeZ/view?usp=drivesdk",
+              "size_bytes": 4449585
+            }
+          ]
+        },
+        {
+          "round": 28,
+          "title": "Battle of the QMs",
+          "host": "Pranshu",
+          "date": "2026-10-12",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1rku0THrcv_ZiNRt1ygTNQzblCm3bwTOx/view?usp=drivesdk",
+              "size_bytes": 80781390
+            }
+          ]
+        },
+        {
+          "round": 29,
+          "title": "KP extends his streak",
+          "host": "Pavan",
+          "date": "2026-10-04",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1tfm6PukfWPBBZ9L70SrsaqBLeSeHxktp/view?usp=drivesdk",
+              "size_bytes": 3951085
+            }
+          ]
+        },
+        {
+          "round": 30,
+          "title": "Gauntlet XXX",
+          "host": "Sal",
+          "date": "2026-10-26",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Source (PPTX)",
+              "rel_path": null,
+              "format": "pptx",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1ka5KRU2loiJ4QXMWnZVOcAPJtCKAmiDf/view?usp=drivesdk",
+              "size_bytes": 24898778
+            }
+          ]
+        },
+        {
+          "round": 31,
+          "title": "Gauntlet 31",
+          "host": "Aditi",
+          "date": "2026-10-26",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1VtHVNSiEsfV2awXrgOvgzinPYvon8EHi/view?usp=drivesdk",
+              "size_bytes": 33855974
+            }
+          ]
+        },
+        {
+          "round": 32,
+          "title": "Gauntlet 32",
+          "host": "Khandoba",
+          "date": "2026-11-01",
+          "date_approx": true,
+          "files": [
+            {
+              "label": "Slides (PDF)",
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/19HCd72pP9I4ztcd3hlC-UBlB5EcC5h-f/view?usp=drivesdk",
+              "size_bytes": 2746115
             }
           ]
         }
@@ -719,6 +922,74 @@
               "r2_key": null,
               "url": "https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH&cid=46AC280CA35DB7D4&sb=name&sd=1&id=46AC280CA35DB7D4%21se300ab84a5264789b4d26fd6b575bfc3&parId=46AC280CA35DB7D4%21s0a08c773aa2d4b68934cd1eb33204c5b&o=OneUp",
               "size_bytes": 0
+            }
+          ]
+        },
+        {
+          "round": 4,
+          "title": "Quarter-final 4",
+          "host": "Bijal Bhatt",
+          "date": "2026-07-25",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1K5nsl_O6wTtAVH--hgPOipij2uBCgllf/view?usp=drivesdk",
+              "size_bytes": 2248699
+            }
+          ]
+        },
+        {
+          "round": 5,
+          "title": "Semi-final 1",
+          "host": "Bijal Bhatt",
+          "date": "2026-08-03",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1k-CWjfKcLHvX-iNg_3nyXeb-7N1kFrKR/view?usp=drivesdk",
+              "size_bytes": 3038861
+            }
+          ]
+        },
+        {
+          "round": 6,
+          "title": "Semi-final 2",
+          "host": "Bijal Bhatt",
+          "date": "2026-08-14",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1nHBKu6jj7NOigABqM2HHSXDekmZfJ4Gi/view?usp=drivesdk",
+              "size_bytes": 4529623
+            }
+          ]
+        },
+        {
+          "round": 7,
+          "title": "Final",
+          "host": "Bijal Bhatt",
+          "date": "2026-08-31",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1MoEsnoB_jUa1m6ijtTR4bfgggOKBS1Z9/view?usp=drivesdk",
+              "size_bytes": 4731342
             }
           ]
         }
@@ -1389,6 +1660,108 @@
           "r2_key": null,
           "url": "https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH&cid=46AC280CA35DB7D4&sb=name&sd=1&id=46AC280CA35DB7D4%21s74d528edee744e53a91a0cec70926d9d&parId=46AC280CA35DB7D4%21s92d557dcb2824d30acdc47a60b1af74a&o=OneUp",
           "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "retro-bollywood-sameer",
+      "title": "Retro Bollywood Quiz: Jimmy, Aaja!",
+      "host": "Sameer",
+      "date": "2026-10-20",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1AblleWaxcumnKCQw_PHZ2XEz7-gUTFWN/view?usp=drivesdk",
+          "size_bytes": 2204212
+        }
+      ]
+    },
+    {
+      "id": "general-quiz-smit-sep-2026",
+      "title": "General Quiz (Sep 2026)",
+      "host": "Smit",
+      "date": "2026-09-12",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1MzTxpXTRtxrTA9KoB5sZ7zxOX9HLyIk5/view?usp=drivesdk",
+          "size_bytes": 5883228
+        }
+      ]
+    },
+    {
+      "id": "long-connect-gautam",
+      "title": "Long Connect Quiz",
+      "host": "Gautam",
+      "date": "2026-08-09",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1mjKM6wSEkrQ5mJoURF2jc-hU8lUmgz4q/view?usp=drivesdk",
+          "size_bytes": 3492873
+        }
+      ]
+    },
+    {
+      "id": "random-quiz-namrata-aug-2026",
+      "title": "Random Quiz",
+      "host": "Namrata",
+      "date": "2026-08-20",
+      "date_approx": false,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1Z2_xoCActYdsmf83f1kaDI7SU0eX52Va/view?usp=drivesdk",
+          "size_bytes": 4323608
+        }
+      ]
+    },
+    {
+      "id": "india-independence-qotd-shreya",
+      "title": "India's Struggle for Independence QOTD",
+      "host": "Shreya",
+      "date": "2026-08-16",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1wrmT1ZqeG7RHUilmBNllv5xigbrMDGPu/view?usp=drivesdk",
+          "size_bytes": 741986
+        }
+      ]
+    },
+    {
+      "id": "india-quiz-smit-jul-2026",
+      "title": "India Quiz",
+      "host": "Smit",
+      "date": "2026-07-26",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1Hzqa3oBehaOyxCBTJvWoE257R0NRY4I1/view?usp=drivesdk",
+          "size_bytes": 5157729
         }
       ]
     }

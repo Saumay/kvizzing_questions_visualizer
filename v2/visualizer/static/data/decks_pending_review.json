@@ -1,0 +1,47 @@
+[
+  {
+    "source": "drive",
+    "id": "1XaELZikRaMpDGzxpRYh_WyLgYx17X7YT",
+    "name": "260504_May_The_4th_quiz_2026.pdf",
+    "url": "https://drive.google.com/file/d/1XaELZikRaMpDGzxpRYh_WyLgYx17X7YT/view?usp=drivesdk",
+    "size_bytes": 2622414,
+    "discovered_at": "2026-11-11",
+    "reason": "Same size as already catalogued May_The_4th_quiz_2026.pdf (may-the-4th standalone); likely a renamed duplicate."
+  },
+  {
+    "source": "drive",
+    "id": "1DzQKDBLYHXANik2tjmRkmUiyngPPiH-2",
+    "name": "May the 4th/May_The_4th_quiz_2026.pdf",
+    "url": "https://drive.google.com/file/d/1DzQKDBLYHXANik2tjmRkmUiyngPPiH-2/view?usp=drivesdk",
+    "size_bytes": 2622414,
+    "discovered_at": "2026-11-11",
+    "reason": "Matches existing may-the-4th file by name but listed under a different Drive ID than the root copy; likely duplicate, not added."
+  },
+  {
+    "source": "drive",
+    "id": "1BLJMvJQrVsuVEN8cI7CyfUFB2lFJab21",
+    "name": "18. Gauntlet 18 - Prajwal - A Queen is Crowned.pdf",
+    "url": "https://drive.google.com/file/d/1BLJMvJQrVsuVEN8cI7CyfUFB2lFJab21/view?usp=drivesdk",
+    "size_bytes": 681241,
+    "discovered_at": "2026-11-11",
+    "reason": "Same size (681241) as the catalogued Gauntlet 18 PDF; looks like a renamed copy with a subtitle (title may be 'A Queen is Crowned')."
+  },
+  {
+    "source": "drive",
+    "id": "1GSRaf6gmoO8Qv8qc-lldsL8GpdMqAtqvg98EzKAZ7Rw",
+    "name": "7. Gauntlet - Khandoba_Add Gun to Cart (Google Doc)",
+    "url": "https://drive.google.com/file/d/1GSRaf6gmoO8Qv8qc-lldsL8GpdMqAtqvg98EzKAZ7Rw/view?usp=drivesdk",
+    "size_bytes": 2179860,
+    "discovered_at": "2026-11-11",
+    "reason": "Google Doc version of Gauntlet 7 deck, which already has pdf and docx entries; likely duplicate."
+  },
+  {
+    "source": "drive",
+    "id": "1reVwsP5dhkdnY2MQKfwiZiD2p4x3mvvz",
+    "name": "2025 Rewind-Pavan/Kvest for the Best video.mp4",
+    "url": "https://drive.google.com/file/d/1reVwsP5dhkdnY2MQKfwiZiD2p4x3mvvz/view?usp=drivesdk",
+    "size_bytes": 250560074,
+    "discovered_at": "2026-11-11",
+    "reason": "Video for rewind-2025, which already has a OneDrive recording; likely the same content, unclear whether to add as mp4."
+  }
+]
