@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "Connect the following (non-exhaustive): Mississippi River (US); Sahara Desert (Africa); Lake Michigan (US); Lake Ontario (Canada); Lake Tahoe (US); Morro Rock (California); Mount Kilimanjaro (Africa); Gobi Desert (Mongolia); La Brea Tar Pits (LA); Jog Falls (Karnataka).",
+    "answer_text": "Tautological names in native languages: each place's English name repeats its native-language name for the same feature. Mississippi River - Algonquian Misi-ziibi ('Great River'); Sahara Desert - Arabic al-Sahra ('The Desert'); Jog Falls - Kannada Jogade/Jog ('Waterfall'); Lake Michigan - Ojibwe Mishigami ('Great Lake'); Lake Ontario - Huron-Iroquois Ontari'io ('Great Lake'); Lake Tahoe - Washo da'aw ('The Lake'); Morro Rock - Chumash Morro ('Dome/Rock'); Gobi Desert - Mongolian Govi ('Waterless Place'); La Brea Tar Pits - Spanish la brea ('The Tar').",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In a 2007 American teen comedy film, directed by Greg Mottola and written by Seth Rogen and Evan Goldberg, a central plot device revolves around a poorly forged piece of identification acquired by the character Fogell. Fogell obtains a counterfeit ID from a state thousands of miles away from his home. Rather than choosing a realistic, ordinary identity, he opts for a bizarre, single-name moniker, claiming it makes him sound like a 'cool R&B singer.' The card features an address at 892 Momona St, lists his birthdate as June 3, 1981, and indicates that he is an organ donor. Despite its laughably unrealistic appearance and the sheer absurdity of having no first or last name, the object remarkably manages to serve its purpose. Today, this specific prop remains one of the most iconic and recognizable pop culture memes of the 2000s, often parodied, printed on merchandise, and celebrated by fans every year on its fictional birthdate. What is being talked about here?",
+    "answer_text": "The fake Hawaii driver's license used in the movie Superbad by the character Fogell, who goes by the name McLovin.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The plot shown is a common tool used in genetics to display data with a large number of data points, many of non-zero amplitude, with a distribution of different magnitudes. Each point is a Single Nucleotide Polymorphism (SNP), a genetic mutation associated with a particular disease. On the plot, the x-axis displays the human chromosomes lined up side by side, and the y-axis shows the negative logarithm of the association p-value (the significance). It is a standard data visualization tool used in Genome-Wide Association Studies (GWAS) to spot genetic variants linked to specific traits or diseases. When one variant is strongly tied to a disease, all its immediate neighbors get dragged up the y-axis with it. The dot at the very peak is usually the strongest lead (the 'lead SNP') for scientists to investigate. What is the name given to these types of plots?",
+    "answer_text": "Manhattan plots (named because the pattern of peaks resembles the Manhattan, New York City skyline).",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "An Anglican priest (vicar), Edward Chad Varah, held his first funeral for a 14-year-old girl who had taken her own life because she thought she had contracted a deadly illness that would kill her shamefully. In reality, the young girl had just gotten her menstrual cycle for the first time. Due to confusion and lack of sex education, the girl thought she was dying of a sexually transmitted disease and killed herself. Moved by this instance, Edward Chad Varah vowed to help others overcome the type of isolation and miseducation similar to what the young girl experienced. What did Edward establish (and name after a Biblical ethno-religious group) in 1953 after this incident, which is regarded by many to be the first of its kind?",
+    "answer_text": "The Samaritans, generally regarded as the first ever suicide prevention hotline/helpline.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect the following images: a Hannah Montana poster (Miley Cyrus); a scene from the sitcom Modern Family showing a man (Phil Dunphy) opening the door to find an alpaca/llama; a photo of Dolly the sheep with her lamb; and a picture of two analog clocks, one showing approximately 9:00 and the other approximately 4:50 (suggesting '9 to 5').",
+    "answer_text": "Dolly Parton. Hannah Montana - Miley Cyrus is Dolly Parton's goddaughter; the clocks reference Dolly Parton's song '9 to 5'; Dolly the cloned sheep was named after Dolly Parton.",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "The term for this object is derived from an 1876 American song called 'My [Object]' written by Henry Clay Work. In the song, Work relates the story of a clock 'taller than the grandfather himself' and that 'stood 90 years on the floor.' Work was inspired to write the song after visiting the George Hotel in North Yorkshire, England, where he came across a non-working clock of this type in the lobby. According to hotel staff, the clock had previously been owned by two brothers who once operated the hotel; when one brother passed, the clock slowed, and when the other brother died, it stopped immediately. The oldest clocks of this kind were made by British clockmaker William Clement and were known by a different name, but Work's song inspired a new nickname for this centuries-old piece of furniture. Some of the song's lyrics: 'My [blank] was too large for the shelf, so it stood ninety years on the floor; it was taller by half than the grandfather himself, though it weighed not a pennyweight more. It was bought on the morn of the day that he was born, and was always his treasure and pride; but it stopp'd short never to go again when the grandfather died.' What is this type of clock called?",
+    "answer_text": "The grandfather clock (a tall, free-standing, weight-driven pendulum clock, named after the lyrics of Henry Clay Work's 1876 song 'My Grandfather's Clock').",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the early 1800s in England, two variations of the same game existed. In 1863, an association was formed to codify the rules of one variation so that aristocratic boys from different schools could play against one another. In 1871, a union for the other variation followed suit. The two sports officially became known by two different compound names. Aristocratic boys came up with shortened slang terms to differentiate between the two, using a fashionable Oxford/Cambridge suffix. A 1905 letter to The New York Times notes: 'It was a fad at Oxford and Cambridge to use a certain suffix at the end of many words, and as Association did not take that suffix easily, it was, and is, sometimes spoken of as Y.' By the 1980s, Brits started to turn against one of these slang words, as the game's popularity in American culture led to a backlash against using that term in Britain, where it was once considered an innocuous alternative name for a certain word. Identify X and Y (5 points each).",
+    "answer_text": "X: Football, Y: Rugby, Z: Soccer (as given on the answer slide; Rugby football and Association football ('soccer') both derive from a common 1800s form of football, formalized by the Football Association in 1863 and the Rugby Football Union in 1871).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "One theory about the origin of a certain Hindu chant is as follows. In Hindu mythology, a goddess is described as a daughter of Daksha Prajapati and his consort Prasuti. She is herself thought of as a consort of Agni (the fire god) and is believed to represent the shakti/power that cannot be burned by him. According to a story mentioned in the Upanishads, she confesses her attraction to Agni and wishes to dwell with him. Agni and she eventually get married and she becomes an immortal goddess. Thus, a certain tradition/chant came to be performed whenever blessings were sought from Agni, so that she could live with him in perpetuity. What is the name of Agni's consort (wife)?",
+    "answer_text": "Swaha (the chant 'Swaha' is invoked at the end of mantras when making offerings to Agni, named after his consort).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A certain unit is a funny/satirical unit for the measurement of beauty, based on a literary character. In his 1992 collection of jokes and limericks, Isaac Asimov claimed to have invented the term in the 1940s as a graduate student. In a 1958 letter to the New Scientist, R.C. Winton proposed the 'milli[unit]' as the amount of beauty required to launch one ship. In response, P. Lockwood noted that the unit had been independently proposed by Edgar J. Westbury and extended to negative values, where -1 milli[unit] was the amount of ugliness required to sink a battleship. One milli[unit] is thus defined as the amount of beauty required to launch one ship. David Goines and Thomas Fink took this unit further: Goines considered metric prefixes ranging from the atto[unit] (which could merely 'light up a Lucky while strolling past a shipyard') to the tera[unit] (able to 'launch the equivalent of one quadrillion warships'). The literary character referenced for this unit is herself assigned a value of 1.186 units, smaller than the score assigned to the most beautiful woman that ever lived (1.34 units). What is the unit?",
+    "answer_text": "The Helen (or millihelen), named after Helen of Troy, whose face was said to have 'launched a thousand ships.'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Foltin is a Macedonian band active since 1995. Their music blends genres including indie, alternative, world music, funk, electroacoustic, and jazz, and their live performances are theatrical, in a 'pseudo-immigrant' cabaret style; they have been recognized at several European festivals. Which literary work inspired the title of one of their albums, whose cover reads 'Donkey Hot' (a purple album cover with a cave-painting-style donkey/horse figure, an orange sun, and four orange flowers)?",
+    "answer_text": "Don Quixote (the album title 'Donkey Hot' is a phonetic pun on 'Don Quixote').",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The 2019 movie adaptation (Z) of this novel features a meta-textual, dual ending. The main character (Y)'s romantic sprint to catch 'the professor' at a train station is intercut with her negotiating the publication of her semi-autobiographical novel with Mr. Dashwood, who insists the heroine must marry or die to sell books. To get her book published and keep her copyright, Y compromises and writes a traditional romantic ending where she stops the professor at the station. This mirrors real-life author X, who was pressured by her publisher to marry off Y in the 1868 novel despite wanting her to remain a 'literary spinster.' The final sequence shows Y holding her newly printed book, leaving it ambiguous whether she actually chased the professor down or simply gave the market the happy ending it demanded while remaining fiercely independent. Identify X (author), Y (character), and Z (novel/movie).",
+    "answer_text": "Little Women. X: Louisa May Alcott (author); Y: Jo March (character); Z: Little Women (the 1868 novel and its 2019 film adaptation directed by Greta Gerwig).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Konstantin Tsiolkovsky is a person from the city of Kaluga, Russia, whose contributions have made the city and the nation famous on the world stage. The city has acknowledged his contributions on its flag, which bears his most important contribution (the flag shows a satellite with antennae on a red field, alongside the city's crest featuring a crown on a blue-and-white field). What did Konstantin's work lay the foundation for, and what is the work specifically depicted on the flag?",
+    "answer_text": "Konstantin Tsiolkovsky's work laid the foundation for astronautics/rocketry and spaceflight theory (he is considered the father of theoretical astronautics); the flag of Kaluga depicts Sputnik, the first artificial satellite.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect the following people (non-exhaustive): a series of photographs of older men with white or gray hair, and two photographs of younger men in formal/period dress with dark hair.",
+    "answer_text": "Actors who have played Lord Mountbatten (Louis Mountbatten, 1st Earl Mountbatten of Burma) in film and television, across various productions depicting him at different ages.",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "The 2007 Men's Cricket World Cup was held in the West Indies, with host location islands being Antigua and Barbuda, Barbados, Grenada, Guyana, Jamaica, Saint Kitts and Nevis, Saint Lucia, and Trinidad and Tobago. In September 2004, Hurricane Ivan devastated Grenada, damaging over 90% of the island's homes and destroying the original National Stadium complex, throwing Grenada's status as a host for the 2007 ICC Cricket World Cup into jeopardy. Initially, nation X promised to come to its aid, pledging $40 million to rebuild the stadium. However, understanding the need for more extensive aid to support post-hurricane recovery efforts, Grenada instead negotiated with Y, eventually breaking ties with X. Y not only pledged the same amount but also deployed roughly 500 laborers to entirely rebuild the 15,000-to-20,000-seat stadium complex. With this diplomatic victory, Grenada proclaimed X and Y to be one territory. However, the opening in February 2007 was marred by a major diplomatic blunder: the opening, attended by the ambassador and laborers of Y, saw the national anthem of X being played instead of Y's, leading to an official apology and a full-scale investigation. What are X and Y?",
+    "answer_text": "China and Taiwan (Grenada originally recognized Taiwan, which pledged aid, but switched diplomatic recognition to China, which rebuilt the stadium and required Grenada to accept the 'One China' policy).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Varhad Nighalay Londonla (Marathi: Varhad Nighalay Londonla) is an iconic, award-winning Marathi comedy play created by Dr. Laskhmanrao Deshpande, premiered in 1979 in Aurangabad, Maharashtra. The story follows a traditional rural Maharashtrian family whose son falls in love with and decides to marry a British woman in London; hilarity ensues as the extended family and village group (baraat) travel to London by air for the first time, leading to culture shocks, confusion, and heartwarming moments. The play was performed over 2,100 times in India and racked up over 2,800 shows globally over two decades. Responsibility for the show was later taken over by another Marathi performer, Sandeep Pathak, in late 2012. Which two distinct Guinness World Records does this play hold, awarded after meticulous scrutiny and rigor?",
+    "answer_text": "Most characters played by a single person (in a play), and most shows performed for a one-man show.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Before a certain figure (X) existed as we know him, his historical predecessor was traditionally depicted in religious iconography wearing deep red and gold bishop's robes. When the Dutch brought their tradition to America, he was still envisioned as a tall, serious figure in a long red robe and a bishop's mitre. Throughout the early 19th century, American artists drew X in a chaotic mix of colors, including blue, green, tan, and brown. The idea of X wearing red was primarily established by the 19th-century political cartoonist Thomas Nast, who, beginning in 1863, drew dozens of X illustrations for Harper's Weekly, establishing the first attire as we know it. The credit for cementing the image in pop culture, however, goes to Y, which used Nast's framework in large-scale print and magazine ads beginning in the 1930s. Identify X and Y.",
+    "answer_text": "X: Santa Claus; Y: Coca-Cola (whose advertising campaigns from the 1930s onward popularized the modern image of Santa Claus in his red-and-white suit).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie-breaker: In the case of X, Y, and the Z (a floating object), the buoyancy force (upward force) of the water pushing up on them must be greater than the force of their combined weight. Looking up X's height, we can estimate that the Z is about 6' x 3' x 5 inches, and the density of the water in which X and Y were submerged is 1000 kg/m^3. Multiplying the volume of the submerged Z (0.254 cubic meters) by the density of water and gravity, the maximum buoyant force is 2,490 N. It was easy to find out that X weighed 549N and Y topped out at 715N. For the Z, three possible materials were teak, oak, and pine: if teak, the weight would be 2,440N; oak would be 1,920N; pine tops out at 617N. Clearly, pine would have made everything float fine for both X and Y together (giving a total force of 2,313N), but unfortunately the Z was most likely oak (1,920N), so adding X and Y would give a weight of 3,185N, just a little too heavy to float both. Subtract Y, and you get a force of 2,470N, just light enough to float and allow X to go on. This is one of many explanations to an argument that goes on to this day, with physicists, Mythbusters, and material scientists all weighing in. What argument is being described here? Who are X and Y, and what is Z?",
+    "answer_text": "The argument over whether Jack and Rose could both have fit on the floating door at the end of Titanic. X: Jack; Y: Rose; Z: the door (wooden panel) Rose floats on.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

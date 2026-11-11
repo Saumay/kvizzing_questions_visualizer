@@ -1,0 +1,110 @@
+[
+  {
+    "question_text": "Social media post: On 28/29 July 2026, a Qantas Airbus A350-ULR 1000 undertook the longest commercial flight from Melbourne to Toulouse, crossing 2 oceans and 3 continents in 24 hours 24 minutes. Airbus's post about the flight referenced a natural phenomenon. A commenter, Thomas Pesquet, replied with a tongue-in-cheek comment, almost mocking the caption as nothing extraordinary ('It's possible to [see two sunrises and two sunsets in a single day] but congrats to everyone involved'). What particular phenomenon was the post alluding to, and why is Thomas in a position to not find the caption too extraordinary?",
+    "answer_text": "The post alluded to witnessing two sunrises and two sunsets in a single day because of the flight's speed and route. Thomas Pesquet is an astronaut who has been aboard the ISS, where he gets to witness 16 sunrises and sunsets in a day, making the claim unremarkable to him.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "With the USA at the centre of the universe, connect the following (exhaustive): Canada - Toronto, Calgary, Edmonton, Halifax, Montreal, Ottawa, Vancouver, Winnipeg; Caribbean - Nassau (Bahamas), Bermuda, Aruba; Ireland - Dublin, Shannon; UAE - Abu Dhabi.",
+    "answer_text": "These are all airports outside the USA that have US Customs and Border Protection Preclearance facilities, so passengers flying to the US from these airports clear US immigration and customs before departure and are treated as domestic passengers on arrival.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "https://listen.hatnote.com is a site that plays soothing audio by translating near real-time data from another dynamic, ever-changing webpage into audio and animations. The nature of the input data has a specific audio depiction, with sounds ranging from bells, string noises, high-pitched noise, low-pitched tones, and deep swells, accompanied by circles of various sizes denoting a particular type of data point corresponding to the source page. Users simultaneously logged into the page share the same live audio experience, which cannot be repeated. What is the source page for the music, and what is the above project called?",
+    "answer_text": "The source page is Wikipedia's Recent Changes feed. The project is called 'Listen to Wikipedia' (bells for additions, string/subtraction noises, high pitch for small edits, low pitch for large edits, and deep swells for new users).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect the following (exhaustive): Four Seasons Maui at Wailea; Four Seasons San Domenico Palace, Taormina, Italy; Four Seasons, Koh Samui; Airelles Chateau de la Messardiere, St. Tropez, France; Hotel Martinez, Cannes, France.",
+    "answer_text": "These are all hotel settings/filming locations used for seasons of the HBO series The White Lotus.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 2014, the Custodian of Enemy Property declared a Bhopal estate worth nearly Rs. 15,000 crore as enemy property, including Flag Staff House (where X spent his childhood), Noor-Us-Sabah Palace, Dar-Us-Salam, and the Kohefiza Property. The inheritance runs like this: the last Nawab of Bhopal, Hamidullah Khan, had three daughters. His eldest, Abida Sultan, migrated to Pakistan in 1950 and joined its Foreign Service. His second daughter, Sajida Sultan, stayed in India and was recognised in 1962 as legal successor to his private estate. However, by virtue of the elder daughter otherwise being the legal heir, the property was declared enemy property. The declaration as enemy property has been challenged by her grandson (X) in court. Who is her grandson?",
+    "answer_text": "Saif Ali Khan.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The 3 key rules to this competition are: 1) ___ must be raw (brand new); 2) ___ must be natural (no sandpaper, no bleach, no starch, but handwash allowed); 3) Support each other. Golden rule: Do nothing that gives you an unfair edge over your competitors. Identify the competition.",
+    "answer_text": "The Indigo Invitational, a marathon denim fading competition: 365 days to fade one pair of raw denim jeans to perfection.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the 1914 Loeb Classical Library edition of Cicero's De Finibus Bonorum et Malorum ('On the Ends of Good and Evil'), translated by H. Rackham, on page 36 a two-word phrase ran off the end of a line and got broken across the page, with the syllable 'do-' dangling at the bottom of one page and the remainder starting on the next. An anonymous mid-century typographer, scanning the volume for filler copy, mistook the orphaned fragment for the beginning of the passage. From there it entered a 1966 Letraset dry-transfer sheet, and then in 1985-87 it went everywhere. What two-word phrase, that one has probably not paid attention to, are we talking about? Original is 'Do___ _______'",
+    "answer_text": "Dolorem Ipsum (meaning 'pain itself'), the fragment from Cicero's Latin text that was mistaken for filler copy and evolved into the famous placeholder text 'Lorem Ipsum.'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What is this a list/figure of (X), for the year 2025? 1. Turkey: EUR16.49 million from 1,83,196 X; 2. India: EUR16.30 million from 1,81,111 X; 3. Algeria: EUR11.51 million from 1,27,936 X; 4. Morocco: EUR10.29 million from 1,14,320 X; 5. China: EUR6.68 million from 74,193 X. Hint - a corresponding and counter-balancing list would read: France: EUR2.80 million from 31,058 X; Switzerland: EUR2.76 million from 30,630 X; Netherlands: EUR1.81 million from 20,156 X; Germany: EUR1.45 million from 16,126 X; Greece: EUR1.22 million from 13,526 X.",
+    "answer_text": "Money lost (forfeited visa fees) to Schengen Visa rejections by nationality of applicant, for 2025 - X = rejected Schengen visa applications.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Pattie Boyd is perhaps the only woman who has been the muse for multiple songs by different artists. The first song (X) is a 1969 song by her famous husband, whom she met on the set of a 1966 movie featuring the band he was part of; the song paints her as a woman with a mysterious charm, with lyrics alluding to the 'je ne sais quoi' about Boyd and the attraction her husband felt towards her. The second song was written in 1970 by the husband's dear friend, a guitarist in another band, who was smitten by Boyd and inspired to write the track after being given a copy of a 12th-century Persian romantic epic about a man hopelessly and self-destructively in love with a woman he cannot be with. The guitarist eventually married Boyd after she divorced her former husband. Identify both songs. (5 + 5)",
+    "answer_text": "'Something' by George Harrison/The Beatles (1969), and 'Layla' by Eric Clapton/Derek and the Dominos (1970).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Arabic word Shariba (to drink) is the root word for both sherbet and sharaab, evolving through Persia and the Arabic peninsula. Arab traders and physicians carried medicinal versions of it, sweetened to make the medicine palatable, up into medieval Europe, where the very same word, via Old French and later Italian, lent itself into Medieval Latin and eventually into a modern English word, versions of which are sometimes used as medicine, sometimes as an ingredient, and rarely refer to a beverage itself, unlike sharbat/sharaab. What is the modern English word that shares its root with sharbat and sharaab?",
+    "answer_text": "Syrup (from French sirop, Italian sciropos, Latin sirupus).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the aftermath of the 9/11 attacks, Jug Suraiya conceived a daily comic strip for the Times of India with the protagonist being a crusading superhero against evildoers. The very first strip began with: 'Shucks, these foreign names are hell to remember. Gee, all I gotta do is take out everyplace, everywhere beginning with an A and make no mistake - sooner or later I'll get the right one.' The comic's name came from the American South pronunciation pertaining to the inspiration behind the comic. However, many believed the name was a shortened word alluding to the questionable character of the protagonist, or perhaps a more relatable desi pun for the Indian audience about the protagonist's sinking popularity thanks to his rampage. Jug Suraiya says: 'he's a slightly flawed hero. In the sense, he's not too bright.' ID the comic title.",
+    "answer_text": "Dubyaman (a comic strip by Jug Suraiya and Neelabh, satirising US President George W. Bush).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What is this an exclusive/exhaustive list of: 1. Azerbaijan*; 2. Bolivia; 3. Ethiopia (except 1996-2019); 4. Kazakhstan*; 5. Turkmenistan*; 6. Laos; 7. Paraguay.",
+    "answer_text": "Landlocked countries (without access to the ocean) that maintain an independent Navy division. Azerbaijan, Turkmenistan and Kazakhstan lie on the Caspian Sea, which is not connected to any ocean providing natural waterway connectivity. Ethiopia became landlocked in 1991 when Eritrea became independent, disbanded its Navy in 1996, and re-established it in 2019.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Born in Karachi in 1965, X was discovered in London by Zeenat Aman, who introduced her to Vinod Khanna and Feroz Khan. Feroz Khan was in London to meet with British-Indian disco producer Biddu Appaiah (of 'Kung Fu Fighting' fame), wanting to sign him for a catchy number for his new film. The song (Y) they recorded went on to become a chart topper, winning X a Filmfare award in 1980 and making X the youngest such winner. X released her debut album in 1981, the title track of which was trending again in 2013. ID X and Y. (5 + 5)",
+    "answer_text": "X = Nazia Hassan; Y = 'Aap Jaisa Koi' (from Qurbani), with her debut album 'Disco Deewane.'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Modern problems require modern solutions: Following a massive jailbreak in 1976 in Tihar Jail, where prisoners dug a tunnel under the boundary wall of the jail complex (a meticulous exercise presumed to be improbable without complicity of the cops), the Delhi police made a request to the central government to bring in a special set of police officers of unimpeachable integrity so such a jailbreak would not be possible again. Complying with the request, the central government deployed a special force to assist the CRPF with security in Tihar jail. Over time, this special force has also been engaged in Rohini and Mandoli prisons. While jailbreaks have reduced, the special force has sometimes been blamed for overlooking medical emergencies or failing to interfere in escalating tensions, resulting in jail violence and death of inmates. What special force are we talking about?",
+    "answer_text": "Tamil Nadu Special Police, deployed because they did not understand Hindi, making communication with inmates (and collusion) harder - though this communication gap has sometimes also caused them to fail to understand a medical emergency.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Allyl Isothiocyanate is a compound found in mustard, and certain varieties of radish and horseradish. Among other properties, the compound has antimicrobial and antiparasitic effects, proving effective against bacteria E. coli, Staphylococcus aureus and vibrio parahaemolyticus, and mildly effective against the parasitic worm Anisakis. As a result, a food item (X) containing the compound was used alongside dish Y to mitigate against such poisoning long before refrigeration became widely available, a traditional ancient wisdom. Over decades of consistent pairing, X and Y became an accepted pairing, aided by the fact that they complemented each other's flavour. As global cuisine exploded, X came to be served on the side along with Y, though traditionally trained chefs have precisely balanced Y with just the right amount of X so that no flavour is overpowering, and any additional indulgence of X is considered an insult to the chef's judgment and years of rigorous training. ID X and Y.",
+    "answer_text": "X = Wasabi; Y = Sushi.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "CONNECT? Give funda: 1. Aquadextrous - possessing the ability to turn the bathtub faucet with the toes. 2. Chwads - discarded gum found beneath tables and countertops. 3. Essoasso - one who swerves through a service station to avoid a red light. 4. Glutetic chair - the chair design found in movie theaters. 5. Icelanche - when ice at the bottom of an upturned glass suddenly moves toward the mouth as one attempts to finish drinking the liquid. 6. Jokesult - when someone insults you, you call them on it, and they say 'it was just a joke.' 7. Larry - a frayed toothbrush. 8. Snackmosphere - the pocket of air found inside snack and/or potato chip bags. 9. Terma helper - the extra verbiage used to stretch a 600-word essay to the required 1000. 10. Eyes-Hockey - the substance found in the corner of one's eye in the morning. 11. Squatchee - the button on top of a cap. What connects these made-up words, and give the funda (background).",
+    "answer_text": "These are all 'Sniglets' - made-up words for describing something for which no dictionary word exists, introduced by comedian Rich Hall during the comedy series 'Not Necessarily the News'; a book containing these words was published in 1984.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie-Breaker: This is an evolutionary product list of which French company, founded in 1810? 1. Steel foundry manufacturing saws and other hand tools. 2. Coffee grinders (1840-42). 3. Waist corsets - 1850s. 4. Pepper grinders. 5. Bicycles - 1870. 6. Ammunition. 7. X, that we associate the company with today and perhaps know it for.",
+    "answer_text": "Peugeot (X = automobiles/cars).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie-Breaker two: Born in 1877, Samuel Zemurray founded a company which eventually became the Chiquita Brands International Inc. that exists today. Through the late 1890s and early 1900s, Zemurray's company made its money from dealings in Honduras thanks to its tropical climate. His business dealings made him invest in railways and infrastructure that aided his business. When threatened by a takeover of his infrastructure/government action that would affect his business, he orchestrated and financed a coup in 1911 to put in place a more amenable President. O. Henry, who around that time was himself holed up in Honduras running from US embezzlement charges, took inspiration from this dynamic environment, which served as the basis for his short story 'The Admiral' (1904), set in the fictional Anchuria, which he described as a 'small, maritime _____ _____.' What phrase did he accidentally pre-coin, which today is used to describe such a Honduran state of affairs?",
+    "answer_text": "Banana Republic (coined via O. Henry's book 'Cabbages and Kings', inspired by Samuel Zemurray's Chiquita banana dealings in Honduras).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

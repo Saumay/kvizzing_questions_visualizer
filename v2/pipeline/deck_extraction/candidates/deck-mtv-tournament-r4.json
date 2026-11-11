@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "Identify X and Y. In X's original short story \"Gramma\", a young boy is left home alone and forced to tend to his morbidly obese, bedridden, and secretly witch-like grandmother, \"Gramma\", who harbors a dark supernatural secret. The Gramma wanted to forcefully hug the boy and she can be stopped by invoking the bane ______. This story was later adapted into a regional language short story which served as a basis for the opening act of Y.",
+    "answer_text": "X = Stephen King. Y = Tumbbad.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. Ever since X came out, the A has been hardwired into the human psyche as an unstoppable monster. In fact, the creators of Y made the meta-joke incredibly explicit by naming A as Bruce, which was the actual, affectionate nickname used on the set of X for A. By making Bruce a sensitive, crying leader of a support group who just wants to be loved and complains about not knowing his father, the creators of Y flipped the ultimate Hollywood horror trope completely on its head. But adding another flip in Y, a single tiny wisp of ______, turns Bruce back into a compulsive monster.",
+    "answer_text": "X = Jaws. Y = Finding Nemo.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the two movies. The late-90s action blockbusters X and Y, both produced by the legendary Jerry Bruckheimer, share a fascinating, identical piece of awards trivia: both films featured a massive, chart-topping power ballad that got nominated for Best Original Song at the Academy Awards (the Oscars) and Worst Original Song at the Golden Raspberry Awards (the Razzies) in the exact same year. Both songs were written by the same legendary songwriter, Diane Warren. The first film (X), released in 1997, featured the track \"How Do I Live\". The second film (Y), released in 1998, featured the iconic rock ballad \"I Don't Want to Miss a Thing\".",
+    "answer_text": "X = Con Air. Y = Armageddon.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie. The director filled a cafe not with standard Hollywood background actors, but with actual refugees, immigrants, and political exiles who had just barely escaped the regime. When the rebel leader commands the band to \"Play La Marseillaise!\" and the crowd stands up to fiercely drown out the soldiers singing, the crying on set was completely unscripted; the actors were weeping genuine tears of grief, defiance, and homesickness. When the director finally yelled \"Cut!\", the actors playing the army officers immediately joined their fellow refugees, and together they sang La Marseillaise in a cathartic show of unity.",
+    "answer_text": "Casablanca.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. \"Bounty Law\" is a planned spin-off series from A's film X. The premise is a black-and-white western series set from 1959 to 1963, centering on the gunslinger character Jake Cahill. A has stated it will be a 5-episode series in the half-hour format (roughly 24 minutes of storytelling), taking inspiration from old-school westerns like Wanted Dead or Alive.",
+    "answer_text": "X = Once Upon a Time in Hollywood.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. This acclaimed 21st-century television series X made the color red an obsession: the word red (or a direct shade/synonym of it) is integrated into the title of every single episode across its first five seasons. The show's chromatic motif also extended into casting, with an extraordinarily high frequency of recurring female guest characters played by actresses with some variation of red hair.",
+    "answer_text": "X = The Mentalist.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In early 1984, the British studio Imagine Software began heavily advertising an astronomically expensive \"megagame\" project that promised revolutionary mechanics, including a physical hardware add-on to bypass the era's memory limits. Instead, the overambitious project drove the studio into a highly publicized, catastrophic bankruptcy, turning the unreleased game into one of the most famous pieces of \"vaporware\" in industry history. Decades later, this legendary failure served as the direct namesake and spiritual inspiration for an acclaimed 2018 interactive film, set in the exact same year, following a troubled teenage programmer attempting to adapt a branching fantasy novel into a video game while slowly descending into madness. Identify the shared title of this unreleased 1984 video game and the Emmy-winning 2018 interactive film.",
+    "answer_text": "Black Mirror: Bandersnatch.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Bonus question. Identify X. In X, the production design and writing are dense with corporate easter eggs commenting on the central premise of identity fragmentation. In an early episode, a former colleague leaves a cryptic clue for the protagonist, leading them to a mysterious hideout located at 499 Half Loop Road. This location serves a dual symbolic purpose: the street name parodies a famous tech giant's real-world old corporate headquarters address, 1 Infinite Loop, while also serving as a metaphor for the employees living only a half life of a normal human existence. The building number, 499, also mirrors a specific HTTP status code (often designated \"Client Closed Request\"), mirroring how this ex-employee abruptly severed his data connection to the sinister corporate server.",
+    "answer_text": "Severance.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie from the below characters (Portuguese nicknames and their English meanings): Buscape = Rocket (foot-seeker, a firecracker type); Ze Pequeno = Little Ze, or Dadinho = Little Dice; Bene = Benny; Cabeleira = Big Hair/Shaggy; Mane Galinha = Knockout Ned / Chicken Mane (usually means \"Womanizer\"); Alicate = Clipper (Pliers); Ganso = Goose; Cenoura = Carrot; Barbantinho = Little String; Cabecao = Big Head; File-com-Fritas = Steak with fries.",
+    "answer_text": "City of God.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the film this fictional government apparatus is from, based on its departments: The Mouth (Propaganda & Media) - the voice of the party, a television network censoring real news and broadcasting government-approved propaganda, staged press events, and mandatory nightly programs. The Eye (Visual Surveillance) - manages the city's sprawling, omnipresent CCTV camera network covering streets, parks, transit lines, and government facilities. The Ear (Audio Surveillance) - controls wiretapping, audio interception, and audio-surveillance vans parked throughout residential streets. The Nose (Criminal Investigation) - the regular detective branch, filled with actual investigators who solve crimes using conventional forensics and logic. The Finger (The Secret Police) - the brute fist of the regime, staffed by thuggish operatives known as \"Fingermen\" who patrol dark alleys, enforce curfews, and run the regime's brutal black-site prisons. The Head (Executive Leadership) - the supreme leadership and executive branch of the state, making laws and dictating policy.",
+    "answer_text": "V for Vendetta.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. La Vigilia (the Feast of the Seven Fishes) is an Italian-American Christmas Eve tradition involving seven distinct seafood dishes, tied to Roman Catholic fasting customs and the symbolic number seven. In X, for one of the chapters, the Feast of the Seven Fishes is used as the ultimate pressure cooker: the family matriarch takes it upon herself to single-handedly prepare all seven fish dishes, armed with a glass of red wine, a chain-smoking habit, and an army of screaming kitchen timers, refusing any help while weeping that nobody appreciates her hard work, using the feast as leverage to force her family into a cycle of guilt and obligation.",
+    "answer_text": "X = The Bear (Season 2, Episode 6, \"Fishes\").",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the character and the movie, based on the practical filmmaking techniques described. The portrayal of a character played by a short-statured actor (B) in this movie is one of the greatest feats of practical filmmaking, achieved entirely before the era of modern CGI by engineering different methods depending on camera angle: for straight-on/frontal shots, folded knees and fake shoes were used (B folded his knees backward and hobbled around on them, with small custom shoes attached directly to his knees while his real shins and feet were hidden by baggy pants/background); for side-angle walking shots, specially dug trenches in the set let B walk normally from the side while fake miniature shoes were fastened at knee level at the apparent \"ground level\"; for static/standing shots, deep pits were dug so B could stand at the right height next to average-sized actors, with the camera placed parallel to hide the gap; for sitting/dancing scenes, string-operated artificial legs (puppeteered dummy legs controlled by an off-screen technician) were used while B's real legs were concealed.",
+    "answer_text": "Apoorva Sagodharargal / Appu Raja (the dwarf character played by Kamal Haasan).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify Y and Z. A New Zealand acting legend holds a unique crown: he is the template for an entire empire of characters, having played a father and son character over the years. Y, the father, was regarded as the best bounty hunter; when the antagonist recruited him to be the genetic template for an army, Y agreed on two conditions: a massive payday, and one son to keep for himself. Z, the son, was reprised by the same actor nearly two decades later when he rises from the belly of a monster, portrayed as a weathered, heavily scarred, older warrior whose fighting style is much more brutal, direct, and grounded, heavily incorporating traditional Maori stick-fighting arts.",
+    "answer_text": "Actor = Temuera Morrison. Y = Jango Fett. Z = Boba Fett.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. In a historic television milestone, a gripping 2016 sequence filmed on Fernandina Island in the Galapagos archipelago captured a newborn marine iguana making a desperate dash across rocky terrain from an underground sanctuary to shoreline safety, pursued by a coordinated gauntlet of racer snakes, before miraculously escaping, leaping across the terrain, and scaling a sheer cliff face to safety. The sequence was elevated by a heart-pounding orchestral score composed by Jasha Klebe and Jacob Shea under the direction of Hans Zimmer, designed to mimic a panic-induced human heart rate. The episode won the \"Must-See Moment\" BAFTA for series X, beating out Game of Thrones' \"Battle of the Bastards\", Line of Duty's \"Urgent Exit Required\" sequence, and Strictly Come Dancing's Ed Balls viral Gangnam Style dance.",
+    "answer_text": "X = Planet Earth II (Episode: Islands) - the marine iguana vs. racer snakes chase scene.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the brand and the reason behind its sales surges. A breakfast brand saw a surge in sales during the following periods: Q3 2016, Q4 2017, Q3 2019, Q2/Q3 2022, and Q4 2025/Q1 2026.",
+    "answer_text": "Kellogg's Eggo Waffles. The surges correspond to releases/premieres of Netflix's Stranger Things, which prominently features Eggo waffles throughout the show, boosting the brand's sales each time a new season or special aired.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. A famous duo approached actor A to play the lead role in a movie. A famously turned it down and instead chose to star in a critical and commercial flop. The duo loved A's wife so much that they custom-wrote a role for her in the movie, giving her character a romantic history with X's character, who is also a lead role in the movie. Interestingly, during her early career, A's wife auditioned to play A's onscreen girlfriend on the hit show Y but did not get the role; X was even offered the role of A's absentee father in Y, but it went to someone else.",
+    "answer_text": "A = Will Smith (wife: Jada Pinkett Smith). X = Laurence Fishburne. Y = The Fresh Prince of Bel-Air. (The movie referenced is The Matrix, in which Fishburne played Morpheus and Jada Pinkett Smith played Niobe.)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Picture clue. Identify the theme. The slide shows four repeated lines of a Morse-code-like pattern rendered graphically as dashes and dots: dash-dash, dot-dot, dash-dash, dot-dot (repeated across four rows).",
+    "answer_text": "The Mission: Impossible theme. The theme song's rhythm spells out \"M.I.\" (Mission Impossible) in Morse code in repeat: two dashes followed by two dots. If a dot is one beat and a dash is one-and-a-half beats, this gives a bar of five beats, exactly matching the theme's underlying rhythm.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  }
+]

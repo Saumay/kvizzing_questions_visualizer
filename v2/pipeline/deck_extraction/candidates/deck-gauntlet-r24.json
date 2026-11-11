@@ -1,0 +1,98 @@
+[
+  {
+    "question_text": "In the late 1990s, copywriter Dean Buckhorn and art director Bob Barrie at the legendary Minneapolis agency Fallon McElligott revolutionized advertising with an iconic print series for a magazine. Instead of showing full covers, the ads featured dramatic, full-bleed photos with a small, bright geometric detail around a single human detail or focal point within the chaos. This minimalist visual device turned the publication's signature branding element into a metaphor for editorial focus. ID the campaign.",
+    "answer_text": "Time Magazine's Red Border Series.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1662, a Dutch crew under Volkert Evertszoon washed up, shipwrecked and having survived nine days at sea on nothing but their own resolve. Their supplies were gone. Their salt-pork, already rancid from weeks in the barrel, was something they'd have gladly thrown overboard if hunger allowed them the luxury of pride; this patch of island also did not have the welcome pigs running around like others. They ate disgusting and unpalatable island food that kept them alive for three months, until rescue finally arrived. Historians now agree that these meals, repeated daily by men who'd simply had enough of pork, achieved in months what the pigs for all their sixty years everywhere else had never quite managed. What did they achieve?",
+    "answer_text": "The extinction of the dodo.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Born in Sri Lanka to hyper-religious parents and trained as a medical doctor, Dr. Minor spent his early career serving as a Union Army field surgeon during the American Civil War, where his grim duties included branding military deserters. Following the war, a spiraling descent into severe mental illness and a paranoid delusion culminated in a tragic, unprovoked murder committed by him on the streets of London. Declared criminally insane, he was confined for decades behind the walls of Broadmoor Asylum. Yet, it was from this cell that he managed to become the single most prolific contributor to one of the greatest literary achievements. His meticulous contributions eventually earned the deep respect of the project's chief, leading to an extraordinary friendship, and, years later, his eventual release and deportation back to America, secured on the orders of Winston Churchill, who was serving as Home Secretary at the time. What did he contribute?",
+    "answer_text": "The Oxford English Dictionary. (He also committed autopeotomy.)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In August 2026, eagle-eyed viewers scrolling through Roku's live-TV lineup stumbled on something new, wedged in among launches like Mad TV, Retro Black Laughs, and a Whose Line Is It Anyway channel. Roku itself never announced it, but it was first spotted and reported by the outlet Cord Cutters News. The channel is run by a startup that had raised a $4 million seed round, founded by Colin Petrie-Norris, who has compared his roster to \"the Mr. Beasts of entertainment.\" What was this one-of-a-kind channel?",
+    "answer_text": "Fairground: the first-ever FAST (free ad-supported streaming TV) channel made up entirely of AI-generated content; every show, film, and even the ad breaks are AI-created.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Two unlabeled pie charts are shown. One chart has slices including ones labeled Iceland and Norway. The other chart has slices labeled Norway, Australia, UK, Argentina, Chile, New Zealand, and France. What do these pie charts represent?",
+    "answer_text": "Pole ownership: who owns the Arctic (left chart) and who owns the Antarctic (right chart, broken down by territorial claims from Norway, Australia, the UK, Argentina, Chile, New Zealand, and France).",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ID the article that was up for grabs at Heritage's Hollywood & Entertainment Signature sale that took place July 13 to 17. Clues: muted palette of yellowed browns and soft whites, flattened pile, and irregular wear. Subtle staining and discoloration are consistent with the film's action. It joins the small class of objects whose cultural meaning far exceeds their appearance. Both absurd and indispensable, it became a running joke elevated to mythic status. It does not glitter or command attention; it grounds the film itself. Quietly underfoot, it binds character, setting, and tone. Directly sourced by the set decorator from a Salvation Army store. 130\" x 94.5\", exhibits age and production wear, including visible markings consistent with on-screen use: significant staining, pile compression, frayed fringe, loose threads from handling.",
+    "answer_text": "The Dude's rug from The Big Lebowski.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ID the connect: \"Portez ce vieux whisky au juge blond qui fume\" (French); \"Victor jagt zwolf Boxkampfer quer uber den grossen Sylter Deich\" (German); \"Benjamin pidio una bebida de kiwi y fresa; Noe, sin verguenza, la mas exquisita champana del menu\" (Spanish); and a Hindi sentence describing sages tormented by demons and the demon king Ravana being destroyed by the avatar of Vishnu, Lord Rama, eldest son of King Dashrath of Ayodhya (Hindi).",
+    "answer_text": "Pangrams: sentences that use every letter of the alphabet, equivalent to \"The quick brown fox jumps over a lazy dog\" in different languages.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Launched right after the 1982 FA Cup Final, the Football League's X revolutionized football with its frantic, televised format. Featuring 10-player squads on rolling rotation, no offside rule, no height restrictions on the ball, and 15-minute matches, discipline was kept in check by a \"Y\" enforcing 2-minute penalties. Initially backed by Austin Rover, the tournament brought on video game pioneer Atari as its second major sponsor. By 1987, the event moved to a striking new backdrop: the Manchester G-Mex, an arena built within the cavernous iron arches of a former Victorian railway station. Covered by the BBC for national broadcast, this iconic 1987 edition captured the peak era of 1980s X football, where top-flight English clubs battled under the roof of Manchester's landmark venue, with Arsenal making it to the finals thrice. ID X and Y.",
+    "answer_text": "X = Soccer Sixes (the Guinness Soccer Six tournament). Y = Sin bins.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these four images: a line drawing of a dapper gentleman in a top hat examining a butterfly through a monocle (in the style of The New Yorker's Eustace Tilley mascot); a bottle of Heinz Tomato Ketchup; a black-and-white photograph of a long single-storey factory building with a water tower; and an illustration of a figure pushing a large boulder up a hill (Sisyphus).",
+    "answer_text": "Coyote vs. Acme: referencing Ian Frazier's 1990 New Yorker \"Shouts & Murmurs\" essay \"Coyote v. Acme\" (a mock legal complaint by Wile E. Coyote against the Acme Company) and the film \"Coyote vs. Acme\" starring Will Forte, Lana Condor, and John Cena.",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "X was a grueling 19th-century military-scale endeavor that was originally projected to take just 5 years but ultimately dragged on for eight, with personnel decimated by torrential monsoons, malaria, fatal falls, and bloody skirmishes with border rebels like the Sannyassa fakirs. It saw capable men like James Rennell almost killed at the border, and Nain Singh, a covert operative who disguised his tools inside a Buddhist prayer wheel during a clandestine trek to Lhasa. ID X.",
+    "answer_text": "The Great Trigonometric Survey of British India.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "When Patrick Hannan and his companions struck an accidental bonanza in the Australian outback in 1893, they triggered a massive stampede to what would become Kalgoorlie. As thousands of desperate prospectors flooded the water-scarce desert, the cost of living skyrocketed, and miners discarded mountains of heavy, unpromising greyish-yellow rock they dug up during excavation. Thinking it was useless, trashy rubble, the booming town used it to pave roads, build sidewalks, and construct the very mortar, bricks, and chimneys of their homes. Little did they know, they were sitting on a geological quirk: gold rarely bonds with anything, but it forms rare compounds with Tellurium, a vampirish, garlic-scented element first discovered in Transylvania in 1782. One of these alloys, calaverite, shines with a brassy, deceptive luster that tricks sun-baked eyes. When word reached Kalgoorlie that their trash heaps were actually laden with up to five hundred ounces of gold per ton, absolute chaos broke loose on May 29, 1896. Prospectors aggressively tore up their own paved streets, chiseled apart sidewalks, and gleefully took pickaxes to their own chimneys, making it arguably history's first and only stampede caused by \"X\". ID X.",
+    "answer_text": "Fool's fool's gold: calaverite, a gold telluride mineral that looks like worthless rock but actually contains substantial gold.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A chart shows various animal silhouettes arranged in color-coded columns: a red column, an overlapping red-and-olive column in the middle, and an olive/green column, flanked by \"Neither\" columns on both far sides. A \"Tastiness\" scale runs down the right side from \"Delicious!\" to \"C'mon...\". The column headers have been hidden. What's being depicted here?",
+    "answer_text": "The Halal-Kosher crossover chart, showing which animals are considered kosher, halal, both, or neither, cross-referenced against a \"tastiness\" ranking.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Best known for laying the foundations of political philosophy in Leviathan, Thomas Hobbes spent the final quarter of his life locked in a venomous, decades-long pamphlet war with Oxford professor John Wallis. Complete with schoolyard insults like \"Six Lessons to the Professors of the Mathematics\" as a retort to Wallis's \"Due Correction for Mr Hobbes in School Discipline\", followed by Hobbes firing back with \"Marks of the Absurd Geometry, Rural Language, Scottish Church Politics and Barbarisms of John Wallis\" and capped off by Wallis with \"Hobbiani Puncti Dispunctio\", this legendary feud was not a bitter ideological clash over statecraft. When stripping away the petty defamation, these two intellectual heavyweights were actually debating X. ID X.",
+    "answer_text": "Squaring the circle: proving that pi is a transcendental number, i.e., the mathematical impossibility of \"squaring the circle\" using only a compass and straightedge.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In July 1970, deep inside Mastercraft Studios in Memphis, veteran recording engineer Terry Manning performed a delicate and clandestine act of vinyl etching that would permanently link classic hard rock with esoteric occultism. Urged on by a stoned and ecstatic band member of Y, who was heavily immersed in the teachings of ceremonial magician Aleister X, Manning used a preternaturally steady hand to carve X's famous Thelemic tenets into the dead wax runout area of the master disc: \"Do what thou wilt\" on side one and \"So mote it be\" on side two. Protected by a special metal plate that exposed only the blank inner ring to prevent catastrophic scratching, Manning humoured his friend's obsession, bypassing corporate label oversight entirely to immortalize a philosophy that his friend genuinely believed the world needed to embrace. Two decades later, this hidden gesture came full circle when Manning casually flipped on the television and watched a moralizing televangelist hold up an original copy of the album, pointing a trembling finger at those exact handwritten etchings, prompting Manning to lean back with a smile and whisper, \"I did that.\" ID X and Y.",
+    "answer_text": "X = Aleister Crowley. Y = Led Zeppelin (referring to Jimmy Page's Thelemic etchings on the runout groove of Led Zeppelin III).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect: a Shepard Fairey \"OBEY Giant\" poster (black-and-white stylized face with the word OBEY); Henri Matisse's painting \"The Dance\" (orange figures dancing in a circle against blue and green); Keith Haring's \"Crack is Wack\" mural (black-and-white figures with the text CRACK IS WACK); and Edouard Manet's painting \"Olympia\" (a reclining nude woman attended by a maid holding flowers).",
+    "answer_text": "Zoological interpretations of paintings in BoJack Horseman: the show reimagines these famous artworks and images with the human figures redrawn as anthropomorphic animals (horses, etc.).",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X, Jawaharlal Nehru's brilliant yet deeply polarizing intellectual confidant, served as independent India's global troubleshooter and chief foreign policy voice from the late 1940s until his career collapsed following the 1962 Sino-Indian war. A complex figure shaped by Annie Besant's Theosophy, an education at the London School of Economics under Harold Laski, and his founding of the anti-colonial India League in 1927, X was detested by Western intelligence, with MI5 tapping his phones and keeping voluminous sedition files, while viewed with suspicion by the Soviets and Chinese alike. Despite battling chronic insomnia, severe depression, and relying on Luminal barbiturates, this \"sombre porcupine\" relentlessly projected India onto the world stage, masterminding or intervening in monumental Cold War events such as the Korean War prisoner repatriation, the 1954 Geneva Indochina peace talks (attending some 200 meetings uninvited), the 1955 Bandung Conference, and the Suez and Hungary crises, where his infamous 1956 UN vote abstention on Soviet actions tarnished India's moral high ground. Armed with an immodest ambition to build an international order that shielded weaker post-colonial states from superpower bullying, X inadvertently coined the term \"non-alignment\" during a marathon seven-to-nine-hour UN speech in 1957. Although his abrasive style alienated leaders like Henry Kissinger and J. K. Galbraith, and his later appointment as Defense Minister ended in disaster when underequipped Indian forces crumpled against Chinese troops in the Himalayas, his visionary strategy of leveraging diplomatic energy over military might ultimately earned retrospective praise from former critics like Kissinger himself for preserving India's independent global influence. ID X.",
+    "answer_text": "V. K. Krishna Menon.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

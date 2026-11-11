@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "Delta Dawn is a song written by Larry Collins and Alex Harvey, covered by Bette Midler. In 2007, two Xs, a mother and child, reached the San Francisco Bay and then swam the wrong way for 170 km. California Lieutenant Governor John Garamendi started calling them Delta and Dawn, after the song. Under federal law, California had to protect Delta and Dawn; doctors treated gash wounds and scientists tried to get them to turn around by playing audio recordings. The story found its happy ending ten days later when mother and child finally left the Bay Area, though it's unclear whether anything people did actually helped. Identify X.",
+    "answer_text": "X = whale. The humpback whales swam 170 km up the Sacramento River, the farthest known incursion by whales into freshwater. Officials played recordings of whale song, banged on submerged metal pipes, and sprayed high-powered blasts of water to nudge them towards the open ocean.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Stephen I was the first King of X, crowned around 1000 CE. He was canonized soon after his death and is a popular saint in X. The Crown of St. Stephen, made about a century later, was named in his honor. Over 50 kings of X were crowned with it between the 12th and 19th centuries. The crown and related jewels were buried after 1848 and recovered in May 1945 by the United States Army in the town of Mattsee (outside X). The X Crown Guard gave them to the US for safekeeping from the Soviet Union. The US stored the crown at Y along with many other priceless historical items. In 1978 the crown was returned to X on President Jimmy Carter's orders. Since 2000 it has been on display in the central domed hall of X's Parliament. Identify X (5 points) and Y (5 points).",
+    "answer_text": "X = Hungary, Y = Fort Knox, Kentucky. The US Bullion Depository in Fort Knox holds gold bullion and other precious artifacts owned by the United States government. Hungary has been a republic since 1946, but in 1990, after the fall of communism, the Hungarian Parliament reincorporated the crown into the national coat of arms.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Margaretha Geertruida Zelle was born in 1876 in Leeuwarden in the Netherlands. Despite popular assertions that she had Jewish, Malay, or Javanese descent, scholars conclude she was all Dutch. At 18 she married Captain Rudolf MacLeod of the Dutch colonial army and moved to Sumatra. After a divorce, she moved to Paris and became a sensation after a successful debut at the Musee Guimet in 1905. In 1916 Zelle was recruited by French authorities because her neutral Dutch nationality allowed her to travel freely during wartime. After a year of dramatic twists and turns, Zelle became a convenient scapegoat for the authorities. By early 1917, France was teetering on the edge of collapse, with mutinies in its army after the failure of a costly offensive. Zelle was blamed for the failure, put on trial, convicted with scant evidence, and executed by firing squad, all within a few months. By what name is Zelle better known?",
+    "answer_text": "Mata Hari. She was recruited by France to spy on Germany but didn't do any real spying. She was executed on trumped-up charges of spying against France. In the words of a historian: \"She really did not pass on anything that you couldn't find in the local newspapers in Spain.\"",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The festival \"pIrla panDuga\" is celebrated in Telangana villages. It lasts 10 days, with the dates changing every year. Rituals include carnival for the first nine days with performers in animal costumes, high-energy drumming, and offerings of special foods to God; a firepit dug in the middle of the village where people walk on glowing coals hoping for their wishes to be fulfilled; and ornate \"pIrlu\" taken in solemn procession and immersed in a lake. P.V. Narasimha Rao wrote: \"There was no religious distinction among those who made [the wishes], just as there was none among the common wishes of all human beings. It was part of the common faith, or superstition, depending on how you looked at it.\" How does the rest of the world know pIrla panDuga?",
+    "answer_text": "Muharram or Ashura. The festival starts on the first day of Muharram, the first month of the Islamic calendar. It ends on the tenth day when Husayn ibn Ali was killed in the Battle of Karbala in 680 CE. The rituals of the last day include self-flagellation to mourn the death of Husayn. Most of the people who observe pIrla panDuga are Hindus, and they believe the pIrs have the power to fulfil their wishes.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 2017, hackers released files stolen from the US National Security Agency. One NSA file contains a reference to \"fast16\". Security researcher Juan Andres Guerrero-Saade found the accompanying comment \"NOTHING TO SEE HERE - CARRY ON\" so intriguing that he got it tattooed on his arm as a reminder to solve the puzzle, which he finally managed to do using AI in 2026. The malware \"fast16.sys\", developed in 2005, can mess with the execution of any file. It selectively targets LS-DYNA, an advanced physics simulation package. It doesn't mess with most uses of the package, but for some specific types of pressure calculations, it corrupts floating point arithmetic to make LS-DYNA output the wrong results. What was the purpose of the \"fast16\" malware?",
+    "answer_text": "The malware was designed to prevent accurate calculations of nuclear explosions. It is designed to spread to all computers within a research facility so all of them give the same wrong result in any specific calculation. The leaked file was an internal note to NSA employees to ignore \"fast16\" and carry on with their other cryptographic work.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Dr. Yellapragada Subbarow (1895-1948) lost his father and two brothers to a disease caused by folic acid deficiency. It took him three attempts to pass high school. At Madras Medical College he wore khadi surgical scrubs, irritating his British professor, who blocked the award of his rightfully earned MBBS degree. At Harvard, Yellapragada co-developed a test for phosphorus that led him to discover X. X is found in all known forms of life, and it is called the \"molecular unit of currency\" for a crucial cell function. He went on to synthesize folic acid, solving the problem that had killed his father and brothers. He developed the first chemotherapy drug, and the first tetracycline antibiotic. In 1950, Argosy opened the article \"Miracle Man of the Miracle Drugs\" with this line: \"You've probably never heard of Dr. Yellapragada Subbarow. Yet because he lived you may be alive and are well today. Because he lived you may live longer.\" Identify X.",
+    "answer_text": "X = Adenosine triphosphate (ATP). ATP is key to many processes in living cells, such as muscle contraction, nerve impulse propagation, and chemical synthesis. ATP is often called the molecular unit of currency for intracellular energy transfer. The all-white Harvard department that Yellapragada worked in denied him tenure, so he left for industry where he worked on drug discovery.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The office of X of Y dates to the 10th century CE. The term X is used as an honorific by people who claim descent from Hashim ibn Abd Manaf, the great grandfather of Prophet Mohammad. For about 10 centuries, the X of Y was the steward of the cities of Y and Z. In his autobiographical book Seven Pillars of Wisdom, T.E. Lawrence uses a different spelling for X, one that comes from Old English and coincidentally means an official responsible for a town and its surroundings. Empires rose and fell in the broader region, but one dynasty held the position X of Y from 1201 CE onwards, switching allegiances as needed to hang on to power. In 1922, the last X of Y declared himself the Khalifa. But his newfangled Caliphate was conquered by a rival in 1925 and the office X of Y was abolished, with the conqueror assuming responsibility for the two cities Y and Z. Identify X (4 points), Y (2 points), and Z (4 points).",
+    "answer_text": "X = Sharif, Y = Makkah, Z = Madinah. Abdulaziz Al Saud (known in the West as Ibn Saud, the founder of modern Saudi Arabia) conquered the Hejaz region in 1925, ending the millennium-long rule of Makkah and Madinah by Sharifs from the Hashemite clan. The King of Saudi Arabia assumed the title \"Custodian of the Two Holy Mosques\" when the office of Sharif of Makkah was abolished. T.E. Lawrence used the spelling \"sheriff\" for this position; the words do not share a common etymology and are false cognates.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The term \"X mAvu\" in Malayalam means cashew tree, because it was introduced to Keralam by traders from the country A. The term X in Telugu means cannon, because merchants from A used to sell cannon to the Vijayanagara Empire. In Sinhalese and Bangla, the term X refers to people from A. But the origin of the term X in Hindi has nothing to do with A. During the Crusades, a majority of Catholic soldiers in Palestine were from the country B (or the broader ethnic group after whom B itself is named). From that name, a Farsi term was coined to refer to Europeans. This word later entered Hindustani as X. Identify X (3 points), A (2 points), and B (5 points).",
+    "answer_text": "X = firangi, A = Portugal, B = Frank or France. Most of the Crusaders spoke Old Frankish and were called Franks by the Byzantines, and their Muslim neighbors adopted the word Frank as firang or farang. The word, with minor variations, is now used to refer to Europeans or white people in general in much of West Asia, South Asia, and Southeast Asia.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is a sweet almond-flavored cream used in French patisserie in a variety of ways, including cakes such as the galette des rois. It is first recorded in a 1674 cookbook. The name comes from an Italian nobleman whose name literally means \"to break bread.\" He made a perfume with notes of almond and jasmine, which was used to scent leather gloves in Paris. The perfume went viral in its day, and patissiers named their cream after the perfume. The Plumeria genus of flowering plants is native to the Americas and the Caribbean. Their blossoms grow in clusters on the ends of the stems, made of a tubular corolla 5-10 cm long that splits sharply into five rounded, waxy, overlapping petals. When Europeans encountered the flower, its sweet, tropical scent reminded them of the famous X glove perfume, giving the shrub its popular name X. Identify X.",
+    "answer_text": "X = Frangipani (frangipane in French). The Italian noble family got the name Frangipani, meaning \"to break bread,\" because they generously donated food to the poor during a time of famine.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "German chemist Julius Wilbrand first synthesized X in 1863. For three decades, X was used as a yellow dye. In 1891, German chemist Carl Haussermann discovered the Y characteristics for which X is famous now. The current use of X wasn't discovered for decades because it is far less sensitive than other Ys known back then. Its ability to withstand shock and friction set X apart from all other Ys, leading to its adoption by the German government in 1902, followed by the British in 1907. The slide also shows a labeled molecular structure diagram of X. Identify X for all the points. No points for Y.",
+    "answer_text": "X = TNT (2,4,6-trinitrotoluene, aka 2-methyl-1,3,5-trinitrobenzene). Y = explosive. Energy release from nuclear and other explosions is expressed in terms of tons of TNT required to release the same amount of energy. The answer slide shows a test explosion of 500 tons of TNT at Kaho'olawe in Hawaii in 1965, conducted to see how nuclear explosions might affect ships at sea.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Rajah Tupas ruled an island now in the Asian nation of X. In April 1565, an expedition led by Miguel Lopez de Legazpi landed on his island. Of the 500-person crew of this expedition, 200-400 were indigenous people from Tlaxcala. The expedition quickly defeated and forcibly baptized Rajah Tupas, abolished his monarchy, and established a colony. A few years later, the colonizers defeated Rajah Matanda and Rajah Sulayman on a bigger nearby island and established the administration of X there. The Free and Sovereign State of Tlaxcala is the smallest state within the United States of Y in the Americas; its coat of arms, granted in 1535 by its European ally, is shown in the picture. The Tlaxcaltecas are the only Native American group that colonized a region outside the Americas. Many words from their Nahuatl language are found in the languages now spoken in X. Identify X (5 points) and Y (5 points).",
+    "answer_text": "X = The Philippines, Y = Mexico. Tlaxcala fiercely resisted Aztec conquest for centuries before the Spanish arrived. They gave critical help to the Spanish forces under Hernan Cortes to conquer Tenochtitlan, and were given special privileges for the next 300 years. Tlaxcaltecas subsequently helped the Spanish subdue other tribes in Mexico, and joined the Spanish in their conquest of the Philippines.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "P&O was a British company that ran a steamer service between Britain and India. One fake etymology for the word \"posh\" claims that the word was P&O's acronym for \"port out, starboard home\" because the shade is on the port side when going from Britain to India and starboard on the way back, and rich passengers booked their suites this way. Historians who scoured P&O's tickets in archives failed to turn up any evidence for this claimed etymology. This is a canonical example of a pervasive problem in English etymology. Exasperated experts give this problem the tongue-in-cheek acronym CANOE, referring to the tendency of well-meaning enthusiasts to accept at face value certain etymological explanations without scrutinizing the historical record. What does CANOE stand for? The concept is enough to get full points.",
+    "answer_text": "Conspiracy/Committee to Ascribe Nautical Origins to Everything. English has a large number of words and phrases with actual nautical origins, which makes it hard to tell fake nautical etymologies apart. Another example: one theory for the American usage \"cup of joe\" for coffee is that when US Navy Secretary Josephus Daniels banned alcohol aboard ship in 1914, sailors started calling their coffee a \"cup of joe\"; however the phrase doesn't appear in writing until the 1930s and likely comes from the name of the island Java, a major coffee-growing region.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The X Y has only 23 syllables when its meter requires 24: the first line is one syllable short, as shown in an illustration of syllable boxes. Reciters have long filled the gap by pronouncing a consonant-plus-semivowel cluster in its sixth word as two syllables instead of one. The pronouns in the X Y do not match: it opens with a neuter pronoun meaning \"that\" and switches to a masculine pronoun meaning \"who\" in the third line. Its name has nothing to do with the main characters mentioned in the X Y. X is the name of a poetic meter with three lines of eight syllables each. Adding to all this confusion, four other words are usually recited before the X Y, signifying the cosmic sound, the earth, the atmosphere, and the heavens. Identify X for all the points. No points for Y.",
+    "answer_text": "X = Gayatri, Y = mantra. The Gayatri meter is one of the seven primary Vedic meters; about a quarter of the Rig Veda follows this meter. The Gayatri Mantra begins with \"tat\" (\"that\") and invokes the sun god Savitr.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was 20 years old when he left India, leaving his wife at an ashram near Ahmedabad. He enrolled at the University of California, Berkeley in January 1923. To make ends meet, he worked odd jobs like picking grapes, washing dishes, and canning fruit. The next semester the university doubled its out-of-state tuition fees, forcing X to transfer. He chaired the national convention of the Hindustan Association of America in December 1923. He earned a BA and an MA in sociology from other American universities. X became a committed Marxist during his time in the US and returned to India in 1929. In March 1979, while X was undergoing treatment, a senior Intelligence Bureau official noticed a body that looked like him being carried out of the hospital and alerted his higher-ups. The Prime Minister then erroneously announced X's death to the Lok Sabha, triggering nationwide mourning. He then had to retract the announcement and apologize to the nation. When X was eventually told about all this, he just laughed it off. Identify X.",
+    "answer_text": "X = Jayaprakash Narayan. His wife was at the Sabarmati Ashram during Narayan's time abroad. He passed away in October 1979, a few months after the incorrect death report.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Sportswriter Jon Bois coined the portmanteau X in a 2014 article in SB Nation. He defined it as \"the art of producing\" a final outcome that has never occurred before in the history of the National Football League. In American football, points are awarded for touchdowns (6 points), field goals (3 points), and safeties (2 points), with 1-2 extra points up for grabs after touchdowns. This uneven point distribution and differing frequencies in play make some outcomes more probable than others. Bois charted all outcomes in NFL history and noticed gaps; the gaps are possible Xs. For example, when the Seattle Seahawks won 43-8 over the Denver Broncos in Super Bowl 48, it was a X because no other NFL game had ever finished 43-8 until that one. Identify X.",
+    "answer_text": "X = scorigami. There was just 1 scorigami in 2014, the year that Bois coined the term. There were 14 scorigamis in the 2013 season.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This Deccan town has several names and X is the best-known among them. In 1595, Malik Ambar, the Ethiopian-slave-turned-ruler of Ahmednagar, granted the paragana of X to Maloji Bhonsle, the grandfather of Chhatrapati Shivaji. By Shivaji's time, X had become part of the Mughal Empire. Aurangzeb described X as \"a marvelous place for strolling\" despite having once been \"a place of worship\" for \"unbelievers.\" He described the biggest monument of X as \"one of the wonders of the work of the transcendent Artisan [Allah],\" \"charming to the eye,\" and \"unless one sees it, no written description can correctly picture it.\" High praise, considering that he doesn't say anything positive about any other temple in his memoirs. Aurangzeb eventually chose to be buried 3 kilometers away from X. After his death, X became part of Hyderabad State, with its first few rulers also buried nearby. Identify X.",
+    "answer_text": "X = Verul, Ellora, Khuldabad (best known as Ellora). Verul is the local name and Ellora is its anglicization. Aurangzeb's tomb in Khuldabad is 3 km away from the Kailash Temple.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tiebreaker. The slide shows an authentic passport issued at the Brazilian embassy in Prague to \"Josef Pwag,\" listing place of birth as Sao Paulo and date of birth as February 1, 1983. The passport photo page shows the round face of a young boy. The Japanese newspaper Yomiuri Shimbun reported in 2011 that Pwag entered Japan in 1991 using this passport and visited Tokyo Disneyland. By what name is Josef Pwag better known?",
+    "answer_text": "Kim Jong-un. Kim Jong-un and his father Kim Jong-il both had authentic Brazilian passports that they used to obtain visas from European countries.",
+    "has_media": true,
+    "extraction_confidence": "medium"
+  }
+]

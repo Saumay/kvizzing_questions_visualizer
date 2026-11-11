@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "In 2020, a Twitter user posted that her island's turnip shop was buying turnips at a highly lucrative price of 599 Bells. What she didn't expect was a direct message from a Hollywood actor, one whose most famous role took him on a very long walk to a volcano. The actor (X) offloaded his own turnip stash for a tidy profit, complimented her island's design, asked permission before picking any fruit from her trees, and even asked how to leave a tip before leaving. Who is X and where did he visit this person?",
+    "answer_text": "X is Elijah Wood. He visited a player named Jessa's island in Animal Crossing: New Horizons, where his in-game character (named elwood) politely asked to pick fruit from her trees.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1804, a French inventor unveiled a mechanical loom (X) that shares its name with a fabric commonly used in upholstery and curtains. His solution was to encode each pattern as a sequence of holes punched into interchangeable cards, which the loom read mechanically to determine which threads to raise. Decades later, a mathematician designing an ambitious general-purpose mechanical computer adopted this same punched-card system to feed operations and data into his machine. His closest collaborator (Y), child of a famous Romantic poet, articulated the deeper significance of this, writing that the machine \"weaves algebraic patterns just as the (X) weaves flowers and leaves.\" Name X (the loom, 6 letters) and Y (the collaborator, 4 letters).",
+    "answer_text": "X is the Jacquard Loom. Y is Ada Lovelace (daughter of Lord Byron), collaborator of Charles Babbage on the Analytical Engine.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long before it became an unlikely symbol of political defiance, this chair's most likely origin is a prison in Manila in the late 1800s. Its imposing, throne-like silhouette made it an instant favorite for studio photographers, who prized it for staying cool under hot lighting and for making anyone seated in it look regal. The chair has an hourglass shaped base, lifted arms, and a woven flared back resembling a bird after which it is named. Its most iconic and consequential appearance came in 1967, when a co-founder (X) of a newly formed Black political organization sat for a now-famous portrait: rifle in one hand, spear in the other, flanked by African shields, seated in this style of chair as though enthroned. The image became one of the most widely reproduced photographs of the 20th century, and transformed the chair into a defiant symbol of Black power and self-determination. Named after a bird, identify the chair and the person X.",
+    "answer_text": "The chair is the Peacock Chair. X is Huey P. Newton, co-founder of the Black Panther Party for Self-Defense.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "A bar chart on the left shows the number of oldest still-running companies by country (country names redacted except a few, with the top bar far longer than the rest). A second bar chart on the right shows the industry breakdown of those companies in the #1 country from the left chart (top categories include Food & Beverage, Alcohol, and Hospitality, with others like Pharmacy & Chemicals, Condiments, Textiles & Clothing, Construction, Retailing, etc.). Name the top country in this list.",
+    "answer_text": "Japan.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1995, a self-taught programmer working out of his parents' basement in Maryland began writing a 3D graphics software (X) for a single purpose: to power an ambitious first-person shooter he and a small team were building to compete with games like Doom and Quake. That game, released in 1998, gave the software its name. Decades later, it has vastly outgrown its origin, now powering blockbuster titles across nearly every genre (Fortnite, Gears of War, Final Fantasy VII Remake, Borderlands), real-time virtual sets for film/TV (The Mandalorian), and even the infotainment displays inside Rivian's electric trucks and SUVs. Name X, and the 1998 first-person shooter that gave it its name.",
+    "answer_text": "X is Unreal Engine, named after the 1998 first-person shooter Unreal (created by Epic Games/Tim Sweeney).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "During the Korean War, US Army Quartermaster researchers set out to replace the coarse, WWII-era fabric that had clothed soldiers since the 1940s. Their solution seemed paradoxical: they took a weave famous in the civilian world for producing soft and elegant fabrics, the kind used in evening wear and dress linings, and simply flipped it inside out on the loom. The resulting fabric (X) became the material of the iconic OG-107 fatigue uniform, issued from 1952 through the Vietnam era. Despite descending from a weave associated with delicate luxury, this version was prized for the \"opposite\" reasons: it turned out to be exceptionally tough, wind-resistant, water-resistant, and durable. Identify X (a two word term).",
+    "answer_text": "X is Reverse Sateen (a sateen weave flipped/woven inside-out). John Lennon famously wore a Sgt. Reinhardt OG-107 shirt made of this fabric on The Dick Cavett Show in 1971.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Ever since cameras became widely accessible, people have loved using them to create weird, funny images -- think the planking fad of the 2010s, forced perspective shots, or the \"hadouken\" trend, where a person appears to be blasted backward by an invisible force shooting from someone's palms. This kind of photo trend isn't new though. One version of it actually dates back to the 1920s, and it's based on a mythical figure (XY) popular in European folklore. XY appears in the lore of the Green Knight, in a story by Washington Irving, in Disney's The Adventures of Ichabod and Mr. Toad, and in a Tim Burton film. Name XY, and describe the photo trend, which is having a resurgence online in the 2020s.",
+    "answer_text": "XY is the Headless Horseman. The photo trend is called \"Horsemanning\" -- a posed photo where one person's head appears to be removed/tucked away while another person's body (lying down with head hidden) makes it look like a headless body is being carried or displayed, mimicking a decapitated figure.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1983, a comics writer-artist (X) took a break between two of his most influential runs -- the noir-tinged ninja and Elektra storylines he'd been drawing on a certain blind Marvel vigilante, and the grim, armored future-Gotham epic that would later redefine an entire genre of superhero comic -- to write and draw a six-issue miniseries (Y) unlike anything he'd done before. The project (Y) followed a disgraced, masterless samurai in feudal Japan who is mystically reborn centuries later in a corrupt, dystopian 21st-century New York, tasked with hunting down the shapeshifting demon who murdered his master. Name X, Y.",
+    "answer_text": "X is Frank Miller. Y is Ronin (Frank Miller's Ronin), which also inspired the animated series Samurai Jack.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In August 2021, luxury jeweler Tiffany & Co. unveiled a new ad campaign starring a music power couple (X and Y), aimed at a younger luxury consumer base. Behind the couple in the campaign photos hung a large painting titled Equals Pi (Z), painted in 1982 by an artist who had spent much of his career as an outsider voice -- a Brooklyn-born painter who rose out of downtown Manhattan's graffiti and street-art scene, largely self-taught, whose work often confronted consumerism. The painting had never been publicly exhibited before this ad, and the artist's own former friends and collaborators strongly criticized its use to sell diamonds as a distortion of everything he stood for. Name (X and Y) (3), and the artist Z (7).",
+    "answer_text": "X and Y are Jay-Z and Beyoncé. Z is Jean-Michel Basquiat.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This is a ceiling from a temple in Kyoto, showing wooden boards with faint stained handprints and footprints visible on their surface. What's the grim story behind how the foot and hand prints got there, and why are they on the ceiling rather than the floor?",
+    "answer_text": "The boards in the ceiling were once the floor of the main hall of Fushimi Momoyama Castle in southern Kyoto. On these boards on August 1, 1600, over 380 samurai warriors committed seppuku, leaving bloody hand and foot prints. The bloodstained floorboards were later repurposed as \"blood ceilings\" (chi-tenjo) in several Kyoto temples as a memorial, so that people would not walk over the remains of the dead.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "One of the oldest companies (X) has a secret recipe that has been passed down through generations to create this object. The company originally was founded in (Y) in 1623 but moved to the US in 1929. Its sales exploded after the Beatles' appearance on The Ed Sullivan Show in 1964, a boom so big it needed a second factory in Canada. The name for this object is derived from the Ancient Greek word for \"cup/bowl\". Representations of these objects have been found in paintings from the Armenian Highlands (7th century BC), Larsa, Babylon, Assyria, ancient Egypt, ancient Greece, and ancient Rome, and references appear in the Bible through many Psalms. Identify the company X, Y (City/Country).",
+    "answer_text": "X is Zildjian (maker of cymbals, whose name derives from the Greek word for cymbal/cup-bowl). Y is Constantinople/Istanbul.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these pairs of country names with images and their labels: Italy/South Korea with an image of a snail (labeled \"Snail\"); Russia with an image of a small fluffy dog (labeled \"Small Dog\"); South Africa/Netherlands with an image of a monkey's curled tail (labeled \"Monkey's tail\"); Denmark/Sweden with an image of an elephant's curled trunk (labeled \"Elephant's trunk\"); Czech Republic with an image of a rolled herring dish (labeled \"Rollmop\"); China with an image of a small mouse (labeled \"Little mouse\"). What connects these?",
+    "answer_text": "These are the colloquial national names used for the \"@\" symbol in different countries/languages: e.g., Italian/Korean \"snail\" (chiocciola), Russian \"little dog\" (sobaka), Afrikaans/Dutch \"monkey's tail\" (aapstert), Danish/Swedish \"elephant's trunk\" (snabel-a), Czech \"rollmop\" (zavináč), and Chinese \"little mouse\" (xiao laoshu). The answer slide is titled \"The many names for '@'\".",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1973, an evolutionary biologist was poring over fossil survivorship data when he noticed something that shouldn't have made sense: species were going extinct at a fairly constant rate over millions of years, regardless of how long they'd already survived or how well-adapted they seemed to their environment, because predators, prey, and rivals were evolving too, and every improvement one species made simply reset the balance for everyone else. He borrowed a name for this endless evolutionary treadmill from a chess-obsessed British mathematician's Victorian-era fantasy novel, in which a monarch drags the protagonist into a breathless run across a giant chessboard landscape, only to explain that despite all their running, they haven't moved anywhere at all, because in this particular world you have to run just to stay in place. Name the hypothesis named after the monarch in the novel.",
+    "answer_text": "The Red Queen Hypothesis, named after the Red Queen in Lewis Carroll's Through the Looking-Glass (\"Now, here, you see, it takes all the running you can do, to keep in the same place.\").",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Astronauts returning from long stays in orbit risk fainting on landing: zero gravity causes their blood vessels to lose tone, so when gravity returns, blood pools rapidly in the legs instead of reaching the brain. In the 1980s, a NASA-affiliated physiologist looked to an animal whose legs already handle a pressure swing no other land mammal comes close to -- leg capillary pressure that ranges roughly -250 to +240 mmHg with every stride. Its lower leg arteries compensate with unusually thick walls around a pinhole-narrow channel, and most of this toughening happens within the first hour after birth, fast enough for a newborn to stand and walk almost immediately. That rapid natural adaptation became the model for a NASA device that uses negative pressure to pull blood into an astronaut's legs, rehearsing gravity's effects before re-entry. Name the animal.",
+    "answer_text": "Giraffe.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "On September 16, 1982, a computer science researcher at a Pittsburgh university posted a lighthearted physics riddle to his department's online message board: a candle is mounted on the wall of an elevator, a drop of mercury sits on the floor, and the cable snaps -- what happens to each as the elevator falls? A colleague replied later that evening with a deadpan follow-up posted under the header \"WARNING!\", claiming that due to a recent physics experiment, one of the building's real elevators had been contaminated with mercury and suffered slight fire damage. It was a joke, but several people reading it out of context did not take it as one, causing panic before the department clarified nothing had happened. In the aftermath, the board's regulars seriously debated how to mark a post as \"not serious\" going forward, floating odd proposals like an asterisk, a percent sign, or an ampersand. On September 19th, one professor on the thread offered his own solution, which stuck. What did this exchange mark the first documented use of?",
+    "answer_text": "The first documented use of the emoticon/smiley :-) , proposed by Scott Fahlman at Carnegie Mellon University on September 19, 1982, as a joke marker for online messages.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1977, in an India still years away from even beginning the conversation on homosexuality, a woman published a book built on interviews with gay men in India, a same-sex couple abroad seeking legal marriage, and a temple priest's views on the subject, alongside a review of existing global literature on the topic. She wrote it, by her own account, after her own marriage to a gay man led her to want to understand him. Largely dismissed and criticized at the time, the book is now recognized as the first academic study of homosexuality ever published in India. Its opening line doubled as its entire thesis: \"My only qualification for writing this book is that I am a human being.\" Outside this one book, she led a life of striking range: a published astrologer, a writer of murder mysteries, and, in 1980, an independent candidate who ran for a seat in India's Parliament directly against a sitting former Prime Minister. In 2020, her life became the subject of a biopic starring Vidya Balan, built around her most famous achievement other than the one described above. Who are we talking about?",
+    "answer_text": "Shakuntala Devi, author of \"The World of Homosexuals\" (1977) and famed mental calculator/\"Human Computer,\" subject of the 2020 biopic Shakuntala Devi starring Vidya Balan.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Bonus: Adolf Hitler wanted, before anything else, to be a painter -- he applied twice to the Vienna Academy of Fine Arts, was rejected both times, and spent years afterward scraping by on sales of derivative watercolor postcards before politics consumed him entirely. He's not the only one. Six decades later, a Middle Eastern strongman responsible for chemical attacks, mass graves, and two catastrophic wars apparently found time for his own artistic outlet: an allegorical romance novel, published anonymously in his country in 2000, that became an instant bestseller, was adapted into a stage musical, and was placed in every public library in the nation almost overnight. Its plot barely disguised itself: a noble king, a beautiful oppressed commoner representing his own people, and her abusive husband representing a rival global superpower. Name this ruler.",
+    "answer_text": "Saddam Hussein, credited as the anonymous author of the allegorical novel \"Zabiba and the King\" (2000).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

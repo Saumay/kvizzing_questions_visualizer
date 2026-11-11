@@ -325,7 +325,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-07-08 | yes | yes | 58 | 0.0% | 100.0% | 0.0% | 0.0% | 5.2% |  |
 | 2026-07-09 | yes | yes | 92 | 0.0% | 100.0% | 0.0% | 0.0% | 1.1% |  |
 | 2026-07-10 | yes | yes | 61 | 0.0% | 100.0% | 0.0% | 0.0% | 6.6% |  |
-| 2026-07-11 | yes | yes | 64 | 0.0% | 100.0% | 25.0% | 0.0% | 4.7% |  |
+| 2026-07-11 | yes | yes | 81 | 0.0% | 100.0% | 40.7% | 0.0% | 3.7% |  |
 | 2026-07-12 | yes | yes | 64 | 0.0% | 100.0% | 50.0% | 0.0% | 6.2% |  |
 | 2026-07-13 | yes | yes | 75 | 0.0% | 100.0% | 0.0% | 0.0% | 10.7% |  |
 | 2026-07-14 | yes | yes | 50 | 0.0% | 100.0% | 0.0% | 0.0% | 10.0% |  |
@@ -333,39 +333,39 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-07-16 | yes | yes | 37 | 0.0% | 100.0% | 0.0% | 0.0% | 5.4% |  |
 | 2026-07-17 | yes | yes | 33 | 0.0% | 100.0% | 0.0% | 0.0% | 15.2% |  |
 | 2026-07-18 | yes | yes | 12 | 0.0% | 100.0% | 0.0% | 0.0% | 25.0% |  |
-| 2026-07-19 | yes | yes | 40 | 0.0% | 100.0% | 0.0% | 0.0% | 10.0% |  |
+| 2026-07-19 | yes | yes | 56 | 0.0% | 100.0% | 28.6% | 0.0% | 7.1% |  |
 | 2026-07-20 | yes | yes | 38 | 0.0% | 100.0% | 0.0% | 0.0% | 28.9% |  |
 | 2026-07-21 | yes | yes | 14 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-07-22 | yes | yes | 60 | 0.0% | 100.0% | 0.0% | 0.0% | 10.0% |  |
 | 2026-07-23 | yes | yes | 63 | 0.0% | 100.0% | 0.0% | 0.0% | 3.2% |  |
 | 2026-07-24 | yes | yes | 2 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-07-25 | yes | yes | 21 | 0.0% | 100.0% | 0.0% | 0.0% | 52.4% |  |
-| 2026-07-26 | yes | yes | 11 | 0.0% | 100.0% | 0.0% | 0.0% | 18.2% |  |
+| 2026-07-25 | yes | yes | 38 | 0.0% | 100.0% | 44.7% | 0.0% | 28.9% |  |
+| 2026-07-26 | yes | yes | 50 | 0.0% | 100.0% | 78.0% | 0.0% | 4.0% |  |
 | 2026-07-27 | yes | yes | 15 | 0.0% | 100.0% | 0.0% | 0.0% | 6.7% |  |
 | 2026-07-28 | yes | yes | 34 | 0.0% | 100.0% | 0.0% | 0.0% | 14.7% |  |
 | 2026-07-29 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-07-30 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-07-31 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-01 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-01 | yes | yes | 18 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-02 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-03 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-03 | yes | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-04 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-05 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-06 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-07 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-08 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-09 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-09 | yes | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-10 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-11 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-12 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-13 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-14 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-14 | yes | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-15 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-16 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-16 | yes | yes | 63 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-17 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-18 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-19 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-20 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-20 | yes | yes | 12 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-21 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-22 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-23 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -374,9 +374,9 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-08-26 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-27 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-08-28 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-29 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-29 | yes | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-08-30 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-08-31 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-08-31 | yes | yes | 32 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-09-01 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-02 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-03 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -388,7 +388,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-09-09 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-10 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-11 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-09-12 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-09-12 | yes | yes | 37 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-09-13 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-14 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-15 | yes | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -396,7 +396,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-09-17 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-18 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-19 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-09-20 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-09-20 | NO | yes | 16 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-09-21 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-22 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-09-23 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -410,7 +410,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-10-01 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-02 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-03 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-10-04 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-10-04 | NO | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-10-05 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-06 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-07 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -418,7 +418,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-10-09 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-10 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-11 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-10-12 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-10-12 | NO | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-10-13 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-14 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-15 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -426,19 +426,19 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-10-17 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-18 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-19 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-10-20 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-10-20 | NO | yes | 17 | 100.0% | 100.0% | 100.0% | 0.0% | 0.0% | YES |
 | 2026-10-21 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-22 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-23 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-24 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-25 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-10-26 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-10-26 | NO | yes | 34 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-10-27 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-28 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-29 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-30 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-10-31 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-11-01 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-01 | NO | yes | 17 | 0.0% | 100.0% | 100.0% | 0.0% | 0.0% |  |
 | 2026-11-02 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-03 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-04 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
@@ -1234,6 +1234,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-10-abhishek | 2026-07-10 | Abhishek Vats | 12 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-11-abhishek | 2026-07-11 | Abhishek Vats | 27 | 0.0% |  | yes |  | 3.7% |
 | 2026-07-11-shubhankar | 2026-07-11 | Shubhankar | 8 | 0.0% |  | yes |  | 12.5% |
+| deck-gauntlet-r20 | 2026-07-11 | Chinmay | 17 | 100.0% | yes |  |  | 0.0% |
 | deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | 16 | 75.0% | yes |  |  | 0.0% |
 | 2026-07-12-lzafeer | 2026-07-12 | Lzafeer Ahmad B F | 9 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-12-abhishek | 2026-07-12 | Abhishek Saluja | 6 | 0.0% |  | yes |  | 16.7% |
@@ -1248,6 +1249,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-14-harshvardhan | 2026-07-14 | Harshvardhan Ranade | 7 | 0.0% |  | yes |  | 14.3% |
 | 2026-07-19-gautam | 2026-07-19 | Gautam Ramachandran | 9 | 0.0% |  | yes |  | 11.1% |
 | 2026-07-19-pavan | 2026-07-19 | Pavan Pamidimarri | 12 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r21 | 2026-07-19 | unknown | 16 | 100.0% | yes |  |  | 0.0% |
 | 2026-07-20-tapish | 2026-07-20 | Tapish | 6 | 0.0% |  | yes |  | 100.0% |
 | 2026-07-20-antnishu | 2026-07-20 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-22-shreya | 2026-07-22 | Shreya | 12 | 0.0% |  | yes |  | 8.3% |
@@ -1258,9 +1260,30 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-07-23-shreya | 2026-07-23 | Shreya | 34 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-23-sameer | 2026-07-23 | Sameer Kulkarni | 5 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-25-shreya | 2026-07-25 | Shreya | 7 | 0.0% |  | yes |  | 71.4% |
+| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt | 17 | 94.1% | yes |  |  | 0.0% |
+| deck-gauntlet-r22 | 2026-07-26 | Khandoba | 18 | 94.4% | yes |  |  | 0.0% |
+| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | 21 | 95.2% | yes |  |  | 0.0% |
 | 2026-07-28-smit | 2026-07-28 | Smit Mahajani | 10 | 0.0% |  | yes |  | 40.0% |
 | 2026-07-28-antnishu | 2026-07-28 | AntNishu | 10 | 0.0% |  | yes |  | 0.0% |
 | 2026-07-28-pavan | 2026-07-28 | Pavan Pamidimarri | 5 | 0.0% |  | yes |  | 0.0% |
+| deck-gauntlet-r23 | 2026-08-01 | unknown | 18 | 94.4% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | 17 | 82.4% | yes |  |  | 0.0% |
+| deck-long-connect-gautam | 2026-08-09 | Gautam | 17 | 52.9% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | 17 | 64.7% | yes |  |  | 0.0% |
+| deck-gauntlet-r24 | 2026-08-16 | Namrata | 16 | 75.0% | yes |  |  | 0.0% |
+| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | 47 | 100.0% | yes |  |  | 0.0% |
+| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | 12 | 75.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r25 | 2026-08-29 | Sid K | 17 | 94.1% | yes |  |  | 0.0% |
+| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | 32 | 46.9% | yes |  |  | 0.0% |
+| deck-gauntlet-r26 | 2026-09-12 | Apratim | 16 | 100.0% | yes |  |  | 0.0% |
+| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | 21 | 71.4% | yes |  |  | 0.0% |
+| deck-gauntlet-r27 | 2026-09-20 | unknown | 16 | 62.5% | yes |  |  | 0.0% |
+| deck-gauntlet-r29 | 2026-10-04 | Pavan | 17 | 94.1% | yes |  |  | 0.0% |
+| deck-gauntlet-r28 | 2026-10-12 | Pranshu | 17 | 82.4% | yes |  |  | 0.0% |
+| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | 17 | 100.0% | yes |  |  | 0.0% |
+| deck-gauntlet-r30 | 2026-10-26 | Sal | 17 | 64.7% | yes |  |  | 0.0% |
+| deck-gauntlet-r31 | 2026-10-26 | Aditi | 17 | 70.6% | yes |  |  | 0.0% |
+| deck-gauntlet-r32 | 2026-11-01 | Khandoba | 17 | 94.1% | yes |  |  | 0.0% |
 
 
 ## Decks
@@ -1286,19 +1309,19 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r17 | 2026-06-19 | Nikunj | yes |  | yes | yes | 20 |
 | deck-gauntlet-r18 | 2026-06-26 | Prajwal | yes |  | yes | yes | 17 |
 | deck-gauntlet-r19 | 2026-06-29 | Gautam | yes |  | yes | yes | 18 |
-| deck-gauntlet-r20 | 2026-07-11 | Chinmay | yes |  | yes |  | 0 |
-| deck-gauntlet-r21 | 2026-07-19 |  | yes |  | yes |  | 0 |
-| deck-gauntlet-r22 | 2026-07-26 | Khandoba | yes |  |  |  | 0 |
-| deck-gauntlet-r23 | 2026-08-01 |  | yes |  |  |  | 0 |
-| deck-gauntlet-r24 | 2026-08-16 | Namrata | yes |  |  |  | 0 |
-| deck-gauntlet-r25 | 2026-08-29 | Sid K | yes |  |  |  | 0 |
-| deck-gauntlet-r26 | 2026-09-12 | Apratim | yes |  |  |  | 0 |
-| deck-gauntlet-r27 | 2026-09-20 |  | yes |  |  |  | 0 |
-| deck-gauntlet-r28 | 2026-10-12 | Pranshu | yes |  |  |  | 0 |
-| deck-gauntlet-r29 | 2026-10-04 | Pavan | yes |  |  |  | 0 |
-| deck-gauntlet-r30 | 2026-10-26 | Sal | yes |  |  |  | 0 |
-| deck-gauntlet-r31 | 2026-10-26 | Aditi | yes |  |  |  | 0 |
-| deck-gauntlet-r32 | 2026-11-01 | Khandoba | yes |  |  |  | 0 |
+| deck-gauntlet-r20 | 2026-07-11 | Chinmay | yes |  | yes | yes | 17 |
+| deck-gauntlet-r21 | 2026-07-19 |  | yes |  | yes | yes | 16 |
+| deck-gauntlet-r22 | 2026-07-26 | Khandoba | yes |  |  | yes | 18 |
+| deck-gauntlet-r23 | 2026-08-01 |  | yes |  |  | yes | 18 |
+| deck-gauntlet-r24 | 2026-08-16 | Namrata | yes |  |  | yes | 16 |
+| deck-gauntlet-r25 | 2026-08-29 | Sid K | yes |  |  | yes | 17 |
+| deck-gauntlet-r26 | 2026-09-12 | Apratim | yes |  |  | yes | 16 |
+| deck-gauntlet-r27 | 2026-09-20 |  | yes |  |  | yes | 16 |
+| deck-gauntlet-r28 | 2026-10-12 | Pranshu | yes |  |  | yes | 17 |
+| deck-gauntlet-r29 | 2026-10-04 | Pavan | yes |  |  | yes | 17 |
+| deck-gauntlet-r30 | 2026-10-26 | Sal | yes |  |  | yes | 17 |
+| deck-gauntlet-r31 | 2026-10-26 | Aditi | yes |  |  | yes | 17 |
+| deck-gauntlet-r32 | 2026-11-01 | Khandoba | yes |  |  | yes | 17 |
 | deck-kviz-o-krazzy-r1 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
 | deck-kviz-o-krazzy-r2 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
 | deck-kviz-o-krazzy-r3 | 2026-04-15 | Sal | yes |  |  | yes | 16 |
@@ -1309,10 +1332,10 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-mtv-tournament-r1 | 2026-07-11 | Bijal Bhatt | yes |  | yes | yes | 16 |
 | deck-mtv-tournament-r2 | 2026-07-12 | Bijal Bhatt | yes |  | yes | yes | 16 |
 | deck-mtv-tournament-r3 | 2026-07-12 | Bijal Bhatt | yes |  | yes | yes | 16 |
-| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt | yes |  | yes |  | 0 |
-| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | yes |  | yes |  | 0 |
-| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | yes |  |  |  | 0 |
-| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | yes |  | yes |  | 0 |
+| deck-mtv-tournament-r4 | 2026-07-25 | Bijal Bhatt | yes |  | yes | yes | 17 |
+| deck-mtv-tournament-r5 | 2026-08-03 | Bijal Bhatt | yes |  | yes | yes | 17 |
+| deck-mtv-tournament-r6 | 2026-08-14 | Bijal Bhatt | yes |  |  | yes | 17 |
+| deck-mtv-tournament-r7 | 2026-08-31 | Bijal Bhatt | yes |  | yes | yes | 32 |
 | deck-megakviz-r1 | 2025-12-13 | Akshay | yes |  |  | yes | 16 |
 | deck-megakviz-r2 | 2026-02-15 | Akshay | yes |  |  | yes | 39 |
 | deck-movie-quiz-bijal-r1 | 2026-04-25 | Bijal Bhatt | yes |  | yes | yes | 16 |
@@ -1345,12 +1368,12 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-tension-gourav | 2026-05-09 | Gourav |  |  | yes |  | 0 |
 | deck-buzzy-mushkil-hai | 2026-05-16 | Bijal Bhatt |  |  | yes |  | 0 |
 | deck-qotd-100 | 2026-06-23 |  |  |  | yes |  | 0 |
-| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | yes |  |  |  | 0 |
-| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | yes |  | yes |  | 0 |
-| deck-long-connect-gautam | 2026-08-09 | Gautam | yes |  | yes |  | 0 |
-| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | yes |  | yes |  | 0 |
-| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | yes |  |  |  | 0 |
-| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | yes |  |  |  | 0 |
+| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | yes |  |  | yes | 17 |
+| deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | yes |  | yes | yes | 21 |
+| deck-long-connect-gautam | 2026-08-09 | Gautam | yes |  | yes | yes | 17 |
+| deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | yes |  | yes | yes | 12 |
+| deck-india-independence-qotd-shreya | 2026-08-16 | Shreya | yes |  |  | yes | 47 |
+| deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | yes |  |  | yes | 21 |
 | deck-cricket-quiz-harsh | 2026-10-25 | Harsh |  |  | yes |  | 0 |
 | deck-triwizard-tourney-aditi | 2026-08-08 | Aditi |  |  | yes |  | 0 |
 

@@ -1,0 +1,110 @@
+[
+  {
+    "question_text": "Oliver Lincoln Lundquist, an American architect and industrial designer, headed an outfit within the OSS that was tasked at the very last minute with designing an accessory for an influential group of people for an event in 1945. The original design created by his team has changed over the years, and the modern one, while the same in principle, covers more area and has had its orientation rotated by about 90 degrees. The background was chosen as the opposite of \"the colour of war\". What did Lundquist's team design?",
+    "answer_text": "The UN emblem and flag",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X and Y collaborated for the third time in 2011. The official video for X's contribution to Y was made by one of the band members and was based on the H.G. Wells short story \"The Country of the Blind\", where the band's co-frontman was cast as the one-eyed king, while also incorporating imagery from Y as well as a nod to the Last Supper. The first ever collaboration between X and Y was in 2007, and it got its second wind in 2022 as a viral meme trend. In that trend, users reimagined the finales of various films and TV shows as though they'd been released in 2007, rescoring those endings with this original song.",
+    "answer_text": "X: Linkin Park; Y: Transformers",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X's Japanese title came from a doubled-syllable onomatopoeia. When its distributor took it to the United States in 1980, one letter of that title was altered, on the reasoning that the first character, rendered at scale on a large object left standing unattended in public, could be turned into something obscene by anyone with a coin or a key. Its creator, then twenty-five, had deliberately set out to reach an audience his industry had ignored, believing what already existed was too violent to draw women. Identify X.",
+    "answer_text": "Ms. Pac-Man (as given on the answer slide, which shows the original Japanese arcade cabinet reading Puckman)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "In 1790 a land board carved bounty tracts for Revolutionary War veterans into twenty-eight townships, giving them the names of Roman generals, Greek heroes and a few English poets. The scheme was mocked so persistently that the Surveyor General whose office had drawn the map spent years insisting the names were nothing to do with him. He did name a village himself, however, on a site lying within the township of Ulysses, and the name he chose was a direct reference to that township. What did he call it?",
+    "answer_text": "Ithaca, NY",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Robert Harpur resigned from King's because Anglican faculty hated his Presbyterian roots. He took up the role of private tutor, and in 1774 opened an account for a young man who could not enter the college proper for want of Latin and Greek: 3 pounds 4 shillings a quarter, to study mathematics. The pupil returned from the war as colonel and repaid 5 guineas to the teacher. He would later hold general's rank and become one of the most celebrated men in the country before meeting an untimely end. Long a figure for textbooks rather than the public, his popularity saw a resurgence in the 21st century thanks to a pop-culture phenomenon. Who?",
+    "answer_text": "Alexander Hamilton",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X, by Y, came out in 2008 and inspired the following things. An entrepreneur's essay on the changing nature of the internet, from open, indexed social media feeds into invitation-only newsletters and group chats, where being unsearchable ensures safety, 2019. An essay by two Paradigm researchers on Ethereum's public mempool, where pending transactions are vulnerable to predatory bots, 2020. One of the first fully on-chain strategy games, in which players explore a procedurally generated, fog-of-war universe while staying hidden from one another, 2020. Identify X and Y.",
+    "answer_text": "X: Dark Forest; Y: Liu Cixin",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Around 1475, three men in Valencia collaborated on a work in their own tongue running to exactly sixty-four stanzas of nine lines each. The stanzas fall into groups of three: in the first Mars acts, in the second Venus answers him, and in the third Mercury pronounces on whether what has just occurred was permitted. Mars is assigned red and Venus green, and the whole is framed as an allegory of courtship, the god of war pursuing the goddess of love. The original manuscript is lost; only a photograph of the codex survives, held at the Library of Catalonia. The poem is a landmark, though not for its literary merits. Why?",
+    "answer_text": "It is considered the first recorded (modern-rules) chess game: the poem \"Scachs d'amor\" is the earliest known description of chess played with the modern, powerful queen move",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Tyrone Curtis ______ was seven years old when he talked his way into a pickup game in a Baltimore housing project, against older boys who had spent years mocking him. He stripped the ball off one of them twice in succession, prompting the complaint: \"Man, you muggin everybody.\" The remark fused in the other children's minds with a character from a film series then playing on television, and the label stuck for the rest of his life. Years later, an opposing coach in his college conference was said to have issued his players a standing rule named after him: if you cannot see him, pick the ball up, because he is behind you and about to take it off you. By what name is he known (4 letters), and what record does he still hold (6 letters)?",
+    "answer_text": "Muggsy Bogues; shortest player in NBA history",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Across two seasons, viewers of X had seen the branching of time rendered as a spray of lines spreading outward from a central spine. In the final episode the protagonist gathers the dying branches in his hands, carries them to an abandoned throne at the end of time, and draws them around himself. The camera pulls back and then rotates ninety degrees, and the diagram the audience had been reading sideways all along resolves into Y turning spreading lines into roots. In the mythology X borrows from, the figure now seated at the centre of Y, holding it together, is the one fated to bring about the end of the world it structures. Identify X (3 letters) and Y (7 letters).",
+    "answer_text": "X: Loki; Y: Yggdrasil",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Systems that turn brain activity into speech produce something flat and robotic, recovering the words but not the pace, pitch and volume that carry much of the meaning. To get at those, a Berkeley team recorded from 2,668 electrodes implanted in twenty-nine patients undergoing neurological surgery, played them music, and trained models to reconstruct what they were hearing. The result, published in 2023, was the first recognisable song ever rebuilt from brain recordings alone. The paper gives a scientific reason for the choice of track, it is unusually layered, though the lead author later offered another, that the patients simply loved the band. They used the quieter of two tracks. Which one?",
+    "answer_text": "Another Brick in the Wall, Pt. 1 (Pink Floyd)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tommy Nutter, born 1943, trained as a tailor on the London street synonymous with the trade and opened his own shop there on Valentine's Day 1969. The business was an immediate success, as he combined traditional experience with innovative design. He would later go on to make Bianca Jagger's wedding suit and Jack Nicholson's costumes as the Joker. But of everything he made, Nutter said he was proudest of a piece of work from the August of the year he opened, for which he ended up completing only 75% of what was intended. What did Nutter make?",
+    "answer_text": "The suits worn by The Beatles on the Abbey Road album cover",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the national epic of Iran, a young warrior rides at the head of the enemy host, searching for his father he has never seen. Twice he asks the champion sent against him to give his name; twice the champion declines, holding that a great reputation is better withheld than spent on a boy. They wrestle two days. On the second the older man prevails, and only the clasp on the dying boy's arm, put there before he was born, tells him whose life he has taken. He sends for the king's elixir. It is withheld until there is no point. Millions in India who have never read a line of the poem know the champion's name and in a way his tendency to not disclose things. From where?",
+    "answer_text": "Chhupa Rustam - the idiom (meaning a hidden talent) derives from Rustam of the Persian epic Shahnameh, who conceals his identity before unknowingly killing his son Sohrab in a wrestling duel",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1993 Jay Lacopo wrote a twelve-page screenplay and asked a friend to direct it. X, never one to turn down working with a friend, agreed, shot it in a couple of days, and supplied the one element anyone now remembers: the title, I Killed My Lesbian Wife, Hung Her on a Meat Hook, and Now I Have a Three-Picture Deal at Disney. Sixteen minutes long, it was his directorial debut, made when he was twenty, and he has disowned it ever since, calling it the work of someone with no prospects and no promise. Ironically, it resurfaced online in the same weeks he was collecting his second Academy Award, in 2013. Who is X?",
+    "answer_text": "Ben Affleck",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The slide shows a photo of a lone instrumented buoy floating in open ocean, with no land or other structure in sight. Pictured is the only physical object at a location which, by one reckoning, is among the most visited on Earth, though virtually no human being has ever been there, and there is nothing there to visit. Give the informal name of the location, and account for its extraordinary traffic.",
+    "answer_text": "Null Island, the point at 0 degrees latitude and 0 degrees longitude in the Atlantic Ocean. It is marked as among the most 'visited' locations because GPS and geolocation software errors frequently default broken or missing coordinates to (0,0), routing huge volumes of erroneous location pings there",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect (non-exhaustive): Money, Panic, Volcano, Avatar, Museum, Zombie, Juggernaut",
+    "answer_text": "Words with origin in non-Christian religions and mythologies (e.g. Money from the Roman goddess Juno Moneta, Panic from the Greek god Pan, Volcano from the Roman god Vulcan, Avatar and Juggernaut from Hindu tradition - Juggernaut from Jagannath, Museum from the Greek Muses, Zombie from West African Vodun religion)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Schoolchildren almost everywhere learn X under a name that merely describes what it does. Germans call it the midnight formula, on the principle that you ought to be able to produce it if shaken awake at that hour. Mexicans call it the pork-crackling, for reasons nobody has satisfactorily explained. And Brazilians, perhaps alone in the world, name it after a twelfth-century Indian mathematician, who did not discover it, who credited a predecessor of his own with the method. What is X and its Brazilian name?",
+    "answer_text": "X: The quadratic equation (formula); Brazilian name: Formula de Bhaskara, after the 12th-century Indian mathematician Bhaskara",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie Breaker 1. Connect: King David, Charlemagne, Julius Caesar, Alexander the Great",
+    "answer_text": "Kings assigned to playing cards (the four kings of a standard deck are traditionally identified as King David of Hearts, Charlemagne of Diamonds, Julius Caesar of Clubs, and Alexander the Great of Spades)",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Tie-breaker 2. In the late 1970s, India's excise authorities decided that a Mumbai company's two best-known products were not what it claimed. The company said they were medicinal preparations made to a traditional formula; the department held them to be ordinary toiletries, which carried far heavier duty. Part of its case rested on the firm's own registered name, which contained a word implying exactly the kind of manufacturing the company was denying. Rather than wait for the courts, the company put its legal position into a Hindi advertisement. Those words became one of the most quoted lines in Indian popular culture, familiar to millions who have never bought the product. The case itself dragged on until the Supreme Court settled it in 2007. What products?",
+    "answer_text": "Vicco Turmeric (and Vicco Vajradanti) - from the famous jingle 'Vicco Turmeric, nahin cosmetic, Ayurvedic cream'",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  }
+]

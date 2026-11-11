@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "X (1957) was a director's remake of his own film from almost two decades earlier, retold on a far grander canvas. During its shoot in a Gujarat village, a fire planned for one scene got out of hand when the wind changed direction, leaving Y, the film's lead actress, trapped in the flames. Z, a young actor still finding his feet, ran in and pulled her out, suffering burns of his own. Y nursed him back to health, and within a year they had quietly married, even though audiences had only just watched them play mother and son. Identify X (6 points), Y (2 points) and Z (2 points).",
+    "answer_text": "X: Mother India. Y: Nargis. Z: Sunil Dutt. Quote: Main beta de sakti hoon, laaj nahin de sakti!",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In X (1957), Y plays a poet whose work no one wants to publish, in a film he also directed and produced. Mistaken for dead after a stranger is found wearing his coat, he becomes famous overnight, and the very people who rejected him begin profiting from his name. During Z, he appears at the back of the hall where his own memorial is being held, lit from behind and framed in the doorway like a figure returning from the dead. In the song, written by Sahir Ludhianvi and sung by Mohammed Rafi, he pours out his disillusionment with a society built on greed and hypocrisy. Y would make only one more film as an official director, a story about a filmmaker's downfall that failed so badly he never took a director's credit again. He died in 1964, aged just 39. Identify X (6 points), Y (2 points), Z (2 points).",
+    "answer_text": "X: Pyaasa. Y: Guru Dutt. Z: the song 'Yeh Duniya Agar Mil Bhi Jaaye Toh Kya Hai'. Quote: Yahaan toh jeevan se hain maut sasti.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X composed the music for Gulzar's Mausam (1975), and one of its most loved songs is 'Dil Dhoondta Hai'. Listeners actually know two melodies for it, and both came out with the film: a slow, melancholy solo by Bhupinder, and a lighter duet by Bhupinder and Lata Mangeshkar. A third, unused one stayed in X's personal collection of recordings, and he died in 1975 without ever hearing it on screen. His son found it among his father's old tapes, and it was reworked with new words by a different lyricist. Today, far more people can hum this third melody than either of the original two, though almost none of them connect it to Dil Dhoondta Hai. Identify X (5 points) and the song we know (5 points).",
+    "answer_text": "X: Madan Mohan. The song we know: 'Tere Liye' from Veer-Zaara. Quote: Yaa garmiyon ki raat, jo purwaayiaan chale, thhandi shafed chaadaron, pe jaagen der tak!",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "For a classical dance number in a 1960 costume drama, X refused to simply mime the sitar and instead spent around six months learning it from a maestro. He even asked for the song to be shot at the end of the schedule so he'd have more time to practise, and co-workers later remembered his fingers taped and bandaged from the strings. Born in Peshawar under a different name, he was given his screen name at Bombay Talkies, where he made his debut in the 1940s. Though he never trained formally, his quiet, immersive style made him one of the earliest method actors in Hindi cinema. A few years earlier, he had played a heartbroken, self-destructive lover from a famous novel, Y, one of several tragic roles that weighed on him so heavily he was advised to take on lighter films like this one. The effort paid off, as the 1960 film won him a Filmfare award. Identify X (5 points) and Y (5 points).",
+    "answer_text": "X: Dilip Kumar. Y: Devdas. Quote: Kaun kambakht bardaasht karne ke liye peeta hain?",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was born Shankardas Kesarilal in 1923 in Rawalpindi and worked as a railway apprentice in Bombay while writing poetry on the side. Raj Kapoor heard his poem \"Jalta Hai Punjab\" and offered to buy it, but X refused, only joining films later when he needed money for his growing family. That decision launched the iconic team of Raj Kapoor, X, Hasrat Jaipuri and Shankar-Jaikishan, starting with Barsaat (1949). His songs, like \"Awara Hoon\" and \"Mera Joota Hai Japani,\" said deep things in simple Hindi and became loved far beyond India. He won three Filmfare awards, and Gulzar has called him Hindi cinema's finest lyricist. His only film as producer, Teesri Kasam (1966), won a National Award but failed commercially, and he died that year at just 43, on Raj Kapoor's birthday. In 2013, India Post honoured him with a commemorative stamp as part of its \"100 Years of Indian Cinema\" series. Identify X (10 points).",
+    "answer_text": "Shailendra. Quote: Yaa gardish main hoon, aasmaan ka tara hoon - awara hoon!",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "After watching an Italian film about a father and son at India's first International Film Festival, a Bengali director set out to make X, shooting on real streets instead of studio sets and telling the story of an ordinary man rather than a glamorous hero. Its protagonist travels to the city with his young son, taking on gruelling work to save the one thing his family owns. To prepare for the role, the lead actor spent time with the men doing that work, even trying it himself. The film's title, inspired by a Tagore poem, names exactly what is at stake. Its unflinching ending refused audiences the comfort they were used to, yet it went on to win the very first Filmfare Award for Best Film. In 2025, a restored version premiered at the Venice Film Festival, sharing the lineup with classics by Kubrick and Almodovar. Identify X (10 points).",
+    "answer_text": "Do Bigha Zamin, directed by Bimal Roy. Quote: Apni kahani chhod ja, kucch toh nishani chhod ja.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X (5 words) is the famous refrain of a song from Chetan Anand's war film Haqeeqat (1964). The film is set during the 1962 war with China and follows Indian soldiers fighting in the freezing mountains of Ladakh. Written by Kaifi Azmi, composed by Madan Mohan and sung by Mohammed Rafi, the song plays near the end as soldiers face their final moments on the battlefield. Rather than sounding triumphant, it captures the grief, pride and quiet dignity of sacrifice, which gave it great emotional power after a painful national event. It remains one of India's most beloved patriotic songs, played every year on Independence Day and Republic Day and at memorials for fallen soldiers. Identify X.",
+    "answer_text": "'Ab Tumhare Hawale Watan Saathiyo'. Quote: Kat gaye sar hamare toh kuchh gham nahi, sar Himalay ka hamne na jhukne diya!",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In 1964, a penniless young Javed Akhtar arrived in Bombay and spent months sleeping on footpaths, at railway stations and in studio compounds. One night, while sheltering in a room at a studio owned by a well-known filmmaker, he opened a cupboard and found three Filmfare trophies belonging to the filmmaker's wife, X. They were the first he had ever held, and he promised himself he would win his own someday, a dream that came true many times over. X had started acting as a small child and went on to win the very first Filmfare award for Best Actress. In one remarkable year, she was the only actress nominated in her category, holding all three nominations herself. Her marriage eventually fell apart, but she still finished the film she and her husband had started together years earlier, playing a courtesan in what became her most famous role. She died at just 38, weeks after its release, and the film, slow to find an audience at first, became a huge hit only after she was gone. Identify X (10 points).",
+    "answer_text": "Meena Kumari. Quote: Yeh chiraag bujh rahe hain, mere saath, jalte jalte.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "As a Class 9th student, X and his classmates jumped on a train home from a Puja fair near Comilla without buying tickets, and the station master locked them in a godown near the station. On a friend's advice, he sang the Bhatiyali and Baul folk songs he had learned from his family's servants, hoping the station master's music-loving mother would hear him. She did, and within minutes she had the boys set free and even served them sweets, a story he later recounted in his own autobiography. Born a prince of the Tripura royal family in 1906, he carried that earthy folk influence into a celebrated career. Identify X (10 points).",
+    "answer_text": "S.D. Burman. Quote: Wahan kaun hai tera? musafir, jayega kahaan?",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect the following across different years. Year 1930s: Miss Dulari, Traditional Lyrics and Melody. Year 1947: Shamshad Begum, Tufail Farooqi, Wali Saheb. Year 1966: Madan Mohan, Raja Mehdi Ali Khan, Asha Bhosle. Year 2023: Madan Mohan, Pritam, Amitabh Bhattacharya, Arijit Singh, __________. Connect (10 points).",
+    "answer_text": "The connecting thread across all these years is the song 'Jhumka Gira Re', recreated and re-recorded across decades, most recently as the 2023 version with Arijit Singh and Jonita Gandhi (the blank), music by Madan Mohan and Pritam, lyrics by Amitabh Bhattacharya, from a song picturised on Ranveer Singh and Alia Bhatt.",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Gulzar's Parichay (1972) is officially based on a Bengali novel, but much of its heart comes from X. In Parichay, Jeetendra plays a tutor hired to tame a group of children living under their grandfather's strict rules, and he wins them over. Parichay's \"Saare Ke Saare\" echoes a memorable sequence in X. Identify X (10 points).",
+    "answer_text": "The Sound of Music. Quote: Saa re, ke saa re, gaa maa ko le kar gaate chale.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the 1930s and '40s, X wrote stories, screenplays and dialogue for several Bombay studios, and even appeared on screen in a small role in one of the films he wrote. He was a close friend of Ashok Kumar, and his sharp, irreverent sketches of the stars he knew remain one of the most vivid records of that era of Bombay cinema. His most acclaimed film story, about a great poet of the Mughal era, won India's top film honour, but by then X had already left the city he loved for a new country. His fiction was unfazed; some of his best-known stories captured the madness of Partition like few others. Identify X (10 points).",
+    "answer_text": "Saadat Hasan Manto. Quote: In between, on a bit of earth which had no name, lay Toba Tek Singh.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X (5 words) was meant to be the centrepiece of Y (1960). The film's composer kept rejecting his lyricist's drafts, so the two sat down one evening and worked through the night, with some retellings saying they stayed locked in a room until they cracked it. The breakthrough came when the composer remembered a folk song with a bold, defiant opening line about love. In the film, the song becomes an act of open defiance against the most powerful man in the room, and its singer is said to have recorded part of it in a studio bathroom to get the perfect echo. Identify X (5 points) and Y (5 points).",
+    "answer_text": "X: 'Pyar Kiya To Darna Kya'. Y: Mughal-e-Azam. Quote: Parda nahi jab koi khudaa se, bandon se parda karna kya!",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X's role in Y (2004) is a deliberate homage to Z (1983), and the director has confirmed it. She named his character Shekhar after A, the director of Z, and noted how closely the two storylines mirror each other. In Z, X plays a married man who brings home his young son from a past affair after the boy's mother dies, leaving his wife struggling to accept the child. In Y, he plays an army officer whose son, played by B, was born outside his marriage, causing his wife to leave with their son. His dying wish that the family reconcile sets the whole plot in motion, almost like a glimpse of what might have happened if the wife in Z had never come around. Identify X, Y, Z, A and B - each for 2 points.",
+    "answer_text": "X: Naseeruddin Shah. Y: Main Hoon Na. Z: Masoom. A: Shekhar Kapur. B: Shah Rukh Khan. Quote: Papa tumhara intezaar kar rahe hain, Ram.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is a 2007 Hindi crime thriller, made by a director who had earlier impressed critics with a dark revenge drama, that marked the debut of a lead actor from a famous musical family. Its opening credits carry a dedication to a celebrated British pulp fiction writer and to a filmmaker known for his stylish thrillers and song picturisations. Its title nods to one of that filmmaker's biggest hits, a 1970 spy caper built around smugglers, secret identities and long-lost brothers. In one of X's scenes, the protagonist checks into a hotel while that older film plays in the background, and he quietly borrows the name its hero goes by to sign the register. That borrowed name, paired with a word describing what he does to his own partners, gives the newer film its title. Despite all its loving nods to Hindi cinema of the 1960s and '70s, its plot is actually borrowed from a little-known French thriller from 1963. Identify X (8 points) and the 1970 spy caper (2 points).",
+    "answer_text": "X: Johnny Gaddaar. The 1970 spy caper: Johny Mera Naam. Quote: Johnny bure kaam toh karta hai, lekin imaan ke saath.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "There's no well-documented evidence that X faced public criticism for writing Y (1958); the story is more about his own ambivalence. A fiercely uncompromising, left-leaning artist, he struggled during his short stint in Bombay and wrote to his wife about ideas he had to drop because they weren't commercial or \"Bombay enough.\" There's even an apocryphal tale that he walked out of a trial show of the film, leaving Bombay just before its huge success. Ironically, Y became his only major commercial hit and shaped Bollywood's enduring reincarnation trope, influencing films from Karz to Om Shanti Om. Many critics today also argue it wasn't beneath him, reading it as an allegory of powerful outsiders exploiting tribal land, with the kind of bold melodrama and myth that also runs through his Bengali masterpieces. Identify X and Y.",
+    "answer_text": "X: Ritwik Ghatak. Y: Madhumati. Quote: Main marr jaungi tab bhi tumhare paas hi rahungi, hasoge toh hasungi, ro'oge, toh roungi.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Tie Breaker. The iconic qawwali song \"Yeh Hai Ishq Ishq\" from the 1960 film Barsaat Ki Raat has the following credits: Singers: Mohammed Rafi, Manna Dey, S.D. Batish, and Sudha Malhotra (with Asha Bhosle also credited in some versions/releases). Music Director: (hidden). Lyricist: Sahir Ludhianvi. Movie: Barsaat Ki Raat (1960). Identify the hidden Music Director.",
+    "answer_text": "Roshan (Roshan Lal Nagrath).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  }
+]

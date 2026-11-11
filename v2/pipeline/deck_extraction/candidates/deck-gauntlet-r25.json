@@ -1,0 +1,104 @@
+[
+  {
+    "question_text": "In the 25th episode of the third season of a hugely popular American sitcom, X, discovers an old yearbook entry about her mother and another woman who shared her first name. Excitedly pointing to the inscription, she declares, \"According to her yearbook, they were Y\", before pausing to clarify the unfamiliar abbreviation with, \"___ ____ ______.\" The moment is widely regarded as the first time the acronym was spoken aloud on television, introducing millions of viewers to a term that would soon become part of everyday global vocabulary. The episode aired to an audience of over 23 million people and helped transform Y from niche teenage slang into a cultural staple. Identify X and Y.",
+    "answer_text": "X: Phoebe, Y: BFF",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X once shared a story about visiting a friend in the United States in the mid-1990s. Excited about a road trip, X arrived expecting a spontaneous adventure. Instead, the friend had meticulously planned every detail of the journey, from the route and destinations to the timing of each stop. Years later, while writing his directorial debut, X drew inspiration from this real-life trait to create a quirky character, Y, who became memorable for his obsession with timetables, schedules, and planning, despite limited screen time. As a nod to the real-life inspiration behind the character, the friend himself went on to portray Y in the film. Identify X and Y.",
+    "answer_text": "X: Farhan Akhtar, Y: Subodh",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Created in 1925 as Papa Sucker, X was a caramel-on-a-stick that promised far more staying power than the average candy. A few years later, it received a new name meant to suggest \"a wealth of sweetness,\" a decision that proved surprisingly influential. The brand became so successful that it eventually spawned an entire cast of related treats, turning a simple candy into the centerpiece of what looked suspiciously like a confectionery family reunion. The real twist came later, when its name took on a life beyond the candy aisle. Today, hearing the term without context might make people think of a generous benefactor rather than a block of caramel, forcing listeners to determine whether they're discussing dessert, relationships, or both. Nearly a century after its debut, this candy remains one of America's most recognizable caramel treats. First introduced as Papa Sucker in 1925 and later becoming the head of a candy \"family,\" what is X?",
+    "answer_text": "X: Sugar Daddy",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "One of India's most celebrated crime thrillers, X, follows a police officer racing against a cryptic countdown that could determine a city's fate. Its gritty companion rap track, Y, was born with similar urgency: the rapper reportedly wrote its opening verse and hook in 15 minutes on a hotel balcony, and the final vocals came from a raw hotel-room recording. The title of Y directly references the countdown at the heart of X, while the lyrics channel the protagonist's desperation and resilience in a city shaped by crime, corruption, ambition and survival. Identify X and Y.",
+    "answer_text": "X: Sacred Games, Y: Kaam 25",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The discovery stories of X (Atomic Number 12) and Y (Atomic Number 25) begin with minerals that puzzled early chemists. Both elements derive their names from the same region in ancient Greece. X, a lightweight metal essential to chlorophyll and often found in antacids, was first recognized as a distinct substance in the 18th century. Pure X was isolated only years later. Y, a hard, silvery metal used in steel production and alkaline batteries, was hidden in plain sight for centuries. Its compounds were used by ancient glassmakers to remove unwanted green tints from glass before the element itself was isolated by a Swedish chemist. Given their atomic numbers, common uses, and shared geographical naming origin, identify X and Y.",
+    "answer_text": "X = Magnesium (Mg), Y = Manganese (Mn)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In Indian street slang, \"X\" has long meant something of negligible value. For decades, schoolyards and cricket stadiums echoed with a rhythmic taunt beginning \"Char X Ghode Pe...\" where speakers improvised a rhyming second line. In the digital era, internet meme culture revived this vintage chant. A food delivery giant, Y, used the phrase in a self-deprecating comedy sketch campaign featuring \"Char X ghode pe, 60% off pakode pe...\" Identify X and Y.",
+    "answer_text": "X: Chavanni, Y: Zomato",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The Biblical Trumpet: in Hebrew tradition, the yobhel was a ram's horn blown to inaugurate a holy year of emancipation, debt forgiveness and agricultural rest. The Medieval Wreath: a Holy Roman Empire tradition involved a delicate wreath made of a precious metal. Baburao Pai's Marketing Masterstroke: in 1934, a film distributor needed a grand phrase to celebrate Amrit Manthan running continuously. A 1977 London Underground line was also renamed just before opening to honor Queen Elizabeth II. What connects these clues?",
+    "answer_text": "Silver Jubilee",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the early 1990s, X, a globally recognized athlete and humanitarian from Sudan, became concerned about the growing influence of Y, a wealthy Saudi exile in Sudan. According to X, warnings to American officials and policymakers about Y went largely unheeded. Years later, after a devastating terrorist attack changed global history, X's claims resurfaced in conversations about missed opportunities. X was neither diplomat nor intelligence officer, but the only player in NBA history to retire with more career blocked shots (2,086) than total points scored. Identify X and Y.",
+    "answer_text": "X: Manute Bol, Y: Osama Bin Laden",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In December 2025, the Silver Hollow Police Department in Florida was investigating a major credit card fraud case. The unidentified suspect had racked up thousands of dollars in unauthorized charges. To enlist the public's help, the department posted a blurry surveillance image captured from an ATM camera on their official social media pages. Instead of laying low, the suspect was so deeply offended by the low-quality image that he chose vanity over anonymity. He committed a highly unusual, self-sabotaging act: [X]. The police department obliged by updating their notices, triggering a massive wave of internet roasts. Social media users quickly noticed that the suspect's fraudulent shopping spree included high-priced subscriptions to adult online services. Because of these specific charges and the sheer audacity of [X], the internet universally crowned him with the viral nickname [Y], a moniker that might suit a Disney character who suddenly became an ardent Premier League supporter. Identify [X] and [Y].",
+    "answer_text": "X: He anonymously emailed the police department asking them to replace the blurry surveillance photo with a clearer, \"less chopped\" picture of himself. Y: Goofy Gooner",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "In September 2001, just a week before one of the most significant events in modern American history, the Armenian-American metal band [X] released their second studio album [Y]. The album unexpectedly became a commercial juggernaut, eventually reaching No. 1 on the Billboard charts despite the difficult timing. In the aftermath of the September 11 attacks, many radio stations circulated unofficial lists of songs considered potentially sensitive for airplay. Several tracks from [Y] found themselves caught up in the controversy, creating the unusual spectacle of an album thriving commercially while simultaneously facing increased scrutiny. Adding to the intrigue, the album's biggest hit, [Z], originally had a much more provocative title. Concerned that the original name might prove problematic for radio and retail distribution, record executives persuaded the band to shorten it. The replacement title was chosen because it evoked something created by taking an existing whole, breaking it apart, and reassembling the pieces into a new form, a subtle wink at what had happened to the song's original name. Identify [X], [Y], and [Z].",
+    "answer_text": "X = System of a Down, Y = Toxicity, Z = Chop Suey! (derived from the original title Suicide, effectively a \"chopped\" version of the word)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The question slide shows a grainy black-and-white book cover reading \"Keffe D w/ Yusuf Jah\" at the top and \"Compton Street Legend\" in large block letters, subtitled \"Notorious Keffe D's Street-Level Accounts of...\". The accompanying clue text reads: This book has been the source of materials for prosecutors in an ongoing investigation and trial. Identify which trial/case this relates to.",
+    "answer_text": "Tupac Shakur Case",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is remembered as a rock legend, but some enduring work emerged from a fascination with Indian philosophy and spirituality. The inspiration behind X's biggest solo hit was an attempt to smuggle Y into mainstream pop music by disguising it within a universal prayer. Y is a sacred chant comprising 16 words and 32 syllables. The hit single also incorporates Z, a revered Sanskrit verse from the guru-disciple tradition. Identify X, Y and Z.",
+    "answer_text": "X: George Harrison (Hit Single: My Sweet Lord). Y: The Hare Krishna Mahamantra, \"Hare Krishna Hare Krishna, Krishna Krishna Hare Hare, Hare Rama Hare Rama, Rama Rama Hare Hare\". Z: Guru Brahma, Guru Vishnu, Guru Devo Maheshwara, from the Guru Stotram",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "They began life in 1940 under very different names, with X originally called Jasper and Y known as Jinx. Over the decades, audiences came to see Y as the perpetual winner, but a review of their classic theatrical shorts reveals that X chalked up more victories than many fans realize. X was also more than just a scheming character. In one Academy Award-winning episode, he delivered an impressive rendition of Franz Liszt's Hungarian Rhapsody No. 2 while desperately trying to keep Y from disrupting the performance. Identify X and Y.",
+    "answer_text": "Tom and Jerry (Hanna died in 2001). X: Tom, Y: Jerry",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X was a secretive brotherhood founded in ancient Greece whose members believed that numbers held the key to understanding the universe. Members reportedly underwent years of silence before being allowed to fully participate in the group's activities. The group believed that harmonious musical notes could be explained by simple numerical ratios. They followed several unusual rules, including a famous prohibition against eating beans. According to legend, the discovery of the irrational number root 2 caused a crisis within the group because it challenged their belief that everything could be expressed as whole-number ratios. Their founder still traumatizes kids in school. Who or what is X?",
+    "answer_text": "Pythagorean Cult",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X grew up in a small Alpine town where winter sports were a way of life. Long before becoming a global superstar, he was among his country's best junior skiers, even winning a national giant slalom title as a child. At the age of 13, he made the surprising decision to walk away from a promising future on the slopes and move away from home to pursue a completely different career path. Raised in Italy's German-speaking South Tyrol region, he learned German before Italian, while his parents worked at a mountain ski lodge, his father as a chef and his mother as a waitress. His quiet, understated personality is often attributed to this upbringing in the Dolomites rather than in a major sporting hub. His devoted supporters have an unusual way of showing their admiration: a group known as the \"Carota Boys\" regularly appears dressed as giant carrots, inspired by his distinctive red hair and an incident involving carrots that became a fan legend. Today, he is recognized as the first in his country to reach World No. 1 in his sport and has become one of the most recognizable athletes born in 2001. Identify X.",
+    "answer_text": "Jannik Sinner",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Dennis Tito spent the early part of his career working on complex calculations for spacecraft at a Jet Propulsion Laboratory before finding enormous success in the world of finance. By 2001, the investment manager was wealthy enough to pursue a lifelong dream that most people could only watch on television. In that year, Tito paid an enormous sum of money to reach X. At the time, access to X was effectively restricted to a select group and Tito's presence there was controversial enough to draw objections from some quarters. Nevertheless, he spent over a week at X, turning a personal ambition into a world first. His achievement is widely regarded as the moment a new commercial industry truly began. Identify X. Why was Tito's visit to X historically significant?",
+    "answer_text": "X: International Space Station. Dennis Tito was the first space tourist, and his visit is seen as the birth of commercial space tourism, \"a first beyond the atmosphere.\"",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The inspiration for the core setup of X came originally from reading a review of a 1981 novella called Max and the Cats. X's protagonist carries a story almost as memorable as the plot itself. Born in India, he was named after a famous swimming pool in Paris, a tribute bestowed upon him by a family friend. Unfortunately, classmates quickly found ways to turn that name into a source of ridicule. Determined to reclaim his identity, he arrived at school one day and introduced himself using a shortened version of the pool name. Identify X, whose promotional quote that the story \"will make you believe in God\" came from a real-world encounter.",
+    "answer_text": "X: Life of Pi",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

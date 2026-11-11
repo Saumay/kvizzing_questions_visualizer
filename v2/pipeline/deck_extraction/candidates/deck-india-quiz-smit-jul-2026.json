@@ -1,0 +1,128 @@
+[
+  {
+    "question_text": "While India and X enjoy a good relationship today, have shared historical and cultural ties since ancient times, have been vocal advocates for decolonisation and have famously worked together in order to carve out a distinct voice for the developing nations during the Cold War, their relationship has had its fair share of ups and downs. During the mid-1960s, things took a hostile turn as X changed its rhetoric vis-a-vis India, renamed a body of water, and even eyed the Indian territory of Y. Although X's plan to capture the Y was never a serious one, it still caused anger and furore within Indian diplomatic and military circles, especially because it would've potentially opened a new military theatre for India at a time when India was already engaged in a war. ID X (6 pts) and Y (4 pts)",
+    "answer_text": "X: Indonesia and Y: Andaman and Nicobar Islands",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "While X is widely considered as the father of India's nuclear program, and is celebrated for his visionary leadership and scientific accomplishments, his work on India's nuclear program faced fierce resistance from within the Indian scientific community, such as from Y, who was an astrophysicist, an MP in the Lok Sabha, and a staunch advocate for state-lead socialism. Famously known for an important equation, Y would become X's chief opponent. In his criticisms of X and of India's nuclear program, Y would go so far as to say that atomic scientists were no special class and were simply ordinary chemists and physicists. Y also criticised the nature of India's nuclear program, viewing it as elite-lead and lacking transparency. He also believed that it should've more diversity in terms of the scientific backgrounds of the experts working on it. ID X (3 pts) and Y (7 pts)",
+    "answer_text": "X: Homi Bhabha and Y: Meghnad Saha",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "When X was a toddler, India achieved a historic scientific breakthrough that would make it part of an exclusive club globally. Even though not all the mission parameters were met, this historic event helped lay a vital technological and psychological foundation for the country's space program. Decades after this, X would go on to play a similar role in India's Test team, helping lay the foundation for India's batting innings for years, using his trademark technique that acted as a bulwark against opposition bowlers. He would also pile on runs throughout his career, and just like India did then, he too would become part of an exclusive club, alongside two other Indians. After his retirement, he would be instrumental in ending a drought as well. What is the event being talked about here (6 pts)? Also ID X (4 pts)",
+    "answer_text": "The event is the launch of Aryabhata, India's first satellite (1975). X is Rahul Dravid.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "This is the record of a political party in all the general elections that it contested. This party is considered the most successful of its kind wrt policy stances and agendas. Which political party is this (10 pts)? Election record (Year - Popular vote - Seats): 1962 Indian general election - 7.9% - 18/494. 1967 Indian general election - 8.7% - 44/520. 1971 Indian general election - 3.1% - 8/518.",
+    "answer_text": "Swatantra Party",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Keeping in line with the Indian Constitution's approach of ensuring representation, a particular temporary provision has been renewed every 10 years through a Constitutional amendment, starting from 1960. The purpose of this has been to ensure continued representation in a particular aspect which is fundamental to representative democracy. The Constitutional amendment in 2020 in this regard also broadly achieved the same purpose, but was different than the others before it, because it made an exception when it came to a particular sub-category, thereby ending a longstanding pattern in this specific context. What is the purpose of this set of amendments (5 pts), and in what particular way is the 2020 amendment different from the others of its type (5 pts)?",
+    "answer_text": "The purpose is to ensure continued reservation of seats for Scheduled Castes (SC), Scheduled Tribes (ST), and Anglo-Indians in the Lok Sabha and State Legislative Assemblies. The 2020 amendment ended the reserved seats for Anglo-Indians specifically, while continuing the reservation for SC and ST, thereby breaking the longstanding pattern for that sub-category.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Geologically born as a massive, elevated fragment of the ancient Indian peninsular shield that was pushed upward during the colossal collision of continents that formed the Himalayas, the X sits nestled within India's northeastern region. For centuries, this flat highland's unique, cloud-swept topography deeply shaped the local matrilineal societies, who developed sacred grove traditions to protect its rich biodiversity from environmental degradation. The X, which shares its name with a city, also plays a role in the geography of the state of Y, which is characterised by intense ____, thereby forcing the local populations to develop unique survival strategies, most notably the engineering of living root bridges from the aerial roots of rubber trees. ID X (7 pts) and Y (3 pts)",
+    "answer_text": "X: Shillong Plateau and Y: Meghalaya",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Formed as a shallow, tectonic depression that was once a continuous ____ of the Arabian Sea before being gradually being filled with marine sediments, the X, which has two sub-parts, straddles India's western region. In the local cultures there, it is treated as a mesmerizing, shape-shifting landscape, something which ancient local folklore associated with the drying up of the mighty Saraswati river. In antiquity, when it was still a bustling waterway, it was home to Y - one of the largest and most sophisticated cities of the Indus Valley Civilization. Local excavations reveal that its ancient inhabitants relied on spectacular engineering to harvest water, and utilized the surrounding marine waters to operate a major trade network that connected with Mesopotamia. ID X (4 pts) and Y (6 pts)",
+    "answer_text": "X: Rann of Kachchh and Y: Dholavira",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Formed during the tectonic crushing of the Indian and Eurasian plates, the X form an imposing, natural physical partition on India's eastern edge. The heavily forested terrain deeply shaped the distinct identity of its indigenous tribes, fostering fierce warrior cultures. For the region's indigenous tribes, who also share their collective name with the X, they are not treated merely as geographic terrain, but are revered as a deeply sacred, ancestral homeland - referred to as Lim - where local peaks, caves, and ancestral stones are honored in oral folklore as the literal birthing places of their clans. During World War II, the X became the theater for a turning point at the city of Y, where intense fighting helped contribute to the decisive halt to the sweeping advance of the Japanese empire into the Indian subcontinent. ID X (6 pts) and Y (4 pts)",
+    "answer_text": "X: Naga Hills and Y: Kohima",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Formed as a high-altitude block that was uplifted along major fault lines over millions of years, the X, which also lend their name to a particular herbivorous species, form a point where two major ranges intersect in southern India. For the indigenous Toda people, these heights are deeply sacred. Their entire culture and mythology revolve around the veneration of their unique sacred dairy temples and herds of long-horned semi-domesticated buffaloes. The earliest literary mention of the X appears in the Tamil epic Silappatikaram. During the medieval period, the Hoysala King Vishnuvardhana led a sweeping campaign, conquering its peaks and defeating the local rulers. The X are also home to various scenic spots, with Y being the most popular one, and serving as the district headquarters. ID X (7 pts) and Y (3 pts)",
+    "answer_text": "X: Nilgiri Mountains and Y: Ooty",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "The X was formed as a tectonic basin that interacts with the flow of a major subcontinental river system, thereby allowing its total surface area to expand and contract with the seasons. X is nestled within India's northernmost areas, and is drained by the Y river, which also drains the broader valley. In ancient chronicles like Kalhana's Rajatarangini, it was referred to as Mahapadmasaras and was feared by local mariners for its windstorms, which gave rise to its modern name derived from a Sanskrit word. In the medieval period, Sultan Zain-ul-Abidin commissioned the construction of an artificial island right in its center called Zaina Lank. Built to serve as a royal storm refuge, a palace, and a mosque, it demonstrated how medieval rulers actively reshaped the X's geography to secure vital regional trade and fishing routes. ID X (7 pts) and Y (3 pts)",
+    "answer_text": "X: Wular Lake and Y: Jhelum",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X is regarded as one of the foundational figures in mainstream Bollywood and Indian cinema, and is known for bridging suspense thrillers with evergreen romance. He founded his own production house in 1957, directing 43 feature films, and pioneering Hindi-Bengali \"double version\" films. He helped transform the Hindi crime-thriller genre before shifting to trendsetting romantic dramas. His signature style relied on tight scripts, striking foreign or scenic locations, and memorable, chart-topping soundtracks. He also directed the romantic drama Y in 1969, which became the breakthrough role for an Indian superstar and a heartthrob for many women. Incidentally, the lead actress in Y, who is now an iconic Bollywood actress, also made her Hindi film debut in a 1964 movie directed by X. ID X (6 pts) and Y (4 pts)",
+    "answer_text": "X: Shakti Samanta and Y: 'Aradhana'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "While the Marathi Mandir is universally etched into modern pop culture for hosting an uninterrupted, record-breaking run of the 1995 romantic blockbuster 'Dilwale Dulhania Le Jayenge', a few decades before that, it had also served as the premiere venue for X, which is now considered one of the most iconic Bollywood movies, and was directed by Y. During the premiere, the theater's foyer was completely transformed to resemble a dazzling _____ _____. In a display of grandeur never seen before, the physical film reels were dramatically transported to the venue on an exquisitely decorated elephant, surrounded by marching horses, real cavalry, and thousands of roaring fans waiting to catch a glimpse of the silver screen's greatest stars. ID X (4 pts) and Y (6 pts)",
+    "answer_text": "X: 'Mughal-e-Azam' and Y: K. Asif",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Directed by Romesh Sharma, this Indian political thriller from the 1980s stands out as one of the most searing indictments of the nexus between mainstream media, corrupt politicians, and institutional decay ever put to celluloid in India. It follows an idealistic newspaper editor who uncovers a web of corruption while investigating a high-profile political assassination. The movie, which is named after the fictional newspaper outlet in which the protagonist is an editor, also talks about the fine line between journalistic professionalism and sensationalism. Highly acclaimed for its raw, realistic portrayal of investigative journalism in post-independence India, the film won multiple National Film Awards, and features a Bollywood star with a legacy surname, as the protagonist. It also faced a broadcast ban on State television due to its explosive, uncomfortable themes. Which movie is being talked about here (10 pts)?",
+    "answer_text": "'New Delhi Times'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "X, affectionately known as 'Iyakkunar Sigaram', is revered as an institutional pillar and the ultimate benchmark for artistic integrity in Tamil cinema. He fundamentally revolutionized Tamil cinema by moving it away from theatrical melodramas into the realm of gritty, character-driven realism. X fearlessly explored societal taboos in his films and elevated Tamil film aesthetics by utilizing clever framing techniques, sparse dialogue, and wordless sequences where intense internal conflict was conveyed through mere glances or visual metaphors. In Tamil film circles, \"graduating\" from, or mimicking the \"X School\" means mastering a specific style of acting - highly expressive, conversationally sharp, and emotionally raw. The industry views him as a selfless star-maker who actively built the careers of two superstars simultaneously, thereby helping create a healthy dual-star ecosystem that sustained the industry for over forty years. ID X (10 pts)",
+    "answer_text": "X: K. Balachander",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Within the landscape of Indian parallel cinema, X is frequently labeled by many film historians and cinephiles as one of the most brilliant yet underrated masters of the craft, often overshadowed during his lifetime by his fellow Bengali contemporary, Y. Despite a relatively small filmography and a lack of widespread commercial success before his untimely death, his fierce, avant-garde cinematic style eventually gained the global recognition it deserved. When Hollywood maestro Martin Scorsese first discovered his work, he was utterly spellbound, describing the director's style as \"thematically dense and layered\". Driven by this, Scorsese's non-profit organization, The Film Foundation, stepped in to champion his legacy, collaborating with international archives to execute a painstaking, state-of-the-art digital restoration of one of the director's most haunting masterpieces. His relatively lesser-known cinematic works include 'Nagarik' and 'Ajantrik'. ID X (7 pts) and Y (3 pts)",
+    "answer_text": "X: Ritwik Ghatak and Y: Satyajit Ray",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these sportspersons (non-exhaustive): Saina Nehwal, V. P. Sathyan, Milkha Singh, Mary Kom, Mohammad Azharuddin",
+    "answer_text": "Sportspersons who have had a biopic made on them: Saina Nehwal ('Saina'), V. P. Sathyan ('Captain'), Milkha Singh ('Bhaag Milkha Bhaag'), Mary Kom ('Mary Kom'), Mohammad Azharuddin ('Azhar')",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect these CMs (non-exhaustive): Govind Ballabh Pant, Neelam Sanjiva Reddy, Jivraj Narayan Mehta, Yashwantrao Chavan, Gopinath Bordoloi",
+    "answer_text": "First Chief Ministers of their respective states: Govind Ballabh Pant (Uttar Pradesh), Neelam Sanjiva Reddy (Andhra Pradesh), Jivraj Narayan Mehta (Gujarat), Yashwantrao Chavan (Bombay State/Maharashtra), Gopinath Bordoloi (Assam)",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Find the odd one out amongst these topics: Railways, Patents, Defence, Banking, Education",
+    "answer_text": "Education is the odd one out - it is a Concurrent List subject, on which both the Central and State Governments can make laws, while Railways, Patents, Defence, and Banking are all Union List subjects, on which only the Central Government has the power to make laws.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Find the odd one out amongst these Indian PMs: Morarji Desai, Rajiv Gandhi, Narendra Modi, P. V. Narasimha Rao, Manmohan Singh. Indirect hint: Think of the two colours of the Indian Parliament.",
+    "answer_text": "Manmohan Singh is the odd one out - he is the only Prime Minister among them who was a member of the Rajya Sabha, while the others were members of the Lok Sabha.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Find the odd one out amongst these Peninsular rivers: Mahanadi, Godavari, Tapi, Krishna, Kaveri",
+    "answer_text": "Tapi is the odd one out - it drains into the Arabian Sea, while the others (Mahanadi, Godavari, Krishna, Kaveri) drain into the Bay of Bengal.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "While the legendary master spy Rameshwar Nath Kao is universally revered as the founding architect of India's external intelligence agency, the Research and Analysis Wing (R&AW), his profound impact extends beyond espionage. Drawing from his immense expertise and skills, Kao meticulously laid down the organizational blueprint for the X in the 1980s. Though he is rarely credited for it in popular media, it was Kao who chose X's highly distinct and unique organizational motto Sarvatra Sarvottam Suraksha, thereby crafting the ethos of a swift elite unit that is known by a two-word nickname, and is India's premier shield against high-risk domestic terror attacks, amongst other threats. ID X (10 pts)",
+    "answer_text": "X: The National Security Guard (NSG), also known as the 'Black Cats'",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]

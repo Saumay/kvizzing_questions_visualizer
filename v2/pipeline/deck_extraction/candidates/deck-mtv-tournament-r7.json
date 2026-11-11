@@ -1,0 +1,194 @@
+[
+  {
+    "question_text": "Identify X and Y. In the show X, the character walks into the Office as he starts his new position. He steps up to the Desk, looks directly into the camera, and gives two sharp knocks with his signet ring against the wood before the screen cuts to black. That moment gave birth to one of the most famous urban legends in modern television: is the iconic sound effect Y literally knocking this ring? X was a flagship show of streaming service A, which was a big hit. A launched a new sonic logo in 2015. Fans believe they used this sound effect from X. A has officially denied this and said that Y was created separately by Oscar-winning sound designer Lon Bender and former VP of A, Todd Yellin, in 2015.",
+    "answer_text": "X - House of Cards. Y - Tudum (Netflix's sonic logo/intro sound).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X (2), Y (5) and Z (3). The collaboration between X, his brother, and their uncle Y is one of Hollywood's most interesting family dynamics spanning films and TV. Y is a veteran British actor. X has co-written screenplays with his brother while Y made brief appearances in roles for the same brother's movies. Y's collaboration with X on Z resulted in the meatiest, most iconic role of his acting career as the primary antagonist. Rather than playing a cartoonish villain, Y brought a quiet, dignified gravitas to the role. The character was an idealist who believed humanity was too flawed to rule itself and willingly surrendered all human authority to another antagonist, viewing it as a benevolent deity.",
+    "answer_text": "X - Jonathan Nolan. Y - John Nolan. Z - Person of Interest.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. Phil LaMarr has an iconic filmography where he has voiced hundreds of pop-culture characters across TV, movies and video games. One of the most iconic was the titular character in Genndy Tartakovsky's show X. X is a warrior fighting a shape-shifting demon Aku, and X is pushed to a dystopian future through a time portal. But we have also seen Phil in the movie Y, released in the mid-90s, in a small but iconic role. His character's hilarious sudden death sets off the entire final act of the movie.",
+    "answer_text": "X - Samurai Jack. Y - Pulp Fiction.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. X and Y (a seminal masterpiece) are deeply intertwined. X serves as both a grand visual homage and a spiritual companion to Y, channeling its melancholic soul, aesthetic style, and tragic exploration of the Golden Age. Y was the nation's first CinemaScope film. It revolutionized screen lighting through its signature use of chiaroscuro (high-contrast light and shadow), silhouetted camera operators, and dramatic shafts of natural sunlight piercing through dusty studio rafters. In X, the cinematographer intentionally recreates this exact visual grammar, frequently framing characters inside vast, dimly lit soundstages illuminated by solitary spotlights, capturing dust motes, carbon-arc projector beams, and camera silhouettes as a direct nod to Y. Both X and Y are about the mechanics and tragedy of the film industry itself.",
+    "answer_text": "X - Jubilee. Y - Kagaz Ke Phool.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X, Y (5) and Z (5). In real life, in a particular Room, which is the primary staff conference room, the paintings of X and Y are placed over the mantel based on the administration. X is placed during A's administration, and Y is placed during B's administration; they usually hide the other painting. In reel life, in Z, both X and Y are placed in that same room.",
+    "answer_text": "X - Franklin D. Roosevelt. Y - Theodore Roosevelt. Z - The West Wing (the room is the Roosevelt Room of the White House).",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X and Y. In X, Y is the central MacGuffin - a heavily guarded digital database belonging to a shadowy covert organization manipulating global events. It is actually a monster-like technological database containing multi-billion-dollar research blueprints for advanced clean energy, high-efficiency solar cells, and weapons-grade bio-tech (B.A.R.G.A.I.N. technology). To prevent theft, Y has 6 keys distributed among high-ranking executive heads. The government hires the genius protagonist and his friends to break into Y's vault and steal it.",
+    "answer_text": "X - Prison Break (Season 4). Y - Scylla.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. In the movie X, character A inspected a weapon and rejected the design, saying it did not look deadly enough. In an interview, Y reveals that he changed the shape of their product because of this scene. Though the new design was 'arguably slightly worse' for the product's performance, Y said it looked cooler.",
+    "answer_text": "X - The Dictator. Y - Elon Musk (who said he changed the nose cone design of SpaceX's Starship to be pointier because of this scene).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify the movie, and explain the logic (funda). The acting credits shown are: A - Andrew Wyke, B - Milo Tindle, Alec Cawthorne - Inspector Doppler*, John Matthews - Detective Sergeant Tarrant, Teddy Martin - Constable Higgins, Eve Channing - Marguerite Wyke.",
+    "answer_text": "Sleuth. These are fake acting credits - the story hinges heavily on elaborate disguises, fake identities, and mind games, so listing only the two real lead actors (Laurence Olivier and Michael Caine) in the credits would have ruined the mystery for the audience, since viewers would instantly realize that later characters, like the mysterious Inspector Doppler investigating a murder, were played by Michael Caine's character.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 1 (worth +80/-35): an image of a memento mori curio collection on a black background, including an ivory skeleton figure reclining on a mantel clock, a large carved skull resting on bones, and several smaller carved skull and bone ornaments.",
+    "answer_text": "Memento Mori - part of an 8-clue connect where each clue links to a Christopher Nolan film; this one connects to Memento.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 2 (worth +70/-30): a Renaissance/Mannerist painting (Bronzino's 'Christ's Descent into Limbo') showing a robed, haloed figure carrying a banner on a staff, leading nude figures out of a dark cave-like setting.",
+    "answer_text": "Limbo - part of the 8-clue Christopher Nolan connect; this one connects to Inception.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 3 (worth +60/-25): a video still of a man demonstrating a close-quarters self-defense/martial-arts technique against a brick wall, with on-screen text reading 'FULL VIDEO IN MY YOUTUBE CHANNEL'.",
+    "answer_text": "Keysi Fighting Method - part of the 8-clue Christopher Nolan connect; this one connects to Batman Begins, where this real-world fighting style was used for the combat choreography.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 4 (worth +50/-20): a mosaic of two peacocks facing a central vase/fountain, framed by a Greek inscription that reads identically forwards and backwards: 'NIPSON ANOMHMATA MH MONAN OPSIN' (a famous Greek palindrome meaning roughly 'wash your sins, not only your face').",
+    "answer_text": "Palindrome - part of the 8-clue Christopher Nolan connect; this one connects to Tenet.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 5 (worth +40/-15): a photograph of an ancient, damaged papyrus fragment covered in Greek handwriting.",
+    "answer_text": "Odyssey Original Manuscript - part of the 8-clue Christopher Nolan connect; this one connects to Nolan's upcoming film The Odyssey.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 6 (worth +30/-10): a vintage-style illustrated boxing poster depicting Nicola Tesla versus Thomas Edison, labeled 'Tesla vs Edison', with a 'Penny Electric' logo.",
+    "answer_text": "Tesla vs Edison (the historic 'War of Currents') - part of the 8-clue Christopher Nolan connect; this one connects to The Prestige.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 7 (worth +20/-5): an image showing the time dilation equation from special relativity: delta-t' = delta-t / sqrt(1 - v^2/c^2) = gamma * delta-t.",
+    "answer_text": "Time Dilation Equation - part of the 8-clue Christopher Nolan connect; this one connects to Interstellar.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 1, clue 8 (worth +10): an aerial photograph of lower Manhattan island at dusk, showing the skyline and surrounding rivers.",
+    "answer_text": "Manhattan (referencing the Manhattan Project) - part of the 8-clue Christopher Nolan connect; this one connects to Oppenheimer. Overall connect answer: all 8 clues are Christopher Nolan movies (Memento, Inception, Batman Begins, Tenet, The Odyssey, The Prestige, Interstellar, Oppenheimer).",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X and Y. X, directed by legendary fight choreographer Lau Kar-leung and produced by the Shaw Brothers, is widely regarded as one of the greatest kung fu films ever made. It catapulted Gordon Liu (Liu Chia-hui) to international stardom and established the blueprint for the martial arts 'training montage'. Gordon Liu plays San Te (based on the legendary historical monk San De); determined to learn kung fu to fight back against tyranny, he spends years grinding through the temple's grueling chambers, each designed to hone a specific physical skill. One of the film's most iconic moments comes during San Te's training in the weapons chamber: when sparring against the Chief Monk, San Te's traditional wooden staff keeps getting trapped and disarmed by the Chief Monk's dual broadswords. Realizing he needs a weapon that combines the defensive reach of a long staff with the flexible, unpredictable angles of a chain whip, San Te invents the sanjiegun (commonly known as Y) by linking short wooden poles together with metal chain rings. Using the flexible strikes, sudden whip attacks, and unique blocking capabilities of Y, San Te successfully counters the dual swords and passes the chamber's ultimate test.",
+    "answer_text": "X - The 36th Chamber of Shaolin. Y - Three-section staff (3-section staff).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "What is this Top 5 list of? 1. Greg P. Russell, Diane Warren*. 2. Roland Anderson, Thomas Newman, Alex North*. 3. George Folsey, Dan Sudick. 4. Bradley Cooper, Federico Fellini*, Paramount Studio Sound Dept., Loren L. Ryder, Sound Director. 5. Rick Kline.",
+    "answer_text": "The top 5 people/entities with the most Academy Award (Oscar) nominations without ever winning a competitive Oscar, with nomination counts of 16, 15, 13, 12, and 11 respectively.",
+    "has_media": false,
+    "extraction_confidence": "medium"
+  },
+  {
+    "question_text": "Identify X. It is a popular myth that if a tree is too large to chop down with an axe, villagers in the Solomon Islands surround the tree every morning and scream, curse, and yell insults at it. After about 30 days of continuous verbal abuse, the tree's spirit dies, its leaves wither, and it falls over on its own. The story was popularized in Western culture by author Robert Fulghum in his 1991 book, 'Uh-Oh: Some Observations from Both Sides of the Refrigerator Door'. This myth was used in X to deliver a blunt warning about the impacts of the emotional abuse of constant disapproval, unrealistic expectations, and harsh criticism.",
+    "answer_text": "Taare Zameen Par (released internationally as Like Stars on Earth).",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X (4) and A, B, C (2 each). In the universe of X, humanity is divided into three distinct socio-political factions, A, B and C. The divide isn't just political or cultural - centuries of living in different environments have literally altered human anatomy, creating deep-seated tribalism and resentment between them. Faction A: home environment is Earth (abundant natural air, water, and biosphere); physical traits are heavy bone density, compact, robust muscle mass; culturally comfortable but overcrowded, many rely on government welfare; language is a highly clinical, standardized form of English. Faction B: home environment is Mars (enclosed domes, sterile and engineered landscapes); physically slightly taller than A, reliant on military training and drugs to survive 1G; culturally hyper-disciplined, collective, intensely focused on transforming the environment; language is generally standard English with a distinct linguistic quirk from their history of colonization. Faction C: home environment is the asteroid belt (scarce, tightly rationed air and water); physically elongated limbs, thin frames, weaker bone density, use sign language; culturally an exploited blue-collar working class, fiercely independent and tribal; their language is primarily based on English but heavily borrows roots and words from Mandarin Chinese, Spanish, German, Russian, Japanese, French, Portuguese, and Arabic (e.g., Beltalowda, Welwala = traitor who sided with A/B, Owkwa = Water).",
+    "answer_text": "X - The Expanse. A - Earthers. B - Martians. C - Belters.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Identify X. X, directed by Gareth Evans, is widely celebrated as one of the greatest, most influential action movies of the 21st century. It introduced global audiences to the brutal martial art of Silat. Before filming, director Gareth Evans required the actors to undergo an intensive boot camp with KOPASKA (Indonesian special forces). Unlike soft or flowy martial arts, the style of Silat shown in X is ruthless, close-quarters, and utilitarian - it emphasizes rapid strikes, bone-breaking joint locks, sweeping takedowns, elbow/knee strikes, and utilizing everyday objects (walls, doorframes, fluorescent light tubes) as improvised weapons. When the SWAT team runs out of ammunition, the film smoothly transitions from tactical gunfights to pure, visceral Silat hand-to-hand combat.",
+    "answer_text": "The Raid: Redemption.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Connect (non-exhaustive). Eight movie/show posters are shown: No Country for Old Men, The Dark Knight, Sholay, Dhanak, Rosencrantz & Guildenstern Are Dead, Platoon, The Prestige, and The Thing. What connects these?",
+    "answer_text": "A coin toss used as a significant plot point/device in each of these films.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Where have you seen this infomercial? (Fast-paced, high-energy 90s synth-rock music plays over low-resolution VHS footage. Bright yellow and red block text flashes: SEDUCE AND DESTROY, TAKE CONTROL OF YOUR LIFE, MASTER THE ART OF THE LIE.) Narrator: 'Are you tired of being the nice guy? Are you tired of getting passed over? Are you tired of coming home alone night after night, sitting in front of the TV, eating dinner out of a cardboard box, wondering what the hell is wrong with you?' (Cut to cheesy black-and-white footage of a sad man alone on a park bench while women walk past ignoring him.) 'Well, I am here to tell you right now: there is nothing wrong with you! You just haven't been given the right tools!' (Cut to color footage of a man in a silk vest, pointing aggressively into the camera with hyper-charismatic swagger.) 'My name is Frank T.J. Mackey, author and creator of the Seduce and Destroy system! And I am going to teach you how to get the women you want, when you want, and how you want them!' (Flashing text: STRIP AWAY HER POWER / TAKE CONTROL.) Continuing: 'We are talking about total and complete control. We're talking about mastering the art of the lie. We're talking about stripping away her power and taking it for yourself! This isn't about being polite. This isn't about buying flowers or listening to her talk about her feelings. This is about strategy. This is about tactical conquest.' (Cut to testimonials of awkward men holding up VHS tapes.) Satisfied customer: 'Before I met Frank, I couldn't even talk to a woman. Now, I control the room.' Frank T.J. Mackey, strutting toward the camera: 'Are you ready to stop begging and start taking? Are you ready to take control of your destiny? Call the number on your screen right now and order the complete 4-tape Seduce and Destroy home video course! Respect the d**k and tame the c**t! Call NOW!' (Graphics flash with order numbers, cassette/VHS tape bundles, and a giant red hotline banner: 1-800-TAME-HER.)",
+    "answer_text": "Magnolia (1999) - Tom Cruise plays Frank T.J. Mackey and his 'Seduce and Destroy' seminar/infomercial.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Whose final work (uncredited)? Legendary sound designer Ben Burtt revealed that the character Garindan, played on-screen by Sadie Eddon in Star Wars: A New Hope, is actually voiced by legendary actor X, famous for his lawman/western roles. Unfortunately, this doesn't mean X actually sauntered into a sound booth and recorded some odd squeaky sounds as a favor to George Lucas - Burtt only discovered years later, after digging through his old notes and tapes, that Garindan's voice was 'an electronic buzzing which had come off of my synthesizer that was triggered by a human voice.' Burtt then realized that this voice belonged to none other than X: the recording was a stock dialogue loop of X's western movies taken directly from the 20th Century Fox sound archives. Burtt added that Garindan's voice 'was triggered by some dialogue like \"All right, what are you doin' in this town,\" or something like that.'",
+    "answer_text": "John Wayne.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 1 (worth +80/-35): a poster for 'Whatever Happened to Baby Jane?' starring Bette Davis and Joan Crawford.",
+    "answer_text": "Feud: Bette and Joan (2017) - part of an 8-clue connect where each film poster links to a movie or TV show about the making of that film; this is the TV series dramatizing the on-set rivalry during this film.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 2 (worth +70/-30): a poster for the 1922 silent film 'Nosferatu: Eine Symphonie des Grauens' by F.W. Murnau.",
+    "answer_text": "Shadow of the Vampire (2000) - part of the 8-clue 'making of' connect; a fictionalized account of the making of Nosferatu.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 3 (worth +60/-25): two posters shown together, 'Glen or Glenda' and 'Plan 9 from Outer Space', both films directed by Ed Wood.",
+    "answer_text": "Ed Wood (1994) - part of the 8-clue 'making of' connect; Tim Burton's biopic about director Ed Wood, who made these films.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 4 (worth +50/-20): a poster for the blaxploitation film 'Dolemite' starring Rudy Ray Moore.",
+    "answer_text": "Dolemite Is My Name (2019) - part of the 8-clue 'making of' connect; the biopic about the making of Dolemite.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 5 (worth +40/-15): a poster for Disney's 'Mary Poppins' starring Julie Andrews and Dick Van Dyke.",
+    "answer_text": "Saving Mr. Banks (2013) - part of the 8-clue 'making of' connect; the film about the making of Mary Poppins.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 6 (worth +30/-10): a poster for Alfred Hitchcock's 'Psycho' starring Anthony Perkins and Janet Leigh.",
+    "answer_text": "Hitchcock (2012) - part of the 8-clue 'making of' connect; the film about Alfred Hitchcock making Psycho.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 7 (worth +20/-5): a poster for the cult film 'The Room' by Tommy Wiseau.",
+    "answer_text": "The Disaster Artist (2017) - part of the 8-clue 'making of' connect; the film about the making of The Room.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Long Visual Connect 2, clue 8 (worth +10): a poster for 'The Godfather'.",
+    "answer_text": "The Offer (2022) - part of the 8-clue 'making of' connect; the limited series about the making of The Godfather. Overall connect answer: each poster is a movie, and the paired answer is a movie or TV show about the making of that movie.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  }
+]
