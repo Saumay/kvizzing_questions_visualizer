@@ -442,7 +442,7 @@ deck-megakviz-r2,2026-02-15,Akshay,39,33.3,True,True,False,0.0
 2026-03-16-smit,2026-03-16,Smit D Mahajani,28,100.0,False,True,False,25.0
 2026-03-16-pavan,2026-03-16,Pavan Pamidimarri,10,100.0,False,True,False,0.0
 2026-03-16-pratik,2026-03-16,pratik.s.chandarana,20,100.0,False,True,False,0.0
-2026-03-16-abhishek,2026-03-16,Abhishek Vats,15,100.0,False,True,False,6.7
+2026-03-16-abhishek,2026-03-16,Abhishek Vats,15,100.0,True,True,False,6.7
 2026-03-17-smit,2026-03-17,Smit D Mahajani,9,100.0,False,True,False,44.4
 2026-03-17-anand,2026-03-17,Anand Nagapurkar,7,100.0,False,True,False,0.0
 2026-03-18-smit,2026-03-18,Smit D Mahajani,9,100.0,False,True,False,0.0
@@ -462,13 +462,13 @@ deck-megakviz-r2,2026-02-15,Akshay,39,33.3,True,True,False,0.0
 2026-03-21-smit,2026-03-21,Smit D Mahajani,17,100.0,False,True,False,17.6
 2026-03-21-pavan,2026-03-21,Pavan Pamidimarri,12,100.0,False,True,False,0.0
 2026-03-21-pratik,2026-03-21,pratik.s.chandarana,12,100.0,False,True,False,0.0
-2026-03-21-abhishek,2026-03-21,Abhishek Vats,20,100.0,False,True,False,0.0
+2026-03-21-abhishek,2026-03-21,Abhishek Vats,20,100.0,True,True,False,0.0
 2026-03-21-dr,2026-03-21,Dr.Namrata Srinivasan,11,100.0,False,True,False,18.2
 2026-03-22-abhishek,2026-03-22,Abhishek Vats,14,100.0,False,True,False,28.6
-2026-03-22-khandoba,2026-03-22,Khandoba,11,100.0,False,True,False,0.0
+2026-03-22-khandoba,2026-03-22,Khandoba,11,100.0,True,True,False,0.0
 2026-03-22-bijal,2026-03-22,bijal bhatt,10,100.0,False,True,False,20.0
 2026-03-23-pavan,2026-03-23,Pavan Pamidimarri,12,100.0,False,True,False,0.0
-2026-03-23-abhishek,2026-03-23,Abhishek Vats,57,100.0,False,True,False,15.8
+2026-03-23-abhishek,2026-03-23,Abhishek Vats,57,100.0,True,True,False,15.8
 2026-03-23-bijal,2026-03-23,bijal bhatt,12,100.0,False,True,False,8.3
 2026-03-23-das,2026-03-23,Das,6,100.0,False,True,False,16.7
 2026-03-24-pavan,2026-03-24,Pavan Pamidimarri,12,100.0,False,True,False,8.3
@@ -476,36 +476,36 @@ deck-megakviz-r2,2026-02-15,Akshay,39,33.3,True,True,False,0.0
 2026-03-24-kartikey,2026-03-24,Kartikey Pradhan,11,100.0,False,True,False,0.0
 2026-03-24-abhishek,2026-03-24,Abhishek Vats,18,100.0,False,True,False,5.6
 2026-03-24-akshay,2026-03-24,Akshay,6,100.0,False,True,False,0.0
-2026-03-24-sidhesh,2026-03-24,Sidhesh K K,10,100.0,False,True,False,0.0
+2026-03-24-sidhesh,2026-03-24,Sidhesh K K,10,100.0,True,True,False,0.0
 2026-03-25-మాन$,2026-03-25,మాन$,14,100.0,False,True,False,50.0
 2026-03-25-bijal,2026-03-25,bijal bhatt,6,100.0,False,True,False,83.3
 2026-03-25-kartikey,2026-03-25,Kartikey Pradhan,15,100.0,False,True,False,0.0
 2026-03-25-smit,2026-03-25,Smit D Mahajani,9,100.0,False,True,False,11.1
-2026-03-25-abhishek,2026-03-25,Abhishek Vats,17,100.0,False,True,False,11.8
+2026-03-25-abhishek,2026-03-25,Abhishek Vats,17,100.0,True,True,False,11.8
 2026-03-25-pratik,2026-03-25,pratik.s.chandarana,21,100.0,False,True,False,9.5
-2026-03-26-abhishek,2026-03-26,Abhishek Vats,16,100.0,False,True,False,0.0
+2026-03-26-abhishek,2026-03-26,Abhishek Vats,16,100.0,True,True,False,0.0
 2026-03-27-bijal,2026-03-27,bijal bhatt,13,100.0,False,True,False,23.1
 2026-03-27-smit,2026-03-27,Smit D Mahajani,6,100.0,False,True,False,0.0
-2026-03-27-abhishek,2026-03-27,Abhishek Vats,16,100.0,False,True,False,0.0
+2026-03-27-abhishek,2026-03-27,Abhishek Vats,16,100.0,True,True,False,0.0
 2026-03-27-sidhesh,2026-03-27,Sidhesh K K,9,100.0,False,True,False,0.0
 2026-03-28-pavan,2026-03-28,Pavan Pamidimarri,17,100.0,False,True,False,0.0
 2026-03-28-das,2026-03-28,Das,5,100.0,False,True,False,100.0
-2026-03-28-khandoba,2026-03-28,Khandoba,33,100.0,False,True,False,36.4
+2026-03-28-khandoba,2026-03-28,Khandoba,33,100.0,True,True,False,36.4
 2026-03-28-abhishek,2026-03-28,Abhishek Vats,10,100.0,False,True,False,0.0
 2026-03-29-chinmay,2026-03-29,Chinmay Mehta,17,100.0,False,True,False,0.0
-2026-03-29-nikhil,2026-03-29,Nikhil Borra,11,100.0,False,True,False,0.0
+2026-03-29-nikhil,2026-03-29,Nikhil Borra,11,100.0,True,True,False,0.0
 2026-03-29-abhishek,2026-03-29,Abhishek Vats,14,100.0,False,True,False,7.1
 2026-03-30-మాन$,2026-03-30,మాन$,23,100.0,False,True,False,8.7
 2026-03-30-bijal,2026-03-30,bijal bhatt,30,100.0,False,True,False,30.0
 2026-03-30-kartikey,2026-03-30,Kartikey Pradhan,10,100.0,False,True,False,0.0
 2026-03-30-lzafeer,2026-03-30,Lzafeer Ahmad B F,24,100.0,False,True,False,20.8
 2026-03-30-khandoba,2026-03-30,Khandoba,15,100.0,False,True,False,66.7
-2026-03-30-abhishek,2026-03-30,Abhishek Vats,13,100.0,False,True,False,0.0
+2026-03-30-abhishek,2026-03-30,Abhishek Vats,13,100.0,True,True,False,0.0
 2026-03-30-das,2026-03-30,Das,11,100.0,False,True,False,0.0
 2026-03-31-pranshu,2026-03-31,Pranshu,11,100.0,False,True,False,0.0
 2026-03-31-మాन$,2026-03-31,మాन$,10,100.0,False,True,False,0.0
 2026-03-31-tapish,2026-03-31,Tapish,11,100.0,False,True,False,0.0
-2026-03-31-abhishek,2026-03-31,Abhishek Vats,28,100.0,False,True,False,14.3
+2026-03-31-abhishek,2026-03-31,Abhishek Vats,28,100.0,True,True,False,14.3
 2026-03-31-bijal,2026-03-31,bijal bhatt,32,100.0,False,True,False,62.5
 deck-rewind-2025,2026-04-04,Pavan,26,88.5,True,True,False,0.0
 deck-kvizimals,2026-04-04,Manas,20,100.0,True,True,False,0.0
@@ -527,7 +527,7 @@ deck-movie-quiz-bijal-r2,2026-04-25,Bijal Bhatt,16,81.2,True,True,False,0.0
 deck-buzzing-whatsapp-namrata-r1,2026-05-01,Namrata,30,56.7,True,True,False,0.0
 deck-buzzing-whatsapp-namrata-r2,2026-05-01,Namrata,30,33.3,True,True,False,0.0
 2026-05-02-pavan,2026-05-02,Pavan Pamidimarri,7,0.0,False,True,False,0.0
-2026-05-02-nikhil,2026-05-02,Nikhil Borra,9,0.0,False,True,False,0.0
+2026-05-02-nikhil,2026-05-02,Nikhil Borra,9,0.0,True,True,False,0.0
 2026-05-03-abhishek,2026-05-03,Abhishek Saluja,27,0.0,False,True,False,0.0
 2026-05-03-dr,2026-05-03,Dr.Namrata Srinivasan,23,0.0,False,True,False,8.7
 2026-05-03-radhika,2026-05-03,Radhika,7,0.0,False,True,False,0.0
@@ -537,15 +537,15 @@ deck-gauntlet-r9,2026-05-03,Pavan,18,88.9,True,True,False,0.0
 deck-gauntlet-r10,2026-05-03,CM,17,94.1,True,True,False,0.0
 deck-gauntlet-r11,2026-05-03,Sal,17,100.0,True,True,False,0.0
 deck-buzzer-bhide,2026-05-03,Bhide,60,71.7,True,True,False,0.0
-2026-05-04-మాन$,2026-05-04,మాन$,13,0.0,False,True,False,7.7
+2026-05-04-మాन$,2026-05-04,మాन$,13,0.0,True,True,False,7.7
 2026-05-04-bijal,2026-05-04,bijal bhatt,10,0.0,False,True,False,0.0
 deck-may-the-4th,2026-05-04,Bijal Bhatt,17,94.1,True,True,False,0.0
 2026-05-05-akshay,2026-05-05,Akshay,7,0.0,False,True,False,0.0
-2026-05-05-abhishek,2026-05-05,Abhishek Saluja,32,0.0,False,True,False,3.1
+2026-05-05-abhishek,2026-05-05,Abhishek Saluja,32,0.0,True,True,False,3.1
 2026-05-05-kartikey,2026-05-05,Kartikey Pradhan,13,0.0,False,True,False,0.0
 2026-05-05-aakanksha,2026-05-05,Aakanksha Sinha,7,0.0,False,True,False,0.0
 2026-05-05-bijal,2026-05-05,bijal bhatt,8,0.0,False,True,False,0.0
-2026-05-06-abhishek,2026-05-06,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-05-06-abhishek,2026-05-06,Abhishek Vats,13,0.0,True,True,False,0.0
 2026-05-06-lzafeer,2026-05-06,Lzafeer Ahmad B F,33,0.0,False,True,False,0.0
 2026-05-07-pavan,2026-05-07,Pavan Pamidimarri,12,0.0,False,True,False,0.0
 2026-05-07-sidhesh,2026-05-07,Sidhesh K K,6,0.0,False,True,False,0.0
@@ -557,95 +557,95 @@ deck-may-the-4th,2026-05-04,Bijal Bhatt,17,94.1,True,True,False,0.0
 2026-05-08-gautam,2026-05-08,Gautam Ramachandran,11,0.0,False,True,False,0.0
 2026-05-08-smit,2026-05-08,Smit D Mahajani,10,0.0,False,True,False,30.0
 2026-05-09-pratik,2026-05-09,pratik.s.chandarana,13,0.0,False,True,False,0.0
-2026-05-09-akshay,2026-05-09,Akshay,10,0.0,False,True,False,0.0
+2026-05-09-akshay,2026-05-09,Akshay,10,0.0,True,True,False,0.0
 deck-gauntlet-r12,2026-05-09,Vats,16,100.0,True,True,False,0.0
 2026-05-10-chirag,2026-05-10,Chirag Jain,8,0.0,False,True,False,12.5
 2026-05-10-smit,2026-05-10,Smit D Mahajani,16,0.0,False,True,False,12.5
 2026-05-10-dr,2026-05-10,Dr. Prajwal K Aradhya,28,0.0,False,True,False,0.0
-2026-05-10-pavan,2026-05-10,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-05-10-pavan,2026-05-10,Pavan Pamidimarri,12,0.0,True,True,False,0.0
 2026-05-10-bijal,2026-05-10,bijal bhatt,8,0.0,False,True,False,0.0
 2026-05-11-pratik,2026-05-11,pratik.s.chandarana,19,0.0,False,True,False,5.3
-2026-05-11-abhishek,2026-05-11,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-11-abhishek,2026-05-11,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-05-12-abhishek,2026-05-12,Abhishek Saluja,26,0.0,False,True,False,3.8
 2026-05-12-dr,2026-05-12,Dr. Prajwal K Aradhya,9,0.0,False,True,False,0.0
 2026-05-12-bijal,2026-05-12,bijal bhatt,8,0.0,False,True,False,0.0
 2026-05-12-kartikey,2026-05-12,Kartikey Pradhan,12,0.0,False,True,False,8.3
 2026-05-13-bijal,2026-05-13,bijal bhatt,11,0.0,False,True,False,0.0
 2026-05-13-pratik,2026-05-13,pratik.s.chandarana,20,0.0,False,True,False,0.0
-2026-05-13-abhishek,2026-05-13,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-13-abhishek,2026-05-13,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-05-13-smit,2026-05-13,Smit D Mahajani,11,0.0,False,True,False,0.0
 2026-05-14-chinmay,2026-05-14,Chinmay Mehta,11,0.0,False,True,False,0.0
 2026-05-14-smit,2026-05-14,Smit D Mahajani,12,0.0,False,True,False,8.3
-2026-05-14-abhishek,2026-05-14,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-05-14-abhishek,2026-05-14,Abhishek Vats,13,0.0,True,True,False,0.0
 2026-05-15-abhishek,2026-05-15,Abhishek Saluja,8,0.0,False,True,False,0.0
 2026-05-15-bijal,2026-05-15,bijal bhatt,10,0.0,False,True,False,0.0
 2026-05-15-pratik,2026-05-15,pratik.s.chandarana,14,0.0,False,True,False,0.0
 2026-05-15-gautam,2026-05-15,Gautam Ramachandran,11,0.0,False,True,False,0.0
-2026-05-15-akshay,2026-05-15,Akshay,10,0.0,False,True,False,0.0
+2026-05-15-akshay,2026-05-15,Akshay,10,0.0,True,True,False,0.0
 2026-05-16-dr,2026-05-16,Dr. Prajwal K Aradhya,8,0.0,False,True,False,0.0
-2026-05-16-yash,2026-05-16,Yash Agrawal,10,0.0,False,True,False,0.0
+2026-05-16-yash,2026-05-16,Yash Agrawal,10,0.0,True,True,False,0.0
 deck-visual-buzzing-bijal,2026-05-16,Bijal Bhatt,50,0.0,True,True,False,0.0
 2026-05-17-harshvardhan,2026-05-17,Harshvardhan Ranade,7,0.0,False,True,False,14.3
-2026-05-17-khandoba,2026-05-17,Khandoba,13,0.0,False,True,False,0.0
+2026-05-17-khandoba,2026-05-17,Khandoba,13,0.0,True,True,False,0.0
 deck-gauntlet-r13,2026-05-17,Pavan,17,94.1,True,True,False,0.0
 2026-05-18-harshvardhan,2026-05-18,Harshvardhan Ranade,10,0.0,False,True,False,0.0
 2026-05-18-dr,2026-05-18,Dr. Prajwal K Aradhya,10,0.0,False,True,False,0.0
-2026-05-18-abhishek,2026-05-18,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-18-abhishek,2026-05-18,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-05-19-akshay,2026-05-19,Akshay,11,0.0,False,True,False,0.0
 2026-05-19-aakanksha,2026-05-19,Aakanksha Sinha,11,0.0,False,True,False,0.0
-2026-05-19-abhishek,2026-05-19,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-19-abhishek,2026-05-19,Abhishek Vats,11,0.0,True,True,False,0.0
 2026-05-19-meghna,2026-05-19,Meghna,14,0.0,False,True,False,0.0
 2026-05-20-radhika,2026-05-20,Radhika,10,0.0,False,True,False,20.0
 2026-05-20-nikunj,2026-05-20,Nikunj,8,0.0,False,True,False,0.0
-2026-05-20-abhishek,2026-05-20,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-20-abhishek,2026-05-20,Abhishek Vats,11,0.0,True,True,False,0.0
 2026-05-20-bijal,2026-05-20,bijal bhatt,13,0.0,False,True,False,23.1
 2026-05-20-smit,2026-05-20,Smit D Mahajani,22,0.0,False,True,False,36.4
 2026-05-20-akshay,2026-05-20,Akshay,5,0.0,False,True,False,0.0
 2026-05-21-dr,2026-05-21,Dr.Namrata Srinivasan,8,0.0,False,True,False,0.0
 2026-05-21-aakanksha,2026-05-21,Aakanksha Sinha,12,0.0,False,True,False,0.0
-2026-05-21-abhishek,2026-05-21,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-21-abhishek,2026-05-21,Abhishek Vats,11,0.0,True,True,False,0.0
 2026-05-21-bijal,2026-05-21,bijal bhatt,14,0.0,False,True,False,0.0
 2026-05-21-smit,2026-05-21,Smit D Mahajani,11,0.0,False,True,False,9.1
 2026-05-22-abhishek,2026-05-22,Abhishek Saluja,18,0.0,False,True,False,0.0
 2026-05-22-smit,2026-05-22,Smit D Mahajani,10,0.0,False,True,False,0.0
 2026-05-22-aakanksha,2026-05-22,Aakanksha Sinha,11,0.0,False,True,False,0.0
-2026-05-23-abhishek,2026-05-23,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-23-abhishek,2026-05-23,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-05-23-dr,2026-05-23,Dr.Namrata Srinivasan,10,0.0,False,True,False,0.0
 deck-gauntlet-r14,2026-05-23,Lzafeer,18,88.9,True,True,False,0.0
-2026-05-24-nikhil,2026-05-24,Nikhil Borra,10,0.0,False,True,False,0.0
+2026-05-24-nikhil,2026-05-24,Nikhil Borra,10,0.0,True,True,False,0.0
 2026-05-24-bijal,2026-05-24,bijal bhatt,9,0.0,False,True,False,0.0
-2026-05-25-pavan,2026-05-25,Pavan Pamidimarri,14,0.0,False,True,False,0.0
+2026-05-25-pavan,2026-05-25,Pavan Pamidimarri,14,0.0,True,True,False,0.0
 2026-05-25-prathamesh,2026-05-25,Prathamesh,7,0.0,False,True,False,0.0
 2026-05-25-smit,2026-05-25,Smit D Mahajani,15,0.0,False,True,False,46.7
 2026-05-26-smit,2026-05-26,Smit D Mahajani,15,0.0,False,True,False,6.7
-2026-05-26-abhishek,2026-05-26,Abhishek Vats,12,0.0,False,True,False,0.0
-2026-05-27-abhishek,2026-05-27,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-05-26-abhishek,2026-05-26,Abhishek Vats,12,0.0,True,True,False,0.0
+2026-05-27-abhishek,2026-05-27,Abhishek Vats,11,0.0,True,True,False,0.0
 2026-05-28-gautam,2026-05-28,Gautam Ramachandran,10,0.0,False,True,False,0.0
-2026-05-28-abhishek,2026-05-28,Abhishek Vats,10,0.0,False,True,False,0.0
+2026-05-28-abhishek,2026-05-28,Abhishek Vats,10,0.0,True,True,False,0.0
 2026-05-29-smit,2026-05-29,Smit Mahajani,10,0.0,False,True,False,0.0
 2026-05-29-pratik,2026-05-29,pratik.s.chandarana,5,0.0,False,True,False,20.0
 2026-05-29-shreya,2026-05-29,Shreya,20,0.0,False,True,False,0.0
 2026-05-29-dr,2026-05-29,Dr. Prajwal K Aradhya,8,0.0,False,True,False,0.0
-2026-05-29-abhishek,2026-05-29,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-05-29-abhishek,2026-05-29,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-05-29-aakanksha,2026-05-29,Aakanksha Sinha,11,0.0,False,True,False,0.0
 2026-05-30-sidhesh,2026-05-30,Sidhesh K K,11,0.0,False,True,False,0.0
 2026-05-30-abhishek,2026-05-30,Abhishek Saluja,11,0.0,False,True,False,0.0
-2026-05-30-akshay,2026-05-30,Akshay,12,0.0,False,True,False,0.0
+2026-05-30-akshay,2026-05-30,Akshay,12,0.0,True,True,False,0.0
 2026-05-30-pavan,2026-05-30,Pavan Pamidimarri,18,0.0,False,True,False,0.0
 2026-05-31-antnishu,2026-05-31,AntNishu,13,0.0,False,True,False,0.0
 2026-05-31-shreya,2026-05-31,Shreya,12,0.0,False,True,False,0.0
-2026-05-31-pavan,2026-05-31,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-05-31-pavan,2026-05-31,Pavan Pamidimarri,12,0.0,True,True,False,0.0
 2026-06-01-kartikey,2026-06-01,Kartikey Pradhan,10,0.0,False,True,False,0.0
 2026-06-01-aakanksha,2026-06-01,Aakanksha Sinha,10,0.0,False,True,False,10.0
 2026-06-01-smit,2026-06-01,Smit Mahajani,10,0.0,False,True,False,0.0
 2026-06-01-gautam,2026-06-01,Gautam Aswani,8,0.0,False,True,False,12.5
 2026-06-02-lzafeer,2026-06-02,Lzafeer Ahmad B F,6,0.0,False,True,False,0.0
 2026-06-02-akshay,2026-06-02,Akshay,12,0.0,False,True,False,0.0
-2026-06-02-abhishek,2026-06-02,Abhishek Saluja,10,0.0,False,True,False,0.0
+2026-06-02-abhishek,2026-06-02,Abhishek Saluja,10,0.0,True,True,False,0.0
 2026-06-03-abhinav,2026-06-03,Abhinav,6,0.0,False,True,False,16.7
 2026-06-03-aakanksha,2026-06-03,Aakanksha Sinha,8,0.0,False,True,False,50.0
 2026-06-03-shreya,2026-06-03,Shreya,6,0.0,False,True,False,0.0
-2026-06-03-abhishek,2026-06-03,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-03-abhishek,2026-06-03,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-06-03-sidhesh,2026-06-03,Sidhesh K K,10,0.0,False,True,False,0.0
 2026-06-04-chinmay,2026-06-04,Chinmay Mehta,16,0.0,False,True,False,0.0
 2026-06-04-abhishek,2026-06-04,Abhishek Saluja,20,0.0,False,True,False,0.0
@@ -653,63 +653,63 @@ deck-gauntlet-r14,2026-05-23,Lzafeer,18,88.9,True,True,False,0.0
 2026-06-04-bijal,2026-06-04,bijal bhatt,11,0.0,False,True,False,0.0
 2026-06-04-akshay,2026-06-04,Akshay,7,0.0,False,True,False,0.0
 2026-06-05-మాन$,2026-06-05,మాन$,13,0.0,False,True,False,0.0
-2026-06-05-sidhesh,2026-06-05,Sidhesh K K,11,0.0,False,True,False,0.0
+2026-06-05-sidhesh,2026-06-05,Sidhesh K K,11,0.0,True,True,False,0.0
 deck-gauntlet-r15,2026-06-05,Khandoba,17,94.1,True,True,False,0.0
 deck-gauntlet-r16,2026-06-05,Bijal Bhatt,18,94.4,True,True,False,0.0
-2026-06-06-pavan,2026-06-06,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-06-06-pavan,2026-06-06,Pavan Pamidimarri,12,0.0,True,True,False,0.0
 2026-06-06-shreya,2026-06-06,Shreya,10,0.0,False,True,False,0.0
 2026-06-06-smit,2026-06-06,Smit Mahajani,10,0.0,False,True,False,0.0
-2026-06-07-khandoba,2026-06-07,Khandoba,13,0.0,False,True,False,7.7
+2026-06-07-khandoba,2026-06-07,Khandoba,13,0.0,True,True,False,7.7
 2026-06-07-smit,2026-06-07,Smit Mahajani,11,0.0,False,True,False,0.0
 2026-06-08-kartikey,2026-06-08,Kartikey Pradhan,20,0.0,False,True,False,0.0
 2026-06-08-smit,2026-06-08,Smit Mahajani,7,0.0,False,True,False,14.3
-2026-06-08-abhishek,2026-06-08,Abhishek Vats,32,0.0,False,True,False,0.0
+2026-06-08-abhishek,2026-06-08,Abhishek Vats,32,0.0,True,True,False,0.0
 2026-06-09-shreya,2026-06-09,Shreya,11,0.0,False,True,False,9.1
-2026-06-09-abhishek,2026-06-09,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-09-abhishek,2026-06-09,Abhishek Vats,13,0.0,True,True,False,0.0
 2026-06-10-yash,2026-06-10,Yash Badani,6,0.0,False,True,False,0.0
 2026-06-10-gautam,2026-06-10,Gautam Ramachandran,16,0.0,False,True,False,0.0
 2026-06-10-akshay,2026-06-10,Akshay,10,0.0,False,True,False,0.0
 2026-06-11-smit,2026-06-11,Smit Mahajani,10,0.0,False,True,False,0.0
 2026-06-11-shreya,2026-06-11,Shreya,20,0.0,False,True,False,0.0
 2026-06-11-dr,2026-06-11,Dr.Namrata Srinivasan,25,0.0,False,True,False,4.0
-2026-06-11-abhishek,2026-06-11,Abhishek Vats,12,0.0,False,True,False,8.3
+2026-06-11-abhishek,2026-06-11,Abhishek Vats,12,0.0,True,True,False,8.3
 2026-06-12-dr,2026-06-12,Dr. Prajwal K Aradhya,28,0.0,False,True,False,0.0
 2026-06-12-samyak,2026-06-12,samyak mitra,11,0.0,False,True,False,0.0
 2026-06-12-smit,2026-06-12,Smit Mahajani,9,0.0,False,True,False,0.0
-2026-06-12-abhishek,2026-06-12,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-12-abhishek,2026-06-12,Abhishek Vats,13,0.0,True,True,False,0.0
 2026-06-13-harshvardhan,2026-06-13,Harshvardhan Ranade,9,0.0,False,True,False,0.0
-2026-06-13-abhishek,2026-06-13,Abhishek Vats,11,0.0,False,True,False,0.0
-2026-06-14-pavan,2026-06-14,Pavan Pamidimarri,15,0.0,False,True,False,0.0
-2026-06-15-abhishek,2026-06-15,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-13-abhishek,2026-06-13,Abhishek Vats,11,0.0,True,True,False,0.0
+2026-06-14-pavan,2026-06-14,Pavan Pamidimarri,15,0.0,True,True,False,0.0
+2026-06-15-abhishek,2026-06-15,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-06-15-kartikey,2026-06-15,Kartikey Pradhan,14,0.0,False,True,False,0.0
-2026-06-16-abhishek,2026-06-16,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-06-16-abhishek,2026-06-16,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-06-17-aakanksha,2026-06-17,Aakanksha Sinha,5,0.0,False,True,False,0.0
-2026-06-17-abhishek,2026-06-17,Abhishek Vats,11,0.0,False,True,False,0.0
-2026-06-18-sidhesh,2026-06-18,Sidhesh K K,11,100.0,False,True,False,0.0
+2026-06-17-abhishek,2026-06-17,Abhishek Vats,11,0.0,True,True,False,0.0
+2026-06-18-sidhesh,2026-06-18,Sidhesh K K,11,100.0,True,True,False,0.0
 2026-06-18-smit,2026-06-18,Smit Mahajani,12,100.0,False,True,False,0.0
 2026-06-19-abhishek,2026-06-19,Abhishek Saluja,26,0.0,False,True,False,3.8
 2026-06-19-antnishu,2026-06-19,AntNishu,17,0.0,False,True,False,5.9
-2026-06-19-shreya,2026-06-19,Shreya,12,0.0,False,True,False,0.0
+2026-06-19-shreya,2026-06-19,Shreya,12,0.0,True,True,False,0.0
 deck-gauntlet-r17,2026-06-19,Nikunj,20,75.0,True,True,False,0.0
 2026-06-20-shreya,2026-06-20,Shreya,10,0.0,False,True,False,10.0
 2026-06-20-manik,2026-06-20,Manik Kamra,12,0.0,False,True,False,0.0
-2026-06-20-pavan,2026-06-20,Pavan Pamidimarri,15,0.0,False,True,False,6.7
+2026-06-20-pavan,2026-06-20,Pavan Pamidimarri,15,0.0,True,True,False,6.7
 2026-06-20-bijal,2026-06-20,bijal bhatt,11,0.0,False,True,False,0.0
 2026-06-21-shreya,2026-06-21,Shreya,44,0.0,False,True,False,0.0
-2026-06-21-pavan,2026-06-21,Pavan Pamidimarri,14,0.0,False,True,False,0.0
-2026-06-22-khandoba,2026-06-22,Khandoba,11,0.0,False,True,False,0.0
+2026-06-21-pavan,2026-06-21,Pavan Pamidimarri,14,0.0,True,True,False,0.0
+2026-06-22-khandoba,2026-06-22,Khandoba,11,0.0,True,True,False,0.0
 2026-06-22-dr,2026-06-22,Dr.Namrata Srinivasan,22,0.0,False,True,False,27.3
 2026-06-22-shreya,2026-06-22,Shreya,9,0.0,False,True,False,0.0
 2026-06-23-sidhesh,2026-06-23,Sidhesh K K,10,0.0,False,True,False,0.0
 2026-06-23-pratik,2026-06-23,pratik.s.chandarana,8,0.0,False,True,False,0.0
 2026-06-23-bijal,2026-06-23,bijal bhatt,8,0.0,False,True,False,0.0
 2026-06-23-shreya,2026-06-23,Shreya,11,0.0,False,True,False,9.1
-2026-06-24-sidhesh,2026-06-24,Sidhesh K K,12,0.0,False,True,False,0.0
+2026-06-24-sidhesh,2026-06-24,Sidhesh K K,12,0.0,True,True,False,0.0
 2026-06-24-shreya,2026-06-24,Shreya,14,0.0,False,True,False,0.0
 2026-06-24-pratik,2026-06-24,pratik.s.chandarana,21,0.0,False,True,False,0.0
 2026-06-25-antnishu,2026-06-25,AntNishu,10,0.0,False,True,False,0.0
 2026-06-25-harshvardhan,2026-06-25,Harshvardhan Ranade,12,0.0,False,True,False,16.7
-2026-06-25-abhishek,2026-06-25,Abhishek Vats,13,0.0,False,True,False,0.0
+2026-06-25-abhishek,2026-06-25,Abhishek Vats,13,0.0,True,True,False,0.0
 2026-06-25-dhruv,2026-06-25,Dhruv Nath,11,0.0,False,True,False,0.0
 2026-06-25-smit,2026-06-25,Smit Mahajani,11,0.0,False,True,False,9.1
 2026-06-26-kartikey,2026-06-26,Kartikey Pradhan,8,0.0,False,True,False,0.0
@@ -719,12 +719,12 @@ deck-gauntlet-r18,2026-06-26,Prajwal,17,94.1,True,True,False,0.0
 2026-06-27-abhishek,2026-06-27,Abhishek Vats,16,0.0,False,True,False,0.0
 2026-06-27-dr,2026-06-27,Dr. Prajwal K Aradhya,14,0.0,False,True,False,0.0
 2026-06-27-antnishu,2026-06-27,AntNishu,9,0.0,False,True,False,0.0
-2026-06-27-pavan,2026-06-27,Pavan Pamidimarri,12,0.0,False,True,False,0.0
+2026-06-27-pavan,2026-06-27,Pavan Pamidimarri,12,0.0,True,True,False,0.0
 2026-06-27-chirag,2026-06-27,Chirag Jain,12,0.0,False,True,False,0.0
 2026-06-28-abhishek,2026-06-28,Abhishek Vats,15,0.0,False,True,False,0.0
 2026-06-28-harshvardhan,2026-06-28,Harshvardhan Ranade,10,0.0,False,True,False,0.0
 2026-06-28-yash,2026-06-28,Yash Badani,11,0.0,False,True,False,9.1
-2026-06-28-nikhil,2026-06-28,Nikhil Borra,10,0.0,False,True,False,0.0
+2026-06-28-nikhil,2026-06-28,Nikhil Borra,10,0.0,True,True,False,0.0
 2026-06-29-chirag,2026-06-29,Chirag Jain,12,0.0,False,True,False,8.3
 2026-06-29-dr,2026-06-29,Dr.Namrata Srinivasan,10,0.0,False,True,False,0.0
 2026-06-29-abhishek,2026-06-29,Abhishek Vats,9,0.0,False,True,False,0.0
@@ -735,42 +735,42 @@ deck-history-smit,2026-06-29,Smit,20,100.0,True,True,False,0.0
 2026-06-30-abhishek,2026-06-30,Abhishek Vats,12,0.0,False,True,False,0.0
 2026-06-30-prathamesh,2026-06-30,Prathamesh,5,0.0,False,True,False,0.0
 2026-07-01-dr,2026-07-01,Dr. Prajwal K Aradhya,24,0.0,False,True,False,4.2
-2026-07-01-shreya,2026-07-01,Shreya,14,0.0,False,True,False,0.0
+2026-07-01-shreya,2026-07-01,Shreya,14,0.0,True,True,False,0.0
 2026-07-01-yash,2026-07-01,Yash Badani,12,0.0,False,True,False,8.3
 2026-07-01-abhishek,2026-07-01,Abhishek Saluja,9,0.0,False,True,False,0.0
 2026-07-02-dr,2026-07-02,Dr. Prajwal K Aradhya,17,0.0,False,True,False,0.0
 2026-07-02-abhishek,2026-07-02,Abhishek Saluja,7,0.0,False,True,False,0.0
-2026-07-02-khandoba,2026-07-02,Khandoba,19,0.0,False,True,False,0.0
+2026-07-02-khandoba,2026-07-02,Khandoba,19,0.0,True,True,False,0.0
 2026-07-03-antnishu,2026-07-03,AntNishu,11,0.0,False,True,False,0.0
 2026-07-03-gautam,2026-07-03,Gautam Ramachandran,10,0.0,False,True,False,0.0
-2026-07-03-lzafeer,2026-07-03,Lzafeer Ahmad B F,13,0.0,False,True,False,0.0
+2026-07-03-lzafeer,2026-07-03,Lzafeer Ahmad B F,13,0.0,True,True,False,0.0
 2026-07-03-smit,2026-07-03,Smit Mahajani,10,0.0,False,True,False,50.0
 2026-07-03-shreya,2026-07-03,Shreya,21,0.0,False,True,False,0.0
 2026-07-04-lzafeer,2026-07-04,Lzafeer Ahmad B F,9,0.0,False,True,False,0.0
-2026-07-04-pavan,2026-07-04,Pavan Pamidimarri,22,0.0,False,True,False,0.0
+2026-07-04-pavan,2026-07-04,Pavan Pamidimarri,22,0.0,True,True,False,0.0
 2026-07-04-shreya,2026-07-04,Shreya,11,0.0,False,True,False,0.0
 deck-old-school-kp,2026-07-04,KP,21,71.4,True,True,False,0.0
-2026-07-05-abhishek,2026-07-05,Abhishek Vats,11,0.0,False,True,False,0.0
+2026-07-05-abhishek,2026-07-05,Abhishek Vats,11,0.0,True,True,False,0.0
 2026-07-05-anurag,2026-07-05,Anurag Bhide,20,0.0,False,True,False,10.0
 deck-tapish-sports,2026-07-05,Tapish,28,89.3,True,True,False,0.0
 2026-07-06-dr,2026-07-06,Dr. Prajwal K Aradhya,29,0.0,False,True,False,0.0
 2026-07-06-chinmay,2026-07-06,Chinmay Mehta,6,0.0,False,True,False,0.0
-2026-07-06-abhishek,2026-07-06,Abhishek Vats,17,0.0,False,True,False,0.0
+2026-07-06-abhishek,2026-07-06,Abhishek Vats,17,0.0,True,True,False,0.0
 2026-07-06-shreya,2026-07-06,Shreya,20,0.0,False,True,False,5.0
 2026-07-07-dr,2026-07-07,Dr.Namrata Srinivasan,9,0.0,False,True,False,0.0
-2026-07-07-abhishek,2026-07-07,Abhishek Vats,12,0.0,False,True,False,0.0
+2026-07-07-abhishek,2026-07-07,Abhishek Vats,12,0.0,True,True,False,0.0
 2026-07-07-shreya,2026-07-07,Shreya,14,0.0,False,True,False,0.0
 2026-07-08-tapish,2026-07-08,Tapish,8,0.0,False,True,False,0.0
-2026-07-08-dr,2026-07-08,Dr.Namrata Srinivasan,12,0.0,False,True,False,8.3
+2026-07-08-dr,2026-07-08,Dr.Namrata Srinivasan,12,0.0,True,True,False,8.3
 2026-07-09-akshay,2026-07-09,Akshay,6,0.0,False,True,False,0.0
-2026-07-09-shreya,2026-07-09,Shreya,32,0.0,False,True,False,0.0
+2026-07-09-shreya,2026-07-09,Shreya,32,0.0,True,True,False,0.0
 2026-07-09-sidhesh,2026-07-09,Sidhesh K K,9,0.0,False,True,False,0.0
 2026-07-09-smit,2026-07-09,Smit Mahajani,10,0.0,False,True,False,0.0
 2026-07-09-pavan,2026-07-09,Pavan Pamidimarri,10,0.0,False,True,False,0.0
 2026-07-10-shreya,2026-07-10,Shreya,26,0.0,False,True,False,3.8
 2026-07-10-dr,2026-07-10,Dr.Namrata Srinivasan,5,0.0,False,True,False,0.0
-2026-07-10-abhishek,2026-07-10,Abhishek Vats,12,0.0,False,True,False,0.0
-2026-07-11-abhishek,2026-07-11,Abhishek Vats,27,0.0,False,True,False,3.7
+2026-07-10-abhishek,2026-07-10,Abhishek Vats,12,0.0,True,True,False,0.0
+2026-07-11-abhishek,2026-07-11,Abhishek Vats,27,0.0,True,True,False,3.7
 2026-07-11-shubhankar,2026-07-11,Shubhankar,8,0.0,False,True,False,12.5
 deck-gauntlet-r20,2026-07-11,Chinmay,17,100.0,True,True,False,0.0
 deck-mtv-tournament-r1,2026-07-11,Bijal Bhatt,16,75.0,True,True,False,0.0
