@@ -400,8 +400,14 @@
             }
           ],
           "default": null,
-          "description": "Actual media attachments, populated when files are extracted from a WhatsApp backup. Null when unavailable (e.g. plain .txt export). has_media=True with media=null means: file exists but not yet extracted.",
+          "description": "Actual media attachments, populated when files are extracted from a WhatsApp backup. Null when unavailable (e.g. plain .txt export). has_media=True with media=null and media_unavailable=False means: file exists but not yet extracted.",
           "title": "Media"
+        },
+        "media_unavailable": {
+          "default": false,
+          "description": "True when has_media=True, media=null, and the source media has been exhaustively searched for and confirmed permanently missing (e.g. falls within a known gap in every available WhatsApp export/backup). Distinguishes a confirmed dead end from the default 'not yet extracted' state. Only ever True when media is also null.",
+          "title": "Media Unavailable",
+          "type": "boolean"
         },
         "topics": {
           "description": "Topic categories. Empty list if not yet classified. A question can belong to multiple topics.",

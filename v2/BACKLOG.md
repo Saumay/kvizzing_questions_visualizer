@@ -510,7 +510,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-10-31-akshay | 2025-10-31 | Akshay | 9 | 100.0% | yes | yes |  | 11.1% |
 | 2025-11-01-pavan | 2025-11-01 | Pavan Pamidimarri | 11 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-01-abhishek | 2025-11-01 | Abhishek S | 11 | 100.0% | yes | yes |  | 0.0% |
-| deck-yet-another-quiz | 2025-11-01 | unknown | 17 | 70.6% | yes |  |  | 0.0% |
+| deck-yet-another-quiz | 2025-11-01 | unknown | 17 | 70.6% | yes | yes |  | 0.0% |
 | 2025-11-02-pavan | 2025-11-02 | Pavan Pamidimarri | 8 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-03-pavan | 2025-11-03 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-04-pavan | 2025-11-04 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
@@ -523,7 +523,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-11-07-abhishek | 2025-11-07 | Abhishek S | 14 | 100.0% | yes | yes |  | 7.1% |
 | 2025-11-07-nikunj | 2025-11-07 | Nikunj | 8 | 100.0% | yes | yes |  | 0.0% |
 | deck-buzzing-entertainment-r1 | 2025-11-08 | unknown | 25 | 40.0% | yes | yes |  | 0.0% |
-| deck-buzzing-entertainment-r2 | 2025-11-08 | unknown | 25 | 40.0% | yes |  |  | 0.0% |
+| deck-buzzing-entertainment-r2 | 2025-11-08 | unknown | 25 | 40.0% | yes | yes |  | 0.0% |
 | 2025-11-09-ryan | 2025-11-09 | Ryan Colaço | 5 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-09-abhishek | 2025-11-09 | Abhishek Vats | 6 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-09-pavan | 2025-11-09 | Pavan Pamidimarri | 20 | 100.0% | yes | yes |  | 0.0% |
@@ -552,7 +552,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-11-20-pavan | 2025-11-20 | Pavan Pamidimarri | 12 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-20-kartikey | 2025-11-20 | Kartikey Pradhan | 7 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-21-ricky | 2025-11-21 | Ricky | 17 | 100.0% | yes | yes |  | 17.6% |
-| deck-swine-clue | 2025-11-21 | unknown | 17 | 88.2% | yes |  |  | 0.0% |
+| deck-swine-clue | 2025-11-21 | unknown | 17 | 88.2% | yes | yes |  | 0.0% |
 | 2025-11-22-kartikey | 2025-11-22 | Kartikey Pradhan | 17 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-22-మాन$ | 2025-11-22 | మాन$ | 20 | 100.0% | yes | yes |  | 0.0% |
 | 2025-11-23-abhishek | 2025-11-23 | Abhishek S | 8 | 100.0% | yes | yes |  | 0.0% |
@@ -602,7 +602,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2025-12-12-shiv | 2025-12-12 | Shiv Ram | 14 | 100.0% | yes | yes |  | 7.1% |
 | 2025-12-13-kartikey | 2025-12-13 | Kartikey Pradhan | 19 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-13-abhishek | 2025-12-13 | Abhishek S | 13 | 100.0% | yes | yes |  | 0.0% |
-| deck-megakviz-r1 | 2025-12-13 | Akshay | 16 | 75.0% | yes |  |  | 0.0% |
+| deck-megakviz-r1 | 2025-12-13 | Akshay | 16 | 75.0% | yes | yes |  | 0.0% |
 | 2025-12-14-tapish | 2025-12-14 | Tapish | 19 | 100.0% | yes | yes |  | 5.3% |
 | 2025-12-14-dhruv | 2025-12-14 | Dhruv Nath | 30 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-15-abhishek | 2025-12-15 | Abhishek S | 24 | 100.0% | yes | yes |  | 0.0% |
@@ -628,7 +628,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-kp-quiz-final | 2025-12-20 | KP | 40 | 42.5% | yes | yes |  | 0.0% |
 | 2025-12-21-kartikey | 2025-12-21 | Kartikey Pradhan | 15 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-21-abhishek | 2025-12-21 | Abhishek S | 25 | 100.0% | yes | yes |  | 4.0% |
-| deck-bollywood-kviz | 2025-12-21 | unknown | 16 | 87.5% | yes |  |  | 0.0% |
+| deck-bollywood-kviz | 2025-12-21 | unknown | 16 | 87.5% | yes | yes |  | 0.0% |
 | 2025-12-22-kartikey | 2025-12-22 | Kartikey Pradhan | 9 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-22-antnishu | 2025-12-22 | AntNishu | 6 | 100.0% | yes | yes |  | 0.0% |
 | 2025-12-22-meghna | 2025-12-22 | Meghna | 6 | 100.0% | yes |  |  | 0.0% |
@@ -815,7 +815,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-02-14-antnishu | 2026-02-14 | AntNishu | 12 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-15-khandoba | 2026-02-15 | Khandoba | 7 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-15-abhishek | 2026-02-15 | Abhishek S | 7 | 100.0% |  | yes |  | 0.0% |
-| deck-megakviz-r2 | 2026-02-15 | Akshay | 39 | 33.3% | yes |  |  | 0.0% |
+| deck-megakviz-r2 | 2026-02-15 | Akshay | 39 | 33.3% | yes | yes |  | 0.0% |
 | 2026-02-16-kartikey | 2026-02-16 | Kartikey Pradhan | 7 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-16-chinmay | 2026-02-16 | Chinmay Mehta | 16 | 100.0% |  | yes |  | 0.0% |
 | 2026-02-16-saumay | 2026-02-16 | Saumay | 11 | 100.0% |  | yes |  | 0.0% |
@@ -969,7 +969,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-03-31-tapish | 2026-03-31 | Tapish | 11 | 100.0% |  | yes |  | 0.0% |
 | 2026-03-31-abhishek | 2026-03-31 | Abhishek Vats | 28 | 100.0% |  | yes |  | 14.3% |
 | 2026-03-31-bijal | 2026-03-31 | bijal bhatt | 32 | 100.0% |  | yes |  | 62.5% |
-| deck-rewind-2025 | 2026-04-04 | Pavan | 26 | 88.5% | yes |  |  | 0.0% |
+| deck-rewind-2025 | 2026-04-04 | Pavan | 26 | 88.5% | yes | yes |  | 0.0% |
 | deck-kvizimals | 2026-04-04 | Manas | 20 | 100.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r1 | 2026-04-05 | Sal | 16 | 100.0% | yes |  |  | 0.0% |
 | deck-gauntlet-r2 | 2026-04-05 | Sid K | 16 | 75.0% | yes |  |  | 0.0% |

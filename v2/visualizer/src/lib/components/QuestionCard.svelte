@@ -206,9 +206,15 @@
           </button>
         {/each}
         {#if q.has_media && questionMedia.length === 0}
-          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">
-            📎 media
-          </span>
+          {#if q.media_unavailable}
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              🚫 image unavailable
+            </span>
+          {:else}
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">
+              📎 media
+            </span>
+          {/if}
         {/if}
       </div>
     </div>

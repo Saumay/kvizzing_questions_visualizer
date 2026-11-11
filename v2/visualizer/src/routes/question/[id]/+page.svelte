@@ -212,6 +212,10 @@
     <p class="text-gray-900 dark:text-gray-100 text-base leading-relaxed font-medium">{displayText(q.text, questionMedia.length > 0)}</p>
     {#if questionMedia.length > 0}
       <MediaGallery attachments={questionMedia} />
+    {:else if q.has_media && q.media_unavailable}
+      <p class="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-1.5">
+        <span>🚫</span> Image unavailable — no source media found for this question
+      </p>
     {:else if q.has_media}
       <p class="text-sm text-purple-500 dark:text-purple-400 flex items-center gap-1.5">
         <span>📎</span> Media not yet hosted

@@ -141,6 +141,12 @@ def _apply_preservation(q: KVizzingQuestion, old: dict) -> KVizzingQuestion:
     if q.question.media is None and old_question.get("media"):
         question_updates["media"] = [MediaAttachment.model_validate(m) for m in old_question["media"]]
 
+    # Confirmed-permanent media gap: carry the flag forward across re-extraction
+    # as long as the new run still didn't find media. If it did, drop the flag
+    # (handled implicitly — media_unavailable defaults to False on the new object).
+    if q.question.media is None and old_question.get("media_unavailable"):
+        question_updates["media_unavailable"] = True
+
     # Topics: keep existing if they have more
     old_topics = old_question.get("topics") or []
     if len(old_topics) > len(q.question.topics or []):

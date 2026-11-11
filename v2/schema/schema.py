@@ -125,7 +125,16 @@ class Question(BaseModel):
         default=None,
         description="Actual media attachments, populated when files are extracted from a "
                     "WhatsApp backup. Null when unavailable (e.g. plain .txt export). "
-                    "has_media=True with media=null means: file exists but not yet extracted."
+                    "has_media=True with media=null and media_unavailable=False means: "
+                    "file exists but not yet extracted."
+    )
+    media_unavailable: bool = Field(
+        default=False,
+        description="True when has_media=True, media=null, and the source media has been "
+                    "exhaustively searched for and confirmed permanently missing (e.g. falls "
+                    "within a known gap in every available WhatsApp export/backup). "
+                    "Distinguishes a confirmed dead end from the default 'not yet extracted' "
+                    "state. Only ever True when media is also null."
     )
     topics: list[TopicCategory] = Field(
         default_factory=list,
