@@ -356,7 +356,7 @@
       {#each visibleSessions as session}
         <a
           href="/session/{session.id}"
-          class="relative overflow-hidden block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-5 group"
+          class="relative overflow-hidden block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all p-5 group {session.is_live ? 'hover:border-amber-300' : 'hover:border-primary-200'}"
           onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.hover); }}
           onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.default); }}
         >
@@ -381,14 +381,14 @@
             <div class="flex-1 min-w-0">
               <!-- Title -->
               <div class="flex items-center gap-2 mb-1">
-                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 {session.is_live ? 'bg-amber-500 dark:bg-amber-600' : 'bg-primary-500'}">
                   <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
                 <div>
                   <div class="flex items-center gap-2">
-                    <h2 class="text-base font-semibold text-primary-700 dark:text-primary-200 group-hover:text-primary-800 dark:group-hover:text-primary-100 transition-colors">
+                    <h2 class="text-base font-semibold transition-colors {session.is_live ? 'text-amber-800 dark:text-amber-200 group-hover:text-amber-900 dark:group-hover:text-amber-100' : 'text-primary-700 dark:text-primary-200 group-hover:text-primary-800 dark:group-hover:text-primary-100'}">
                       {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}
                     </h2>
                   </div>
@@ -444,14 +444,16 @@
             <div class="flex-shrink-0 flex items-center gap-1">
               <button
                 onclick={(e) => toggleSessionSave(e, session.id)}
-                class="p-1 rounded-lg transition-colors {savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-primary-300 dark:text-primary-600 hover:text-primary-400 dark:hover:text-primary-500'}"
+                class="p-1 rounded-lg transition-colors {session.is_live
+                  ? (savedSessionIds?.value?.has(session.id) ? 'text-amber-500 dark:text-amber-400' : 'text-amber-300 dark:text-amber-600 hover:text-amber-400 dark:hover:text-amber-500')
+                  : (savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-primary-300 dark:text-primary-600 hover:text-primary-400 dark:hover:text-primary-500')}"
                 title={savedSessionIds?.value?.has(session.id) ? 'Unsave session' : 'Save session'}
               >
                 <svg class="w-5 h-5" fill={savedSessionIds?.value?.has(session.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                 </svg>
               </button>
-              <div class="text-gray-300 group-hover:text-primary-400 transition-colors">
+              <div class="text-gray-300 transition-colors {session.is_live ? 'group-hover:text-amber-500' : 'group-hover:text-primary-400'}">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
