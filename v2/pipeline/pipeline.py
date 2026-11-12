@@ -76,6 +76,7 @@ from stages.stage3_structure import run as stage3
 from stages.stage4_enrich import run as stage4
 from stages.stage5_store import run as stage5
 from stages.stage6_export import run as _stage6_export_run
+from stages.stage6_export import _write_data_version as _write_data_version
 from stages.stage4_enrich import enrich as _stage4_enrich, _normalize_tags
 from stages.stage5_store import load_all as _load_all, upsert as _upsert
 from utils.topic_rules import assign_topics as _assign_topics
@@ -242,6 +243,16 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     counts = _stage6_export_run(conn, output_dir, **kwargs)
     _maybe_regenerate_embeddings(output_dir)
     _maybe_regenerate_entities(output_dir)
+    # data_version.json is computed inside _stage6_export_run, before
+    # entities.json/question_entities.json exist for this run — the
+    # client's IndexedDB bulk-data cache (which now also holds those two
+    # files, see +layout.ts) would otherwise never invalidate when only
+    # the entity index changes and nothing else does. Recompute it now
+    # that every file the client actually caches has its final content.
+    _write_data_version(
+        Path(output_dir),
+        ["questions.json", "sessions.json", "members.json", "tags.json", "entities.json", "question_entities.json"],
+    )
     _maybe_attach_deck_links(output_dir)
     _maybe_regenerate_backlog_report()
     _maybe_deploy_dashboard()

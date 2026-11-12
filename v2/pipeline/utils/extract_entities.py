@@ -55,6 +55,28 @@ def _normalize(text: str) -> str:
     return t.strip(" .,'\"")
 
 
+# Connect/riddle answers in this corpus are overwhelmingly written as
+# "X = Name" or "X = Name, Y = Other Name" (e.g. "X = Shah Jahan, Y =
+# Jahangir"). spaCy's statistical NER is trained on ordinary prose and
+# routinely misses names in this bare label-equals-value shape — it has no
+# surrounding sentence to key off. A regex pass catches what spaCy drops.
+_LABEL_EQUALS = re.compile(
+    r"(?:^|[,;])\s*[A-Z]\s*=\s*([A-ZÀ-Ö][\w'&.\-]*(?:\s+[A-ZÀ-Ö][\w'&.\-]*){0,4})"
+)
+
+
+def _regex_entities(text: str) -> list[str]:
+    found = []
+    for m in _LABEL_EQUALS.finditer(text):
+        # Cut off at a trailing parenthetical or comma-joined explanation,
+        # e.g. "Shah Jahan (Peacock Throne...)" -> "Shah Jahan".
+        candidate = re.split(r"[,(]", m.group(1))[0].strip()
+        candidate = _normalize(candidate)
+        if candidate and len(candidate) >= 3 and not candidate.isdigit():
+            found.append(candidate)
+    return found
+
+
 def main(output_dir: Path | None = None) -> None:
     import spacy
 
@@ -76,7 +98,7 @@ def main(output_dir: Path | None = None) -> None:
     seen_casing: dict[str, str] = {}  # lowercase -> first-seen display casing
 
     docs = nlp.pipe(raw_texts, batch_size=64)
-    for i, (qid, doc) in enumerate(zip(ids, docs)):
+    for i, (qid, doc, raw_text) in enumerate(zip(ids, docs, raw_texts)):
         found: list[str] = []
         for ent in doc.ents:
             if ent.label_ not in ALLOWED_LABELS:
@@ -84,6 +106,11 @@ def main(output_dir: Path | None = None) -> None:
             norm = _normalize(ent.text)
             if len(norm) < 3 or norm.isdigit():
                 continue
+            key = norm.lower()
+            canonical = seen_casing.setdefault(key, norm)
+            if canonical not in found:
+                found.append(canonical)
+        for norm in _regex_entities(raw_text):
             key = norm.lower()
             canonical = seen_casing.setdefault(key, norm)
             if canonical not in found:
