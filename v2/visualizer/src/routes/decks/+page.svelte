@@ -161,26 +161,13 @@
     return [...files].sort((a, b) => (a.format === 'pdf' ? 1 : 0) - (b.format === 'pdf' ? 1 : 0));
   }
 
-  // Dedicated, title/type-curated banner per series or standalone deck — NOT
-  // tied to any one round's auto-generated session photo, so it doesn't need
-  // regenerating every time a new round lands. See
-  // pipeline/utils/generate_deck_banners.py for the curated prompts. No
-  // existence check — a missing file just renders nothing, leaving the
-  // gradient base visible underneath.
-  //
-  // useStockPhotos is an experimental toggle (off by default, never changes
-  // the default generated-art path or its opacity treatment) that swaps in a
-  // real, topic-matched CC-licensed photo fetched per deck by
-  // pipeline/utils/fetch_deck_stock_photos.py — same no-existence-check,
-  // render-nothing-if-missing behavior.
-  //
-  // A deck with no session imported yet (still live / not transcribed) has
-  // no generated banner worth showing — generate_deck_banners.py only runs
-  // once real question content exists — so those always get the real stock
-  // photo regardless of the toggle, keyed off its title alone.
-  let useStockPhotos = $state(false);
-  function deckBannerUrl(id: string, isLive = false): string {
-    return (useStockPhotos || isLive) ? `/images/decks-stock/${id}.jpg` : `/images/decks/${id}.jpg`;
+  // Real, topic/title-matched CC-licensed photo per series or standalone
+  // deck, fetched by pipeline/utils/fetch_deck_stock_photos.py - replaced
+  // the earlier AI-generated banners (images/decks/, generate_deck_banners.py)
+  // as the only banner source. No existence check - a missing file just
+  // renders nothing, leaving the gradient base visible underneath.
+  function deckBannerUrl(id: string): string {
+    return `/images/decks-stock/${id}.jpg`;
   }
 
   function roundSize(files: DeckFile[]): number {
@@ -512,16 +499,6 @@
     <!-- Topics (multi-select) -->
     <TopicFilter bind:topics={filterTopics} />
 
-    <!-- Experimental: real stock photos instead of generated art. Off by
-         default; doesn't touch the default images or their opacity. -->
-    <button
-      onclick={() => useStockPhotos = !useStockPhotos}
-      title="Experimental: swap in real, topic-matched stock photos instead of the generated banners"
-      class="inline-flex items-center gap-1.5 text-sm border rounded-lg px-3 py-2 transition-colors {useStockPhotos ? 'bg-primary-500 text-white border-primary-500' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
-    >
-      <span>🧪 Stock photos</span>
-    </button>
-
     <!-- Date range -->
     <div class="flex items-center gap-1.5 text-sm">
       <input
@@ -629,7 +606,7 @@
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {#each group.cards as card (card.id)}
                   {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
-                  {@const imgUrl = deckBannerUrl(card.id, card.questionCount === null)}
+                  {@const imgUrl = deckBannerUrl(card.id)}
                   <!-- svelte-ignore a11y_no_static_element_interactions -->
                   <!-- svelte-ignore a11y_click_events_have_key_events -->
                   <div
