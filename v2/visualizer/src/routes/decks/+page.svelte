@@ -339,25 +339,46 @@
     id: string; kind: 'series' | 'standalone'; title: string; subtitle: string;
     badge: string; recording: boolean; count: number; latestDate: string;
     sessionIds: string[]; onSelect: () => void;
+    host: string | null; questionCount: number | null;
   };
+
+  // Total questions across a series' rounds, looked up via each round's
+  // session (falls back to null for any round not yet imported).
+  function seriesQuestionCount(sessionIds: string[]): number | null {
+    let total = 0;
+    let any = false;
+    for (const sid of sessionIds) {
+      const s = store.getSessionById(sid);
+      if (s) { total += s.question_count; any = true; }
+    }
+    return any ? total : null;
+  }
 
   const timelineCards = $derived.by((): TimelineCard[] => {
     const cards: TimelineCard[] = [];
     for (const s of restSeries) {
       const latest = [...s.rounds].sort((a, b) => a.date.localeCompare(b.date)).at(-1)!;
+      const sessionIds = s.rounds.map(r => roundSessionId(s.id, r.round));
+      const hosts = seriesHosts(s);
       cards.push({
         id: s.id, kind: 'series', title: s.title,
-        subtitle: seriesHosts(s).join(', ') || 'Various hosts',
+        subtitle: hosts.join(', ') || 'Various hosts',
         badge: `${s.rounds.length} session${s.rounds.length !== 1 ? 's' : ''}`,
         recording: seriesHasRecording(s),
         count: s.rounds.length,
         latestDate: latest.date,
-        sessionIds: s.rounds.map(r => roundSessionId(s.id, r.round)),
+        sessionIds,
         onSelect: () => openSeries = s,
+        // A series usually has many different hosts across rounds, so there's
+        // no single "quizmaster" to show - just the round count.
+        host: null,
+        questionCount: seriesQuestionCount(sessionIds),
       });
     }
     for (const d of filteredStandalone) {
       const single = d.files.length === 1 ? d.files[0] : null;
+      const sessionId = standaloneSessionId(d.id);
+      const session = store.getSessionById(sessionId);
       cards.push({
         id: d.id, kind: 'standalone', title: d.title,
         subtitle: `${d.host ? d.host + ' · ' : ''}${d.date_approx ? '~' : ''}${formatDate(d.date)}`,
@@ -365,11 +386,13 @@
         recording: !single && hasRecording(d.files),
         count: 1,
         latestDate: d.date,
-        sessionIds: [standaloneSessionId(d.id)],
+        sessionIds: [sessionId],
         onSelect: () => {
           if (single) { if (single.url) window.open(single.url, '_blank', 'noopener'); }
           else { openStandalone = d; }
         },
+        host: session?.quizmaster ?? d.host,
+        questionCount: session?.question_count ?? null,
       });
     }
     return cards;
@@ -627,9 +650,13 @@
                       <div class="min-w-0">
                         <p class="text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">{card.title}</p>
                         {#if card.kind === 'series'}
-                          <p class="text-[11px] sm:text-xs font-semibold text-white/85 mt-1">{card.count} session{card.count !== 1 ? 's' : ''}</p>
+                          <p class="text-[11px] sm:text-xs font-semibold text-white/85 mt-1 truncate">
+                            {card.count} session{card.count !== 1 ? 's' : ''}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
+                          </p>
                         {:else}
-                          <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">{card.badge}</p>
+                          <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">
+                            {card.host ?? card.badge}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
+                          </p>
                         {/if}
                       </div>
                     </div>
