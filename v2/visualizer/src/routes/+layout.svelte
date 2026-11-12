@@ -1199,11 +1199,11 @@
                     {#if sidebarQuestions.length > 8}
                       <div class="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white dark:from-[#1c1c1c] to-transparent z-10"></div>
                     {/if}
-                    <div class="divide-y divide-stone-100 dark:divide-zinc-700/80 max-h-80 overflow-y-auto">
+                    <div class="divide-y divide-stone-100 dark:divide-zinc-700/80 max-h-[36rem] overflow-y-auto">
                       {#each sidebarQuestions as question}
                         <a
                           href="/question/{question.id}"
-                          class="relative overflow-hidden flex items-center gap-3 px-4 py-2.5 transition-colors group"
+                          class="relative overflow-hidden flex items-center gap-3 px-4 py-2.5 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors group"
                           onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.question-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.sidebar.hover); }}
                           onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.question-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.sidebar.default); }}
                         >
