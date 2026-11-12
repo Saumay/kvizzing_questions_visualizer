@@ -154,7 +154,7 @@
         <p class="text-[10px] text-gray-400 mt-0.5">Attempts</p>
       </div>
       <button type="button" onclick={() => jumpToTab('sessions')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
-        <p class="text-lg font-bold text-gray-900 dark:text-white">{member.sessions_hosted}</p>
+        <p class="text-lg font-bold text-gray-900 dark:text-white">{hostedSessions.length}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Sessions hosted</p>
       </button>
       <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center col-span-2 sm:col-span-1">
