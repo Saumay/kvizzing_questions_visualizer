@@ -272,6 +272,18 @@
     </div>
   </div>
 
+  <div class="lx-card lx-section" style="position:relative;">
+    <div class="lx-section-title" style="margin-bottom:2px;">Deck pipeline status by date</div>
+    <div class="lx-note" style="margin-top:0; margin-bottom:8px;">One column per deck, one strip per year, ordered by date. Hover a deck for its numbers.</div>
+    <div id="lx-deck-strip-years"></div>
+    <div class="lx-legend">
+      <span><i class="lx-dot" style="background:var(--bad)"></i>not fetched</span>
+      <span><i class="lx-dot" style="background:var(--fg-muted)"></i>fetched, not transcribed</span>
+      <span><i class="lx-dot" style="background:var(--warn)"></i>transcribed, not populated</span>
+      <span><i class="lx-dot" style="background:var(--ok)"></i>populated</span>
+    </div>
+  </div>
+
   <div class="lx-card">
     <div class="lx-section-title">Decks table</div>
     <input type="text" class="lx-search" id="lx-deck-search" placeholder="Search by session, series, title or host&hellip;">
@@ -503,7 +515,7 @@
     if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
     if (id === 'tab-dates' && dateRows) { drawMonthly(dateRows); drawStrip(dateRows); drawTrend(dateRows); drawDateQuality(dateRows); }
     if (id === 'tab-sessions' && sessionRows) { drawSessionMonthly(sessionRows); drawSessionStrip(sessionRows); drawSessionQuality(sessionRows); }
-    if (id === 'tab-decks' && deckRows) { drawDeckMonthly(deckRows); }
+    if (id === 'tab-decks' && deckRows) { drawDeckMonthly(deckRows); drawDeckStrip(deckRows); }
   }
 
   // --- monthly rollup: stacked bar, same 4 buckets as the daily strip ---
@@ -838,6 +850,62 @@
         .html(`<b>${d3.utcFormat('%B %Y')(new Date(m.month + '-01T00:00:00Z'))}</b><br>populated ${m.populated} &middot; transcribed ${m.transcribed} &middot; fetched only ${m.fetched} &middot; not fetched ${m.notFetched}`);
     }).on('mouseleave', () => tip.style('opacity', 0));
     el.appendChild(svg.node());
+  }
+
+  function drawDeckStrip(rows) {
+    const container = document.getElementById('lx-deck-strip-years');
+    container.replaceChildren();
+    if (!rows || !rows.length) { return; }
+    const byYear = new Map();
+    for (const r of rows) {
+      const y = String(r.date || '').slice(0, 4) || 'Unknown';
+      if (!byYear.has(y)) byYear.set(y, []);
+      byYear.get(y).push(r);
+    }
+    const years = Array.from(byYear.keys()).sort();
+    // Fixed slot count shared across every year's strip, so one bar's width means
+    // the same thing in every row — a year with fewer decks just runs out
+    // partway and shows grey for the remaining slots, instead of its few bars
+    // stretching to fill the same width as a year with many more.
+    const maxSlots = d3.max(years, (yr) => byYear.get(yr).length) || 1;
+    years.forEach((year, i) => {
+      const sorted = byYear.get(year).slice().sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+      const wrap = document.createElement('div');
+      wrap.style.position = 'relative';
+      if (i > 0) wrap.style.marginTop = '16px';
+      const label = document.createElement('div');
+      label.textContent = year;
+      label.style.cssText = 'font-size:0.78rem; color:var(--fg-muted); margin-bottom:4px; font-weight:600;';
+      wrap.appendChild(label);
+      const el = document.createElement('div');
+      el.className = 'lx-chart-box';
+      wrap.appendChild(el);
+      container.appendChild(wrap);
+
+      const width = el.clientWidth || 600;
+      const height = 48;
+      const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${width} ${height}`).style('display', 'block');
+      const slots = d3.range(maxSlots);
+      const x = d3.scaleBand().domain(slots).range([0, width]).paddingInner(0.15);
+      const bw = Math.max(1, x.bandwidth());
+      const tip = d3.select(el).append('div').attr('class', 'lx-tooltip');
+      svg.selectAll('rect').data(slots).join('rect')
+        .attr('x', (idx) => x(idx)).attr('y', 4).attr('width', bw).attr('height', height - 8)
+        .attr('rx', Math.min(2, bw / 2))
+        .attr('fill', (idx) => idx < sorted.length ? DECK_BUCKET_COLOR[deckBucket(sorted[idx])] : 'var(--border)')
+        .on('mousemove', function (ev, idx) {
+          const r = sorted[idx];
+          const rect = el.getBoundingClientRect();
+          tip.style('opacity', 1)
+            .style('left', (ev.clientX - rect.left + 10) + 'px')
+            .style('top', (ev.clientY - rect.top - 10) + 'px')
+            .html(r
+              ? `<b>${r.title || r.session_id}</b> &middot; ${r.date || 'no date'}<br>${r.host || '—'}<br>file ${toBool(r.file_extracted) ? 'yes' : 'no'} &middot; video ${toBool(r.video_extracted) ? 'yes' : 'no'} &middot; JSON ${toBool(r.json_extracted) ? 'yes' : 'no'} &middot; questions ${toNum(r.questions_populated) || 0}`
+              : `<b>${year}</b><br>no deck in this slot`);
+        })
+        .on('mouseleave', () => tip.style('opacity', 0));
+      el.appendChild(svg.node());
+    });
   }
 
   function drawDateQuality(rows) {
