@@ -419,7 +419,7 @@
               {#if question.session}
                 <button
                   onclick={(e) => { e.preventDefault(); e.stopPropagation(); goto(`/session/${question.session!.id}`); }}
-                  class="ml-1 text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                  class="ml-auto text-primary-600 dark:text-primary-400 hover:underline font-medium"
                 >
                   View session →
                 </button>

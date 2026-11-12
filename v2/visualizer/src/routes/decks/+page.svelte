@@ -481,7 +481,7 @@
       onclick={() => filterRecordingOnly = !filterRecordingOnly}
       class="inline-flex items-center gap-1.5 text-sm border rounded-lg px-3 py-2 transition-colors {filterRecordingOnly ? 'bg-primary-500 text-white border-primary-500' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
     >
-      <span>🎥 Has recording</span>
+      <span>🎥 Recorded</span>
     </button>
 
     <!-- Topics (multi-select) -->
@@ -517,9 +517,13 @@
   {:else}
     <!-- Hero: flagship series -->
     {#if heroSeries}
-      {@const [heroC1, heroC2] = gradientForCard(heroSeries.rounds.map(r => roundSessionId(heroSeries.id, r.round)), heroSeries.id)}
-      {@const c1 = darken(desaturate(heroC1, 0.25), 0.1)}
-      {@const c2 = darken(desaturate(heroC2, 0.25), 0.1)}
+      <!-- Fixed, topic-independent gradient: this is the one flagship hero
+           slot on the page, not a representative sample of topic diversity,
+           and tying its color to whatever topic happens to dominate kept
+           landing on an unwanted yellow/amber cast (history's brand color)
+           no matter how much that was tuned down. -->
+      {@const c1 = '#1e3a5f'}
+      {@const c2 = '#0f1f33'}
       {@const imgUrl = deckBannerUrl(heroSeries.id)}
       {@const hosts = seriesHosts(heroSeries)}
       <button
@@ -587,7 +591,7 @@
               {#if group.label}
                 <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-2">{group.label}</p>
               {/if}
-              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {#each group.cards as card (card.id)}
                   {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
                   {@const imgUrl = deckBannerUrl(card.id)}
