@@ -9,7 +9,7 @@
   import { topicCls, topicLabel, TOPICS } from '$lib/utils/topicColors';
   import { isCorrect, isAlmost } from '$lib/utils/fuzzy';
   import { filterHints } from '$lib/utils/hints';
-  import { SESSION_IMAGE_OPACITY, sessionBgUrl } from '$lib/config/ui';
+  import { SESSION_IMAGE_OPACITY, SESSION_IMAGE_FILTER, sessionBgUrl } from '$lib/config/ui';
   import SearchInput from '$lib/components/SearchInput.svelte';
   import FiltersToggleButton from '$lib/components/FiltersToggleButton.svelte';
   import TagFilter from '$lib/components/TagFilter.svelte';
@@ -170,7 +170,7 @@
   <div class="relative overflow-hidden bg-gray-900 rounded-2xl p-6 text-white shadow-lg">
     <div
       class="absolute inset-0 bg-cover bg-center transition-opacity"
-      style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.header}"
+      style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.header}; filter: {SESSION_IMAGE_FILTER};"
     ></div>
     {#if session.is_live}
       <div

@@ -14,6 +14,11 @@ export const SESSION_IMAGE_OPACITY = {
   sidebar: { default: 0.3, hover: 0.45 },
 } as const;
 
+/** The AI-generated session images are moody/photographic and read as too
+ *  dark at the opacities above. Softens them toward a pastel palette without
+ *  regenerating any image. */
+export const SESSION_IMAGE_FILTER = 'saturate(0.55) brightness(1.25) contrast(0.85)';
+
 /** Sessions that have a custom background image in /images/sessions/. */
 /** Return the background image URL for a session card.
  *  Always tries the session-specific image first; falls back to connect-quiz-bg. */
