@@ -1157,7 +1157,7 @@
                     {#each sidebarSessions.slice(0, 8) as session}
                       <a href="/session/{session.id}" class="relative overflow-hidden flex items-center gap-3 px-4 py-2.5 transition-colors group">
                         <div class="session-bg absolute inset-0 bg-cover bg-center transition-opacity" style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"></div>
-                        <div class="absolute inset-0 bg-white/38 dark:bg-gray-900/38 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-white/18 dark:bg-gray-900/18 pointer-events-none"></div>
                         <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                         <div class="relative min-w-0 flex-1 text-right">
                           <p class="text-xs font-semibold text-primary-800 dark:text-primary-100 truncate">{session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}</p>
@@ -1248,7 +1248,7 @@
                             class="session-bg absolute inset-0 bg-cover bg-center transition-opacity"
                             style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.sidebar.default}"
                           ></div>
-                          <div class="absolute inset-0 bg-white/30 dark:bg-gray-900/30 group-hover:bg-white/85 dark:group-hover:bg-gray-900/85 transition-colors pointer-events-none"></div>
+                          <div class="absolute inset-0 bg-white/15 dark:bg-gray-900/15 group-hover:bg-white/85 dark:group-hover:bg-gray-900/85 transition-colors pointer-events-none"></div>
 
                           <span class="relative text-[10px] font-semibold text-gray-800 dark:text-gray-200 flex-shrink-0 w-20 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{ordinalDate(dateInTz(sidebarSessionTs.get(session.id) ?? session.date, tz.value))}</span>
                           <div class="relative min-w-0 flex-1 text-right">
