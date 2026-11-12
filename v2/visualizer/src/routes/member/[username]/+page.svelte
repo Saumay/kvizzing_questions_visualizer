@@ -17,10 +17,26 @@
   const isMe = $derived(usernameCtx?.value === member.username);
 
   let tab = $state<'asked' | 'solved'>('asked');
+  let selectedDate = $state<string | null>(null);
+  let listEl: HTMLDivElement | undefined = $state();
 
   const askedQuestions = $derived(store.getQuestions({ asker: member.username }, 'newest'));
   const solvedQuestions = $derived(store.getQuestions({ solver: member.username }, 'newest'));
-  const shown = $derived(tab === 'asked' ? askedQuestions : solvedQuestions);
+  const shown = $derived.by(() => {
+    const list = tab === 'asked' ? askedQuestions : solvedQuestions;
+    return selectedDate ? list.filter(q => q.date === selectedDate) : list;
+  });
+
+  function jumpToDate(dateKey: string) {
+    // Prefer whichever tab actually has questions on that day, so clicking a
+    // heatmap cell never lands on an empty filtered list.
+    const askedHasIt = askedQuestions.some(q => q.date === dateKey);
+    const solvedHasIt = solvedQuestions.some(q => q.date === dateKey);
+    if (tab === 'asked' && !askedHasIt && solvedHasIt) tab = 'solved';
+    else if (tab === 'solved' && !solvedHasIt && askedHasIt) tab = 'asked';
+    selectedDate = dateKey;
+    listEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   // Topic breakdown among this member's asked questions (primary topic only)
   const topicBreakdown = $derived.by(() => {
@@ -97,7 +113,7 @@
   {#if activityDates.length > 0}
     <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
       <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Activity (questions asked + solved, past year)</h2>
-      <ActivityHeatmap dates={activityDates} />
+      <ActivityHeatmap dates={activityDates} onDayClick={jumpToDate} />
     </div>
   {/if}
 
@@ -120,8 +136,8 @@
   {/if}
 
   <!-- Asked / Solved tabs -->
-  <div>
-    <div class="flex gap-1 mb-3">
+  <div bind:this={listEl}>
+    <div class="flex items-center gap-1 mb-3 flex-wrap">
       <button
         onclick={() => tab = 'asked'}
         class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'asked'
@@ -134,10 +150,19 @@
           ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Solved ({solvedQuestions.length})</button>
+      {#if selectedDate}
+        <span class="text-xs text-gray-400 dark:text-gray-500 ml-1">
+          Showing {selectedDate} only
+        </span>
+        <button
+          onclick={() => selectedDate = null}
+          class="text-xs text-primary-600 dark:text-primary-400 hover:underline font-medium"
+        >Clear</button>
+      {/if}
     </div>
 
     {#if shown.length === 0}
-      <EmptyState message="No questions here yet" />
+      <EmptyState message={selectedDate ? 'No questions on this date' : 'No questions here yet'} />
     {:else}
       <div class="space-y-3">
         {#each shown as question (question.id)}

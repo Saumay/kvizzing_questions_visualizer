@@ -7,8 +7,9 @@
   interface Props {
     dates: string[]; // YYYY-MM-DD occurrences; duplicates are counted
     weeks?: number;
+    onDayClick?: (dateKey: string) => void;
   }
-  const { dates, weeks = 53 }: Props = $props();
+  const { dates, weeks = 53, onDayClick }: Props = $props();
 
   type Cell = { key: string; date: Date; count: number; future: boolean };
 
@@ -105,7 +106,9 @@
             {:else}
               <button
                 type="button"
-                class="w-[11px] h-[11px] rounded-sm {LEVEL_CLS[level(cell.count)]} hover:ring-2 hover:ring-primary-400 focus-visible:ring-2 focus-visible:ring-primary-500 ring-offset-1 ring-offset-white dark:ring-offset-gray-900 transition-shadow"
+                onclick={() => cell.count > 0 && onDayClick?.(cell.key)}
+                disabled={cell.count === 0}
+                class="w-[11px] h-[11px] rounded-sm {LEVEL_CLS[level(cell.count)]} {cell.count > 0 ? 'cursor-pointer' : 'cursor-default'} hover:ring-2 hover:ring-primary-400 focus-visible:ring-2 focus-visible:ring-primary-500 ring-offset-1 ring-offset-white dark:ring-offset-gray-900 transition-shadow"
                 title={tooltip(cell)}
                 aria-label={tooltip(cell)}
               ></button>
