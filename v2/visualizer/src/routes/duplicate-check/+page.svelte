@@ -25,7 +25,7 @@
     },
     topic: {
       title: 'Search by Topic',
-      description: "Describe what you're looking for in plain language — a person, event, theme, anything — and find existing questions about it, even if they're worded completely differently. Same engine as duplicate-check, just read as \"what's been asked about X\" instead of \"has this exact question been asked\".",
+      description: "Describe what you're looking for in plain language, like a person, event, or theme, and surface existing questions about it, however they were actually worded. Same engine as duplicate-check, read as \"what's been asked about X\" instead of an exact-match check.",
       placeholder: 'e.g. "questions about Shah Jahan" or "anything about 90s Bollywood music"…',
       cta: 'Search',
       resultsHeading: 'Related questions',
@@ -68,8 +68,50 @@
     );
   }
 
+  // How rare an entity is across the whole corpus: common words (India,
+  // count in the thousands) are weak evidence of true relevance even when
+  // literally present, while a name mentioned in only a handful of
+  // questions is strong evidence. log(total / count), normalized to [0, 1]
+  // by the maximum possible value (count = 1).
+  const totalQuestions = questions.length;
+  function entityRarity(entity: string): number {
+    const entry = entitiesByTag.get(entity);
+    if (!entry || entry.count <= 0) return 0;
+    return Math.log(totalQuestions / entry.count) / Math.log(totalQuestions);
+  }
+
+  // A short or bare query (like "Shah Jahan" alone) gives the embedding
+  // model nothing to disambiguate with, so entity overlap should matter a
+  // lot there. A long, already-descriptive query embeds well on its own,
+  // so a coincidental one-word overlap (e.g. "Oman" mentioned in passing
+  // among a dozen other places) shouldn't be allowed to perturb an already
+  // well-functioning ranking. Full weight at 3 words or fewer, zero weight
+  // at 15 words or more, linear between.
+  const ENTITY_WEIGHT_FLOOR_WORDS = 3;
+  const ENTITY_WEIGHT_CEILING_WORDS = 15;
+  function entityWeightForQuery(wordCount: number): number {
+    if (wordCount <= ENTITY_WEIGHT_FLOOR_WORDS) return 1;
+    if (wordCount >= ENTITY_WEIGHT_CEILING_WORDS) return 0;
+    return 1 - (wordCount - ENTITY_WEIGHT_FLOOR_WORDS) / (ENTITY_WEIGHT_CEILING_WORDS - ENTITY_WEIGHT_FLOOR_WORDS);
+  }
+
+  // Combines embedding similarity with entity overlap into one continuous
+  // score, rather than a binary "boosted or not" bucket — the single
+  // number is then both the real ranking key and what gets displayed, so
+  // there's no longer a disconnect between a result's rank and its shown
+  // percentage. Capped at 1.2 total rarity contribution so a result that
+  // happens to share several merely-uncommon entities can't run away with
+  // the score; the embedding similarity is still the base signal.
+  const ENTITY_BONUS_SCALE = 0.6;
+  const ENTITY_BONUS_CAP = 1.2;
+  function blendedScore(embeddingScore: number, matchedEntities: string[], queryWordCount: number): number {
+    if (matchedEntities.length === 0) return embeddingScore;
+    const rarity = Math.min(matchedEntities.reduce((sum, e) => sum + entityRarity(e), 0), ENTITY_BONUS_CAP);
+    return embeddingScore + entityWeightForQuery(queryWordCount) * ENTITY_BONUS_SCALE * rarity;
+  }
+
   // Splits text into segments so matched entity spans can be rendered with
-  // a highlight — built as data (not {@html}) since the question/answer
+  // a highlight. Built as data (not {@html}) since the question/answer
   // text is plain, not markup.
   function highlightSegments(text: string, entities: string[]): { text: string; hl: boolean }[] {
     if (entities.length === 0) return [{ text, hl: false }];
@@ -88,7 +130,7 @@
   let draft = $state('');
   // A lone name or a couple of words gives the embedding model nothing to
   // disambiguate with (e.g. "Shah Jahan" alone can match a Bollywood-cast
-  // question just because it shares a similar name shape) — full sentences
+  // question just because it shares a similar name shape). Full sentences
   // work far better, so nudge toward that instead of silently returning
   // weak matches.
   const draftWordCount = $derived(draft.trim() ? draft.trim().split(/\s+/).length : 0);
@@ -105,7 +147,7 @@
       const r = await fetch('/data/question_embeddings_status.json');
       if (r.ok) indexStatus = await r.json();
     } catch {
-      // Best-effort — the page still works without this, it just won't show a freshness line.
+      // Best-effort: the page still works without this, it just won't show a freshness line.
     }
   });
 
@@ -128,7 +170,7 @@
   async function ensureModelLoaded() {
     if (extractor) return;
     status = 'loading-model';
-    // Dynamic import — this pulls in WASM/ONNX runtime bits that only make
+    // Dynamic import: this pulls in WASM/ONNX runtime bits that only make
     // sense in the browser, so keep it out of the initial page bundle and
     // well away from anything SvelteKit might touch during prerendering.
     const { pipeline } = await import('@huggingface/transformers');
@@ -159,7 +201,7 @@
         scored.push({ i, score: dot });
       }
 
-      // Capture every question's score before sorting — needed below to
+      // Capture every question's score before sorting, needed below to
       // score an exact-entity-match candidate that embedding similarity
       // alone didn't rank highly enough to land in the top slice.
       const scoreByQid = new Map<string, number>();
@@ -169,11 +211,12 @@
 
       // A bare or short query (like "Shah Jahan" alone) can embed too
       // generically for the real matches to land in the top candidates by
-      // similarity alone — reordering only within an embedding-picked pool
+      // similarity alone. Reordering only within an embedding-picked pool
       // isn't enough. Instead, directly pull in every question that shares
       // an exact entity match with the query, regardless of its embedding
       // rank, and let those compete on equal footing with the top
-      // similarity-ranked candidates.
+      // similarity-ranked candidates. Whether that entity overlap actually
+      // moves the final ranking is decided below by blendedScore, not here.
       const matchedQueryEntities = findMatchedEntities(text);
       const entityQuestionIds = new Set<string>();
       for (const entity of matchedQueryEntities) {
@@ -183,21 +226,24 @@
 
       const topIds = scored.slice(0, 100).map(({ i }) => corpusIds![i]);
       const candidateIds = new Set([...topIds, ...entityQuestionIds]);
+      const queryWordCount = text.split(/\s+/).filter(Boolean).length;
 
       const pool = [...candidateIds]
         .map(qid => {
           const question = questionById.get(qid);
           if (!question) return null;
-          const score = scoreByQid.get(qid) ?? 0;
+          const embeddingScore = scoreByQid.get(qid) ?? 0;
           const matchedEntities = matchedQueryEntities.filter(e => store.getQuestionEntities(qid).includes(e));
+          const score = blendedScore(embeddingScore, matchedEntities, queryWordCount);
           return { question, score, matchedEntities };
         })
         .filter((r): r is { question: Question; score: number; matchedEntities: string[] } => r !== null);
 
-      pool.sort((a, b) => {
-        if (a.matchedEntities.length !== b.matchedEntities.length) return b.matchedEntities.length - a.matchedEntities.length;
-        return b.score - a.score;
-      });
+      // One continuous score, not a binary "boosted or not" bucket: entity
+      // overlap already shaped `score` above via blendedScore, so sorting
+      // on it directly can't produce the mismatch where a result ranks
+      // above another while showing a lower percentage.
+      pool.sort((a, b) => b.score - a.score);
 
       results = pool.slice(0, 10);
       status = 'done';
@@ -242,8 +288,8 @@
     errorMessage = '';
   }
 
-  // Where a question actually came from isn't obvious from its text alone —
-  // surface it explicitly rather than making the reader infer it.
+  // Where a question actually came from isn't obvious from its text alone,
+  // so surface it explicitly rather than making the reader infer it.
   function sourceBadge(question: Question): { label: string; cls: string } {
     if (!question.session) {
       return { label: 'General question', cls: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
@@ -256,7 +302,7 @@
   }
 </script>
 
-<div class="space-y-6 max-w-2xl">
+<div class="space-y-6 max-w-4xl">
   <div>
     <div class="flex items-center gap-3 flex-wrap">
       <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{MODE_COPY[mode].title}</h1>
@@ -277,9 +323,9 @@
     {#if indexStatus}
       <p class="text-xs mt-2 flex items-center gap-1.5 {indexStatus.ok && indexStatus.corpus_count === indexStatus.total_questions ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}">
         {#if indexStatus.ok && indexStatus.corpus_count === indexStatus.total_questions}
-          ✓ Index up to date — covers all {indexStatus.total_questions?.toLocaleString()} questions
+          ✓ Index up to date, covers all {indexStatus.total_questions?.toLocaleString()} questions
         {:else if indexStatus.corpus_count !== null && indexStatus.total_questions !== null}
-          ⚠ Index covers {indexStatus.corpus_count.toLocaleString()} of {indexStatus.total_questions.toLocaleString()} questions — may be stale
+          ⚠ Index covers {indexStatus.corpus_count.toLocaleString()} of {indexStatus.total_questions.toLocaleString()} questions, may be stale
         {:else}
           ⚠ Index status unavailable
         {/if}
@@ -290,13 +336,13 @@
   <div class="space-y-3">
     <textarea
       bind:value={draft}
-      rows="4"
+      rows="8"
       placeholder={MODE_COPY[mode].placeholder}
-      class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 resize-y"
+      class="w-full text-base border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 resize-y"
     ></textarea>
     {#if isShortDraft}
       <p class="text-xs text-amber-600 dark:text-amber-400">
-        ⚠ A bare name or short phrase gives the model little to go on and can match unrelated questions that just sound similar — paste the full question text for more reliable matches.
+        ⚠ A bare name or short phrase gives the model little to go on and can match unrelated questions that just sound similar. Paste the full question text for more reliable matches.
       </p>
     {/if}
     <button
@@ -335,7 +381,7 @@
           {@const answerSegments = question.answer?.text ? highlightSegments(question.answer.text, matchedEntities) : null}
           <a
             href="/question/{question.id}"
-            class="block bg-ui-card rounded-xl border {matchedEntities.length > 0 ? 'border-green-300 dark:border-green-700' : 'border-gray-200 dark:border-gray-700'} shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
+            class="block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
           >
             <div class="flex items-start justify-between gap-3">
               <div class="flex-1 min-w-0">
@@ -349,8 +395,8 @@
                     </span>
                   {/if}
                   {#if matchedEntities.length > 0}
-                    <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                      ✓ Exact match: {matchedEntities.join(', ')}
+                    <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300" title="These terms from your query are literally present in this question, factored into the score above but not a confidence claim on their own.">
+                      Mentions: {matchedEntities.join(', ')}
                     </span>
                   {/if}
                 </div>
@@ -363,15 +409,9 @@
                   </p>
                 {/if}
               </div>
-              {#if matchedEntities.length > 0}
-                <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300" title="Ranked by exact entity match, not semantic similarity — the {pct}% similarity score alone would have ranked this lower.">
-                  ✓ Matched
-                </span>
-              {:else}
-                <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {scoreCls(pct)}" title={scoreLabel(pct)}>
-                  {pct}%
-                </span>
-              {/if}
+              <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {scoreCls(pct)}" title={scoreLabel(pct)}>
+                {pct}%
+              </span>
             </div>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center flex-wrap gap-x-1">
               <span>{question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>

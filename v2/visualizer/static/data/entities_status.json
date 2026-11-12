@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "last_success": "2026-11-12T02:23:58.582925+00:00",
-  "last_attempt": "2026-11-12T02:23:58.582925+00:00",
-  "questions_with_entities": 16389,
-  "unique_entities": 35865,
+  "last_success": "2026-11-12T03:03:56.291220+00:00",
+  "last_attempt": "2026-11-12T03:03:56.291220+00:00",
+  "questions_with_entities": 16388,
+  "unique_entities": 35856,
   "total_questions": 18346
 }

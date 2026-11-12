@@ -6,7 +6,7 @@ to pure semantic similarity, which conflates look-alike names (e.g. "Shah
 Jahan" vs "Shahrukh Khan" share no meaning but a similar name shape). Also
 surfaced as its own filterable facet on the Feed, same pattern as tags/topics.
 
-Model: spaCy en_core_web_sm — small, fast, fully local (no API cost, no
+Model: spaCy en_core_web_sm, small, fast, fully local (no API cost, no
 per-question LLM call over 18k+ questions, unlike the Gemini topic
 enrichment stage). Only entity labels that denote actual proper nouns are
 kept; numeric/date/quantity labels are dropped.
@@ -20,11 +20,11 @@ Run from anywhere:
 
 Also called automatically from pipeline.py after every export (best-effort,
 same pattern as generate_question_embeddings.py) so this never goes stale
-without a visible signal — see pipeline.py's _maybe_regenerate_entities.
+without a visible signal: see pipeline.py's _maybe_regenerate_entities.
 
 Output:
-  v2/visualizer/static/data/entities.json          — [{tag, count, question_ids}], same shape as tags.json
-  v2/visualizer/static/data/question_entities.json — {question_id: [entity, ...]}
+  v2/visualizer/static/data/entities.json          = [{tag, count, question_ids}], same shape as tags.json
+  v2/visualizer/static/data/question_entities.json = {question_id: [entity, ...]}
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ from pathlib import Path
 V2_DIR = Path(__file__).parent.parent.parent
 DEFAULT_OUTPUT_DIR = V2_DIR / "visualizer" / "static" / "data"
 
-# Labels that denote actual proper nouns — excludes DATE, TIME, CARDINAL,
+# Labels that denote actual proper nouns, excluding DATE, TIME, CARDINAL,
 # ORDINAL, MONEY, PERCENT, QUANTITY, which spaCy also tags as "entities"
 # but aren't proper nouns in the sense we want here.
 ALLOWED_LABELS = {
@@ -46,6 +46,15 @@ ALLOWED_LABELS = {
 }
 
 _LEADING_ARTICLE = re.compile(r"^(the|a|an)\s+", re.IGNORECASE)
+
+# Bare compass directions get mistagged as LOC/GPE by spaCy fairly often
+# ("ruler of the East") but aren't proper nouns at all, so they never belong
+# in the index no matter how they got extracted.
+_STOPWORDS = {
+    "east", "west", "north", "south",
+    "eastern", "western", "northern", "southern",
+    "northeast", "northwest", "southeast", "southwest",
+}
 
 
 def _normalize(text: str) -> str:
@@ -58,8 +67,8 @@ def _normalize(text: str) -> str:
 # Connect/riddle answers in this corpus are overwhelmingly written as
 # "X = Name" or "X = Name, Y = Other Name" (e.g. "X = Shah Jahan, Y =
 # Jahangir"). spaCy's statistical NER is trained on ordinary prose and
-# routinely misses names in this bare label-equals-value shape — it has no
-# surrounding sentence to key off. A regex pass catches what spaCy drops.
+# routinely misses names in this bare label-equals-value shape, since it
+# has no surrounding sentence to key off. A regex pass catches what spaCy drops.
 _LABEL_EQUALS = re.compile(
     r"(?:^|[,;])\s*[A-Z]\s*=\s*([A-ZÀ-Ö][\w'&.\-]*(?:\s+[A-ZÀ-Ö][\w'&.\-]*){0,4})"
 )
@@ -104,13 +113,15 @@ def main(output_dir: Path | None = None) -> None:
             if ent.label_ not in ALLOWED_LABELS:
                 continue
             norm = _normalize(ent.text)
-            if len(norm) < 3 or norm.isdigit():
+            if len(norm) < 3 or norm.isdigit() or norm.lower() in _STOPWORDS:
                 continue
             key = norm.lower()
             canonical = seen_casing.setdefault(key, norm)
             if canonical not in found:
                 found.append(canonical)
         for norm in _regex_entities(raw_text):
+            if norm.lower() in _STOPWORDS:
+                continue
             key = norm.lower()
             canonical = seen_casing.setdefault(key, norm)
             if canonical not in found:
