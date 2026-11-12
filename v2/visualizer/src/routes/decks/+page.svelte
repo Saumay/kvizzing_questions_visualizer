@@ -311,10 +311,6 @@
     search = ''; filterHosts = new Set(); filterKind = 'all'; filterRecordingOnly = false; filterTopics = new Set(); dateFrom = ''; dateTo = '';
   }
 
-  const totalDecks = $derived(
-    decks.series.reduce((n, s) => n + s.rounds.length, 0) + decks.standalone.length
-  );
-
   // Gauntlet is the flagship series — give it a hero banner instead of
   // sitting in the grid as just another tile. Falls back to the biggest
   // series if Gauntlet itself gets filtered out, so the hero slot never
@@ -443,18 +439,12 @@
 <svelte:window onkeydown={(e) => { if (e.key === 'Escape') { openSeries = null; openStandalone = null; } }} />
 
 <div class="space-y-6">
-  <div>
-    <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Live Sessions</h1>
-    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      Live sessions are the best, here's every session from every hosted quiz night, fireside chat, slides and source files, ready to download.
-    </p>
-    <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">
-      {totalDecks} sessions &middot; {allHosts.length} hosts &middot;
-      <a href="https://onedrive.live.com/?id=46AC280CA35DB7D4%21scf07fa2a6ff247399c81052c3d69f428&cid=46AC280CA35DB7D4&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">recordings</a>
-      &middot;
-      <a href="https://drive.google.com/drive/folders/1jrW0WThbmlnprdGACSLaOmTpn8-SZcuc" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">slides source</a>
-    </p>
-  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500">
+    {allHosts.length} hosts &middot;
+    <a href="https://onedrive.live.com/?id=46AC280CA35DB7D4%21scf07fa2a6ff247399c81052c3d69f428&cid=46AC280CA35DB7D4&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80NmFjMjgwY2EzNWRiN2Q0L0lnQXEtZ2ZQOG04NVI1eUJCU3c5YWZRb0FhVUx2UTJpTl9WMWVzSGxsMDduOGtFP2U9Mll3ZXlH" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">recordings</a>
+    &middot;
+    <a href="https://drive.google.com/drive/folders/1jrW0WThbmlnprdGACSLaOmTpn8-SZcuc" target="_blank" rel="noopener noreferrer" class="text-primary-500 dark:text-primary-400 hover:underline">slides source</a>
+  </p>
 
   <!-- Search + host filter -->
   <div class="flex flex-wrap items-center gap-2">

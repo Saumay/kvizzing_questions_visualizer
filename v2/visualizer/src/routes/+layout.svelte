@@ -229,6 +229,36 @@
   const sinceDate = $derived(totalStats.earliestTimestamp ? formatDateTz(totalStats.earliestTimestamp, tz.value) : '');
   function surpriseMe() { const q = store.random(); if (q) goto(`/question/${q.id}`); }
   function randomQuiz() { if (sidebarSessions.length === 0) return; const s = sidebarSessions[Math.floor(Math.random() * sidebarSessions.length)]; goto(`/session/${s.id}`); }
+  function randomLiveSession() {
+    const live = sidebarSessions.filter(s => s.is_live);
+    if (live.length === 0) return;
+    const s = live[Math.floor(Math.random() * live.length)];
+    goto(`/session/${s.id}`);
+  }
+
+  // Deck/round + question counts for the /decks banner, derived from the
+  // route's own load data (decks.json isn't loaded elsewhere in this
+  // layout) joined against each round's matching session for its question
+  // count, same join the decks page itself uses.
+  const deckBannerStats = $derived.by(() => {
+    const decksData = $page.data?.decks as
+      | { series: { id: string; rounds: { round: number }[] }[]; standalone: { id: string }[] }
+      | undefined;
+    if (!decksData) return null;
+    let sessions = 0;
+    let questions = 0;
+    for (const s of decksData.series) {
+      for (const r of s.rounds) {
+        sessions++;
+        questions += store.getSessionById(`deck-${s.id}-r${r.round}`)?.question_count ?? 0;
+      }
+    }
+    for (const d of decksData.standalone) {
+      sessions++;
+      questions += store.getSessionById(`deck-${d.id}`)?.question_count ?? 0;
+    }
+    return { sessions, questions };
+  });
 
   // ── Review sidebar data ────────────────────────────────────────────────────
   // Only id/date are needed for the calendar dots below. The lightweight
@@ -1081,6 +1111,36 @@
                 >
                   <svg class="w-4 h-4 flex-shrink-0 animate-spin" style="animation-duration:1s" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
                   <span>Random quiz</span>
+                </button>
+              </div>
+            </div>
+          {:else if $page.url.pathname === '/decks' && deckBannerStats}
+            <div class="bg-gradient-to-br from-primary-300 to-primary-900 rounded-2xl p-4 sm:p-6 text-white shadow-lg relative mb-6">
+              {#if sinceDate}
+                <div class="absolute top-4 sm:top-6 right-4 sm:right-6 flex items-center gap-1.5 text-xs text-primary-100">
+                  <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-90"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
+                  </span>
+                  since {sinceDate}
+                </div>
+              {/if}
+              <h1 class="text-xl sm:text-2xl font-bold mb-1">Live Sessions</h1>
+              <p class="text-primary-100 text-sm mb-5 sm:mb-8">Hosted quiz nights, fireside chats, slides and source files, ready to download</p>
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  <span class="font-semibold">{deckBannerStats.sessions} sessions</span>
+                  {#if deckBannerStats.questions > 0}
+                    <span class="text-primary-200 hidden sm:inline">·</span>
+                    <span class="font-semibold">{deckBannerStats.questions} questions</span>
+                  {/if}
+                </div>
+                <button
+                  onclick={randomLiveSession}
+                  class="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-primary-50 text-primary-600 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-primary-300 font-semibold text-sm rounded-lg transition-colors shadow-sm cursor-pointer"
+                >
+                  <svg class="w-4 h-4 flex-shrink-0 animate-spin" style="animation-duration:1s" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                  <span>Random live session</span>
                 </button>
               </div>
             </div>
