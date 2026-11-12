@@ -18,13 +18,20 @@
 
   let tab = $state<'asked' | 'solved'>('asked');
   let selectedDate = $state<string | null>(null);
+  let selectedTopic = $state<string | null>(null);
   let listEl: HTMLDivElement | undefined = $state();
+
+  function primaryTopic(q: { question: { topics?: string[] } }): string {
+    return q.question.topics?.[0] ?? 'general';
+  }
 
   const askedQuestions = $derived(store.getQuestions({ asker: member.username }, 'newest'));
   const solvedQuestions = $derived(store.getQuestions({ solver: member.username }, 'newest'));
   const shown = $derived.by(() => {
-    const list = tab === 'asked' ? askedQuestions : solvedQuestions;
-    return selectedDate ? list.filter(q => q.date === selectedDate) : list;
+    let list = tab === 'asked' ? askedQuestions : solvedQuestions;
+    if (selectedDate) list = list.filter(q => q.date === selectedDate);
+    if (selectedTopic) list = list.filter(q => primaryTopic(q) === selectedTopic);
+    return list;
   });
 
   function jumpToDate(dateKey: string) {
@@ -38,12 +45,19 @@
     listEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  function jumpToTopic(topic: string) {
+    // The breakdown above is asked-only, so that's the tab a topic click
+    // should land on.
+    tab = 'asked';
+    selectedTopic = topic;
+    listEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   // Topic breakdown among this member's asked questions (primary topic only)
   const topicBreakdown = $derived.by(() => {
     const counts = new Map<string, number>();
     for (const q of askedQuestions) {
-      const primary = q.question.topics?.[0] ?? 'general';
-      counts.set(primary, (counts.get(primary) ?? 0) + 1);
+      counts.set(primaryTopic(q), (counts.get(primaryTopic(q)) ?? 0) + 1);
     }
     const total = askedQuestions.length || 1;
     return [...counts.entries()]
@@ -123,13 +137,17 @@
       <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Favourite topics (by questions asked)</h2>
       <div class="space-y-2">
         {#each topicBreakdown as row}
-          <div class="flex items-center gap-3">
+          <button
+            type="button"
+            onclick={() => jumpToTopic(row.topic)}
+            class="flex items-center gap-3 w-full text-left rounded-lg -mx-1 px-1 py-0.5 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors"
+          >
             <span class="text-xs font-medium w-28 truncate {topicCls(row.topic)} rounded-md px-2 py-0.5 text-center">{topicLabel(row.topic)}</span>
             <div class="flex-1 h-2 rounded-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
               <div class="h-full rounded-full" style="width: {row.pct}%; background-color: {topicHex(row.topic)};"></div>
             </div>
             <span class="text-xs text-gray-400 w-10 text-right flex-shrink-0">{row.count}</span>
-          </div>
+          </button>
         {/each}
       </div>
     </div>
@@ -151,18 +169,27 @@
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Solved ({solvedQuestions.length})</button>
       {#if selectedDate}
-        <span class="text-xs text-gray-400 dark:text-gray-500 ml-1">
-          Showing {selectedDate} only
+        <span class="text-xs text-gray-400 dark:text-gray-500 ml-1 flex items-center gap-1">
+          Date: {selectedDate}
+          <button onclick={() => selectedDate = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear date filter">&times;</button>
         </span>
+      {/if}
+      {#if selectedTopic}
+        <span class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
+          Topic: {topicLabel(selectedTopic)}
+          <button onclick={() => selectedTopic = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear topic filter">&times;</button>
+        </span>
+      {/if}
+      {#if selectedDate || selectedTopic}
         <button
-          onclick={() => selectedDate = null}
+          onclick={() => { selectedDate = null; selectedTopic = null; }}
           class="text-xs text-primary-600 dark:text-primary-400 hover:underline font-medium"
-        >Clear</button>
+        >Clear all</button>
       {/if}
     </div>
 
     {#if shown.length === 0}
-      <EmptyState message={selectedDate ? 'No questions on this date' : 'No questions here yet'} />
+      <EmptyState message={selectedDate || selectedTopic ? 'No questions match these filters' : 'No questions here yet'} />
     {:else}
       <div class="space-y-3">
         {#each shown as question (question.id)}
