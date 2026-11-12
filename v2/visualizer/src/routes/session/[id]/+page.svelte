@@ -172,16 +172,17 @@
       class="absolute inset-0 bg-cover bg-center transition-opacity"
       style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.header}"
     ></div>
+    {#if session.is_live}
+      <div
+        class="absolute top-4 -right-9 w-[150px] rotate-45 text-center py-1 text-[11px] font-extrabold tracking-wider text-amber-950 shadow-md z-20"
+        style="background: linear-gradient(135deg, #fbbf24, #d97706);"
+      >LIVE</div>
+    {/if}
     <div class="relative">
     <div>
       <div class="flex items-center gap-2 mb-1">
         {#if isConnect}
           <ConnectBadge variant="on-dark" label="Connect Quiz" />
-        {/if}
-        {#if session.is_live}
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-200 border border-amber-300/30 flex-shrink-0">
-            Live session
-          </span>
         {/if}
       </div>
       <h1 class="text-xl font-bold mb-1">
