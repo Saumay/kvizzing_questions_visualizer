@@ -158,6 +158,19 @@
     status = 'idle';
     errorMessage = '';
   }
+
+  // Where a question actually came from isn't obvious from its text alone —
+  // surface it explicitly rather than making the reader infer it.
+  function sourceBadge(question: Question): { label: string; cls: string } {
+    if (!question.session) {
+      return { label: 'General question', cls: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    }
+    const session = store.getSessionById(question.session.id);
+    if (session?.is_live) {
+      return { label: '⭐ Live quiz', cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' };
+    }
+    return { label: 'Quiz session', cls: 'bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300' };
+  }
 </script>
 
 <div class="space-y-6 max-w-2xl">
@@ -234,17 +247,23 @@
         </p>
         {#each results as { question, score } (question.id)}
           {@const pct = scorePct(score)}
+          {@const source = sourceBadge(question)}
           <a
             href="/question/{question.id}"
             class="block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
           >
             <div class="flex items-start justify-between gap-3">
               <div class="flex-1 min-w-0">
-                {#if question.session?.quiz_type === 'connect'}
-                  <span class="inline-block text-[10px] font-semibold uppercase tracking-wide text-primary-500 dark:text-primary-400 mb-1">
-                    Connect round
+                <div class="flex items-center gap-1.5 mb-1.5">
+                  <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded {source.cls}">
+                    {source.label}
                   </span>
-                {/if}
+                  {#if question.session?.quiz_type === 'connect'}
+                    <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400">
+                      Connect round
+                    </span>
+                  {/if}
+                </div>
                 <p class="text-sm text-gray-800 dark:text-gray-200 line-clamp-3">
                   {question.question.text}
                 </p>
