@@ -134,7 +134,7 @@
     const topic = dominantTopic(sessionIds);
     if (!topic) return gradientFor(fallbackId);
     const hex = desaturate(topicHex(topic), 0.5);
-    return [darken(hex, 0.55), darken(hex, 0.3)];
+    return [darken(hex, 0.35), darken(hex, 0.12)];
   }
 
   function emojiFor(title: string): string {
@@ -529,7 +529,7 @@
         {#if imgUrl}
           <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-40 transition-opacity duration-300" style="background-image: url('{imgUrl}'); filter: {SESSION_IMAGE_FILTER};"></div>
         {/if}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-black/0"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
         <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
           <div class="min-w-0">
             <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-2">
@@ -596,7 +596,7 @@
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
                     <div class="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-35 transition-opacity duration-300" style="background-image: url('{imgUrl}'); filter: {SESSION_IMAGE_FILTER};"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/0"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/12 to-black/0"></div>
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
                       <div class="flex items-center gap-3 min-w-0">
                         <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
