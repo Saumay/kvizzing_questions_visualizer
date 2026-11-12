@@ -75,6 +75,7 @@ TITLE_STOPWORDS = {
 # rather than relying on the topic bucket, which is often "general" anyway
 # for a deck that hasn't been transcribed yet and so has no real topic data.
 WORD_DISAMBIGUATION = {
+    "gauntlet": "infinity gauntlet",
     "cricket": "cricket sport bat ball stadium",
     "football": "football soccer sport stadium",
     "soccer": "soccer football sport stadium",

@@ -1,16 +1,4 @@
 {
-  "gauntlet": {
-    "openverse_id": "7610ce27-d5d3-4c28-87e5-40c1129ec830",
-    "title": "Nina Poon threefour Shankbone 2010 NYC",
-    "creator": "david_shankbone",
-    "creator_url": "https://www.flickr.com/photos/27865228@N06",
-    "license": "by",
-    "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/27865228@N06/4549393968",
-    "topic": "cinema",
-    "query": "Gauntlet cinema film movie theater"
-  },
   "kviz-o-krazzy": {
     "openverse_id": "bfed806b-aa14-46df-acc5-624786e0a852",
     "title": "Ticked Off Trannies with Knives Cast Shot",
@@ -418,5 +406,17 @@
     "source_url": "https://www.flickr.com/photos/82955120@N05/7995266112",
     "topic": "general",
     "query": "Triwizard Harry Potter trivia quiz knowledge"
+  },
+  "gauntlet": {
+    "openverse_id": "8ca0411d-5d66-4fdb-b9c5-cc8975accfa1",
+    "title": "Gen. Robert E. Lee\u2019s gauntlet gloves",
+    "creator": "farrargirl",
+    "creator_url": "https://commons.wikimedia.org/wiki/User:Farrargirl",
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source_url": "https://commons.wikimedia.org/w/index.php?curid=68629668",
+    "topic": "cinema",
+    "query": "gauntlet glove (manually curated)"
   }
 }

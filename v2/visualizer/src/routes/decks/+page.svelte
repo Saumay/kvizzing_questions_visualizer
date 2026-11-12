@@ -570,6 +570,10 @@
           <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
         {/if}
         <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
+        <div class="absolute top-4 right-4 sm:top-5 sm:right-6 text-right" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
+          <p class="text-2xl sm:text-3xl font-black text-white leading-none">{heroSeries.rounds.length}</p>
+          <p class="text-[10px] text-white/70 uppercase tracking-wide mt-1">rounds</p>
+        </div>
         <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
           <div class="min-w-0">
             <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-2">
@@ -586,12 +590,8 @@
             </div>
           </div>
           <div class="flex items-center gap-5 flex-shrink-0 self-start sm:self-end">
-            <div class="text-right">
-              <p class="text-2xl sm:text-3xl font-black text-white leading-none">{heroSeries.rounds.length}</p>
-              <p class="text-[10px] text-white/70 uppercase tracking-wide mt-1">rounds</p>
-            </div>
             {#if heroLatestRound}
-              <div class="text-right hidden sm:block border-l border-white/25 pl-5">
+              <div class="text-right hidden sm:block">
                 <p class="text-xs text-white/85">Latest: #{heroLatestRound.round}</p>
                 <p class="text-[11px] text-white/60 mt-0.5">{heroLatestRound.date_approx ? '~' : ''}{formatDate(heroLatestRound.date)}</p>
               </div>
@@ -656,7 +656,7 @@
                           </p>
                         {:else}
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">
-                            {#if card.host}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.badge}{/if}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
+                            {#if card.host}{#if store.getMember(card.host)}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.host}{/if}{:else}{card.badge}{/if}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
                           </p>
                         {/if}
                       </div>
@@ -718,19 +718,26 @@
           </p>
           {#each group.rounds as r}
             {@const single = r.files.length === 1 ? r.files[0] : null}
-            <svelte:element
-              this={single ? 'a' : 'div'}
-              href={single ? (single.url ?? undefined) : undefined}
-              target={single ? '_blank' : undefined}
-              rel={single ? 'noopener noreferrer' : undefined}
-              class="flex items-center justify-between gap-4 px-5 py-3 transition-colors {single && !single.url ? 'opacity-60 pointer-events-none' : 'hover:bg-primary-50 dark:hover:bg-primary-900/20'}"
+            <!-- Always a div, not an <a> - a round's host name below is a
+                 real <a href="/member/..."> and anchors can't nest. Clicking
+                 the single-file download still works via onclick, guarded
+                 the same way as elsewhere so the host link's own click
+                 doesn't also trigger it. -->
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <div
+              role={single ? 'button' : undefined}
+              tabindex={single ? 0 : undefined}
+              onclick={(e) => { if (single?.url && !(e.target as HTMLElement).closest('a,button,input')) window.open(single.url, '_blank', 'noopener'); }}
+              onkeydown={(e) => { if (single?.url && e.key === 'Enter' && !(e.target as HTMLElement).closest('a,button,input')) window.open(single.url, '_blank', 'noopener'); }}
+              class="flex items-center justify-between gap-4 px-5 py-3 transition-colors {single && !single.url ? 'opacity-60 pointer-events-none' : single ? 'cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-900/20' : ''}"
             >
               <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium text-gray-800 dark:text-gray-200 truncate">
                   <span class="text-gray-400 dark:text-gray-500">#{r.round}</span> {r.title}
                 </p>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                  {#if r.host}{r.host} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)}{#if roundSize(r.files) > 0} &middot; {formatBytes(roundSize(r.files))}{/if}
+                  {#if r.host}{#if store.getMember(r.host)}<a href="/member/{r.host}" class="hover:underline">{r.host}</a>{:else}{r.host}{/if} &middot; {/if}{r.date_approx ? '~' : ''}{formatDate(r.date)}{#if roundSize(r.files) > 0} &middot; {formatBytes(roundSize(r.files))}{/if}
                 </p>
               </div>
               <div class="flex-shrink-0 flex items-center gap-1.5 flex-wrap justify-end">
@@ -761,7 +768,7 @@
                   {/if}
                 {/each}
               </div>
-            </svelte:element>
+            </div>
           {/each}
         {/each}
       </div>
