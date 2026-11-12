@@ -61,10 +61,10 @@
   // "more", not darker-with-opacity blends that blur into the empty cell).
   const LEVEL_CLS = [
     'bg-gray-100 dark:bg-gray-800',
-    'bg-primary-100 dark:bg-primary-800',
-    'bg-primary-300 dark:bg-primary-600',
-    'bg-primary-500 dark:bg-primary-400',
-    'bg-primary-700 dark:bg-primary-200',
+    'bg-primary-200 dark:bg-primary-800',
+    'bg-primary-400 dark:bg-primary-600',
+    'bg-primary-600 dark:bg-primary-400',
+    'bg-primary-800 dark:bg-primary-200',
   ];
 
   const monthLabelByCol = $derived.by(() => {
