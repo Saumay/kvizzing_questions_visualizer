@@ -362,9 +362,15 @@
                   </p>
                 {/if}
               </div>
-              <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {scoreCls(pct)}" title={scoreLabel(pct)}>
-                {pct}%
-              </span>
+              {#if matchedEntities.length > 0}
+                <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300" title="Ranked by exact entity match, not semantic similarity — the {pct}% similarity score alone would have ranked this lower.">
+                  ✓ Matched
+                </span>
+              {:else}
+                <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {scoreCls(pct)}" title={scoreLabel(pct)}>
+                  {pct}%
+                </span>
+              {/if}
             </div>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
               {question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}
