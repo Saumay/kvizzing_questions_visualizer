@@ -2,7 +2,7 @@
   import { getContext, onMount } from 'svelte';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import { formatDateTz, formatTime, dateInTz } from '$lib/utils/time';
-  import { SESSION_IMAGE_OPACITY, SESSION_IMAGE_FILTER, sessionBgUrl } from '$lib/config/ui';
+  import { SESSION_IMAGE_OPACITY, SESSION_IMAGE_FILTER, SESSION_IMAGE_FILTER_HOVER, sessionBgUrl } from '$lib/config/ui';
   import SearchInput from '$lib/components/SearchInput.svelte';
   import FiltersToggleButton from '$lib/components/FiltersToggleButton.svelte';
   import TagFilter from '$lib/components/TagFilter.svelte';
@@ -357,15 +357,17 @@
         <a
           href="/session/{session.id}"
           class="relative overflow-hidden block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all p-5 group {session.is_live ? 'hover:border-amber-300' : 'hover:border-primary-200'}"
-          onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.hover); }}
-          onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.default); }}
+          onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) { bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.hover); bg.style.filter = SESSION_IMAGE_FILTER_HOVER; } }}
+          onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) { bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.default); bg.style.filter = SESSION_IMAGE_FILTER; } }}
         >
           <div
             class="session-bg absolute inset-0 bg-cover bg-center transition-opacity"
             style="background-image: url('{sessionBgUrl(session)}'); opacity: {SESSION_IMAGE_OPACITY.card.default}; filter: {SESSION_IMAGE_FILTER};"
           ></div>
-          <!-- Text protection overlay — stronger on hover -->
-          <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-white/20 dark:from-gray-900/85 dark:via-gray-900/55 dark:to-gray-900/20 group-hover:from-white/90 group-hover:via-white/65 group-hover:to-white/30 dark:group-hover:from-gray-900/92 dark:group-hover:via-gray-900/70 dark:group-hover:to-gray-900/35 transition-all pointer-events-none"></div>
+          <!-- Text protection overlay — left at the same strength on hover so the
+               darker hover filter above actually reads as darker instead of being
+               washed out by more white on top of it. -->
+          <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-white/20 dark:from-gray-900/85 dark:via-gray-900/55 dark:to-gray-900/20 transition-all pointer-events-none"></div>
 
           {#if session.is_live}
             <div

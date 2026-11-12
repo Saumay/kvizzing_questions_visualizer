@@ -19,6 +19,11 @@ export const SESSION_IMAGE_OPACITY = {
  *  regenerating any image. */
 export const SESSION_IMAGE_FILTER = 'saturate(0.55) brightness(1.25) contrast(0.85)';
 
+/** Darker, richer version of the filter above for the Sessions list card's
+ *  hover state — the image opacity alone doesn't read as darker since the
+ *  pastel filter brightens the photo regardless of how much of it shows. */
+export const SESSION_IMAGE_FILTER_HOVER = 'saturate(0.8) brightness(0.6) contrast(1.05)';
+
 /** Sessions that have a custom background image in /images/sessions/. */
 /** Return the background image URL for a session card.
  *  Always tries the session-specific image first; falls back to connect-quiz-bg. */
