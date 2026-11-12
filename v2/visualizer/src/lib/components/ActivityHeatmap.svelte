@@ -55,12 +55,15 @@
     return 1;
   }
 
+  // Sequential ramp: lightness increases with value in light mode, but
+  // flips in dark mode (a dark surface needs brighter cells to read as
+  // "more", not darker-with-opacity blends that blur into the empty cell).
   const LEVEL_CLS = [
     'bg-gray-100 dark:bg-gray-800',
-    'bg-primary-100 dark:bg-primary-900/50',
-    'bg-primary-300 dark:bg-primary-700/70',
-    'bg-primary-500 dark:bg-primary-500',
-    'bg-primary-700 dark:bg-primary-300',
+    'bg-primary-100 dark:bg-primary-800',
+    'bg-primary-300 dark:bg-primary-600',
+    'bg-primary-500 dark:bg-primary-400',
+    'bg-primary-700 dark:bg-primary-200',
   ];
 
   const monthLabelByCol = $derived.by(() => {
