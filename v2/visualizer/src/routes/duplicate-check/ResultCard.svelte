@@ -20,6 +20,8 @@
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
 
+  let expanded = $state(false);
+
   const pct = $derived(scorePct(score));
   const questionSegments = $derived(highlightSegments(question.question.text, matchedEntities));
   const answerSegments = $derived(question.answer?.text ? highlightSegments(question.answer.text, matchedEntities) : null);
@@ -62,10 +64,7 @@
   const source = $derived(sourceBadge(question));
 </script>
 
-<a
-  href="/question/{question.id}"
-  class="block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
->
+<div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4">
   <div class="flex items-start justify-between gap-3">
     <div class="flex-1 min-w-0">
       <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
@@ -83,14 +82,21 @@
           </span>
         {/if}
       </div>
-      <p class="text-sm text-gray-800 dark:text-gray-200 line-clamp-3">
+      <button
+        type="button"
+        onclick={() => (expanded = !expanded)}
+        class="text-left w-full text-sm text-gray-800 dark:text-gray-200 {expanded ? '' : 'line-clamp-3'}"
+      >
         {#each questionSegments as seg}{#if seg.hl}<mark class="bg-green-200 dark:bg-green-700/60 text-inherit rounded px-0.5">{seg.text}</mark>{:else}{seg.text}{/if}{/each}
-      </p>
+      </button>
       {#if answerSegments}
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-1">
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 {expanded ? '' : 'line-clamp-1'}">
           <span class="font-medium">Answer:</span> {#each answerSegments as seg}{#if seg.hl}<mark class="bg-green-200 dark:bg-green-700/60 text-inherit rounded px-0.5">{seg.text}</mark>{:else}{seg.text}{/if}{/each}
         </p>
       {/if}
+      <button type="button" onclick={() => (expanded = !expanded)} class="text-xs text-primary-600 dark:text-primary-400 hover:underline font-medium mt-1">
+        {expanded ? 'Show less' : 'Show more'}
+      </button>
     </div>
     <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {scoreCls(pct)}" title={scoreLabel(pct)}>
       {pct}%
@@ -99,13 +105,19 @@
   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center flex-wrap gap-x-1">
     <span>{question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>
     {#if question.session?.theme}<span>&middot; {question.session.theme}</span>{/if}
+    <button
+      onclick={() => goto(`/question/${question.id}`)}
+      class="ml-auto text-primary-600 dark:text-primary-400 hover:underline font-medium"
+    >
+      View question →
+    </button>
     {#if question.session}
       <button
-        onclick={(e) => { e.preventDefault(); e.stopPropagation(); goto(`/session/${question.session!.id}`); }}
-        class="ml-auto text-primary-600 dark:text-primary-400 hover:underline font-medium"
+        onclick={() => goto(`/session/${question.session!.id}`)}
+        class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
       >
         View session →
       </button>
     {/if}
   </p>
-</a>
+</div>

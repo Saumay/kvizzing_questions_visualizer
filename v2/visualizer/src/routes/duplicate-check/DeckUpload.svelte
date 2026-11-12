@@ -242,13 +242,13 @@
             <div class="flex-1 min-w-0 space-y-2">
               <textarea
                 bind:value={slide.question}
-                rows="2"
+                rows="5"
                 placeholder="Question text (edit if the extraction looks off)"
                 class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
               ></textarea>
               <textarea
                 bind:value={slide.answer}
-                rows="1"
+                rows="2"
                 placeholder="Answer (optional)"
                 class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
               ></textarea>
