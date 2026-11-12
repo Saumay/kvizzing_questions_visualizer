@@ -3,7 +3,7 @@
   import type { QuestionStore } from '$lib/stores/questionStore';
   import { getMemberColor, getMemberInitials } from '$lib/utils/memberColors';
   import { topicCls, topicLabel, topicHex } from '$lib/utils/topicColors';
-  import { formatTime } from '$lib/utils/time';
+  import { formatTime, formatDateTz } from '$lib/utils/time';
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import QuestionCard from '$lib/components/QuestionCard.svelte';
   import EmptyState from '$lib/components/EmptyState.svelte';
@@ -12,11 +12,12 @@
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
   const usernameCtx = getContext<{ value: string } | undefined>('username');
+  const tzCtx = getContext<{ value: string }>('timezone');
 
   const member = $derived(data.member);
   const isMe = $derived(usernameCtx?.value === member.username);
 
-  let tab = $state<'asked' | 'solved'>('asked');
+  let tab = $state<'asked' | 'solved' | 'liked' | 'sessions'>('asked');
   let selectedDate = $state<string | null>(null);
   let selectedTopic = $state<string | null>(null);
   let listEl: HTMLDivElement | undefined = $state();
@@ -27,7 +28,41 @@
 
   const askedQuestions = $derived(store.getQuestions({ asker: member.username }, 'newest'));
   const solvedQuestions = $derived(store.getQuestions({ solver: member.username }, 'newest'));
+
+  // "Liked" is a public per-username table (question_likes), unlike "saved"
+  // questions/sessions which the app treats as private to the logged-in
+  // viewer - so this is safe to show on anyone's profile, fetched fresh per
+  // member since it's not part of the preloaded bulk dataset.
+  let likedQuestionIds = $state<Set<string>>(new Set());
+  $effect(() => {
+    const username = member.username;
+    likedQuestionIds = new Set();
+    (async () => {
+      try {
+        const { supabase } = await import('$lib/supabase');
+        const { data: rows } = await supabase.from('question_likes').select('question_id').eq('username', username);
+        if (rows) likedQuestionIds = new Set(rows.map(r => r.question_id));
+      } catch {
+        // Best-effort: the tab just shows empty if this fails.
+      }
+    })();
+  });
+  const allQuestions = $derived(store.getQuestions());
+  const likedQuestions = $derived(allQuestions.filter(q => likedQuestionIds.has(q.id)));
+
+  const hostedSessions = $derived(
+    store.getSessions()
+      .filter(s => s.quizmaster === member.username)
+      .sort((a, b) => b.date.localeCompare(a.date))
+  );
+
+  function sessionTitle(s: (typeof hostedSessions)[number]): string {
+    return s.quiz_type === 'connect' ? `${s.quizmaster}'s Connect Quiz` : (s.theme ?? s.summary ?? `${s.quizmaster}'s Quiz`);
+  }
+
   const shown = $derived.by(() => {
+    if (tab === 'liked') return likedQuestions;
+    if (tab === 'sessions') return [];
     let list = tab === 'asked' ? askedQuestions : solvedQuestions;
     if (selectedDate) list = list.filter(q => q.date === selectedDate);
     if (selectedTopic) list = list.filter(q => primaryTopic(q) === selectedTopic);
@@ -168,19 +203,31 @@
           ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Solved ({solvedQuestions.length})</button>
-      {#if selectedDate}
+      <button
+        onclick={() => tab = 'liked'}
+        class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'liked'
+          ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
+          : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
+      >Liked ({likedQuestions.length})</button>
+      <button
+        onclick={() => tab = 'sessions'}
+        class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'sessions'
+          ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
+          : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
+      >Sessions ({hostedSessions.length})</button>
+      {#if (tab === 'asked' || tab === 'solved') && selectedDate}
         <span class="text-xs text-gray-400 dark:text-gray-500 ml-1 flex items-center gap-1">
           Date: {selectedDate}
           <button onclick={() => selectedDate = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear date filter">&times;</button>
         </span>
       {/if}
-      {#if selectedTopic}
+      {#if (tab === 'asked' || tab === 'solved') && selectedTopic}
         <span class="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
           Topic: {topicLabel(selectedTopic)}
           <button onclick={() => selectedTopic = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear topic filter">&times;</button>
         </span>
       {/if}
-      {#if selectedDate || selectedTopic}
+      {#if (tab === 'asked' || tab === 'solved') && (selectedDate || selectedTopic)}
         <button
           onclick={() => { selectedDate = null; selectedTopic = null; }}
           class="text-xs text-primary-600 dark:text-primary-400 hover:underline font-medium"
@@ -188,7 +235,26 @@
       {/if}
     </div>
 
-    {#if shown.length === 0}
+    {#if tab === 'sessions'}
+      {#if hostedSessions.length === 0}
+        <EmptyState message="No sessions hosted yet" />
+      {:else}
+        <div class="space-y-2">
+          {#each hostedSessions as session (session.id)}
+            <a
+              href="/session/{session.id}"
+              class="flex items-center gap-3 bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-xl px-4 py-3 shadow-sm hover:border-primary-300 hover:shadow-md transition-all"
+            >
+              <span class="text-xs text-gray-400 w-24 flex-shrink-0">{formatDateTz(session.date, tzCtx?.value ?? 'Europe/London')}</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">{sessionTitle(session)}</p>
+                <p class="text-xs text-gray-400">{session.question_count} questions{session.is_live ? ' · ⭐ Live quiz' : ''}</p>
+              </div>
+            </a>
+          {/each}
+        </div>
+      {/if}
+    {:else if shown.length === 0}
       <EmptyState message={selectedDate || selectedTopic ? 'No questions match these filters' : 'No questions here yet'} />
     {:else}
       <div class="space-y-3">
