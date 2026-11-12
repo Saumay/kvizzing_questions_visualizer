@@ -28,7 +28,7 @@ import sqlite3
 import sys
 import time
 from collections import defaultdict
-from datetime import date as Date, timedelta
+from datetime import date as Date, datetime, timedelta, timezone
 from pathlib import Path
 
 # ── Path setup ────────────────────────────────────────────────────────────────
@@ -98,22 +98,66 @@ def _log_counts(counts: dict) -> None:
 
 def _maybe_regenerate_embeddings(output_dir) -> None:
     """
-    Best-effort: regenerate the duplicate-check semantic-search corpus after
-    every export, so it stays in sync with questions.json without a separate
-    manual step. sentence-transformers/torch is a heavy dependency that isn't
-    otherwise required by the pipeline, so a missing install or any runtime
-    failure here logs a warning and lets the export succeed anyway — it's a
-    secondary feature, not core data correctness.
+    Regenerate the duplicate-check semantic-search corpus after every export,
+    so it stays in sync with questions.json without a separate manual step.
+    A failure here doesn't block the export (it's a secondary feature, not
+    core data correctness) but it must never again fail silently: this went
+    stale for two months once already because sentence-transformers/torch
+    wasn't installed in whichever environment happened to run the pipeline,
+    and a single log.warning buried in routine export output went unnoticed
+    the entire time. Every run now writes question_embeddings_status.json
+    (ok/fail, counts, timestamps) and a failure also prints a banner loud
+    enough that no one tailing pipeline output could miss it.
     """
+    output_dir = Path(output_dir)
+    status_path = output_dir / "question_embeddings_status.json"
+    now = datetime.now(timezone.utc).isoformat()
+
+    total_questions = None
+    try:
+        total_questions = len(json.loads((output_dir / "questions.json").read_text()))
+    except Exception:
+        pass
+
     try:
         _generate_embeddings(output_dir)
-    except ImportError:
-        log.warning(
-            "sentence-transformers not installed — skipping duplicate-check "
-            "embeddings regeneration. Run manually: "
+        meta = json.loads((output_dir / "question_embeddings_meta.json").read_text())
+        status_path.write_text(json.dumps({
+            "ok": True,
+            "last_success": now,
+            "last_attempt": now,
+            "corpus_count": meta.get("count"),
+            "total_questions": total_questions,
+        }, indent=2) + "\n")
+    except Exception as e:
+        prior_success = None
+        if status_path.exists():
+            try:
+                prior_success = json.loads(status_path.read_text()).get("last_success")
+            except Exception:
+                pass
+        status_path.write_text(json.dumps({
+            "ok": False,
+            "last_success": prior_success,
+            "last_attempt": now,
+            "error": f"{type(e).__name__}: {e}",
+            "total_questions": total_questions,
+        }, indent=2) + "\n")
+
+        hint = (
+            "pip3 install --user --break-system-packages sentence-transformers"
+            if isinstance(e, ImportError) else
             "python3 utils/generate_question_embeddings.py"
         )
-    except Exception as e:
+        print(
+            "\n" + "!" * 70 + "\n"
+            "! DUPLICATE-CHECK EMBEDDINGS REGENERATION FAILED\n"
+            f"! {type(e).__name__}: {e}\n"
+            "! The duplicate-check corpus is now STALE and will stay that way\n"
+            "! silently until this is fixed. Fix, then run:\n"
+            f"!   {hint}\n"
+            + "!" * 70 + "\n"
+        )
         log.warning(
             "Embeddings regeneration failed (%s: %s) — questions.json exported "
             "OK, run utils/generate_question_embeddings.py manually to catch up.",

@@ -526,7 +526,7 @@
       >
         <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
         {#if imgUrl}
-          <div class="absolute inset-0 bg-cover bg-center opacity-70 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
         {/if}
         <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
         <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
@@ -594,7 +594,7 @@
                     class="tile-grain group relative overflow-hidden block w-full text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
-                    <div class="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-80 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/12 to-black/0"></div>
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
                       <div class="flex items-center gap-3 min-w-0">
