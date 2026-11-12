@@ -32,23 +32,26 @@
   // "Liked" is a public per-username table (question_likes), unlike "saved"
   // questions/sessions which the app treats as private to the logged-in
   // viewer - so this is safe to show on anyone's profile, fetched fresh per
-  // member since it's not part of the preloaded bulk dataset.
-  let likedQuestionIds = $state<Set<string>>(new Set());
+  // member since it's not part of the preloaded bulk dataset. created_at is
+  // when the like happened, not the question's own date, so the Liked
+  // heatmap tracks like activity, not question activity.
+  let likedAt = $state<Map<string, string>>(new Map());
   $effect(() => {
     const username = member.username;
-    likedQuestionIds = new Set();
+    likedAt = new Map();
     (async () => {
       try {
         const { supabase } = await import('$lib/supabase');
-        const { data: rows } = await supabase.from('question_likes').select('question_id').eq('username', username);
-        if (rows) likedQuestionIds = new Set(rows.map(r => r.question_id));
+        const { data: rows } = await supabase.from('question_likes').select('question_id, created_at').eq('username', username);
+        if (rows) likedAt = new Map(rows.map(r => [r.question_id, r.created_at.slice(0, 10)]));
       } catch {
         // Best-effort: the tab just shows empty if this fails.
       }
     })();
   });
   const allQuestions = $derived(store.getQuestions());
-  const likedQuestions = $derived(allQuestions.filter(q => likedQuestionIds.has(q.id)));
+  const likedQuestions = $derived(allQuestions.filter(q => likedAt.has(q.id)));
+  const likedDates = $derived([...likedAt.values()]);
 
   const hostedSessions = $derived(
     store.getSessions()
@@ -61,22 +64,26 @@
   }
 
   const shown = $derived.by(() => {
-    if (tab === 'liked') return likedQuestions;
+    if (tab === 'liked') return selectedDate ? likedQuestions.filter(q => likedAt.get(q.id) === selectedDate) : likedQuestions;
     if (tab === 'sessions') return [];
     let list = tab === 'asked' ? askedQuestions : solvedQuestions;
     if (selectedDate) list = list.filter(q => q.date === selectedDate);
     if (selectedTopic) list = list.filter(q => primaryTopic(q) === selectedTopic);
     return list;
   });
+  const shownSessions = $derived(selectedDate ? hostedSessions.filter(s => s.date === selectedDate) : hostedSessions);
 
-  function jumpToDate(dateKey: string) {
-    // Prefer whichever tab actually has questions on that day, so clicking a
-    // heatmap cell never lands on an empty filtered list.
-    const askedHasIt = askedQuestions.some(q => q.date === dateKey);
-    const solvedHasIt = solvedQuestions.some(q => q.date === dateKey);
-    if (tab === 'asked' && !askedHasIt && solvedHasIt) tab = 'solved';
-    else if (tab === 'solved' && !solvedHasIt && askedHasIt) tab = 'asked';
+  function jumpToDate(forTab: 'asked' | 'solved' | 'liked' | 'sessions', dateKey: string) {
+    tab = forTab;
+    selectedTopic = null;
     selectedDate = dateKey;
+    listEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function jumpToTab(forTab: 'asked' | 'solved' | 'sessions') {
+    tab = forTab;
+    selectedDate = null;
+    selectedTopic = null;
     listEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -103,9 +110,8 @@
 
   const bg = $derived(getMemberColor(member.username, member.color));
 
-  // Combined asked + solved activity, one entry per occurrence so days with
-  // more questions count for more in the heatmap.
-  const activityDates = $derived([...askedQuestions.map(q => q.date), ...solvedQuestions.map(q => q.date)]);
+  const askedDates = $derived(askedQuestions.map(q => q.date));
+  const solvedDates = $derived(solvedQuestions.map(q => q.date));
 </script>
 
 <svelte:head>
@@ -133,24 +139,25 @@
       </div>
     </div>
 
-    <!-- Stat chips -->
+    <!-- Stat chips. Attempts and Avg solve time are aggregate stats with no
+         single filtered list to jump to, so they stay plain (non-clickable). -->
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-5">
-      <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center">
+      <button type="button" onclick={() => jumpToTab('asked')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
         <p class="text-lg font-bold text-gray-900 dark:text-white">{member.questions_asked}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Asked</p>
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center">
+      </button>
+      <button type="button" onclick={() => jumpToTab('solved')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
         <p class="text-lg font-bold text-gray-900 dark:text-white">{member.questions_solved}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Solved</p>
-      </div>
+      </button>
       <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center">
         <p class="text-lg font-bold text-gray-900 dark:text-white">{member.total_attempts}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Attempts</p>
       </div>
-      <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center">
+      <button type="button" onclick={() => jumpToTab('sessions')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
         <p class="text-lg font-bold text-gray-900 dark:text-white">{member.sessions_hosted}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Sessions hosted</p>
-      </div>
+      </button>
       <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center col-span-2 sm:col-span-1">
         <p class="text-lg font-bold text-gray-900 dark:text-white">{formatTime(member.avg_solve_time_seconds)}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Avg solve time</p>
@@ -158,11 +165,29 @@
     </div>
   </div>
 
-  <!-- Activity heatmap -->
-  {#if activityDates.length > 0}
+  <!-- Activity heatmaps -->
+  {#if askedDates.length > 0}
     <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
-      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Activity (questions asked + solved, past year)</h2>
-      <ActivityHeatmap dates={activityDates} onDayClick={jumpToDate} />
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Questions asked (past year)</h2>
+      <ActivityHeatmap dates={askedDates} onDayClick={(d) => jumpToDate('asked', d)} />
+    </div>
+  {/if}
+  {#if solvedDates.length > 0}
+    <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Questions solved (past year)</h2>
+      <ActivityHeatmap dates={solvedDates} onDayClick={(d) => jumpToDate('solved', d)} />
+    </div>
+  {/if}
+  {#if likedDates.length > 0}
+    <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Likes given (past year)</h2>
+      <ActivityHeatmap dates={likedDates} onDayClick={(d) => jumpToDate('liked', d)} />
+    </div>
+  {/if}
+  {#if hostedSessions.length > 0}
+    <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Sessions hosted (past year)</h2>
+      <ActivityHeatmap dates={hostedSessions.map(s => s.date)} onDayClick={(d) => jumpToDate('sessions', d)} />
     </div>
   {/if}
 
@@ -215,7 +240,7 @@
           ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Sessions ({hostedSessions.length})</button>
-      {#if (tab === 'asked' || tab === 'solved') && selectedDate}
+      {#if selectedDate}
         <span class="text-xs text-gray-400 dark:text-gray-500 ml-1 flex items-center gap-1">
           Date: {selectedDate}
           <button onclick={() => selectedDate = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear date filter">&times;</button>
@@ -227,7 +252,7 @@
           <button onclick={() => selectedTopic = null} class="text-primary-600 dark:text-primary-400 hover:underline font-medium" aria-label="Clear topic filter">&times;</button>
         </span>
       {/if}
-      {#if (tab === 'asked' || tab === 'solved') && (selectedDate || selectedTopic)}
+      {#if selectedDate || selectedTopic}
         <button
           onclick={() => { selectedDate = null; selectedTopic = null; }}
           class="text-xs text-primary-600 dark:text-primary-400 hover:underline font-medium"
@@ -236,11 +261,11 @@
     </div>
 
     {#if tab === 'sessions'}
-      {#if hostedSessions.length === 0}
-        <EmptyState message="No sessions hosted yet" />
+      {#if shownSessions.length === 0}
+        <EmptyState message={selectedDate ? 'No sessions on this date' : 'No sessions hosted yet'} />
       {:else}
         <div class="space-y-2">
-          {#each hostedSessions as session (session.id)}
+          {#each shownSessions as session (session.id)}
             <a
               href="/session/{session.id}"
               class="flex items-center gap-3 bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-xl px-4 py-3 shadow-sm hover:border-primary-300 hover:shadow-md transition-all"
