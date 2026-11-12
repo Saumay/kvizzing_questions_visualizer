@@ -517,7 +517,9 @@
   {:else}
     <!-- Hero: flagship series -->
     {#if heroSeries}
-      {@const [c1, c2] = gradientForCard(heroSeries.rounds.map(r => roundSessionId(heroSeries.id, r.round)), heroSeries.id)}
+      {@const [heroC1, heroC2] = gradientForCard(heroSeries.rounds.map(r => roundSessionId(heroSeries.id, r.round)), heroSeries.id)}
+      {@const c1 = darken(desaturate(heroC1, 0.25), 0.1)}
+      {@const c2 = darken(desaturate(heroC2, 0.25), 0.1)}
       {@const imgUrl = deckBannerUrl(heroSeries.id)}
       {@const hosts = seriesHosts(heroSeries)}
       <button
@@ -526,7 +528,7 @@
       >
         <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
         {#if imgUrl}
-          <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
         {/if}
         <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
         <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
