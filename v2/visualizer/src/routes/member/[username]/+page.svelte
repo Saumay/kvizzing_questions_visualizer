@@ -2,12 +2,13 @@
   import { getContext } from 'svelte';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import { getMemberColor, getMemberInitials } from '$lib/utils/memberColors';
-  import { topicCls, topicLabel, topicHex } from '$lib/utils/topicColors';
+  import { topicLabel } from '$lib/utils/topicColors';
   import { formatTime, formatDateTz } from '$lib/utils/time';
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import QuestionCard from '$lib/components/QuestionCard.svelte';
   import EmptyState from '$lib/components/EmptyState.svelte';
   import ActivityHeatmap from '$lib/components/ActivityHeatmap.svelte';
+  import TopicDonutChart from '$lib/components/TopicDonutChart.svelte';
 
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
@@ -103,7 +104,6 @@
     const total = askedQuestions.length || 1;
     return [...counts.entries()]
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 6)
       .map(([topic, count]) => ({ topic, count, pct: Math.round((count / total) * 100) }));
   });
 
@@ -142,11 +142,11 @@
          single filtered list to jump to, so they stay plain (non-clickable). -->
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-5">
       <button type="button" onclick={() => jumpToTab('asked')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
-        <p class="text-lg font-bold text-gray-900 dark:text-white">{member.questions_asked}</p>
+        <p class="text-lg font-bold text-gray-900 dark:text-white">{askedQuestions.length}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Asked</p>
       </button>
       <button type="button" onclick={() => jumpToTab('solved')} class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center hover:bg-gray-100 dark:hover:bg-gray-700/60 transition-colors">
-        <p class="text-lg font-bold text-gray-900 dark:text-white">{member.questions_solved}</p>
+        <p class="text-lg font-bold text-gray-900 dark:text-white">{solvedQuestions.length}</p>
         <p class="text-[10px] text-gray-400 mt-0.5">Solved</p>
       </button>
       <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl px-3 py-2.5 text-center">
@@ -188,21 +188,7 @@
   {#if topicBreakdown.length > 0}
     <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
       <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Favourite topics (by questions asked)</h2>
-      <div class="space-y-2">
-        {#each topicBreakdown as row}
-          <button
-            type="button"
-            onclick={() => jumpToTopic(row.topic)}
-            class="flex items-center gap-3 w-full text-left rounded-lg -mx-1 px-1 py-0.5 hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors"
-          >
-            <span class="text-xs font-medium w-28 truncate {topicCls(row.topic)} rounded-md px-2 py-0.5 text-center">{topicLabel(row.topic)}</span>
-            <div class="flex-1 h-2 rounded-full bg-gray-100 dark:bg-gray-700 overflow-hidden">
-              <div class="h-full rounded-full" style="width: {row.pct}%; background-color: {topicHex(row.topic)};"></div>
-            </div>
-            <span class="text-xs text-gray-400 w-10 text-right flex-shrink-0">{row.count}</span>
-          </button>
-        {/each}
-      </div>
+      <TopicDonutChart rows={topicBreakdown} onTopicClick={jumpToTopic} />
     </div>
   {/if}
 
