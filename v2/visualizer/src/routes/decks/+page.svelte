@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
   import { formatDate } from '$lib/utils/time';
+  import { SESSION_IMAGE_FILTER } from '$lib/config/ui';
+  import type { QuestionStore } from '$lib/stores/questionStore';
   import EmptyState from '$lib/components/EmptyState.svelte';
+  import TopicFilter from '$lib/components/TopicFilter.svelte';
+  import ActiveFilterChips from '$lib/components/ActiveFilterChips.svelte';
 
   interface DeckFile {
     label: string | null;
@@ -40,6 +45,7 @@
 
   let { data } = $props();
   const decks = data.decks as DecksManifest;
+  const store = getContext<QuestionStore>('store');
 
   function formatBytes(n: number): string {
     if (n < 1024 * 1024) return `${Math.round(n / 1024)} KB`;
@@ -148,11 +154,40 @@
   let showHostMenu = $state(false);
   let filterKind = $state<'all' | 'series' | 'standalone'>('all');
   let filterRecordingOnly = $state(false);
+  let filterTopics = $state(new Set<string>());
   let dateFrom = $state('');
   let dateTo = $state('');
 
   function matchesDateRange(date: string): boolean {
     return (!dateFrom || date >= dateFrom) && (!dateTo || date <= dateTo);
+  }
+
+  function roundSessionId(seriesId: string, round: number): string {
+    return `deck-${seriesId}-r${round}`;
+  }
+  function standaloneSessionId(id: string): string {
+    return `deck-${id}`;
+  }
+
+  // Topics live on individual questions, not on the deck manifest, so build
+  // a session ID → topic set once from the question store rather than
+  // looking them up per round on every filter pass.
+  const sessionTopics = $derived.by(() => {
+    const map = new Map<string, Set<string>>();
+    for (const q of store.getQuestions()) {
+      if (!q.session?.id) continue;
+      const set = map.get(q.session.id) ?? new Set<string>();
+      for (const t of q.question.topics ?? []) set.add(t);
+      map.set(q.session.id, set);
+    }
+    return map;
+  });
+
+  function matchesTopics(sessionId: string): boolean {
+    if (filterTopics.size === 0) return true;
+    const topics = sessionTopics.get(sessionId);
+    if (!topics) return false;
+    return [...filterTopics].some(t => topics.has(t));
   }
 
   const allHosts = $derived.by(() => {
@@ -192,6 +227,7 @@
           matchesHost(r.host) &&
           matchesDateRange(r.date) &&
           (!filterRecordingOnly || hasRecording(r.files)) &&
+          matchesTopics(roundSessionId(s.id, r.round)) &&
           (matchesSearch(s.title) || matchesSearch(r.title) || (r.host ? matchesSearch(r.host) : false))
         ),
       }))
@@ -204,15 +240,16 @@
       .filter(d => matchesHost(d.host))
       .filter(d => matchesDateRange(d.date))
       .filter(d => !filterRecordingOnly || hasRecording(d.files))
+      .filter(d => matchesTopics(standaloneSessionId(d.id)))
       .filter(d => matchesSearch(d.title) || (d.host ? matchesSearch(d.host) : false))
       .sort((a, b) => b.date.localeCompare(a.date));
   });
 
   const hasFilters = $derived(!!(
-    search || filterHosts.size > 0 || filterKind !== 'all' || filterRecordingOnly || dateFrom || dateTo
+    search || filterHosts.size > 0 || filterKind !== 'all' || filterRecordingOnly || filterTopics.size > 0 || dateFrom || dateTo
   ));
   function clearFilters() {
-    search = ''; filterHosts = new Set(); filterKind = 'all'; filterRecordingOnly = false; dateFrom = ''; dateTo = '';
+    search = ''; filterHosts = new Set(); filterKind = 'all'; filterRecordingOnly = false; filterTopics = new Set(); dateFrom = ''; dateTo = '';
   }
 
   const totalDecks = $derived(
@@ -392,6 +429,9 @@
       <span>🎥 Has recording</span>
     </button>
 
+    <!-- Topics (multi-select) -->
+    <TopicFilter bind:topics={filterTopics} />
+
     <!-- Date range -->
     <div class="flex items-center gap-1.5 text-sm">
       <input
@@ -414,6 +454,8 @@
       Clear
     </button>
   </div>
+
+  <ActiveFilterChips bind:topics={filterTopics} />
 
   {#if filteredSeries.length === 0 && filteredStandalone.length === 0}
     <EmptyState emoji="📂" message="No sessions match your filters" onClear={clearFilters} />
@@ -497,7 +539,7 @@
                     class="tile-grain group relative overflow-hidden block w-full text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
-                    <div class="absolute inset-0 bg-cover bg-center opacity-45 group-hover:opacity-65 transition-opacity duration-300" style="background-image: url('{imgUrl}')"></div>
+                    <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-300" style="background-image: url('{imgUrl}'); filter: {SESSION_IMAGE_FILTER};"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/5"></div>
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]">
                       <div class="flex items-center gap-3 min-w-0">
