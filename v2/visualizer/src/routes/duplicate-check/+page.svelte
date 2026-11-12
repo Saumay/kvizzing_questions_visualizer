@@ -39,6 +39,50 @@
   let corpusDim = 0;
   let extractor: ((text: string, opts: { pooling: string; normalize: boolean }) => Promise<{ data: Float32Array }>) | null = null;
 
+  // All known proper nouns extracted from the corpus (see
+  // utils/extract_entities.py), longest-first so "Shah Jahan" is checked
+  // before a shorter entity that might also happen to be a substring of it.
+  const entityVocabulary = store.getEntities().map(e => e.tag).sort((a, b) => b.length - a.length);
+
+  function escapeRegex(s: string): string {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  // Finds which known entities are literally present in the query text.
+  // This is the fix for "Shah Jahan" matching a Shahrukh Khan question: an
+  // exact, word-boundary match against the real entity vocabulary extracted
+  // from the corpus is a much stronger signal than embedding similarity
+  // alone, which can conflate proper nouns that merely look alike.
+  function findMatchedEntities(text: string): string[] {
+    const matched: string[] = [];
+    for (const entity of entityVocabulary) {
+      const re = new RegExp(`\\b${escapeRegex(entity)}\\b`, 'i');
+      if (re.test(text)) matched.push(entity);
+    }
+    // Drop a match that's wholly contained in a longer match already found
+    // (e.g. don't also report "Shah" once "Shah Jahan" already matched).
+    return matched.filter((e, idx) =>
+      !matched.slice(0, idx).some(longer => longer !== e && longer.toLowerCase().includes(e.toLowerCase()))
+    );
+  }
+
+  // Splits text into segments so matched entity spans can be rendered with
+  // a highlight — built as data (not {@html}) since the question/answer
+  // text is plain, not markup.
+  function highlightSegments(text: string, entities: string[]): { text: string; hl: boolean }[] {
+    if (entities.length === 0) return [{ text, hl: false }];
+    const pattern = new RegExp(`\\b(${[...entities].sort((a, b) => b.length - a.length).map(escapeRegex).join('|')})\\b`, 'gi');
+    const segments: { text: string; hl: boolean }[] = [];
+    let lastIndex = 0;
+    for (const m of text.matchAll(pattern)) {
+      if (m.index! > lastIndex) segments.push({ text: text.slice(lastIndex, m.index), hl: false });
+      segments.push({ text: m[0], hl: true });
+      lastIndex = m.index! + m[0].length;
+    }
+    if (lastIndex < text.length) segments.push({ text: text.slice(lastIndex), hl: false });
+    return segments;
+  }
+
   let draft = $state('');
   // A lone name or a couple of words gives the embedding model nothing to
   // disambiguate with (e.g. "Shah Jahan" alone can match a Bollywood-cast
@@ -49,7 +93,7 @@
   const isShortDraft = $derived(draftWordCount > 0 && draftWordCount < 6);
   let status = $state<'idle' | 'loading-model' | 'loading-corpus' | 'searching' | 'done' | 'error'>('idle');
   let errorMessage = $state('');
-  let results = $state<{ question: Question; score: number }[]>([]);
+  let results = $state<{ question: Question; score: number; matchedEntities: string[] }[]>([]);
 
   type IndexStatus = { ok: boolean; corpus_count: number | null; total_questions: number | null; last_success: string | null };
   let indexStatus = $state<IndexStatus | null>(null);
@@ -114,9 +158,24 @@
       }
       scored.sort((a, b) => b.score - a.score);
 
-      results = scored.slice(0, 10)
+      // Take a wider candidate pool than the final 10 so an exact entity
+      // match that embedding similarity alone ranked outside the top 10
+      // still gets a chance to surface once boosted below.
+      const matchedQueryEntities = findMatchedEntities(text);
+      const pool = scored.slice(0, 100)
         .map(({ i, score }) => ({ question: questionById.get(corpusIds![i])!, score }))
-        .filter(r => r.question);
+        .filter(r => r.question)
+        .map(r => ({
+          ...r,
+          matchedEntities: matchedQueryEntities.filter(e => store.getQuestionEntities(r.question.id).includes(e)),
+        }));
+
+      pool.sort((a, b) => {
+        if (a.matchedEntities.length !== b.matchedEntities.length) return b.matchedEntities.length - a.matchedEntities.length;
+        return b.score - a.score;
+      });
+
+      results = pool.slice(0, 10);
       status = 'done';
     } catch (e) {
       console.error(e);
@@ -245,16 +304,18 @@
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
           {MODE_COPY[mode].resultsHeading}
         </p>
-        {#each results as { question, score } (question.id)}
+        {#each results as { question, score, matchedEntities } (question.id)}
           {@const pct = scorePct(score)}
           {@const source = sourceBadge(question)}
+          {@const questionSegments = highlightSegments(question.question.text, matchedEntities)}
+          {@const answerSegments = question.answer?.text ? highlightSegments(question.answer.text, matchedEntities) : null}
           <a
             href="/question/{question.id}"
-            class="block bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
+            class="block bg-ui-card rounded-xl border {matchedEntities.length > 0 ? 'border-green-300 dark:border-green-700' : 'border-gray-200 dark:border-gray-700'} shadow-sm hover:shadow-md hover:border-primary-200 transition-all p-4"
           >
             <div class="flex items-start justify-between gap-3">
               <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-1.5 mb-1.5">
+                <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
                   <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded {source.cls}">
                     {source.label}
                   </span>
@@ -263,13 +324,18 @@
                       Connect round
                     </span>
                   {/if}
+                  {#if matchedEntities.length > 0}
+                    <span class="inline-block text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                      ✓ Exact match: {matchedEntities.join(', ')}
+                    </span>
+                  {/if}
                 </div>
                 <p class="text-sm text-gray-800 dark:text-gray-200 line-clamp-3">
-                  {question.question.text}
+                  {#each questionSegments as seg}{#if seg.hl}<mark class="bg-green-200 dark:bg-green-700/60 text-inherit rounded px-0.5">{seg.text}</mark>{:else}{seg.text}{/if}{/each}
                 </p>
-                {#if question.answer?.text}
+                {#if answerSegments}
                   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-1">
-                    <span class="font-medium">Answer:</span> {question.answer.text}
+                    <span class="font-medium">Answer:</span> {#each answerSegments as seg}{#if seg.hl}<mark class="bg-green-200 dark:bg-green-700/60 text-inherit rounded px-0.5">{seg.text}</mark>{:else}{seg.text}{/if}{/each}
                   </p>
                 {/if}
               </div>
