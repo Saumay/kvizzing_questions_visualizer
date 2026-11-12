@@ -51,7 +51,6 @@
   });
   const allQuestions = $derived(store.getQuestions());
   const likedQuestions = $derived(allQuestions.filter(q => likedAt.has(q.id)));
-  const likedDates = $derived([...likedAt.values()]);
 
   const hostedSessions = $derived(
     store.getSessions()
@@ -64,7 +63,7 @@
   }
 
   const shown = $derived.by(() => {
-    if (tab === 'liked') return selectedDate ? likedQuestions.filter(q => likedAt.get(q.id) === selectedDate) : likedQuestions;
+    if (tab === 'liked') return likedQuestions;
     if (tab === 'sessions') return [];
     let list = tab === 'asked' ? askedQuestions : solvedQuestions;
     if (selectedDate) list = list.filter(q => q.date === selectedDate);
@@ -73,7 +72,7 @@
   });
   const shownSessions = $derived(selectedDate ? hostedSessions.filter(s => s.date === selectedDate) : hostedSessions);
 
-  function jumpToDate(forTab: 'asked' | 'solved' | 'liked' | 'sessions', dateKey: string) {
+  function jumpToDate(forTab: 'asked' | 'solved' | 'sessions', dateKey: string) {
     tab = forTab;
     selectedTopic = null;
     selectedDate = dateKey;
@@ -178,12 +177,6 @@
       <ActivityHeatmap dates={solvedDates} onDayClick={(d) => jumpToDate('solved', d)} />
     </div>
   {/if}
-  {#if likedDates.length > 0}
-    <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
-      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Likes given (past year)</h2>
-      <ActivityHeatmap dates={likedDates} onDayClick={(d) => jumpToDate('liked', d)} />
-    </div>
-  {/if}
   {#if hostedSessions.length > 0}
     <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
       <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Sessions hosted (past year)</h2>
@@ -229,17 +222,17 @@
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Solved ({solvedQuestions.length})</button>
       <button
+        onclick={() => tab = 'sessions'}
+        class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'sessions'
+          ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
+          : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
+      >Quiz Sessions ({hostedSessions.length})</button>
+      <button
         onclick={() => tab = 'liked'}
         class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'liked'
           ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
           : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
       >Liked ({likedQuestions.length})</button>
-      <button
-        onclick={() => tab = 'sessions'}
-        class="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors {tab === 'sessions'
-          ? 'bg-primary-50 text-primary-600 dark:bg-primary-500/20 dark:text-primary-400'
-          : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}"
-      >Sessions ({hostedSessions.length})</button>
       {#if selectedDate}
         <span class="text-xs text-gray-400 dark:text-gray-500 ml-1 flex items-center gap-1">
           Date: {selectedDate}
