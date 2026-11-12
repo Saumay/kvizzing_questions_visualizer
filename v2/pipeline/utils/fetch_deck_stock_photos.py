@@ -8,9 +8,12 @@ generated banners (images/decks/), which this script never touches, so the
 current generated images stay exactly as they are. Also writes an
 attribution manifest, since CC licenses require crediting the photographer.
 
-Standalone script, not wired into pipeline.py (same pattern as
-generate_deck_banners.py). Run manually from v2/pipeline/:
-    python3 -m utils.fetch_deck_stock_photos
+Incremental: a deck that already has an image file and an attribution entry
+is skipped, so calling this on every pipeline export (see pipeline.py's
+_maybe_fetch_deck_stock_photos) only fetches newly-added decks, not all of
+them again. Pass --force to re-fetch everything (e.g. after a query-building
+change). Run manually from v2/pipeline/:
+    python3 -m utils.fetch_deck_stock_photos [--force]
 """
 import json
 import re
@@ -66,10 +69,49 @@ TITLE_STOPWORDS = {
 }
 
 
-def title_keywords(title: str) -> str:
+# A handful of common quiz-title words are genuinely ambiguous on their own
+# (e.g. "cricket" the sport vs. the insect vs. a surname/place name), so a
+# bare title match for one of these gets a disambiguating phrase appended
+# rather than relying on the topic bucket, which is often "general" anyway
+# for a deck that hasn't been transcribed yet and so has no real topic data.
+WORD_DISAMBIGUATION = {
+    "cricket": "cricket sport bat ball stadium",
+    "football": "football soccer sport stadium",
+    "soccer": "soccer football sport stadium",
+    "tennis": "tennis sport racket court",
+    "chess": "chess board game pieces",
+    "poker": "poker playing cards game table",
+    "rugby": "rugby sport stadium",
+    "cycling": "cycling bicycle sport",
+    "golf": "golf sport course",
+    "basketball": "basketball sport court",
+    "hockey": "hockey sport stadium",
+    "boxing": "boxing sport ring gloves",
+    "formula": "formula 1 racing car track",
+    "f1": "formula 1 racing car track",
+    "badminton": "badminton sport racket court",
+    "swimming": "swimming pool sport",
+    "athletics": "athletics track field sport",
+    "olympics": "olympics sport stadium",
+}
+
+
+def title_keywords(title: str) -> tuple[str, bool]:
+    """Returns (query keywords, whether a disambiguation phrase was applied).
+
+    Openverse's search degrades to zero results once a query stacks too many
+    disjoint terms (confirmed: a 4-word query mixing an unrelated topic phrase
+    into a specific term returned 0 results, while the term alone returned
+    hundreds) - so a disambiguated term must NOT also get the generic topic
+    phrase appended on top in main().
+    """
     cleaned = re.sub(r"[:–—\-\(\)\[\]'\".,!?]", " ", title)
     words = [w for w in cleaned.split() if w.lower() not in TITLE_STOPWORDS and not w.isdigit()]
-    return " ".join(words).strip()
+    kw = " ".join(words).strip()
+    extra = [WORD_DISAMBIGUATION[w.lower()] for w in words if w.lower() in WORD_DISAMBIGUATION]
+    if extra:
+        kw = f"{kw} {' '.join(extra)}"
+    return kw, bool(extra)
 
 
 def dominant_topic_for_deck(session_ids: set[str], questions: list[dict]) -> str:
@@ -106,7 +148,8 @@ def download(url: str, dest: Path) -> None:
         dest.write_bytes(resp.read())
 
 
-def main() -> None:
+def main(force: bool = False) -> int:
+    """Returns the number of decks newly fetched (0 if nothing was new)."""
     decks = json.loads((DATA_DIR / "decks.json").read_text())
     questions = json.loads((DATA_DIR / "questions.json").read_text())
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -122,25 +165,52 @@ def main() -> None:
     for s in decks.get("standalone", []):
         entries.append((s["id"], s["title"], {f"deck-{s['id']}"}))
 
-    # Many decks share a dominant topic (most things default to "cinema" or
-    # "general"), and always taking the #1 result for an identical query
-    # meant every deck in a topic bucket got the exact same photo. Round-robin
-    # through each topic's result pool, and track every chosen result's id
-    # globally so no two decks - even across different topics - ever end up
-    # with the same photo.
-    used_ids: set[str] = set()
-    used_index_by_topic: dict[str, int] = {}
+    # Several decks can land on the exact same QUERY (most commonly the bare
+    # "general" topic phrase, when a title has no usable keywords), and
+    # always taking the #1 result for an identical query meant every one of
+    # them got the exact same photo. Round-robin through each query's own
+    # result pool - keyed by the query string itself, NOT by topic bucket -
+    # and track every chosen result's id globally so no two decks ever end up
+    # with the same photo either. Keying by topic instead of query was tried
+    # first and was wrong: it put a highly-specific disambiguated query (e.g.
+    # "cricket ...") on the same shared counter as every unrelated "general"-
+    # topic deck, so by the time a few other general decks had incremented
+    # it, the cricket deck's own round-robin slot pointed deep past its first
+    # page of genuinely cricket-relevant results into irrelevant ones -
+    # confirmed: idx=16 into a 20-result page picked an unrelated anthem
+    # photo, while idx=0 (this fix) on that same query's own counter picks
+    # straight from its most relevant results. A query unique to one deck
+    # naturally gets idx=0 (its best result); only a query several decks
+    # share in common gets spread via round-robin.
+    # Seeded from the existing manifest (rather than starting empty) so an
+    # incremental run - called after every pipeline export, same as
+    # generate_deck_banners.py - never repeats a photo already assigned to a
+    # deck it's skipping this run, and keeps spreading new decks across
+    # shared query pools rather than always restarting at slot 0.
+    used_ids: set[str] = {e["openverse_id"] for e in attribution.values() if e.get("openverse_id")}
+    used_index_by_query: dict[str, int] = dict(Counter(e["query"] for e in attribution.values() if e.get("query")))
+    fetched = 0
 
     for deck_id, title, session_ids in entries:
+        dest = OUTPUT_DIR / f"{deck_id}.jpg"
+        if not force and deck_id in attribution and dest.exists():
+            continue
         topic = dominant_topic_for_deck(session_ids, questions)
         topic_phrase = TOPIC_QUERY.get(topic, TOPIC_QUERY["general"])
-        kw = title_keywords(title)
+        kw, disambiguated = title_keywords(title)
         # Lead with the deck's own title keywords (the specific, visual part)
         # and keep the topic phrase appended as grounding context, so a
-        # title with no usable content words still gets a sensible query.
-        query = f"{kw} {topic_phrase}".strip() if kw else topic_phrase
-        idx = used_index_by_topic.get(topic, 0)
-        used_index_by_topic[topic] = idx + 1
+        # title with no usable content words still gets a sensible query -
+        # UNLESS a disambiguation phrase already applied, since stacking all
+        # three (title + disambiguation + topic phrase) zeroes out results.
+        if disambiguated:
+            query = kw
+        elif kw:
+            query = f"{kw} {topic_phrase}".strip()
+        else:
+            query = topic_phrase
+        idx = used_index_by_query.get(query, 0)
+        used_index_by_query[query] = idx + 1
         print(f"{deck_id} ({title}) -> topic={topic} query={query!r} slot={idx}")
 
         chosen = None
@@ -184,13 +254,13 @@ def main() -> None:
             print("  ! no unused candidate found anywhere")
             continue
         used_ids.add(chosen["id"])
-        dest = OUTPUT_DIR / f"{deck_id}.jpg"
         try:
             download(chosen["url"], dest)
         except Exception as e:
             print(f"  ! download failed: {e}")
             continue
         attribution[deck_id] = {
+            "openverse_id": chosen.get("id"),
             "title": chosen.get("title"),
             "creator": chosen.get("creator"),
             "creator_url": chosen.get("creator_url"),
@@ -199,13 +269,17 @@ def main() -> None:
             "license_url": chosen.get("license_url"),
             "source_url": chosen.get("foreign_landing_url"),
             "topic": topic,
+            "query": query,
         }
+        fetched += 1
         time.sleep(1)  # be polite to the free, keyless API
 
     ATTRIBUTION_PATH.write_text(json.dumps(attribution, indent=2))
-    print(f"\nWrote {len(attribution)} images to {OUTPUT_DIR}")
+    print(f"\nFetched {fetched} new image(s) ({len(attribution)} total) in {OUTPUT_DIR}")
     print(f"Attribution manifest: {ATTRIBUTION_PATH}")
+    return fetched
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(force="--force" in sys.argv)

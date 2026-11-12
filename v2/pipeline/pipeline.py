@@ -255,6 +255,7 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     )
     _maybe_attach_deck_links(output_dir)
     _maybe_regenerate_backlog_report()
+    _maybe_fetch_deck_stock_photos()
     _maybe_deploy_dashboard()
     return counts
 
@@ -305,6 +306,26 @@ def _maybe_regenerate_backlog_report() -> None:
         log.warning(
             "Backlog report regeneration failed (%s: %s) — export succeeded OK, "
             "run utils/backlog_report.py manually to catch up.", type(e).__name__, e,
+        )
+
+
+def _maybe_fetch_deck_stock_photos() -> None:
+    """
+    Best-effort: fetch a real CC-licensed stock photo for any deck that
+    doesn't have one yet (see utils/fetch_deck_stock_photos.py) after every
+    export, so a newly-added deck - e.g. from the weekly decks sync - gets an
+    appropriate photo without a separate manual step. Incremental: decks
+    that already have one are skipped, so this is a no-op network-wise on
+    exports with no new decks.
+    Never blocks or fails the real export on a fetch/network error.
+    """
+    try:
+        from utils.fetch_deck_stock_photos import main as _fetch_stock_main
+        _fetch_stock_main()
+    except Exception as e:
+        log.warning(
+            "Deck stock-photo fetch failed (%s: %s) — export succeeded OK, "
+            "run utils/fetch_deck_stock_photos.py manually to catch up.", type(e).__name__, e,
         )
 
 

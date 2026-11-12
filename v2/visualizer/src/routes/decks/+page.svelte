@@ -173,9 +173,14 @@
   // real, topic-matched CC-licensed photo fetched per deck by
   // pipeline/utils/fetch_deck_stock_photos.py — same no-existence-check,
   // render-nothing-if-missing behavior.
+  //
+  // A deck with no session imported yet (still live / not transcribed) has
+  // no generated banner worth showing — generate_deck_banners.py only runs
+  // once real question content exists — so those always get the real stock
+  // photo regardless of the toggle, keyed off its title alone.
   let useStockPhotos = $state(false);
-  function deckBannerUrl(id: string): string {
-    return useStockPhotos ? `/images/decks-stock/${id}.jpg` : `/images/decks/${id}.jpg`;
+  function deckBannerUrl(id: string, isLive = false): string {
+    return (useStockPhotos || isLive) ? `/images/decks-stock/${id}.jpg` : `/images/decks/${id}.jpg`;
   }
 
   function roundSize(files: DeckFile[]): number {
@@ -624,7 +629,7 @@
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {#each group.cards as card (card.id)}
                   {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
-                  {@const imgUrl = deckBannerUrl(card.id)}
+                  {@const imgUrl = deckBannerUrl(card.id, card.questionCount === null)}
                   <!-- svelte-ignore a11y_no_static_element_interactions -->
                   <!-- svelte-ignore a11y_click_events_have_key_events -->
                   <div
