@@ -2,6 +2,7 @@
   import { getContext } from 'svelte';
   import { formatDate } from '$lib/utils/time';
   import { SESSION_IMAGE_FILTER } from '$lib/config/ui';
+  import { topicHex } from '$lib/utils/topicColors';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import EmptyState from '$lib/components/EmptyState.svelte';
   import TopicFilter from '$lib/components/TopicFilter.svelte';
@@ -91,6 +92,38 @@
     return GRADIENTS[hashString(id) % GRADIENTS.length];
   }
 
+  function darken(hex: string, amount: number): string {
+    const n = parseInt(hex.slice(1), 16);
+    const r = Math.round(((n >> 16) & 255) * (1 - amount));
+    const g = Math.round(((n >> 8) & 255) * (1 - amount));
+    const b = Math.round((n & 255) * (1 - amount));
+    return `#${[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('')}`;
+  }
+
+  // Card color reflects what the quiz was actually about — its most common
+  // topic across every question in the session(s) it covers — rather than
+  // an arbitrary hash, so similar-themed quizzes read as similar colors.
+  // Falls back to the old hash-based palette when there's no topic data
+  // (e.g. a deck round whose questions haven't been imported yet).
+  function dominantTopic(sessionIds: string[]): string | null {
+    const counts = new Map<string, number>();
+    for (const id of sessionIds) {
+      for (const [topic, count] of sessionTopicCounts.get(id) ?? []) {
+        if (topic === 'general') continue;
+        counts.set(topic, (counts.get(topic) ?? 0) + count);
+      }
+    }
+    if (counts.size === 0) return null;
+    return [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  }
+
+  function gradientForCard(sessionIds: string[], fallbackId: string): [string, string] {
+    const topic = dominantTopic(sessionIds);
+    if (!topic) return gradientFor(fallbackId);
+    const hex = topicHex(topic);
+    return [darken(hex, 0.55), darken(hex, 0.3)];
+  }
+
   function emojiFor(title: string): string {
     const t = title.toLowerCase();
     if (t.includes('gauntlet')) return '🥊';
@@ -172,22 +205,27 @@
   }
 
   // Topics live on individual questions, not on the deck manifest, so build
-  // a session ID → topic set once from the question store rather than
-  // looking them up per round on every filter pass.
-  const sessionTopics = $derived.by(() => {
-    const map = new Map<string, Set<string>>();
+  // a session ID → topic → question-count map once from the question store
+  // rather than looking them up per round on every filter/color pass. The
+  // counts (not just presence) are what let dominantTopic() below pick the
+  // session's most common topic for its card color.
+  const sessionTopicCounts = $derived.by(() => {
+    const map = new Map<string, Map<string, number>>();
     for (const q of store.getQuestions()) {
       if (!q.session?.id) continue;
-      const set = map.get(q.session.id) ?? new Set<string>();
-      for (const t of q.question.topics ?? []) set.add(t);
-      map.set(q.session.id, set);
+      const counts = map.get(q.session.id) ?? new Map<string, number>();
+      for (const t of q.question.topics ?? []) {
+        if (!t) continue;
+        counts.set(t, (counts.get(t) ?? 0) + 1);
+      }
+      map.set(q.session.id, counts);
     }
     return map;
   });
 
   function matchesTopics(sessionId: string): boolean {
     if (filterTopics.size === 0) return true;
-    const topics = sessionTopics.get(sessionId);
+    const topics = sessionTopicCounts.get(sessionId);
     if (!topics) return false;
     return [...filterTopics].some(t => topics.has(t));
   }
@@ -280,7 +318,8 @@
   // sortable/groupable list, each rendered as the same banner-style card.
   type TimelineCard = {
     id: string; kind: 'series' | 'standalone'; title: string; subtitle: string;
-    badge: string; recording: boolean; count: number; latestDate: string; onSelect: () => void;
+    badge: string; recording: boolean; count: number; latestDate: string;
+    sessionIds: string[]; onSelect: () => void;
   };
 
   const timelineCards = $derived.by((): TimelineCard[] => {
@@ -294,6 +333,7 @@
         recording: seriesHasRecording(s),
         count: s.rounds.length,
         latestDate: latest.date,
+        sessionIds: s.rounds.map(r => roundSessionId(s.id, r.round)),
         onSelect: () => openSeries = s,
       });
     }
@@ -306,6 +346,7 @@
         recording: !single && hasRecording(d.files),
         count: 1,
         latestDate: d.date,
+        sessionIds: [standaloneSessionId(d.id)],
         onSelect: () => {
           if (single) { if (single.url) window.open(single.url, '_blank', 'noopener'); }
           else { openStandalone = d; }
@@ -464,7 +505,7 @@
   {:else}
     <!-- Hero: flagship series -->
     {#if heroSeries}
-      {@const [c1, c2] = gradientFor(heroSeries.id)}
+      {@const [c1, c2] = gradientForCard(heroSeries.rounds.map(r => roundSessionId(heroSeries.id, r.round)), heroSeries.id)}
       {@const imgUrl = deckBannerUrl(heroSeries.id)}
       {@const hosts = seriesHosts(heroSeries)}
       <button
@@ -534,7 +575,7 @@
               {/if}
               <div class="space-y-3">
                 {#each group.cards as card (card.id)}
-                  {@const [c1, c2] = gradientFor(card.id)}
+                  {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
                   {@const imgUrl = deckBannerUrl(card.id)}
                   <button
                     onclick={card.onSelect}
