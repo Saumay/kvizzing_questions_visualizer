@@ -84,7 +84,7 @@
 
 <div class="space-y-6 max-w-4xl">
   <div>
-    <div class="flex items-center gap-3 flex-wrap">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
       <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
         {mode === 'deck' ? 'Check a Presentation for Duplicates' : MODE_COPY[mode].title}
       </h1>

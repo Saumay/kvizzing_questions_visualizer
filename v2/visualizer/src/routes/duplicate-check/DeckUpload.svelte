@@ -142,19 +142,41 @@
       }
 
       if (slide.matches && slide.matches.length > 0) {
-        const pct = scorePct(slide.matches[0].score);
-        const label = pct >= 80 ? 'Very likely a duplicate' : pct >= 60 ? 'Similar theme' : 'Loosely related';
-        doc.setFont('helvetica', 'bold');
+        for (const [i, m] of slide.matches.slice(0, 3).entries()) {
+          const pct = scorePct(m.score);
+          const label = pct >= 80 ? 'Very likely a duplicate' : pct >= 60 ? 'Similar theme' : 'Loosely related';
+          doc.setFont('helvetica', 'bold');
+          ensureSpace(14);
+          doc.text(`Match ${i + 1}: ${pct}% - ${label}`, margin, y);
+          y += 14;
+          doc.setFont('helvetica', 'normal');
+          const matchLines = doc.splitTextToSize(m.question.question.text, contentWidth);
+          ensureSpace(matchLines.length * 12);
+          doc.setTextColor(90);
+          doc.text(matchLines, margin, y);
+          doc.setTextColor(0);
+          y += matchLines.length * 12 + 6;
+        }
+
+        // Matches are already sorted best-first, so the verdict is always
+        // about Match 1 - this just states plainly whether it clears the
+        // duplicate bar instead of leaving the reader to read the percentage
+        // and decide for themselves.
+        const topPct = scorePct(slide.matches[0].score);
         ensureSpace(14);
-        doc.text(`${pct}% match - ${label}`, margin, y);
-        y += 14;
-        doc.setFont('helvetica', 'normal');
-        const matchLines = doc.splitTextToSize(slide.matches[0].question.question.text, contentWidth);
-        ensureSpace(matchLines.length * 12);
-        doc.setTextColor(90);
-        doc.text(matchLines, margin, y);
+        doc.setFont('helvetica', 'bold');
+        if (topPct >= 80) {
+          doc.setTextColor(180, 0, 0);
+          doc.text(`Verdict: Match 1 looks like a duplicate (${topPct}%).`, margin, y);
+        } else if (topPct >= 60) {
+          doc.setTextColor(170, 120, 0);
+          doc.text(`Verdict: Match 1 is a similar theme (${topPct}%), not clearly a duplicate.`, margin, y);
+        } else {
+          doc.setTextColor(0, 140, 0);
+          doc.text('Verdict: no likely duplicate among these matches.', margin, y);
+        }
         doc.setTextColor(0);
-        y += matchLines.length * 12;
+        y += 14;
       } else if (checkStatus === 'done') {
         ensureSpace(12);
         doc.setTextColor(0, 140, 0);
