@@ -460,9 +460,9 @@
   const navLinks = [
     { href: '/', label: 'Feed' },
     { href: '/sessions', label: 'Quiz sessions' },
-    { href: '/highlights', label: 'Highlights' },
     { href: '/decks', label: 'Live Sessions' },
     { href: '/duplicate-check', label: 'Check Duplicates' },
+    { href: '/highlights', label: 'Highlights' },
   ];
 
   function isActive(href: string, currentPath: string): boolean {
