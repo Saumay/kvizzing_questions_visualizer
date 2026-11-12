@@ -13,6 +13,7 @@ generate_deck_banners.py). Run manually from v2/pipeline/:
     python3 -m utils.fetch_deck_stock_photos
 """
 import json
+import re
 import time
 import urllib.parse
 import urllib.request
@@ -52,6 +53,23 @@ TOPIC_QUERY = {
 }
 
 HEADERS = {"User-Agent": "KVizzing-deck-banner-experiment/1.0 (non-commercial research tool)"}
+
+# Quiz-boilerplate words that carry no visual meaning on their own, stripped
+# from a deck's title before using it as a search query - keeps real content
+# words ("Cricket", "Triwizard", "Harry Potter", "MTV", "Breaking Bad") so
+# the photo is about the actual quiz, not just its dominant topic bucket.
+TITLE_STOPWORDS = {
+    "quiz", "kviz", "kvizzing", "tournament", "tourney", "qotd", "round",
+    "final", "part", "edition", "session", "sessions", "deck", "old", "new",
+    "the", "a", "an", "of", "and", "with", "for", "by", "on", "in", "at",
+    "to", "vs", "is", "it", "this", "that",
+}
+
+
+def title_keywords(title: str) -> str:
+    cleaned = re.sub(r"[:–—\-\(\)\[\]'\".,!?]", " ", title)
+    words = [w for w in cleaned.split() if w.lower() not in TITLE_STOPWORDS and not w.isdigit()]
+    return " ".join(words).strip()
 
 
 def dominant_topic_for_deck(session_ids: set[str], questions: list[dict]) -> str:
@@ -115,7 +133,12 @@ def main() -> None:
 
     for deck_id, title, session_ids in entries:
         topic = dominant_topic_for_deck(session_ids, questions)
-        query = TOPIC_QUERY.get(topic, TOPIC_QUERY["general"])
+        topic_phrase = TOPIC_QUERY.get(topic, TOPIC_QUERY["general"])
+        kw = title_keywords(title)
+        # Lead with the deck's own title keywords (the specific, visual part)
+        # and keep the topic phrase appended as grounding context, so a
+        # title with no usable content words still gets a sensible query.
+        query = f"{kw} {topic_phrase}".strip() if kw else topic_phrase
         idx = used_index_by_topic.get(topic, 0)
         used_index_by_topic[topic] = idx + 1
         print(f"{deck_id} ({title}) -> topic={topic} query={query!r} slot={idx}")
@@ -134,14 +157,12 @@ def main() -> None:
             chosen = next((c for c in ordered if c["id"] not in used_ids), None)
             if chosen:
                 break
-        if not chosen:
-            # A generic topic bucket (especially "general") can run out of
-            # genuinely distinct results after a few pages. Fall back to a
-            # query built from the deck's own title, which both widens the
-            # pool and makes the photo a bit more specific to this quiz.
-            fallback_query = f"{query} {title}"
+        if not chosen and kw:
+            # The title keywords may be too narrow/specific to have 60
+            # results across 3 pages. Drop them and widen to the plain
+            # topic phrase before giving up on relevance entirely.
             try:
-                candidates = fetch_openverse_candidates(fallback_query, page=1)
+                candidates = fetch_openverse_candidates(topic_phrase, page=1)
                 chosen = next((c for c in candidates if c["id"] not in used_ids), None)
             except Exception as e:
                 print(f"  ! fallback fetch failed: {e}")

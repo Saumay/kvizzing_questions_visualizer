@@ -204,7 +204,7 @@
       <span class="inline-block w-5 h-3.5 rounded {CALENDAR_PILL.sessions.bg}"></span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Quiz sessions</span>
     </a>
-    <a href="/sessions" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
+    <a href="/decks" class="flex items-center gap-1.5 hover:opacity-75 transition-opacity">
       <span class="text-xs leading-none">⭐</span>
       <span class="text-[10px] text-gray-600 dark:text-gray-300">Live session</span>
     </a>

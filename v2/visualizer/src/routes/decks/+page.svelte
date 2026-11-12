@@ -650,8 +650,9 @@
                       <div class="min-w-0">
                         <p class="text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">{card.title}</p>
                         {#if card.kind === 'series'}
-                          <p class="text-[11px] sm:text-xs font-semibold text-white/85 mt-1 truncate">
-                            {card.count} session{card.count !== 1 ? 's' : ''}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
+                          <p class="mt-1 truncate">
+                            <span class="text-sm sm:text-base font-extrabold text-white">{card.count} session{card.count !== 1 ? 's' : ''}</span>
+                            {#if card.questionCount}<span class="text-[11px] sm:text-xs font-medium text-white/85"> · {card.questionCount} questions</span>{/if}
                           </p>
                         {:else}
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">

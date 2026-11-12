@@ -40,13 +40,13 @@
     "topic": "business"
   },
   "movie-quiz-bijal": {
-    "title": "Krikorian Premiere Theatres",
-    "creator": "\u201cCaveman Chuck\u201d Coker",
-    "creator_url": "https://www.flickr.com/photos/28402283@N07",
-    "license": "by-nd",
+    "title": "GO-60-F001",
+    "creator": "johanoomen",
+    "creator_url": "https://www.flickr.com/photos/76929468@N00",
+    "license": "by-sa",
     "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by-nd/2.0/",
-    "source_url": "https://www.flickr.com/photos/28402283@N07/4137095121",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "source_url": "https://www.flickr.com/photos/76929468@N00/4231032188",
     "topic": "cinema"
   },
   "buzzing-whatsapp-namrata": {
@@ -60,13 +60,13 @@
     "topic": "entertainment"
   },
   "buzzing-entertainment": {
-    "title": "Teenager wears Real 3D Glasses",
-    "creator": "Photo Extremist",
-    "creator_url": "https://www.flickr.com/photos/27027945@N07",
+    "title": "Krikorian Premiere Theatres",
+    "creator": "\u201cCaveman Chuck\u201d Coker",
+    "creator_url": "https://www.flickr.com/photos/28402283@N07",
     "license": "by-nd",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by-nd/2.0/",
-    "source_url": "https://www.flickr.com/photos/27027945@N07/4839131244",
+    "source_url": "https://www.flickr.com/photos/28402283@N07/4137095121",
     "topic": "cinema"
   },
   "breaking-bad-quiz": {
@@ -110,16 +110,26 @@
     "topic": "literature"
   },
   "bollywood-kviz": {
-    "title": "Warrior Queen Sabine Mondestin",
-    "creator": "Sabine Mondestin",
-    "creator_url": "https://www.flickr.com/photos/12932354@N05",
+    "title": "India - ' Bollywood ' Ja\u00efpur (Rajasthan) Raj Mandir",
+    "creator": "(vincent desjardins)",
+    "creator_url": "https://www.flickr.com/photos/44613506@N07",
     "license": "by",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/12932354@N05/14435451777",
+    "source_url": "https://www.flickr.com/photos/44613506@N07/4840236555",
     "topic": "cinema"
   },
   "buzzer-bhide": {
+    "title": "Pregame flyover",
+    "creator": "cho_kettie",
+    "creator_url": "https://www.flickr.com/photos/23185977@N08",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/23185977@N08/4193147269",
+    "topic": "sports"
+  },
+  "tapish-sports": {
     "title": "Project 365 #200: 190713 The Finishing Line",
     "creator": "comedy_nose",
     "creator_url": "https://www.flickr.com/photos/23408922@N07",
@@ -127,16 +137,6 @@
     "license_version": "1.0",
     "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
     "source_url": "https://www.flickr.com/photos/23408922@N07/9320845849",
-    "topic": "sports"
-  },
-  "tapish-sports": {
-    "title": "Old Trafford Manchester United",
-    "creator": "Paolo Camera",
-    "creator_url": "https://www.flickr.com/photos/81265351@N00",
-    "license": "by",
-    "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/81265351@N00/5293656547",
     "topic": "sports"
   },
   "history-smit": {
@@ -170,23 +170,23 @@
     "topic": "cinema"
   },
   "may-the-4th": {
-    "title": "Cinematic Turku",
-    "creator": "jeppe2",
-    "creator_url": "https://www.flickr.com/photos/8358093@N08",
-    "license": "by",
+    "title": "Teenager wears Real 3D Glasses",
+    "creator": "Photo Extremist",
+    "creator_url": "https://www.flickr.com/photos/27027945@N07",
+    "license": "by-nd",
     "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/8358093@N08/3271735032",
+    "license_url": "https://creativecommons.org/licenses/by-nd/2.0/",
+    "source_url": "https://www.flickr.com/photos/27027945@N07/4839131244",
     "topic": "cinema"
   },
   "old-school-kp": {
-    "title": "05-08-1947_01673 City Theater",
-    "creator": "IISG",
-    "creator_url": "https://www.flickr.com/photos/29780762@N07",
+    "title": "Brigsby Bear Review!",
+    "creator": "AntMan3001",
+    "creator_url": "https://www.flickr.com/photos/92461652@N07",
     "license": "by-sa",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-    "source_url": "https://www.flickr.com/photos/29780762@N07/4415038200",
+    "source_url": "https://www.flickr.com/photos/92461652@N07/36502206290",
     "topic": "cinema"
   },
   "swine-clue": {
@@ -200,23 +200,23 @@
     "topic": "politics"
   },
   "visual-buzzing-bijal": {
-    "title": "Old Lithuanian cinema in Bridgeport",
-    "creator": "mdanys",
-    "creator_url": "https://www.flickr.com/photos/91883096@N00",
+    "title": "Warrior Queen Sabine Mondestin",
+    "creator": "Sabine Mondestin",
+    "creator_url": "https://www.flickr.com/photos/12932354@N05",
     "license": "by",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/91883096@N00/3618117056",
+    "source_url": "https://www.flickr.com/photos/12932354@N05/14435451777",
     "topic": "cinema"
   },
   "yet-another-quiz": {
-    "title": "Nina Poon threefour Shankbone 2010 NYC",
-    "creator": "david_shankbone",
-    "creator_url": "https://www.flickr.com/photos/27865228@N06",
+    "title": "Cinematic Turku",
+    "creator": "jeppe2",
+    "creator_url": "https://www.flickr.com/photos/8358093@N08",
     "license": "by",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/27865228@N06/4549393968",
+    "source_url": "https://www.flickr.com/photos/8358093@N08/3271735032",
     "topic": "cinema"
   },
   "naman-avval-number": {
@@ -270,13 +270,13 @@
     "topic": "general"
   },
   "retro-bollywood-sameer": {
-    "title": "Ticked Off Trannies with Knives Cast Shot",
-    "creator": "david_shankbone",
-    "creator_url": "https://www.flickr.com/photos/27865228@N06",
-    "license": "by",
+    "title": "05-08-1947_01673 City Theater",
+    "creator": "IISG",
+    "creator_url": "https://www.flickr.com/photos/29780762@N07",
+    "license": "by-sa",
     "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/27865228@N06/4548762317",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "source_url": "https://www.flickr.com/photos/29780762@N07/4415038200",
     "topic": "cinema"
   },
   "general-quiz-smit-sep-2026": {
@@ -290,23 +290,23 @@
     "topic": "geography"
   },
   "long-connect-gautam": {
-    "title": "That Asian Thing, NYC, 7/27/08 - 1 of 3",
-    "creator": "goodrob13",
-    "creator_url": "https://www.flickr.com/photos/25030443@N03",
+    "title": "Old Lithuanian cinema in Bridgeport",
+    "creator": "mdanys",
+    "creator_url": "https://www.flickr.com/photos/91883096@N00",
     "license": "by",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/25030443@N03/2708242056",
+    "source_url": "https://www.flickr.com/photos/91883096@N00/3618117056",
     "topic": "cinema"
   },
   "random-quiz-namrata-aug-2026": {
-    "title": "Music",
-    "creator": "FunGi_ (Trading)",
-    "creator_url": "https://www.flickr.com/photos/44882119@N00",
-    "license": "by-sa",
+    "title": "I believe music to be the best invention of all time.",
+    "creator": "Rob Ellis'",
+    "creator_url": "https://www.flickr.com/photos/45597153@N05",
+    "license": "by",
     "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-    "source_url": "https://www.flickr.com/photos/44882119@N00/5712010773",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/45597153@N05/6154098610",
     "topic": "music"
   },
   "india-independence-qotd-shreya": {
@@ -320,13 +320,13 @@
     "topic": "history"
   },
   "india-quiz-smit-jul-2026": {
-    "title": "2009 Five Presidents George W. Bush, President Elect Barack Obama, Former Presidents George H W Bush, Bill Clinton, Jimmy Carter Portrait",
-    "creator": "Beverly & Pack",
-    "creator_url": "https://www.flickr.com/photos/10101046@N06",
-    "license": "pdm",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
-    "source_url": "https://www.flickr.com/photos/10101046@N06/3203364850",
+    "title": "13 - Voice",
+    "creator": "Kyle Taylor, Dream It. Do It.",
+    "creator_url": "https://www.flickr.com/photos/95672737@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/95672737@N00/2399310488",
     "topic": "politics"
   },
   "cricket-quiz-harsh": {
