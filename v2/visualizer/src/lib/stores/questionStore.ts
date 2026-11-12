@@ -54,14 +54,27 @@ export class QuestionStore {
         });
       }
       if (filters.asker) {
-        results = results.filter(q =>
-          q.question.asker.toLowerCase().includes(filters.asker!.toLowerCase())
-        );
+        const asker = filters.asker.toLowerCase();
+        results = results.filter(q => q.question.asker.toLowerCase() === asker);
       }
       if (filters.solver) {
-        results = results.filter(q =>
-          q.answer?.solver?.toLowerCase().includes(filters.solver!.toLowerCase())
-        );
+        // The solver field can be a composite string for ties ("TIE — Pavan /
+        // Khandoba") or multi-part connect answers ("X (person) / Y
+        // (process)"), so a plain substring match on the filter name wrongly
+        // matches it against an unrelated longer name that merely starts
+        // with the same word (e.g. "Pavan" matching inside "Pavan
+        // Pamidimarri", a different person). Split into individual name
+        // segments and require an exact match against one of them.
+        const solver = filters.solver.toLowerCase();
+        results = results.filter(q => {
+          const raw = q.answer?.solver;
+          if (!raw) return false;
+          return raw
+            .replace(/^TIE\s*[—-]\s*/i, '')
+            .split(/[/,;]/)
+            .map(s => s.replace(/^~\s*/, '').replace(/\s*\([^)]*\)\s*/g, '').trim().toLowerCase())
+            .some(name => name === solver);
+        });
       }
       if (filters.topic) {
         results = results.filter(q => q.question.topics?.includes(filters.topic!));
