@@ -645,15 +645,19 @@
                     <div class="relative flex flex-col justify-between h-full p-3 sm:p-4" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
                       <div class="flex items-start justify-between gap-2">
                         <span class="text-xl sm:text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
-                        {#if card.recording}<span class="text-sm flex-shrink-0" title="Recording available">🎥</span>{/if}
+                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                          {#if card.recording}<span class="text-sm" title="Recording available">🎥</span>{/if}
+                          {#if card.kind === 'series'}
+                            <span class="text-sm sm:text-base font-extrabold text-white leading-none">{card.count} session{card.count !== 1 ? 's' : ''}</span>
+                          {/if}
+                        </div>
                       </div>
                       <div class="min-w-0">
                         <p class="text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">{card.title}</p>
                         {#if card.kind === 'series'}
-                          <p class="mt-1 truncate">
-                            <span class="text-sm sm:text-base font-extrabold text-white">{card.count} session{card.count !== 1 ? 's' : ''}</span>
-                            {#if card.questionCount}<span class="text-[11px] sm:text-xs font-medium text-white/85"> · {card.questionCount} questions</span>{/if}
-                          </p>
+                          {#if card.questionCount}
+                            <p class="mt-1 truncate text-[11px] sm:text-xs font-medium text-white/85">{card.questionCount} questions</p>
+                          {/if}
                         {:else}
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">
                             {#if card.host}{#if store.getMember(card.host)}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.host}{/if}{:else}{card.badge}{/if}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
