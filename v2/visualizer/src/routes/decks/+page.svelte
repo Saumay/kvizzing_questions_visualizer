@@ -585,38 +585,29 @@
               {#if group.label}
                 <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-2">{group.label}</p>
               {/if}
-              <div class="space-y-3">
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {#each group.cards as card (card.id)}
                   {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
                   {@const imgUrl = deckBannerUrl(card.id)}
                   <button
                     onclick={card.onSelect}
-                    class="tile-grain group relative overflow-hidden block w-full text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    class="tile-grain group relative overflow-hidden text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400 aspect-square flex flex-col"
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
                     <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/12 to-black/0"></div>
-                    <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
-                      <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
-                        {#if card.recording}<span class="text-lg flex-shrink-0" title="Recording available">🎥</span>{/if}
-                        <div class="min-w-0">
-                          <p class="text-base font-bold text-white leading-tight truncate">{card.title}</p>
-                          <p class="text-sm font-medium text-white/85 mt-0.5 truncate">{card.subtitle}</p>
-                        </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-black/0"></div>
+                    <div class="relative flex flex-col justify-between h-full p-3 sm:p-4" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
+                      <div class="flex items-start justify-between gap-2">
+                        <span class="text-xl sm:text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
+                        {#if card.recording}<span class="text-sm flex-shrink-0" title="Recording available">🎥</span>{/if}
                       </div>
-                      <div class="flex items-center gap-4 flex-shrink-0">
+                      <div class="min-w-0">
+                        <p class="text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">{card.title}</p>
                         {#if card.kind === 'series'}
-                          <div class="text-right">
-                            <p class="text-xl sm:text-2xl font-black text-white leading-none">{card.count}</p>
-                            <p class="text-[9px] text-white/70 uppercase tracking-wide mt-0.5">session{card.count !== 1 ? 's' : ''}</p>
-                          </div>
+                          <p class="text-[11px] sm:text-xs font-semibold text-white/85 mt-1">{card.count} session{card.count !== 1 ? 's' : ''}</p>
                         {:else}
-                          <span class="text-xs font-medium text-white/85 whitespace-nowrap">{card.badge}</span>
+                          <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">{card.badge}</p>
                         {/if}
-                        <svg class="w-4 h-4 text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
                       </div>
                     </div>
                   </button>
