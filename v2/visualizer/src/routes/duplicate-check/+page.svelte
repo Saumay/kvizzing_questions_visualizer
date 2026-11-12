@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
+  import { getContext, onMount } from 'svelte';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import type { Question } from '$lib/types';
   import { formatDateTz } from '$lib/utils/time';
@@ -10,6 +10,26 @@
   const questionById = new Map(questions.map(q => [q.id, q]));
 
   const MODEL_ID = 'Xenova/all-MiniLM-L6-v2';
+
+  type Mode = 'duplicate' | 'topic';
+  let mode = $state<Mode>('duplicate');
+
+  const MODE_COPY: Record<Mode, { title: string; description: string; placeholder: string; cta: string; resultsHeading: string }> = {
+    duplicate: {
+      title: 'Check for Duplicates',
+      description: "Paste your draft question and search the full question bank for similar ones already asked, catching reworded repeats, not just exact-text matches. Everything runs in your browser, so your question is never sent anywhere or seen by anyone else.",
+      placeholder: "Type or paste the question you're drafting…",
+      cta: 'Check for duplicates',
+      resultsHeading: 'Closest matches',
+    },
+    topic: {
+      title: 'Search by Topic',
+      description: "Describe what you're looking for in plain language — a person, event, theme, anything — and find existing questions about it, even if they're worded completely differently. Same engine as duplicate-check, just read as \"what's been asked about X\" instead of \"has this exact question been asked\".",
+      placeholder: 'e.g. "questions about Shah Jahan" or "anything about 90s Bollywood music"…',
+      cta: 'Search',
+      resultsHeading: 'Related questions',
+    },
+  };
 
   // Corpus embeddings + the model pipeline are loaded once (lazily, on first
   // check) and cached at module scope so repeat searches on this page don't
@@ -23,6 +43,18 @@
   let status = $state<'idle' | 'loading-model' | 'loading-corpus' | 'searching' | 'done' | 'error'>('idle');
   let errorMessage = $state('');
   let results = $state<{ question: Question; score: number }[]>([]);
+
+  type IndexStatus = { ok: boolean; corpus_count: number | null; total_questions: number | null; last_success: string | null };
+  let indexStatus = $state<IndexStatus | null>(null);
+
+  onMount(async () => {
+    try {
+      const r = await fetch('/data/question_embeddings_status.json');
+      if (r.ok) indexStatus = await r.json();
+    } catch {
+      // Best-effort — the page still works without this, it just won't show a freshness line.
+    }
+  });
 
   async function ensureCorpusLoaded() {
     if (corpusVectors) return;
@@ -52,7 +84,7 @@
     extractor = (await pipeline('feature-extraction', MODEL_ID, { dtype: 'q8' })) as typeof extractor extends infer T ? NonNullable<T> : never;
   }
 
-  async function checkForDuplicates() {
+  async function runSearch() {
     const text = draft.trim();
     if (!text) return;
     errorMessage = '';
@@ -91,37 +123,76 @@
   }
 
   function scoreLabel(pct: number): string {
+    if (mode === 'topic') {
+      if (pct >= 80) return 'Highly relevant';
+      if (pct >= 60) return 'Relevant';
+      return 'Loosely related';
+    }
     if (pct >= 80) return 'Very likely a duplicate';
     if (pct >= 60) return 'Similar theme';
     return 'Loosely related';
   }
 
   function scoreCls(pct: number): string {
+    if (mode === 'topic') {
+      if (pct >= 80) return 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300';
+      if (pct >= 60) return 'bg-sky-50 text-sky-600 dark:bg-sky-900/30 dark:text-sky-300';
+      return 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400';
+    }
     if (pct >= 80) return 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300';
     if (pct >= 60) return 'bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300';
     return 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400';
+  }
+
+  function switchMode(next: Mode) {
+    if (mode === next) return;
+    mode = next;
+    results = [];
+    status = 'idle';
+    errorMessage = '';
   }
 </script>
 
 <div class="space-y-6 max-w-2xl">
   <div>
-    <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Check for Duplicates</h1>
-    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-      Paste your draft question and search the full question bank for similar ones already asked, catching
-      reworded repeats, not just exact-text matches. Everything runs in your browser, so your question is
-      never sent anywhere or seen by anyone else.
+    <div class="flex items-center gap-3 flex-wrap">
+      <h1 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{MODE_COPY[mode].title}</h1>
+      <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+        <button
+          onclick={() => switchMode('duplicate')}
+          class="px-3 py-1.5 transition-colors {mode === 'duplicate' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
+        >Check duplicates</button>
+        <button
+          onclick={() => switchMode('topic')}
+          class="px-3 py-1.5 transition-colors border-l border-gray-200 dark:border-gray-600 {mode === 'topic' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
+        >Search by topic</button>
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+      {MODE_COPY[mode].description}
     </p>
+    {#if indexStatus}
+      <p class="text-xs mt-2 flex items-center gap-1.5 {indexStatus.ok && indexStatus.corpus_count === indexStatus.total_questions ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}">
+        {#if indexStatus.ok && indexStatus.corpus_count === indexStatus.total_questions}
+          ✓ Index up to date — covers all {indexStatus.total_questions?.toLocaleString()} questions
+        {:else if indexStatus.corpus_count !== null && indexStatus.total_questions !== null}
+          ⚠ Index covers {indexStatus.corpus_count.toLocaleString()} of {indexStatus.total_questions.toLocaleString()} questions — may be stale
+        {:else}
+          ⚠ Index status unavailable
+        {/if}
+      </p>
+    {/if}
   </div>
 
   <div class="space-y-3">
     <textarea
       bind:value={draft}
       rows="4"
-      placeholder="Type or paste the question you're drafting…"
+      placeholder={MODE_COPY[mode].placeholder}
       class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900 resize-y"
     ></textarea>
     <button
-      onclick={checkForDuplicates}
+      onclick={runSearch}
       disabled={!draft.trim() || status === 'loading-model' || status === 'loading-corpus' || status === 'searching'}
       class="px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-primary-500 text-white hover:bg-primary-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed dark:disabled:bg-gray-700 dark:disabled:text-gray-500"
     >
@@ -132,7 +203,7 @@
       {:else if status === 'searching'}
         Searching…
       {:else}
-        Check for duplicates
+        {MODE_COPY[mode].cta}
       {/if}
     </button>
   </div>
@@ -147,7 +218,7 @@
     {:else}
       <div class="space-y-2">
         <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-          Closest matches
+          {MODE_COPY[mode].resultsHeading}
         </p>
         {#each results as { question, score } (question.id)}
           {@const pct = scorePct(score)}
