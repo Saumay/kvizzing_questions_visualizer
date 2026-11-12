@@ -182,11 +182,13 @@
             {questionNumber}
           </div>
         {/if}
-        <MemberAvatar username={q.asker} />
-        <div class="min-w-0">
-          <span class="text-sm font-medium text-gray-900 dark:text-gray-100">{q.asker}</span>
-          <span class="text-xs text-gray-400 dark:text-gray-500 ml-1.5">{question.question.timestamp ? formatDateTimeTz(question.question.timestamp, tzCtx?.value ?? 'Europe/London') : formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>
-        </div>
+        <a href="/member/{q.asker}" class="flex items-center gap-2 min-w-0 hover:opacity-80 transition-opacity">
+          <MemberAvatar username={q.asker} />
+          <div class="min-w-0">
+            <span class="text-sm font-medium text-gray-900 dark:text-gray-100 hover:underline">{q.asker}</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 ml-1.5">{question.question.timestamp ? formatDateTimeTz(question.question.timestamp, tzCtx?.value ?? 'Europe/London') : formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>
+          </div>
+        </a>
       </div>
       <div class="flex items-center gap-1.5 flex-wrap min-w-0 sm:justify-end sm:flex-shrink-0">
         {#if question.session && !hideSession}
@@ -295,10 +297,10 @@
           <span class="text-sm font-semibold text-green-800 dark:text-green-200 flex-1 min-w-0">{a?.text ?? '—'}</span>
           <div class="flex items-center gap-2 flex-shrink-0 ml-auto">
             {#if a?.solver}
-              <div class="flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400">
+              <a href="/member/{a.solver}" class="flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400 hover:opacity-80 transition-opacity">
                 <MemberAvatar username={a.solver} size="xs" />
-                <span class="hidden sm:inline">{a.solver}</span>
-              </div>
+                <span class="hidden sm:inline hover:underline">{a.solver}</span>
+              </a>
             {/if}
             <button
               onclick={() => { revealed = false; result = null; input = ''; }}
