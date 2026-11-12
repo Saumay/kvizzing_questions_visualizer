@@ -356,8 +356,8 @@
       {#each visibleSessions as session}
         <a
           href="/session/{session.id}"
-          class="relative overflow-hidden block bg-ui-card rounded-xl border shadow-sm hover:shadow-md transition-all p-5 group
-            {session.is_live ? 'border-amber-300 dark:border-amber-500/40 hover:border-amber-400 dark:hover:border-amber-400/60' : 'border-gray-200 dark:border-gray-700 hover:border-primary-200'}"
+          class="relative overflow-hidden block bg-ui-card rounded-xl shadow-sm hover:shadow-md transition-all p-5 group
+            {session.is_live ? 'border-2 border-amber-400 dark:border-amber-400/70 hover:border-amber-500 dark:hover:border-amber-300' : 'border border-gray-200 dark:border-gray-700 hover:border-primary-200'}"
           onmouseenter={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.hover); }}
           onmouseleave={(e) => { const bg = e.currentTarget.querySelector('.session-bg') as HTMLElement | null; if (bg) bg.style.opacity = String(SESSION_IMAGE_OPACITY.card.default); }}
         >
@@ -385,11 +385,6 @@
                     <h2 class="text-base font-semibold text-primary-700 dark:text-primary-200 group-hover:text-primary-800 dark:group-hover:text-primary-100 transition-colors">
                       {session.quiz_type === 'connect' ? `${session.quizmaster}'s Connect Quiz` : (session.theme ?? session.summary ?? `${session.quizmaster}'s Quiz`)}
                     </h2>
-                    {#if session.is_live}
-                      <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 flex-shrink-0">
-                        ⭐ Live session
-                      </span>
-                    {/if}
                   </div>
                   <p class="text-xs text-gray-700 dark:text-gray-300">Hosted by {session.quizmaster} · {sessionDate(session)}</p>
                   {#if session.summary}
@@ -440,20 +435,27 @@
               </div>
             </div>
 
-            <div class="flex-shrink-0 flex items-center gap-1">
-              <button
-                onclick={(e) => toggleSessionSave(e, session.id)}
-                class="p-1 rounded-lg transition-colors {savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-primary-300 dark:text-primary-600 hover:text-primary-400 dark:hover:text-primary-500'}"
-                title={savedSessionIds?.value?.has(session.id) ? 'Unsave session' : 'Save session'}
-              >
-                <svg class="w-5 h-5" fill={savedSessionIds?.value?.has(session.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                </svg>
-              </button>
-              <div class="text-gray-300 group-hover:text-primary-400 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
+            <div class="flex-shrink-0 flex flex-col items-end gap-2">
+              {#if session.is_live}
+                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                  Live session
+                </span>
+              {/if}
+              <div class="flex items-center gap-1">
+                <button
+                  onclick={(e) => toggleSessionSave(e, session.id)}
+                  class="p-1 rounded-lg transition-colors {savedSessionIds?.value?.has(session.id) ? 'text-primary-500 dark:text-primary-400' : 'text-primary-300 dark:text-primary-600 hover:text-primary-400 dark:hover:text-primary-500'}"
+                  title={savedSessionIds?.value?.has(session.id) ? 'Unsave session' : 'Save session'}
+                >
+                  <svg class="w-5 h-5" fill={savedSessionIds?.value?.has(session.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                </button>
+                <div class="text-gray-300 group-hover:text-primary-400 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
