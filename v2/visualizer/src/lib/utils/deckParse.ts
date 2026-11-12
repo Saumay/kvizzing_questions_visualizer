@@ -16,6 +16,10 @@
 //    into its question's entry instead of appearing as its own row, and any
 //    slide that isn't itself a recognized question header defaults to
 //    excluded (looksLikeQuestion: false) rather than relying on word count.
+//    A few headers (e.g. "Tie-breaker") label both the question and its
+//    answer with the identical word rather than distinct Q/A words; the
+//    first occurrence of such a header is treated as the question and the
+//    next matching occurrence as its answer.
 import JSZip from 'jszip';
 
 export type DeckImage = { url: string; filename: string };
@@ -35,6 +39,11 @@ const ANSWER_PREFIX = /^(answer|ans|a)\s*[:.\-]\s*/i;
 // has trailing text and so doesn't match.
 const QUESTION_HEADER = /^q(?:uestion)?\s*#?\s*([\w.-]*)\s*:?\s*$/i;
 const ANSWER_HEADER = /^a(?:nswer|ns)?\s*#?\s*([\w.-]*)\s*:?\s*$/i;
+// Some headers (e.g. "Tie-breaker") label both halves of a pair with the
+// SAME word instead of distinct "QUESTION"/"ANSWER" words, so role (question
+// vs. answer) can't be read off the word itself - it's just whichever one of
+// a matching pair shows up first vs. second.
+const PAIRED_HEADER = /^tie[\s-]?breakers?\s*#?\s*([\w.-]*)\s*:?\s*$/i;
 // Fallback when no cross-slide header convention is detected anywhere in
 // the deck: a slide with more than this many words is probably real
 // question content rather than a title/credits/divider slide.
@@ -76,7 +85,27 @@ function finalizeEntries(raw: RawDeckEntry[]): DeckEntry[] {
   const pendingByLabel = new Map<string, DeckEntry>();
   let lastUnanswered: DeckEntry | null = null;
 
+  const pairedPending = new Map<string, DeckEntry>();
+
   for (const r of raw) {
+    const pm = headerMatch(r.question, PAIRED_HEADER);
+    if (pm) {
+      const key = `paired:${pm.label}`;
+      const pending = pairedPending.get(key);
+      if (pending && !pending.answer) {
+        pending.answer = pm.rest || r.question;
+        if (r.images.length) pending.images = [...pending.images, ...r.images];
+        pairedPending.delete(key);
+        if (pending === lastUnanswered) lastUnanswered = null;
+        continue; // second occurrence: merged in as the answer to the first
+      }
+      const entry: DeckEntry = { ...r, question: pm.rest || r.question, looksLikeQuestion: true };
+      result.push(entry);
+      pairedPending.set(key, entry);
+      lastUnanswered = entry.answer ? null : entry;
+      continue;
+    }
+
     const qm = headerMatch(r.question, QUESTION_HEADER);
     if (qm) {
       const entry: DeckEntry = { ...r, question: qm.rest || r.question, looksLikeQuestion: true };
