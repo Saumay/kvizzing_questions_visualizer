@@ -592,9 +592,17 @@
                           <p class="text-sm font-medium text-white/85 mt-0.5 truncate">{card.subtitle}</p>
                         </div>
                       </div>
-                      <div class="flex items-center gap-3 flex-shrink-0">
-                        {#if card.recording}<span title="Recording available">🎥</span>{/if}
-                        <span class="text-xs font-medium text-white/85 whitespace-nowrap">{card.badge}</span>
+                      <div class="flex items-center gap-4 flex-shrink-0">
+                        {#if card.kind === 'series'}
+                          {#if card.recording}<span title="Recording available">🎥</span>{/if}
+                          <div class="text-right">
+                            <p class="text-xl sm:text-2xl font-black text-white leading-none">{card.count}</p>
+                            <p class="text-[9px] text-white/70 uppercase tracking-wide mt-0.5">session{card.count !== 1 ? 's' : ''}</p>
+                          </div>
+                        {:else}
+                          {#if card.recording}<span title="Recording available">🎥</span>{/if}
+                          <span class="text-xs font-medium text-white/85 whitespace-nowrap">{card.badge}</span>
+                        {/if}
                         <svg class="w-4 h-4 text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
