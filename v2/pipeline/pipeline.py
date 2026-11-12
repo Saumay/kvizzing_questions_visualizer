@@ -85,6 +85,7 @@ from utils.reclassify_elaboration import run_on_file as _reclassify_elaboration
 from utils.detect_sessions import detect_sessions as _detect_sessions, apply_sessions as _apply_sessions
 from utils.detect_connect_quizzes import main as _detect_connect_main
 from utils.generate_question_embeddings import main as _generate_embeddings
+from utils.extract_entities import main as _extract_entities
 from utils.import_deck_questions import import_all_available as _import_decks_available
 from utils.import_deck_questions import deck_file_links as _deck_file_links
 
@@ -165,11 +166,82 @@ def _maybe_regenerate_embeddings(output_dir) -> None:
         )
 
 
+def _maybe_regenerate_entities(output_dir) -> None:
+    """
+    Regenerate the named-entity index (entities.json, question_entities.json)
+    after every export, same pattern and same failure-visibility guarantees
+    as _maybe_regenerate_embeddings right above — see that docstring for why
+    a silent failure here is unacceptable. This index lets the duplicate-check
+    tool and the Feed's entity filter treat proper nouns (people, places,
+    events, works) as an exact-match-able signal.
+    """
+    output_dir = Path(output_dir)
+    status_path = output_dir / "entities_status.json"
+    now = datetime.now(timezone.utc).isoformat()
+
+    total_questions = None
+    try:
+        total_questions = len(json.loads((output_dir / "questions.json").read_text()))
+    except Exception:
+        pass
+
+    try:
+        _extract_entities(output_dir)
+        question_entities = json.loads((output_dir / "question_entities.json").read_text())
+        entities = json.loads((output_dir / "entities.json").read_text())
+        status_path.write_text(json.dumps({
+            "ok": True,
+            "last_success": now,
+            "last_attempt": now,
+            "questions_with_entities": len(question_entities),
+            "unique_entities": len(entities),
+            "total_questions": total_questions,
+        }, indent=2) + "\n")
+    except Exception as e:
+        prior_success = None
+        if status_path.exists():
+            try:
+                prior_success = json.loads(status_path.read_text()).get("last_success")
+            except Exception:
+                pass
+        status_path.write_text(json.dumps({
+            "ok": False,
+            "last_success": prior_success,
+            "last_attempt": now,
+            "error": f"{type(e).__name__}: {e}",
+            "total_questions": total_questions,
+        }, indent=2) + "\n")
+
+        hint = (
+            "pip3 install --user --break-system-packages spacy && "
+            'pip3 install --user --break-system-packages '
+            '"https://github.com/explosion/spacy-models/releases/download/'
+            'en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"'
+            if isinstance(e, (ImportError, OSError)) else
+            "python3 utils/extract_entities.py"
+        )
+        print(
+            "\n" + "!" * 70 + "\n"
+            "! ENTITY INDEX REGENERATION FAILED\n"
+            f"! {type(e).__name__}: {e}\n"
+            "! Proper-noun search/filtering is now STALE and will stay that\n"
+            "! way silently until this is fixed. Fix, then run:\n"
+            f"!   {hint}\n"
+            + "!" * 70 + "\n"
+        )
+        log.warning(
+            "Entity index regeneration failed (%s: %s) — questions.json exported "
+            "OK, run utils/extract_entities.py manually to catch up.",
+            type(e).__name__, e,
+        )
+
+
 def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     """Wraps stage6_export.run to also regenerate duplicate-check embeddings —
     see _maybe_regenerate_embeddings for why this is best-effort, not required."""
     counts = _stage6_export_run(conn, output_dir, **kwargs)
     _maybe_regenerate_embeddings(output_dir)
+    _maybe_regenerate_entities(output_dir)
     _maybe_attach_deck_links(output_dir)
     _maybe_regenerate_backlog_report()
     _maybe_deploy_dashboard()
