@@ -167,8 +167,15 @@
   // pipeline/utils/generate_deck_banners.py for the curated prompts. No
   // existence check — a missing file just renders nothing, leaving the
   // gradient base visible underneath.
+  //
+  // useStockPhotos is an experimental toggle (off by default, never changes
+  // the default generated-art path or its opacity treatment) that swaps in a
+  // real, topic-matched CC-licensed photo fetched per deck by
+  // pipeline/utils/fetch_deck_stock_photos.py — same no-existence-check,
+  // render-nothing-if-missing behavior.
+  let useStockPhotos = $state(false);
   function deckBannerUrl(id: string): string {
-    return `/images/decks/${id}.jpg`;
+    return useStockPhotos ? `/images/decks-stock/${id}.jpg` : `/images/decks/${id}.jpg`;
   }
 
   function roundSize(files: DeckFile[]): number {
@@ -486,6 +493,16 @@
 
     <!-- Topics (multi-select) -->
     <TopicFilter bind:topics={filterTopics} />
+
+    <!-- Experimental: real stock photos instead of generated art. Off by
+         default; doesn't touch the default images or their opacity. -->
+    <button
+      onclick={() => useStockPhotos = !useStockPhotos}
+      title="Experimental: swap in real, topic-matched stock photos instead of the generated banners"
+      class="inline-flex items-center gap-1.5 text-sm border rounded-lg px-3 py-2 transition-colors {useStockPhotos ? 'bg-primary-500 text-white border-primary-500' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}"
+    >
+      <span>🧪 Stock photos</span>
+    </button>
 
     <!-- Date range -->
     <div class="flex items-center gap-1.5 text-sm">
