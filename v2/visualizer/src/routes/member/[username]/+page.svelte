@@ -7,6 +7,7 @@
   import MemberAvatar from '$lib/components/MemberAvatar.svelte';
   import QuestionCard from '$lib/components/QuestionCard.svelte';
   import EmptyState from '$lib/components/EmptyState.svelte';
+  import ActivityHeatmap from '$lib/components/ActivityHeatmap.svelte';
 
   let { data } = $props();
   const store = getContext<QuestionStore>('store');
@@ -36,6 +37,10 @@
   });
 
   const bg = $derived(getMemberColor(member.username, member.color));
+
+  // Combined asked + solved activity, one entry per occurrence so days with
+  // more questions count for more in the heatmap.
+  const activityDates = $derived([...askedQuestions.map(q => q.date), ...solvedQuestions.map(q => q.date)]);
 </script>
 
 <svelte:head>
@@ -87,6 +92,14 @@
       </div>
     </div>
   </div>
+
+  <!-- Activity heatmap -->
+  {#if activityDates.length > 0}
+    <div class="bg-ui-card border border-stone-200/80 dark:border-zinc-600/80 rounded-2xl shadow-sm p-5">
+      <h2 class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">Activity (questions asked + solved, past year)</h2>
+      <ActivityHeatmap dates={activityDates} />
+    </div>
+  {/if}
 
   <!-- Topic breakdown -->
   {#if topicBreakdown.length > 0}
