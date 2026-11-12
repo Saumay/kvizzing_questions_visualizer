@@ -1,11 +1,21 @@
 // Parses an uploaded quiz-deck file (.pptx or .pdf) entirely in the browser
-// into a flat list of slide/page entries, each with a best-guess question
-// and answer split out via a simple heuristic (decks aren't standardized
-// enough to parse reliably any other way): if a line within the slide looks
-// like "A:"/"Answer:"/"Ans:", everything before it is the question and that
-// line onward is the answer; otherwise, with exactly two text blocks, the
-// first is the question and the second the answer; otherwise the whole
-// slide is treated as the question with no answer.
+// into a flat list of slide/page entries. Decks aren't standardized, so
+// question/answer splitting goes through two heuristic layers:
+//
+// 1. Same-slide: if a line within the slide looks like "A:"/"Answer:"/
+//    "Ans:", everything before it is the question and that line onward is
+//    the answer; otherwise, with exactly two text blocks (and neither looks
+//    like a bare "QUESTION"/"ANSWER" header), the first is the question and
+//    the second the answer; otherwise the whole slide is the question.
+// 2. Cross-slide (finalizeEntries, below): many decks instead put the
+//    question and its answer on two separate slides, each starting with a
+//    bare "QUESTION"/"ANSWER" header line (optionally numbered, e.g.
+//    "QUESTION 1" / "ANSWER 1"), often with unrelated slides (round
+//    dividers, safety notices, credits) in between. When that convention is
+//    detected anywhere in the deck, the matching answer slide is merged
+//    into its question's entry instead of appearing as its own row, and any
+//    slide that isn't itself a recognized question header defaults to
+//    excluded (looksLikeQuestion: false) rather than relying on word count.
 import JSZip from 'jszip';
 
 export type DeckImage = { url: string; filename: string };
@@ -14,9 +24,28 @@ export type DeckEntry = {
   question: string;
   answer: string;
   images: DeckImage[];
+  looksLikeQuestion: boolean;
 };
+type RawDeckEntry = Omit<DeckEntry, 'looksLikeQuestion'>;
 
 const ANSWER_PREFIX = /^(answer|ans|a)\s*[:.\-]\s*/i;
+// A line that is JUST a header like "QUESTION", "QUESTION 1" or "Q #1" -
+// anchored at both ends so an actual question sentence that happens to
+// start with the word "Question" (e.g. "Question: name the river...") still
+// has trailing text and so doesn't match.
+const QUESTION_HEADER = /^q(?:uestion)?\s*#?\s*([\w.-]*)\s*:?\s*$/i;
+const ANSWER_HEADER = /^a(?:nswer|ns)?\s*#?\s*([\w.-]*)\s*:?\s*$/i;
+// Fallback when no cross-slide header convention is detected anywhere in
+// the deck: a slide with more than this many words is probably real
+// question content rather than a title/credits/divider slide.
+const TITLE_WORD_COUNT_FLOOR = 4;
+
+function headerMatch(text: string, re: RegExp): { label: string; rest: string } | null {
+  const lines = text.split('\n');
+  const m = lines[0].trim().match(re);
+  if (!m) return null;
+  return { label: (m[1] ?? '').trim().toLowerCase(), rest: lines.slice(1).join('\n').trim() };
+}
 
 function splitQA(blocks: string[]): { question: string; answer: string } {
   for (let i = 0; i < blocks.length; i++) {
@@ -30,10 +59,54 @@ function splitQA(blocks: string[]): { question: string; answer: string } {
       }
     }
   }
-  if (blocks.length === 2) {
+  // A lone header line ("QUESTION 1") paired with a second block isn't a
+  // question/answer pair, it's a header plus its own content - don't treat
+  // the second block as an "answer" in that case.
+  if (blocks.length === 2 && !QUESTION_HEADER.test(blocks[0]) && !ANSWER_HEADER.test(blocks[0])) {
     return { question: blocks[0].trim(), answer: blocks[1].trim() };
   }
   return { question: blocks.join('\n').trim(), answer: '' };
+}
+
+// Cross-slide pairing + the default include/exclude guess, applied once
+// over the whole deck regardless of source format.
+function finalizeEntries(raw: RawDeckEntry[]): DeckEntry[] {
+  const usesHeaderConvention = raw.some(e => headerMatch(e.question, QUESTION_HEADER) !== null);
+  const result: DeckEntry[] = [];
+  const pendingByLabel = new Map<string, DeckEntry>();
+  let lastUnanswered: DeckEntry | null = null;
+
+  for (const r of raw) {
+    const qm = headerMatch(r.question, QUESTION_HEADER);
+    if (qm) {
+      const entry: DeckEntry = { ...r, question: qm.rest || r.question, looksLikeQuestion: true };
+      result.push(entry);
+      if (qm.label) pendingByLabel.set(qm.label, entry);
+      lastUnanswered = entry.answer ? null : entry;
+      continue;
+    }
+
+    const am = headerMatch(r.question, ANSWER_HEADER);
+    if (am) {
+      const target = (am.label && pendingByLabel.get(am.label)) || lastUnanswered;
+      if (target && !target.answer) {
+        target.answer = am.rest || r.question;
+        if (r.images.length) target.images = [...target.images, ...r.images];
+        if (am.label) pendingByLabel.delete(am.label);
+        if (target === lastUnanswered) lastUnanswered = null;
+        continue; // merged into its question's entry, not its own row
+      }
+      // Labeled/unlabeled answer with nothing pending to attach to: fall
+      // through and keep it as its own (excluded-by-default) entry so nothing
+      // silently vanishes.
+    }
+
+    const looksLikeQuestion = usesHeaderConvention
+      ? false // a non-header slide in a header-convention deck: divider, credits, safety notice, or an orphan answer
+      : r.question.trim().split(/\s+/).filter(Boolean).length > TITLE_WORD_COUNT_FLOOR;
+    result.push({ ...r, looksLikeQuestion });
+  }
+  return result;
 }
 
 // --- PPTX ---------------------------------------------------------------
@@ -105,7 +178,7 @@ async function parsePptxSlide(
   return { blocks, images };
 }
 
-async function parsePptx(file: File): Promise<DeckEntry[]> {
+async function parsePptx(file: File): Promise<RawDeckEntry[]> {
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
 
   // Slide order comes from the presentation's own slide-id list, not file
@@ -125,7 +198,7 @@ async function parsePptx(file: File): Promise<DeckEntry[]> {
     if (target) slidePaths.push(`ppt/${target.replace(/^\.?\/?/, '')}`);
   }
 
-  const entries: DeckEntry[] = [];
+  const entries: RawDeckEntry[] = [];
   for (let i = 0; i < slidePaths.length; i++) {
     const { blocks, images } = await parsePptxSlide(zip, slidePaths[i]);
     if (blocks.length === 0 && images.length === 0) continue;
@@ -137,7 +210,7 @@ async function parsePptx(file: File): Promise<DeckEntry[]> {
 
 // --- PDF ------------------------------------------------------------------
 
-async function parsePdf(file: File): Promise<DeckEntry[]> {
+async function parsePdf(file: File): Promise<RawDeckEntry[]> {
   // Dynamic import, same reasoning as the embedding model: keep the WASM/
   // worker bits out of the initial page bundle.
   const pdfjsLib = await import('pdfjs-dist');
@@ -147,7 +220,7 @@ async function parsePdf(file: File): Promise<DeckEntry[]> {
   const buf = await file.arrayBuffer();
   const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
 
-  const entries: DeckEntry[] = [];
+  const entries: RawDeckEntry[] = [];
   for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
     const page = await pdf.getPage(pageNum);
     const content = await page.getTextContent();
@@ -198,7 +271,9 @@ async function parsePdf(file: File): Promise<DeckEntry[]> {
 
 export async function parseDeck(file: File): Promise<DeckEntry[]> {
   const name = file.name.toLowerCase();
-  if (name.endsWith('.pptx')) return parsePptx(file);
-  if (name.endsWith('.pdf')) return parsePdf(file);
-  throw new Error('Unsupported file type. Please upload a .pptx or .pdf file.');
+  let raw: RawDeckEntry[];
+  if (name.endsWith('.pptx')) raw = await parsePptx(file);
+  else if (name.endsWith('.pdf')) raw = await parsePdf(file);
+  else throw new Error('Unsupported file type. Please upload a .pptx or .pdf file.');
+  return finalizeEntries(raw);
 }

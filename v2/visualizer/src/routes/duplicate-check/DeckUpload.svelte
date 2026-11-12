@@ -23,11 +23,6 @@
   let checkProgress = $state(0); // 0..included.length
   let fileInput: HTMLInputElement | undefined = $state();
 
-  // A slide with only a couple of words of text is more likely a title or
-  // divider slide than an actual question, so it starts unchecked, but the
-  // user can always flip it back on since this is only a guess.
-  const LIKELY_TITLE_WORD_COUNT = 4;
-
   async function handleFile(e: Event) {
     const input = e.target as HTMLInputElement;
     const file = input.files?.[0];
@@ -42,7 +37,7 @@
       slides = entries.map(entry => ({
         ...entry,
         id: `slide-${entry.index}`,
-        include: entry.question.trim().split(/\s+/).filter(Boolean).length > LIKELY_TITLE_WORD_COUNT,
+        include: entry.looksLikeQuestion,
         matches: null,
       }));
       parseStatus = 'done';
