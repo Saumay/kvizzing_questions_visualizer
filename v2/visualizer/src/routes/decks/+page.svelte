@@ -594,7 +594,7 @@
                     class="tile-grain group relative overflow-hidden block w-full text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
-                    <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/12 to-black/0"></div>
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
                       <div class="flex items-center gap-3 min-w-0">
