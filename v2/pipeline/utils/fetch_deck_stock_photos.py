@@ -68,11 +68,12 @@ def dominant_topic_for_deck(session_ids: set[str], questions: list[dict]) -> str
     return counts.most_common(1)[0][0]
 
 
-def fetch_openverse_candidates(query: str) -> list[dict]:
+def fetch_openverse_candidates(query: str, page: int = 1, page_size: int = 20) -> list[dict]:
     url = "https://api.openverse.org/v1/images/?" + urllib.parse.urlencode({
         "q": query,
         "license_type": "commercial",
-        "page_size": 5,
+        "page_size": page_size,
+        "page": page,
         "mature": "false",
     })
     req = urllib.request.Request(url, headers=HEADERS)
@@ -103,19 +104,65 @@ def main() -> None:
     for s in decks.get("standalone", []):
         entries.append((s["id"], s["title"], {f"deck-{s['id']}"}))
 
+    # Many decks share a dominant topic (most things default to "cinema" or
+    # "general"), and always taking the #1 result for an identical query
+    # meant every deck in a topic bucket got the exact same photo. Round-robin
+    # through each topic's result pool, and track every chosen result's id
+    # globally so no two decks - even across different topics - ever end up
+    # with the same photo.
+    used_ids: set[str] = set()
+    used_index_by_topic: dict[str, int] = {}
+
     for deck_id, title, session_ids in entries:
         topic = dominant_topic_for_deck(session_ids, questions)
         query = TOPIC_QUERY.get(topic, TOPIC_QUERY["general"])
-        print(f"{deck_id} ({title}) -> topic={topic} query={query!r}")
-        try:
-            candidates = fetch_openverse_candidates(query)
-        except Exception as e:
-            print(f"  ! fetch failed: {e}")
+        idx = used_index_by_topic.get(topic, 0)
+        used_index_by_topic[topic] = idx + 1
+        print(f"{deck_id} ({title}) -> topic={topic} query={query!r} slot={idx}")
+
+        chosen = None
+        for page in (1, 2, 3):
+            try:
+                candidates = fetch_openverse_candidates(query, page=page)
+            except Exception as e:
+                print(f"  ! fetch failed: {e}")
+                break
+            if not candidates:
+                break
+            pool_idx = idx % len(candidates)
+            ordered = candidates[pool_idx:] + candidates[:pool_idx]
+            chosen = next((c for c in ordered if c["id"] not in used_ids), None)
+            if chosen:
+                break
+        if not chosen:
+            # A generic topic bucket (especially "general") can run out of
+            # genuinely distinct results after a few pages. Fall back to a
+            # query built from the deck's own title, which both widens the
+            # pool and makes the photo a bit more specific to this quiz.
+            fallback_query = f"{query} {title}"
+            try:
+                candidates = fetch_openverse_candidates(fallback_query, page=1)
+                chosen = next((c for c in candidates if c["id"] not in used_ids), None)
+            except Exception as e:
+                print(f"  ! fallback fetch failed: {e}")
+        if not chosen:
+            # Last resort: the "general" bucket in particular can run dry of
+            # genuinely distinct commercial-license results. Borrow from
+            # another topic's pool entirely rather than ever repeat a photo.
+            for other_topic, other_query in TOPIC_QUERY.items():
+                if other_topic == topic:
+                    continue
+                try:
+                    candidates = fetch_openverse_candidates(other_query, page=1)
+                except Exception:
+                    continue
+                chosen = next((c for c in candidates if c["id"] not in used_ids), None)
+                if chosen:
+                    break
+        if not chosen:
+            print("  ! no unused candidate found anywhere")
             continue
-        if not candidates:
-            print("  ! no results")
-            continue
-        chosen = candidates[0]
+        used_ids.add(chosen["id"])
         dest = OUTPUT_DIR / f"{deck_id}.jpg"
         try:
             download(chosen["url"], dest)
