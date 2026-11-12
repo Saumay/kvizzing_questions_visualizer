@@ -221,18 +221,18 @@ def _topic_label(topic: str) -> str:
     return _TOPIC_LABELS.get(topic, topic.replace("_", " "))
 
 
-def _session_summary(questions: list[dict], quiz_type: str | None, theme: str | None) -> str | None:
+def _session_summary(questions: list[dict], quiz_type: str | None) -> str | None:
     """
-    One-line, human-readable description of what a session was about, used
-    where there's no explicit curator-set theme (~75% of sessions). Derived
-    from the topic distribution of the session's own questions — never
-    fabricated, never an LLM call, so it's instant and always accurate to
-    what's actually in the session.
+    One-line, human-readable description of what a session was about.
+    Derived from the topic distribution of the session's own questions —
+    never fabricated, never an LLM call, so it's instant and always accurate
+    to what's actually in the session. Computed even when a theme is set:
+    the frontend shows theme as the title and this as a secondary line, so
+    themed sessions (most deck/live imports) get a real description instead
+    of just the bare round title.
     """
     if quiz_type == "connect":
         return "Connect quiz"
-    if theme:
-        return None  # theme already serves as the description; don't duplicate
 
     counts: dict[str, int] = defaultdict(int)
     for q in questions:
@@ -309,7 +309,7 @@ def build_sessions(
             "quizmaster": overrides.get("quizmaster", s.get("quizmaster")),
             "theme": final_theme,
             "quiz_type": final_quiz_type,
-            "summary": overrides.get("summary") or _session_summary(questions, final_quiz_type, final_theme),
+            "summary": overrides.get("summary") or _session_summary(questions, final_quiz_type),
             "connect_answer": overrides.get("connect_answer", connect_answer),
             "announcement": overrides.get("announcement", announcement),
             "is_live": overrides.get("is_live", s.get("is_live", False)),
