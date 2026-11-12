@@ -100,6 +100,19 @@
     return `#${[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('')}`;
   }
 
+  // Blends a color toward its own gray (same perceived brightness, no hue)
+  // so the topic color reads as a muted tint rather than a fully saturated
+  // block — the raw topic hex is too vivid once it fills an entire card.
+  function desaturate(hex: string, amount: number): string {
+    const n = parseInt(hex.slice(1), 16);
+    const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+    const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+    const mr = Math.round(r + (gray - r) * amount);
+    const mg = Math.round(g + (gray - g) * amount);
+    const mb = Math.round(b + (gray - b) * amount);
+    return `#${[mr, mg, mb].map(x => x.toString(16).padStart(2, '0')).join('')}`;
+  }
+
   // Card color reflects what the quiz was actually about — its most common
   // topic across every question in the session(s) it covers — rather than
   // an arbitrary hash, so similar-themed quizzes read as similar colors.
@@ -120,7 +133,7 @@
   function gradientForCard(sessionIds: string[], fallbackId: string): [string, string] {
     const topic = dominantTopic(sessionIds);
     if (!topic) return gradientFor(fallbackId);
-    const hex = topicHex(topic);
+    const hex = desaturate(topicHex(topic), 0.5);
     return [darken(hex, 0.55), darken(hex, 0.3)];
   }
 
@@ -587,6 +600,7 @@
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.35);">
                       <div class="flex items-center gap-3 min-w-0">
                         <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
+                        {#if card.recording}<span class="text-lg flex-shrink-0" title="Recording available">🎥</span>{/if}
                         <div class="min-w-0">
                           <p class="text-base font-bold text-white leading-tight truncate">{card.title}</p>
                           <p class="text-sm font-medium text-white/85 mt-0.5 truncate">{card.subtitle}</p>
@@ -594,13 +608,11 @@
                       </div>
                       <div class="flex items-center gap-4 flex-shrink-0">
                         {#if card.kind === 'series'}
-                          {#if card.recording}<span title="Recording available">🎥</span>{/if}
                           <div class="text-right">
                             <p class="text-xl sm:text-2xl font-black text-white leading-none">{card.count}</p>
                             <p class="text-[9px] text-white/70 uppercase tracking-wide mt-0.5">session{card.count !== 1 ? 's' : ''}</p>
                           </div>
                         {:else}
-                          {#if card.recording}<span title="Recording available">🎥</span>{/if}
                           <span class="text-xs font-medium text-white/85 whitespace-nowrap">{card.badge}</span>
                         {/if}
                         <svg class="w-4 h-4 text-white/60 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
