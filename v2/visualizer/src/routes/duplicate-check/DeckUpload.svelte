@@ -22,6 +22,7 @@
   let checkStatus = $state<'idle' | 'loading-model' | 'checking' | 'done'>('idle');
   let checkProgress = $state(0); // 0..included.length
   let fileInput: HTMLInputElement | undefined = $state();
+  let showExcluded = $state(false);
 
   async function handleFile(e: Event) {
     const input = e.target as HTMLInputElement;
@@ -73,7 +74,9 @@
     checkStatus = 'done';
   }
 
-  const includedCount = $derived(slides.filter(s => s.include).length);
+  const includedSlides = $derived(slides.filter(s => s.include));
+  const excludedSlides = $derived(slides.filter(s => !s.include));
+  const includedCount = $derived(includedSlides.length);
   const flaggedCount = $derived(
     slides.filter(s => s.matches && s.matches.length > 0 && scorePct(s.matches[0].score) >= 60).length
   );
@@ -230,53 +233,76 @@
       </div>
     </div>
 
-    <div class="space-y-3">
-      {#each slides as slide (slide.id)}
-        {@const pct = topPct(slide)}
-        <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4 {!slide.include ? 'opacity-50' : ''}">
-          <div class="flex items-start gap-3">
-            <label class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 flex-shrink-0 pt-1 cursor-pointer">
-              <input type="checkbox" bind:checked={slide.include} />
-              Slide {slide.index}
-            </label>
-            <div class="flex-1 min-w-0 space-y-2">
-              <textarea
-                bind:value={slide.question}
-                rows="5"
-                placeholder="Question text (edit if the extraction looks off)"
-                class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
-              ></textarea>
-              <textarea
-                bind:value={slide.answer}
-                rows="2"
-                placeholder="Answer (optional)"
-                class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
-              ></textarea>
-              {#if slide.images.length > 0}
-                <div class="flex gap-2 flex-wrap">
-                  {#each slide.images as img (img.url)}
-                    <img src={img.url} alt="Slide {slide.index} image" class="h-16 w-16 object-cover rounded-lg border border-gray-200 dark:border-gray-600" />
-                  {/each}
-                </div>
-              {/if}
-            </div>
-            {#if pct !== null}
-              <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {flagCls(pct)}">
-                {pct}%
-              </span>
+    {#snippet slideCard(slide: SlideState)}
+      {@const pct = topPct(slide)}
+      <div class="bg-ui-card rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+        <div class="flex items-start gap-3">
+          <label class="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 flex-shrink-0 pt-1 cursor-pointer">
+            <input type="checkbox" bind:checked={slide.include} />
+            Slide {slide.index}
+          </label>
+          <div class="flex-1 min-w-0 space-y-2">
+            <textarea
+              bind:value={slide.question}
+              rows="5"
+              placeholder="Question text (edit if the extraction looks off)"
+              class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
+            ></textarea>
+            <textarea
+              bind:value={slide.answer}
+              rows="2"
+              placeholder="Answer (optional)"
+              class="w-full text-xs border border-gray-200 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-gray-700 dark:text-gray-200 resize-y"
+            ></textarea>
+            {#if slide.images.length > 0}
+              <div class="flex gap-2 flex-wrap">
+                {#each slide.images as img (img.url)}
+                  <img src={img.url} alt="Slide {slide.index} image" class="h-16 w-16 object-cover rounded-lg border border-gray-200 dark:border-gray-600" />
+                {/each}
+              </div>
             {/if}
           </div>
-          {#if slide.matches && slide.matches.length > 0}
-            <div class="mt-3 pl-7 space-y-2">
-              {#each slide.matches.slice(0, 3) as m (m.question.id)}
-                <ResultCard question={m.question} score={m.score} matchedEntities={m.matchedEntities} />
-              {/each}
-            </div>
-          {:else if slide.matches && slide.matches.length === 0}
-            <p class="mt-3 pl-7 text-xs text-green-600 dark:text-green-400">No close match found.</p>
+          {#if pct !== null}
+            <span class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-full {flagCls(pct)}">
+              {pct}%
+            </span>
           {/if}
         </div>
+        {#if slide.matches && slide.matches.length > 0}
+          <div class="mt-3 pl-7 space-y-2">
+            {#each slide.matches.slice(0, 3) as m (m.question.id)}
+              <ResultCard question={m.question} score={m.score} matchedEntities={m.matchedEntities} />
+            {/each}
+          </div>
+        {:else if slide.matches && slide.matches.length === 0}
+          <p class="mt-3 pl-7 text-xs text-green-600 dark:text-green-400">No close match found.</p>
+        {/if}
+      </div>
+    {/snippet}
+
+    <div class="space-y-3">
+      {#each includedSlides as slide (slide.id)}
+        {@render slideCard(slide)}
       {/each}
     </div>
+
+    {#if excludedSlides.length > 0}
+      <div>
+        <button
+          type="button"
+          onclick={() => showExcluded = !showExcluded}
+          class="text-xs text-gray-500 dark:text-gray-400 hover:underline"
+        >
+          {showExcluded ? 'Hide' : 'Show'} {excludedSlides.length} excluded slide{excludedSlides.length === 1 ? '' : 's'} (titles, dividers, safety notices — tick one back on if we got it wrong)
+        </button>
+        {#if showExcluded}
+          <div class="space-y-3 mt-3">
+            {#each excludedSlides as slide (slide.id)}
+              {@render slideCard(slide)}
+            {/each}
+          </div>
+        {/if}
+      </div>
+    {/if}
   {/if}
 </div>
