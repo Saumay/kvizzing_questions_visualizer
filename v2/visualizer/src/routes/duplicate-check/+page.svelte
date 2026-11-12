@@ -43,6 +43,7 @@
   // utils/extract_entities.py), longest-first so "Shah Jahan" is checked
   // before a shorter entity that might also happen to be a substring of it.
   const entityVocabulary = store.getEntities().map(e => e.tag).sort((a, b) => b.length - a.length);
+  const entitiesByTag = new Map(store.getEntities().map(e => [e.tag, e]));
 
   function escapeRegex(s: string): string {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -156,19 +157,41 @@
         for (let d = 0; d < corpusDim; d++) dot += corpusVectors![base + d] * query[d];
         scored.push({ i, score: dot });
       }
+
+      // Capture every question's score before sorting — needed below to
+      // score an exact-entity-match candidate that embedding similarity
+      // alone didn't rank highly enough to land in the top slice.
+      const scoreByQid = new Map<string, number>();
+      for (const { i, score } of scored) scoreByQid.set(corpusIds![i], score);
+
       scored.sort((a, b) => b.score - a.score);
 
-      // Take a wider candidate pool than the final 10 so an exact entity
-      // match that embedding similarity alone ranked outside the top 10
-      // still gets a chance to surface once boosted below.
+      // A bare or short query (like "Shah Jahan" alone) can embed too
+      // generically for the real matches to land in the top candidates by
+      // similarity alone — reordering only within an embedding-picked pool
+      // isn't enough. Instead, directly pull in every question that shares
+      // an exact entity match with the query, regardless of its embedding
+      // rank, and let those compete on equal footing with the top
+      // similarity-ranked candidates.
       const matchedQueryEntities = findMatchedEntities(text);
-      const pool = scored.slice(0, 100)
-        .map(({ i, score }) => ({ question: questionById.get(corpusIds![i])!, score }))
-        .filter(r => r.question)
-        .map(r => ({
-          ...r,
-          matchedEntities: matchedQueryEntities.filter(e => store.getQuestionEntities(r.question.id).includes(e)),
-        }));
+      const entityQuestionIds = new Set<string>();
+      for (const entity of matchedQueryEntities) {
+        const entry = entitiesByTag.get(entity);
+        if (entry) for (const qid of entry.question_ids) entityQuestionIds.add(qid);
+      }
+
+      const topIds = scored.slice(0, 100).map(({ i }) => corpusIds![i]);
+      const candidateIds = new Set([...topIds, ...entityQuestionIds]);
+
+      const pool = [...candidateIds]
+        .map(qid => {
+          const question = questionById.get(qid);
+          if (!question) return null;
+          const score = scoreByQid.get(qid) ?? 0;
+          const matchedEntities = matchedQueryEntities.filter(e => store.getQuestionEntities(qid).includes(e));
+          return { question, score, matchedEntities };
+        })
+        .filter((r): r is { question: Question; score: number; matchedEntities: string[] } => r !== null);
 
       pool.sort((a, b) => {
         if (a.matchedEntities.length !== b.matchedEntities.length) return b.matchedEntities.length - a.matchedEntities.length;
