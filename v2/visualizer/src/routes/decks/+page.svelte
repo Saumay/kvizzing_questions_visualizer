@@ -66,15 +66,17 @@
 
   // Deterministic cover-art gradient per card — cheap, no external image
   // generation (avoids the NSFW/moderation headaches of AI-generated covers).
+  // Pastel palette: paired with dark ink text (not white) and a light
+  // overlay rather than a black one — see the card/hero markup below.
   const GRADIENTS: [string, string][] = [
-    ['#6366F1', '#8B5CF6'],
-    ['#F97316', '#EF4444'],
-    ['#0EA5E9', '#06B6D4'],
-    ['#10B981', '#059669'],
-    ['#EC4899', '#F43F5E'],
-    ['#F59E0B', '#F97316'],
-    ['#8B5CF6', '#6366F1'],
-    ['#14B8A6', '#0EA5E9'],
+    ['#bfe3f5', '#d8eee0'],
+    ['#ded3f7', '#f3dcee'],
+    ['#fbe3c9', '#f6cfd4'],
+    ['#d7f0e3', '#cfeaf5'],
+    ['#fde2e4', '#fad2e1'],
+    ['#fff1c9', '#fde2c9'],
+    ['#e0d7f8', '#d7e3f8'],
+    ['#cdeee0', '#e8f5c9'],
   ];
 
   function hashString(str: string): number {
@@ -471,19 +473,19 @@
       >
         <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
         {#if imgUrl}
-          <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-80 transition-opacity duration-300" style="background-image: url('{imgUrl}')"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-35 group-hover:opacity-55 transition-opacity duration-300" style="background-image: url('{imgUrl}'); filter: {SESSION_IMAGE_FILTER};"></div>
         {/if}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/55 via-white/15 to-white/0 dark:from-black/35 dark:via-black/10 dark:to-black/0"></div>
         <div class="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 min-h-[180px] sm:min-h-[200px]">
           <div class="min-w-0">
-            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-2">
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 mb-2">
               ⭐ Flagship series
             </span>
             <div class="flex items-center gap-3">
               <span class="text-3xl sm:text-4xl flex-shrink-0">{emojiFor(heroSeries.title)}</span>
               <div class="min-w-0">
-                <h2 class="text-xl sm:text-3xl font-black text-white leading-tight truncate">{heroSeries.title}</h2>
-                <p class="text-sm sm:text-base font-medium text-white/80 mt-1 truncate">
+                <h2 class="text-xl sm:text-3xl font-black text-gray-900 dark:text-white leading-tight truncate">{heroSeries.title}</h2>
+                <p class="text-sm sm:text-base font-medium text-gray-700 dark:text-white/80 mt-1 truncate">
                   {hosts.slice(0, 5).join(', ')}{hosts.length > 5 ? ` +${hosts.length - 5} more` : ''}
                 </p>
               </div>
@@ -491,16 +493,16 @@
           </div>
           <div class="flex items-center gap-5 flex-shrink-0 self-start sm:self-end">
             <div class="text-right">
-              <p class="text-2xl sm:text-3xl font-black text-white leading-none">{heroSeries.rounds.length}</p>
-              <p class="text-[10px] text-white/60 uppercase tracking-wide mt-1">rounds</p>
+              <p class="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white leading-none">{heroSeries.rounds.length}</p>
+              <p class="text-[10px] text-gray-600 dark:text-white/60 uppercase tracking-wide mt-1">rounds</p>
             </div>
             {#if heroLatestRound}
-              <div class="text-right hidden sm:block border-l border-white/20 pl-5">
-                <p class="text-xs text-white/80">Latest: #{heroLatestRound.round}</p>
-                <p class="text-[11px] text-white/50 mt-0.5">{heroLatestRound.date_approx ? '~' : ''}{formatDate(heroLatestRound.date)}</p>
+              <div class="text-right hidden sm:block border-l border-gray-900/15 dark:border-white/20 pl-5">
+                <p class="text-xs text-gray-700 dark:text-white/80">Latest: #{heroLatestRound.round}</p>
+                <p class="text-[11px] text-gray-500 dark:text-white/50 mt-0.5">{heroLatestRound.date_approx ? '~' : ''}{formatDate(heroLatestRound.date)}</p>
               </div>
             {/if}
-            <svg class="w-6 h-6 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-gray-500 dark:text-white/60 group-hover:text-gray-800 dark:group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </div>
@@ -540,19 +542,19 @@
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
                     <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-300" style="background-image: url('{imgUrl}'); filter: {SESSION_IMAGE_FILTER};"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/5"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-white/50 via-white/10 to-white/0 dark:from-black/75 dark:via-black/30 dark:to-black/5"></div>
                     <div class="relative p-4 sm:p-5 flex items-center justify-between gap-4 min-h-[88px]">
                       <div class="flex items-center gap-3 min-w-0">
                         <span class="text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
                         <div class="min-w-0">
-                          <p class="text-base font-bold text-white leading-tight truncate">{card.title}</p>
-                          <p class="text-sm font-medium text-white/80 mt-0.5 truncate">{card.subtitle}</p>
+                          <p class="text-base font-bold text-gray-900 dark:text-white leading-tight truncate">{card.title}</p>
+                          <p class="text-sm font-medium text-gray-700 dark:text-white/80 mt-0.5 truncate">{card.subtitle}</p>
                         </div>
                       </div>
                       <div class="flex items-center gap-3 flex-shrink-0">
                         {#if card.recording}<span title="Recording available">🎥</span>{/if}
-                        <span class="text-xs font-medium text-white/80 whitespace-nowrap">{card.badge}</span>
-                        <svg class="w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="text-xs font-medium text-gray-600 dark:text-white/80 whitespace-nowrap">{card.badge}</span>
+                        <svg class="w-4 h-4 text-gray-400 dark:text-white/50 group-hover:text-gray-800 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
