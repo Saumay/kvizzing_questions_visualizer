@@ -635,9 +635,14 @@
                 {#each group.cards as card (card.id)}
                   {@const [c1, c2] = gradientForCard(card.sessionIds, card.id)}
                   {@const imgUrl = deckBannerUrl(card.id)}
-                  <button
-                    onclick={card.onSelect}
-                    class="tile-grain group relative overflow-hidden text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary-400 aspect-square flex flex-col"
+                  <!-- svelte-ignore a11y_no_static_element_interactions -->
+                  <!-- svelte-ignore a11y_click_events_have_key_events -->
+                  <div
+                    role="button"
+                    tabindex="0"
+                    onclick={(e) => { if (!(e.target as HTMLElement).closest('a,button,input')) card.onSelect(); }}
+                    onkeydown={(e) => { if (e.key === 'Enter') card.onSelect(); }}
+                    class="tile-grain group relative overflow-hidden text-left rounded-xl ring-1 ring-black/10 dark:ring-white/10 shadow-sm hover:shadow-lg transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400 aspect-square flex flex-col"
                   >
                     <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
                     <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-85 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
@@ -656,12 +661,12 @@
                           </p>
                         {:else}
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">
-                            {card.host ?? card.badge}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
+                            {#if card.host}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.badge}{/if}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
                           </p>
                         {/if}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 {/each}
               </div>
             </div>
