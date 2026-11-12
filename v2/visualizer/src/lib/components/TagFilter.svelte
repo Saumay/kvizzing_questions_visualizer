@@ -3,11 +3,13 @@
     tags = $bindable(new Set<string>()),
     allTags = [] as string[],
     tagFreq = new Map<string, number>(),
+    placeholder = 'Tags…',
     class: cls = ''
   }: {
     tags?: Set<string>;
     allTags?: string[];
     tagFreq?: Map<string, number>;
+    placeholder?: string;
     class?: string;
   } = $props();
 
@@ -34,7 +36,7 @@
     onfocus={() => tagInputFocused = true}
     onblur={() => setTimeout(() => tagInputFocused = false, 150)}
     type="text"
-    placeholder="Tags…"
+    {placeholder}
     class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 placeholder:text-gray-600 dark:placeholder:text-gray-400 focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-100 dark:focus:ring-primary-900"
   />
   {#if tagInputFocused && tagSuggestions.length > 0}

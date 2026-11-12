@@ -16,6 +16,8 @@ export type BulkData = {
   sessions: unknown;
   members: unknown;
   tags: unknown;
+  entities: unknown;
+  questionEntities: unknown;
 };
 
 function openDb(): Promise<IDBDatabase> {

@@ -31,18 +31,20 @@ async function loadBulkData(fetch: typeof window.fetch) {
     if (cached) return cached;
   }
 
-  const [questions, sessions, members, tags] = await Promise.all([
+  const [questions, sessions, members, tags, entities, questionEntities] = await Promise.all([
     fetch('/data/questions.json').then(r => r.json()),
     fetch('/data/sessions.json').then(r => r.json()),
     fetch('/data/members.json').then(r => r.json()),
     fetch('/data/tags.json').then(r => (r.ok ? r.json() : [])).catch(() => []),
+    fetch('/data/entities.json').then(r => (r.ok ? r.json() : [])).catch(() => []),
+    fetch('/data/question_entities.json').then(r => (r.ok ? r.json() : {})).catch(() => ({})),
   ]);
 
   if (version) {
-    setCachedBulkData({ version, questions, sessions, members, tags });
+    setCachedBulkData({ version, questions, sessions, members, tags, entities, questionEntities });
   }
 
-  return { questions, sessions, members, tags };
+  return { questions, sessions, members, tags, entities, questionEntities };
 }
 
 export async function load({ fetch }) {
@@ -51,6 +53,6 @@ export async function load({ fetch }) {
     fetch('/data/r2_usage.json').then(r => r.ok ? r.json() : null).catch(() => null),
     fetch('/data/stats.json').then(r => r.ok ? r.json() : null).catch(() => null),
   ]);
-  const { questions, sessions, members, tags } = bulk;
-  return { questions, sessions, members, r2Usage, tags, stats };
+  const { questions, sessions, members, tags, entities, questionEntities } = bulk;
+  return { questions, sessions, members, r2Usage, tags, stats, entities, questionEntities };
 }

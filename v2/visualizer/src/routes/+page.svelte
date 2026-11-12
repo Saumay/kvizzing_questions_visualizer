@@ -39,6 +39,7 @@
   let filterSessionId = $state('');
   let filterTags = $state(new Set<string>());
   let filterTopics = $state(new Set<string>());
+  let filterEntities = $state(new Set<string>());
   let filterSaved = $state(false);
 
   const savedIds = getContext<{ value: Set<string> } | undefined>('savedIds');
@@ -113,10 +114,11 @@
     (filterMedia !== 'all' ? 1 : 0) +
     (filterParts !== 'all' ? 1 : 0) +
     ((filterDateFrom || filterDateTo) ? 1 : 0) +
-    filterTags.size + filterTopics.size +
+    filterTags.size + filterTopics.size + filterEntities.size +
     (filterSaved ? 1 : 0)
   );
   const { tagFreq, allTags } = store.getTagFreq();
+  const { entityFreq, allEntities } = store.getEntityFreq();
 
   // Pre-sort once per sort option (avoid re-sorting on every filter change)
   const sortedCache = new Map<string, Question[]>();
@@ -168,6 +170,10 @@
 
     if (filterTopics.size > 0) {
       results = results.filter(q => q.question.topics?.some(t => filterTopics.has(t)));
+    }
+
+    if (filterEntities.size > 0) {
+      results = results.filter(q => [...filterEntities].every(e => store.getQuestionEntities(q.id).includes(e)));
     }
 
     if (filterParts === 'multi') {
@@ -224,6 +230,7 @@
     filterSessionId = '';
     filterTags = new Set();
     filterTopics = new Set();
+    filterEntities = new Set();
     filterSaved = false;
     if ($page.url.searchParams.has('saved')) {
       const u = new URL(window.location.href); u.searchParams.delete('saved'); history.replaceState({}, '', u);
@@ -233,7 +240,7 @@
   const hasActiveFilters = $derived(
     searchQuery || filterAsker || filterSolver ||
     filterDateFrom || filterDateTo || filterMedia !== 'all' || filterParts !== 'all' ||
-    filterSessionId || filterTags.size > 0 || filterTopics.size > 0
+    filterSessionId || filterTags.size > 0 || filterTopics.size > 0 || filterEntities.size > 0
   );
 
   const MOBILE_PAGE_SIZE = 8;
@@ -255,7 +262,7 @@
   $effect(() => {
     // touch all filter deps
     searchQuery; filterAsker; filterSolver; filterDateFrom; filterDateTo;
-    filterMedia; filterParts; filterSessionId; filterTags; filterTopics;
+    filterMedia; filterParts; filterSessionId; filterTags; filterTopics; filterEntities;
     renderLimit = isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE;
     revealAll = false;
   });
@@ -373,6 +380,7 @@
       <div class="hidden lg:flex lg:flex-wrap lg:gap-2">
         <TagFilter bind:tags={filterTags} {allTags} {tagFreq} class="w-[130px]" />
         <TopicFilter bind:topics={filterTopics} class="w-[130px]" />
+        <TagFilter bind:tags={filterEntities} allTags={allEntities} tagFreq={entityFreq} placeholder="People, places…" class="w-[150px]" />
         <button onclick={() => showMoreFilters = !showMoreFilters} class="{filterBtnCls} {showMoreFilters || filterDateFrom || filterDateTo ? 'bg-primary-500 border-primary-500 text-white' : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600'}">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
           Date range
@@ -439,11 +447,13 @@
           <TagFilter bind:tags={filterTags} {allTags} {tagFreq} class="w-full" />
           <TopicFilter bind:topics={filterTopics} class="w-full" />
         </div>
+        <!-- Line 5: entities -->
+        <TagFilter bind:tags={filterEntities} allTags={allEntities} tagFreq={entityFreq} placeholder="People, places…" class="w-full" />
       </div>
     </div>
     {/if}
 
-    <ActiveFilterChips bind:tags={filterTags} bind:topics={filterTopics} hasFilters={!!hasActiveFilters} onClear={clearFilters} />
+    <ActiveFilterChips bind:tags={filterTags} bind:topics={filterTopics} bind:entities={filterEntities} hasFilters={!!hasActiveFilters} onClear={clearFilters} />
   </div>
 
   <!-- Results count -->

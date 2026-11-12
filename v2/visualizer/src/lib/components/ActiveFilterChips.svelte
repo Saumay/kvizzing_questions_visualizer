@@ -4,11 +4,13 @@
   let {
     tags = $bindable(new Set<string>()),
     topics = $bindable(new Set<string>()),
+    entities = $bindable(new Set<string>()),
     hasFilters = false,
     onClear
   }: {
     tags?: Set<string>;
     topics?: Set<string>;
+    entities?: Set<string>;
     hasFilters?: boolean;
     onClear?: () => void;
   } = $props();
@@ -24,14 +26,28 @@
     next.delete(id);
     topics = next;
   }
+
+  function removeEntity(entity: string) {
+    const next = new Set(entities);
+    next.delete(entity);
+    entities = next;
+  }
 </script>
 
-{#if tags.size > 0 || topics.size > 0 || hasFilters}
+{#if tags.size > 0 || topics.size > 0 || entities.size > 0 || hasFilters}
   <div class="flex flex-wrap items-center gap-2">
     {#each [...tags] as tag}
       <span class="inline-flex items-center gap-1 pl-3 pr-1.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 ring-2 ring-gray-300 dark:ring-gray-500">
         #{tag}
         <button onclick={() => removeTag(tag)} class="ml-0.5 rounded-full p-0.5 opacity-80 hover:opacity-100 transition-opacity" aria-label="Remove {tag} filter">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </span>
+    {/each}
+    {#each [...entities] as entity}
+      <span class="inline-flex items-center gap-1 pl-3 pr-1.5 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 ring-2 ring-indigo-300 dark:ring-indigo-600">
+        {entity}
+        <button onclick={() => removeEntity(entity)} class="ml-0.5 rounded-full p-0.5 opacity-80 hover:opacity-100 transition-opacity" aria-label="Remove {entity} filter">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </span>

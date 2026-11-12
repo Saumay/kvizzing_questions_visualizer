@@ -16,6 +16,8 @@ export class QuestionStore {
   private members: Member[];
   private tags: TagEntry[];
   private stats: Stats | null;
+  private entities: TagEntry[];
+  private questionEntities: Record<string, string[]>;
 
   constructor(
     questions: Question[],
@@ -23,12 +25,16 @@ export class QuestionStore {
     members: Member[],
     tags: TagEntry[] = [],
     stats: Stats | null = null,
+    entities: TagEntry[] = [],
+    questionEntities: Record<string, string[]> = {},
   ) {
     this.questions = questions;
     this.sessions = sessions;
     this.members = members;
     this.tags = tags;
     this.stats = stats;
+    this.entities = entities;
+    this.questionEntities = questionEntities;
   }
 
   getQuestions(filters?: QuestionFilters, sort: SortOption = 'newest'): Question[] {
@@ -133,6 +139,26 @@ export class QuestionStore {
     }
     const allTags = this.tags.map(t => t.tag);
     return { tagFreq, allTags };
+  }
+
+  /** Named entities (people, places, orgs, events, works) extracted from
+   *  every question + answer — same shape/pattern as tags, for a
+   *  filterable facet and for exact-match boosting in semantic search. */
+  getEntities(): TagEntry[] {
+    return this.entities;
+  }
+
+  getEntityFreq(): { entityFreq: Map<string, number>; allEntities: string[] } {
+    const entityFreq = new Map<string, number>();
+    for (const e of this.entities) {
+      entityFreq.set(e.tag, e.count);
+    }
+    const allEntities = this.entities.map(e => e.tag);
+    return { entityFreq, allEntities };
+  }
+
+  getQuestionEntities(questionId: string): string[] {
+    return this.questionEntities[questionId] ?? [];
   }
 
   getStats(): Stats | null {

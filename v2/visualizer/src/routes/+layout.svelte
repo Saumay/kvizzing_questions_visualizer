@@ -19,7 +19,7 @@
   // Data is static (prerendered), so we construct the store once from the initial load.
   // eslint-disable-next-line svelte/no-unused-svelte-ignore
   // svelte-ignore state_referenced_locally
-  const store = new QuestionStore(data.questions, data.sessions, data.members, data.tags ?? [], data.stats ?? null);
+  const store = new QuestionStore(data.questions, data.sessions, data.members, data.tags ?? [], data.stats ?? null, data.entities ?? [], data.questionEntities ?? {});
   setContext('store', store);
 
   const TIMEZONES = [
