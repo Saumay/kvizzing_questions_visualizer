@@ -52,6 +52,7 @@
   let filtersOpen = $state(false);
   let filterQuizmaster = $state('');
   let filterConnect = $state<'all' | 'connect' | 'regular'>('all');
+  let filterLive = $state<'all' | 'live' | 'regular'>('all');
   let filterTopics = $state(new Set<string>());
   let filterTags = $state(new Set<string>());
   let sortBy = $state<'newest' | 'oldest' | 'most_questions'>('newest');
@@ -67,6 +68,7 @@
   const activeFilterCount = $derived(
     [filterQuizmaster].filter(Boolean).length +
     (filterConnect !== 'all' ? 1 : 0) +
+    (filterLive !== 'all' ? 1 : 0) +
     (minQuestions > 0 ? 1 : 0) +
     filterTags.size + filterTopics.size +
     (filterSaved ? 1 : 0)
@@ -82,6 +84,8 @@
       if (filterQuizmaster && s.quizmaster !== filterQuizmaster) return false;
       if (filterConnect === 'connect' && s.quiz_type !== 'connect') return false;
       if (filterConnect === 'regular' && s.quiz_type === 'connect') return false;
+      if (filterLive === 'live' && !s.is_live) return false;
+      if (filterLive === 'regular' && s.is_live) return false;
       if (filterTopics.size > 0 && ![...filterTopics].some(t => sessionTopics.get(s.id)?.has(t))) return false;
       if (filterTags.size > 0 && ![...filterTags].every(t => sessionTags.get(s.id)?.has(t))) return false;
       if (minQuestions > 0 && s.question_count < minQuestions) return false;
@@ -113,12 +117,13 @@
     return groups;
   });
 
-  const hasFilters = $derived(!!(search || filterQuizmaster || filterConnect !== 'all' || sortBy !== 'newest' || filterTags.size > 0 || filterTopics.size > 0 || minQuestions > 0));
+  const hasFilters = $derived(!!(search || filterQuizmaster || filterConnect !== 'all' || filterLive !== 'all' || sortBy !== 'newest' || filterTags.size > 0 || filterTopics.size > 0 || minQuestions > 0));
 
   function clearFilters() {
     search = '';
     filterQuizmaster = '';
     filterConnect = 'all';
+    filterLive = 'all';
     filterTopics = new Set();
     filterTags = new Set();
     sortBy = 'newest';
@@ -249,6 +254,14 @@
             {/each}
           </div>
           <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+            {#each [['live', 'Live'], ['regular', 'Non-live']] as [val, label]}
+              <button
+                onclick={() => filterLive = filterLive === val ? 'all' : val as typeof filterLive}
+                class="px-3 py-1.5 transition-colors {filterLive === val ? 'bg-amber-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
+              >{label}</button>
+            {/each}
+          </div>
+          <div class="inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
             {#each [5, 10, 20] as n}
               <button
                 onclick={() => minQuestions = minQuestions === n ? 0 : n}
@@ -282,6 +295,16 @@
                 <button
                   onclick={() => filterConnect = filterConnect === val ? 'all' : val as typeof filterConnect}
                   class="flex-1 px-3 py-1.5 transition-colors {filterConnect === val ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
+                >{label}</button>
+              {/each}
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="flex-1 inline-flex items-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm overflow-hidden">
+              {#each [['live', 'Live'], ['regular', 'Non-live']] as [val, label]}
+                <button
+                  onclick={() => filterLive = filterLive === val ? 'all' : val as typeof filterLive}
+                  class="flex-1 px-3 py-1.5 transition-colors {filterLive === val ? 'bg-amber-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'}"
                 >{label}</button>
               {/each}
             </div>
