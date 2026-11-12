@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext, onMount } from 'svelte';
+  import { goto } from '$app/navigation';
   import type { QuestionStore } from '$lib/stores/questionStore';
   import type { Question } from '$lib/types';
   import { formatDateTz } from '$lib/utils/time';
@@ -372,9 +373,17 @@
                 </span>
               {/if}
             </div>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-              {question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}
-              {#if question.session?.theme}&middot; {question.session.theme}{/if}
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center flex-wrap gap-x-1">
+              <span>{question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>
+              {#if question.session?.theme}<span>&middot; {question.session.theme}</span>{/if}
+              {#if question.session}
+                <button
+                  onclick={(e) => { e.preventDefault(); e.stopPropagation(); goto(`/session/${question.session!.id}`); }}
+                  class="ml-1 text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                >
+                  View session →
+                </button>
+              {/if}
             </p>
           </a>
         {/each}
