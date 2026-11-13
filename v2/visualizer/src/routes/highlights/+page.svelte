@@ -78,6 +78,29 @@
     return { topic, count, start, sweep };
   });
 
+  // Topic Stats tab — per-topic solve difficulty, alongside the plain
+  // question-count breakdown the Categories donut already shows.
+  type TopicStat = { topic: string; count: number; avgTime: number | null; avgWrong: number | null };
+  const topicStats: TopicStat[] = (() => {
+    const byTopic = new Map<string, { count: number; timeSum: number; timeN: number; wrongSum: number; wrongN: number }>();
+    for (const q of questions) {
+      const topic = q.question.topics?.[0] ?? 'general';
+      const e = byTopic.get(topic) ?? { count: 0, timeSum: 0, timeN: 0, wrongSum: 0, wrongN: 0 };
+      e.count++;
+      if (q.stats?.time_to_answer_seconds != null) { e.timeSum += q.stats.time_to_answer_seconds; e.timeN++; }
+      if (q.stats?.wrong_attempts != null) { e.wrongSum += q.stats.wrong_attempts; e.wrongN++; }
+      byTopic.set(topic, e);
+    }
+    return [...byTopic.entries()]
+      .map(([topic, e]) => ({
+        topic, count: e.count,
+        avgTime: e.timeN ? e.timeSum / e.timeN : null,
+        avgWrong: e.wrongN ? e.wrongSum / e.wrongN : null,
+      }))
+      .sort((a, b) => b.count - a.count);
+  })();
+  const maxTopicCount = Math.max(...topicStats.map(t => t.count));
+
   let hoveredSlice = $state<string | null>(null);
 
   // Tags distribution (free-form tags, sorted by frequency, top 25)
@@ -215,11 +238,12 @@
   let lightbox = $state<string | null>(null);
   let currentMemeIdx = $state(0);
 
-  type Tab = 'leaderboard' | 'topics' | 'memes';
+  type Tab = 'leaderboard' | 'topics' | 'topicstats' | 'memes';
   let activeTab = $state<Tab>('topics');
 
   const tabs: { id: Tab; label: string }[] = [
     { id: 'topics', label: 'Tags & Topics' },
+    { id: 'topicstats', label: 'Topic Stats' },
     { id: 'memes', label: 'Wall of Fame' },
     { id: 'leaderboard', label: 'Wall of Fun' },
   ];
@@ -559,6 +583,46 @@
           {/each}
         </div>
         {/if}
+      </div>
+    </div>
+  {/if}
+
+  <!-- Topic Stats tab -->
+  {#if activeTab === 'topicstats'}
+    <div class="bg-ui-card rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-5">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-semibold text-gray-900 dark:text-gray-100">Topic Stats</h2>
+        <span class="text-xs text-gray-400 dark:text-gray-500">{topicStats.length} topics</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-3 px-1 mb-1 text-xs text-gray-400 dark:text-gray-500">
+        <span class="w-2.5 flex-shrink-0"></span>
+        <span class="w-28 sm:w-36 flex-shrink-0">Topic</span>
+        <span class="flex-1"></span>
+        <span class="w-10 text-right flex-shrink-0">Qs</span>
+        <span class="w-16 text-right flex-shrink-0">Avg time</span>
+        <span class="w-14 text-right flex-shrink-0">Avg wrong</span>
+      </div>
+      <div class="divide-y divide-gray-50 dark:divide-gray-700">
+        {#each topicStats as t}
+          <a
+            href="/?topic={encodeURIComponent(t.topic)}"
+            class="group flex items-center gap-3 py-2.5 px-1 -mx-1 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+          >
+            <span class="w-2.5 h-2.5 rounded-full flex-shrink-0" style="background-color: {topicHex(t.topic)}"></span>
+            <span class="text-sm text-gray-700 dark:text-gray-200 w-28 sm:w-36 truncate flex-shrink-0 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {topicLabel(t.topic)}
+            </span>
+            <div class="flex-1 h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full bg-primary-400 dark:bg-primary-500 transition-all duration-300"
+                style="width: {Math.max(2, (t.count / maxTopicCount) * 100)}%"
+              ></div>
+            </div>
+            <span class="text-xs text-gray-400 dark:text-gray-500 w-10 text-right tabular-nums flex-shrink-0">{t.count}</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 w-16 text-right tabular-nums flex-shrink-0">{t.avgTime != null ? formatTime(t.avgTime) : '—'}</span>
+            <span class="text-xs text-gray-400 dark:text-gray-500 w-14 text-right tabular-nums flex-shrink-0">{t.avgWrong != null ? t.avgWrong.toFixed(1) : '—'}</span>
+          </a>
+        {/each}
       </div>
     </div>
   {/if}

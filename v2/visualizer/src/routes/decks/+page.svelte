@@ -357,9 +357,10 @@
         latestDate: latest.date,
         sessionIds,
         onSelect: () => openSeries = s,
-        // A series usually has many different hosts across rounds, so there's
-        // no single "quizmaster" to show - just the round count.
-        host: null,
+        // Most series rotate hosts across rounds, so there's no single
+        // quizmaster to show - but when every round shares the same host,
+        // surface it like a standalone session does.
+        host: hosts.length === 1 ? hosts[0] : null,
         questionCount: seriesQuestionCount(sessionIds),
       });
     }
@@ -634,6 +635,11 @@
                         {#if card.kind === 'series'}
                           {#if card.questionCount}
                             <p class="mt-1 truncate text-[11px] sm:text-xs font-medium text-white/85">{card.questionCount} questions</p>
+                          {/if}
+                          {#if card.host}
+                            <p class="text-[11px] sm:text-xs font-medium text-white/85 truncate">
+                              {#if store.getMember(card.host)}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.host}{/if}
+                            </p>
                           {/if}
                         {:else}
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">

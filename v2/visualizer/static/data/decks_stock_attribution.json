@@ -72,16 +72,16 @@
     "query": "Buzzing Entertainment cinema film movie theater"
   },
   "breaking-bad-quiz": {
-    "openverse_id": "8126ef52-d327-4cd4-bb65-ccdeea46b7fe",
-    "title": "Forum Romanum Blue Hour",
-    "creator": "radkuch.13",
-    "creator_url": "https://www.flickr.com/photos/137294100@N08",
-    "license": "by",
+    "openverse_id": "09ea0545-4e66-4534-a16e-ca1b455ede1e",
+    "title": "Walter White cosplayer",
+    "creator": "Gage Skidmore",
+    "creator_url": "https://www.flickr.com/photos/22007612@N05",
+    "license": "by-sa",
     "license_version": "2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/137294100@N08/52292421072",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "source_url": "https://www.flickr.com/photos/22007612@N05/12165080846",
     "topic": "general",
-    "query": "Breaking Bad trivia quiz knowledge"
+    "query": "Breaking Bad Walter White cosplay (manually curated)"
   },
   "fireside-chats": {
     "openverse_id": "9d7e5e2d-01c1-49e5-b907-bb501ba75799",
@@ -192,16 +192,16 @@
     "query": "Movie cinema film movie theater"
   },
   "may-the-4th": {
-    "openverse_id": "7bf64a65-6f60-4cd8-8d1b-b9937ed1568b",
-    "title": "The audience is waiting",
-    "creator": "blondinrikard",
-    "creator_url": "https://www.flickr.com/photos/44093058@N06",
+    "openverse_id": "e76965aa-ed30-4b75-9e63-2132306e52f6",
+    "title": "darth vader cosplay",
+    "creator": "RyC - Behind The Lens",
+    "creator_url": "https://www.flickr.com/photos/12665318@N07",
     "license": "by",
     "license_version": "2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0/",
-    "source_url": "https://www.flickr.com/photos/44093058@N06/13492121995",
+    "source_url": "https://www.flickr.com/photos/12665318@N07/14049852150",
     "topic": "cinema",
-    "query": "May 4th cinema film movie theater"
+    "query": "May the 4th Darth Vader cosplay star wars (manually curated)"
   },
   "old-school-kp": {
     "openverse_id": "674396e9-4bf1-41d2-9cac-6b7f727acf95",
@@ -409,7 +409,7 @@
   },
   "gauntlet": {
     "openverse_id": "8ca0411d-5d66-4fdb-b9c5-cc8975accfa1",
-    "title": "Gen. Robert E. Lee\u2019s gauntlet gloves",
+    "title": "Gen. Robert E. Lee’s gauntlet gloves",
     "creator": "farrargirl",
     "creator_url": "https://commons.wikimedia.org/wiki/User:Farrargirl",
     "license": "by-sa",
