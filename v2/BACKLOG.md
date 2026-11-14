@@ -30,7 +30,7 @@ Dead ends tried:
 
 Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Photos app (if "Save to Camera Roll" was ever on), other group members' phones, ask original senders directly.
 
-## Full per-day table (2025-09-23 - 2026-11-11)
+## Full per-day table (2025-09-23 - 2026-11-13)
 
 | Date | Source | Extracted | Questions | Media % | Topic % | Tags % | Reactions % | Low conf % | Published |
 |---|---|---|---|---|---|---|---|---|---|
@@ -220,7 +220,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-03-25 | yes | yes | 113 | 100.0% | 100.0% | 100.0% | 0.0% | 23.9% | YES |
 | 2026-03-26 | yes | yes | 33 | 100.0% | 100.0% | 100.0% | 0.0% | 15.2% | YES |
 | 2026-03-27 | yes | yes | 55 | 100.0% | 100.0% | 100.0% | 0.0% | 9.1% | YES |
-| 2026-03-28 | yes | yes | 73 | 100.0% | 100.0% | 100.0% | 0.0% | 28.8% | YES |
+| 2026-03-28 | yes | yes | 72 | 100.0% | 100.0% | 100.0% | 0.0% | 29.2% | YES |
 | 2026-03-29 | yes | yes | 76 | 100.0% | 100.0% | 100.0% | 0.0% | 14.5% | YES |
 | 2026-03-30 | yes | yes | 142 | 100.0% | 100.0% | 100.0% | 0.0% | 25.4% | YES |
 | 2026-03-31 | yes | yes | 124 | 100.0% | 100.0% | 100.0% | 0.0% | 28.2% | YES |
@@ -449,6 +449,8 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-09 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-10 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-11 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-12 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-13 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
 ## How to update this file
 

@@ -185,7 +185,7 @@ date,source_available,extracted,question_count,media_source_present,media_pct,to
 2026-03-25,True,True,113,True,100.0,100.0,100.0,0.0,28.3,23.9,True
 2026-03-26,True,True,33,True,100.0,100.0,100.0,0.0,39.4,15.2,True
 2026-03-27,True,True,55,True,100.0,100.0,100.0,0.0,38.2,9.1,True
-2026-03-28,True,True,73,True,100.0,100.0,100.0,0.0,32.9,28.8,True
+2026-03-28,True,True,72,True,100.0,100.0,100.0,0.0,31.9,29.2,True
 2026-03-29,True,True,76,True,100.0,100.0,100.0,0.0,21.1,14.5,True
 2026-03-30,True,True,142,True,100.0,100.0,100.0,0.0,31.7,25.4,True
 2026-03-31,True,True,124,True,100.0,100.0,100.0,0.0,22.6,28.2,True
@@ -414,3 +414,5 @@ date,source_available,extracted,question_count,media_source_present,media_pct,to
 2026-11-09,False,False,0,False,0.0,0.0,0.0,0.0,0.0,0.0,False
 2026-11-10,False,False,0,False,0.0,0.0,0.0,0.0,0.0,0.0,False
 2026-11-11,False,False,0,False,0.0,0.0,0.0,0.0,0.0,0.0,False
+2026-11-12,False,False,0,False,0.0,0.0,0.0,0.0,0.0,0.0,False
+2026-11-13,False,False,0,False,0.0,0.0,0.0,0.0,0.0,0.0,False
