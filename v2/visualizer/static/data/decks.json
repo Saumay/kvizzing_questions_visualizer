@@ -1410,6 +1410,30 @@
           ]
         }
       ]
+    },
+    {
+      "id": "kvest-2026",
+      "title": "KVest 2026",
+      "description": null,
+      "rounds": [
+        {
+          "round": 1,
+          "title": "Quarter-final 1",
+          "host": null,
+          "date": "2026-11-14",
+          "date_approx": true,
+          "files": [
+            {
+              "label": null,
+              "rel_path": null,
+              "format": "pdf",
+              "r2_key": null,
+              "url": "https://drive.google.com/file/d/1H19F3vEvAm7g__qmEOWMWnsBAwNbpqU7/view?usp=drivesdk",
+              "size_bytes": 2706986
+            }
+          ]
+        }
+      ]
     }
   ],
   "standalone": [

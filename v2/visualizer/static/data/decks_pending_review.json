@@ -43,5 +43,149 @@
     "size_bytes": 250560074,
     "discovered_at": "2026-11-11",
     "reason": "Video for rewind-2025, which already has a OneDrive recording; likely the same content, unclear whether to add as mp4."
+  },
+  {
+    "source": "drive",
+    "id": "1aVPg4LqNIcg3eJ3-vKvrrut2BJTq41UC",
+    "name": "LOTR Quiz.pdf",
+    "url": "https://drive.google.com/file/d/1aVPg4LqNIcg3eJ3-vKvrrut2BJTq41UC/view?usp=drivesdk",
+    "size_bytes": 2334386,
+    "discovered_at": "2026-11-16",
+    "reason": "New root-level PDF with no host, date or series in the name or folder; cannot tell who hosted it or when it ran (uploaded 2026-11-15)."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s3a53d40db3464e8e8997ffcc575e8c89",
+    "name": "GMT20261018-160928_Recording_gallery_1920x1080.mp4",
+    "url": "https://onedrive.live.com/?id=3a53d40d-b346-4e8e-8997-ffcc575e8c89&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261018_Jimmy Jimmy Aaja_QM Sameer. Likely the recording for existing standalone retro-bollywood-sameer."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s6dc81355e1e04fd08ff09d5e0b4f33c8",
+    "name": "GMT20261018-160928_Recording_1920x1080.mp4",
+    "url": "https://onedrive.live.com/?id=6dc81355-e1e0-4fd0-8ff0-9d5e0b4f33c8&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261018_Jimmy Jimmy Aaja_QM Sameer. Likely the recording for existing standalone retro-bollywood-sameer."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s7e8e56683c904a8db5bb65ee459d2de8",
+    "name": "GMT20261018-160928_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=7e8e5668-3c90-4a8d-b5bb-65ee459d2de8&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261018_Jimmy Jimmy Aaja_QM Sameer. Likely the transcript for existing standalone retro-bollywood-sameer."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s9bf0b97e2c2d4283b2dfc330c3b4bb4e",
+    "name": "GMT20261017-165554_Recording_1920x1080.mp4",
+    "url": "https://onedrive.live.com/?id=9bf0b97e-2c2d-4283-b2df-c330c3b4bb4e&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261017_Drakvarys_QM Vats. New session, no matching deck in decks.json."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s6871afa81a9e458e9c268b3f4c49ca69",
+    "name": "GMT20261017-165554_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=6871afa8-1a9e-458e-9c26-8b3f4c49ca69&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261017_Drakvarys_QM Vats. New session, no matching deck in decks.json."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sd7491ff98ea846a1b7cd323a304ae324",
+    "name": "GMT20261024-152325_Recording_2380x1546.mp4",
+    "url": "https://onedrive.live.com/?id=d7491ff9-8ea8-46a1-b7cd-323a304ae324&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261024_QM Abhishek_Trial by Fire. New session, no matching deck in decks.json."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sf5622af926bb4531b2989b5f8375adaf",
+    "name": "GMT20261024-152325_Recording_gallery_2380x1546.mp4",
+    "url": "https://onedrive.live.com/?id=f5622af9-26bb-4531-b298-9b5f8375adaf&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261024_QM Abhishek_Trial by Fire. New session, no matching deck in decks.json."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sa10dfd223ae149698b42d14c29c5eef2",
+    "name": "GMT20261024-152325_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=a10dfd22-3ae1-4969-8b42-d14c29c5eef2&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261024_QM Abhishek_Trial by Fire. New session, no matching deck in decks.json."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sa3e0f34f3b294e12ae8a3d79cf3f734d",
+    "name": "GMT20261001-161708_Recording_gallery_1920x1080.mp4",
+    "url": "https://onedrive.live.com/?id=a3e0f34f-3b29-4e12-ae8a-3d79cf3f734d&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261001_QOTD 200. New QOTD 200 session (qotd-100 exists; no 200 entry)."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s3bbf3243a1604281a8367433135b9028",
+    "name": "GMT20261001-161708_Recording_1920x1080.mp4",
+    "url": "https://onedrive.live.com/?id=3bbf3243-a160-4281-a836-7433135b9028&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261001_QOTD 200. New QOTD 200 session (qotd-100 exists; no 200 entry)."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s2efca3ab5c9e4658b5751205a91aa717",
+    "name": "GMT20261003-142519_Recording_gallery_1920x1200.mp4",
+    "url": "https://onedrive.live.com/?id=2efca3ab-5c9e-4658-b575-1205a91aa717&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261003_Long Connect 2.0. New session, host unclear, no matching deck."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s864ad41680f44e8387a38fcd2212e96f",
+    "name": "GMT20261003-142519_Recording_1920x1200.mp4",
+    "url": "https://onedrive.live.com/?id=864ad416-80f4-4e83-87a3-8fcd2212e96f&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261003_Long Connect 2.0. New session, host unclear, no matching deck."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!scd98f3d92f584a84bdedda36d3e35d30",
+    "name": "GMT20261003-142519_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=cd98f3d9-2f58-4a84-bded-da36d3e35d30&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: 261003_Long Connect 2.0. New session, host unclear, no matching deck."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s82799de3fb0e49e1a2791413dbd5d8ef",
+    "name": "GMT20260812-172901_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=82799de3-fb0e-49e1-a279-1413dbd5d8ef&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: QOTD 150. New QOTD 150 session, no matching entry."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s780f04a7d019492ea1cc44f0ba2e028e",
+    "name": "GMT20260816-120102_Recording.transcript.vtt",
+    "url": "https://onedrive.live.com/?id=780f04a7-d019-492e-a1cc-44f0ba2e028e&cid=46ac280ca35db7d4",
+    "size_bytes": 0,
+    "discovered_at": "2026-11-16",
+    "reason": "Connector only returned a plain onedrive.live.com/?id=...&cid=... webUrl (needs owner sign-in) and has no share-link creation tool, so no anonymous redeem= link could be obtained. Folder: Book Club/260816_Book Club. Book Club session, no matching series or standalone."
   }
 ]
