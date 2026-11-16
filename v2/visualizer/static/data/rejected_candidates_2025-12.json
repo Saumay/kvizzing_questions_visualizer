@@ -53430,6 +53430,2318 @@
     "extracted": false
   },
   {
+    "id": "2025-12-20-t1",
+    "date": "2025-12-20",
+    "thread_number": 1,
+    "candidates": [
+      {
+        "timestamp": "2025-12-20T06:00:22Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Did IB stop honoring the gentlemen's agreement?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2025-12-20T06:00:10Z",
+        "username": "మాन$",
+        "text": "I don't understand how they are saying fiction is real as it has few real looking people",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:00:22Z",
+        "username": "Akshay",
+        "text": "It is fictionalized",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:00:22Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Did IB stop honoring the gentlemen's agreement?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T06:00:28Z",
+        "username": "Nikunj",
+        "text": "No divions in the past??",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:00:36Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Or is the movie set before 1960s? ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:01:29Z",
+        "username": "Akshay",
+        "text": "The gentleman’s agreement dates back to when RAW was founded, with a specific carve out for IB",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:04:30Z",
+        "username": "Sayu Sekhar",
+        "text": "Coincidental bhai😁😁",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:04:58Z",
+        "username": "Akshay",
+        "text": "Basically IB is allowed to run operations in neighboring countries independent of RAW",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:05:26Z",
+        "username": "Sayu Sekhar",
+        "text": "Akkhand Bharat under ib 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:05:32Z",
+        "username": "Akshay",
+        "text": "Dating back to a handshake when RAW was founded in 1967 and IB was made to wind down all foreign ops",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:05:38Z",
+        "username": "Akshay",
+        "text": "Except pak, ban, nepal",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:06:03Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Ah interesting",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:06:28Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Like FBI sometimes plays in Mexico and Central America",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:07:52Z",
+        "username": "Akshay",
+        "text": "Yep",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:08:11Z",
+        "username": "Akshay",
+        "text": "Although knowing how these orgs operate i am sure they have covert ops everywhere",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:08:15Z",
+        "username": "Akshay",
+        "text": "With full turf battles and etc",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:08:51Z",
+        "username": "Sayu Sekhar",
+        "text": "Yes absolutely",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:08:54Z",
+        "username": "Anurag Bhide",
+        "text": "Isnt DEA part of FBI?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:16Z",
+        "username": "Anurag Bhide",
+        "text": "DEA agents are also called feds iirc from several movies and series",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:23Z",
+        "username": "Sayu Sekhar",
+        "text": "Nah it’s a separate federal entity",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:31Z",
+        "username": "Sayu Sekhar",
+        "text": "Because it’s a federal entity",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:40Z",
+        "username": "Anurag Bhide",
+        "text": "Got it, makes sense",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:44Z",
+        "username": "Sayu Sekhar",
+        "text": "I think\nNot sure",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:09:45Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Not sure, but both are certainly within DoJ",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:10:00Z",
+        "username": "Sayu Sekhar",
+        "text": "ATF DEA FBI all are feds",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:10:25Z",
+        "username": "Khandoba",
+        "text": "Separate entities under DOJ",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:10:32Z",
+        "username": "Sayu Sekhar",
+        "text": "Yep",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:10:54Z",
+        "username": "Khandoba",
+        "text": "FBI has broader coverage, DEA singularly focused on narcotics",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:11:21Z",
+        "username": "Khandoba",
+        "text": "If it’s not drugs…",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:11:52Z",
+        "username": "Sayu Sekhar",
+        "text": "Asac schrader 🫡",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:12:13Z",
+        "username": "Khandoba",
+        "text": "God I hated that scene",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:12:19Z",
+        "username": "Khandoba",
+        "text": "But also loved it",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:12:31Z",
+        "username": "Sayu Sekhar",
+        "text": "But it was a beautiful episode",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:12:36Z",
+        "username": "Khandoba",
+        "text": "It was",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:12:41Z",
+        "username": "Khandoba",
+        "text": "One of the greatest on TV",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:13:00Z",
+        "username": "Sayu Sekhar",
+        "text": "Just finished my 3rd rerun of BCS cpl of days ago",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:13:11Z",
+        "username": "Khandoba",
+        "text": "Haven’t finished BCS yet",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:13:14Z",
+        "username": "Sayu Sekhar",
+        "text": "Hooked on to pluribus",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:13:15Z",
+        "username": "Khandoba",
+        "text": "On 3rd season",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:13:28Z",
+        "username": "Khandoba",
+        "text": "For last 6 months 🤐",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:14:03Z",
+        "username": "Sayu Sekhar",
+        "text": "It will pick up 😁\nInitial seasons are slow and on lighter side",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T06:26:54Z",
+        "username": "Akshay",
+        "text": "Speaking of DEA assets,\nThe XY pub and restaurant in Philadelphia was founded by Alice Serrill _____. As of Dec 2025, it has a 4.8 rating on Google, and boasts ‘a cozy bar with Southern BBQ as well as a variety of vegan options backed by a vast beer selection.’ What is the ‘heterochromic’ significance of XY, named after a feature in the Northwest Frontier Province? ‎<This message was edited>",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
+    "id": "2025-12-20-t2",
+    "date": "2025-12-20",
+    "thread_number": 2,
+    "candidates": [
+      {
+        "timestamp": "2025-12-20T13:52:45Z",
+        "username": "Anurag Bhide",
+        "text": "@⁨Abhishek Vats⁩ were you on that panel?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2025-12-20T13:33:03Z",
+        "username": "AntNishu",
+        "text": "few questions related to cities of bihar:",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:33:29Z",
+        "username": "AntNishu",
+        "text": "Q1: The city of X in Bihar traces its name to the area where the bungalow of the then EIC collector AJ Forbes was situated. This locality was known as the Residential Area (R-Area). Over time, through indianisation, the term evolved phonetically, and the place came to be known as X.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:33:42Z",
+        "username": "Pavan Pamidimarri",
+        "text": "araria",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:33:47Z",
+        "username": "Abhishek S",
+        "text": "Aria",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:03Z",
+        "username": "Abhishek S",
+        "text": "Stark",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:03Z",
+        "username": "Pavan Pamidimarri",
+        "text": "lurned the ety today!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:17Z",
+        "username": "Pavan Pamidimarri",
+        "text": "had a college classmate from Araria",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:20Z",
+        "username": "AntNishu",
+        "text": "Q2: This district of Bihar derives its name from a Persian word meaning \"new state\", reflecting its creation after being carved out of the Gaya district. Interestingly, the name bears a phonetic resemblance to that of a state in the USA.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:43Z",
+        "username": "Abhishek S",
+        "text": "Nakota",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:34:43Z",
+        "username": "మాन$",
+        "text": "Atia ke hero हूं",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:35:32Z",
+        "username": "Abhishek S",
+        "text": "Nawada",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:35:43Z",
+        "username": "Pavan Pamidimarri",
+        "text": "oh nice",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:35:56Z",
+        "username": "Pavan Pamidimarri",
+        "text": "never heard of this district before",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:36:01Z",
+        "username": "మాन$",
+        "text": "Nawada Nawada Nawada haiya",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:36:29Z",
+        "username": "Abhishek S",
+        "text": "I have no idea Nawada is in Bihar, I was joking cause it is a Delhi metro station 🙈",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:36:42Z",
+        "username": "AntNishu",
+        "text": "Q3: It is believed that this district of Bihar derives its name from a local legend associated with a \"Begum\" of Bhagalpur, who used to undertake a month-long pilgrimage to a ghat on the Ganga River. The site of her temporary residence during this pilgrimage gradually lent its name to the area, evolving over time into the district’s present name.\nNotably, the district is also home to Asia’s largest freshwater oxbow lake, which became Bihar’s first site to be designated a Ramsar site.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:37:05Z",
+        "username": "Abhishek Vats",
+        "text": "Begusarai?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:37:59Z",
+        "username": "AntNishu",
+        "text": "Q4: One of the busiest neighbourhoods of Patna derives its name from a 19th century gov building that stood there. The British novelist EM Forster is believed to have stayed at this site for some time while researching for his book A Passage to India. However, this landmark structure was demolished by the gov in the 1990s.\nBuildings of this kind were a common feature of British India. They functioned as resting posts for the imperial mail service and were also open to travellers, serving as guesthouses. Over time, their significance declined, and many were replaced by circuit houses.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:38:21Z",
+        "username": "Pavan Pamidimarri",
+        "text": "dak bungalow?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:15Z",
+        "username": "Abhishek S",
+        "text": "Chicken dak bangla",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:15Z",
+        "username": "Abhishek Vats",
+        "text": "Another origin linked to dak bungalow after the chicken 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:36Z",
+        "username": "AntNishu",
+        "text": "Q5: This town in the Patna district is named after a Turko-Afghan military general of Muhammad Ghori. During his campaigns in Bihar, he destroyed the Buddhist monastic universities of Vikramshila and Odantapuri. From time to time, the town finds itself in political discourse over proposals to rename it after the current CM of Bihar, an idea he has, so far, declined to endorse.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:58Z",
+        "username": "Abhishek S",
+        "text": "Jalladabagh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:03Z",
+        "username": "Kumar Varun",
+        "text": "Bakhtiyarpur",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:05Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Bakhtiraypur",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:10Z",
+        "username": "Pavan Pamidimarri",
+        "text": "after Khalji",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:48Z",
+        "username": "AntNishu",
+        "text": "Q6: This city in Bihar served as the capital of the Sur Empire founded by Sher Shah Suri, one of India’s greatest military strategists and administrative rulers. However, after defeating the Mughals and assuming the title of Sultan of Hindustan, he declared Delhi as the seat of his power.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:55Z",
+        "username": "Pavan Pamidimarri",
+        "text": "sasaram",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:55Z",
+        "username": "Kumar Varun",
+        "text": "Sasaram ?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:05Z",
+        "username": "మాन$",
+        "text": "Sarcasm?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:12Z",
+        "username": "AntNishu",
+        "text": "i'm done😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:53Z",
+        "username": "Abhishek Vats",
+        "text": "Nice quick Bihar tour\nLurn hi lurn hua hai 🙌🏻\nThanks @⁨~AntNishu⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:42:36Z",
+        "username": "మాन$",
+        "text": "In lalu voice",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:42:44Z",
+        "username": "Pavan Pamidimarri",
+        "text": "i am really enjoying the tours of India that we are doing in our quizzes here",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:43:09Z",
+        "username": "Abhishek S",
+        "text": "Aaj pata chala Navada-Newada ka joke Bihar me bhi chalta hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:45:44Z",
+        "username": "Kumar Varun",
+        "text": "What a great set @⁨~Tapish⁩ ! Vintage pictures and such great questions ! Nice lurn also",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:27Z",
+        "username": "Kumar Varun",
+        "text": "And thank you most importantly for helping with Bangalore traffic time 🫡 ‎video omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:42Z",
+        "username": "Anurag Bhide",
+        "text": "@⁨~Ricky⁩ had answered this in a live kviz in Mumbai ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:54Z",
+        "username": "Anurag Bhide",
+        "text": "The first season that happened in Habitat",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:52:35Z",
+        "username": "Abhishek Vats",
+        "text": "Yup yup in the finals",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:52:45Z",
+        "username": "Anurag Bhide",
+        "text": "@⁨Abhishek Vats⁩ were you on that panel?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T13:52:48Z",
+        "username": "Abhishek Vats",
+        "text": "Second season I think",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:53:13Z",
+        "username": "Abhishek Vats",
+        "text": "Na in that one was in the audience",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:00:19Z",
+        "username": "Kartikey Pradhan",
+        "text": "🚨🚨KVIZZARDS OF OZ STARTS IN 3 HOURS 🚨🚨\nFour participants - @⁨~Abhishek S⁩ @⁨~Pavan Pamidimarri⁩ @⁨Akshay⁩ @⁨Aditi Bapat⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:19:52Z",
+        "username": "Tapish",
+        "text": "🙏🙏 ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:34:50Z",
+        "username": "Ricky",
+        "text": "S3E4",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:39:00Z",
+        "username": "Anurag Bhide",
+        "text": "This proves Rikesh is 1st gen kvizzer, Abhishek 2nd gen and me 3rd gen :)",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:43:22Z",
+        "username": "Abhishek S",
+        "text": "Really nervous about this. Thodi net practice kara do",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:43:37Z",
+        "username": "Kartikey Pradhan",
+        "text": "sir, aap faad doge",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:20Z",
+        "username": "Kartikey Pradhan",
+        "text": "main legit baith ke ppt sundar bana raha hoon taaki kuch toh compensate ho",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:55Z",
+        "username": "Pavan Pamidimarri",
+        "text": "mad props for doing this while at your in-laws place. dedication: 100%",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:56Z",
+        "username": "Kartikey Pradhan",
+        "text": "and as I said - I can bet all of you would know of 90% of the names in answers individually - if not the funda leading to the answer",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:45:25Z",
+        "username": "Kartikey Pradhan",
+        "text": "had committed, so had to do. xmas present from my side to the group!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:47:23Z",
+        "username": "Kartikey Pradhan",
+        "text": "also - there is a whole round where some folks from audience can also get to participate - so do attend 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:00Z",
+        "username": "Abhishek S",
+        "text": "Someone should do Year-End Recap Quiz, ab hum agar christmas gift maang hi rahe hai toh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:33Z",
+        "username": "Pavan Pamidimarri",
+        "text": "one rule only: questions must be from this chat",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:37Z",
+        "username": "Abhishek Vats",
+        "text": "Main puchne hi wala tha k audience question bhi hain kya?\nFir socha @⁨Kartikey Pradhan⁩  gaali dega ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:54Z",
+        "username": "Abhishek S",
+        "text": "Just putting it out there for the kvizzing universe to take care of",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:25Z",
+        "username": "Pavan Pamidimarri",
+        "text": "year-end recap quiz about 2025?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:30Z",
+        "username": "Abhishek S",
+        "text": "Might actually get the AI/LLM guys from this chat to make that guide book we need",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:35Z",
+        "username": "Pavan Pamidimarri",
+        "text": "or recapping all our lurn in this channel?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:59Z",
+        "username": "Abhishek S",
+        "text": "This one is what I meant, but the other one works too",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:07Z",
+        "username": "Kartikey Pradhan",
+        "text": "i am sure we might have an AI/ML engineer in the group who can literally extract all the questions from this chat and make a compendium of it",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:16Z",
+        "username": "Kartikey Pradhan",
+        "text": "it could become the craziest selling quiz book of all time",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:41Z",
+        "username": "Abhishek S",
+        "text": "@⁨~Naman Agarwal⁩ hae proposed doing it during Christmas 🙏",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:51:25Z",
+        "username": "Abhishek S",
+        "text": "What quiz do we have next weekend? Sid is doing the gauntlet, right? @⁨Sidhesh K K⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:52:01Z",
+        "username": "Kartikey Pradhan",
+        "text": "yes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:52:12Z",
+        "username": "Kartikey Pradhan",
+        "text": "Akshay’s SF 2 is the first quiz of the new year",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:53:48Z",
+        "username": "Abhishek Vats",
+        "text": "I should be ready with a buzzing one by tomorrow. Can run it mid week",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:55:00Z",
+        "username": "Abhishek S",
+        "text": "Also, @⁨~Paavas⁩ has a tournament planned to be run over the course of a weekend",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:56:12Z",
+        "username": "Sidhesh K K",
+        "text": "Yes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:57:21Z",
+        "username": "Abhishek S",
+        "text": "No participants decided yet, right?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:58:27Z",
+        "username": "Sidhesh K K",
+        "text": "Nope",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:59:09Z",
+        "username": "Naman Agarwal",
+        "text": "Thanks for reminding",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:59:20Z",
+        "username": "Naman Agarwal",
+        "text": "Will do (post Xmas) vacay ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:11:17Z",
+        "username": "Akshay",
+        "text": "United States: 20+\nUnited Kingdom : 3+\nGermany : 2\nCanada, India, Indonesia, Israel, Palestine, Myanmar, Montserrat, South Africa, Spain: 1 each\nWhat is this a count of? ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:13:50Z",
+        "username": "Sidhesh K K",
+        "text": "Font names?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:14:14Z",
+        "username": "Akshay",
+        "text": "Not fonts",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:15:24Z",
+        "username": "Kartikey Pradhan",
+        "text": "UNGA topics of voting?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:16:32Z",
+        "username": "Akshay",
+        "text": "Not UNGA-related either",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
+    "id": "2025-12-20-t3",
+    "date": "2025-12-20",
+    "thread_number": 3,
+    "candidates": [
+      {
+        "timestamp": "2025-12-20T14:49:35Z",
+        "username": "Pavan Pamidimarri",
+        "text": "or recapping all our lurn in this channel?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2025-12-20T13:39:15Z",
+        "username": "Abhishek Vats",
+        "text": "Another origin linked to dak bungalow after the chicken 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:36Z",
+        "username": "AntNishu",
+        "text": "Q5: This town in the Patna district is named after a Turko-Afghan military general of Muhammad Ghori. During his campaigns in Bihar, he destroyed the Buddhist monastic universities of Vikramshila and Odantapuri. From time to time, the town finds itself in political discourse over proposals to rename it after the current CM of Bihar, an idea he has, so far, declined to endorse.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:39:58Z",
+        "username": "Abhishek S",
+        "text": "Jalladabagh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:03Z",
+        "username": "Kumar Varun",
+        "text": "Bakhtiyarpur",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:05Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Bakhtiraypur",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:10Z",
+        "username": "Pavan Pamidimarri",
+        "text": "after Khalji",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:48Z",
+        "username": "AntNishu",
+        "text": "Q6: This city in Bihar served as the capital of the Sur Empire founded by Sher Shah Suri, one of India’s greatest military strategists and administrative rulers. However, after defeating the Mughals and assuming the title of Sultan of Hindustan, he declared Delhi as the seat of his power.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:55Z",
+        "username": "Pavan Pamidimarri",
+        "text": "sasaram",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:40:55Z",
+        "username": "Kumar Varun",
+        "text": "Sasaram ?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:05Z",
+        "username": "మాन$",
+        "text": "Sarcasm?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:12Z",
+        "username": "AntNishu",
+        "text": "i'm done😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:41:53Z",
+        "username": "Abhishek Vats",
+        "text": "Nice quick Bihar tour\nLurn hi lurn hua hai 🙌🏻\nThanks @⁨~AntNishu⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:42:36Z",
+        "username": "మాन$",
+        "text": "In lalu voice",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:42:44Z",
+        "username": "Pavan Pamidimarri",
+        "text": "i am really enjoying the tours of India that we are doing in our quizzes here",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:43:09Z",
+        "username": "Abhishek S",
+        "text": "Aaj pata chala Navada-Newada ka joke Bihar me bhi chalta hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:45:44Z",
+        "username": "Kumar Varun",
+        "text": "What a great set @⁨~Tapish⁩ ! Vintage pictures and such great questions ! Nice lurn also",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:27Z",
+        "username": "Kumar Varun",
+        "text": "And thank you most importantly for helping with Bangalore traffic time 🫡 ‎video omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:42Z",
+        "username": "Anurag Bhide",
+        "text": "@⁨~Ricky⁩ had answered this in a live kviz in Mumbai ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:46:54Z",
+        "username": "Anurag Bhide",
+        "text": "The first season that happened in Habitat",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:52:35Z",
+        "username": "Abhishek Vats",
+        "text": "Yup yup in the finals",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:52:45Z",
+        "username": "Anurag Bhide",
+        "text": "@⁨Abhishek Vats⁩ were you on that panel?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:52:48Z",
+        "username": "Abhishek Vats",
+        "text": "Second season I think",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T13:53:13Z",
+        "username": "Abhishek Vats",
+        "text": "Na in that one was in the audience",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:00:19Z",
+        "username": "Kartikey Pradhan",
+        "text": "🚨🚨KVIZZARDS OF OZ STARTS IN 3 HOURS 🚨🚨\nFour participants - @⁨~Abhishek S⁩ @⁨~Pavan Pamidimarri⁩ @⁨Akshay⁩ @⁨Aditi Bapat⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:19:52Z",
+        "username": "Tapish",
+        "text": "🙏🙏 ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:34:50Z",
+        "username": "Ricky",
+        "text": "S3E4",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:39:00Z",
+        "username": "Anurag Bhide",
+        "text": "This proves Rikesh is 1st gen kvizzer, Abhishek 2nd gen and me 3rd gen :)",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:43:22Z",
+        "username": "Abhishek S",
+        "text": "Really nervous about this. Thodi net practice kara do",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:43:37Z",
+        "username": "Kartikey Pradhan",
+        "text": "sir, aap faad doge",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:20Z",
+        "username": "Kartikey Pradhan",
+        "text": "main legit baith ke ppt sundar bana raha hoon taaki kuch toh compensate ho",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:55Z",
+        "username": "Pavan Pamidimarri",
+        "text": "mad props for doing this while at your in-laws place. dedication: 100%",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:44:56Z",
+        "username": "Kartikey Pradhan",
+        "text": "and as I said - I can bet all of you would know of 90% of the names in answers individually - if not the funda leading to the answer",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:45:25Z",
+        "username": "Kartikey Pradhan",
+        "text": "had committed, so had to do. xmas present from my side to the group!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:47:23Z",
+        "username": "Kartikey Pradhan",
+        "text": "also - there is a whole round where some folks from audience can also get to participate - so do attend 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:00Z",
+        "username": "Abhishek S",
+        "text": "Someone should do Year-End Recap Quiz, ab hum agar christmas gift maang hi rahe hai toh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:33Z",
+        "username": "Pavan Pamidimarri",
+        "text": "one rule only: questions must be from this chat",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:37Z",
+        "username": "Abhishek Vats",
+        "text": "Main puchne hi wala tha k audience question bhi hain kya?\nFir socha @⁨Kartikey Pradhan⁩  gaali dega ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:48:54Z",
+        "username": "Abhishek S",
+        "text": "Just putting it out there for the kvizzing universe to take care of",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:25Z",
+        "username": "Pavan Pamidimarri",
+        "text": "year-end recap quiz about 2025?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:30Z",
+        "username": "Abhishek S",
+        "text": "Might actually get the AI/LLM guys from this chat to make that guide book we need",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:49:35Z",
+        "username": "Pavan Pamidimarri",
+        "text": "or recapping all our lurn in this channel?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T14:49:59Z",
+        "username": "Abhishek S",
+        "text": "This one is what I meant, but the other one works too",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:07Z",
+        "username": "Kartikey Pradhan",
+        "text": "i am sure we might have an AI/ML engineer in the group who can literally extract all the questions from this chat and make a compendium of it",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:16Z",
+        "username": "Kartikey Pradhan",
+        "text": "it could become the craziest selling quiz book of all time",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:50:41Z",
+        "username": "Abhishek S",
+        "text": "@⁨~Naman Agarwal⁩ hae proposed doing it during Christmas 🙏",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:51:25Z",
+        "username": "Abhishek S",
+        "text": "What quiz do we have next weekend? Sid is doing the gauntlet, right? @⁨Sidhesh K K⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:52:01Z",
+        "username": "Kartikey Pradhan",
+        "text": "yes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:52:12Z",
+        "username": "Kartikey Pradhan",
+        "text": "Akshay’s SF 2 is the first quiz of the new year",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:53:48Z",
+        "username": "Abhishek Vats",
+        "text": "I should be ready with a buzzing one by tomorrow. Can run it mid week",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:55:00Z",
+        "username": "Abhishek S",
+        "text": "Also, @⁨~Paavas⁩ has a tournament planned to be run over the course of a weekend",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:56:12Z",
+        "username": "Sidhesh K K",
+        "text": "Yes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:57:21Z",
+        "username": "Abhishek S",
+        "text": "No participants decided yet, right?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:58:27Z",
+        "username": "Sidhesh K K",
+        "text": "Nope",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:59:09Z",
+        "username": "Naman Agarwal",
+        "text": "Thanks for reminding",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T14:59:20Z",
+        "username": "Naman Agarwal",
+        "text": "Will do (post Xmas) vacay ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:11:17Z",
+        "username": "Akshay",
+        "text": "United States: 20+\nUnited Kingdom : 3+\nGermany : 2\nCanada, India, Indonesia, Israel, Palestine, Myanmar, Montserrat, South Africa, Spain: 1 each\nWhat is this a count of? ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:13:50Z",
+        "username": "Sidhesh K K",
+        "text": "Font names?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:14:14Z",
+        "username": "Akshay",
+        "text": "Not fonts",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:15:24Z",
+        "username": "Kartikey Pradhan",
+        "text": "UNGA topics of voting?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:16:32Z",
+        "username": "Akshay",
+        "text": "Not UNGA-related either",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:16:35Z",
+        "username": "Akshay",
+        "text": "Hint: geography",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:17:06Z",
+        "username": "Kartikey Pradhan",
+        "text": "Places of shared faith?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:18:02Z",
+        "username": "Anurag Bhide",
+        "text": "Volcanoes?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:18:23Z",
+        "username": "Akshay",
+        "text": "Neither shared religious spaces nor volcanoes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:18:31Z",
+        "username": "Akshay",
+        "text": "Both would have other entrants in list",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:18:47Z",
+        "username": "Akshay",
+        "text": "Hint2: related to a place name",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:18:53Z",
+        "username": "Sayu Sekhar",
+        "text": "Exhaustive list?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:19:33Z",
+        "username": "Akshay",
+        "text": "More or less, there could be less significant places with the same name that* i am missing ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:19:55Z",
+        "username": "Nikhil Borra",
+        "text": "Towns named Adolf?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:19:56Z",
+        "username": "Kartikey Pradhan",
+        "text": "Alexandria type you mean?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:20:03Z",
+        "username": "Akshay",
+        "text": "Yess good track",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:20:16Z",
+        "username": "Akshay",
+        "text": "All towns named X",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:20:19Z",
+        "username": "Akshay",
+        "text": "Give X* ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:20:48Z",
+        "username": "Anurag Bhide",
+        "text": "Washington?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:20:59Z",
+        "username": "Sayu Sekhar",
+        "text": "Gandhinagar?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:21:27Z",
+        "username": "Nikhil Borra",
+        "text": "Is X = Modi?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:22:11Z",
+        "username": "Akshay",
+        "text": "Not Modi or Gandhi",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:22:20Z",
+        "username": "Akshay",
+        "text": "Not named after a person necessarily",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:22:36Z",
+        "username": "Akshay",
+        "text": "Different countries may have different etymologies",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T15:23:12Z",
+        "username": "Sayu Sekhar",
+        "text": "Salem ??? Jerusalem se I’m thinking",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
+    "id": "2025-12-20-t4",
+    "date": "2025-12-20",
+    "thread_number": 4,
+    "candidates": [
+      {
+        "timestamp": "2025-12-20T18:39:59Z",
+        "username": "Ryan Colaço",
+        "text": "Rumble in the jungle! ? Is the font a distraction?",
+        "reason_flagged": "question_mark"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2025-12-20T18:29:11Z",
+        "username": "Kartikey Pradhan",
+        "text": "1984",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:29:19Z",
+        "username": "Abhishek Vats",
+        "text": "Pavan said 80s only no?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:29:31Z",
+        "username": "Kartikey Pradhan",
+        "text": "Will give 5",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:29:51Z",
+        "username": "Abhishek Vats",
+        "text": "Mazedaar sawaal hain",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:30:11Z",
+        "username": "Sayu Sekhar",
+        "text": "questions mast hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:30:13Z",
+        "username": "Nikhil Borra",
+        "text": "@⁨Kartikey Pradhan⁩'s not disclosing in real time.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:31:30Z",
+        "username": "Abhishek Vats",
+        "text": "1970 mexico",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:31:33Z",
+        "username": "Soumyabrata250",
+        "text": "Mexico right",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:31:39Z",
+        "username": "Sayu Sekhar",
+        "text": "@⁨Abhishek Vats⁩ in 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:31:44Z",
+        "username": "Ryan Colaço",
+        "text": "Yup",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:32:47Z",
+        "username": "Abhishek Vats",
+        "text": "Chalo kuch positive help Kari 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:32:57Z",
+        "username": "Prathamesh",
+        "text": "Italy",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:32:58Z",
+        "username": "Nikhil Borra",
+        "text": "Athens?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:03Z",
+        "username": "Soumyabrata250",
+        "text": "Sistine Chapel",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:03Z",
+        "username": "Riddhimachitre",
+        "text": "Italy",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:04Z",
+        "username": "Ryan Colaço",
+        "text": "Italy 2020s",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:10Z",
+        "username": "Nikhil Borra",
+        "text": "No. Rome.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:13Z",
+        "username": "Prathamesh",
+        "text": "2024-2025",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:14Z",
+        "username": "Sayu Sekhar",
+        "text": "sistine chapel",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:33:16Z",
+        "username": "Riddhimachitre",
+        "text": "Sistine Chapel",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:34:02Z",
+        "username": "Sayu Sekhar",
+        "text": "iphone models se 2020s 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:34:15Z",
+        "username": "Sayu Sekhar",
+        "text": "and of course drones",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:07Z",
+        "username": "Nikhil Borra",
+        "text": "Monaco?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:10Z",
+        "username": "Sayu Sekhar",
+        "text": "monaco gpf",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:11Z",
+        "username": "Soumyabrata250",
+        "text": "Monaco",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:15Z",
+        "username": "Riddhimachitre",
+        "text": "Cannes?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:15Z",
+        "username": "Nikhil Borra",
+        "text": "Grace Kelly?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:34Z",
+        "username": "Abhishek Vats",
+        "text": "Lag toh monaco hi raha hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:35Z",
+        "username": "Prathamesh",
+        "text": "Monaco",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:55Z",
+        "username": "Sayu Sekhar",
+        "text": "nice nice 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:36:59Z",
+        "username": "Prathamesh",
+        "text": "1960s",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:37:21Z",
+        "username": "Nikhil Borra",
+        "text": "It's a motorcade of someone.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:37:57Z",
+        "username": "Abhishek Vats",
+        "text": "Cannes was 40s mein established",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:38:47Z",
+        "username": "Nikhil Borra",
+        "text": "I think it's the marriage procession of Grace Kelly.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:11Z",
+        "username": "Abhishek Vats",
+        "text": "Isi se idea hai monaco ka 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:16Z",
+        "username": "Khandoba",
+        "text": "Mai toh kuchh aur hi soch raha tha",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:34Z",
+        "username": "Abhishek Vats",
+        "text": "Hong Kong?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:39Z",
+        "username": "Sayu Sekhar",
+        "text": "my muscle memory is like monaco ke baad gp type ho gya",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:40Z",
+        "username": "Nikhil Borra",
+        "text": "Japan.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:54Z",
+        "username": "Prathamesh",
+        "text": "Japan partially visible",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:39:59Z",
+        "username": "Ryan Colaço",
+        "text": "Rumble in the jungle! ? Is the font a distraction?",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T18:40:00Z",
+        "username": "Khandoba",
+        "text": "Japan yeah",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:07Z",
+        "username": "Sayu Sekhar",
+        "text": "china muhammad ali 🙂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:13Z",
+        "username": "Abhishek Vats",
+        "text": "War of the world's tha ye",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:13Z",
+        "username": "Sayu Sekhar",
+        "text": "its not japanese",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:24Z",
+        "username": "Abhishek Vats",
+        "text": "So just guessing hong kong",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:26Z",
+        "username": "Sayu Sekhar",
+        "text": "looks like japan sorry",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:40:46Z",
+        "username": "Soumyabrata250",
+        "text": "Tokyo",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:41:02Z",
+        "username": "Sayu Sekhar",
+        "text": "Correspondent ke neeche Japan hai..  i think",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:41:07Z",
+        "username": "Khandoba",
+        "text": "Idk who the other guy is but that jawline could cut paper",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:41:22Z",
+        "username": "Soumyabrata250",
+        "text": "🗿",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:41:32Z",
+        "username": "Abhishek Vats",
+        "text": "Yup japan is also known for combat sports",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:41:34Z",
+        "username": "Abhishek Vats",
+        "text": "1970s",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:43:39Z",
+        "username": "Abhishek Vats",
+        "text": "1930s",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:43:53Z",
+        "username": "Sayu Sekhar",
+        "text": "USA 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:43:59Z",
+        "username": "Khandoba",
+        "text": "End of segregation?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:19Z",
+        "username": "Abhishek Vats",
+        "text": "Louis armstrong lag raha hai mujhe toh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:26Z",
+        "username": "Sayu Sekhar",
+        "text": "saying \"country milega toh city milega\" means might not be usa",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:32Z",
+        "username": "Khandoba",
+        "text": "Oh wait, country milega toh city mil jayega",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:43Z",
+        "username": "Khandoba",
+        "text": "Tab toh USA nahi hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:44Z",
+        "username": "Prathamesh",
+        "text": "Looks like Russia from the train",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:50Z",
+        "username": "Prathamesh",
+        "text": "Moscow",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:44:51Z",
+        "username": "Sayu Sekhar",
+        "text": "south africa ?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:45:03Z",
+        "username": "Abhishek Vats",
+        "text": "Munich",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:45:05Z",
+        "username": "Nikhil Borra",
+        "text": "Sweden?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:45:23Z",
+        "username": "Nikhil Borra",
+        "text": "Nobel peace prize?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:45:53Z",
+        "username": "Khandoba",
+        "text": "Ooh nice thinking",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:46:25Z",
+        "username": "Abhishek Vats",
+        "text": "Maine toh kaala chashma dekh k blind hi kar dia 🙈",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:46:35Z",
+        "username": "Nikhil Borra",
+        "text": "Maybe John Lewis and MLK's wife?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:46:36Z",
+        "username": "Khandoba",
+        "text": "But he does look like Armstrong",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:03Z",
+        "username": "Ryan Colaço",
+        "text": "That's louis armstrong for sure",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:06Z",
+        "username": "Abhishek Vats",
+        "text": "Yup and I only remembered the black glasses",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:09Z",
+        "username": "Khandoba",
+        "text": "Louis Armstrong in Dublin",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:10Z",
+        "username": "Ryan Colaço",
+        "text": "No doubt",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:28Z",
+        "username": "Abhishek Vats",
+        "text": "Didn't think that waise bhi pehn sakta hai koi 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:53Z",
+        "username": "Khandoba",
+        "text": "Nice",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:47:57Z",
+        "username": "Sayu Sekhar",
+        "text": "v nice",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:48:07Z",
+        "username": "Abhishek Vats",
+        "text": "Syria?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:48:13Z",
+        "username": "Soumyabrata250",
+        "text": "South Sudan?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T18:48:13Z",
+        "username": "Nikhil Borra",
+        "text": "Gaza 2025.",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
+    "id": "2025-12-20-t5",
+    "date": "2025-12-20",
+    "thread_number": 5,
+    "candidates": [
+      {
+        "timestamp": "2025-12-20T19:53:21Z",
+        "username": "Abhishek Vats",
+        "text": "Quaalude se toh mujhe wolf of Wall Street hi yaad aata hai 😂",
+        "reason_flagged": "session_marker"
+      },
+      {
+        "timestamp": "2025-12-20T19:55:00Z",
+        "username": "Ryan Colaço",
+        "text": "Quaalude dekh ke hi I went for fear and loathing",
+        "reason_flagged": "session_marker"
+      }
+    ],
+    "context": [
+      {
+        "timestamp": "2025-12-20T19:41:04Z",
+        "username": "Nikhil Borra",
+        "text": "Luge?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:41:16Z",
+        "username": "Ryan Colaço",
+        "text": "Luge",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:42:15Z",
+        "username": "Ryan Colaço",
+        "text": "Toboggan",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:43:38Z",
+        "username": "Abhishek Vats",
+        "text": "F1 pit stops",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:43:40Z",
+        "username": "Sayu Sekhar",
+        "text": "F1 pit stop",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:43:43Z",
+        "username": "Abhishek Vats",
+        "text": "Ferrari out crew",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:43:46Z",
+        "username": "Abhishek Vats",
+        "text": "Pit*",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:43:50Z",
+        "username": "Riddhimachitre",
+        "text": "Ferrari pit stops",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:44:28Z",
+        "username": "Riddhimachitre",
+        "text": "Crying in LH44 fan 😭",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:44:38Z",
+        "username": "Abhishek Vats",
+        "text": "Jean Todt legend 🙌🏻🙌🏻",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:45:08Z",
+        "username": "Riddhimachitre",
+        "text": "Also married to Michelle yeoh!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:45:17Z",
+        "username": "Ryan Colaço",
+        "text": "Crazy",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:45:24Z",
+        "username": "Ryan Colaço",
+        "text": "Damn",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:45:43Z",
+        "username": "Abhishek Vats",
+        "text": "Didn't know this 😮",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:46:21Z",
+        "username": "Abhishek Vats",
+        "text": "And funny that ferrari won the fastest pit stop this year 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:46:33Z",
+        "username": "Ryan Colaço",
+        "text": "Saluja...",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:46:47Z",
+        "username": "Riddhimachitre",
+        "text": "Yeah they got married like abhi couple of years ago",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:03Z",
+        "username": "Abhishek Vats",
+        "text": "The trophy for this was made by an Indian girl I think for this year",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:05Z",
+        "username": "Sayu Sekhar",
+        "text": "Kuch toh mila",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:42Z",
+        "username": "Nikhil Borra",
+        "text": "RGV?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:49Z",
+        "username": "Sayu Sekhar",
+        "text": "Arr",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:49Z",
+        "username": "Abhishek Vats",
+        "text": "Exactly wohi socha 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:47:51Z",
+        "username": "Sayu Sekhar",
+        "text": "?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:48:04Z",
+        "username": "Sayu Sekhar",
+        "text": "I mean ar Rahman",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:48:06Z",
+        "username": "Abhishek Vats",
+        "text": "Aise idea uske hi dimaag mein aate hain 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:48:14Z",
+        "username": "Abhishek Vats",
+        "text": "Can't be now because of debut",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:48:17Z",
+        "username": "Sayu Sekhar",
+        "text": "I thought same on ARR",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:48:22Z",
+        "username": "Sayu Sekhar",
+        "text": "😁",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:49:14Z",
+        "username": "Ryan Colaço",
+        "text": "Debut hain toh dusre field se famous hoga",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:49:29Z",
+        "username": "Abhishek Vats",
+        "text": "Could be him then",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:49:57Z",
+        "username": "Ryan Colaço",
+        "text": "Yep, Sayu sahi hain",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:49:58Z",
+        "username": "Abhishek Vats",
+        "text": "But didn't know he directed a film",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:50:04Z",
+        "username": "Abhishek Vats",
+        "text": "Lurn hi lurn",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:50:36Z",
+        "username": "AntNishu",
+        "text": "yea, recently he said this on Kamat podcast i remember",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:51:06Z",
+        "username": "Ryan Colaço",
+        "text": "Grace Boyle, Danny se related hain kya? Might make sense",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:51:08Z",
+        "username": "Abhishek Vats",
+        "text": "@⁨Akshay⁩ ko bolne dena tha HR 😅",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:51:56Z",
+        "username": "Ryan Colaço",
+        "text": "Damn!!!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:51:57Z",
+        "username": "Khandoba",
+        "text": "Wow",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:52:05Z",
+        "username": "Khandoba",
+        "text": "Down to the wire",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:52:29Z",
+        "username": "Ryan Colaço",
+        "text": "Go big, Sal\nHome toh ham hain hi",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:53:21Z",
+        "username": "Abhishek Vats",
+        "text": "Quaalude se toh mujhe wolf of Wall Street hi yaad aata hai 😂",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T19:53:30Z",
+        "username": "Ryan Colaço",
+        "text": "Fear and loathing?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:53:36Z",
+        "username": "Ryan Colaço",
+        "text": "Oh oh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:53:39Z",
+        "username": "Abhishek Vats",
+        "text": "Mctukka 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:53:39Z",
+        "username": "Sayu Sekhar",
+        "text": "Wo green tick",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:54:08Z",
+        "username": "Abhishek Vats",
+        "text": "I seriously don't know any single of the other pictures 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:54:19Z",
+        "username": "Anurag Bhide",
+        "text": "Steve Madden shoes",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:54:22Z",
+        "username": "Abhishek Vats",
+        "text": "It's steve madden then for shoes?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:54:42Z",
+        "username": "Abhishek Vats",
+        "text": "Jordan belfort hoga person",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:55:00Z",
+        "username": "Ryan Colaço",
+        "text": "Quaalude dekh ke hi I went for fear and loathing",
+        "is_candidate": true
+      },
+      {
+        "timestamp": "2025-12-20T19:55:59Z",
+        "username": "Abhishek Vats",
+        "text": "This scene is after quaaludes ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:00Z",
+        "username": "Sayu Sekhar",
+        "text": "Pavan is there",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:02Z",
+        "username": "Khandoba",
+        "text": "Oh damn",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:13Z",
+        "username": "Riddhimachitre",
+        "text": "Noooooooooo",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:20Z",
+        "username": "Khandoba",
+        "text": "What is Pavan doing🤣🤣🤣🤣",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:27Z",
+        "username": "Ryan Colaço",
+        "text": "Whaaa aaaaaaaaaaahhhhh",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:29Z",
+        "username": "Khandoba",
+        "text": "Sirrrrrrr",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:56:29Z",
+        "username": "Abhishek Vats",
+        "text": "Why Pavan why?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:57:46Z",
+        "username": "Khandoba",
+        "text": "What is happening",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:05Z",
+        "username": "Abhishek Vats",
+        "text": "The quiz has been epic 🙌🏻",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:24Z",
+        "username": "Abhishek Vats",
+        "text": "Erdogan",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:42Z",
+        "username": "Sayu Sekhar",
+        "text": "Wow",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:43Z",
+        "username": "Abhishek Vats",
+        "text": "For sure",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:51Z",
+        "username": "Abhishek Vats",
+        "text": "Bechare ozil ka career kha gya",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T19:59:53Z",
+        "username": "Anurag Bhide",
+        "text": "Must be because footballer toh nahi hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:03Z",
+        "username": "Ryan Colaço",
+        "text": "Erdogan",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:05Z",
+        "username": "Abhishek Vats",
+        "text": "Best man se pakka hai",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:09Z",
+        "username": "Ryan Colaço",
+        "text": "No doubt",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:35Z",
+        "username": "AntNishu",
+        "text": "did last line work for you?",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:36Z",
+        "username": "Sayu Sekhar",
+        "text": "What a great question",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:52Z",
+        "username": "Khandoba",
+        "text": "Football and global politics is like made for Akshay",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:53Z",
+        "username": "Abhishek Vats",
+        "text": "Yup that was the main hint",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:00:57Z",
+        "username": "Khandoba",
+        "text": "But no politics hint",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:01:01Z",
+        "username": "Abhishek Vats",
+        "text": "Which football 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:01:18Z",
+        "username": "Ryan Colaço",
+        "text": "@⁨Kartikey Pradhan⁩  Bhai.... Kya superb fun ....\nSo glad ki biwi so gayi aur do-teen round toh dekhne mile ‎<This message was edited>",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:01:18Z",
+        "username": "Nikhil Borra",
+        "text": "This is wrong kind of football.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:01:20Z",
+        "username": "Khandoba",
+        "text": "I’m sure he hate reads",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:02:14Z",
+        "username": "Ryan Colaço",
+        "text": "Mazza aa gaya",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:02:18Z",
+        "username": "Nikhil Borra",
+        "text": "@⁨Kartikey Pradhan⁩ great questions all around.❤️",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:02:25Z",
+        "username": "Khandoba",
+        "text": "Amazing set and concept rounds @⁨Kartikey Pradhan⁩",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:02:37Z",
+        "username": "Khandoba",
+        "text": "What a great kicking start of the weekend",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:04:05Z",
+        "username": "Pavan Pamidimarri",
+        "text": "Thank you @⁨Kartikey Pradhan⁩ for a fantastic kviz. You raised the bar for live kvizzes with your formats and questions. It was great playing with @⁨~Abhishek S⁩ and @⁨Aditi Bapat⁩ and congratulations @⁨Akshay⁩ on a great win!",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:05:34Z",
+        "username": "Khandoba",
+        "text": "To keep quizzers of this calibre on their toes is no easy feat.",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:05:42Z",
+        "username": "Pavan Pamidimarri",
+        "text": "i blanked out on the guy’s name… was going to say the lead character in that movie played by DiCaprio, but for a moment I blanked on DiCaprio’s name also",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:05:44Z",
+        "username": "Abhishek Vats",
+        "text": "Ekdum epic sawaal and great cracks throughout. Plus nail biter bhi ho gya 🙌🏻 ‎GIF omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:06:27Z",
+        "username": "Kartikey Pradhan",
+        "text": "KP's quiz final.pdf • ‎128 pages ‎document omitted",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:06:28Z",
+        "username": "Khandoba",
+        "text": "I was doing a mental tally of how much I’d have scored and I’m guessing 15 if not 0",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:06:45Z",
+        "username": "Abhishek Vats",
+        "text": "Now atleast we know that @⁨Akshay⁩ agrees which one is the true football 😂",
+        "is_candidate": false
+      },
+      {
+        "timestamp": "2025-12-20T20:06:46Z",
+        "username": "Khandoba",
+        "text": "I think KP would have given you majority of points for just the name of the movie",
+        "is_candidate": false
+      }
+    ],
+    "extracted": false
+  },
+  {
     "id": "2025-12-21-t1",
     "date": "2025-12-21",
     "thread_number": 1,

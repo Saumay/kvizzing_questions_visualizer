@@ -30,7 +30,7 @@ Dead ends tried:
 
 Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Photos app (if "Save to Camera Roll" was ever on), other group members' phones, ask original senders directly.
 
-## Full per-day table (2025-09-23 - 2026-11-13)
+## Full per-day table (2025-09-23 - 2026-11-15)
 
 | Date | Source | Extracted | Questions | Media % | Topic % | Tags % | Reactions % | Low conf % | Published |
 |---|---|---|---|---|---|---|---|---|---|
@@ -451,6 +451,8 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-11 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-12 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-13 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-14 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-15 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
 ## How to update this file
 

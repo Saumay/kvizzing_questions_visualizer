@@ -1,0 +1,1 @@
+[{"timestamp": "2026-08-19T17:59:58Z", "username": "AS", "text": "Clinton ?", "role": "attempt", "is_correct": true, "has_media": false, "media": null}, {"timestamp": "2026-08-19T18:00:17Z", "username": "Abhishek Vats", "text": "Bill Clinton is correct. Born on this day in 1946", "role": "confirmation", "is_correct": null, "has_media": false, "media": null}]

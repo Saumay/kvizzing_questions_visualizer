@@ -42,7 +42,9 @@ CHAT_FILE = V2_DIR / "data" / "raw" / "_chat.txt"
 CONFIG_DIR = PIPELINE_DIR / "config"
 
 # Hard upper limit on the bulk run for this exercise (set per scope decision).
-SCOPE_END_DATE = "2026-02-19"
+# Bumped 2026-11-15 to cover the 2026-07-30..2026-09-16 missing-extraction
+# backlog found by `check-coverage` (49 contiguous dates, never processed).
+SCOPE_END_DATE = "2026-09-16"
 
 # ── Chat parsing ─────────────────────────────────────────────────────────────
 

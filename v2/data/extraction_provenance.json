@@ -966,6 +966,398 @@
       "last_extracted_at": "2026-11-11T14:03:57Z",
       "notes": "pipeline.py backfill",
       "history": []
+    },
+    "2026-07-30": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 27,
+      "last_extracted_at": "2026-11-15T22:53:06Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16. Density note for 2026-08-02: only 9 Qs extracted from 574 messages (~64 msgs/Q, above the 20-50 target) because a large block of that date's traffic is live-Zoom MTV Quiz Tournament SF1 commentary with no question text in chat (logged in rejected, not extractable). 2026-07-30 and 2026-07-31 are within the 20-50 msgs/Q target.",
+      "history": []
+    },
+    "2026-07-31": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 34,
+      "last_extracted_at": "2026-11-15T22:53:06Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16. Density note for 2026-08-02: only 9 Qs extracted from 574 messages (~64 msgs/Q, above the 20-50 target) because a large block of that date's traffic is live-Zoom MTV Quiz Tournament SF1 commentary with no question text in chat (logged in rejected, not extractable). 2026-07-30 and 2026-07-31 are within the 20-50 msgs/Q target.",
+      "history": []
+    },
+    "2026-08-02": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 9,
+      "last_extracted_at": "2026-11-15T22:53:06Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16. Density note for 2026-08-02: only 9 Qs extracted from 574 messages (~64 msgs/Q, above the 20-50 target) because a large block of that date's traffic is live-Zoom MTV Quiz Tournament SF1 commentary with no question text in chat (logged in rejected, not extractable). 2026-07-30 and 2026-07-31 are within the 20-50 msgs/Q target.",
+      "history": []
+    },
+    "2026-08-04": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 24,
+      "last_extracted_at": "2026-11-15T23:08:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-05": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 21,
+      "last_extracted_at": "2026-11-15T23:08:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-06": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 15,
+      "last_extracted_at": "2026-11-15T23:08:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-07": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 5,
+      "last_extracted_at": "2026-11-15T23:18:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-08": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 12,
+      "last_extracted_at": "2026-11-15T23:18:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-10": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 12,
+      "last_extracted_at": "2026-11-15T23:18:28Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-11": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 6,
+      "last_extracted_at": "2026-11-15T23:28:03Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-12": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 6,
+      "last_extracted_at": "2026-11-15T23:28:03Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-13": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 5,
+      "last_extracted_at": "2026-11-15T23:28:03Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-15": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 29,
+      "last_extracted_at": "2026-11-15T23:43:18Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-17": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 29,
+      "last_extracted_at": "2026-11-15T23:43:18Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-18": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 37,
+      "last_extracted_at": "2026-11-15T23:43:18Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-19": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 49,
+      "last_extracted_at": "2026-11-16T00:05:01Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-21": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 67,
+      "last_extracted_at": "2026-11-16T00:05:01Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-22": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 36,
+      "last_extracted_at": "2026-11-16T00:05:01Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-23": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 11,
+      "last_extracted_at": "2026-11-16T00:25:42Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-24": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 19,
+      "last_extracted_at": "2026-11-16T00:25:42Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-25": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 20,
+      "last_extracted_at": "2026-11-16T00:25:42Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-26": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 22,
+      "last_extracted_at": "2026-11-16T00:40:59Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-27": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 15,
+      "last_extracted_at": "2026-11-16T00:40:59Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-28": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 40,
+      "last_extracted_at": "2026-11-16T00:40:59Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-30": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 25,
+      "last_extracted_at": "2026-11-16T00:58:55Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-01": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 27,
+      "last_extracted_at": "2026-11-16T00:58:55Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-02": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 27,
+      "last_extracted_at": "2026-11-16T00:58:55Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-03": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 20,
+      "last_extracted_at": "2026-11-16T01:24:25Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16; batch-010 processed inline by parent fork (not sub-delegated) due to tool-size limits on the 09-05 input slice",
+      "history": []
+    },
+    "2026-09-04": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 37,
+      "last_extracted_at": "2026-11-16T01:24:25Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16; batch-010 processed inline by parent fork (not sub-delegated) due to tool-size limits on the 09-05 input slice",
+      "history": []
+    },
+    "2026-09-05": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 70,
+      "last_extracted_at": "2026-11-16T01:24:25Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16; batch-010 processed inline by parent fork (not sub-delegated) due to tool-size limits on the 09-05 input slice",
+      "history": []
+    },
+    "2026-09-06": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 23,
+      "last_extracted_at": "2026-11-16T01:47:26Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-07": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 86,
+      "last_extracted_at": "2026-11-16T01:47:26Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-08": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 49,
+      "last_extracted_at": "2026-11-16T01:47:26Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-09": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 58,
+      "last_extracted_at": "2026-11-16T02:04:31Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-10": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 22,
+      "last_extracted_at": "2026-11-16T02:04:31Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-11": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 18,
+      "last_extracted_at": "2026-11-16T02:04:31Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-13": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 38,
+      "last_extracted_at": "2026-11-16T02:18:38Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-14": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 14,
+      "last_extracted_at": "2026-11-16T02:18:38Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-15": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 16,
+      "last_extracted_at": "2026-11-16T02:18:38Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-09-16": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 31,
+      "last_extracted_at": "2026-11-16T02:29:37Z",
+      "notes": "backlog fill 2026-07-30..2026-09-16",
+      "history": []
+    },
+    "2026-08-01": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 12,
+      "last_extracted_at": "2026-11-16T02:47:03Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-03": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 36,
+      "last_extracted_at": "2026-11-16T02:47:03Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-09": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 2,
+      "last_extracted_at": "2026-11-16T02:47:03Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-14": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 10,
+      "last_extracted_at": "2026-11-16T02:47:24Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-16": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 4,
+      "last_extracted_at": "2026-11-16T02:47:24Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-20": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 13,
+      "last_extracted_at": "2026-11-16T02:47:24Z",
+      "notes": "backlog fill - partially-covered date (deck import existed, chat extraction never ran)",
+      "history": []
+    },
+    "2026-08-29": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 28,
+      "last_extracted_at": "2026-11-16T02:50:32Z",
+      "notes": "backlog fill - partially-covered dates (deck import existed, chat extraction never ran): 2026-08-29, 2026-08-31, 2026-09-12",
+      "history": []
+    },
+    "2026-08-31": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 34,
+      "last_extracted_at": "2026-11-16T02:50:32Z",
+      "notes": "backlog fill - partially-covered dates (deck import existed, chat extraction never ran): 2026-08-29, 2026-08-31, 2026-09-12",
+      "history": []
+    },
+    "2026-09-12": {
+      "method": "me-as-llm-fork",
+      "model": "claude-sonnet-5",
+      "count": 38,
+      "last_extracted_at": "2026-11-16T02:50:32Z",
+      "notes": "backlog fill - partially-covered dates (deck import existed, chat extraction never ran): 2026-08-29, 2026-08-31, 2026-09-12",
+      "history": []
     }
   }
 }
