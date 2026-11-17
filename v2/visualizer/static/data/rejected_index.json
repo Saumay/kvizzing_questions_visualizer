@@ -3794,59 +3794,23 @@
   {
     "id": "2026-01-02-t2",
     "date": "2026-01-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-02-t3",
     "date": "2026-01-02",
-    "candidate_count": 6,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-02-t4",
     "date": "2026-01-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-02-t5",
-    "date": "2026-01-02",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t6",
-    "date": "2026-01-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t7",
-    "date": "2026-01-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t8",
-    "date": "2026-01-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t9",
-    "date": "2026-01-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t10",
-    "date": "2026-01-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-02-t11",
     "date": "2026-01-02",
     "candidate_count": 2,
     "extracted": false
@@ -3894,12 +3858,6 @@
     "extracted": false
   },
   {
-    "id": "2026-01-03-t8",
-    "date": "2026-01-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-04-t1",
     "date": "2026-01-04",
     "candidate_count": 1,
@@ -3914,7 +3872,7 @@
   {
     "id": "2026-01-04-t3",
     "date": "2026-01-04",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -3932,7 +3890,7 @@
   {
     "id": "2026-01-04-t6",
     "date": "2026-01-04",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -3962,41 +3920,11 @@
   {
     "id": "2026-01-04-t11",
     "date": "2026-01-04",
-    "candidate_count": 3,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-04-t12",
-    "date": "2026-01-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-04-t13",
-    "date": "2026-01-04",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-04-t14",
-    "date": "2026-01-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-04-t15",
-    "date": "2026-01-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-04-t16",
-    "date": "2026-01-04",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-04-t17",
     "date": "2026-01-04",
     "candidate_count": 1,
     "extracted": false
@@ -4152,45 +4080,9 @@
     "extracted": false
   },
   {
-    "id": "2026-01-09-t4",
-    "date": "2026-01-09",
-    "candidate_count": 6,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-09-t5",
-    "date": "2026-01-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-09-t6",
-    "date": "2026-01-09",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-09-t7",
-    "date": "2026-01-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-09-t8",
-    "date": "2026-01-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-09-t9",
-    "date": "2026-01-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-10-t1",
     "date": "2026-01-10",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4214,7 +4106,7 @@
   {
     "id": "2026-01-10-t5",
     "date": "2026-01-10",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4226,7 +4118,7 @@
   {
     "id": "2026-01-10-t7",
     "date": "2026-01-10",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4238,13 +4130,13 @@
   {
     "id": "2026-01-10-t9",
     "date": "2026-01-10",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
     "id": "2026-01-10-t10",
     "date": "2026-01-10",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
@@ -4256,53 +4148,11 @@
   {
     "id": "2026-01-10-t12",
     "date": "2026-01-10",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t13",
-    "date": "2026-01-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t14",
-    "date": "2026-01-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t15",
-    "date": "2026-01-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t16",
-    "date": "2026-01-10",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t17",
-    "date": "2026-01-10",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t18",
-    "date": "2026-01-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-10-t19",
-    "date": "2026-01-10",
     "candidate_count": 3,
     "extracted": false
   },
   {
-    "id": "2026-01-10-t20",
+    "id": "2026-01-10-t13",
     "date": "2026-01-10",
     "candidate_count": 2,
     "extracted": false
@@ -4316,7 +4166,7 @@
   {
     "id": "2026-01-11-t2",
     "date": "2026-01-11",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4362,36 +4212,6 @@
     "extracted": false
   },
   {
-    "id": "2026-01-11-t10",
-    "date": "2026-01-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-11-t11",
-    "date": "2026-01-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-11-t12",
-    "date": "2026-01-11",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-11-t13",
-    "date": "2026-01-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-11-t14",
-    "date": "2026-01-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-12-t1",
     "date": "2026-01-12",
     "candidate_count": 1,
@@ -4400,7 +4220,7 @@
   {
     "id": "2026-01-12-t2",
     "date": "2026-01-12",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -4411,66 +4231,6 @@
   },
   {
     "id": "2026-01-12-t4",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t5",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t6",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t7",
-    "date": "2026-01-12",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t8",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t9",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t10",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t11",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t12",
-    "date": "2026-01-12",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t13",
-    "date": "2026-01-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-12-t14",
     "date": "2026-01-12",
     "candidate_count": 1,
     "extracted": false
@@ -4496,7 +4256,7 @@
   {
     "id": "2026-01-13-t4",
     "date": "2026-01-13",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4514,53 +4274,11 @@
   {
     "id": "2026-01-13-t7",
     "date": "2026-01-13",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-13-t8",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t9",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t10",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t11",
-    "date": "2026-01-13",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t12",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t13",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t14",
-    "date": "2026-01-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-13-t15",
     "date": "2026-01-13",
     "candidate_count": 1,
     "extracted": false
@@ -4592,53 +4310,11 @@
   {
     "id": "2026-01-14-t5",
     "date": "2026-01-14",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-14-t6",
-    "date": "2026-01-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t7",
-    "date": "2026-01-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t8",
-    "date": "2026-01-14",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t9",
-    "date": "2026-01-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t10",
-    "date": "2026-01-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t11",
-    "date": "2026-01-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t12",
-    "date": "2026-01-14",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-14-t13",
     "date": "2026-01-14",
     "candidate_count": 1,
     "extracted": false
@@ -4658,7 +4334,7 @@
   {
     "id": "2026-01-15-t3",
     "date": "2026-01-15",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4670,35 +4346,11 @@
   {
     "id": "2026-01-15-t5",
     "date": "2026-01-15",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-15-t6",
-    "date": "2026-01-15",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-15-t7",
-    "date": "2026-01-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-15-t8",
-    "date": "2026-01-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-15-t9",
-    "date": "2026-01-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-15-t10",
     "date": "2026-01-15",
     "candidate_count": 1,
     "extracted": false
@@ -4706,7 +4358,7 @@
   {
     "id": "2026-01-16-t1",
     "date": "2026-01-16",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4718,7 +4370,7 @@
   {
     "id": "2026-01-16-t3",
     "date": "2026-01-16",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4742,7 +4394,7 @@
   {
     "id": "2026-01-16-t7",
     "date": "2026-01-16",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4754,13 +4406,13 @@
   {
     "id": "2026-01-16-t9",
     "date": "2026-01-16",
-    "candidate_count": 1,
+    "candidate_count": 6,
     "extracted": false
   },
   {
     "id": "2026-01-16-t10",
     "date": "2026-01-16",
-    "candidate_count": 1,
+    "candidate_count": 6,
     "extracted": false
   },
   {
@@ -4778,47 +4430,17 @@
   {
     "id": "2026-01-16-t13",
     "date": "2026-01-16",
-    "candidate_count": 6,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-16-t14",
     "date": "2026-01-16",
-    "candidate_count": 6,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-16-t15",
-    "date": "2026-01-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-16-t16",
-    "date": "2026-01-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-16-t17",
-    "date": "2026-01-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-16-t18",
-    "date": "2026-01-16",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-16-t19",
-    "date": "2026-01-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-16-t20",
     "date": "2026-01-16",
     "candidate_count": 1,
     "extracted": false
@@ -4850,7 +4472,7 @@
   {
     "id": "2026-01-17-t5",
     "date": "2026-01-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4874,7 +4496,7 @@
   {
     "id": "2026-01-17-t9",
     "date": "2026-01-17",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -4892,60 +4514,6 @@
   {
     "id": "2026-01-17-t12",
     "date": "2026-01-17",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t13",
-    "date": "2026-01-17",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t14",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t15",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t16",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t17",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t18",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t19",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t20",
-    "date": "2026-01-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-17-t21",
-    "date": "2026-01-17",
     "candidate_count": 1,
     "extracted": false
   },
@@ -4958,13 +4526,13 @@
   {
     "id": "2026-01-18-t2",
     "date": "2026-01-18",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-18-t3",
     "date": "2026-01-18",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -4976,19 +4544,19 @@
   {
     "id": "2026-01-18-t5",
     "date": "2026-01-18",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-18-t6",
     "date": "2026-01-18",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-18-t7",
     "date": "2026-01-18",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5000,7 +4568,7 @@
   {
     "id": "2026-01-18-t9",
     "date": "2026-01-18",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5018,7 +4586,7 @@
   {
     "id": "2026-01-18-t12",
     "date": "2026-01-18",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5042,7 +4610,7 @@
   {
     "id": "2026-01-18-t16",
     "date": "2026-01-18",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5066,53 +4634,11 @@
   {
     "id": "2026-01-18-t20",
     "date": "2026-01-18",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-18-t21",
-    "date": "2026-01-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t22",
-    "date": "2026-01-18",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t23",
-    "date": "2026-01-18",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t24",
-    "date": "2026-01-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t25",
-    "date": "2026-01-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t26",
-    "date": "2026-01-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t27",
-    "date": "2026-01-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-18-t28",
     "date": "2026-01-18",
     "candidate_count": 1,
     "extracted": false
@@ -5168,7 +4694,7 @@
   {
     "id": "2026-01-19-t9",
     "date": "2026-01-19",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5179,30 +4705,6 @@
   },
   {
     "id": "2026-01-19-t11",
-    "date": "2026-01-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-19-t12",
-    "date": "2026-01-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-19-t13",
-    "date": "2026-01-19",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-19-t14",
-    "date": "2026-01-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-19-t15",
     "date": "2026-01-19",
     "candidate_count": 1,
     "extracted": false
@@ -5232,60 +4734,6 @@
     "extracted": false
   },
   {
-    "id": "2026-01-20-t5",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t6",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t7",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t8",
-    "date": "2026-01-20",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t9",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t10",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t11",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t12",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-20-t13",
-    "date": "2026-01-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-21-t1",
     "date": "2026-01-21",
     "candidate_count": 1,
@@ -5294,25 +4742,25 @@
   {
     "id": "2026-01-21-t2",
     "date": "2026-01-21",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-21-t3",
     "date": "2026-01-21",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-21-t4",
     "date": "2026-01-21",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-21-t5",
     "date": "2026-01-21",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -5324,7 +4772,7 @@
   {
     "id": "2026-01-21-t7",
     "date": "2026-01-21",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5346,18 +4794,6 @@
     "extracted": false
   },
   {
-    "id": "2026-01-21-t11",
-    "date": "2026-01-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-21-t12",
-    "date": "2026-01-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-22-t1",
     "date": "2026-01-22",
     "candidate_count": 1,
@@ -5365,18 +4801,6 @@
   },
   {
     "id": "2026-01-22-t2",
-    "date": "2026-01-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-22-t3",
-    "date": "2026-01-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-22-t4",
     "date": "2026-01-22",
     "candidate_count": 1,
     "extracted": false
@@ -5390,35 +4814,11 @@
   {
     "id": "2026-01-23-t2",
     "date": "2026-01-23",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-23-t3",
-    "date": "2026-01-23",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-23-t4",
-    "date": "2026-01-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-23-t5",
-    "date": "2026-01-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-23-t6",
-    "date": "2026-01-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-23-t7",
     "date": "2026-01-23",
     "candidate_count": 1,
     "extracted": false
@@ -5462,13 +4862,13 @@
   {
     "id": "2026-01-24-t7",
     "date": "2026-01-24",
-    "candidate_count": 4,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-01-24-t8",
     "date": "2026-01-24",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5492,25 +4892,25 @@
   {
     "id": "2026-01-24-t12",
     "date": "2026-01-24",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-24-t13",
     "date": "2026-01-24",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-24-t14",
     "date": "2026-01-24",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-24-t15",
     "date": "2026-01-24",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5534,13 +4934,13 @@
   {
     "id": "2026-01-24-t19",
     "date": "2026-01-24",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-24-t20",
     "date": "2026-01-24",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5550,15 +4950,9 @@
     "extracted": false
   },
   {
-    "id": "2026-01-24-t22",
-    "date": "2026-01-24",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-25-t1",
     "date": "2026-01-25",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5570,13 +4964,13 @@
   {
     "id": "2026-01-25-t3",
     "date": "2026-01-25",
-    "candidate_count": 2,
+    "candidate_count": 4,
     "extracted": false
   },
   {
     "id": "2026-01-25-t4",
     "date": "2026-01-25",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5594,19 +4988,19 @@
   {
     "id": "2026-01-25-t7",
     "date": "2026-01-25",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-25-t8",
     "date": "2026-01-25",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-25-t9",
     "date": "2026-01-25",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5618,7 +5012,7 @@
   {
     "id": "2026-01-25-t11",
     "date": "2026-01-25",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5630,77 +5024,11 @@
   {
     "id": "2026-01-25-t13",
     "date": "2026-01-25",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t14",
-    "date": "2026-01-25",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t15",
-    "date": "2026-01-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t16",
-    "date": "2026-01-25",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t17",
-    "date": "2026-01-25",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t18",
-    "date": "2026-01-25",
-    "candidate_count": 6,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t19",
-    "date": "2026-01-25",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t20",
-    "date": "2026-01-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t21",
-    "date": "2026-01-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t22",
-    "date": "2026-01-25",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t23",
-    "date": "2026-01-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-25-t24",
-    "date": "2026-01-25",
     "candidate_count": 3,
     "extracted": false
   },
   {
-    "id": "2026-01-25-t25",
+    "id": "2026-01-25-t14",
     "date": "2026-01-25",
     "candidate_count": 1,
     "extracted": false
@@ -5708,7 +5036,7 @@
   {
     "id": "2026-01-26-t1",
     "date": "2026-01-26",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -5738,71 +5066,11 @@
   {
     "id": "2026-01-26-t6",
     "date": "2026-01-26",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-26-t7",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t8",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t9",
-    "date": "2026-01-26",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t10",
-    "date": "2026-01-26",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t11",
-    "date": "2026-01-26",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t12",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t13",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t14",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t15",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t16",
-    "date": "2026-01-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-26-t17",
     "date": "2026-01-26",
     "candidate_count": 2,
     "extracted": false
@@ -5822,119 +5090,23 @@
   {
     "id": "2026-01-27-t3",
     "date": "2026-01-27",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-27-t4",
     "date": "2026-01-27",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-01-27-t5",
     "date": "2026-01-27",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-27-t6",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t7",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t8",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t9",
-    "date": "2026-01-27",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t10",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t11",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t12",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t13",
-    "date": "2026-01-27",
-    "candidate_count": 10,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t14",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t15",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t16",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t17",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t18",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t19",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t20",
-    "date": "2026-01-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t21",
-    "date": "2026-01-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-27-t22",
     "date": "2026-01-27",
     "candidate_count": 1,
     "extracted": false
@@ -5954,7 +5126,7 @@
   {
     "id": "2026-01-28-t3",
     "date": "2026-01-28",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -5978,7 +5150,7 @@
   {
     "id": "2026-01-28-t7",
     "date": "2026-01-28",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -5990,77 +5162,11 @@
   {
     "id": "2026-01-28-t9",
     "date": "2026-01-28",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-28-t10",
-    "date": "2026-01-28",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t11",
-    "date": "2026-01-28",
-    "candidate_count": 10,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t12",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t13",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t14",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t15",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t16",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t17",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t18",
-    "date": "2026-01-28",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t19",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t20",
-    "date": "2026-01-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-28-t21",
     "date": "2026-01-28",
     "candidate_count": 1,
     "extracted": false
@@ -6074,7 +5180,7 @@
   {
     "id": "2026-01-29-t2",
     "date": "2026-01-29",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6086,7 +5192,7 @@
   {
     "id": "2026-01-29-t4",
     "date": "2026-01-29",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6114,24 +5220,6 @@
     "extracted": false
   },
   {
-    "id": "2026-01-29-t9",
-    "date": "2026-01-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-29-t10",
-    "date": "2026-01-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-29-t11",
-    "date": "2026-01-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-01-30-t1",
     "date": "2026-01-30",
     "candidate_count": 1,
@@ -6140,13 +5228,13 @@
   {
     "id": "2026-01-30-t2",
     "date": "2026-01-30",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-30-t3",
     "date": "2026-01-30",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6176,29 +5264,11 @@
   {
     "id": "2026-01-30-t8",
     "date": "2026-01-30",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-01-30-t9",
-    "date": "2026-01-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-30-t10",
-    "date": "2026-01-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-30-t11",
-    "date": "2026-01-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-30-t12",
     "date": "2026-01-30",
     "candidate_count": 1,
     "extracted": false
@@ -6218,7 +5288,7 @@
   {
     "id": "2026-01-31-t3",
     "date": "2026-01-31",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -6235,24 +5305,6 @@
   },
   {
     "id": "2026-01-31-t6",
-    "date": "2026-01-31",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-31-t7",
-    "date": "2026-01-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-31-t8",
-    "date": "2026-01-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-01-31-t9",
     "date": "2026-01-31",
     "candidate_count": 1,
     "extracted": false
@@ -6272,7 +5324,7 @@
   {
     "id": "2026-02-01-t3",
     "date": "2026-02-01",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6296,13 +5348,13 @@
   {
     "id": "2026-02-01-t7",
     "date": "2026-02-01",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-01-t8",
     "date": "2026-02-01",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6320,25 +5372,25 @@
   {
     "id": "2026-02-01-t11",
     "date": "2026-02-01",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-01-t12",
     "date": "2026-02-01",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-01-t13",
     "date": "2026-02-01",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-01-t14",
     "date": "2026-02-01",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6356,13 +5408,13 @@
   {
     "id": "2026-02-01-t17",
     "date": "2026-02-01",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-02-01-t18",
     "date": "2026-02-01",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6384,43 +5436,7 @@
     "extracted": false
   },
   {
-    "id": "2026-02-01-t22",
-    "date": "2026-02-01",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-02-t1",
-    "date": "2026-02-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-02-t2",
-    "date": "2026-02-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-02-t3",
-    "date": "2026-02-02",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-02-t4",
-    "date": "2026-02-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-02-t5",
-    "date": "2026-02-02",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-02-t6",
     "date": "2026-02-02",
     "candidate_count": 1,
     "extracted": false
@@ -6434,7 +5450,7 @@
   {
     "id": "2026-02-03-t2",
     "date": "2026-02-03",
-    "candidate_count": 4,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6458,30 +5474,6 @@
   {
     "id": "2026-02-04-t4",
     "date": "2026-02-04",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-04-t5",
-    "date": "2026-02-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-04-t6",
-    "date": "2026-02-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-04-t7",
-    "date": "2026-02-04",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-04-t8",
-    "date": "2026-02-04",
     "candidate_count": 1,
     "extracted": false
   },
@@ -6500,7 +5492,7 @@
   {
     "id": "2026-02-05-t3",
     "date": "2026-02-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6530,13 +5522,13 @@
   {
     "id": "2026-02-05-t8",
     "date": "2026-02-05",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-05-t9",
     "date": "2026-02-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6564,36 +5556,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-05-t14",
-    "date": "2026-02-05",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-05-t15",
-    "date": "2026-02-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-05-t16",
-    "date": "2026-02-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-05-t17",
-    "date": "2026-02-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-05-t18",
-    "date": "2026-02-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-06-t1",
     "date": "2026-02-06",
     "candidate_count": 1,
@@ -6608,7 +5570,7 @@
   {
     "id": "2026-02-06-t3",
     "date": "2026-02-06",
-    "candidate_count": 3,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6637,60 +5599,6 @@
   },
   {
     "id": "2026-02-07-t3",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t4",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t5",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t6",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t7",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t8",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t9",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t10",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t11",
-    "date": "2026-02-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-07-t12",
     "date": "2026-02-07",
     "candidate_count": 1,
     "extracted": false
@@ -6726,60 +5634,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-08-t6",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t7",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t8",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t9",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t10",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t11",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t12",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t13",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-08-t14",
-    "date": "2026-02-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-09-t1",
     "date": "2026-02-09",
     "candidate_count": 1,
@@ -6798,54 +5652,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-09-t4",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t5",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t6",
-    "date": "2026-02-09",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t7",
-    "date": "2026-02-09",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t8",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t9",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t10",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-09-t11",
-    "date": "2026-02-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-10-t1",
     "date": "2026-02-10",
     "candidate_count": 1,
@@ -6854,7 +5660,7 @@
   {
     "id": "2026-02-10-t2",
     "date": "2026-02-10",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -6864,22 +5670,10 @@
     "extracted": false
   },
   {
-    "id": "2026-02-10-t4",
-    "date": "2026-02-10",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-10-t5",
-    "date": "2026-02-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-11-t1",
     "date": "2026-02-11",
     "candidate_count": 1,
-    "extracted": false
+    "extracted": true
   },
   {
     "id": "2026-02-12-t1",
@@ -6906,39 +5700,21 @@
     "extracted": false
   },
   {
-    "id": "2026-02-12-t5",
-    "date": "2026-02-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-12-t6",
-    "date": "2026-02-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-12-t7",
-    "date": "2026-02-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-13-t1",
     "date": "2026-02-13",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-13-t2",
     "date": "2026-02-13",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-13-t3",
     "date": "2026-02-13",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -6949,24 +5725,6 @@
   },
   {
     "id": "2026-02-13-t5",
-    "date": "2026-02-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-13-t6",
-    "date": "2026-02-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-13-t7",
-    "date": "2026-02-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-13-t8",
     "date": "2026-02-13",
     "candidate_count": 1,
     "extracted": false
@@ -6986,35 +5744,29 @@
   {
     "id": "2026-02-14-t3",
     "date": "2026-02-14",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-02-14-t4",
     "date": "2026-02-14",
-    "candidate_count": 3,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-14-t5",
     "date": "2026-02-14",
-    "candidate_count": 2,
+    "candidate_count": 7,
     "extracted": false
   },
   {
     "id": "2026-02-14-t6",
     "date": "2026-02-14",
-    "candidate_count": 7,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-14-t7",
-    "date": "2026-02-14",
     "candidate_count": 1,
     "extracted": false
   },
   {
-    "id": "2026-02-14-t8",
+    "id": "2026-02-14-t7",
     "date": "2026-02-14",
     "candidate_count": 1,
     "extracted": false
@@ -7046,13 +5798,13 @@
   {
     "id": "2026-02-15-t5",
     "date": "2026-02-15",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-15-t6",
     "date": "2026-02-15",
-    "candidate_count": 1,
+    "candidate_count": 9,
     "extracted": false
   },
   {
@@ -7064,47 +5816,11 @@
   {
     "id": "2026-02-15-t8",
     "date": "2026-02-15",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-15-t9",
-    "date": "2026-02-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t10",
-    "date": "2026-02-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t11",
-    "date": "2026-02-15",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t12",
-    "date": "2026-02-15",
-    "candidate_count": 9,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t13",
-    "date": "2026-02-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t14",
-    "date": "2026-02-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-15-t15",
     "date": "2026-02-15",
     "candidate_count": 1,
     "extracted": false
@@ -7154,29 +5870,23 @@
   {
     "id": "2026-02-16-t8",
     "date": "2026-02-16",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-02-16-t9",
     "date": "2026-02-16",
-    "candidate_count": 3,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-16-t10",
     "date": "2026-02-16",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-16-t11",
-    "date": "2026-02-16",
     "candidate_count": 1,
     "extracted": false
   },
   {
-    "id": "2026-02-16-t12",
+    "id": "2026-02-16-t11",
     "date": "2026-02-16",
     "candidate_count": 1,
     "extracted": false
@@ -7202,7 +5912,7 @@
   {
     "id": "2026-02-17-t4",
     "date": "2026-02-17",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
@@ -7218,24 +5928,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-17-t7",
-    "date": "2026-02-17",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-17-t8",
-    "date": "2026-02-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-17-t9",
-    "date": "2026-02-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-18-t1",
     "date": "2026-02-18",
     "candidate_count": 1,
@@ -7244,13 +5936,13 @@
   {
     "id": "2026-02-18-t2",
     "date": "2026-02-18",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-02-18-t3",
     "date": "2026-02-18",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7274,13 +5966,13 @@
   {
     "id": "2026-02-18-t7",
     "date": "2026-02-18",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-18-t8",
     "date": "2026-02-18",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7303,84 +5995,6 @@
   },
   {
     "id": "2026-02-18-t12",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t13",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t14",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t15",
-    "date": "2026-02-18",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t16",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t17",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t18",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t19",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t20",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t21",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t22",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t23",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t24",
-    "date": "2026-02-18",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-18-t25",
     "date": "2026-02-18",
     "candidate_count": 1,
     "extracted": false
@@ -7416,66 +6030,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-19-t6",
-    "date": "2026-02-19",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t7",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t8",
-    "date": "2026-02-19",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t9",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t10",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t11",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t12",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t13",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t14",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-19-t15",
-    "date": "2026-02-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-20-t1",
     "date": "2026-02-20",
     "candidate_count": 1,
@@ -7484,7 +6038,7 @@
   {
     "id": "2026-02-20-t2",
     "date": "2026-02-20",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7501,30 +6055,6 @@
   },
   {
     "id": "2026-02-20-t5",
-    "date": "2026-02-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-20-t6",
-    "date": "2026-02-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-20-t7",
-    "date": "2026-02-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-20-t8",
-    "date": "2026-02-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-20-t9",
     "date": "2026-02-20",
     "candidate_count": 2,
     "extracted": false
@@ -7550,18 +6080,6 @@
   {
     "id": "2026-02-21-t4",
     "date": "2026-02-21",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-21-t5",
-    "date": "2026-02-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-21-t6",
-    "date": "2026-02-21",
     "candidate_count": 1,
     "extracted": false
   },
@@ -7586,7 +6104,7 @@
   {
     "id": "2026-02-22-t4",
     "date": "2026-02-22",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -7597,36 +6115,6 @@
   },
   {
     "id": "2026-02-22-t6",
-    "date": "2026-02-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-22-t7",
-    "date": "2026-02-22",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-22-t8",
-    "date": "2026-02-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-22-t9",
-    "date": "2026-02-22",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-22-t10",
-    "date": "2026-02-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-22-t11",
     "date": "2026-02-22",
     "candidate_count": 1,
     "extracted": false
@@ -7652,7 +6140,7 @@
   {
     "id": "2026-02-23-t4",
     "date": "2026-02-23",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -7670,35 +6158,11 @@
   {
     "id": "2026-02-23-t7",
     "date": "2026-02-23",
-    "candidate_count": 5,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-02-23-t8",
-    "date": "2026-02-23",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-23-t9",
-    "date": "2026-02-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-23-t10",
-    "date": "2026-02-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-23-t11",
-    "date": "2026-02-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-23-t12",
     "date": "2026-02-23",
     "candidate_count": 1,
     "extracted": false
@@ -7728,12 +6192,6 @@
     "extracted": false
   },
   {
-    "id": "2026-02-24-t5",
-    "date": "2026-02-24",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-02-25-t1",
     "date": "2026-02-25",
     "candidate_count": 1,
@@ -7748,29 +6206,11 @@
   {
     "id": "2026-02-25-t3",
     "date": "2026-02-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-25-t4",
-    "date": "2026-02-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-25-t5",
-    "date": "2026-02-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-25-t6",
-    "date": "2026-02-25",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-02-25-t7",
+    "id": "2026-02-25-t4",
     "date": "2026-02-25",
     "candidate_count": 1,
     "extracted": false
@@ -7807,18 +6247,6 @@
   },
   {
     "id": "2026-02-27-t6",
-    "date": "2026-02-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-27-t7",
-    "date": "2026-02-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-27-t8",
     "date": "2026-02-27",
     "candidate_count": 1,
     "extracted": false
@@ -7862,59 +6290,11 @@
   {
     "id": "2026-02-28-t7",
     "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t8",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t9",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t10",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t11",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t12",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t13",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t14",
-    "date": "2026-02-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-02-28-t15",
-    "date": "2026-02-28",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-02-28-t16",
+    "id": "2026-02-28-t8",
     "date": "2026-02-28",
     "candidate_count": 2,
     "extracted": false
@@ -7951,12 +6331,6 @@
   },
   {
     "id": "2026-03-01-t6",
-    "date": "2026-03-01",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-01-t7",
     "date": "2026-03-01",
     "candidate_count": 1,
     "extracted": false
@@ -9384,42 +7758,6 @@
     "extracted": false
   },
   {
-    "id": "2026-03-19-t3",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-19-t4",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-19-t5",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-19-t6",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-19-t7",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-19-t8",
-    "date": "2026-03-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-03-20-t1",
     "date": "2026-03-20",
     "candidate_count": 1,
@@ -9428,7 +7766,7 @@
   {
     "id": "2026-03-20-t2",
     "date": "2026-03-20",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -9446,7 +7784,7 @@
   {
     "id": "2026-03-20-t5",
     "date": "2026-03-20",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
@@ -9457,24 +7795,6 @@
   },
   {
     "id": "2026-03-20-t7",
-    "date": "2026-03-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-20-t8",
-    "date": "2026-03-20",
-    "candidate_count": 5,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-20-t9",
-    "date": "2026-03-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-20-t10",
     "date": "2026-03-20",
     "candidate_count": 1,
     "extracted": false
@@ -9530,13 +7850,13 @@
   {
     "id": "2026-03-22-t1",
     "date": "2026-03-22",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-03-22-t2",
     "date": "2026-03-22",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -9589,12 +7909,6 @@
   },
   {
     "id": "2026-03-22-t11",
-    "date": "2026-03-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-22-t12",
     "date": "2026-03-22",
     "candidate_count": 1,
     "extracted": false
@@ -11678,7 +9992,7 @@
   {
     "id": "2026-05-03-t1",
     "date": "2026-05-03",
-    "candidate_count": 6,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -11690,7 +10004,7 @@
   {
     "id": "2026-05-03-t3",
     "date": "2026-05-03",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -11708,13 +10022,13 @@
   {
     "id": "2026-05-03-t6",
     "date": "2026-05-03",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-03-t7",
     "date": "2026-05-03",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -11726,7 +10040,7 @@
   {
     "id": "2026-05-03-t9",
     "date": "2026-05-03",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -11750,7 +10064,7 @@
   {
     "id": "2026-05-03-t13",
     "date": "2026-05-03",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -11761,84 +10075,6 @@
   },
   {
     "id": "2026-05-03-t15",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t16",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t17",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t18",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t19",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t20",
-    "date": "2026-05-03",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t21",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t22",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t23",
-    "date": "2026-05-03",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t24",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t25",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t26",
-    "date": "2026-05-03",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t27",
-    "date": "2026-05-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-03-t28",
     "date": "2026-05-03",
     "candidate_count": 1,
     "extracted": false
@@ -11912,37 +10148,37 @@
   {
     "id": "2026-05-05-t1",
     "date": "2026-05-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-05-t2",
     "date": "2026-05-05",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-05-t3",
     "date": "2026-05-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-05-t4",
     "date": "2026-05-05",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-05-t5",
     "date": "2026-05-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-05-t6",
     "date": "2026-05-05",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -11959,12 +10195,6 @@
   },
   {
     "id": "2026-05-05-t9",
-    "date": "2026-05-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-05-t10",
     "date": "2026-05-05",
     "candidate_count": 1,
     "extracted": false
@@ -12001,24 +10231,6 @@
   },
   {
     "id": "2026-05-06-t6",
-    "date": "2026-05-06",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-06-t7",
-    "date": "2026-05-06",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-06-t8",
-    "date": "2026-05-06",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-06-t9",
     "date": "2026-05-06",
     "candidate_count": 1,
     "extracted": false
@@ -12068,7 +10280,7 @@
   {
     "id": "2026-05-08-t7",
     "date": "2026-05-08",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -12092,7 +10304,7 @@
   {
     "id": "2026-05-08-t11",
     "date": "2026-05-08",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -12110,7 +10322,7 @@
   {
     "id": "2026-05-08-t14",
     "date": "2026-05-08",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -12122,29 +10334,11 @@
   {
     "id": "2026-05-08-t16",
     "date": "2026-05-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-08-t17",
-    "date": "2026-05-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-08-t18",
-    "date": "2026-05-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-08-t19",
-    "date": "2026-05-08",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-05-08-t20",
+    "id": "2026-05-08-t17",
     "date": "2026-05-08",
     "candidate_count": 1,
     "extracted": false
@@ -12240,42 +10434,6 @@
     "extracted": false
   },
   {
-    "id": "2026-05-10-t3",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-10-t4",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-10-t5",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-10-t6",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-10-t7",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-10-t8",
-    "date": "2026-05-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-05-11-t1",
     "date": "2026-05-11",
     "candidate_count": 1,
@@ -12283,18 +10441,6 @@
   },
   {
     "id": "2026-05-11-t2",
-    "date": "2026-05-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-11-t3",
-    "date": "2026-05-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-11-t4",
     "date": "2026-05-11",
     "candidate_count": 1,
     "extracted": false
@@ -12308,7 +10454,7 @@
   {
     "id": "2026-05-12-t2",
     "date": "2026-05-12",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -12325,12 +10471,6 @@
   },
   {
     "id": "2026-05-12-t5",
-    "date": "2026-05-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-12-t6",
     "date": "2026-05-12",
     "candidate_count": 1,
     "extracted": false
@@ -12362,13 +10502,13 @@
   {
     "id": "2026-05-13-t5",
     "date": "2026-05-13",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-13-t6",
     "date": "2026-05-13",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -12385,12 +10525,6 @@
   },
   {
     "id": "2026-05-13-t9",
-    "date": "2026-05-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-13-t10",
     "date": "2026-05-13",
     "candidate_count": 1,
     "extracted": false
@@ -12434,7 +10568,7 @@
   {
     "id": "2026-05-15-t4",
     "date": "2026-05-15",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -12458,13 +10592,13 @@
   {
     "id": "2026-05-15-t8",
     "date": "2026-05-15",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-15-t9",
     "date": "2026-05-15",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -12481,30 +10615,6 @@
   },
   {
     "id": "2026-05-15-t12",
-    "date": "2026-05-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-15-t13",
-    "date": "2026-05-15",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-15-t14",
-    "date": "2026-05-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-15-t15",
-    "date": "2026-05-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-15-t16",
     "date": "2026-05-15",
     "candidate_count": 1,
     "extracted": false
@@ -12536,17 +10646,11 @@
   {
     "id": "2026-05-16-t5",
     "date": "2026-05-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-16-t6",
-    "date": "2026-05-16",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-05-16-t7",
+    "id": "2026-05-16-t6",
     "date": "2026-05-16",
     "candidate_count": 3,
     "extracted": false
@@ -12722,7 +10826,7 @@
   {
     "id": "2026-05-19-t10",
     "date": "2026-05-19",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -12732,103 +10836,25 @@
     "extracted": false
   },
   {
-    "id": "2026-05-19-t12",
-    "date": "2026-05-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-19-t13",
-    "date": "2026-05-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-19-t14",
-    "date": "2026-05-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-19-t15",
-    "date": "2026-05-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-19-t16",
-    "date": "2026-05-19",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-19-t17",
-    "date": "2026-05-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-05-20-t1",
     "date": "2026-05-20",
-    "candidate_count": 10,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-20-t2",
     "date": "2026-05-20",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-20-t3",
     "date": "2026-05-20",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-20-t4",
-    "date": "2026-05-20",
-    "candidate_count": 7,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t5",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t6",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t7",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t8",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t9",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t10",
-    "date": "2026-05-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-20-t11",
     "date": "2026-05-20",
     "candidate_count": 1,
     "extracted": false
@@ -12876,37 +10902,7 @@
     "extracted": false
   },
   {
-    "id": "2026-05-21-t8",
-    "date": "2026-05-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-21-t9",
-    "date": "2026-05-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-05-22-t1",
-    "date": "2026-05-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-22-t2",
-    "date": "2026-05-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-22-t3",
-    "date": "2026-05-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-22-t4",
     "date": "2026-05-22",
     "candidate_count": 1,
     "extracted": false
@@ -12926,17 +10922,11 @@
   {
     "id": "2026-05-23-t3",
     "date": "2026-05-23",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-23-t4",
-    "date": "2026-05-23",
     "candidate_count": 3,
     "extracted": false
   },
   {
-    "id": "2026-05-23-t5",
+    "id": "2026-05-23-t4",
     "date": "2026-05-23",
     "candidate_count": 1,
     "extracted": false
@@ -13118,7 +11108,7 @@
   {
     "id": "2026-05-26-t8",
     "date": "2026-05-26",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -13130,23 +11120,11 @@
   {
     "id": "2026-05-26-t10",
     "date": "2026-05-26",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-26-t11",
-    "date": "2026-05-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-26-t12",
-    "date": "2026-05-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-26-t13",
     "date": "2026-05-26",
     "candidate_count": 2,
     "extracted": false
@@ -13160,7 +11138,7 @@
   {
     "id": "2026-05-27-t2",
     "date": "2026-05-27",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13202,35 +11180,11 @@
   {
     "id": "2026-05-27-t9",
     "date": "2026-05-27",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-27-t10",
-    "date": "2026-05-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-27-t11",
-    "date": "2026-05-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-27-t12",
-    "date": "2026-05-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-27-t13",
-    "date": "2026-05-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-27-t14",
     "date": "2026-05-27",
     "candidate_count": 1,
     "extracted": false
@@ -13256,7 +11210,7 @@
   {
     "id": "2026-05-28-t4",
     "date": "2026-05-28",
-    "candidate_count": 1,
+    "candidate_count": 4,
     "extracted": false
   },
   {
@@ -13286,7 +11240,7 @@
   {
     "id": "2026-05-28-t9",
     "date": "2026-05-28",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13310,7 +11264,7 @@
   {
     "id": "2026-05-28-t13",
     "date": "2026-05-28",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -13340,47 +11294,17 @@
   {
     "id": "2026-05-28-t18",
     "date": "2026-05-28",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-28-t19",
     "date": "2026-05-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-28-t20",
-    "date": "2026-05-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-28-t21",
-    "date": "2026-05-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-28-t22",
-    "date": "2026-05-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-28-t23",
-    "date": "2026-05-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-28-t24",
-    "date": "2026-05-28",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-05-28-t25",
+    "id": "2026-05-28-t20",
     "date": "2026-05-28",
     "candidate_count": 1,
     "extracted": false
@@ -13406,13 +11330,13 @@
   {
     "id": "2026-05-29-t4",
     "date": "2026-05-29",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-29-t5",
     "date": "2026-05-29",
-    "candidate_count": 1,
+    "candidate_count": 4,
     "extracted": false
   },
   {
@@ -13424,29 +11348,11 @@
   {
     "id": "2026-05-29-t7",
     "date": "2026-05-29",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-29-t8",
-    "date": "2026-05-29",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-29-t9",
-    "date": "2026-05-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-29-t10",
-    "date": "2026-05-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-29-t11",
     "date": "2026-05-29",
     "candidate_count": 1,
     "extracted": false
@@ -13454,13 +11360,13 @@
   {
     "id": "2026-05-30-t1",
     "date": "2026-05-30",
-    "candidate_count": 1,
+    "candidate_count": 4,
     "extracted": false
   },
   {
     "id": "2026-05-30-t2",
     "date": "2026-05-30",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13478,7 +11384,7 @@
   {
     "id": "2026-05-30-t5",
     "date": "2026-05-30",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13490,7 +11396,7 @@
   {
     "id": "2026-05-30-t7",
     "date": "2026-05-30",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13514,13 +11420,13 @@
   {
     "id": "2026-05-30-t11",
     "date": "2026-05-30",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-30-t12",
     "date": "2026-05-30",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -13532,7 +11438,7 @@
   {
     "id": "2026-05-30-t14",
     "date": "2026-05-30",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -13542,99 +11448,9 @@
     "extracted": false
   },
   {
-    "id": "2026-05-30-t16",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t17",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t18",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t19",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t20",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t21",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t22",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t23",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t24",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t25",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t26",
-    "date": "2026-05-30",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t27",
-    "date": "2026-05-30",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t28",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t29",
-    "date": "2026-05-30",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-30-t30",
-    "date": "2026-05-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-05-31-t1",
     "date": "2026-05-31",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -13646,7 +11462,7 @@
   {
     "id": "2026-05-31-t3",
     "date": "2026-05-31",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -13658,19 +11474,19 @@
   {
     "id": "2026-05-31-t5",
     "date": "2026-05-31",
-    "candidate_count": 3,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-05-31-t6",
     "date": "2026-05-31",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-05-31-t7",
     "date": "2026-05-31",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -13681,42 +11497,6 @@
   },
   {
     "id": "2026-05-31-t9",
-    "date": "2026-05-31",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t10",
-    "date": "2026-05-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t11",
-    "date": "2026-05-31",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t12",
-    "date": "2026-05-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t13",
-    "date": "2026-05-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t14",
-    "date": "2026-05-31",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-05-31-t15",
     "date": "2026-05-31",
     "candidate_count": 1,
     "extracted": false
@@ -13754,23 +11534,17 @@
   {
     "id": "2026-06-01-t6",
     "date": "2026-06-01",
-    "candidate_count": 1,
+    "candidate_count": 4,
     "extracted": false
   },
   {
     "id": "2026-06-01-t7",
     "date": "2026-06-01",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-01-t8",
-    "date": "2026-06-01",
     "candidate_count": 1,
     "extracted": false
   },
   {
-    "id": "2026-06-01-t9",
+    "id": "2026-06-01-t8",
     "date": "2026-06-01",
     "candidate_count": 4,
     "extracted": false
@@ -13818,30 +11592,6 @@
     "extracted": false
   },
   {
-    "id": "2026-06-02-t8",
-    "date": "2026-06-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-02-t9",
-    "date": "2026-06-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-02-t10",
-    "date": "2026-06-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-02-t11",
-    "date": "2026-06-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-03-t1",
     "date": "2026-06-03",
     "candidate_count": 1,
@@ -13862,7 +11612,7 @@
   {
     "id": "2026-06-03-t4",
     "date": "2026-06-03",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -13878,39 +11628,9 @@
     "extracted": false
   },
   {
-    "id": "2026-06-03-t7",
-    "date": "2026-06-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-03-t8",
-    "date": "2026-06-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-03-t9",
-    "date": "2026-06-03",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-03-t10",
-    "date": "2026-06-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-03-t11",
-    "date": "2026-06-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-04-t1",
     "date": "2026-06-04",
-    "candidate_count": 14,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14078,13 +11798,13 @@
   {
     "id": "2026-06-08-t9",
     "date": "2026-06-08",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-08-t10",
     "date": "2026-06-08",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14101,12 +11821,6 @@
   },
   {
     "id": "2026-06-08-t13",
-    "date": "2026-06-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-08-t14",
     "date": "2026-06-08",
     "candidate_count": 1,
     "extracted": false
@@ -14150,13 +11864,13 @@
   {
     "id": "2026-06-09-t7",
     "date": "2026-06-09",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-06-09-t8",
     "date": "2026-06-09",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14174,17 +11888,11 @@
   {
     "id": "2026-06-09-t11",
     "date": "2026-06-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-09-t12",
-    "date": "2026-06-09",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-06-09-t13",
+    "id": "2026-06-09-t12",
     "date": "2026-06-09",
     "candidate_count": 2,
     "extracted": false
@@ -14203,18 +11911,6 @@
   },
   {
     "id": "2026-06-10-t3",
-    "date": "2026-06-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-10-t4",
-    "date": "2026-06-10",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-10-t5",
     "date": "2026-06-10",
     "candidate_count": 1,
     "extracted": false
@@ -14246,7 +11942,7 @@
   {
     "id": "2026-06-11-t5",
     "date": "2026-06-11",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
@@ -14264,7 +11960,7 @@
   {
     "id": "2026-06-11-t8",
     "date": "2026-06-11",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -14276,13 +11972,13 @@
   {
     "id": "2026-06-11-t10",
     "date": "2026-06-11",
-    "candidate_count": 5,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-11-t11",
     "date": "2026-06-11",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14294,41 +11990,11 @@
   {
     "id": "2026-06-11-t13",
     "date": "2026-06-11",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-11-t14",
-    "date": "2026-06-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-11-t15",
-    "date": "2026-06-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-11-t16",
-    "date": "2026-06-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-11-t17",
-    "date": "2026-06-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-11-t18",
-    "date": "2026-06-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-11-t19",
     "date": "2026-06-11",
     "candidate_count": 1,
     "extracted": false
@@ -14348,13 +12014,13 @@
   {
     "id": "2026-06-12-t3",
     "date": "2026-06-12",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-12-t4",
     "date": "2026-06-12",
-    "candidate_count": 2,
+    "candidate_count": 4,
     "extracted": false
   },
   {
@@ -14376,30 +12042,6 @@
     "extracted": false
   },
   {
-    "id": "2026-06-12-t8",
-    "date": "2026-06-12",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-12-t9",
-    "date": "2026-06-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-12-t10",
-    "date": "2026-06-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-12-t11",
-    "date": "2026-06-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-13-t1",
     "date": "2026-06-13",
     "candidate_count": 1,
@@ -14414,7 +12056,7 @@
   {
     "id": "2026-06-13-t3",
     "date": "2026-06-13",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14432,13 +12074,13 @@
   {
     "id": "2026-06-13-t6",
     "date": "2026-06-13",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-13-t7",
     "date": "2026-06-13",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14448,19 +12090,7 @@
     "extracted": false
   },
   {
-    "id": "2026-06-13-t9",
-    "date": "2026-06-13",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-14-t1",
-    "date": "2026-06-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-14-t2",
     "date": "2026-06-14",
     "candidate_count": 1,
     "extracted": false
@@ -14534,7 +12164,7 @@
   {
     "id": "2026-06-16-t1",
     "date": "2026-06-16",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14546,29 +12176,17 @@
   {
     "id": "2026-06-16-t3",
     "date": "2026-06-16",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-16-t4",
     "date": "2026-06-16",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-16-t5",
-    "date": "2026-06-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-16-t6",
-    "date": "2026-06-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-16-t7",
     "date": "2026-06-16",
     "candidate_count": 1,
     "extracted": false
@@ -14594,25 +12212,25 @@
   {
     "id": "2026-06-17-t4",
     "date": "2026-06-17",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-17-t5",
     "date": "2026-06-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-17-t6",
     "date": "2026-06-17",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-17-t7",
     "date": "2026-06-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14635,12 +12253,6 @@
   },
   {
     "id": "2026-06-17-t11",
-    "date": "2026-06-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-17-t12",
     "date": "2026-06-17",
     "candidate_count": 1,
     "extracted": false
@@ -14838,39 +12450,15 @@
     "extracted": false
   },
   {
-    "id": "2026-06-20-t10",
-    "date": "2026-06-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-20-t11",
-    "date": "2026-06-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-20-t12",
-    "date": "2026-06-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-20-t13",
-    "date": "2026-06-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-21-t1",
     "date": "2026-06-21",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-21-t2",
     "date": "2026-06-21",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14904,18 +12492,6 @@
     "extracted": false
   },
   {
-    "id": "2026-06-21-t8",
-    "date": "2026-06-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-21-t9",
-    "date": "2026-06-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-22-t1",
     "date": "2026-06-22",
     "candidate_count": 1,
@@ -14936,7 +12512,7 @@
   {
     "id": "2026-06-22-t4",
     "date": "2026-06-22",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -14947,48 +12523,6 @@
   },
   {
     "id": "2026-06-22-t6",
-    "date": "2026-06-22",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t7",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t8",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t9",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t10",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t11",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t12",
-    "date": "2026-06-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-22-t13",
     "date": "2026-06-22",
     "candidate_count": 1,
     "extracted": false
@@ -15134,13 +12668,13 @@
   {
     "id": "2026-06-25-t3",
     "date": "2026-06-25",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-25-t4",
     "date": "2026-06-25",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15198,21 +12732,15 @@
     "extracted": false
   },
   {
-    "id": "2026-06-25-t14",
-    "date": "2026-06-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-06-26-t1",
     "date": "2026-06-26",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-26-t2",
     "date": "2026-06-26",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -15230,13 +12758,13 @@
   {
     "id": "2026-06-26-t5",
     "date": "2026-06-26",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-26-t6",
     "date": "2026-06-26",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15254,13 +12782,13 @@
   {
     "id": "2026-06-26-t9",
     "date": "2026-06-26",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-26-t10",
     "date": "2026-06-26",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -15283,30 +12811,6 @@
   },
   {
     "id": "2026-06-26-t14",
-    "date": "2026-06-26",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-26-t15",
-    "date": "2026-06-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-26-t16",
-    "date": "2026-06-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-26-t17",
-    "date": "2026-06-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-26-t18",
     "date": "2026-06-26",
     "candidate_count": 1,
     "extracted": false
@@ -15446,41 +12950,29 @@
   {
     "id": "2026-06-29-t2",
     "date": "2026-06-29",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-06-29-t3",
     "date": "2026-06-29",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
     "id": "2026-06-29-t4",
     "date": "2026-06-29",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-29-t5",
     "date": "2026-06-29",
-    "candidate_count": 5,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-06-29-t6",
-    "date": "2026-06-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-29-t7",
-    "date": "2026-06-29",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-29-t8",
     "date": "2026-06-29",
     "candidate_count": 1,
     "extracted": false
@@ -15518,7 +13010,7 @@
   {
     "id": "2026-06-30-t6",
     "date": "2026-06-30",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -15530,7 +13022,7 @@
   {
     "id": "2026-06-30-t8",
     "date": "2026-06-30",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15541,18 +13033,6 @@
   },
   {
     "id": "2026-06-30-t10",
-    "date": "2026-06-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-30-t11",
-    "date": "2026-06-30",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-06-30-t12",
     "date": "2026-06-30",
     "candidate_count": 1,
     "extracted": false
@@ -15620,25 +13100,25 @@
   {
     "id": "2026-07-02-t1",
     "date": "2026-07-02",
-    "candidate_count": 1,
+    "candidate_count": 5,
     "extracted": false
   },
   {
     "id": "2026-07-02-t2",
     "date": "2026-07-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-02-t3",
     "date": "2026-07-02",
-    "candidate_count": 5,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-02-t4",
     "date": "2026-07-02",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -15650,13 +13130,13 @@
   {
     "id": "2026-07-02-t6",
     "date": "2026-07-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-02-t7",
     "date": "2026-07-02",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -15668,7 +13148,7 @@
   {
     "id": "2026-07-02-t9",
     "date": "2026-07-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15692,25 +13172,25 @@
   {
     "id": "2026-07-02-t13",
     "date": "2026-07-02",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-02-t14",
     "date": "2026-07-02",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-02-t15",
     "date": "2026-07-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-02-t16",
     "date": "2026-07-02",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15727,18 +13207,6 @@
   },
   {
     "id": "2026-07-02-t19",
-    "date": "2026-07-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-02-t20",
-    "date": "2026-07-02",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-02-t21",
     "date": "2026-07-02",
     "candidate_count": 1,
     "extracted": false
@@ -15764,13 +13232,13 @@
   {
     "id": "2026-07-03-t4",
     "date": "2026-07-03",
-    "candidate_count": 4,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-03-t5",
     "date": "2026-07-03",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15798,60 +13266,6 @@
     "extracted": false
   },
   {
-    "id": "2026-07-03-t10",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t11",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t12",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t13",
-    "date": "2026-07-03",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t14",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t15",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t16",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t17",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-03-t18",
-    "date": "2026-07-03",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-04-t1",
     "date": "2026-07-04",
     "candidate_count": 1,
@@ -15860,7 +13274,7 @@
   {
     "id": "2026-07-04-t2",
     "date": "2026-07-04",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -15974,7 +13388,7 @@
   {
     "id": "2026-07-05-t5",
     "date": "2026-07-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -15986,13 +13400,13 @@
   {
     "id": "2026-07-05-t7",
     "date": "2026-07-05",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-05-t8",
     "date": "2026-07-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16004,7 +13418,7 @@
   {
     "id": "2026-07-05-t10",
     "date": "2026-07-05",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -16016,7 +13430,7 @@
   {
     "id": "2026-07-05-t12",
     "date": "2026-07-05",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16028,7 +13442,7 @@
   {
     "id": "2026-07-05-t14",
     "date": "2026-07-05",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16046,7 +13460,7 @@
   {
     "id": "2026-07-05-t17",
     "date": "2026-07-05",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16062,33 +13476,9 @@
     "extracted": false
   },
   {
-    "id": "2026-07-05-t20",
-    "date": "2026-07-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-05-t21",
-    "date": "2026-07-05",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-05-t22",
-    "date": "2026-07-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-05-t23",
-    "date": "2026-07-05",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-06-t1",
     "date": "2026-07-06",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16100,13 +13490,13 @@
   {
     "id": "2026-07-06-t3",
     "date": "2026-07-06",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-06-t4",
     "date": "2026-07-06",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16134,12 +13524,6 @@
     "extracted": false
   },
   {
-    "id": "2026-07-06-t9",
-    "date": "2026-07-06",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-07-t1",
     "date": "2026-07-07",
     "candidate_count": 1,
@@ -16148,13 +13532,13 @@
   {
     "id": "2026-07-07-t2",
     "date": "2026-07-07",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-07-07-t3",
     "date": "2026-07-07",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16172,35 +13556,11 @@
   {
     "id": "2026-07-07-t6",
     "date": "2026-07-07",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-07-t7",
-    "date": "2026-07-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-07-t8",
-    "date": "2026-07-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-07-t9",
-    "date": "2026-07-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-07-t10",
-    "date": "2026-07-07",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-07-t11",
     "date": "2026-07-07",
     "candidate_count": 1,
     "extracted": false
@@ -16232,13 +13592,13 @@
   {
     "id": "2026-07-08-t5",
     "date": "2026-07-08",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-08-t6",
     "date": "2026-07-08",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16250,7 +13610,7 @@
   {
     "id": "2026-07-08-t8",
     "date": "2026-07-08",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16267,30 +13627,6 @@
   },
   {
     "id": "2026-07-08-t11",
-    "date": "2026-07-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-08-t12",
-    "date": "2026-07-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-08-t13",
-    "date": "2026-07-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-08-t14",
-    "date": "2026-07-08",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-08-t15",
     "date": "2026-07-08",
     "candidate_count": 1,
     "extracted": false
@@ -16328,13 +13664,13 @@
   {
     "id": "2026-07-09-t6",
     "date": "2026-07-09",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-09-t7",
     "date": "2026-07-09",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16345,12 +13681,6 @@
   },
   {
     "id": "2026-07-09-t9",
-    "date": "2026-07-09",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-09-t10",
     "date": "2026-07-09",
     "candidate_count": 2,
     "extracted": false
@@ -16412,7 +13742,7 @@
   {
     "id": "2026-07-11-t2",
     "date": "2026-07-11",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16436,7 +13766,7 @@
   {
     "id": "2026-07-11-t6",
     "date": "2026-07-11",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16446,27 +13776,15 @@
     "extracted": false
   },
   {
-    "id": "2026-07-11-t8",
-    "date": "2026-07-11",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-11-t9",
-    "date": "2026-07-11",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-12-t1",
     "date": "2026-07-12",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-12-t2",
     "date": "2026-07-12",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16484,17 +13802,11 @@
   {
     "id": "2026-07-12-t5",
     "date": "2026-07-12",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-12-t6",
-    "date": "2026-07-12",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-07-12-t7",
+    "id": "2026-07-12-t6",
     "date": "2026-07-12",
     "candidate_count": 1,
     "extracted": false
@@ -16610,7 +13922,7 @@
   {
     "id": "2026-07-14-t5",
     "date": "2026-07-14",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16621,36 +13933,6 @@
   },
   {
     "id": "2026-07-14-t7",
-    "date": "2026-07-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-14-t8",
-    "date": "2026-07-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-14-t9",
-    "date": "2026-07-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-14-t10",
-    "date": "2026-07-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-14-t11",
-    "date": "2026-07-14",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-14-t12",
     "date": "2026-07-14",
     "candidate_count": 2,
     "extracted": false
@@ -16670,7 +13952,7 @@
   {
     "id": "2026-07-15-t3",
     "date": "2026-07-15",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16688,13 +13970,13 @@
   {
     "id": "2026-07-15-t6",
     "date": "2026-07-15",
-    "candidate_count": 5,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-15-t7",
     "date": "2026-07-15",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
@@ -16710,24 +13992,6 @@
     "extracted": false
   },
   {
-    "id": "2026-07-15-t10",
-    "date": "2026-07-15",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-15-t11",
-    "date": "2026-07-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-15-t12",
-    "date": "2026-07-15",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-16-t1",
     "date": "2026-07-16",
     "candidate_count": 1,
@@ -16736,13 +14000,13 @@
   {
     "id": "2026-07-16-t2",
     "date": "2026-07-16",
-    "candidate_count": 7,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-16-t3",
     "date": "2026-07-16",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16760,7 +14024,7 @@
   {
     "id": "2026-07-16-t6",
     "date": "2026-07-16",
-    "candidate_count": 4,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16777,48 +14041,6 @@
   },
   {
     "id": "2026-07-16-t9",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t10",
-    "date": "2026-07-16",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t11",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t12",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t13",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t14",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t15",
-    "date": "2026-07-16",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-16-t16",
     "date": "2026-07-16",
     "candidate_count": 1,
     "extracted": false
@@ -16886,7 +14108,7 @@
   {
     "id": "2026-07-19-t1",
     "date": "2026-07-19",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -16946,7 +14168,7 @@
   {
     "id": "2026-07-19-t11",
     "date": "2026-07-19",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16956,33 +14178,9 @@
     "extracted": false
   },
   {
-    "id": "2026-07-19-t13",
-    "date": "2026-07-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-19-t14",
-    "date": "2026-07-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-19-t15",
-    "date": "2026-07-19",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-19-t16",
-    "date": "2026-07-19",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-20-t1",
     "date": "2026-07-20",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -16994,7 +14192,7 @@
   {
     "id": "2026-07-20-t3",
     "date": "2026-07-20",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -17016,49 +14214,19 @@
     "extracted": false
   },
   {
-    "id": "2026-07-20-t7",
-    "date": "2026-07-20",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-21-t1",
     "date": "2026-07-21",
-    "candidate_count": 8,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-21-t2",
     "date": "2026-07-21",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-21-t3",
-    "date": "2026-07-21",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-21-t4",
-    "date": "2026-07-21",
-    "candidate_count": 11,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-21-t5",
-    "date": "2026-07-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-21-t6",
-    "date": "2026-07-21",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-21-t7",
     "date": "2026-07-21",
     "candidate_count": 1,
     "extracted": false
@@ -17077,30 +14245,6 @@
   },
   {
     "id": "2026-07-22-t3",
-    "date": "2026-07-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-22-t4",
-    "date": "2026-07-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-22-t5",
-    "date": "2026-07-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-22-t6",
-    "date": "2026-07-22",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-22-t7",
     "date": "2026-07-22",
     "candidate_count": 2,
     "extracted": false
@@ -17132,25 +14276,25 @@
   {
     "id": "2026-07-24-t2",
     "date": "2026-07-24",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-24-t3",
     "date": "2026-07-24",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-07-24-t4",
     "date": "2026-07-24",
-    "candidate_count": 6,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-24-t5",
     "date": "2026-07-24",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -17168,7 +14312,7 @@
   {
     "id": "2026-07-24-t8",
     "date": "2026-07-24",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -17198,41 +14342,17 @@
   {
     "id": "2026-07-24-t13",
     "date": "2026-07-24",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-07-24-t14",
     "date": "2026-07-24",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-24-t15",
-    "date": "2026-07-24",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-24-t16",
-    "date": "2026-07-24",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-24-t17",
-    "date": "2026-07-24",
-    "candidate_count": 3,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-24-t18",
-    "date": "2026-07-24",
     "candidate_count": 2,
     "extracted": false
   },
   {
-    "id": "2026-07-24-t19",
+    "id": "2026-07-24-t15",
     "date": "2026-07-24",
     "candidate_count": 1,
     "extracted": false
@@ -17246,17 +14366,11 @@
   {
     "id": "2026-07-25-t2",
     "date": "2026-07-25",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-25-t3",
-    "date": "2026-07-25",
     "candidate_count": 3,
     "extracted": false
   },
   {
-    "id": "2026-07-25-t4",
+    "id": "2026-07-25-t3",
     "date": "2026-07-25",
     "candidate_count": 1,
     "extracted": false
@@ -17316,30 +14430,6 @@
     "extracted": false
   },
   {
-    "id": "2026-07-26-t10",
-    "date": "2026-07-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-26-t11",
-    "date": "2026-07-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-26-t12",
-    "date": "2026-07-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-26-t13",
-    "date": "2026-07-26",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-27-t1",
     "date": "2026-07-27",
     "candidate_count": 1,
@@ -17354,7 +14444,7 @@
   {
     "id": "2026-07-27-t3",
     "date": "2026-07-27",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -17370,51 +14460,9 @@
     "extracted": false
   },
   {
-    "id": "2026-07-27-t6",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t7",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t8",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t9",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t10",
-    "date": "2026-07-27",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t11",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-27-t12",
-    "date": "2026-07-27",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
     "id": "2026-07-28-t1",
     "date": "2026-07-28",
-    "candidate_count": 1,
+    "candidate_count": 4,
     "extracted": false
   },
   {
@@ -17432,53 +14480,11 @@
   {
     "id": "2026-07-28-t4",
     "date": "2026-07-28",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-07-28-t5",
-    "date": "2026-07-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t6",
-    "date": "2026-07-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t7",
-    "date": "2026-07-28",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t8",
-    "date": "2026-07-28",
-    "candidate_count": 4,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t9",
-    "date": "2026-07-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t10",
-    "date": "2026-07-28",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t11",
-    "date": "2026-07-28",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-28-t12",
     "date": "2026-07-28",
     "candidate_count": 1,
     "extracted": false
@@ -17491,12 +14497,6 @@
   },
   {
     "id": "2026-07-29-t2",
-    "date": "2026-07-29",
-    "candidate_count": 2,
-    "extracted": false
-  },
-  {
-    "id": "2026-07-29-t3",
     "date": "2026-07-29",
     "candidate_count": 2,
     "extracted": false
