@@ -54,6 +54,12 @@ THEME_PROMPTS: dict[str, str] = {
         "a glowing trophy on a stone pedestal, torchlit tournament arena banners, "
         "deep amber and teal tones, painterly illustration, wide landscape banner"
     ),
+    "LOTR Quiz": (
+        "epic Middle-earth fantasy landscape, a glowing golden ring resting on weathered stone, "
+        "distant misty mountains and a lone tower under a dramatic amber sky, "
+        "ancient runes etched into rock, deep gold and charcoal tones, painterly illustration, "
+        "wide landscape banner"
+    ),
 }
 
 FALLBACK_PROMPT = (

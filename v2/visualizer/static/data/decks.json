@@ -1974,6 +1974,23 @@
           "size_bytes": 0
         }
       ]
+    },
+    {
+      "id": "lotr-quiz",
+      "title": "LOTR Quiz",
+      "host": "Nikunj",
+      "date": "2026-11-15",
+      "date_approx": true,
+      "files": [
+        {
+          "label": null,
+          "rel_path": null,
+          "format": "pdf",
+          "r2_key": null,
+          "url": "https://drive.google.com/file/d/1aVPg4LqNIcg3eJ3-vKvrrut2BJTq41UC/view?usp=drivesdk",
+          "size_bytes": 2334386
+        }
+      ]
     }
   ],
   "total_bytes": 322165224

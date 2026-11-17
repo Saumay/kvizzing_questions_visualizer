@@ -430,5 +430,17 @@
     "source_url": "https://www.flickr.com/photos/88728149@N00/2625368248",
     "topic": "general",
     "query": "KVest trivia quiz knowledge"
+  },
+  "lotr-quiz": {
+    "openverse_id": "e3b0544a-63cc-482d-a055-ea850b5d1d6f",
+    "title": "Humpy's",
+    "creator": "radargeek",
+    "creator_url": "https://www.flickr.com/photos/8767978@N04",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/8767978@N04/2459757285",
+    "topic": "general",
+    "query": "LOTR trivia quiz knowledge"
   }
 }

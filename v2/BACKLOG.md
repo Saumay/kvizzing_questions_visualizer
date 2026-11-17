@@ -452,7 +452,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-12 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-13 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-14 | NO | yes | 17 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
-| 2026-11-15 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-15 | NO | yes | 58 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-16 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-17 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
@@ -1496,7 +1496,8 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r30 | 2026-10-26 | Sal | 17 | 64.7% | yes | yes |  | 0.0% |
 | deck-gauntlet-r31 | 2026-10-26 | Aditi | 17 | 70.6% | yes | yes |  | 0.0% |
 | deck-gauntlet-r32 | 2026-11-01 | Khandoba | 17 | 94.1% | yes | yes |  | 0.0% |
-| deck-kvest-2026-r1 | 2026-11-14 | unknown | 17 | 0.0% | yes |  |  | 0.0% |
+| deck-kvest-2026-r1 | 2026-11-14 | unknown | 17 | 0.0% | yes | yes |  | 0.0% |
+| deck-lotr-quiz | 2026-11-15 | Nikunj | 58 | 0.0% | yes |  |  | 0.0% |
 
 
 ## Decks
@@ -1590,4 +1591,5 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-india-quiz-smit-jul-2026 | 2026-07-26 | Smit | yes |  | yes | yes | 21 |
 | deck-cricket-quiz-harsh | 2026-10-25 | Harsh |  |  | yes |  | 0 |
 | deck-triwizard-tourney-aditi | 2026-08-08 | Aditi |  |  | yes |  | 0 |
+| deck-lotr-quiz | 2026-11-15 | Nikunj |  | yes |  | yes | 58 |
 

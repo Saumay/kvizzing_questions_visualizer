@@ -1,0 +1,350 @@
+[
+  {
+    "question_text": "I was born in the Shire in 2980. My eldest daughter was named Elanor. I carried a burden I never wore, and a master I did.",
+    "answer_text": "Samwise Gamgee -- Ring-bearer for a time in Mordor; later Mayor of the Shire.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Under a borrowed name I once captained the Steward's ships. As a boy I was called Hope, and never told my line. I walked the Paths of the Dead and took a crown in the White City.",
+    "answer_text": "Aragorn, son of Arathorn -- Served Ecthelion as Thorongil; raised as Estel; crowned King Elessar.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "In the Undying Lands I walked in gardens of dreams under another name. A shipwright gave me a ring of fire. I fell with a demon from a bridge and returned in white.",
+    "answer_text": "Gandalf the Grey (and White) -- Olorin in Valinor; Cirdan gave him Narya; returned after Durin's Bridge.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "I was too young to march with my father against a dragon. I asked a lady for one hair and was given three. At Helm's Deep I won a counting game by one.",
+    "answer_text": "Gimli -- Galadriel gave Gimli three hairs; won the tally 42 to 41.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "My twin chose to die as a Man; I chose the other path. I am a master of healing. In my house a council decided the fate of the Ring.",
+    "answer_text": "Elrond Half-elven -- Twin of Elros; bearer of Vilya; host of the Council at Rivendell.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Twice ten circles, round and bright, in holly-land the smiths wrought right; a guest with fair face taught the art -- and hid a master in his heart.",
+    "answer_text": "The Rings of Power -- Twenty in all: three, seven, nine and the One forged by Sauron in Orodruin.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Water caught a wanderer's flame; a crystal keeps it, cold and tame. Lift me high in a reeking lair and eight-legged hunger fears the glare.",
+    "answer_text": "The Phial of Galadriel -- It holds the light of Earendil's star; Frodo and Sam used it against Shelob.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "Delved, not grown; I own no sky. Truesilver made me rich, then cursed; the eldest father woke me first -- my bridge is narrow, the drop is high.",
+    "answer_text": "Moria -- Khazad-dum -- The Dwarrowdelf; the Elves named it the Black Chasm after the Balrog woke.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "I praised a waistcoat, jewelled and fine; a guest of riddles flattered, and lied. A thrush bore word of what I hid -- the lake took me, and all my pride.",
+    "answer_text": "Smaug -- The bare patch on his left breast; Bard's Black Arrow found it over Lake-town.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "I speak in plurals, though I'm one; my birthday gift was bought with blood. Beneath the roots I lost the sun -- and danced, at last, in fire's flood.",
+    "answer_text": "Smeagol / Gollum -- He was fishing from a boat with Deagol when the Ring was found on his birthday.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "THE SHIRE -- Which river forms the eastern boundary of the Shire?",
+    "answer_text": "The Brandywine -- Elvish Baranduin. The Brandybucks took their name from it.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MORIA -- Name the stairs which connects the lowest depths of Moria all the way to its peak.",
+    "answer_text": "Endless Stairs",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MIRKWOOD -- By what name was this forest known before the Shadow came?",
+    "answer_text": "Greenwood the Great",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ROHAN -- The natural lowland corridor between the Misty Mountains & the White Mountains.",
+    "answer_text": "Gap of Rohan",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "GONDOR -- Minas Tirith was built under a different name. What was it called?",
+    "answer_text": "Minas Anor",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MORDOR -- Name the two ways by which the Ring-bearer could have entered Mordor from the west.",
+    "answer_text": "The Morannon (the Black Gate) and the pass of Cirith Ungol.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "RIVENDELL -- Give the name of the river whose flood swept away the Nine at its ford.",
+    "answer_text": "Bruinen (the Loudwater)",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "MISTY MOUNTAINS -- The Fellowship first tried to cross the mountains by a high pass. Name the peak that defeated them.",
+    "answer_text": "Caradhras the Cruel, the Redhorn.",
+    "has_media": true,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "DURIN'S FOLK 100 -- Who is Gimli's father, one of Thorin's company?",
+    "answer_text": "Gloin.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "DURIN'S FOLK 200 -- Which dragon drove the Dwarves out of Erebor?",
+    "answer_text": "Smaug.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "DURIN'S FOLK 300 -- Who became King under the Mountain after Thorin fell?",
+    "answer_text": "Dain II Ironfoot.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "DURIN'S FOLK 400 -- He was the eldest of the seven fathers of the Dwarves created by Aule.",
+    "answer_text": "Durin the Deathless",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "DURIN'S FOLK 500 -- Which dying Dwarf gave Gandalf the map and key of Erebor, and where?",
+    "answer_text": "Thrain II, in the pits of Dol Guldur.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "HOBBIT-LORE 100 -- What is the name of Bilbo's home beneath the Hill in Hobbiton?",
+    "answer_text": "Bag End.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "HOBBIT-LORE 200 -- Which inn at Bree is kept by Barliman Butterbur?",
+    "answer_text": "The Prancing Pony.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "HOBBIT-LORE 300 -- What false name did Frodo travel under when he reached Bree?",
+    "answer_text": "Mr. Underhill.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "HOBBIT-LORE 400 -- How old was Bilbo at his farewell party -- and what did hobbits call that age?",
+    "answer_text": "111 -- 'eleventy-one'.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "HOBBIT-LORE 500 -- Name the last battle of the War of the Ring, fought in the Shire itself.",
+    "answer_text": "The Battle of Bywater.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ARMS & ARTEFACTS 100 -- Name the sword reforged in Rivendell from the shards of Narsil.",
+    "answer_text": "Anduril, Flame of the West.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ARMS & ARTEFACTS 200 -- Name Bilbo's short blade, which glowed blue when Orcs drew near.",
+    "answer_text": "Sting.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ARMS & ARTEFACTS 300 -- Name the seeing-stone Pippin stole a look into at Dol Baran.",
+    "answer_text": "The palantir of Orthanc.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ARMS & ARTEFACTS 400 -- Name Gandalf's sword from the trolls' hoard, which the Orcs called Beater.",
+    "answer_text": "Glamdring.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ARMS & ARTEFACTS 500 -- Name the green stone Galadriel gave Aragorn, from which he took a royal name.",
+    "answer_text": "The Elessar, the Elfstone.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "BEASTS OF THE DARK 100 -- What kind of creature was Shelob?",
+    "answer_text": "A giant spider.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "BEASTS OF THE DARK 200 -- Which horse, chief of the Mearas, would bear only Gandalf?",
+    "answer_text": "Shadowfax.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "BEASTS OF THE DARK 300 -- Which Eagle bore Gandalf away from the pinnacle of Orthanc?",
+    "answer_text": "Gwaihir the Windlord.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "BEASTS OF THE DARK 400 -- What seized Frodo outside the West-gate of Moria?",
+    "answer_text": "The Watcher in the Water.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "BEASTS OF THE DARK 500 -- Name the ancient mother from whom Shelob descended.",
+    "answer_text": "Ungoliant.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ELVEN-KIND 100 -- Member of the Fellowship.",
+    "answer_text": "Legolas.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ELVEN-KIND 200 -- Lady of Lothlorien.",
+    "answer_text": "Galadriel.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ELVEN-KIND 300 -- Daughter of Elrond.",
+    "answer_text": "Arwen Undomiel.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ELVEN-KIND 400 -- Elf-lord who set Frodo on his horse Asfaloth.",
+    "answer_text": "Glorfindel.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "ELVEN-KIND 500 -- Noldorin Elf who forged the Silmarils.",
+    "answer_text": "Feanor.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WIZARDS & MAIAR 100 -- The original White Wizard.",
+    "answer_text": "Saruman.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WIZARDS & MAIAR 200 -- Servant of Aule the Smith, then Morgoth.",
+    "answer_text": "Sauron.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WIZARDS & MAIAR 300 -- Wizard of Rhosgobel is a friend to birds and beasts.",
+    "answer_text": "Radagast the Brown.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WIZARDS & MAIAR 400 -- Which Maia, wife of King Thingol of Doriath, was the mother of Luthien?",
+    "answer_text": "Melian the Maia.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WIZARDS & MAIAR 500 -- Name the two Blue Wizards who went into the East.",
+    "answer_text": "Alatar and Pallando.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WORDS & TONGUES 100 -- 'Speak, friend, and enter' -- which Elvish word opened the West-gate of Moria?",
+    "answer_text": "Mellon.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WORDS & TONGUES 200 -- In which language is the inscription on the One Ring written?",
+    "answer_text": "The Black Speech of Mordor, in Elvish letters.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WORDS & TONGUES 300 -- What does Gandalf's Elvish name 'Mithrandir' mean?",
+    "answer_text": "The Grey Pilgrim.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WORDS & TONGUES 400 -- A slow unhurried, repetitive language spoken, where a single word can be long & rambling.",
+    "answer_text": "Entish",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "WORDS & TONGUES 500 -- The universal language of Men & Hobbits.",
+    "answer_text": "Westron",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "KINGS OF MEN 100 -- King of Rohan under Saruman's spell.",
+    "answer_text": "Theoden.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "KINGS OF MEN 200 -- Steward of Gondor burned himself on a pyre during the siege of Minas Tirith.",
+    "answer_text": "Denethor II.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "KINGS OF MEN 300 -- Cut the One Ring from Sauron's hand at the end of the Last Alliance.",
+    "answer_text": "Isildur, with the shard of Narsil.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "KINGS OF MEN 400 -- Rode from the North to win the Field of Celebrant and founded the realm of Rohan.",
+    "answer_text": "Eorl the Young.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  },
+  {
+    "question_text": "KINGS OF MEN 500 -- Last King of Gondor before Aragorn.",
+    "answer_text": "Earnur.",
+    "has_media": false,
+    "extraction_confidence": "high"
+  }
+]
