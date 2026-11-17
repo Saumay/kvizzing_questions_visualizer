@@ -7556,7 +7556,7 @@
   {
     "id": "2026-03-17-t9",
     "date": "2026-03-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7568,7 +7568,7 @@
   {
     "id": "2026-03-17-t11",
     "date": "2026-03-17",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
@@ -7586,19 +7586,19 @@
   {
     "id": "2026-03-17-t14",
     "date": "2026-03-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-03-17-t15",
     "date": "2026-03-17",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-03-17-t16",
     "date": "2026-03-17",
-    "candidate_count": 10,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7610,19 +7610,19 @@
   {
     "id": "2026-03-17-t18",
     "date": "2026-03-17",
-    "candidate_count": 1,
+    "candidate_count": 3,
     "extracted": false
   },
   {
     "id": "2026-03-17-t19",
     "date": "2026-03-17",
-    "candidate_count": 1,
+    "candidate_count": 2,
     "extracted": false
   },
   {
     "id": "2026-03-17-t20",
     "date": "2026-03-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
@@ -7640,49 +7640,19 @@
   {
     "id": "2026-03-17-t23",
     "date": "2026-03-17",
-    "candidate_count": 3,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-03-17-t24",
     "date": "2026-03-17",
-    "candidate_count": 2,
+    "candidate_count": 1,
     "extracted": false
   },
   {
     "id": "2026-03-17-t25",
     "date": "2026-03-17",
     "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-17-t26",
-    "date": "2026-03-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-17-t27",
-    "date": "2026-03-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-17-t28",
-    "date": "2026-03-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-17-t29",
-    "date": "2026-03-17",
-    "candidate_count": 1,
-    "extracted": false
-  },
-  {
-    "id": "2026-03-17-t30",
-    "date": "2026-03-17",
-    "candidate_count": 2,
     "extracted": false
   },
   {
