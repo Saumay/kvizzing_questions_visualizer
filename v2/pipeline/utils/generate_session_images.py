@@ -49,6 +49,11 @@ THEME_PROMPTS: dict[str, str] = {
         "eclectic collage of science geography history art, planets ocean waves ancient maps, "
         "rich jewel tones teal amber indigo, painterly illustration, wide banner"
     ),
+    "KVest 2026: Quarter-final 1": (
+        "epic fantasy quest scene, weathered treasure map with a compass and brass sextant, "
+        "a glowing trophy on a stone pedestal, torchlit tournament arena banners, "
+        "deep amber and teal tones, painterly illustration, wide landscape banner"
+    ),
 }
 
 FALLBACK_PROMPT = (
