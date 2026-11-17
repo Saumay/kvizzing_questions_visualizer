@@ -1821,6 +1821,14 @@
           "r2_key": "decks/standalone_pending/Retro Bollywood Quiz - Jimmy Aaja.pdf",
           "url": "https://pub-c48bf191ad7f4f37a31e5fa980d9c682.r2.dev/decks/standalone_pending/Retro%20Bollywood%20Quiz%20-%20Jimmy%20Aaja.pdf",
           "size_bytes": 2204212
+        },
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=6dc81355-e1e0-4fd0-8ff0-9d5e0b4f33c8&cid=46ac280ca35db7d4",
+          "size_bytes": 0
         }
       ]
     },
@@ -1989,6 +1997,108 @@
           "r2_key": null,
           "url": "https://drive.google.com/file/d/1aVPg4LqNIcg3eJ3-vKvrrut2BJTq41UC/view?usp=drivesdk",
           "size_bytes": 2334386
+        }
+      ]
+    },
+    {
+      "id": "drakvarys-vats",
+      "title": "Drakvarys",
+      "host": "Vats",
+      "date": "2026-10-17",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=9bf0b97e-2c2d-4283-b2df-c330c3b4bb4e&cid=46ac280ca35db7d4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "trial-by-fire-abhishek",
+      "title": "Trial by Fire",
+      "host": "Abhishek",
+      "date": "2026-10-24",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=d7491ff9-8ea8-46a1-b7cd-323a304ae324&cid=46ac280ca35db7d4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "qotd-200",
+      "title": "QOTD 200",
+      "host": null,
+      "date": "2026-10-01",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=3bbf3243-a160-4281-a836-7433135b9028&cid=46ac280ca35db7d4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "long-connect-2",
+      "title": "Long Connect 2.0",
+      "host": null,
+      "date": "2026-10-03",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=864ad416-80f4-4e83-87a3-8fcd2212e96f&cid=46ac280ca35db7d4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "qotd-150",
+      "title": "QOTD 150",
+      "host": null,
+      "date": "2026-08-12",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=0f0fa011-8ee8-41e2-904f-54c134cd76b6&cid=46ac280ca35db7d4",
+          "size_bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "book-club",
+      "title": "Book Club",
+      "host": null,
+      "date": "2026-08-16",
+      "date_approx": true,
+      "files": [
+        {
+          "label": "Recording",
+          "rel_path": null,
+          "format": "recording",
+          "r2_key": null,
+          "url": "https://onedrive.live.com/?id=adb87cc1-44b2-4442-8028-c8001b31cd24&cid=46ac280ca35db7d4",
+          "size_bytes": 0
         }
       ]
     }
