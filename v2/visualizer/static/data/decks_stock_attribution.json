@@ -409,7 +409,7 @@
   },
   "gauntlet": {
     "openverse_id": "8ca0411d-5d66-4fdb-b9c5-cc8975accfa1",
-    "title": "Gen. Robert E. Lee’s gauntlet gloves",
+    "title": "Gen. Robert E. Lee\u2019s gauntlet gloves",
     "creator": "farrargirl",
     "creator_url": "https://commons.wikimedia.org/wiki/User:Farrargirl",
     "license": "by-sa",
@@ -418,5 +418,17 @@
     "source_url": "https://commons.wikimedia.org/w/index.php?curid=68629668",
     "topic": "cinema",
     "query": "gauntlet glove (manually curated, cropped to show both hands for the wide hero banner)"
+  },
+  "kvest-2026": {
+    "openverse_id": "c8443eb4-3162-41e8-a230-bd8094e76de0",
+    "title": "Old Paper",
+    "creator": "Spider.Dog",
+    "creator_url": "https://www.flickr.com/photos/88728149@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/88728149@N00/2625368248",
+    "topic": "general",
+    "query": "KVest trivia quiz knowledge"
   }
 }
