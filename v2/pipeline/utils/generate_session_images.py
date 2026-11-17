@@ -55,9 +55,10 @@ THEME_PROMPTS: dict[str, str] = {
         "deep amber and teal tones, painterly illustration, wide landscape banner"
     ),
     "LOTR Quiz": (
-        "epic Middle-earth fantasy landscape, a glowing golden ring resting on weathered stone, "
-        "distant misty mountains and a lone tower under a dramatic amber sky, "
-        "ancient runes etched into rock, deep gold and charcoal tones, painterly illustration, "
+        "epic Middle-earth fantasy scene, a glowing golden ring with faint fiery inscription on an ancient stone altar, "
+        "a dark tower silhouette on the horizon beside a distant volcano glowing red, "
+        "a weathered hand-drawn fantasy map and a worn leather-bound book in the foreground, "
+        "swirling mist over jagged mountains, deep gold amber and shadow tones, dramatic painterly illustration, "
         "wide landscape banner"
     ),
 }
