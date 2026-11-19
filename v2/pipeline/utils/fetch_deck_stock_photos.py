@@ -215,6 +215,7 @@ def main(force: bool = False) -> int:
         print(f"{deck_id} ({title}) -> topic={topic} query={query!r} slot={idx}")
 
         chosen = None
+        chosen_pool: list[dict] = []
         for page in (1, 2, 3):
             try:
                 candidates = fetch_openverse_candidates(query, page=page)
@@ -227,6 +228,12 @@ def main(force: bool = False) -> int:
             ordered = candidates[pool_idx:] + candidates[:pool_idx]
             chosen = next((c for c in ordered if c["id"] not in used_ids), None)
             if chosen:
+                # Keep the rest of this page's pool as fallbacks: the chosen
+                # candidate's own source host (commonly Wikimedia) can 429 on
+                # download even though the Openverse API call succeeded, and
+                # without a fallback the deck was left with no image at all
+                # until the next manual run happened to dodge the rate limit.
+                chosen_pool = [c for c in ordered if c["id"] != chosen["id"] and c["id"] not in used_ids]
                 break
         if not chosen and kw:
             # The title keywords may be too narrow/specific to have 60
@@ -254,12 +261,19 @@ def main(force: bool = False) -> int:
         if not chosen:
             print("  ! no unused candidate found anywhere")
             continue
-        used_ids.add(chosen["id"])
-        try:
-            download(chosen["url"], dest)
-        except Exception as e:
-            print(f"  ! download failed: {e}")
+        downloaded = False
+        for candidate in [chosen, *chosen_pool]:
+            try:
+                download(candidate["url"], dest)
+            except Exception as e:
+                print(f"  ! download failed ({candidate['id']}): {e}")
+                continue
+            chosen = candidate
+            downloaded = True
+            break
+        if not downloaded:
             continue
+        used_ids.add(chosen["id"])
         attribution[deck_id] = {
             "openverse_id": chosen.get("id"),
             "title": chosen.get("title"),
