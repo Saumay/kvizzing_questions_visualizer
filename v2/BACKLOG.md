@@ -30,7 +30,7 @@ Dead ends tried:
 
 Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Photos app (if "Save to Camera Roll" was ever on), other group members' phones, ask original senders directly.
 
-## Full per-day table (2025-09-23 - 2026-11-17)
+## Full per-day table (2025-09-23 - 2026-11-19)
 
 | Date | Source | Extracted | Questions | Media % | Topic % | Tags % | Reactions % | Low conf % | Published |
 |---|---|---|---|---|---|---|---|---|---|
@@ -209,7 +209,7 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-03-14 | yes | yes | 77 | 11.8% | 97.4% | 97.4% | 0.0% | 19.5% |  |
 | 2026-03-15 | yes | yes | 97 | 100.0% | 100.0% | 100.0% | 0.0% | 21.6% | YES |
 | 2026-03-16 | yes | yes | 106 | 16.7% | 98.1% | 98.1% | 0.0% | 17.0% |  |
-| 2026-03-17 | yes | yes | 22 | 100.0% | 100.0% | 100.0% | 0.0% | 22.7% | YES |
+| 2026-03-17 | yes | yes | 45 | 0.0% | 100.0% | 48.9% | 0.0% | 11.1% |  |
 | 2026-03-18 | yes | yes | 73 | 44.4% | 100.0% | 100.0% | 0.0% | 6.8% |  |
 | 2026-03-19 | yes | yes | 84 | 44.4% | 85.7% | 85.7% | 0.0% | 7.1% |  |
 | 2026-03-20 | yes | yes | 83 | 42.3% | 80.7% | 80.7% | 0.0% | 7.2% |  |
@@ -455,6 +455,8 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-15 | NO | yes | 58 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-16 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-17 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-18 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-19 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
 ## How to update this file
 
@@ -935,7 +937,9 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | 2026-03-16-pratik | 2026-03-16 | pratik.s.chandarana | 20 | 50.0% |  | yes |  | 0.0% |
 | 2026-03-16-abhishek | 2026-03-16 | Abhishek Vats | 15 | 100.0% | yes | yes |  | 6.7% |
 | 2026-03-17-smit | 2026-03-17 | Smit D Mahajani | 9 | 100.0% |  | yes |  | 44.4% |
-| 2026-03-17-anand | 2026-03-17 | Anand Nagapurkar | 7 | 100.0% |  | yes |  | 0.0% |
+| 2026-03-17-anand | 2026-03-17 | Anand Nagapurkar | 7 | 85.7% |  | yes |  | 0.0% |
+| 2026-03-17-khandoba | 2026-03-17 | Khandoba | 11 | 0.0% | yes | yes |  | 0.0% |
+| 2026-03-17-nikunj | 2026-03-17 | Nikunj | 10 | 0.0% | yes | yes |  | 0.0% |
 | 2026-03-18-smit | 2026-03-18 | Smit D Mahajani | 9 | 100.0% |  | yes |  | 0.0% |
 | 2026-03-18-akshay | 2026-03-18 | Akshay | 5 | 100.0% |  | yes |  | 0.0% |
 | 2026-03-18-dr | 2026-03-18 | Dr.Namrata Srinivasan | 16 | 56.2% |  | yes |  | 6.2% |
@@ -1497,7 +1501,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-gauntlet-r31 | 2026-10-26 | Aditi | 17 | 70.6% | yes | yes |  | 0.0% |
 | deck-gauntlet-r32 | 2026-11-01 | Khandoba | 17 | 94.1% | yes | yes |  | 0.0% |
 | deck-kvest-2026-r1 | 2026-11-14 | unknown | 17 | 0.0% | yes | yes |  | 0.0% |
-| deck-lotr-quiz | 2026-11-15 | Nikunj | 58 | 0.0% | yes |  |  | 0.0% |
+| deck-lotr-quiz | 2026-11-15 | Nikunj | 58 | 0.0% | yes | yes |  | 0.0% |
 
 
 ## Decks
@@ -1583,7 +1587,7 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-tension-gourav | 2026-05-09 | Gourav |  |  | yes |  | 0 |
 | deck-buzzy-mushkil-hai | 2026-05-16 | Bijal Bhatt |  |  | yes |  | 0 |
 | deck-qotd-100 | 2026-06-23 |  |  |  | yes |  | 0 |
-| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | yes |  |  | yes | 17 |
+| deck-retro-bollywood-sameer | 2026-10-20 | Sameer | yes |  | yes | yes | 17 |
 | deck-general-quiz-smit-sep-2026 | 2026-09-12 | Smit | yes |  | yes | yes | 21 |
 | deck-long-connect-gautam | 2026-08-09 | Gautam | yes |  | yes | yes | 17 |
 | deck-random-quiz-namrata-aug-2026 | 2026-08-20 | Namrata | yes |  | yes | yes | 12 |
@@ -1592,4 +1596,10 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-cricket-quiz-harsh | 2026-10-25 | Harsh |  |  | yes |  | 0 |
 | deck-triwizard-tourney-aditi | 2026-08-08 | Aditi |  |  | yes |  | 0 |
 | deck-lotr-quiz | 2026-11-15 | Nikunj |  | yes |  | yes | 58 |
+| deck-drakvarys-vats | 2026-10-17 | Vats |  |  | yes |  | 0 |
+| deck-trial-by-fire-abhishek | 2026-10-24 | Abhishek |  |  | yes |  | 0 |
+| deck-qotd-200 | 2026-10-01 |  |  |  | yes |  | 0 |
+| deck-long-connect-2 | 2026-10-03 |  |  |  | yes |  | 0 |
+| deck-qotd-150 | 2026-08-12 |  |  |  | yes |  | 0 |
+| deck-book-club | 2026-08-16 |  |  |  | yes |  | 0 |
 
