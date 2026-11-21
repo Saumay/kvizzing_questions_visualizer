@@ -214,64 +214,66 @@ def main(force: bool = False) -> int:
         used_index_by_query[query] = idx + 1
         print(f"{deck_id} ({title}) -> topic={topic} query={query!r} slot={idx}")
 
-        chosen = None
-        chosen_pool: list[dict] = []
-        for page in (1, 2, 3):
-            try:
-                candidates = fetch_openverse_candidates(query, page=page)
-            except Exception as e:
-                print(f"  ! fetch failed: {e}")
-                break
-            if not candidates:
-                break
-            pool_idx = idx % len(candidates)
-            ordered = candidates[pool_idx:] + candidates[:pool_idx]
-            chosen = next((c for c in ordered if c["id"] not in used_ids), None)
-            if chosen:
-                # Keep the rest of this page's pool as fallbacks: the chosen
-                # candidate's own source host (commonly Wikimedia) can 429 on
-                # download even though the Openverse API call succeeded, and
-                # without a fallback the deck was left with no image at all
-                # until the next manual run happened to dodge the rate limit.
-                chosen_pool = [c for c in ordered if c["id"] != chosen["id"] and c["id"] not in used_ids]
-                break
-        if not chosen and kw:
-            # The title keywords may be too narrow/specific to have 60
-            # results across 3 pages. Drop them and widen to the plain
-            # topic phrase before giving up on relevance entirely.
-            try:
-                candidates = fetch_openverse_candidates(topic_phrase, page=1)
-                chosen = next((c for c in candidates if c["id"] not in used_ids), None)
-            except Exception as e:
-                print(f"  ! fallback fetch failed: {e}")
-        if not chosen:
-            # Last resort: the "general" bucket in particular can run dry of
-            # genuinely distinct commercial-license results. Borrow from
-            # another topic's pool entirely rather than ever repeat a photo.
+        # Lazily generate candidate pools to try downloading from, falling
+        # through to the next pool only once every candidate in the current
+        # one has failed to download (not merely once the Openverse API
+        # call for it succeeds) — a chosen candidate's own source host
+        # (commonly Wikimedia) can 429 on download even though the API
+        # lookup worked, and a small result pool for a popular shared
+        # "general" query is often entirely claimed by other decks already,
+        # leaving nothing left to fall back on within that pool. Lazy so a
+        # pool further down this list (the "borrow any other topic" last
+        # resort especially) is only ever fetched once everything before it
+        # has genuinely failed to download, not on every deck's first try.
+        def candidate_pools():
+            for page in (1, 2, 3):
+                try:
+                    candidates = fetch_openverse_candidates(query, page=page)
+                except Exception as e:
+                    print(f"  ! fetch failed: {e}")
+                    break
+                if not candidates:
+                    break
+                pool_idx = idx % len(candidates)
+                yield candidates[pool_idx:] + candidates[:pool_idx]
+            if kw:
+                # The title keywords may be too narrow/specific to have
+                # results across 3 pages. Widen to the plain topic phrase
+                # before giving up on relevance entirely.
+                try:
+                    yield fetch_openverse_candidates(topic_phrase, page=1)
+                except Exception as e:
+                    print(f"  ! fallback fetch failed: {e}")
+            # Last resort: the "general" bucket in particular can run dry
+            # of genuinely distinct commercial-license results. Borrow from
+            # every other topic's pool entirely rather than ever repeat a
+            # photo.
             for other_topic, other_query in TOPIC_QUERY.items():
                 if other_topic == topic:
                     continue
                 try:
-                    candidates = fetch_openverse_candidates(other_query, page=1)
+                    yield fetch_openverse_candidates(other_query, page=1)
                 except Exception:
                     continue
-                chosen = next((c for c in candidates if c["id"] not in used_ids), None)
-                if chosen:
-                    break
-        if not chosen:
-            print("  ! no unused candidate found anywhere")
-            continue
+
+        chosen = None
         downloaded = False
-        for candidate in [chosen, *chosen_pool]:
-            try:
-                download(candidate["url"], dest)
-            except Exception as e:
-                print(f"  ! download failed ({candidate['id']}): {e}")
-                continue
-            chosen = candidate
-            downloaded = True
-            break
+        for pool in candidate_pools():
+            for candidate in pool:
+                if candidate["id"] in used_ids:
+                    continue
+                try:
+                    download(candidate["url"], dest)
+                except Exception as e:
+                    print(f"  ! download failed ({candidate['id']}): {e}")
+                    continue
+                chosen = candidate
+                downloaded = True
+                break
+            if downloaded:
+                break
         if not downloaded:
+            print("  ! no unused candidate found anywhere")
             continue
         used_ids.add(chosen["id"])
         attribution[deck_id] = {
