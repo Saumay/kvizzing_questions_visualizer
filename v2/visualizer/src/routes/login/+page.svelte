@@ -278,7 +278,7 @@
         type="text" placeholder="Search names…" bind:value={memberSearch}
         class="w-full text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 mb-2 bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-primary-400"
       />
-      <div class="max-h-40 overflow-y-auto border border-gray-100 dark:border-gray-700 rounded-lg mb-4 divide-y divide-gray-50 dark:divide-gray-800">
+      <div class="h-40 overflow-y-auto border border-gray-100 dark:border-gray-700 rounded-lg mb-4 divide-y divide-gray-50 dark:divide-gray-800">
         {#each searchResults as m}
           <button
             onclick={() => toggleSelect(m.username)}
