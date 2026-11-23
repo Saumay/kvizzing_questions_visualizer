@@ -581,13 +581,17 @@
         tabindex="0"
         onclick={(e) => { if (!(e.target as HTMLElement).closest('a,button,input')) openSeries = heroSeries; }}
         onkeydown={(e) => { if (e.key === 'Enter') openSeries = heroSeries; }}
-        class="tile-grain group relative w-full overflow-hidden rounded-2xl text-left ring-1 ring-black/10 dark:ring-white/10 shadow-lg hover:shadow-2xl transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400"
+        class="tile-grain group relative w-full rounded-2xl text-left ring-1 ring-black/10 dark:ring-white/10 shadow-lg hover:shadow-2xl transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400"
       >
-        <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
+        <!-- Each background layer clips to its own rounded corner instead of
+             the card having overflow-hidden - the card needs to stay
+             overflow-visible so the "sitting out" popover below isn't
+             clipped at the card edge. -->
+        <div class="absolute inset-0 rounded-2xl" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
         {#if imgUrl}
-          <div class="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
+          <div class="absolute inset-0 rounded-2xl bg-cover bg-center opacity-25 group-hover:opacity-88 transition-opacity duration-300" style="background-image: url('{imgUrl}');"></div>
         {/if}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/35 via-black/10 to-black/0"></div>
         <div class="absolute top-4 right-4 sm:top-5 sm:right-6 text-right" style="text-shadow: 0 1px 3px rgba(0,0,0,0.35);">
           <p class="text-2xl sm:text-3xl font-black text-white leading-none">{heroSeries.rounds.length}</p>
           <p class="text-[10px] text-white/70 uppercase tracking-wide mt-1">rounds</p>
@@ -609,7 +613,7 @@
                   <div class="relative inline-block mt-2.5">
                     <button
                       onclick={() => showGauntletBlocked = !showGauntletBlocked}
-                      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-md transition-colors"
+                      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/65 backdrop-blur-sm border border-red-300/50 text-red-50 shadow-md transition-colors"
                     >
                       🚫 {b.length} sitting out #{gauntletEligibility.nextRound}
                     </button>
@@ -906,6 +910,7 @@
     content: '';
     position: absolute;
     inset: 0;
+    border-radius: inherit;
     pointer-events: none;
     mix-blend-mode: overlay;
     opacity: 0.5;
