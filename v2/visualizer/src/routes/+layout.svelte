@@ -340,14 +340,10 @@
   }
 
   onMount(() => {
+    // username/currentReviewer come from the real Supabase session (above), not
+    // localStorage: that avoided onMount used to stomp the session-derived name
+    // with a stale local value while the session check was still in flight.
     const saved = localStorage.getItem('kvizzing-reviewer-name') || '';
-    // No forced prompt for guests: browsing works with no identity at all.
-    // Identity-gated actions (like/save/flag/vote) trigger the sign-in prompt themselves.
-    if (saved) {
-      username.value = saved;
-      usernameInput = saved;
-    }
-    currentReviewer = saved;
     if (saved) loadFlaggedIds(saved);
     loadLikes(saved);
     if (saved) loadSavedIds(saved);
