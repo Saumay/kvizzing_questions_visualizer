@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sef4096b8123f480bb27c3a0ba01536f9",
+    "name": "GMT20261120-164343_Recording_1920x1080.mp4",
+    "url": "",
+    "size_bytes": 145752330,
+    "discovered_at": "2026-11-23",
+    "reason": "QOTD 250 folder (2026-11-20); no existing decks.json entry; also contains transcript .vtt and gallery mp4. Not added: Microsoft-365 connector offers only file read/list and no anonymous share-link creation, so no public redeem= link could be minted; needs a share link from the owner."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s7dcf077d353b406ebe5a17e0406ee326",
+    "name": "GMT20261114-152925_Recording_1862x900.mp4",
+    "url": "",
+    "size_bytes": 183058346,
+    "discovered_at": "2026-11-23",
+    "reason": "2026 KVEST Series_QM Pavan folder (2026-11-14); likely recording for kvest-2026 round 1 (Quarter-final 1). Not added: Microsoft-365 connector offers only file read/list and no anonymous share-link creation, so no public redeem= link could be minted; needs a share link from the owner."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!sba5c242979574650957281915050786a",
+    "name": "GMT20261115-064451_Recording_1920x1080.mp4",
+    "url": "",
+    "size_bytes": 219054768,
+    "discovered_at": "2026-11-23",
+    "reason": "261115_LOTR Quiz by Nikunj folder; likely recording for lotr-quiz standalone. Not added: Microsoft-365 connector offers only file read/list and no anonymous share-link creation, so no public redeem= link could be minted; needs a share link from the owner."
+  },
+  {
+    "source": "onedrive",
+    "id": "46AC280CA35DB7D4!s09b6690e8d26467589998d77db55ccda",
+    "name": "GMT20261115-154516_Recording_1920x1080.mp4",
+    "url": "",
+    "size_bytes": 192616936,
+    "discovered_at": "2026-11-23",
+    "reason": "261115_Gauntlet 33_QM Vats folder; likely new Gauntlet round 33 (no slides in Drive yet). Not added: Microsoft-365 connector offers only file read/list and no anonymous share-link creation, so no public redeem= link could be minted; needs a share link from the owner."
+  }
+]
