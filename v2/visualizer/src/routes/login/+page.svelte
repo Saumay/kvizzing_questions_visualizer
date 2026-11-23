@@ -4,16 +4,18 @@
   import { supabase } from '$lib/supabase';
   import {
     signInWithGoogle, signUpWithEmail, signInWithEmail, signOut,
-    getMemberLinks, linkMembers, getClaimedUsernames,
+    getMemberLinks, linkMembers, getClaimedUsernames, unlinkAllMembers,
   } from '$lib/auth';
   import { suggestMembers } from '$lib/utils/nameMatch';
 
   const store = getContext<QuestionStore>('store');
   const allMembers = store.getMembers().slice().sort((a, b) => a.display_name.localeCompare(b.display_name));
 
-  type Stage = 'loading' | 'signed_out' | 'picking_member' | 'linked' | 'error';
+  type Stage = 'loading' | 'signed_out' | 'already_linked' | 'picking_member' | 'linked' | 'error';
   let stage = $state<Stage>('loading');
   let errorMessage = $state('');
+  let existingUsername = $state('');
+  let unlinking = $state(false);
 
   // ── Email/password form state ──
   let emailMode = $state<'signin' | 'signup'>('signin');
@@ -72,12 +74,24 @@
     const links = await getMemberLinks(authUserId);
     if (links.length > 0) {
       const primaryLink = links.find(l => l.is_primary) ?? links[0];
-      applyIdentity(primaryLink.username);
+      existingUsername = primaryLink.username;
+      stage = 'already_linked';
       return;
     }
 
     claimedUsernames = await getClaimedUsernames();
     stage = 'picking_member';
+  }
+
+  async function unlinkAndRepick() {
+    if (!authUserId) return;
+    unlinking = true;
+    const { error } = await unlinkAllMembers(authUserId);
+    unlinking = false;
+    if (error) { stage = 'error'; errorMessage = error.message; return; }
+    localStorage.removeItem('kvizzing-reviewer-name');
+    stage = 'loading';
+    refresh();
   }
 
   function applyIdentity(username: string) {
@@ -247,6 +261,24 @@
         <p class="mt-3 text-xs text-red-500">{errorMessage}</p>
       {/if}
       <p class="mt-4 text-[11px] text-gray-400 text-center">Used only to identify you as a group member.</p>
+
+    {:else if stage === 'already_linked'}
+      {@const m = allMembers.find(mm => mm.username === existingUsername)}
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+        You're linked as <span class="font-medium">{m?.display_name ?? existingUsername}</span>.
+      </p>
+      <button
+        onclick={() => applyIdentity(existingUsername)}
+        class="w-full py-2.5 rounded-lg text-sm font-medium text-white bg-primary-500 hover:bg-primary-600 transition-colors"
+      >Continue as {m?.display_name ?? existingUsername}</button>
+      <button
+        onclick={unlinkAndRepick}
+        disabled={unlinking}
+        class="w-full mt-2 py-1.5 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 disabled:opacity-40 transition-colors"
+      >{unlinking ? 'Unlinking…' : "Not me / pick a different name"}</button>
+      {#if errorMessage}
+        <p class="mt-3 text-xs text-red-500">{errorMessage}</p>
+      {/if}
 
     {:else if stage === 'picking_member'}
       <p class="text-sm text-gray-700 dark:text-gray-300 mb-1">Signed in as <span class="font-medium">{accountEmail || accountName}</span>.</p>

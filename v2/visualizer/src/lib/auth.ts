@@ -74,6 +74,14 @@ export async function linkMembers(
   return supabase.from('member_links').insert(rows);
 }
 
+/** Removes every member-name claim for this account, so the login screen's
+ *  picker shows again instead of auto-redirecting to the previously-picked
+ *  identity. Does not touch historical quiz data (questions/sessions) - only
+ *  the account->username link. */
+export async function unlinkAllMembers(authUserId: string) {
+  return supabase.from('member_links').delete().eq('auth_user_id', authUserId);
+}
+
 /** Usernames already claimed by anyone; the picker should exclude these. */
 export async function getClaimedUsernames(): Promise<Set<string>> {
   const { data, error } = await supabase.from('claimed_usernames').select('username');
