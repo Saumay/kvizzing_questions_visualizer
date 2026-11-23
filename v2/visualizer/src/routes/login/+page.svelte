@@ -86,9 +86,18 @@
   async function unlinkAndRepick() {
     if (!authUserId) return;
     unlinking = true;
-    const { error } = await unlinkAllMembers(authUserId);
+    const { data, error } = await unlinkAllMembers(authUserId);
     unlinking = false;
     if (error) { stage = 'error'; errorMessage = error.message; return; }
+    if (!data || data.length === 0) {
+      // No error, but nothing was actually deleted - almost always a
+      // missing RLS DELETE policy on member_links silently filtering the
+      // row out rather than throwing, not a real "nothing to delete" case
+      // (we only show this button when a link exists).
+      errorMessage = "Couldn't unlink - the database rejected the delete silently. "
+        + 'member_links is likely missing a DELETE policy for the owning user.';
+      return;
+    }
     localStorage.removeItem('kvizzing-reviewer-name');
     stage = 'loading';
     refresh();

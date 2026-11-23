@@ -79,7 +79,10 @@ export async function linkMembers(
  *  identity. Does not touch historical quiz data (questions/sessions) - only
  *  the account->username link. */
 export async function unlinkAllMembers(authUserId: string) {
-  return supabase.from('member_links').delete().eq('auth_user_id', authUserId);
+  // .select() so the caller can tell a real 0-row match (nothing to delete)
+  // apart from RLS silently filtering the delete to 0 rows with no error -
+  // Postgres/PostgREST don't surface the latter as an error at all.
+  return supabase.from('member_links').delete().eq('auth_user_id', authUserId).select();
 }
 
 /** Usernames already claimed by anyone; the picker should exclude these. */
