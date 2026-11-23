@@ -30,6 +30,21 @@
 
   const isConnect = $derived(session.quiz_type === 'connect');
 
+  // External, standalone websites Pavan built for these quiz series - matched
+  // by session id prefix (deck-gauntlet-rN / deck-kvest-2026-rN) rather than
+  // sourced from decks.json, since that schema has no external-link concept.
+  // Kept in sync with the same map in routes/decks/+page.svelte.
+  const SERIES_WEBSITE: Record<string, { label: string; url: string }> = {
+    gauntlet: { label: 'Gauntlet site', url: 'https://kvizzing-gauntlet.web.app/' },
+    'kvest-2026': { label: 'KVest 2026 site', url: 'https://kvest-2026.web.app/index.html' },
+  };
+  const seriesWebsite = $derived.by(() => {
+    for (const [id, site] of Object.entries(SERIES_WEBSITE)) {
+      if (session.id.startsWith(`deck-${id}-r`)) return site;
+    }
+    return null;
+  });
+
   let revealAll = $state(false);
   const _defaultState = () => ({ revealed: false, input: '', result: null as 'correct' | 'almost' | 'wrong' | null, hintsShown: 0 });
   let qStates = $state<Record<string, { revealed: boolean; input: string; result: 'correct' | 'almost' | 'wrong' | null; hintsShown: number }>>(
@@ -239,9 +254,9 @@
       {/if}
     </div>
 
-    {#if session.files?.length}
+    {#if session.files?.length || seriesWebsite}
       <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-primary-400">
-        {#each session.files as f}
+        {#each session.files ?? [] as f}
           <a
             href={f.url}
             target="_blank"
@@ -251,6 +266,16 @@
             {f.format === 'recording' || f.format === 'mp4' || f.format === 'vtt' ? '🎥 Watch recording' : '📄 View slides'}
           </a>
         {/each}
+        {#if seriesWebsite}
+          <a
+            href={seriesWebsite.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            🔗 Open quiz site
+          </a>
+        {/if}
       </div>
     {/if}
     </div>

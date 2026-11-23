@@ -98,6 +98,14 @@
     return `${(n / 1024 ** 2).toFixed(1)} MB`;
   }
 
+  // External, standalone websites Pavan built for these quiz series - not
+  // decks.json-sourced (that schema has no external-link concept), so these
+  // survive a decks.json regen from build_decks_manifest.py untouched.
+  const SERIES_WEBSITE: Record<string, { label: string; url: string }> = {
+    gauntlet: { label: 'Gauntlet site', url: 'https://kvizzing-gauntlet.web.app/' },
+    'kvest-2026': { label: 'KVest 2026 site', url: 'https://kvest-2026.web.app/index.html' },
+  };
+
   const FORMAT_LABEL: Record<DeckFile['format'], string> = {
     pdf: 'PDF', pptx: 'PPTX', docx: 'DOCX', mp4: 'MP4', vtt: 'VTT', recording: 'Video',
   };
@@ -382,7 +390,7 @@
     id: string; kind: 'series' | 'standalone'; title: string; subtitle: string;
     badge: string; recording: boolean; count: number; latestDate: string;
     sessionIds: string[]; onSelect: () => void;
-    host: string | null; questionCount: number | null;
+    host: string | null; questionCount: number | null; websiteUrl: string | null;
   };
 
   // Total questions across a series' rounds, looked up via each round's
@@ -417,6 +425,7 @@
         // surface it like a standalone session does.
         host: hosts.length === 1 ? hosts[0] : null,
         questionCount: seriesQuestionCount(sessionIds),
+        websiteUrl: SERIES_WEBSITE[s.id]?.url ?? null,
       });
     }
     for (const d of filteredStandalone) {
@@ -437,6 +446,7 @@
         },
         host: session?.quizmaster ?? d.host,
         questionCount: session?.question_count ?? null,
+        websiteUrl: null,
       });
     }
     return cards;
@@ -632,9 +642,20 @@
                 <p class="text-sm sm:text-base font-medium text-white/85 mt-1 truncate">
                   {hosts.slice(0, 5).join(', ')}{hosts.length > 5 ? ` +${hosts.length - 5} more` : ''}
                 </p>
+                <div class="flex flex-wrap items-center gap-2 mt-2.5">
+                  {#if SERIES_WEBSITE[heroSeries.id]}
+                    <a
+                      href={SERIES_WEBSITE[heroSeries.id].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/65 backdrop-blur-sm border border-white/30 text-white shadow-md transition-colors"
+                    >
+                      🔗 Open site
+                    </a>
+                  {/if}
                 {#if heroSeries.id === 'gauntlet' && gauntletEligibility && gauntletEligibility.blocked.length > 0}
                   {@const b = gauntletEligibility.blocked}
-                  <div class="relative inline-block mt-2.5">
+                  <div class="relative inline-block">
                     <button
                       onclick={() => showGauntletBlocked = !showGauntletBlocked}
                       class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/65 backdrop-blur-sm border border-red-300/50 text-red-50 shadow-md transition-colors"
@@ -681,6 +702,7 @@
                     {/if}
                   </div>
                 {/if}
+                </div>
               </div>
             </div>
           </div>
@@ -741,6 +763,9 @@
                       <div class="flex items-start justify-between gap-2">
                         <span class="text-xl sm:text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
                         <div class="flex items-center gap-1.5 flex-shrink-0">
+                          {#if card.websiteUrl}
+                            <a href={card.websiteUrl} target="_blank" rel="noopener noreferrer" class="text-sm hover:scale-110 transition-transform" title="Open quiz site">🔗</a>
+                          {/if}
                           {#if card.recording}<span class="text-sm" title="Recording available">🎥</span>{/if}
                           {#if card.kind === 'series'}
                             <span class="text-sm sm:text-base font-extrabold text-white leading-none">{card.count} session{card.count !== 1 ? 's' : ''}</span>
@@ -794,6 +819,20 @@
           {/if}
         </div>
         <div class="flex-shrink-0 flex items-center gap-1">
+          {#if SERIES_WEBSITE[s.id]}
+            <a
+              href={SERIES_WEBSITE[s.id].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              title="Open {SERIES_WEBSITE[s.id].label}"
+              aria-label="Open {SERIES_WEBSITE[s.id].label}"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          {/if}
           <button
             onclick={() => downloadAll(s.rounds.flatMap(r => r.files))}
             class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
