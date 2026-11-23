@@ -763,9 +763,6 @@
                       <div class="flex items-start justify-between gap-2">
                         <span class="text-xl sm:text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
                         <div class="flex items-center gap-1.5 flex-shrink-0">
-                          {#if card.websiteUrl}
-                            <a href={card.websiteUrl} target="_blank" rel="noopener noreferrer" class="text-sm hover:scale-110 transition-transform" title="Open quiz site">🔗</a>
-                          {/if}
                           {#if card.recording}<span class="text-sm" title="Recording available">🎥</span>{/if}
                           {#if card.kind === 'series'}
                             <span class="text-sm sm:text-base font-extrabold text-white leading-none">{card.count} session{card.count !== 1 ? 's' : ''}</span>
@@ -787,6 +784,16 @@
                           <p class="text-[11px] sm:text-xs font-medium text-white/85 mt-1 truncate">
                             {#if card.host}{#if store.getMember(card.host)}<a href="/member/{card.host}" class="hover:underline">{card.host}</a>{:else}{card.host}{/if}{:else}{card.badge}{/if}{card.questionCount ? ` · ${card.questionCount} questions` : ''}
                           </p>
+                        {/if}
+                        {#if card.websiteUrl}
+                          <a
+                            href={card.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1 mt-1.5 text-[10px] sm:text-[11px] font-bold px-2 py-1 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-sm border border-white/30 text-white transition-colors"
+                          >
+                            🔗 Site
+                          </a>
                         {/if}
                       </div>
                     </div>
