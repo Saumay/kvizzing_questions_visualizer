@@ -43,9 +43,39 @@
     total_bytes: number;
   }
 
+  interface GauntletRound {
+    round: number;
+    quizmaster: string;
+    participants: string[];
+    winner: string;
+  }
+  interface GauntletTracker {
+    block_window_gauntlets: number;
+    rounds: GauntletRound[];
+  }
+
   let { data } = $props();
   const decks = data.decks as DecksManifest;
+  const gauntletTracker = data.gauntletTracker as GauntletTracker | null;
   const store = getContext<QuestionStore>('store');
+
+  // Eligibility rule: anyone who played a gauntlet and didn't win it is
+  // blocked from the next block_window_gauntlets rounds after that one -
+  // from the Gauntlet Tracker sheet, not derivable from chat/deck data.
+  const gauntletEligibility = $derived.by(() => {
+    if (!gauntletTracker || gauntletTracker.rounds.length === 0) return null;
+    const { rounds, block_window_gauntlets: window } = gauntletTracker;
+    const latestRound = Math.max(...rounds.map(r => r.round));
+    const nextRound = latestRound + 1;
+    const blocked = new Set<string>();
+    for (const r of rounds) {
+      if (r.round <= latestRound - window) continue;
+      for (const p of r.participants) {
+        if (p !== r.winner) blocked.add(p);
+      }
+    }
+    return { nextRound, blocked: [...blocked].sort() };
+  });
 
   function formatBytes(n: number): string {
     if (n < 1024 * 1024) return `${Math.round(n / 1024)} KB`;
@@ -564,6 +594,12 @@
                 <p class="text-sm sm:text-base font-medium text-white/85 mt-1 truncate">
                   {hosts.slice(0, 5).join(', ')}{hosts.length > 5 ? ` +${hosts.length - 5} more` : ''}
                 </p>
+                {#if heroSeries.id === 'gauntlet' && gauntletEligibility && gauntletEligibility.blocked.length > 0}
+                  {@const b = gauntletEligibility.blocked}
+                  <p class="text-xs sm:text-sm text-amber-200/90 mt-1.5 truncate" title="Didn't win their last gauntlet, sitting out the next {gauntletTracker?.block_window_gauntlets}: {b.join(', ')}">
+                    🚫 Sitting out #{gauntletEligibility.nextRound}: {b.slice(0, 4).join(', ')}{b.length > 4 ? ` +${b.length - 4} more` : ''}
+                  </p>
+                {/if}
               </div>
             </div>
           </div>

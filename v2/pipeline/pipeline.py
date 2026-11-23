@@ -256,6 +256,7 @@ def stage6(conn, output_dir, **kwargs) -> dict[str, int]:
     _maybe_attach_deck_links(output_dir)
     _maybe_regenerate_backlog_report()
     _maybe_fetch_deck_stock_photos()
+    _maybe_refresh_gauntlet_tracker(output_dir)
     _maybe_deploy_dashboard()
     return counts
 
@@ -326,6 +327,41 @@ def _maybe_fetch_deck_stock_photos() -> None:
         log.warning(
             "Deck stock-photo fetch failed (%s: %s) — export succeeded OK, "
             "run utils/fetch_deck_stock_photos.py manually to catch up.", type(e).__name__, e,
+        )
+
+
+def _maybe_refresh_gauntlet_tracker(output_dir: Path) -> None:
+    """
+    Best-effort: re-fetch the Gauntlet Tracker Google Sheet (public CSV
+    export, no auth needed) on every export - same automatic-refresh pattern
+    as _maybe_fetch_deck_stock_photos - so new gauntlet rounds/winners show
+    up without a manual step. Falls back to the last successfully cached
+    config/gauntlet_tracker.json on a fetch failure (network, sheet
+    reshaped, etc.), so a transient failure never blanks the feature.
+    Never blocks or fails the real export.
+    """
+    cache_path = _PIPELINE_DIR / "config" / "gauntlet_tracker.json"
+    try:
+        from utils.fetch_gauntlet_tracker import fetch_and_cache
+        data = fetch_and_cache(cache_path)
+    except Exception as e:
+        log.warning(
+            "Gauntlet tracker refresh failed (%s: %s) — using last cached copy, "
+            "run utils/fetch_gauntlet_tracker.py manually to retry.", type(e).__name__, e,
+        )
+        try:
+            data = json.loads(cache_path.read_text(encoding="utf-8"))
+        except Exception:
+            return
+
+    try:
+        (Path(output_dir) / "gauntlet_tracker.json").write_text(
+            json.dumps(data, indent=2) + "\n", encoding="utf-8"
+        )
+    except Exception as e:
+        log.warning(
+            "Gauntlet tracker publish failed (%s: %s) — export succeeded OK.",
+            type(e).__name__, e,
         )
 
 

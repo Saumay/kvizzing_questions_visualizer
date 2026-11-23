@@ -1,0 +1,381 @@
+{
+  "_comment": "Auto-fetched from the 'Gauntlet Tracker' Google Sheet on every pipeline.py export (see fetch_gauntlet_tracker.py) - don't hand-edit, it gets overwritten on the next successful fetch.",
+  "source_url": "https://docs.google.com/spreadsheets/d/1AeyYvUADeajkd_WOnH9wsI3N-mZbswpFcdypzVb2kBc",
+  "block_window_gauntlets": 5,
+  "rounds": [
+    {
+      "round": 1,
+      "quizmaster": "Sal",
+      "participants": [
+        "Lzafeer",
+        "Nikunj",
+        "Nikhil",
+        "Naman"
+      ],
+      "winner": "Lzafeer"
+    },
+    {
+      "round": 2,
+      "quizmaster": "Sid",
+      "participants": [
+        "Pavan",
+        "Lzafeer",
+        "Sal",
+        "Shubham"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 3,
+      "quizmaster": "Nikunj",
+      "participants": [
+        "Pavan",
+        "KP",
+        "Sid",
+        "Manas"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 4,
+      "quizmaster": "Aditi",
+      "participants": [
+        "Pavan",
+        "Riddhima",
+        "Apoorv",
+        "Shubhankar"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 5,
+      "quizmaster": "Lzafeer",
+      "participants": [
+        "Pavan",
+        "Tapish",
+        "Pranshu",
+        "Anurag"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 6,
+      "quizmaster": "Vats",
+      "participants": [
+        "Pavan",
+        "Khandoba",
+        "Chinmay",
+        "Sumit"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 7,
+      "quizmaster": "Khandoba",
+      "participants": [
+        "Pavan",
+        "Nikhil",
+        "Arjun",
+        "Kirtan"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 8,
+      "quizmaster": "Kp",
+      "participants": [
+        "Pavan",
+        "Nikunj",
+        "Bijal",
+        "Dhruva"
+      ],
+      "winner": "Nikunj"
+    },
+    {
+      "round": 9,
+      "quizmaster": "Pavan",
+      "participants": [
+        "Nikunj",
+        "Paavas",
+        "Naman",
+        "Sapan"
+      ],
+      "winner": "Nikunj"
+    },
+    {
+      "round": 10,
+      "quizmaster": "Chinmay",
+      "participants": [
+        "Nikunj",
+        "Siddesh",
+        "Vats",
+        "Shubhankar"
+      ],
+      "winner": "Nikunj"
+    },
+    {
+      "round": 11,
+      "quizmaster": "Saluja",
+      "participants": [
+        "Nikunj",
+        "Rikesh",
+        "Saumay",
+        "Mahita"
+      ],
+      "winner": "Nikunj"
+    },
+    {
+      "round": 12,
+      "quizmaster": "Vats",
+      "participants": [
+        "Nikunj",
+        "Chinmay",
+        "KP",
+        "Harshvardhan"
+      ],
+      "winner": "Chinmay"
+    },
+    {
+      "round": 13,
+      "quizmaster": "Pavan",
+      "participants": [
+        "Chinmay",
+        "Kintu",
+        "Akshay",
+        "Prajwal"
+      ],
+      "winner": "Chinmay"
+    },
+    {
+      "round": 14,
+      "quizmaster": "Lzafeer",
+      "participants": [
+        "Chinmay",
+        "Sal",
+        "Khandoba",
+        "Aashna"
+      ],
+      "winner": "Chinmay"
+    },
+    {
+      "round": 15,
+      "quizmaster": "Khandoba",
+      "participants": [
+        "Chinmay",
+        "Anurag",
+        "Aakanksha",
+        "Shubham"
+      ],
+      "winner": "Chinmay"
+    },
+    {
+      "round": 16,
+      "quizmaster": "Bijal",
+      "participants": [
+        "Chinmay",
+        "Pavan",
+        "Nilesh",
+        "Gautam R"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 17,
+      "quizmaster": "Nikunj",
+      "participants": [
+        "Pavan",
+        "Vats",
+        "Nikhil",
+        "Sid"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 18,
+      "quizmaster": "Prajwal",
+      "participants": [
+        "Pavan",
+        "Shreya",
+        "Naman",
+        "Bijal"
+      ],
+      "winner": "Shreya"
+    },
+    {
+      "round": 19,
+      "quizmaster": "Gautam",
+      "participants": [
+        "Shreya",
+        "KP",
+        "Debjit",
+        "Pranshu"
+      ],
+      "winner": "Shreya"
+    },
+    {
+      "round": 20,
+      "quizmaster": "Chinmay",
+      "participants": [
+        "Shreya",
+        "Smit",
+        "Vyoma",
+        "Akshay T"
+      ],
+      "winner": "Shreya"
+    },
+    {
+      "round": 21,
+      "quizmaster": "Vats",
+      "participants": [
+        "Shreya",
+        "Sal",
+        "Aashna",
+        "Shubham"
+      ],
+      "winner": "Shreya"
+    },
+    {
+      "round": 22,
+      "quizmaster": "Khandoba",
+      "participants": [
+        "Shreya",
+        "Paavas",
+        "Ryan",
+        "Sameer"
+      ],
+      "winner": "Paavas"
+    },
+    {
+      "round": 23,
+      "quizmaster": "Lzafeer",
+      "participants": [
+        "Paavas",
+        "Gautam",
+        "Avani",
+        "Nikunj"
+      ],
+      "winner": "Paavas"
+    },
+    {
+      "round": 24,
+      "quizmaster": "Namrata",
+      "participants": [
+        "Paavas",
+        "Vats",
+        "Nikhil",
+        "Rushabh"
+      ],
+      "winner": "Paavas"
+    },
+    {
+      "round": 25,
+      "quizmaster": "Sid",
+      "participants": [
+        "Paavas",
+        "Aditi",
+        "Pranshu",
+        "Karan"
+      ],
+      "winner": "Paavas"
+    },
+    {
+      "round": 26,
+      "quizmaster": "Apratim",
+      "participants": [
+        "Paavas",
+        "Arjun",
+        "Lzafeer",
+        "Pavan"
+      ],
+      "winner": "Pavan"
+    },
+    {
+      "round": 27,
+      "quizmaster": "Namrata",
+      "participants": [
+        "Pavan",
+        "KP",
+        "Raghav",
+        "Saumay"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 28,
+      "quizmaster": "Pranshu",
+      "participants": [
+        "KP",
+        "Sal",
+        "Bijal",
+        "Khandoba"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 29,
+      "quizmaster": "Pavan",
+      "participants": [
+        "KP",
+        "Abhishek B",
+        "Abhishek C",
+        "Sameer"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 30,
+      "quizmaster": "Sal",
+      "participants": [
+        "KP",
+        "Anushree",
+        "Namrata",
+        "Tapish"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 31,
+      "quizmaster": "Aditi",
+      "participants": [
+        "KP",
+        "Ryan",
+        "Smit",
+        "Ankit"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 32,
+      "quizmaster": "Khandoba",
+      "participants": [
+        "KP",
+        "Akshay T",
+        "Nishad",
+        "Shyam"
+      ],
+      "winner": "KP"
+    },
+    {
+      "round": 33,
+      "quizmaster": "Vats",
+      "participants": [
+        "KP",
+        "Gautam",
+        "Avani",
+        "Yash"
+      ],
+      "winner": "Gautam"
+    },
+    {
+      "round": 34,
+      "quizmaster": "Bijal",
+      "participants": [
+        "Gautam",
+        "Nikhil",
+        "Kintu",
+        "Harsh"
+      ],
+      "winner": "Nikhil"
+    }
+  ]
+}
