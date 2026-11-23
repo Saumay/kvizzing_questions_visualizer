@@ -350,6 +350,7 @@
 
   let openSeries = $state<Series | null>(null);
   let openStandalone = $state<Standalone | null>(null);
+  let showGauntletBlocked = $state(false);
 
   // Unified timeline: series (minus the hero) and standalone sessions as one
   // sortable/groupable list, each rendered as the same banner-style card.
@@ -569,9 +570,18 @@
       {@const c2 = '#0f1f33'}
       {@const imgUrl = deckBannerUrl(heroSeries.id)}
       {@const hosts = seriesHosts(heroSeries)}
-      <button
-        onclick={() => openSeries = heroSeries}
-        class="tile-grain group relative w-full overflow-hidden rounded-2xl text-left ring-1 ring-black/10 dark:ring-white/10 shadow-lg hover:shadow-2xl transition-all focus:outline-none focus:ring-2 focus:ring-primary-400"
+      <!-- A plain <button>, not a <div role="button">, can't contain the
+           separate "sitting out" button below it (nested buttons close the
+           outer one at parse time) - same reason the timeline cards further
+           down use a clickable div with an a/button/input click-guard. -->
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div
+        role="button"
+        tabindex="0"
+        onclick={(e) => { if (!(e.target as HTMLElement).closest('a,button,input')) openSeries = heroSeries; }}
+        onkeydown={(e) => { if (e.key === 'Enter') openSeries = heroSeries; }}
+        class="tile-grain group relative w-full overflow-hidden rounded-2xl text-left ring-1 ring-black/10 dark:ring-white/10 shadow-lg hover:shadow-2xl transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-400"
       >
         <div class="absolute inset-0" style="background: linear-gradient(135deg, {c1}, {c2})"></div>
         {#if imgUrl}
@@ -596,9 +606,36 @@
                 </p>
                 {#if heroSeries.id === 'gauntlet' && gauntletEligibility && gauntletEligibility.blocked.length > 0}
                   {@const b = gauntletEligibility.blocked}
-                  <p class="text-xs sm:text-sm text-amber-200/90 mt-1.5 truncate" title="Didn't win their last gauntlet, sitting out the next {gauntletTracker?.block_window_gauntlets}: {b.join(', ')}">
-                    🚫 Sitting out #{gauntletEligibility.nextRound}: {b.slice(0, 4).join(', ')}{b.length > 4 ? ` +${b.length - 4} more` : ''}
-                  </p>
+                  <div class="relative inline-block mt-2.5">
+                    <button
+                      onclick={() => showGauntletBlocked = !showGauntletBlocked}
+                      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-md transition-colors"
+                    >
+                      🚫 {b.length} sitting out #{gauntletEligibility.nextRound}
+                    </button>
+                    {#if showGauntletBlocked}
+                      <!-- svelte-ignore a11y_click_events_have_key_events -->
+                      <!-- svelte-ignore a11y_no_static_element_interactions -->
+                      <div class="fixed inset-0 z-40" role="presentation" onclick={(e) => { e.stopPropagation(); showGauntletBlocked = false; }}></div>
+                      <!-- svelte-ignore a11y_click_events_have_key_events -->
+                      <!-- svelte-ignore a11y_no_static_element_interactions -->
+                      <div
+                        onclick={(e) => e.stopPropagation()}
+                        class="absolute left-0 top-full mt-2 z-50 w-64 max-h-60 overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-3"
+                      >
+                        <p class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1.5">
+                          Didn't win their last gauntlet &middot; sitting out the next {gauntletTracker?.block_window_gauntlets}
+                        </p>
+                        <ul class="space-y-1">
+                          {#each b as name}
+                            <li class="text-sm text-gray-700 dark:text-gray-200">
+                              {#if store.getMember(name)}<a href="/member/{name}" class="hover:underline">{name}</a>{:else}{name}{/if}
+                            </li>
+                          {/each}
+                        </ul>
+                      </div>
+                    {/if}
+                  </div>
                 {/if}
               </div>
             </div>
@@ -615,7 +652,7 @@
             </svg>
           </div>
         </div>
-      </button>
+      </div>
     {/if}
 
     <!-- Unified timeline: every other series + standalone, as banner cards -->
