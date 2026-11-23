@@ -402,6 +402,22 @@ def build_members(
     # Index config by username
     config_by_username: dict[str, dict] = {m["username"]: m for m in config_members}
 
+    # Ground truth for "is this a real member": anyone who actually sent a
+    # message, i.e. a question asker or a discussion participant. answer.solver
+    # / answer.parts[].solver are free-text LLM output and, for collaborative
+    # answers in particular, often contain composite annotations ("TIE — A / B",
+    # "A (self-revealed)") rather than a bare username, so they must never be
+    # trusted to mint a member on their own - only used to attribute a solve to
+    # a name already known to be real.
+    real_usernames: set[str] = set()
+    for q in questions:
+        asker = (q.get("question") or {}).get("asker")
+        if asker:
+            real_usernames.add(asker)
+        for entry in q.get("discussion", []):
+            if entry.get("username"):
+                real_usernames.add(entry["username"])
+
     # Compute stats
     asked: dict[str, int] = defaultdict(int)
     solved: dict[str, int] = defaultdict(int)
@@ -416,7 +432,7 @@ def build_members(
 
         solver = (q.get("answer") or {}).get("solver")
         time_s = (q.get("stats") or {}).get("time_to_answer_seconds")
-        if solver:
+        if solver and solver in real_usernames:
             solved[solver] += 1
             if time_s is not None:
                 solve_times[solver].append(time_s)
