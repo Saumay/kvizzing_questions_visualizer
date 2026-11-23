@@ -77,6 +77,22 @@
     return { nextRound, blocked: [...blocked].sort() };
   });
 
+  // Gauntlet tracker names are the sheet's own nicknames, sometimes
+  // case-varied ("Kp" vs "KP") - member.name() is a strict exact match, so
+  // look up case-insensitively here rather than loosening that shared
+  // method. Nicknames that still don't match a real chat username (e.g.
+  // "Harshvardhan" vs the real "Harshvardhan Ranade") stay plain text -
+  // guessing a prefix/fuzzy match risks linking the wrong person when two
+  // members share a first name (there are two different Gautams).
+  const memberUsernameByLowerName = $derived.by(() => {
+    const map = new Map<string, string>();
+    for (const m of store.getMembers()) map.set(m.username.toLowerCase(), m.username);
+    return map;
+  });
+  function gauntletMemberUsername(name: string): string | null {
+    return memberUsernameByLowerName.get(name.toLowerCase()) ?? null;
+  }
+
   function formatBytes(n: number): string {
     if (n < 1024 * 1024) return `${Math.round(n / 1024)} KB`;
     return `${(n / 1024 ** 2).toFixed(1)} MB`;
@@ -651,8 +667,13 @@
                         </p>
                         <ul class="space-y-1">
                           {#each b as name}
-                            <li class="text-sm text-gray-700 dark:text-gray-200">
-                              {#if store.getMember(name)}<a href="/member/{name}" class="hover:underline">{name}</a>{:else}{name}{/if}
+                            {@const mu = gauntletMemberUsername(name)}
+                            <li class="text-sm">
+                              {#if mu}
+                                <a href="/member/{mu}" class="font-medium text-primary-600 dark:text-primary-400 hover:underline">{name}</a>
+                              {:else}
+                                <span class="text-gray-700 dark:text-gray-200">{name}</span>
+                              {/if}
                             </li>
                           {/each}
                         </ul>
