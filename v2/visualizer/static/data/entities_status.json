@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "last_success": "2026-11-19T19:32:14.207713+00:00",
-  "last_attempt": "2026-11-19T19:32:14.207713+00:00",
+  "last_success": "2026-11-23T08:04:57.793375+00:00",
+  "last_attempt": "2026-11-23T08:04:57.793375+00:00",
   "questions_with_entities": 19072,
   "unique_entities": 40000,
   "total_questions": 21324

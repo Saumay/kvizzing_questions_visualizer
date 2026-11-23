@@ -30,7 +30,7 @@ Dead ends tried:
 
 Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Photos app (if "Save to Camera Roll" was ever on), other group members' phones, ask original senders directly.
 
-## Full per-day table (2025-09-23 - 2026-11-19)
+## Full per-day table (2025-09-23 - 2026-11-23)
 
 | Date | Source | Extracted | Questions | Media % | Topic % | Tags % | Reactions % | Low conf % | Published |
 |---|---|---|---|---|---|---|---|---|---|
@@ -457,6 +457,10 @@ Next avenues: iCloud WhatsApp backup restore (check last-backup date first), Pho
 | 2026-11-17 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-18 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 | 2026-11-19 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-20 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-21 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-22 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
+| 2026-11-23 | NO | pending | 0 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |  |
 
 ## How to update this file
 
@@ -1602,4 +1606,5 @@ If a new raw-chat or media source shows up outside a pipeline run (e.g. you just
 | deck-long-connect-2 | 2026-10-03 |  |  |  | yes |  | 0 |
 | deck-qotd-150 | 2026-08-12 |  |  |  | yes |  | 0 |
 | deck-book-club | 2026-08-16 |  |  |  | yes |  | 0 |
+| deck-jack-of-all-quiz-qf1 | 2026-01-17 | Paavas |  |  | yes |  | 0 |
 

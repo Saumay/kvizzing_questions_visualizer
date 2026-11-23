@@ -514,5 +514,17 @@
     "source_url": "https://www.flickr.com/photos/50693818@N08/4761894528",
     "topic": "general",
     "query": "trivia quiz knowledge"
+  },
+  "jack-of-all-quiz-qf1": {
+    "openverse_id": "a2b17a9a-a95b-45ba-b9fc-285c24427ba7",
+    "title": "Jester- Joker Card",
+    "creator": "GoShows",
+    "creator_url": "https://www.flickr.com/photos/83670821@N04",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source_url": "https://www.flickr.com/photos/83670821@N04/7759264414",
+    "topic": "manual",
+    "query": "joker card illustration"
   }
 }
