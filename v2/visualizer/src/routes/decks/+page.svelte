@@ -351,6 +351,14 @@
   let openSeries = $state<Series | null>(null);
   let openStandalone = $state<Standalone | null>(null);
   let showGauntletBlocked = $state(false);
+  let copiedFrozenNames = $state(false);
+
+  function copyFrozenNames(names: string[]) {
+    navigator.clipboard.writeText(names.join(', ')).then(() => {
+      copiedFrozenNames = true;
+      setTimeout(() => copiedFrozenNames = false, 1500);
+    }).catch(() => {});
+  }
 
   // Unified timeline: series (minus the hero) and standalone sessions as one
   // sortable/groupable list, each rendered as the same banner-style card.
@@ -615,7 +623,7 @@
                       onclick={() => showGauntletBlocked = !showGauntletBlocked}
                       class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full bg-black/50 hover:bg-black/65 backdrop-blur-sm border border-red-300/50 text-red-50 shadow-md transition-colors"
                     >
-                      🚫 {b.length} sitting out #{gauntletEligibility.nextRound}
+                      🧊 Frozen participants ({b.length})
                     </button>
                     {#if showGauntletBlocked}
                       <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -625,10 +633,21 @@
                       <!-- svelte-ignore a11y_no_static_element_interactions -->
                       <div
                         onclick={(e) => e.stopPropagation()}
-                        class="absolute left-0 top-full mt-2 z-50 w-64 max-h-60 overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-3"
+                        class="absolute left-0 top-full mt-2 z-50 w-64 max-h-72 overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-3"
                       >
-                        <p class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1.5">
-                          Didn't win their last gauntlet &middot; sitting out the next {gauntletTracker?.block_window_gauntlets}
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                          <p class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                            Frozen for #{gauntletEligibility.nextRound}
+                          </p>
+                          <button
+                            onclick={() => copyFrozenNames(b)}
+                            class="flex-shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-md text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                          >
+                            {copiedFrozenNames ? 'Copied ✓' : 'Copy'}
+                          </button>
+                        </div>
+                        <p class="text-[11px] text-gray-400 dark:text-gray-500 mb-2">
+                          Didn't win their last gauntlet - frozen for {gauntletTracker?.block_window_gauntlets} rounds.
                         </p>
                         <ul class="space-y-1">
                           {#each b as name}
