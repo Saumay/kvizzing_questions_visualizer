@@ -636,17 +636,17 @@
                         class="absolute left-0 top-full mt-2 z-50 w-64 max-h-72 overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-3"
                       >
                         <div class="flex items-center justify-between gap-2 mb-1.5">
-                          <p class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide">
+                          <p class="text-sm font-bold text-gray-900 dark:text-white">
                             Frozen for #{gauntletEligibility.nextRound}
                           </p>
                           <button
                             onclick={() => copyFrozenNames(b)}
-                            class="flex-shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-md text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                            class="flex-shrink-0 text-xs font-semibold px-2 py-1 rounded-md text-white bg-primary-500 hover:bg-primary-600 transition-colors"
                           >
                             {copiedFrozenNames ? 'Copied ✓' : 'Copy'}
                           </button>
                         </div>
-                        <p class="text-[11px] text-gray-400 dark:text-gray-500 mb-2">
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">
                           Didn't win their last gauntlet - frozen for {gauntletTracker?.block_window_gauntlets} rounds.
                         </p>
                         <ul class="space-y-1">
