@@ -74,7 +74,7 @@ date,source_available,extracted,question_count,media_source_present,media_pct,to
 2025-12-04,True,True,34,True,0.0,100.0,100.0,0.0,32.4,0.0,False
 2025-12-05,True,True,40,True,0.0,100.0,90.0,0.0,35.0,2.5,False
 2025-12-06,True,True,18,True,100.0,100.0,100.0,0.0,50.0,0.0,True
-2025-12-07,True,True,55,True,0.0,100.0,96.4,0.0,52.7,0.0,False
+2025-12-07,True,True,54,True,0.0,100.0,96.3,0.0,53.7,0.0,False
 2025-12-08,True,True,107,True,2.3,100.0,90.7,0.0,36.4,0.0,False
 2025-12-09,True,True,80,True,100.0,100.0,100.0,0.0,31.2,5.0,True
 2025-12-10,True,True,103,True,5.1,100.0,99.0,0.0,40.8,9.7,False
