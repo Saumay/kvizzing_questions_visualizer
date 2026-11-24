@@ -236,6 +236,12 @@
   function seriesHasRecording(s: Series): boolean {
     return s.rounds.some(r => hasRecording(r.files));
   }
+  function hasSlides(files: DeckFile[]): boolean {
+    return files.some(f => f.format === 'pdf' || f.format === 'pptx' || f.format === 'docx');
+  }
+  function seriesHasSlides(s: Series): boolean {
+    return s.rounds.some(r => hasSlides(r.files));
+  }
 
   // Opens every downloadable file in the group. Browsers only honor the
   // `download` attribute for same-origin URLs, and these are served from R2
@@ -388,7 +394,7 @@
   // sortable/groupable list, each rendered as the same banner-style card.
   type TimelineCard = {
     id: string; kind: 'series' | 'standalone'; title: string; subtitle: string;
-    badge: string; recording: boolean; count: number; latestDate: string;
+    badge: string; recording: boolean; slides: boolean; count: number; latestDate: string;
     sessionIds: string[]; onSelect: () => void;
     host: string | null; questionCount: number | null; websiteUrl: string | null;
   };
@@ -416,6 +422,7 @@
         subtitle: hosts.join(', ') || 'Various hosts',
         badge: `${s.rounds.length} session${s.rounds.length !== 1 ? 's' : ''}`,
         recording: seriesHasRecording(s),
+        slides: seriesHasSlides(s),
         count: s.rounds.length,
         latestDate: latest.date,
         sessionIds,
@@ -436,7 +443,8 @@
         id: d.id, kind: 'standalone', title: d.title,
         subtitle: `${d.host ? d.host + ' · ' : ''}${d.date_approx ? '~' : ''}${formatDate(d.date)}`,
         badge: single ? FORMAT_LABEL[single.format] : `${d.files.length} files`,
-        recording: !single && hasRecording(d.files),
+        recording: hasRecording(d.files),
+        slides: hasSlides(d.files),
         count: 1,
         latestDate: d.date,
         sessionIds: [sessionId],
@@ -764,6 +772,7 @@
                         <span class="text-xl sm:text-2xl flex-shrink-0">{emojiFor(card.title)}</span>
                         <div class="flex items-center gap-1.5 flex-shrink-0">
                           {#if card.recording}<span class="text-sm" title="Recording available">🎥</span>{/if}
+                          {#if card.slides}<span class="text-sm" title="Slides available">📄</span>{/if}
                           {#if card.kind === 'series'}
                             <span class="text-sm sm:text-base font-extrabold text-white leading-none">{card.count} session{card.count !== 1 ? 's' : ''}</span>
                           {/if}
