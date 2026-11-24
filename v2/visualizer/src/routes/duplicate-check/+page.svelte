@@ -170,7 +170,7 @@
             {MODE_COPY[mode].resultsHeading}
           </p>
           {#each results as { question, score, matchedEntities } (question.id)}
-            <ResultCard {question} {score} {matchedEntities} styleMode={mode} />
+            <ResultCard {question} {score} {matchedEntities} styleMode={mode} queryText={draft} />
           {/each}
         </div>
       {/if}

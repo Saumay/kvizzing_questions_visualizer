@@ -14,8 +14,11 @@
     // duplicate-check flow and the deck-upload report) gets red/amber
     // duplicate-toned labels.
     styleMode?: 'duplicate' | 'topic';
+    // The user's own draft text, when available - lets the question/answer
+    // highlight a shared phrase with it, not just known-entity spans.
+    queryText?: string;
   }
-  const { question, score, matchedEntities, styleMode = 'duplicate' }: Props = $props();
+  const { question, score, matchedEntities, styleMode = 'duplicate', queryText = '' }: Props = $props();
 
   const store = getContext<QuestionStore>('store');
   const tzCtx = getContext<{ value: string }>('timezone');
@@ -23,8 +26,8 @@
   let expanded = $state(false);
 
   const pct = $derived(scorePct(score));
-  const questionSegments = $derived(highlightSegments(question.question.text, matchedEntities));
-  const answerSegments = $derived(question.answer?.text ? highlightSegments(question.answer.text, matchedEntities) : null);
+  const questionSegments = $derived(highlightSegments(question.question.text, matchedEntities, queryText));
+  const answerSegments = $derived(question.answer?.text ? highlightSegments(question.answer.text, matchedEntities, queryText) : null);
 
   function scoreLabel(p: number): string {
     if (styleMode === 'topic') {
@@ -32,6 +35,7 @@
       if (p >= 60) return 'Relevant';
       return 'Loosely related';
     }
+    if (p >= 95) return 'Exact match';
     if (p >= 80) return 'Very likely a duplicate';
     if (p >= 60) return 'Similar theme';
     return 'Loosely related';
@@ -43,6 +47,7 @@
       if (p >= 60) return 'bg-sky-50 text-sky-600 dark:bg-sky-900/30 dark:text-sky-300';
       return 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400';
     }
+    if (p >= 95) return 'bg-red-600 text-white dark:bg-red-500 dark:text-white';
     if (p >= 80) return 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300';
     if (p >= 60) return 'bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-300';
     return 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400';
@@ -103,7 +108,10 @@
     </span>
   </div>
   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center flex-wrap gap-x-1">
-    <span>{question.question.asker} &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}</span>
+    <span>
+      {#if store.getMember(question.question.asker)}<a href="/member/{question.question.asker}" class="hover:underline">{question.question.asker}</a>{:else}{question.question.asker}{/if}
+      &middot; {formatDateTz(question.date, tzCtx?.value ?? 'Europe/London')}
+    </span>
     {#if question.session?.theme}<span>&middot; {question.session.theme}</span>{/if}
     <button
       onclick={() => goto(`/question/${question.id}`)}

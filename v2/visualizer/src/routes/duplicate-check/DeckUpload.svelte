@@ -293,7 +293,7 @@
         {#if slide.matches && slide.matches.length > 0}
           <div class="mt-3 pl-7 space-y-2">
             {#each slide.matches.slice(0, 3) as m (m.question.id)}
-              <ResultCard question={m.question} score={m.score} matchedEntities={m.matchedEntities} />
+              <ResultCard question={m.question} score={m.score} matchedEntities={m.matchedEntities} queryText={slide.question} />
             {/each}
           </div>
         {:else if slide.matches && slide.matches.length === 0}

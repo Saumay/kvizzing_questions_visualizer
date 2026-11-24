@@ -9,18 +9,109 @@ function escapeRegex(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// Splits text into segments so matched entity spans can be rendered with a
-// highlight. Built as data (not {@html}) since the question/answer text is
-// plain, not markup.
-export function highlightSegments(text: string, entities: string[]): { text: string; hl: boolean }[] {
-  if (entities.length === 0) return [{ text, hl: false }];
+function entityMatchRanges(text: string, entities: string[]): [number, number][] {
+  if (entities.length === 0) return [];
   const pattern = new RegExp(`\\b(${[...entities].sort((a, b) => b.length - a.length).map(escapeRegex).join('|')})\\b`, 'gi');
+  const ranges: [number, number][] = [];
+  for (const m of text.matchAll(pattern)) ranges.push([m.index!, m.index! + m[0].length]);
+  return ranges;
+}
+
+function tokenizeWords(text: string): { word: string; start: number; end: number }[] {
+  const tokens: { word: string; start: number; end: number }[] = [];
+  const re = /\S+/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) tokens.push({ word: m[0], start: m.index, end: m.index + m[0].length });
+  return tokens;
+}
+
+function normWord(w: string): string {
+  return w.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+}
+
+// Finds contiguous runs (>= minRun words) in `candidateWords` that also
+// appear, in the same order, somewhere in `queryWords` - a word-level LCS
+// rather than a naive per-word set overlap, so "the" or "and" scattered
+// through unrelated sentences can't each count as a "match" on their own.
+function sharedRunIndices(candidateWords: string[], queryWords: string[], minRun: number): Set<number> {
+  const n = candidateWords.length, m = queryWords.length;
+  if (n === 0 || m === 0) return new Set();
+  const dp: Uint16Array[] = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      dp[i][j] = candidateWords[i] && candidateWords[i] === queryWords[j]
+        ? dp[i + 1][j + 1] + 1
+        : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    }
+  }
+  const matchedIdx: number[] = [];
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (candidateWords[i] && candidateWords[i] === queryWords[j]) {
+      matchedIdx.push(i);
+      i++; j++;
+    } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+  const result = new Set<number>();
+  let runStart = 0;
+  for (let k = 0; k <= matchedIdx.length; k++) {
+    const contiguous = k > runStart && k < matchedIdx.length && matchedIdx[k] === matchedIdx[k - 1] + 1;
+    if (!contiguous) {
+      if (k - runStart >= minRun) for (let r = runStart; r < k; r++) result.add(matchedIdx[r]);
+      runStart = k;
+    }
+  }
+  return result;
+}
+
+function wordOverlapRanges(text: string, queryText: string, minRun = 3): [number, number][] {
+  const candTokens = tokenizeWords(text);
+  const queryWords = tokenizeWords(queryText).map(t => normWord(t.word)).filter(Boolean);
+  const candWords = candTokens.map(t => normWord(t.word));
+  const matched = sharedRunIndices(candWords, queryWords, minRun);
+  return [...matched].map(idx => [candTokens[idx].start, candTokens[idx].end] as [number, number]);
+}
+
+function mergeRanges(ranges: [number, number][]): [number, number][] {
+  if (ranges.length === 0) return [];
+  const sorted = [...ranges].sort((a, b) => a[0] - b[0]);
+  const merged: [number, number][] = [sorted[0]];
+  for (const [start, end] of sorted.slice(1)) {
+    const last = merged[merged.length - 1];
+    if (start <= last[1]) last[1] = Math.max(last[1], end);
+    else merged.push([start, end]);
+  }
+  return merged;
+}
+
+// Splits text into segments so matched spans can be rendered with a
+// highlight. Built as data (not {@html}) since the question/answer text is
+// plain, not markup. Highlights two independent kinds of evidence: entities
+// from the known vocabulary (always), and - when `queryText` is given - any
+// contiguous phrase (>= minRun words) shared with the user's own draft, so a
+// near word-for-word duplicate reads as mostly green, not just its proper
+// nouns.
+export function highlightSegments(
+  text: string,
+  entities: string[],
+  queryText?: string,
+  minRun = 3
+): { text: string; hl: boolean }[] {
+  const ranges = mergeRanges([
+    ...entityMatchRanges(text, entities),
+    ...(queryText ? wordOverlapRanges(text, queryText, minRun) : []),
+  ]);
+  if (ranges.length === 0) return [{ text, hl: false }];
   const segments: { text: string; hl: boolean }[] = [];
   let lastIndex = 0;
-  for (const m of text.matchAll(pattern)) {
-    if (m.index! > lastIndex) segments.push({ text: text.slice(lastIndex, m.index), hl: false });
-    segments.push({ text: m[0], hl: true });
-    lastIndex = m.index! + m[0].length;
+  for (const [start, end] of ranges) {
+    if (start > lastIndex) segments.push({ text: text.slice(lastIndex, start), hl: false });
+    segments.push({ text: text.slice(start, end), hl: true });
+    lastIndex = end;
   }
   if (lastIndex < text.length) segments.push({ text: text.slice(lastIndex), hl: false });
   return segments;
